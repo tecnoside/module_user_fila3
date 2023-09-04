@@ -27,9 +27,8 @@ class RecoveryCodeReplaced
     /**
      * Create a new event instance.
      *
-     * @param \Illuminate\Contracts\Auth\Authenticatable $user
-     * @param string                                     $code
-     *
+     * @param  \Illuminate\Contracts\Auth\Authenticatable  $user
+     * @param  string  $code
      * @return void
      */
     public function __construct($user, $code)

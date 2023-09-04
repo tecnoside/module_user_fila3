@@ -35,12 +35,12 @@ class AdminPanelProvider extends PanelProvider
             ->colors([
                 'primary' => Color::Teal,
             ])
-            ->discoverResources(in: base_path('Modules/'.$this->module.'/Filament/Resources'), for: "$moduleNamespace\\Filament\\Resources")
-            ->discoverPages(in: base_path('Modules/'.$this->module.'/Filament/Admin/Pages'), for: "$moduleNamespace\\Filament\\Admin\\Pages")
+            ->discoverResources(in: base_path('Modules/' . $this->module . '/Filament/Resources'), for: "{$moduleNamespace}\\Filament\\Resources")
+            ->discoverPages(in: base_path('Modules/' . $this->module . '/Filament/Admin/Pages'), for: "{$moduleNamespace}\\Filament\\Admin\\Pages")
             ->pages([
                 Pages\Dashboard::class,
             ])
-            ->discoverWidgets(in: base_path('Modules/'.$this->module.'/Filament/Admin/Widgets'), for: "$moduleNamespace\\Filament\\Admin\\Widgets")
+            ->discoverWidgets(in: base_path('Modules/' . $this->module . '/Filament/Admin/Widgets'), for: "{$moduleNamespace}\\Filament\\Admin\\Widgets")
             ->widgets([
                 Widgets\AccountWidget::class,
                 // Widgets\FilamentInfoWidget::class,
@@ -78,6 +78,6 @@ class AdminPanelProvider extends PanelProvider
 
     protected function getModuleNamespace(): string
     {
-        return config('modules.namespace').'\\'.$this->module;
+        return config('modules.namespace') . '\\' . $this->module;
     }
 }

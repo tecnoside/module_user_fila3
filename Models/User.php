@@ -93,17 +93,17 @@ use Spatie\PersonalDataExport\ExportsPersonalData;
  *
  * @mixin \Eloquent
  */
-class User extends Authenticatable implements FilamentUser, HasTenants, \Modules\Xot\Contracts\UserContract
+class User extends Authenticatable implements \Modules\Xot\Contracts\UserContract, FilamentUser, HasTenants
 { /* , HasAvatar, UserJetContract, ExportsPersonalData */
     /* , HasTeamsContract */
     use HasApiTokens;
     use HasFactory;
-    // use HasProfilePhoto; //ArtMin96
-    // use HasTeams; //ArtMin96
-    use Notifiable;
     // use TwoFactorAuthenticatable; //ArtMin96
     // use CanExportPersonalData; //ArtMin96
     use HasRoles;
+    // use HasProfilePhoto; //ArtMin96
+    // use HasTeams; //ArtMin96
+    use Notifiable;
 
     /**
      * @var string

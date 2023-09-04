@@ -8,11 +8,10 @@ use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
 use Modules\User\Contracts\HasShieldPermissions;
 use Modules\User\Datas\FilamentShieldData;
+use Webmozart\Assert\Assert;
 
 use function Safe\class_implements;
 use function Safe\class_uses;
-
-use Webmozart\Assert\Assert;
 
 /**
  * ---.
@@ -30,7 +29,7 @@ class Utils
     {
         $roleResourcePath = app_path((string) Str::of('Filament\\Resources\\Shield\\RoleResource.php')->replace('\\', '/'));
 
-        $filesystem = new Filesystem();
+        $filesystem = new Filesystem;
 
         return $filesystem->exists($roleResourcePath);
     }

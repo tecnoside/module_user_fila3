@@ -26,7 +26,7 @@ class TeamsRelationManager extends RelationManager
             $childComponents = array_merge($childComponents, $schema->getChildComponents());
         }
         $childComponents['role'] = Forms\Components\Select::make('role')
-             ->options(Role::all()->pluck('name', 'name'));
+            ->options(Role::all()->pluck('name', 'name'));
         $form->schema($childComponents);
 
         return $form;

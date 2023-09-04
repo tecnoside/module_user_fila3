@@ -1,0 +1,74 @@
+{
+    "name": "laraxot/module_user",
+    "description": "",
+    "authors": [{
+        "name": "Marco Sottana",
+        "email": "marco.sottana@gmail.com"
+    }],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Livewire\\LivewireServiceProvider",
+                "Modules\\User\\Providers\\UserServiceProvider"
+            ],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\User\\": ""
+        }
+    },
+    "require": {
+        "artmin96/filament-jet": "*",
+        "laraxot/module_xot_fila": "dev-master",
+        "spatie/laravel-personal-data-export": "*",
+        "laravel/passport": "*"
+    },
+    "require-dev": {
+        "barryvdh/laravel-ide-helper": "*",
+        "fakerphp/faker": "*",
+        "friendsofphp/php-cs-fixer": "*",
+        "laravel/pint": "*",
+        "nunomaduro/collision": "*",
+        "nunomaduro/larastan": "*",
+        "nunomaduro/phpinsights": "^2.8",
+        "orchestra/testbench": "*",
+        "pestphp/pest": "*",
+        "pestphp/pest-plugin-arch": "*",
+        "pestphp/pest-plugin-laravel": "*",
+        "phpstan/phpstan-deprecation-rules": "*",
+        "phpstan/phpstan-phpunit": "*",
+        "psalm/plugin-laravel": "^2.8",
+        "spatie/laravel-ray": "*",
+        "thecodingmachine/phpstan-safe-rule": "*",
+        "tightenco/duster": "^2.2"
+    },
+    "repositories": [{
+        "type": "vcs",
+        "url": "https://github.com/laraxot/filament-jet.git"
+    }],
+    "scripts": {
+        "post-autoload-dump": [
+            "@php vendor/bin/testbench package:discover --ansi"
+        ],
+        "post-update-cmd": [
+            "Illuminate\\Foundation\\ComposerScripts::postUpdate"
+        ],
+        "analyse": "vendor/bin/phpstan analyse",
+        "test": "./vendor/bin/pest --no-coverage",
+        "test-coverage": "vendor/bin/pest --coverage-html coverage",
+        "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

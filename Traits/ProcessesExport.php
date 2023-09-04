@@ -7,7 +7,6 @@ namespace Modules\User\Traits;
 use Illuminate\Bus\Batch;
 use Illuminate\Support\Facades\Bus;
 use Modules\User\Jobs\CreatePersonalDataExportJob;
-use Throwable;
 
 trait ProcessesExport
 {
@@ -22,9 +21,9 @@ trait ProcessesExport
     public $exportProgress = 0;
 
     /**
-     * @return void
+     * @throws \Throwable
      *
-     * @throws Throwable
+     * @return void
      */
     public function export()
     {

@@ -7,9 +7,10 @@ namespace Modules\User\Http\Livewire;
 use ArtMin96\FilamentJet\FilamentJet;
 use Illuminate\Support\Str;
 use Livewire\Component;
-use Webmozart\Assert\Assert;
 
 use function Safe\file_get_contents;
+
+use Webmozart\Assert\Assert;
 
 class TermsOfService extends Component
 {

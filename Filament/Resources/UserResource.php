@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Resources;
 
+use Closure;
 use Filament\Facades\Filament;
 use Filament\Forms;
 use Filament\Forms\Components\Card;
@@ -38,9 +39,9 @@ class UserResource extends XotBaseResource
 
     protected static ?string $navigationIcon = 'heroicon-o-users';
 
-    protected static bool|\Closure $enablePasswordUpdates = true;
+    protected static bool|Closure $enablePasswordUpdates = true;
 
-    protected static ?\Closure $extendFormCallback = null;
+    protected static ?Closure $extendFormCallback = null;
 
     /*
     protected static function getNavigationLabel(): string
@@ -81,7 +82,7 @@ class UserResource extends XotBaseResource
         ];
     }
 
-    public static function extendForm(\Closure $callback): void
+    public static function extendForm(Closure $callback): void
     {
         static::$extendFormCallback = $callback;
     }
@@ -243,7 +244,7 @@ class UserResource extends XotBaseResource
             ->defaultSort('created_at', 'desc');
     }
 
-    public static function enablePasswordUpdates(bool|\Closure $condition = true): void
+    public static function enablePasswordUpdates(bool|Closure $condition = true): void
     {
         static::$enablePasswordUpdates = $condition;
     }

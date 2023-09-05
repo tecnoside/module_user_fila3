@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Database\Factories;
 
+use DateTime;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\User\Models\PasswordReset;
 
@@ -19,7 +20,7 @@ class PasswordResetFactory extends Factory
     /**
      * Define the model's default state.
      *
-     * @return array<\DateTime|string>
+     * @return array<DateTime|string>
      *
      * @psalm-return array{email: string, token: string, created_at: \DateTime}
      */

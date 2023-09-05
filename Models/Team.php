@@ -78,7 +78,7 @@ class Team extends BaseModel implements TeamContract
         $pivot = app($pivotClass);
         $pivotTable = $pivot->getTable();
         $pivotDbName = $pivot->getConnection()->getDatabaseName();
-        $pivotTableFull = $pivotDbName.'.'.$pivotTable;
+        $pivotTableFull = $pivotDbName . '.' . $pivotTable;
 
         return $this->belongsToMany(FilamentJet::userModel(), $pivotTableFull, 'team_id')
             ->using($pivotClass)

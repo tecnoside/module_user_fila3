@@ -136,7 +136,7 @@ trait HasTeams
     public function teamRole($team)
     {
         if ($this->ownsTeam($team)) {
-            return new OwnerRole();
+            return new OwnerRole;
         }
 
         if (! $this->belongsToTeam($team)) {

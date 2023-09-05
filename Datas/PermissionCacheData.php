@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\User\Datas;
 
-use DateInterval;
 use Spatie\LaravelData\Data;
 
 /**
@@ -12,7 +11,7 @@ use Spatie\LaravelData\Data;
  */
 class PermissionCacheData extends Data
 {
-    public DateInterval $expiration_time; // => \DateInterval::createFromDateString('24 hours'),
+    public \DateInterval $expiration_time; // => \DateInterval::createFromDateString('24 hours'),
     public string $key; // => 'spatie.permission.cache',
     public string $store; // => 'default',
 }

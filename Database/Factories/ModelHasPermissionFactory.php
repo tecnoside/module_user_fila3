@@ -19,7 +19,6 @@ class ModelHasPermissionFactory extends Factory
     /**
      * Define the model's default state.
      *
-     *
      * @psalm-return array<never, never>
      */
     public function definition(): array

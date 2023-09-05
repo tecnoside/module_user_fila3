@@ -62,7 +62,7 @@ class Team extends BaseModel implements TeamContract
      */
     public function allUsers(): Collection
     {
-        if (!$this->owner instanceof \Modules\User\Models\User) {
+        if (! $this->owner instanceof \Modules\User\Models\User) {
             return $this->users;
         }
 
@@ -78,7 +78,7 @@ class Team extends BaseModel implements TeamContract
         $pivot = app($pivotClass);
         $pivotTable = $pivot->getTable();
         $pivotDbName = $pivot->getConnection()->getDatabaseName();
-        $pivotTableFull = $pivotDbName . '.' . $pivotTable;
+        $pivotTableFull = $pivotDbName.'.'.$pivotTable;
 
         return $this->belongsToMany(FilamentJet::userModel(), $pivotTableFull, 'team_id')
             ->using($pivotClass)
@@ -100,7 +100,7 @@ class Team extends BaseModel implements TeamContract
      */
     public function hasUserWithEmail(string $email): bool
     {
-        return $this->allUsers()->contains(fn($user): bool => $user->email === $email);
+        return $this->allUsers()->contains(fn ($user): bool => $user->email === $email);
     }
 
     /**

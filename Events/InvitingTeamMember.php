@@ -24,10 +24,10 @@ class InvitingTeamMember
     public function __construct(TeamContract $teamContract, /**
      * The team member being added.
      */
-    public string $email, /**
+        public string $email, /**
      * The role of the invitee.
      */
-    public string $role)
+        public string $role)
     {
         $this->team = $teamContract;
     }

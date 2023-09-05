@@ -12,7 +12,7 @@ class Role implements Rule
     /**
      * Determine if the validation rule passes.
      *
-     * @param  string  $attribute
+     * @param string $attribute
      */
     public function passes($attribute, $value): bool
     {

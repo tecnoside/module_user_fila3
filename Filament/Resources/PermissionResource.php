@@ -7,6 +7,9 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Resources;
 
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Actions\ViewAction;
+use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\Grid;
@@ -29,7 +32,7 @@ use Modules\User\Models\Permission;
 use Modules\User\Models\Role;
 use Modules\Xot\Filament\Resources\XotBaseResource;
 
-class PermissionResource extends XotBaseResource
+final class PermissionResource extends XotBaseResource
 {
     protected static ?string $navigationIcon = 'heroicon-o-lock-closed';
 
@@ -118,15 +121,15 @@ class PermissionResource extends XotBaseResource
                     }),
                 */
             ])->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\ViewAction::make(),
+                EditAction::make(),
+                ViewAction::make(),
             ])
             ->bulkActions([
                 // Tables\Actions\BulkActionGroup::make([
-                Tables\Actions\DeleteBulkAction::make(),
+                DeleteBulkAction::make(),
                 // ]),
                 BulkAction::make('Attach Role')
-                    ->action(function (Collection $collection, array $data): void {
+                    ->action(static function (Collection $collection, array $data) : void {
                         foreach ($collection as $record) {
                             $record->roles()->sync($data['role']);
                             $record->save();

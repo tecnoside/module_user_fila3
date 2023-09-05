@@ -4,18 +4,17 @@ declare(strict_types=1);
 
 namespace Modules\User\Tests\Feature;
 
+use PHPUnit\Framework\Attributes\Test;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Modules\User\Models\User;
 use Modules\User\Tests\TestCase;
 
-class AuthenticationTest extends TestCase
+final class AuthenticationTest extends TestCase
 {
     use RefreshDatabase;
 
-    /**
-     * @test
-     */
+    #[Test]
     public function loginScreenCanBeRendered(): void
     {
         $response = $this->get('/login');
@@ -23,9 +22,7 @@ class AuthenticationTest extends TestCase
         $response->assertStatus(200);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function usersCanAuthenticateUsingTheLoginScreen(): void
     {
         $user = User::factory()->create();
@@ -39,9 +36,7 @@ class AuthenticationTest extends TestCase
         $response->assertRedirect(RouteServiceProvider::HOME);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function usersCanNotAuthenticateWithInvalidPassword(): void
     {
         $user = User::factory()->create();

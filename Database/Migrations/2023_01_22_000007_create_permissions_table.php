@@ -9,7 +9,7 @@ use Modules\Xot\Database\Migrations\XotBaseMigration;
 /**
  * Class CreatePermissionsTable.
  */
-class CreatePermissionsTable extends XotBaseMigration
+final class CreatePermissionsTable extends XotBaseMigration
 {
     /**
      * Run the migrations.
@@ -18,18 +18,20 @@ class CreatePermissionsTable extends XotBaseMigration
     {
         // -- CREATE --
         $this->tableCreate(
-            function (Blueprint $blueprint): void {
-                $blueprint->bigIncrements('id'); // permission id
-                $blueprint->string('name');       // For MySQL 8.0 use string('name', 125);
-                $blueprint->string('guard_name'); // For MySQL 8.0 use string('guard_name', 125);
+            static function (Blueprint $blueprint) : void {
+                $blueprint->bigIncrements('id');
+                // permission id
+                $blueprint->string('name');
+                // For MySQL 8.0 use string('name', 125);
+                $blueprint->string('guard_name');
+                // For MySQL 8.0 use string('guard_name', 125);
                 $blueprint->timestamps();
-
                 $blueprint->unique(['name', 'guard_name']);
             }
         );
         // -- UPDATE --
         $this->tableUpdate(
-            function (Blueprint $blueprint): void {
+            static function (Blueprint $blueprint) : void {
             }
         );
     }

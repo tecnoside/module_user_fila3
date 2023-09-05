@@ -8,28 +8,25 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Modules\User\Contracts\TeamContract;
 use Modules\User\Contracts\UserContract;
 
-class TeamSwitched
+final class TeamSwitched
 {
     use Dispatchable;
-
-    /**
-     * The team instance.
-     */
-    public TeamContract $team;
-
-    /**
-     * The team member that was updated.
-     */
-    public UserContract $user;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct(TeamContract $teamContract, UserContract $userContract)
+    public function __construct(
+        /**
+         * The team instance.
+         */
+        public TeamContract $teamContract,
+        /**
+         * The team member that was updated.
+         */
+        public UserContract $userContract
+    )
     {
-        $this->team = $teamContract;
-        $this->user = $userContract;
     }
 }

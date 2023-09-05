@@ -9,42 +9,34 @@ use Illuminate\Support\Str;
 
 use function Safe\preg_match;
 
-class Password implements Rule
+final class Password implements Rule
 {
     /**
      * The minimum length of the password.
-     *
-     * @var int
      */
-    protected $length = 8;
+    private int $length = 8;
 
     /**
      * Indicates if the password must contain one uppercase character.
-     *
-     * @var bool
      */
-    protected $requireUppercase = false;
+    private bool $requireUppercase = false;
 
     /**
      * Indicates if the password must contain one numeric digit.
-     *
-     * @var bool
      */
-    protected $requireNumeric = false;
+    private bool $requireNumeric = false;
 
     /**
      * Indicates if the password must contain one special character.
-     *
-     * @var bool
      */
-    protected $requireSpecialCharacter = false;
+    private bool $requireSpecialCharacter = false;
 
     /**
      * The message that should be used when validation fails.
      *
      * @var string
      */
-    protected $message;
+    private $message;
 
     /**
      * Determine if the validation rule passes.
@@ -63,11 +55,15 @@ class Password implements Rule
             return false;
         }
 
-        if ($this->requireSpecialCharacter && ! preg_match('/[\W_]/', $value)) {
-            return false;
+        if (!$this->requireSpecialCharacter) {
+            return Str::length($value) >= $this->length;
         }
 
-        return Str::length($value) >= $this->length;
+        if (preg_match('/[\W_]/', $value) !== 0) {
+            return Str::length($value) >= $this->length;
+        }
+
+        return false;
     }
 
     /**

@@ -12,7 +12,7 @@ use Modules\User\Models\OauthPersonalAccessClient;
 use Modules\User\Models\OauthRefreshToken;
 use Modules\Xot\Providers\XotBaseServiceProvider;
 
-class UserServiceProvider extends XotBaseServiceProvider
+final class UserServiceProvider extends XotBaseServiceProvider
 {
     public string $module_name = 'user';
 
@@ -23,10 +23,6 @@ class UserServiceProvider extends XotBaseServiceProvider
     public function bootCallback(): void
     {
         $this->registerPassport();
-    }
-
-    public function registerCallback(): void
-    {
     }
 
     public function registerPassport(): void

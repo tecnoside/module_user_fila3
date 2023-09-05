@@ -6,7 +6,7 @@ namespace Modules\User\Notifications\Auth;
 
 use Illuminate\Auth\Notifications\VerifyEmail as BaseNotification;
 
-class VerifyEmail extends BaseNotification
+final class VerifyEmail extends BaseNotification
 {
     public string $url;
 

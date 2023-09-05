@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Tests\Feature;
 
+use PHPUnit\Framework\Attributes\Test;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Notification;
@@ -11,13 +12,11 @@ use Laravel\Fortify\Features;
 use Modules\User\Models\User;
 use Modules\User\Tests\TestCase;
 
-class PasswordResetTest extends TestCase
+final class PasswordResetTest extends TestCase
 {
     use RefreshDatabase;
 
-    /**
-     * @test
-     */
+    #[Test]
     public function resetPasswordLinkScreenCanBeRendered(): void
     {
         if (! Features::enabled(Features::resetPasswords())) {
@@ -31,9 +30,7 @@ class PasswordResetTest extends TestCase
         $response->assertStatus(200);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function resetPasswordLinkCanBeRequested(): void
     {
         if (! Features::enabled(Features::resetPasswords())) {
@@ -53,9 +50,7 @@ class PasswordResetTest extends TestCase
         Notification::assertSentTo($user, ResetPassword::class);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function resetPasswordScreenCanBeRendered(): void
     {
         if (! Features::enabled(Features::resetPasswords())) {
@@ -81,9 +76,7 @@ class PasswordResetTest extends TestCase
         });
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function passwordCanBeResetWithValidToken(): void
     {
         if (! Features::enabled(Features::resetPasswords())) {

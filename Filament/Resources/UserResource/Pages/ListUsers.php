@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Resources\UserResource\Pages;
 
+use Filament\Pages\Actions\CreateAction;
+use Modules\User\Filament\Resources\UserResource\Widgets\UserOverview;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\ListRecords;
 use Modules\User\Filament\Resources\UserResource;
 use Savannabits\FilamentModules\Concerns\ContextualPage;
 
-class ListUsers extends ListRecords
+final class ListUsers extends ListRecords
 {
     // //use ContextualPage;
     protected static string $resource = UserResource::class;
@@ -17,14 +19,14 @@ class ListUsers extends ListRecords
     protected function getActions(): array
     {
         return [
-            Actions\CreateAction::make(),
+            CreateAction::make(),
         ];
     }
 
     protected function getHeaderWidgets(): array
     {
         return [
-            UserResource\Widgets\UserOverview::class,
+            UserOverview::class,
         ];
     }
 }

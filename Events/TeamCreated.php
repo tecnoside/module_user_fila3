@@ -4,6 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\User\Events;
 
-class TeamCreated extends TeamEvent
+final class TeamCreated extends TeamEvent
 {
 }

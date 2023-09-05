@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\User\Traits;
 
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Redirector;
 use Illuminate\Http\Response;
 
 trait RedirectsActions
@@ -13,7 +15,7 @@ trait RedirectsActions
      *
      * @param object $action
      *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
+     * @return RedirectResponse|Response|Redirector
      */
     public function redirectPath($action): Response
     {

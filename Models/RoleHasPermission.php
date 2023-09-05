@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 /**
  * Modules\User\Models\RoleHasPermission.
  *
@@ -11,16 +12,16 @@ namespace Modules\User\Models;
  * @property int $role_id
  *
  * @method static \Modules\LU\Database\Factories\RoleHasPermissionFactory factory($count = null, $state = [])
- * @method static \Illuminate\Database\Eloquent\Builder|RoleHasPermission newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|RoleHasPermission newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|RoleHasPermission query()
- * @method static \Illuminate\Database\Eloquent\Builder|RoleHasPermission wherePermissionId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|RoleHasPermission whereRoleId($value)
+ * @method static Builder|RoleHasPermission newModelQuery()
+ * @method static Builder|RoleHasPermission newQuery()
+ * @method static Builder|RoleHasPermission query()
+ * @method static Builder|RoleHasPermission wherePermissionId($value)
+ * @method static Builder|RoleHasPermission whereRoleId($value)
  *
  * @mixin IdeHelperRoleHasPermission
  * @mixin \Eloquent
  */
-class RoleHasPermission extends BasePivot
+final class RoleHasPermission extends BasePivot
 {
     /**
      * @var array<string>

@@ -12,7 +12,7 @@ use Modules\User\Filament\Resources\RoleResource;
 use Modules\User\Support\Utils;
 use Savannabits\FilamentModules\Concerns\ContextualPage;
 
-class CreateRole extends CreateRecord
+final class CreateRole extends CreateRecord
 {
     // //use ContextualPage;
     public Collection $permissions;
@@ -21,7 +21,7 @@ class CreateRole extends CreateRecord
 
     protected function mutateFormDataBeforeCreate(array $data): array
     {
-        $this->permissions = collect($data)->filter(fn ($permission, $key): bool => ! in_array($key, ['name', 'guard_name', 'select_all']) && Str::contains($key, '_'))->keys();
+        $this->permissions = collect($data)->filter(static fn($permission, $key): bool => ! in_array($key, ['name', 'guard_name', 'select_all']) && Str::contains($key, '_'))->keys();
 
         $res = Arr::only($data, ['name', 'guard_name']);
         $res['team_id'] = 1;
@@ -29,7 +29,7 @@ class CreateRole extends CreateRecord
         return $res;
     }
 
-    protected function afterCreate(): void
+    private function afterCreate(): void
     {
         $permissionModels = collect();
         $this->permissions->each(function ($permission) use ($permissionModels): void {

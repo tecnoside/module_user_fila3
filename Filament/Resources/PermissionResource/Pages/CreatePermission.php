@@ -8,7 +8,7 @@ use Filament\Resources\Pages\CreateRecord;
 use Modules\User\Filament\Resources\PermissionResource;
 use Savannabits\FilamentModules\Concerns\ContextualPage;
 
-class CreatePermission extends CreateRecord
+final class CreatePermission extends CreateRecord
 {
     // //use ContextualPage;
     protected static string $resource = PermissionResource::class;

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Tests\Feature;
 
+use PHPUnit\Framework\Attributes\Test;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Mail;
 use Laravel\Jetstream\Features;
@@ -13,13 +14,11 @@ use Livewire\Livewire;
 use Modules\User\Models\User;
 use Modules\User\Tests\TestCase;
 
-class InviteTeamMemberTest extends TestCase
+final class InviteTeamMemberTest extends TestCase
 {
     use RefreshDatabase;
 
-    /**
-     * @test
-     */
+    #[Test]
     public function teamMembersCanBeInvitedToTeam(): void
     {
         if (! Features::sendsTeamInvitations()) {
@@ -43,9 +42,7 @@ class InviteTeamMemberTest extends TestCase
         $this->assertCount(1, $user->currentTeam->fresh()->teamInvitations);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function teamMemberInvitationsCanBeCancelled(): void
     {
         if (! Features::sendsTeamInvitations()) {

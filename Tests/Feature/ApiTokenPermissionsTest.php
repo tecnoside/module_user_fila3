@@ -7,6 +7,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Tests\Feature;
 
+use PHPUnit\Framework\Attributes\Test;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Str;
 use Laravel\Jetstream\Features;
@@ -18,13 +19,11 @@ use Modules\User\Tests\TestCase;
 // use Nwidart\Modules\Tests\BaseTestCase;
 // use Orchestra\Testbench\TestCase as OrchestraTestCase;
 
-class ApiTokenPermissionsTest extends TestCase
+final class ApiTokenPermissionsTest extends TestCase
 {
     use RefreshDatabase;
 
-    /**
-     * @test
-     */
+    #[Test]
     public function apiTokenPermissionsCanBeUpdated(): void
     {
         if (! Features::hasApiFeatures()) {

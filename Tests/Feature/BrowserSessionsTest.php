@@ -4,19 +4,18 @@ declare(strict_types=1);
 
 namespace Modules\User\Tests\Feature;
 
+use PHPUnit\Framework\Attributes\Test;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Jetstream\Http\Livewire\LogoutOtherBrowserSessionsForm;
 use Livewire\Livewire;
 use Modules\User\Models\User;
 use Modules\User\Tests\TestCase;
 
-class BrowserSessionsTest extends TestCase
+final class BrowserSessionsTest extends TestCase
 {
     use RefreshDatabase;
 
-    /**
-     * @test
-     */
+    #[Test]
     public function otherBrowserSessionsCanBeLoggedOut(): void
     {
         $this->actingAs($user = User::factory()->create());

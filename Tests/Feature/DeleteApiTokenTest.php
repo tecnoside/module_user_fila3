@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Tests\Feature;
 
+use PHPUnit\Framework\Attributes\Test;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Str;
 use Laravel\Jetstream\Features;
@@ -12,13 +13,11 @@ use Livewire\Livewire;
 use Modules\User\Models\User;
 use Modules\User\Tests\TestCase;
 
-class DeleteApiTokenTest extends TestCase
+final class DeleteApiTokenTest extends TestCase
 {
     use RefreshDatabase;
 
-    /**
-     * @test
-     */
+    #[Test]
     public function apiTokensCanBeDeleted(): void
     {
         if (! Features::hasApiFeatures()) {

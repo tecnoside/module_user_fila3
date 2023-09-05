@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Validator;
 use Modules\User\Models\User;
 use Modules\Xot\Http\Controllers\XotBaseController;
 
-class RegisterController extends XotBaseController
+final class RegisterController extends XotBaseController
 {
     /**
      * Register api.

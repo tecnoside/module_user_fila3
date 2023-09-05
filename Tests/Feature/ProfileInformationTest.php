@@ -4,19 +4,18 @@ declare(strict_types=1);
 
 namespace Modules\User\Tests\Feature;
 
+use PHPUnit\Framework\Attributes\Test;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Jetstream\Http\Livewire\UpdateProfileInformationForm;
 use Livewire\Livewire;
 use Modules\User\Models\User;
 use Modules\User\Tests\TestCase;
 
-class ProfileInformationTest extends TestCase
+final class ProfileInformationTest extends TestCase
 {
     use RefreshDatabase;
 
-    /**
-     * @test
-     */
+    #[Test]
     public function currentProfileInformationIsAvailable(): void
     {
         $this->actingAs($user = User::factory()->create());
@@ -27,9 +26,7 @@ class ProfileInformationTest extends TestCase
         $this->assertEquals($user->email, $testable->state['email']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function profileInformationCanBeUpdated(): void
     {
         $this->actingAs($user = User::factory()->create());

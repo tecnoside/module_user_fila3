@@ -4,13 +4,20 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Resources\UserResource\RelationManagers;
 
+use Filament\Forms\Components\TextInput;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Actions\CreateAction;
+use Filament\Tables\Actions\ViewAction;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Actions\DeleteAction;
+use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
 
-class ProfileRelationManager extends RelationManager
+final class ProfileRelationManager extends RelationManager
 {
     protected static string $relationship = 'profile';
 
@@ -20,12 +27,12 @@ class ProfileRelationManager extends RelationManager
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('ente'),
-                Forms\Components\TextInput::make('matr'),
-                Forms\Components\TextInput::make('first_name')
+                TextInput::make('ente'),
+                TextInput::make('matr'),
+                TextInput::make('first_name')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('last_name'),
+                TextInput::make('last_name'),
             ]);
     }
 
@@ -33,24 +40,24 @@ class ProfileRelationManager extends RelationManager
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id'),
-                Tables\Columns\TextColumn::make('ente'),
-                Tables\Columns\TextColumn::make('matr'),
-                Tables\Columns\TextColumn::make('first_name'),
-                Tables\Columns\TextColumn::make('last_name'),
+                TextColumn::make('id'),
+                TextColumn::make('ente'),
+                TextColumn::make('matr'),
+                TextColumn::make('first_name'),
+                TextColumn::make('last_name'),
             ])
             ->filters([
             ])
             ->headerActions([
-                Tables\Actions\CreateAction::make(),
+                CreateAction::make(),
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                ViewAction::make(),
+                EditAction::make(),
+                DeleteAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\DeleteBulkAction::make(),
+                DeleteBulkAction::make(),
             ]);
     }
 }

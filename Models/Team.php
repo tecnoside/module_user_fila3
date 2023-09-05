@@ -4,44 +4,47 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use Modules\User\Contracts\TeamContract;
 use Modules\User\Contracts\UserContract;
+use Modules\Xot\Datas\XotData;
 
 /**
  * Modules\User\Models\Team.
  *
- * @property int                                                                      $id
- * @property int                                                                      $user_id
- * @property string                                                                   $name
- * @property bool                                                                     $personal_team
- * @property \Illuminate\Support\Carbon|null                                          $created_at
- * @property \Illuminate\Support\Carbon|null                                          $updated_at
- * @property \Modules\User\Models\User|null                                           $owner
- * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\User> $users
- * @property int|null                                                                 $users_count
+ * @property int                                                 $id
+ * @property int                                                 $user_id
+ * @property string                                              $name
+ * @property bool                                                $personal_team
+ * @property Carbon|null                                         $created_at
+ * @property Carbon|null                                         $updated_at
+ * @property User|null                                           $owner
+ * @property \Illuminate\Database\Eloquent\Collection<int, User> $users
+ * @property int|null                                            $users_count
  *
- * @method static \Illuminate\Database\Eloquent\Builder|Team newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Team newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Team query()
- * @method static \Illuminate\Database\Eloquent\Builder|Team whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Team whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Team whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Team wherePersonalTeam($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Team whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Team whereUserId($value)
+ * @method static Builder|Team newModelQuery()
+ * @method static Builder|Team newQuery()
+ * @method static Builder|Team query()
+ * @method static Builder|Team whereCreatedAt($value)
+ * @method static Builder|Team whereId($value)
+ * @method static Builder|Team whereName($value)
+ * @method static Builder|Team wherePersonalTeam($value)
+ * @method static Builder|Team whereUpdatedAt($value)
+ * @method static Builder|Team whereUserId($value)
  *
  * @mixin IdeHelperTeam
  *
- * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\TeamInvitation> $teamInvitations
- * @property int|null                                                                           $team_invitations_count
+ * @property \Illuminate\Database\Eloquent\Collection<int, TeamInvitation> $teamInvitations
+ * @property int|null                                                      $team_invitations_count
  *
  * @mixin \Eloquent
  */
-class Team extends BaseModel implements TeamContract
+final class Team extends BaseModel implements TeamContract
 {
     protected $fillable = [
         'user_id',
@@ -54,7 +57,9 @@ class Team extends BaseModel implements TeamContract
      */
     public function owner(): BelongsTo
     {
-        return $this->belongsTo(FilamentJet::userModel(), 'user_id');
+        $xot = XotData::make();
+
+        return $this->belongsTo($xot->getUserClass(), 'user_id');
     }
 
     /**
@@ -62,7 +67,7 @@ class Team extends BaseModel implements TeamContract
      */
     public function allUsers(): Collection
     {
-        if (! $this->owner instanceof \Modules\User\Models\User) {
+        if (! $this->owner instanceof User) {
             return $this->users;
         }
 
@@ -74,13 +79,14 @@ class Team extends BaseModel implements TeamContract
      */
     public function users(): BelongsToMany
     {
+        $xot = XotData::make();
         $pivotClass = $xot->getMembershipClass();
         $pivot = app($pivotClass);
         $pivotTable = $pivot->getTable();
         $pivotDbName = $pivot->getConnection()->getDatabaseName();
         $pivotTableFull = $pivotDbName.'.'.$pivotTable;
 
-        return $this->belongsToMany(FilamentJet::userModel(), $pivotTableFull, 'team_id')
+        return $this->belongsToMany($xot->getUserClass(), $pivotTableFull, 'team_id')
             ->using($pivotClass)
             ->withPivot('role')
             ->withTimestamps()
@@ -92,7 +98,11 @@ class Team extends BaseModel implements TeamContract
      */
     public function hasUser(UserContract $userContract): bool
     {
-        return $this->users->contains($userContract) || $userContract->ownsTeam($this);
+        if ($this->users->contains($userContract)) {
+            return true;
+        }
+
+        return $userContract->ownsTeam($this);
     }
 
     /**
@@ -100,7 +110,7 @@ class Team extends BaseModel implements TeamContract
      */
     public function hasUserWithEmail(string $email): bool
     {
-        return $this->allUsers()->contains(fn ($user): bool => $user->email === $email);
+        return $this->allUsers()->contains(static fn ($user): bool => $user->email === $email);
     }
 
     /**
@@ -116,7 +126,7 @@ class Team extends BaseModel implements TeamContract
      */
     public function teamInvitations(): HasMany
     {
-        return $this->hasMany(FilamentJet::teamInvitationModel());
+        return $this->hasMany(TeamInvitation::class);
     }
 
     /**

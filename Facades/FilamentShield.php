@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Facade;
  *
  * @method getWidgets()
  */
-class FilamentShield extends Facade
+final class FilamentShield extends Facade
 {
     /**
      * @psalm-return 'filament-shield'

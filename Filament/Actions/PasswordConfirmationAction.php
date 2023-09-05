@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Actions;
 
+use Filament\Forms\Components\TextInput;
 use Filament\Forms;
 use Filament\Pages\Actions\Action;
 
-class PasswordConfirmationAction extends Action
+final class PasswordConfirmationAction extends Action
 {
     protected function setUp(): void
     {
@@ -21,7 +22,7 @@ class PasswordConfirmationAction extends Action
                     __('filament-jet::jet.password_confirmation_modal.description')
                 )
                 ->form([
-                    Forms\Components\TextInput::make('current_password')
+                    TextInput::make('current_password')
                         ->label(__('filament-jet::jet.password_confirmation_modal.current_password'))
                         ->required()
                         ->password()
@@ -40,7 +41,7 @@ class PasswordConfirmationAction extends Action
         parent::call($data);
     }
 
-    protected function isPasswordSessionValid(): bool
+    private function isPasswordSessionValid(): bool
     {
         return session()->has('auth.password_confirmed_at') && (time() - session('auth.password_confirmed_at', 0)) < config('filament-jet.password_confirmation_seconds');
     }

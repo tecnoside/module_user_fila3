@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Tests\Feature;
 
+use PHPUnit\Framework\Attributes\Test;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Fortify\Features;
 use Laravel\Jetstream\Http\Livewire\TwoFactorAuthenticationForm;
@@ -11,13 +12,11 @@ use Livewire\Livewire;
 use Modules\User\Models\User;
 use Modules\User\Tests\TestCase;
 
-class TwoFactorAuthenticationSettingsTest extends TestCase
+final class TwoFactorAuthenticationSettingsTest extends TestCase
 {
     use RefreshDatabase;
 
-    /**
-     * @test
-     */
+    #[Test]
     public function twoFactorAuthenticationCanBeEnabled(): void
     {
         if (! Features::canManageTwoFactorAuthentication()) {
@@ -39,9 +38,7 @@ class TwoFactorAuthenticationSettingsTest extends TestCase
         $this->assertCount(8, $user->recoveryCodes());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function recoveryCodesCanBeRegenerated(): void
     {
         if (! Features::canManageTwoFactorAuthentication()) {
@@ -66,9 +63,7 @@ class TwoFactorAuthenticationSettingsTest extends TestCase
         $this->assertCount(8, array_diff($user->recoveryCodes(), $user->fresh()->recoveryCodes()));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function twoFactorAuthenticationCanBeDisabled(): void
     {
         if (! Features::canManageTwoFactorAuthentication()) {

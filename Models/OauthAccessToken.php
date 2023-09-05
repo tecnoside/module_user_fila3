@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Modules\User\Models;
 
 // use Laravel\Passport\AccessToken as PassportAccessToken;
+use Illuminate\Support\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Laravel\Passport\Token as PassportToken;
 
 /**
@@ -16,33 +18,34 @@ use Laravel\Passport\Token as PassportToken;
  * @property string|null                           $name
  * @property array|null                            $scopes
  * @property bool                                  $revoked
- * @property \Illuminate\Support\Carbon|null       $created_at
- * @property \Illuminate\Support\Carbon|null       $updated_at
- * @property \Illuminate\Support\Carbon|null       $expires_at
- * @property \Modules\User\Models\OauthClient|null $client
- * @property \Modules\User\Models\User|null        $user
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property Carbon|null $expires_at
+ * @property OauthClient|null $client
+ * @property User|null $user
  *
- * @method static \Illuminate\Database\Eloquent\Builder|OauthAccessToken newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|OauthAccessToken newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|OauthAccessToken query()
- * @method static \Illuminate\Database\Eloquent\Builder|OauthAccessToken whereClientId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|OauthAccessToken whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|OauthAccessToken whereExpiresAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|OauthAccessToken whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|OauthAccessToken whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|OauthAccessToken whereRevoked($value)
- * @method static \Illuminate\Database\Eloquent\Builder|OauthAccessToken whereScopes($value)
- * @method static \Illuminate\Database\Eloquent\Builder|OauthAccessToken whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|OauthAccessToken whereUserId($value)
+ * @method static Builder|OauthAccessToken newModelQuery()
+ * @method static Builder|OauthAccessToken newQuery()
+ * @method static Builder|OauthAccessToken query()
+ * @method static Builder|OauthAccessToken whereClientId($value)
+ * @method static Builder|OauthAccessToken whereCreatedAt($value)
+ * @method static Builder|OauthAccessToken whereExpiresAt($value)
+ * @method static Builder|OauthAccessToken whereId($value)
+ * @method static Builder|OauthAccessToken whereName($value)
+ * @method static Builder|OauthAccessToken whereRevoked($value)
+ * @method static Builder|OauthAccessToken whereScopes($value)
+ * @method static Builder|OauthAccessToken whereUpdatedAt($value)
+ * @method static Builder|OauthAccessToken whereUserId($value)
  *
  * @mixin IdeHelperOauthAccessToken
  * @mixin \Eloquent
  */
-class OauthAccessToken extends PassportToken
+final class OauthAccessToken extends PassportToken
 {
     /**
      * @var string
      */
     protected $connection = 'user';
+    
     // protected $fillable = ['id', 'user_id', 'client_id', 'name', 'scopes', 'revoked', 'expires_at'];
 }

@@ -10,7 +10,7 @@ use Spatie\Permission\PermissionRegistrar;
 /**
  * Class CreateModelHasRolesTable.
  */
-class CreateModelHasRolesTable extends XotBaseMigration
+final class CreateModelHasRolesTable extends XotBaseMigration
 {
     /**
      * Run the migrations.
@@ -19,14 +19,13 @@ class CreateModelHasRolesTable extends XotBaseMigration
     {
         /** @var array $columnNames */
         $columnNames = config('permission.column_names');
-        /** @var bool $teams */
-        $teams = true; // config('permission.teams');
+
+        // $teams = true; // config('permission.teams');
 
         // -- CREATE --
         $this->tableCreate(
-            function (Blueprint $blueprint) use ($columnNames, $teams): void {
+            static function (Blueprint $blueprint) use ($columnNames): void {
                 $blueprint->unsignedBigInteger(PermissionRegistrar::$pivotRole);
-
                 $blueprint->string('model_type');
                 $blueprint->unsignedBigInteger($columnNames['model_morph_key']);
                 $blueprint->index([$columnNames['model_morph_key'], 'model_type'], 'model_has_roles_model_id_model_type_index');
@@ -60,10 +59,12 @@ class CreateModelHasRolesTable extends XotBaseMigration
                 if (! $this->hasColumn('team_id')) {
                     $blueprint->foreignId('team_id')->nullable();
                 }
+
                 $blueprint->string('team_id')->nullable()->change();
                 if ($this->hasIndexName('model_has_roles_team_foreign_key_index')) {
                     $blueprint->dropIndex('model_has_roles_team_foreign_key_index');
                 }
+
                 if ($this->hasIndexName('model_has_roles_model_id_model_type_index')) {
                     $blueprint->dropIndex('model_has_roles_model_id_model_type_index');
                 }

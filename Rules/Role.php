@@ -6,7 +6,7 @@ namespace Modules\User\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 
-class Role implements Rule
+final class Role implements Rule
 {
     /**
      * Determine if the validation rule passes.

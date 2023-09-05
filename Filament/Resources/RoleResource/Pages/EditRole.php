@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Resources\RoleResource\Pages;
 
+use Filament\Pages\Actions\ViewAction;
+use Filament\Pages\Actions\DeleteAction;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\EditRecord;
 use Illuminate\Support\Arr;
@@ -13,7 +15,7 @@ use Modules\User\Filament\Resources\RoleResource;
 use Modules\User\Support\Utils;
 use Savannabits\FilamentModules\Concerns\ContextualPage;
 
-class EditRole extends EditRecord
+final class EditRole extends EditRecord
 {
     // //use ContextualPage;
     public Collection $permissions;
@@ -23,19 +25,19 @@ class EditRole extends EditRecord
     protected function getActions(): array
     {
         return [
-            Actions\ViewAction::make(),
-            Actions\DeleteAction::make(),
+            ViewAction::make(),
+            DeleteAction::make(),
         ];
     }
 
     protected function mutateFormDataBeforeSave(array $data): array
     {
-        $this->permissions = collect($data)->filter(fn ($permission, $key): bool => ! in_array($key, ['name', 'guard_name', 'select_all']) && Str::contains($key, '_'))->keys();
+        $this->permissions = collect($data)->filter(static fn($permission, $key): bool => ! in_array($key, ['name', 'guard_name', 'select_all']) && Str::contains($key, '_'))->keys();
 
         return Arr::only($data, ['name', 'guard_name']);
     }
 
-    protected function afterSave(): void
+    private function afterSave(): void
     {
         $permissionModels = collect();
         $this->permissions->each(function ($permission) use ($permissionModels): void {

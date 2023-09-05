@@ -8,7 +8,7 @@ use Modules\User\Models\User;
 use Modules\User\Models\User as Post;
 use Modules\Xot\Models\Policies\XotBasePolicy;
 
-class PermissionPolicy extends XotBasePolicy
+final class PermissionPolicy extends XotBasePolicy
 {
     /**
      * Determine whether the user can view any models.
@@ -49,6 +49,7 @@ class PermissionPolicy extends XotBasePolicy
      */
     public function delete(User $user, Post $post): bool
     {
-        return $user->ownsTeam($team);
+        // return $user->ownsTeam($team);
+        return true;
     }
 }

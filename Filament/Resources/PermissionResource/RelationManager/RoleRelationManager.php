@@ -13,7 +13,7 @@ use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
-class RoleRelationManager extends RelationManager
+final class RoleRelationManager extends RelationManager
 {
     protected static string $relationship = 'roles';
 

@@ -8,7 +8,7 @@ use Modules\Xot\Database\Migrations\XotBaseMigration;
 /**
  * Class CreateLiveuserUsersTable.
  */
-class CreateUsersTable extends XotBaseMigration
+final class CreateUsersTable extends XotBaseMigration
 {
     /**
      * Run the migrations.
@@ -17,7 +17,7 @@ class CreateUsersTable extends XotBaseMigration
     {
         // -- CREATE --
         $this->tableCreate(
-            function (Blueprint $blueprint): void {
+            static function (Blueprint $blueprint) : void {
                 $blueprint->id();
                 $blueprint->string('name');
                 $blueprint->string('email')->unique();
@@ -35,9 +35,11 @@ class CreateUsersTable extends XotBaseMigration
                 if (! $this->hasColumn('current_team_id')) {
                     $blueprint->foreignId('current_team_id')->nullable();
                 }
+                
                 if (! $this->hasColumn('profile_photo_path')) {
                     $blueprint->string('profile_photo_path', 2048)->nullable();
                 }
+                
                 if (! $this->hasColumn('lang')) {
                     $blueprint->string('lang', 3)->nullable();
                 }

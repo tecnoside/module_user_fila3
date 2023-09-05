@@ -48,7 +48,7 @@ return [
     'section' => 'Entiteiten',
     'resources' => 'Resources',
     'widgets' => 'Widgets',
-    'pages' => 'Pagina\'s',
+    'pages' => "Pagina's",
     'custom' => 'Andere permissies',
 
     /*

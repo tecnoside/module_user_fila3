@@ -25,16 +25,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::prefix('/user')
     ->namespace('Api')
     ->group(
-        function (): void {
+        static function () : void {
             // authenticate user
             /*
             Route::post('/login', [UserController::class, 'login'])
                 ->name('api.login');
             */
-
             Route::post('/login', 'LoginController')
                 ->name('api.login');
-
             /*
             Route::get('/login', [UserController::class, 'loginTest'])
                 ->name('api.loginTest');

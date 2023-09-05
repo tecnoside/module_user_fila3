@@ -6,7 +6,7 @@ namespace Modules\User\Events;
 
 use Illuminate\Foundation\Events\Dispatchable;
 
-class AddingTeam
+final class AddingTeam
 {
     use Dispatchable;
 

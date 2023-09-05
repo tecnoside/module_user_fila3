@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Traits;
 
+use Illuminate\Contracts\Validation\Rule;
 use Modules\User\Rules\Password;
 
 trait PasswordValidationRules
@@ -11,7 +12,7 @@ trait PasswordValidationRules
     /**
      * Get the validation rules used to validate passwords.
      *
-     * @return array<int, \Illuminate\Contracts\Validation\Rule|array|string>
+     * @return array<int, (Rule | array | string)>
      */
     protected function passwordRules(): array
     {

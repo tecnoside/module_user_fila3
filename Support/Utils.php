@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Modules\User\Support;
 
+use Spatie\Permission\Traits\HasRoles;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
 use Modules\User\Contracts\HasShieldPermissions;
@@ -17,7 +20,7 @@ use Webmozart\Assert\Assert;
 /**
  * ---.
  */
-class Utils
+final class Utils
 {
     public static function getFilamentAuthGuard(): string
     {
@@ -83,7 +86,7 @@ class Utils
     public static function isAuthProviderConfigured(): bool
     {
         return in_array("BezhanSalleh\FilamentShield\Traits\HasFilamentShield", class_uses(static::getAuthProviderFQCN()))
-        || in_array(\Spatie\Permission\Traits\HasRoles::class, class_uses(static::getAuthProviderFQCN()));
+        || in_array(HasRoles::class, class_uses(static::getAuthProviderFQCN()));
     }
 
     public static function isSuperAdminEnabled(): bool
@@ -252,14 +255,14 @@ class Utils
 
     public static function getRoleModel(): string
     {
-        Assert::string($res = config('permission.models.role', \Spatie\Permission\Models\Role::class));
+        Assert::string($res = config('permission.models.role', Role::class));
 
         return $res;
     }
 
     public static function getPermissionModel(): string
     {
-        Assert::string($res = config('permission.models.permission', \Spatie\Permission\Models\Permission::class));
+        Assert::string($res = config('permission.models.permission', Permission::class));
 
         return $res;
     }

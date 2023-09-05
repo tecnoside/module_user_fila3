@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Actions;
 
+use Filament\Forms\Components\TextInput;
 use Filament\Forms;
 use Filament\Pages\Actions\Action;
 
-class AlwaysAskPasswordConfirmationAction extends Action
+final class AlwaysAskPasswordConfirmationAction extends Action
 {
     protected function setUp(): void
     {
@@ -17,7 +18,7 @@ class AlwaysAskPasswordConfirmationAction extends Action
                 __('filament-jet::jet.password_confirmation_modal.description')
             )
             ->form([
-                Forms\Components\TextInput::make('current_password')
+                TextInput::make('current_password')
                     ->label(__('filament-jet::jet.password_confirmation_modal.current_password'))
                     ->required()
                     ->password()

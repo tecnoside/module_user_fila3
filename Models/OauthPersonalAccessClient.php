@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
+use Illuminate\Support\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Laravel\Passport\PersonalAccessClient as PassportPersonalAccessClient;
 
 /**
@@ -11,26 +13,27 @@ use Laravel\Passport\PersonalAccessClient as PassportPersonalAccessClient;
  *
  * @property int                                   $id
  * @property int                                   $client_id
- * @property \Illuminate\Support\Carbon|null       $created_at
- * @property \Illuminate\Support\Carbon|null       $updated_at
- * @property \Modules\User\Models\OauthClient|null $client
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property OauthClient|null $client
  *
- * @method static \Illuminate\Database\Eloquent\Builder|OauthPersonalAccessClient newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|OauthPersonalAccessClient newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|OauthPersonalAccessClient query()
- * @method static \Illuminate\Database\Eloquent\Builder|OauthPersonalAccessClient whereClientId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|OauthPersonalAccessClient whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|OauthPersonalAccessClient whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|OauthPersonalAccessClient whereUpdatedAt($value)
+ * @method static Builder|OauthPersonalAccessClient newModelQuery()
+ * @method static Builder|OauthPersonalAccessClient newQuery()
+ * @method static Builder|OauthPersonalAccessClient query()
+ * @method static Builder|OauthPersonalAccessClient whereClientId($value)
+ * @method static Builder|OauthPersonalAccessClient whereCreatedAt($value)
+ * @method static Builder|OauthPersonalAccessClient whereId($value)
+ * @method static Builder|OauthPersonalAccessClient whereUpdatedAt($value)
  *
  * @mixin IdeHelperOauthPersonalAccessClient
  * @mixin \Eloquent
  */
-class OauthPersonalAccessClient extends PassportPersonalAccessClient
+final class OauthPersonalAccessClient extends PassportPersonalAccessClient
 {
     /**
      * @var string
      */
     protected $connection = 'user';
+    
     // protected $fillable = ['id', 'client_id'];
 }

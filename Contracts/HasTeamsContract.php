@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\User\Contracts;
 
+use Illuminate\Support\Carbon;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -16,9 +18,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property string                                                      $two_factor_secret
  * @property TeamContract|null                                           $currentTeam
  * @property Collection                                                  $tokens
- * @property \Illuminate\Support\Carbon|null                             $two_factor_confirmed_at
+ * @property Carbon|null $two_factor_confirmed_at
  * @property int                                                         $current_team_id
- * @property \Illuminate\Database\Eloquent\Collection<int, TeamContract> $ownedTeams
+ * @property Collection<int, TeamContract> $ownedTeams
  *
  * @mixin \Eloquent
  */
@@ -40,7 +42,7 @@ interface HasTeamsContract
     /**
      * Get the current team of the user's context.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function currentTeam();
 

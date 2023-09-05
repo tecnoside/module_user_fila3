@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Tests\Feature;
 
+use PHPUnit\Framework\Attributes\Test;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -13,13 +14,11 @@ use Laravel\Fortify\Features;
 use Modules\User\Models\User;
 use Modules\User\Tests\TestCase;
 
-class EmailVerificationTest extends TestCase
+final class EmailVerificationTest extends TestCase
 {
     use RefreshDatabase;
 
-    /**
-     * @test
-     */
+    #[Test]
     public function emailVerificationScreenCanBeRendered(): void
     {
         if (! Features::enabled(Features::emailVerification())) {
@@ -35,9 +34,7 @@ class EmailVerificationTest extends TestCase
         $response->assertStatus(200);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function emailCanBeVerified(): void
     {
         if (! Features::enabled(Features::emailVerification())) {
@@ -64,9 +61,7 @@ class EmailVerificationTest extends TestCase
         $response->assertRedirect(RouteServiceProvider::HOME.'?verified=1');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function emailCanNotVerifiedWithInvalidHash(): void
     {
         if (! Features::enabled(Features::emailVerification())) {

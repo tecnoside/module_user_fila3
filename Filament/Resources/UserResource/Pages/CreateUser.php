@@ -8,7 +8,7 @@ use Filament\Resources\Pages\CreateRecord;
 use Modules\User\Filament\Resources\UserResource;
 use Savannabits\FilamentModules\Concerns\ContextualPage;
 
-class CreateUser extends CreateRecord
+final class CreateUser extends CreateRecord
 {
     // //use ContextualPage;
     protected static string $resource = UserResource::class;

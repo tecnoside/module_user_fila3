@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\User\Models\Traits;
 
+use Exception;
+use Modules\User\Models\Role;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -28,7 +30,7 @@ trait HasTeams
      */
     public function isCurrentTeam(TeamContract $teamContract): bool
     {
-        if (! $teamContract instanceof \Modules\User\Models\Contracts\TeamContract || null === $this->currentTeam) {
+        if (! $teamContract instanceof TeamContract || null === $this->currentTeam) {
             return false;
         }
 
@@ -58,9 +60,10 @@ trait HasTeams
      */
     public function switchTeam(?TeamContract $teamContract): bool
     {
-        if (! $teamContract instanceof \Modules\User\Models\Contracts\TeamContract) {
+        if (! $teamContract instanceof TeamContract) {
             return false;
         }
+        
         if (! $this->belongsToTeam($teamContract)) {
             return false;
         }
@@ -123,8 +126,9 @@ trait HasTeams
         if (null === $res) {
             return null;
         }
+        
         if (! $res instanceof TeamContract) {
-            throw new \Exception('strange things');
+            throw new Exception('strange things');
         }
 
         return $res;
@@ -151,13 +155,17 @@ trait HasTeams
             return false;
         }
 
-        return $this->ownsTeam($teamContract) || $this->teams->contains(fn ($t): bool => $t->getKey() === $teamContract->getKey());
+        if ($this->ownsTeam($teamContract)) {
+            return true;
+        }
+
+        return (bool) $this->teams->contains(static fn($t): bool => $t->getKey() === $teamContract->getKey());
     }
 
     /**
      * Get the role that the user has on the team.
      *
-     * @return \Modules\User\Models\Role|null
+     * @return Role|null
      */
     public function teamRole(TeamContract $teamContract)
     {

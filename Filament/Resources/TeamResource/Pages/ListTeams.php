@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Resources\TeamResource\Pages;
 
+use Filament\Pages\Actions\CreateAction;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\ListRecords;
 use Modules\User\Filament\Resources\TeamResource;
 use Savannabits\FilamentModules\Concerns\ContextualPage;
 
-class ListTeams extends ListRecords
+final class ListTeams extends ListRecords
 {
     // //use ContextualPage;
     protected static string $resource = TeamResource::class;
@@ -17,7 +18,7 @@ class ListTeams extends ListRecords
     protected function getActions(): array
     {
         return [
-            Actions\CreateAction::make(),
+            CreateAction::make(),
         ];
     }
 }

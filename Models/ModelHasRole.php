@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
+use Modules\User\Database\Factories\ModelHasRoleFactory;
+use Illuminate\Database\Eloquent\Builder;
 /**
  * Modules\User\Models\ModelHasRole.
  *
@@ -13,17 +15,17 @@ namespace Modules\User\Models;
  * @property string $model_type
  * @property int    $model_id
  *
- * @method static \Modules\User\Database\Factories\ModelHasRoleFactory factory($count = null, $state = [])
- * @method static \Illuminate\Database\Eloquent\Builder|ModelHasRole   newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|ModelHasRole   newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|ModelHasRole   query()
- * @method static \Illuminate\Database\Eloquent\Builder|ModelHasRole   whereModelId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ModelHasRole   whereModelType($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ModelHasRole   whereRoleId($value)
+ * @method static ModelHasRoleFactory factory($count = null, $state = [])
+ * @method static Builder|ModelHasRole newModelQuery()
+ * @method static Builder|ModelHasRole newQuery()
+ * @method static Builder|ModelHasRole query()
+ * @method static Builder|ModelHasRole whereModelId($value)
+ * @method static Builder|ModelHasRole whereModelType($value)
+ * @method static Builder|ModelHasRole whereRoleId($value)
  *
  * @mixin \Eloquent
  */
-class ModelHasRole extends BaseMorphPivot
+final class ModelHasRole extends BaseMorphPivot
 {
     /**
      * @var array<string>

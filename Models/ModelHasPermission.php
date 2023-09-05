@@ -4,19 +4,21 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
+use Modules\User\Database\Factories\ModelHasPermissionFactory;
+use Illuminate\Database\Eloquent\Builder;
 /**
  * Modules\User\Models\ModelHasPermission.
  *
  * @mixin IdeHelperModelHasPermission
  *
- * @method static \Modules\User\Database\Factories\ModelHasPermissionFactory factory($count = null, $state = [])
- * @method static \Illuminate\Database\Eloquent\Builder|ModelHasPermission   newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|ModelHasPermission   newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|ModelHasPermission   query()
+ * @method static ModelHasPermissionFactory factory($count = null, $state = [])
+ * @method static Builder|ModelHasPermission newModelQuery()
+ * @method static Builder|ModelHasPermission newQuery()
+ * @method static Builder|ModelHasPermission query()
  *
  * @mixin \Eloquent
  */
-class ModelHasPermission extends BaseMorphPivot
+final class ModelHasPermission extends BaseMorphPivot
 {
     /**
      * @var array<string>

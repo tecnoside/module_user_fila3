@@ -9,7 +9,7 @@ use Modules\Xot\Database\Migrations\XotBaseMigration;
 /**
  * Class CreateRolesTable.
  */
-class CreateRolesTable extends XotBaseMigration
+final class CreateRolesTable extends XotBaseMigration
 {
     /**
      * Run the migrations.
@@ -23,16 +23,17 @@ class CreateRolesTable extends XotBaseMigration
         if (! is_array($tableNames)) {
             throw new Exception('['.__LINE__.']['.__FILE__.']');
         }
+        
         if (! is_array($columnNames)) {
             throw new Exception('['.__LINE__.']['.__FILE__.']');
         }
 
         // -- CREATE --
         $this->tableCreate(
-            function (Blueprint $blueprint) use ($columnNames): void {
+            static function (Blueprint $blueprint) use ($columnNames) : void {
                 // $teams = config('permission.teams');
-
-                $blueprint->bigIncrements('id'); // role id
+                $blueprint->bigIncrements('id');
+                // role id
                 // if ($teams || config('permission.testing')) { // permission.testing is a fix for sqlite testing
                 $blueprint->unsignedBigInteger($columnNames['team_foreign_key'])->nullable();
                 $blueprint->index($columnNames['team_foreign_key'], 'roles_team_foreign_key_index');
@@ -42,8 +43,10 @@ class CreateRolesTable extends XotBaseMigration
                 //        column: 'user_id',
                 //    )
                 // }
-                $blueprint->string('name');       // For MySQL 8.0 use string('name', 125);
-                $blueprint->string('guard_name'); // For MySQL 8.0 use string('guard_name', 125);
+                $blueprint->string('name');
+                // For MySQL 8.0 use string('name', 125);
+                $blueprint->string('guard_name');
+                // For MySQL 8.0 use string('guard_name', 125);
                 $blueprint->timestamps();
                 // if ($teams || config('permission.testing')) {
                 //    $table->unique([$columnNames['team_foreign_key'], 'name', 'guard_name']);
@@ -64,6 +67,7 @@ class CreateRolesTable extends XotBaseMigration
                     //    )
                     // }
                 }
+                
                 // $table->string('team_id')->nullable()->change();
                 if ($this->hasIndexName('name_guard_name_unique')) {
                     $blueprint->dropIndex('roles_name_guard_name_unique');

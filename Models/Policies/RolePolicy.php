@@ -8,7 +8,7 @@ use Modules\User\Models\Role as Post;
 use Modules\User\Models\User;
 use Modules\Xot\Models\Policies\XotBasePolicy;
 
-class RolePolicy extends XotBasePolicy
+final class RolePolicy extends XotBasePolicy
 {
     /**
      * Determine whether the user can view any models.

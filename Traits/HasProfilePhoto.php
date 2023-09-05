@@ -23,10 +23,15 @@ trait HasProfilePhoto
             $this->forceFill([
                 'profile_photo_path' => $photo,
             ])->save();
-
-            if ($previous && ! $photo) {
-                Storage::disk($this->profilePhotoDisk())->delete($previous);
+            if (!$previous) {
+                return;
             }
+
+            if ($photo) {
+                return;
+            }
+
+            Storage::disk($this->profilePhotoDisk())->delete($previous);
         });
     }
 

@@ -12,17 +12,16 @@ abstract class TwoFactorAuthenticationEvent
     use Dispatchable;
 
     /**
-     * The team member being added.
-     */
-    public UserContract $user;
-
-    /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct(UserContract $userContract)
+    public function __construct(
+        /**
+         * The team member being added.
+         */
+        public UserContract $userContract
+    )
     {
-        $this->user = $userContract;
     }
 }

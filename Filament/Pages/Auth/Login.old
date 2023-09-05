@@ -26,7 +26,7 @@ use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
 
 class Login extends CardPage
 {
-    use ContextualPage;
+    //use ContextualPage;
     use WithRateLimiting;
 
     protected static string $view = 'filament-jet::filament.pages.auth.login';

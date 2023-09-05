@@ -36,6 +36,7 @@ class CreateModelHasRolesTable extends XotBaseMigration
                         ->on($tableNames['roles'])
                         ->onDelete('cascade');
                 */
+                /*
                 if ($teams) {
                     $blueprint->unsignedBigInteger($columnNames['team_foreign_key']);
                     $blueprint->index($columnNames['team_foreign_key'], 'model_has_roles_team_foreign_key_index');
@@ -50,6 +51,7 @@ class CreateModelHasRolesTable extends XotBaseMigration
                         'model_has_roles_role_model_type_primary'
                     );
                 }
+                */
             }
         );
         // -- UPDATE --

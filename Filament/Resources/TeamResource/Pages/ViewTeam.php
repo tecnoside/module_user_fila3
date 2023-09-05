@@ -11,7 +11,7 @@ use Savannabits\FilamentModules\Concerns\ContextualPage;
 
 class ViewTeam extends ViewRecord
 {
-    // use ContextualPage;
+    // //use ContextualPage;
     protected static string $resource = TeamResource::class;
 
     protected function getActions(): array

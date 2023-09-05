@@ -23,7 +23,7 @@ use Savannabits\FilamentModules\Concerns\ContextualResource;
 
 class RoleResource extends XotBaseResource
 { /* implements HasShieldPermissions */
-    // //use ContextualResource;
+    // ////use ContextualResource;
     protected static ?string $model = Role::class;
     protected static ?string $navigationIcon = 'heroicon-o-shield-check';
 
@@ -347,14 +347,14 @@ class RoleResource extends XotBaseResource
 
     protected static function refreshResourceEntityStateAfterUpdate(\Closure $set, \Closure $get, array $entity): void
     {
-        $permissionStates = collect(Utils::getResourcePermissionPrefixes($entity['fqcn']))
+        $collection = collect(Utils::getResourcePermissionPrefixes($entity['fqcn']))
             ->map(fn (string $permission): bool => (bool) $get($permission.'_'.$entity['resource']));
 
-        if (! $permissionStates->containsStrict(false)) {
+        if (! $collection->containsStrict(false)) {
             $set($entity['resource'], true);
         }
 
-        if ($permissionStates->containsStrict(false)) {
+        if ($collection->containsStrict(false)) {
             $set($entity['resource'], false);
         }
     }

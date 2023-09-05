@@ -14,7 +14,7 @@ use Savannabits\FilamentModules\Concerns\ContextualPage;
 
 class ListPermissions extends ListRecords
 {
-    // use ContextualPage;
+    // //use ContextualPage;
     protected static string $resource = PermissionResource::class;
 
     protected function getHeaderActions(): array
@@ -30,8 +30,8 @@ class ListPermissions extends ListRecords
 
         return [
             BulkAction::make('Attach Role')
-                ->action(function (Collection $records, array $data): void {
-                    foreach ($records as $record) {
+                ->action(function (Collection $collection, array $data): void {
+                    foreach ($collection as $record) {
                         $record->roles()->sync($data['role']);
                         $record->save();
                     }

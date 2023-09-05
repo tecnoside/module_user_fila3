@@ -11,7 +11,7 @@ use Savannabits\FilamentModules\Concerns\ContextualPage;
 
 class ViewPermission extends ViewRecord
 {
-    // use ContextualPage;
+    // //use ContextualPage;
     protected static string $resource = PermissionResource::class;
 
     public function getHeaderActions(): array

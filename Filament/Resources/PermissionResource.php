@@ -126,8 +126,8 @@ class PermissionResource extends XotBaseResource
                 Tables\Actions\DeleteBulkAction::make(),
                 // ]),
                 BulkAction::make('Attach Role')
-                    ->action(function (Collection $records, array $data): void {
-                        foreach ($records as $record) {
+                    ->action(function (Collection $collection, array $data): void {
+                        foreach ($collection as $record) {
                             $record->roles()->sync($data['role']);
                             $record->save();
                         }

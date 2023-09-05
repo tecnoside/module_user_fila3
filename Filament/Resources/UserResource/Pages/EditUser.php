@@ -12,7 +12,7 @@ use Savannabits\FilamentModules\Concerns\ContextualPage;
 
 class EditUser extends EditRecord
 {
-    // use ContextualPage;
+    // //use ContextualPage;
     protected static string $resource = UserResource::class;
 
     public function beforeSave(): void

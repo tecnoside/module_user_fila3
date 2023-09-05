@@ -18,7 +18,7 @@ use Modules\User\Filament\Resources\TeamResource\RelationManagers;
 
 class TeamResource extends Resource
 {
-    ////use ContextualResource;
+    //////use ContextualResource;
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
     protected static ?string $navigationLabel = 'Teams';

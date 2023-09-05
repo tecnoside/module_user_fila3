@@ -10,6 +10,6 @@ use Savannabits\FilamentModules\Concerns\ContextualPage;
 
 class CreateUser extends CreateRecord
 {
-    // use ContextualPage;
+    // //use ContextualPage;
     protected static string $resource = UserResource::class;
 }

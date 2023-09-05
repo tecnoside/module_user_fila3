@@ -76,7 +76,7 @@ trait TwoFactorAuthenticatable
             )
         ))->writeString($this->twoFactorQrCodeUrl());
 
-        return trim(substr($svg, strpos($svg, "\n") + 1));
+        return trim(substr((string) $svg, strpos((string) $svg, "\n") + 1));
     }
 
     /**

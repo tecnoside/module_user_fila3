@@ -10,6 +10,6 @@ use Savannabits\FilamentModules\Concerns\ContextualPage;
 
 class EditPermission extends EditRecord
 {
-    // use ContextualPage;
+    // //use ContextualPage;
     protected static string $resource = PermissionResource::class;
 }

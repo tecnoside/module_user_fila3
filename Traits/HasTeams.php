@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\User\Traits;
 
-use ArtMin96\FilamentJet\FilamentJet;
 use Illuminate\Support\Str;
 use Laravel\Passport\HasApiTokens;
 use Modules\User\OwnerRole;
+use Modules\Xot\Datas\XotData;
 
 trait HasTeams
 {
@@ -28,11 +28,12 @@ trait HasTeams
      */
     public function currentTeam()
     {
+        $xot = XotData::make();
         if (is_null($this->current_team_id) && $this->id) {
             $this->switchTeam($this->personalTeam());
         }
 
-        return $this->belongsTo(FilamentJet::teamModel(), 'current_team_id');
+        return $this->belongsTo($xot->getTeamClass(), 'current_team_id');
     }
 
     /**
@@ -72,7 +73,7 @@ trait HasTeams
      */
     public function ownedTeams()
     {
-        return $this->hasMany(FilamentJet::teamModel());
+        return $this->hasMany($xot->getTeamClass());
     }
 
     /**
@@ -82,7 +83,9 @@ trait HasTeams
      */
     public function teams()
     {
-        return $this->belongsToMany(FilamentJet::teamModel(), FilamentJet::membershipModel(), 'aaaa', 'bbbb', 'ccc', 'dddd')
+        $xot = XotData::make();
+
+        return $this->belongsToMany($xot->getTeamClass(), $xot->getMembershipClass(), 'aaaa', 'bbbb', 'ccc', 'dddd')
             ->withPivot('role')
             ->withTimestamps()
             ->as('membership');

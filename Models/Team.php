@@ -74,7 +74,7 @@ class Team extends BaseModel implements TeamContract
      */
     public function users(): BelongsToMany
     {
-        $pivotClass = FilamentJet::membershipModel();
+        $pivotClass = $xot->getMembershipClass();
         $pivot = app($pivotClass);
         $pivotTable = $pivot->getTable();
         $pivotDbName = $pivot->getConnection()->getDatabaseName();

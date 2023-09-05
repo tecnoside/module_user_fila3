@@ -13,7 +13,8 @@ use Laravel\Sanctum\HasApiTokens;
 use Modules\User\Models\Contracts\TeamContract;
 use Modules\User\Models\FilamentJet;
 use Modules\User\Models\Models\Team;
-//use Modules\User\Models\OwnerRole;
+
+// use Modules\User\Models\OwnerRole;
 
 /**
  * Undocumented trait.
@@ -27,7 +28,7 @@ trait HasTeams
      */
     public function isCurrentTeam(TeamContract $teamContract): bool
     {
-        if (!$teamContract instanceof \Modules\User\Models\Contracts\TeamContract || null === $this->currentTeam) {
+        if (! $teamContract instanceof \Modules\User\Models\Contracts\TeamContract || null === $this->currentTeam) {
             return false;
         }
 
@@ -49,7 +50,7 @@ trait HasTeams
             $this->update();
         }
 
-        return $this->belongsTo(FilamentJet::teamModel(), 'current_team_id');
+        return $this->belongsTo($xot->getTeamClass(), 'current_team_id');
     }
 
     /**
@@ -57,7 +58,7 @@ trait HasTeams
      */
     public function switchTeam(?TeamContract $teamContract): bool
     {
-        if (!$teamContract instanceof \Modules\User\Models\Contracts\TeamContract) {
+        if (! $teamContract instanceof \Modules\User\Models\Contracts\TeamContract) {
             return false;
         }
         if (! $this->belongsToTeam($teamContract)) {
@@ -91,7 +92,7 @@ trait HasTeams
      */
     public function ownedTeams(): HasMany
     {
-        return $this->hasMany(FilamentJet::teamModel());
+        return $this->hasMany($xot->getTeamClass());
     }
 
     /**
@@ -99,14 +100,14 @@ trait HasTeams
      */
     public function teams(): BelongsToMany
     {
-        $pivotClass = FilamentJet::membershipModel();
+        $pivotClass = $xot->getMembershipClass();
         $pivot = app($pivotClass);
         $pivotTable = $pivot->getTable();
         $pivotDbName = $pivot->getConnection()->getDatabaseName();
         $pivotTableFull = $pivotDbName.'.'.$pivotTable;
 
         // $this->setConnection('mysql');
-        return $this->belongsToMany(FilamentJet::teamModel(), $pivotTableFull, null, 'team_id')
+        return $this->belongsToMany($xot->getTeamClass(), $pivotTableFull, null, 'team_id')
             ->using($pivotClass)
             ->withPivot('role')
             ->withTimestamps()
@@ -150,7 +151,7 @@ trait HasTeams
             return false;
         }
 
-        return $this->ownsTeam($teamContract) || $this->teams->contains(fn($t): bool => $t->getKey() === $teamContract->getKey());
+        return $this->ownsTeam($teamContract) || $this->teams->contains(fn ($t): bool => $t->getKey() === $teamContract->getKey());
     }
 
     /**
@@ -160,9 +161,9 @@ trait HasTeams
      */
     public function teamRole(TeamContract $teamContract)
     {
-        //if ($this->ownsTeam($team)) {
+        // if ($this->ownsTeam($team)) {
         //    return new OwnerRole();
-        //}
+        // }
 
         if (! $this->belongsToTeam($teamContract)) {
             return null;

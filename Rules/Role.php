@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\User\Rules;
 
-use ArtMin96\FilamentJet\FilamentJet;
 use Illuminate\Contracts\Validation\Rule;
 
 class Role implements Rule
@@ -16,7 +15,8 @@ class Role implements Rule
      */
     public function passes($attribute, $value): bool
     {
-        return in_array($value, array_keys(FilamentJet::$roles));
+        return true;
+        // return in_array($value, array_keys(FilamentJet::$roles));
     }
 
     /**

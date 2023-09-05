@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Resources\UserResource\RelationManagers;
 
-use ArtMin96\FilamentJet\FilamentJet;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
@@ -39,6 +38,8 @@ class RolesRelationManager extends RelationManager
 
     public function table(Table $table): Table
     {
+        $xot = XotData::make();
+
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name'),
@@ -58,7 +59,7 @@ class RolesRelationManager extends RelationManager
                         $attachAction->getRecordSelect(),
                         // Forms\Components\TextInput::make('team_id')->required(),
                         Forms\Components\Select::make('team_id')
-                            ->options(FilamentJet::teamModel()::get()->pluck('name', 'id')),
+                            ->options($xot->getTeamClass()::get()->pluck('name', 'id')),
                         // ->options(function($item){
                         //     dddx($this);
                         // })

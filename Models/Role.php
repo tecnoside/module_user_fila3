@@ -63,8 +63,8 @@ final class Role extends SpatieRole
      */
     public function team()
     {
-        $xot = XotData::make();
-        $teamClass = $xot->getTeamClass();
+        $xotData = XotData::make();
+        $teamClass = $xotData->getTeamClass();
 
         return $this->belongsTo($teamClass);
         /*

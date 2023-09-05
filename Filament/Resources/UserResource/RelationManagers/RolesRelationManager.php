@@ -47,7 +47,7 @@ final class RolesRelationManager extends RelationManager
 
     public function table(Table $table): Table
     {
-        $xot = XotData::make();
+        $xotData = XotData::make();
 
         return $table
             ->columns([
@@ -68,7 +68,7 @@ final class RolesRelationManager extends RelationManager
                         $attachAction->getRecordSelect(),
                         // Forms\Components\TextInput::make('team_id')->required(),
                         Select::make('team_id')
-                            ->options($xot->getTeamClass()::get()->pluck('name', 'id')),
+                            ->options($xotData->getTeamClass()::get()->pluck('name', 'id')),
                         // ->options(function($item){
                         //     dddx($this);
                         // })

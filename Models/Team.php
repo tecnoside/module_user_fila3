@@ -57,9 +57,9 @@ final class Team extends BaseModel implements TeamContract
      */
     public function owner(): BelongsTo
     {
-        $xot = XotData::make();
+        $xotData = XotData::make();
 
-        return $this->belongsTo($xot->getUserClass(), 'user_id');
+        return $this->belongsTo($xotData->getUserClass(), 'user_id');
     }
 
     /**
@@ -79,15 +79,15 @@ final class Team extends BaseModel implements TeamContract
      */
     public function users(): BelongsToMany
     {
-        $xot = XotData::make();
-        $pivotClass = $xot->getMembershipClass();
-        $pivot = app($pivotClass);
+        $xotData = XotData::make();
+        $membershipClass = $xotData->getMembershipClass();
+        $pivot = app($membershipClass);
         $pivotTable = $pivot->getTable();
         $pivotDbName = $pivot->getConnection()->getDatabaseName();
         $pivotTableFull = $pivotDbName.'.'.$pivotTable;
 
-        return $this->belongsToMany($xot->getUserClass(), $pivotTableFull, 'team_id')
-            ->using($pivotClass)
+        return $this->belongsToMany($xotData->getUserClass(), $pivotTableFull, 'team_id')
+            ->using($membershipClass)
             ->withPivot('role')
             ->withTimestamps()
             ->as('membership');

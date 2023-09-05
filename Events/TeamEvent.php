@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\User\Events;
 
-use ArtMin96\FilamentJet\Contracts\TeamContract;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
+use Modules\User\Contracts\TeamContract;
 
 abstract class TeamEvent
 {

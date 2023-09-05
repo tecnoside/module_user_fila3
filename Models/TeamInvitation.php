@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
-use ArtMin96\FilamentJet\Models\TeamInvitation as FilamentJetTeamInvitation;
+use Modules\User\Models\TeamInvitation as FilamentJetTeamInvitation;
 
 /**
  * Modules\User\Models\TeamInvitation.

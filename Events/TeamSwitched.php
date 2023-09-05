@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Modules\User\Events;
 
-use ArtMin96\FilamentJet\Contracts\TeamContract;
-use ArtMin96\FilamentJet\Contracts\UserContract;
 use Illuminate\Foundation\Events\Dispatchable;
+use Modules\User\Contracts\TeamContract;
+use Modules\User\Contracts\UserContract;
 
 class TeamSwitched
 {

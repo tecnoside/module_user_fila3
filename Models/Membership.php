@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
-use ArtMin96\FilamentJet\Models\Membership as FilamentJetMembership;
-
 /**
  * Modules\User\Models\Membership.
  *
@@ -34,7 +32,7 @@ use ArtMin96\FilamentJet\Models\Membership as FilamentJetMembership;
  *
  * @mixin \Eloquent
  */
-class Membership extends FilamentJetMembership
+class Membership extends BasePivot
 {
     /**
      * Indicates if the IDs are auto-incrementing.
@@ -47,4 +45,11 @@ class Membership extends FilamentJetMembership
      * @var string
      */
     protected $connection = 'user';
+
+    /**
+     * The table associated with the pivot model.
+     *
+     * @var string
+     */
+    protected $table = 'team_user';
 }

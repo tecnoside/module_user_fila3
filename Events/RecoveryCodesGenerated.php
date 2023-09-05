@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\User\Events;
 
-use ArtMin96\FilamentJet\Contracts\UserContract;
 use Illuminate\Foundation\Events\Dispatchable;
+use Modules\User\Contracts\UserContract;
 
 class RecoveryCodesGenerated
 {

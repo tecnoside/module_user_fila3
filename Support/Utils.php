@@ -82,7 +82,7 @@ class Utils
     public static function isAuthProviderConfigured(): bool
     {
         return in_array("BezhanSalleh\FilamentShield\Traits\HasFilamentShield", class_uses(static::getAuthProviderFQCN()))
-        || in_array("Spatie\Permission\Traits\HasRoles", class_uses(static::getAuthProviderFQCN()));
+        || in_array(\Spatie\Permission\Traits\HasRoles::class, class_uses(static::getAuthProviderFQCN()));
     }
 
     public static function isSuperAdminEnabled(): bool
@@ -238,7 +238,7 @@ class Utils
     public static function showModelPath(string $resourceFQCN): string
     {
         return config('filament-shield.shield_resource.show_model_path', true)
-            ? get_class(new ($resourceFQCN::getModel())())
+            ? (new ($resourceFQCN::getModel())())::class
             : '';
     }
 
@@ -251,14 +251,14 @@ class Utils
 
     public static function getRoleModel(): string
     {
-        Assert::string($res = config('permission.models.role', 'Spatie\\Permission\\Models\\Role'));
+        Assert::string($res = config('permission.models.role', \Spatie\Permission\Models\Role::class));
 
         return $res;
     }
 
     public static function getPermissionModel(): string
     {
-        Assert::string($res = config('permission.models.permission', 'Spatie\\Permission\\Models\\Permission'));
+        Assert::string($res = config('permission.models.permission', \Spatie\Permission\Models\Permission::class));
 
         return $res;
     }

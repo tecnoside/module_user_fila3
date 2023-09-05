@@ -49,16 +49,9 @@ abstract class BaseModel extends Model
     /**
      * @var array<string, string>
      */
-    protected $casts = [
-        // 'published_at' => 'datetime:Y-m-d', // da verificare
-    ];
+    protected $casts = ['published_at' => 'datetime', 'created_at' => 'datetime', 'updated_at' => 'datetime', 'verified_at' => 'datetime'];
 
     protected $appends = [];
-
-    /**
-     * @var array<string>
-     */
-    protected $dates = ['published_at', 'created_at', 'updated_at', 'verified_at'];
     /**
      * @var string
      */

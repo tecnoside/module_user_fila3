@@ -22,10 +22,8 @@ trait TwoFactorAuthenticatable
 {
     /**
      * Determine if two-factor authentication has been enabled.
-     *
-     * @return bool
      */
-    public function hasEnabledTwoFactorAuthentication()
+    public function hasEnabledTwoFactorAuthentication(): bool
     {
         if (FilamentJet::confirmsTwoFactorAuthentication()) {
             return ! is_null($this->two_factor_secret)
@@ -55,7 +53,7 @@ trait TwoFactorAuthenticatable
             throw new Exception('[' . __LINE__ . '][' . __FILE__ . ']');
         }
 
-        return (array) json_decode(decrypt($this->two_factor_recovery_codes), true);
+        return (array) json_decode((string) decrypt($this->two_factor_recovery_codes), true, 512, JSON_THROW_ON_ERROR);
     }
 
     /**
@@ -78,17 +76,15 @@ trait TwoFactorAuthenticatable
             'two_factor_recovery_codes' => encrypt(str_replace(
                 $code,
                 RecoveryCode::generate(),
-                decrypt($this->two_factor_recovery_codes)
+                (string) decrypt($this->two_factor_recovery_codes)
             )),
         ])->save();
     }
 
     /**
      * Get the QR code SVG of the user's two factor authentication QR code URL.
-     *
-     * @return string
      */
-    public function twoFactorQrCodeSvg()
+    public function twoFactorQrCodeSvg(): string
     {
         $svg = (new Writer(
             new ImageRenderer(

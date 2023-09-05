@@ -24,7 +24,7 @@ class PasswordResetFactory extends Factory
      *
      * @psalm-return array{email: string, token: string, created_at: \DateTime}
      */
-    public function definition()
+    public function definition(): array
     {
         return [
             'email' => $this->faker->email,

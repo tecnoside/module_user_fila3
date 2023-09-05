@@ -13,25 +13,23 @@ class CreatePermissionsTable extends XotBaseMigration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         // -- CREATE --
         $this->tableCreate(
-            function (Blueprint $table) {
-                $table->bigIncrements('id'); // permission id
-                $table->string('name');       // For MySQL 8.0 use string('name', 125);
-                $table->string('guard_name'); // For MySQL 8.0 use string('guard_name', 125);
-                $table->timestamps();
+            function (Blueprint $blueprint): void {
+                $blueprint->bigIncrements('id'); // permission id
+                $blueprint->string('name');       // For MySQL 8.0 use string('name', 125);
+                $blueprint->string('guard_name'); // For MySQL 8.0 use string('guard_name', 125);
+                $blueprint->timestamps();
 
-                $table->unique(['name', 'guard_name']);
+                $blueprint->unique(['name', 'guard_name']);
             }
         );
         // -- UPDATE --
         $this->tableUpdate(
-            function (Blueprint $table) {
+            function (Blueprint $blueprint): void {
             }
         );
     }

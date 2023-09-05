@@ -9,5 +9,5 @@ namespace Modules\User\Contracts;
  */
 interface DeletesUsers
 {
-    public function delete(UserContract $user): void;
+    public function delete(UserContract $userContract): void;
 }

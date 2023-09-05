@@ -25,8 +25,8 @@ abstract class TeamEvent
      *
      * @return void
      */
-    public function __construct(TeamContract $team)
+    public function __construct(TeamContract $teamContract)
     {
-        $this->team = $team;
+        $this->team = $teamContract;
     }
 }

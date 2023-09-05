@@ -10,16 +10,16 @@ class CreateOauthPersonalAccessClientsTable extends XotBaseMigration
     public function up(): void
     {
         $this->tableCreate(
-            function (Blueprint $table) {
-                $table->bigIncrements('id');
-                $table->unsignedBigInteger('client_id');
-                $table->timestamps();
+            function (Blueprint $blueprint): void {
+                $blueprint->bigIncrements('id');
+                $blueprint->unsignedBigInteger('client_id');
+                $blueprint->timestamps();
             }
         );
 
         // -- UPDATE --
         $this->tableUpdate(
-            function (Blueprint $table) {
+            function (Blueprint $blueprint): void {
             }
         );
     }

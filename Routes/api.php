@@ -25,7 +25,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::prefix('/user')
     ->namespace('Api')
     ->group(
-        function () {
+        function (): void {
             // authenticate user
             /*
             Route::post('/login', [UserController::class, 'login'])

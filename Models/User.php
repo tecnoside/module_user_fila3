@@ -188,9 +188,9 @@ class User extends Authenticatable implements \Modules\Xot\Contracts\UserContrac
         return $this->belongsToMany(Team::class);
     }
 
-    public function canAccessTenant(Model $tenant): bool
+    public function canAccessTenant(Model $model): bool
     {
-        return $this->teams->contains($tenant);
+        return $this->teams->contains($model);
     }
 
     public function getTenants(Panel $panel): array|Collection

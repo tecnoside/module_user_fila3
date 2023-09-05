@@ -56,17 +56,6 @@ abstract class BaseMorphPivot extends MorphPivot
      */
     protected $primaryKey = 'id';
 
-    // protected $attributes = ['related_type' => 'cuisine_cat'];
-    /**
-     * @var array<string>
-     */
-    protected $dates = [
-        'created_at',
-        'updated_at',
-        'deleted_at',
-        // 'published_at',
-    ];
-
     /**
      * @var array<string>
      */
@@ -77,6 +66,7 @@ abstract class BaseMorphPivot extends MorphPivot
         'user_id',
         'note',
     ];
+    protected $casts = ['created_at' => 'datetime', 'updated_at' => 'datetime', 'deleted_at' => 'datetime'];
 
     /**
      * Create a new factory instance for the model.

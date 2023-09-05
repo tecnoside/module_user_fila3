@@ -27,9 +27,9 @@ class AddingTeamMember
      *
      * @return void
      */
-    public function __construct(TeamContract $team, UserContract $user)
+    public function __construct(TeamContract $teamContract, UserContract $userContract)
     {
-        $this->team = $team;
-        $this->user = $user;
+        $this->team = $teamContract;
+        $this->user = $userContract;
     }
 }

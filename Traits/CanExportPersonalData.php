@@ -18,12 +18,12 @@ trait CanExportPersonalData
         return "{$exportName}-{$userName}.zip";
     }
 
-    public function selectPersonalData(PersonalDataSelection $personalData): void
+    public function selectPersonalData(PersonalDataSelection $personalDataSelection): void
     {
-        $personalData->add('user.json', ['name' => $this->name, 'email' => $this->email]);
+        $personalDataSelection->add('user.json', ['name' => $this->name, 'email' => $this->email]);
 
         if (Features::managesProfilePhotos()) {
-            $personalData->addFile(storage_path("app/{$this->profilePhotoDisk()}/{$this->profile_photo_path}"));
+            $personalDataSelection->addFile(storage_path("app/{$this->profilePhotoDisk()}/{$this->profile_photo_path}"));
         }
 
         $additionalFile = Features::getOption(Features::personalDataExport(), 'add');
@@ -31,7 +31,7 @@ trait CanExportPersonalData
 
         if (! empty($additionalFile)) {
             foreach ($additionalFile as $file) {
-                $personalData->add(
+                $personalDataSelection->add(
                     $file['nameInDownload'],
                     $file['content']
                 );
@@ -40,7 +40,7 @@ trait CanExportPersonalData
 
         if (! empty($additionalFiles)) {
             foreach ($additionalFiles as $additionalFile) {
-                $personalData->addFile(
+                $personalDataSelection->addFile(
                     $additionalFile['pathToFile'],
                     $additionalFile['diskName'],
                     $additionalFile['directory']

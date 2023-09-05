@@ -13,9 +13,8 @@ class Role implements Rule
      * Determine if the validation rule passes.
      *
      * @param  string  $attribute
-     * @return bool
      */
-    public function passes($attribute, $value)
+    public function passes($attribute, $value): bool
     {
         return in_array($value, array_keys(FilamentJet::$roles));
     }

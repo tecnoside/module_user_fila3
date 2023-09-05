@@ -72,7 +72,7 @@ class UserResource extends XotBaseResource
 
     public static function getNavigationBadge(): ?string
     {
-        return strval(static::getModel()::count());
+        return (string) static::getModel()::count();
     }
 
     public static function getWidgets(): array
@@ -132,7 +132,7 @@ class UserResource extends XotBaseResource
                                 }
                             }),
                             */
-                            ->visible(fn ($livewire) => $livewire instanceof CreateUser)
+                            ->visible(fn ($livewire): bool => $livewire instanceof CreateUser)
                             ->rule(Password::default()),
                         'new_password_group' => Group::make([
                             'new_password' => TextInput::make('new_password')
@@ -144,7 +144,7 @@ class UserResource extends XotBaseResource
                             'new_password_confirmation' => TextInput::make('new_password_confirmation')
                                 ->password()
                                 ->label('Confirm New Password')
-                                ->rule('required', fn ($get) => (bool) $get('new_password'))
+                                ->rule('required', fn ($get): bool => (bool) $get('new_password'))
                                 ->same('new_password')
                                 ->dehydrated(false),
                         ])->visible(static::$enablePasswordUpdates),
@@ -155,7 +155,7 @@ class UserResource extends XotBaseResource
                     ])->columnSpan(4),
                 ];
 
-                if (null !== static::$extendFormCallback) {
+                if (static::$extendFormCallback instanceof \Closure) {
                     $schema = value(static::$extendFormCallback, $schema);
                 }
 
@@ -200,16 +200,16 @@ class UserResource extends XotBaseResource
                     ->attribute('role_id'),
                 Tables\Filters\Filter::make('verified')
                     ->label(trans('filament-user::user.resource.verified'))
-                    ->query(fn (Builder $query): Builder => $query->whereNotNull('email_verified_at')),
+                    ->query(fn (Builder $builder): Builder => $builder->whereNotNull('email_verified_at')),
                 Tables\Filters\Filter::make('unverified')
                     ->label(trans('filament-user::user.resource.unverified'))
-                    ->query(fn (Builder $query): Builder => $query->whereNull('email_verified_at')),
+                    ->query(fn (Builder $builder): Builder => $builder->whereNull('email_verified_at')),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\Action::make('changePassword')
-                    ->action(function (User $record, array $data): void {
-                        $record->update([
+                    ->action(function (User $user, array $data): void {
+                        $user->update([
                             'password' => Hash::make($data['new_password']),
                         ]);
 
@@ -224,7 +224,7 @@ class UserResource extends XotBaseResource
                         Forms\Components\TextInput::make('new_password_confirmation')
                             ->password()
                             ->label('Confirm New Password')
-                            ->rule('required', fn ($get) => (bool) $get('new_password'))
+                            ->rule('required', fn ($get): bool => (bool) $get('new_password'))
                             ->same('new_password'),
                     ])
                     ->icon('heroicon-o-key')
@@ -233,7 +233,7 @@ class UserResource extends XotBaseResource
                 Tables\Actions\Action::make('deactivate')
                     ->color('danger')
                     ->icon('heroicon-o-trash')
-                    ->action(fn (User $record) => $record->delete())
+                    ->action(fn (User $user) => $user->delete())
                 // ->visible(fn (User $record): bool => $record->role_id === Role::ROLE_ADMINISTRATOR)
                 ,
             ])

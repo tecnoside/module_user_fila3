@@ -14,10 +14,8 @@ class CreateModelHasPermissionsTable extends XotBaseMigration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         /** @var array $tableNames */
         $tableNames = config('permission.table_names');
@@ -26,14 +24,14 @@ class CreateModelHasPermissionsTable extends XotBaseMigration
 
         // -- CREATE --
         $this->tableCreate(
-            function (Blueprint $table) use ($tableNames, $columnNames) {
-                $table->unsignedBigInteger(PermissionRegistrar::$pivotPermission);
+            function (Blueprint $blueprint) use ($tableNames, $columnNames): void {
+                $blueprint->unsignedBigInteger(PermissionRegistrar::$pivotPermission);
 
-                $table->string('model_type');
-                $table->unsignedBigInteger($columnNames['model_morph_key']);
-                $table->index([$columnNames['model_morph_key'], 'model_type'], 'model_has_permissions_model_id_model_type_index');
+                $blueprint->string('model_type');
+                $blueprint->unsignedBigInteger($columnNames['model_morph_key']);
+                $blueprint->index([$columnNames['model_morph_key'], 'model_type'], 'model_has_permissions_model_id_model_type_index');
 
-                $table->foreign(PermissionRegistrar::$pivotPermission)
+                $blueprint->foreign(PermissionRegistrar::$pivotPermission)
                     ->references('id') // permission id
                     ->on($tableNames['permissions'])
                     ->onDelete('cascade');
@@ -41,7 +39,7 @@ class CreateModelHasPermissionsTable extends XotBaseMigration
         );
         // -- UPDATE --
         $this->tableUpdate(
-            function (Blueprint $table) {
+            function (Blueprint $blueprint): void {
             }
         );
     }

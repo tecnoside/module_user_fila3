@@ -17,24 +17,18 @@ class InvitingTeamMember
     public TeamContract $team;
 
     /**
-     * The team member being added.
-     */
-    public string $email;
-
-    /**
-     * The role of the invitee.
-     */
-    public string $role;
-
-    /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct(TeamContract $team, string $email, string $role)
+    public function __construct(TeamContract $teamContract, /**
+     * The team member being added.
+     */
+    public string $email, /**
+     * The role of the invitee.
+     */
+    public string $role)
     {
-        $this->team = $team;
-        $this->email = $email;
-        $this->role = $role;
+        $this->team = $teamContract;
     }
 }

@@ -42,8 +42,8 @@ class TeamsRelationManager extends RelationManager
 
         $headerActions = $table->getHeaderActions();
         $headerActions['attach'] = Tables\Actions\AttachAction::make()
-            ->form(fn (Tables\Actions\AttachAction $action): array => [
-                $action->getRecordSelect(),
+            ->form(fn (Tables\Actions\AttachAction $attachAction): array => [
+                $attachAction->getRecordSelect(),
                 Forms\Components\Select::make('role')
                     ->options(Role::all()->pluck('name', 'name')),
             ]);

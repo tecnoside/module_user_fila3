@@ -10,24 +10,24 @@ class CreateOauthClientsTable extends XotBaseMigration
     public function up(): void
     {
         $this->tableCreate(
-            function (Blueprint $table) {
-                $table->bigIncrements('id');
-                $table->unsignedBigInteger('user_id')->nullable()->index();
+            function (Blueprint $blueprint): void {
+                $blueprint->bigIncrements('id');
+                $blueprint->unsignedBigInteger('user_id')->nullable()->index();
                 // $table->foreignIdFor(User::class);
-                $table->string('name');
-                $table->string('secret', 100)->nullable();
-                $table->string('provider')->nullable();
-                $table->text('redirect');
-                $table->boolean('personal_access_client');
-                $table->boolean('password_client');
-                $table->boolean('revoked');
-                $table->timestamps();
+                $blueprint->string('name');
+                $blueprint->string('secret', 100)->nullable();
+                $blueprint->string('provider')->nullable();
+                $blueprint->text('redirect');
+                $blueprint->boolean('personal_access_client');
+                $blueprint->boolean('password_client');
+                $blueprint->boolean('revoked');
+                $blueprint->timestamps();
             }
         );
 
         // -- UPDATE --
         $this->tableUpdate(
-            function (Blueprint $table) {
+            function (Blueprint $blueprint): void {
             }
         );
     }

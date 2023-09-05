@@ -34,9 +34,6 @@ trait ProcessesExport
             ->allowFailures()
             ->dispatch();
 
-        /**
-         * @var int|null
-         */
         $batch_id = (int) $batch->id;
 
         $this->exportBatchId = $batch_id;

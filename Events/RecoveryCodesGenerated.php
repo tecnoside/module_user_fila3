@@ -18,8 +18,8 @@ class RecoveryCodesGenerated
      *
      * @return void
      */
-    public function __construct(UserContract $user)
+    public function __construct(UserContract $userContract)
     {
-        $this->user = $user;
+        $this->user = $userContract;
     }
 }

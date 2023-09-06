@@ -23,7 +23,7 @@
     },
     "require": {
         "artmin96/filament-jet": "*",
-        "laraxot/module_xot_fila": "dev-master",
+        "laraxot/module_xot_fila3": "dev-master",
         "spatie/laravel-personal-data-export": "*",
         "laravel/passport": "*"
     },

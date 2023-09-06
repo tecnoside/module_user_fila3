@@ -29,6 +29,9 @@ class CreateRole extends CreateRecord
         return $res;
     }
 
+    /**
+     *  Method Modules\User\Filament\Resources\RoleResource\Pages\CreateRole::afterCreate() is unused.
+     */
     private function afterCreate(): void
     {
         $permissionModels = collect();

@@ -12,8 +12,6 @@ class RolePolicy extends XotBasePolicy
 {
     /**
      * Determine whether the user can view any models.
-     *
-     * @return true
      */
     public function viewAny(User $user): bool
     {

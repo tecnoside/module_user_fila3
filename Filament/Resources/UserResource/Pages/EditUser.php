@@ -9,6 +9,7 @@ use Filament\Resources\Pages\EditRecord;
 use Illuminate\Support\Facades\Hash;
 use Modules\User\Filament\Resources\UserResource;
 use Savannabits\FilamentModules\Concerns\ContextualPage;
+use Webmozart\Assert\Assert;
 
 class EditUser extends EditRecord
 {
@@ -17,6 +18,7 @@ class EditUser extends EditRecord
 
     public function beforeSave(): void
     {
+        Assert::isArray($this->data);
         if (! array_key_exists('new_password', $this->data) || ! filled($this->data['new_password'])) {
             return;
         }

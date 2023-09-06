@@ -36,7 +36,7 @@ class Password implements Rule
      *
      * @var string
      */
-    private $message;
+    private $message = '';
 
     /**
      * Determine if the validation rule passes.

@@ -36,6 +36,9 @@ class EditRole extends EditRecord
         return Arr::only($data, ['name', 'guard_name']);
     }
 
+    /**
+     *  Method Modules\User\Filament\Resources\RoleResource\Pages\EditRole::afterSave() is unused.
+     */
     private function afterSave(): void
     {
         $permissionModels = collect();

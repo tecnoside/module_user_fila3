@@ -90,10 +90,10 @@ class UserResource extends XotBaseResource
         ];
     }
 
-    public static function extendForm(\Closure $callback): void
-    {
-        static::$extendFormCallback = $callback;
-    }
+    // public static function extendForm(\Closure $callback): void
+    // {
+    //    static::$extendFormCallback = $callback;
+    // }
 
     public static function formOld(Form $form): Form
     {

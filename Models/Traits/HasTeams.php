@@ -4,17 +4,16 @@ declare(strict_types=1);
 
 namespace Modules\User\Models\Traits;
 
-use Exception;
-use Modules\User\Models\Role;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
-use Modules\User\Models\Contracts\TeamContract;
-use Modules\User\Models\FilamentJet;
+use Modules\User\Contracts\TeamContract;
 use Modules\User\Models\Models\Team;
+use Modules\User\Models\Role;
+use Modules\Xot\Datas\XotData;
 
 // use Modules\User\Models\OwnerRole;
 
@@ -43,6 +42,7 @@ trait HasTeams
      */
     public function currentTeam(): BelongsTo
     {
+        $xot = XotData::make();
         if (is_null($this->current_team_id) && $this->id) {
             $this->switchTeam($this->personalTeam());
         }
@@ -63,7 +63,7 @@ trait HasTeams
         if (! $teamContract instanceof TeamContract) {
             return false;
         }
-        
+
         if (! $this->belongsToTeam($teamContract)) {
             return false;
         }
@@ -126,9 +126,9 @@ trait HasTeams
         if (null === $res) {
             return null;
         }
-        
+
         if (! $res instanceof TeamContract) {
-            throw new Exception('strange things');
+            throw new \Exception('strange things');
         }
 
         return $res;
@@ -159,7 +159,7 @@ trait HasTeams
             return true;
         }
 
-        return (bool) $this->teams->contains(static fn($t): bool => $t->getKey() === $teamContract->getKey());
+        return (bool) $this->teams->contains(static fn ($t): bool => $t->getKey() === $teamContract->getKey());
     }
 
     /**

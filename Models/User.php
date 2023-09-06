@@ -6,27 +6,25 @@ namespace Modules\User\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 // use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Support\Carbon;
-use Laravel\Passport\Client;
-use Illuminate\Notifications\DatabaseNotificationCollection;
-use Illuminate\Notifications\DatabaseNotification;
-use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
-use Laravel\Passport\Token;
-use Illuminate\Database\Eloquent\Builder;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Models\Contracts\HasAvatar;
 use Filament\Models\Contracts\HasTenants;
 use Filament\Panel;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\DatabaseNotification;
+use Illuminate\Notifications\DatabaseNotificationCollection;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
+use Laravel\Passport\Client;
 use Laravel\Passport\HasApiTokens;
+use Laravel\Passport\Token;
 use Modules\User\Contracts\UserContract as UserJetContract;
 use Modules\User\Database\Factories\UserFactory;
 use Modules\User\Models\Traits\CanExportPersonalData;
@@ -34,37 +32,39 @@ use Modules\User\Models\Traits\HasProfilePhoto;
 use Modules\User\Models\Traits\HasTeams;
 use Modules\User\Models\Traits\TwoFactorAuthenticatable;
 use Modules\Xot\Datas\XotData;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
 use Spatie\PersonalDataExport\ExportsPersonalData;
 
 /**
  * Modules\User\Models\User.
  *
- * @property int                                                                                                           $id
- * @property string                                                                                                        $name
- * @property string                                                                                                        $email
- * @property string                                                                                                        $api_token
- * @property Carbon|null $email_verified_at
- * @property string                                                                                                        $password
- * @property string|null                                                                                                   $two_factor_secret
- * @property string|null                                                                                                   $two_factor_recovery_codes
- * @property string|null                                                                                                   $two_factor_confirmed_at
- * @property string|null                                                                                                   $remember_token
- * @property int|null                                                                                                      $current_team_id
- * @property string|null                                                                                                   $profile_photo_path
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
- * @property \Illuminate\Database\Eloquent\Collection<int, Client> $clients
- * @property int|null                                                                                                      $clients_count
- * @property string                                                                                                        $profile_photo_url
+ * @property int                                                       $id
+ * @property string                                                    $name
+ * @property string                                                    $email
+ * @property string                                                    $api_token
+ * @property Carbon|null                                               $email_verified_at
+ * @property string                                                    $password
+ * @property string|null                                               $two_factor_secret
+ * @property string|null                                               $two_factor_recovery_codes
+ * @property string|null                                               $two_factor_confirmed_at
+ * @property string|null                                               $remember_token
+ * @property int|null                                                  $current_team_id
+ * @property string|null                                               $profile_photo_path
+ * @property Carbon|null                                               $created_at
+ * @property Carbon|null                                               $updated_at
+ * @property \Illuminate\Database\Eloquent\Collection<int, Client>     $clients
+ * @property int|null                                                  $clients_count
+ * @property string                                                    $profile_photo_url
  * @property DatabaseNotificationCollection<int, DatabaseNotification> $notifications
- * @property int|null                                                                                                      $notifications_count
+ * @property int|null                                                  $notifications_count
  * @property \Illuminate\Database\Eloquent\Collection<int, Permission> $permissions
- * @property int|null                                                                                                      $permissions_count
- * @property \Illuminate\Database\Eloquent\Collection<int, Role> $roles
- * @property int|null                                                                                                      $roles_count
- * @property \Illuminate\Database\Eloquent\Collection<int, Token> $tokens
- * @property int|null                                                                                                      $tokens_count
+ * @property int|null                                                  $permissions_count
+ * @property \Illuminate\Database\Eloquent\Collection<int, Role>       $roles
+ * @property int|null                                                  $roles_count
+ * @property \Illuminate\Database\Eloquent\Collection<int, Token>      $tokens
+ * @property int|null                                                  $tokens_count
  *
  * @method static Builder|User newModelQuery()
  * @method static Builder|User newQuery()
@@ -93,9 +93,9 @@ use Spatie\PersonalDataExport\ExportsPersonalData;
  *
  * @method static Builder|User whereLang($value)
  *
- * @property Team|null $currentTeam
+ * @property Team|null                                           $currentTeam
  * @property \Illuminate\Database\Eloquent\Collection<int, Team> $ownedTeams
- * @property \Modules\EWall\Models\Profile|null                                       $profile
+ * @property \Modules\EWall\Models\Profile|null                  $profile
  * @property \Illuminate\Database\Eloquent\Collection<int, Team> $teams
  *
  * @mixin \Eloquent
@@ -110,6 +110,7 @@ class User extends Authenticatable implements \Modules\Xot\Contracts\UserContrac
     use HasRoles;
     // use HasProfilePhoto; //ArtMin96
     // use HasTeams; //ArtMin96
+    use Traits\HasTeams;
     use Notifiable;
 
     /**

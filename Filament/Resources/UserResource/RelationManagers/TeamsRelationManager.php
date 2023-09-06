@@ -22,7 +22,9 @@ class TeamsRelationManager extends RelationManager
     public function form(Form $form): Form
     {
         $form = TeamResource::form($form);
+        /*
         $childComponents = [];
+         Call to an undefined method Filament\Forms\Form::getSchema(). //FILAMENT 2
         foreach ($form->getSchema() as $schema) {
             $childComponents = array_merge($childComponents, $schema->getChildComponents());
         }
@@ -30,7 +32,7 @@ class TeamsRelationManager extends RelationManager
         $childComponents['role'] = Select::make('role')
             ->options(Role::all()->pluck('name', 'name'));
         $form->schema($childComponents);
-
+        */
         return $form;
     }
 

@@ -22,9 +22,7 @@ class UsersRelationManager extends RelationManager
 
     public function form(Form $form): Form
     {
-        $form = UserResource::form($form);
-
-        return $form;
+        return UserResource::form($form);
         /*
         return $form
             ->schema([

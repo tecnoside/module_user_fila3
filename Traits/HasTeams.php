@@ -4,6 +4,11 @@ declare(strict_types=1);
 
 namespace Modules\User\Traits;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Collection;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Modules\User\Models\Team;
 use Illuminate\Support\Str;
 use Laravel\Passport\HasApiTokens;
 use Modules\User\OwnerRole;
@@ -24,7 +29,7 @@ trait HasTeams
     /**
      * Get the current team of the user's context.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function currentTeam()
     {
@@ -59,7 +64,7 @@ trait HasTeams
     /**
      * Get all of the teams the user owns or belongs to.
      *
-     * @return \Illuminate\Support\Collection
+     * @return Collection
      */
     public function allTeams()
     {
@@ -69,7 +74,7 @@ trait HasTeams
     /**
      * Get all of the teams the user owns.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function ownedTeams()
     {
@@ -79,7 +84,7 @@ trait HasTeams
     /**
      * Get all of the teams the user belongs to.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return BelongsToMany
      */
     public function teams()
     {
@@ -94,7 +99,7 @@ trait HasTeams
     /**
      * Get the user's "personal" team.
      *
-     * @return \Modules\User\Models\Team
+     * @return Team
      */
     public function personalTeam()
     {
@@ -126,9 +131,7 @@ trait HasTeams
             return false;
         }
 
-        return $this->ownsTeam($team) || $this->teams->contains(function ($t) use ($team) {
-            return $t->id === $team->id;
-        });
+        return $this->ownsTeam($team) || $this->teams->contains(fn($t) => $t->id === $team->id);
     }
 
     /**

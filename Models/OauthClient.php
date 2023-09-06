@@ -4,36 +4,36 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
-use Illuminate\Support\Carbon;
-use Illuminate\Database\Eloquent\Collection;
-use Laravel\Passport\Database\Factories\ClientFactory;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Carbon;
 use Laravel\Passport\AuthCode;
-use Laravel\Passport\Token;
 use Laravel\Passport\Client as PassportClient;
+use Laravel\Passport\Database\Factories\ClientFactory;
+use Laravel\Passport\Token;
 
 /**
  * Modules\User\Models\OauthClient.
  *
- * @property int                                                                                  $id
- * @property int|null                                                                             $user_id
- * @property string                                                                               $name
- * @property string|null                                                                          $secret
- * @property string|null                                                                          $provider
- * @property string                                                                               $redirect
- * @property bool                                                                                 $personal_access_client
- * @property bool                                                                                 $password_client
- * @property bool                                                                                 $revoked
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
- * @property Collection<int, OauthAuthCode> $authCodes
- * @property int|null                                                                             $auth_codes_count
- * @property string|null                                                                          $plain_secret
+ * @property int                               $id
+ * @property int|null                          $user_id
+ * @property string                            $name
+ * @property string|null                       $secret
+ * @property string|null                       $provider
+ * @property string                            $redirect
+ * @property bool                              $personal_access_client
+ * @property bool                              $password_client
+ * @property bool                              $revoked
+ * @property Carbon|null                       $created_at
+ * @property Carbon|null                       $updated_at
+ * @property Collection<int, OauthAuthCode>    $authCodes
+ * @property int|null                          $auth_codes_count
+ * @property string|null                       $plain_secret
  * @property Collection<int, OauthAccessToken> $tokens
- * @property int|null                                                                             $tokens_count
- * @property User|null $user
+ * @property int|null                          $tokens_count
+ * @property User|null                         $user
  *
- * @method static ClientFactory factory($count = null, $state = [])
+ * @method static ClientFactory       factory($count = null, $state = [])
  * @method static Builder|OauthClient newModelQuery()
  * @method static Builder|OauthClient newQuery()
  * @method static Builder|OauthClient query()
@@ -50,12 +50,12 @@ use Laravel\Passport\Client as PassportClient;
  * @method static Builder|OauthClient whereUserId($value)
  *
  * @property Collection<int, AuthCode> $authCodes
- * @property Collection<int, Token> $tokens
+ * @property Collection<int, Token>    $tokens
  *
  * @mixin IdeHelperOauthClient
  * @mixin \Eloquent
  */
-final class OauthClient extends PassportClient
+class OauthClient extends PassportClient
 {
     /**
      * @var string

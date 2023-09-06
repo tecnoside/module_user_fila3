@@ -8,7 +8,7 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Modules\User\Contracts\TeamContract;
 use Modules\User\Contracts\UserContract;
 
-final class RemovingTeamMember
+class RemovingTeamMember
 {
     use Dispatchable;
 
@@ -26,7 +26,6 @@ final class RemovingTeamMember
          * The team member being added.
          */
         public UserContract $userContract
-    )
-    {
+    ) {
     }
 }

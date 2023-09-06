@@ -9,7 +9,7 @@ use Modules\Xot\Database\Migrations\XotBaseMigration;
 /**
  * Class CreateRolesTable.
  */
-final class CreateRolesTable extends XotBaseMigration
+class CreateRolesTable extends XotBaseMigration
 {
     /**
      * Run the migrations.
@@ -23,14 +23,14 @@ final class CreateRolesTable extends XotBaseMigration
         if (! is_array($tableNames)) {
             throw new Exception('['.__LINE__.']['.__FILE__.']');
         }
-        
+
         if (! is_array($columnNames)) {
             throw new Exception('['.__LINE__.']['.__FILE__.']');
         }
 
         // -- CREATE --
         $this->tableCreate(
-            static function (Blueprint $blueprint) use ($columnNames) : void {
+            static function (Blueprint $blueprint) use ($columnNames): void {
                 // $teams = config('permission.teams');
                 $blueprint->bigIncrements('id');
                 // role id
@@ -67,7 +67,7 @@ final class CreateRolesTable extends XotBaseMigration
                     //    )
                     // }
                 }
-                
+
                 // $table->string('team_id')->nullable()->change();
                 if ($this->hasIndexName('name_guard_name_unique')) {
                     $blueprint->dropIndex('roles_name_guard_name_unique');

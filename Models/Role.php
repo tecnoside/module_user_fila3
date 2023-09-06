@@ -43,7 +43,7 @@ use Spatie\Permission\Models\Role as SpatieRole;
  *
  * @mixin \Eloquent
  */
-final class Role extends SpatieRole
+class Role extends SpatieRole
 {
     use HasFactory;
 

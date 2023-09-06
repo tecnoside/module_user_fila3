@@ -7,9 +7,9 @@ namespace Modules\User\Filament\Pages;
 use Filament\Pages\Page;
 use Savannabits\FilamentModules\Concerns\ContextualPage;
 
-final class Dashboard extends Page
+class Dashboard extends Page
 {
-    //use ContextualPage;
+    // use ContextualPage;
     protected static ?string $navigationIcon = 'heroicon-o-home';
 
     protected static string $view = 'user::filament.pages.dashboard';

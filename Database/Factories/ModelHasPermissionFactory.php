@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Modules\User\Database\Factories;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Database\Eloquent\Model;
 use Modules\User\Models\ModelHasPermission;
 
-final class ModelHasPermissionFactory extends Factory
+class ModelHasPermissionFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.

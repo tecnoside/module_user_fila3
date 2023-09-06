@@ -7,7 +7,7 @@ namespace Modules\User\Events;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Queue\SerializesModels;
 
-final class RecoveryCodeReplaced
+class RecoveryCodeReplaced
 {
     use SerializesModels;
 
@@ -15,7 +15,7 @@ final class RecoveryCodeReplaced
      * Create a new event instance.
      *
      * @param Authenticatable $user
-     * @param string                                     $code
+     * @param string          $code
      *
      * @return void
      */

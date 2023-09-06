@@ -7,7 +7,7 @@ namespace Modules\User\Database\Seeders;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
 
-final class UserDatabaseSeeder extends Seeder
+class UserDatabaseSeeder extends Seeder
 {
     /**
      * Run the database seeds.

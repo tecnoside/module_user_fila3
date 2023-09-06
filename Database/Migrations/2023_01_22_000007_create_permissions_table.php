@@ -9,7 +9,7 @@ use Modules\Xot\Database\Migrations\XotBaseMigration;
 /**
  * Class CreatePermissionsTable.
  */
-final class CreatePermissionsTable extends XotBaseMigration
+class CreatePermissionsTable extends XotBaseMigration
 {
     /**
      * Run the migrations.
@@ -18,7 +18,7 @@ final class CreatePermissionsTable extends XotBaseMigration
     {
         // -- CREATE --
         $this->tableCreate(
-            static function (Blueprint $blueprint) : void {
+            static function (Blueprint $blueprint): void {
                 $blueprint->bigIncrements('id');
                 // permission id
                 $blueprint->string('name');
@@ -31,7 +31,7 @@ final class CreatePermissionsTable extends XotBaseMigration
         );
         // -- UPDATE --
         $this->tableUpdate(
-            static function (Blueprint $blueprint) : void {
+            static function (Blueprint $blueprint): void {
             }
         );
     }

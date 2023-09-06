@@ -7,7 +7,7 @@ namespace Modules\User\Events;
 use Illuminate\Foundation\Events\Dispatchable;
 use Modules\User\Contracts\UserContract;
 
-final class RecoveryCodesGenerated
+class RecoveryCodesGenerated
 {
     use Dispatchable;
 

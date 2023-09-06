@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Modules\User\Tests\Feature;
 
-use PHPUnit\Framework\Attributes\Test;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Jetstream\Http\Livewire\DeleteTeamForm;
 use Livewire\Livewire;
 use Modules\User\Models\Team;
 use Modules\User\Models\User;
 use Modules\User\Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
-final class DeleteTeamTest extends TestCase
+class DeleteTeamTest extends TestCase
 {
     use RefreshDatabase;
 

@@ -7,7 +7,7 @@ namespace Modules\User\Filament\Resources\UserResource\Widgets;
 use Filament\Widgets\Widget;
 use Illuminate\Database\Eloquent\Model;
 
-final class UserOverview extends Widget
+class UserOverview extends Widget
 {
     public ?Model $record = null;
 

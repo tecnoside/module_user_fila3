@@ -4,20 +4,21 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Carbon;
 use Modules\User\Database\Factories\PasswordResetFactory;
-use Illuminate\Database\Eloquent\Builder;
+
 /**
  * Modules\User\Models\PasswordReset.
  *
- * @property string                          $email
- * @property string                          $token
+ * @property string      $email
+ * @property string      $token
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
- * @property string|null                     $created_by
- * @property string|null                     $updated_by
+ * @property string|null $created_by
+ * @property string|null $updated_by
  *
- * @method static PasswordResetFactory factory($count = null, $state = [])
+ * @method static PasswordResetFactory  factory($count = null, $state = [])
  * @method static Builder|PasswordReset newModelQuery()
  * @method static Builder|PasswordReset newQuery()
  * @method static Builder|PasswordReset query()
@@ -31,7 +32,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @mixin IdeHelperPasswordReset
  * @mixin \Eloquent
  */
-final class PasswordReset extends BaseModel
+class PasswordReset extends BaseModel
 {
     /**
      * @var array<string>

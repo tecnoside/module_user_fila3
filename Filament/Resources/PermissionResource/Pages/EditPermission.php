@@ -8,7 +8,7 @@ use Filament\Resources\Pages\EditRecord;
 use Modules\User\Filament\Resources\PermissionResource;
 use Savannabits\FilamentModules\Concerns\ContextualPage;
 
-final class EditPermission extends EditRecord
+class EditPermission extends EditRecord
 {
     // //use ContextualPage;
     protected static string $resource = PermissionResource::class;

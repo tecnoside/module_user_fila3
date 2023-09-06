@@ -6,7 +6,7 @@ namespace Modules\User\Providers;
 
 use Modules\Xot\Providers\XotBaseRouteServiceProvider;
 
-final class RouteServiceProvider extends XotBaseRouteServiceProvider
+class RouteServiceProvider extends XotBaseRouteServiceProvider
 {
     /**
      * The module namespace to assume when generating URLs to actions.

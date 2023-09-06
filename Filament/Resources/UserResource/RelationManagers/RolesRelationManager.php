@@ -18,7 +18,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Modules\Xot\Datas\XotData;
 
-final class RolesRelationManager extends RelationManager
+class RolesRelationManager extends RelationManager
 {
     protected static string $relationship = 'roles';
 

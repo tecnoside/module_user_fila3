@@ -10,12 +10,12 @@ use Webmozart\Assert\Assert;
 /**
  * Undocumented class.
  */
-final class FilamentShieldData extends Data
+class FilamentShieldData extends Data
 {
     public ShieldResourceData $shield_resource;
 
     public SuperAdminData $super_admin;
-    
+
     public FilamentUserData $filament_user;
 
     public static function make(): self

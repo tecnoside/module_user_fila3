@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 
 use function Safe\preg_match;
 
-final class Password implements Rule
+class Password implements Rule
 {
     /**
      * The minimum length of the password.
@@ -55,11 +55,11 @@ final class Password implements Rule
             return false;
         }
 
-        if (!$this->requireSpecialCharacter) {
+        if (! $this->requireSpecialCharacter) {
             return Str::length($value) >= $this->length;
         }
 
-        if (preg_match('/[\W_]/', $value) !== 0) {
+        if (0 !== preg_match('/[\W_]/', $value)) {
             return Str::length($value) >= $this->length;
         }
 

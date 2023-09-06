@@ -9,16 +9,16 @@ use Spatie\LaravelData\Data;
 /**
  * Undocumented class.
  */
-final class ShieldResourceData extends Data
+class ShieldResourceData extends Data
 {
     public int $navigation_sort;
 
-     // = -1;
+    // = -1;
     public bool $navigation_badge;
 
-     // = true;
+    // = true;
     public bool $navigation_group;
 
-     // = true;
+    // = true;
     public bool $is_globally_searchable; // = false;
 }

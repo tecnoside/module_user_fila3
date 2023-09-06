@@ -6,7 +6,7 @@ namespace Modules\User\Notifications\Auth;
 
 use Illuminate\Auth\Notifications\ResetPassword as BaseNotification;
 
-final class ResetPassword extends BaseNotification
+class ResetPassword extends BaseNotification
 {
     public string $url;
 

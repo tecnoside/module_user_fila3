@@ -12,7 +12,7 @@ use Modules\User\Models\OauthPersonalAccessClient;
 use Modules\User\Models\OauthRefreshToken;
 use Modules\Xot\Providers\XotBaseServiceProvider;
 
-final class UserServiceProvider extends XotBaseServiceProvider
+class UserServiceProvider extends XotBaseServiceProvider
 {
     public string $module_name = 'user';
 

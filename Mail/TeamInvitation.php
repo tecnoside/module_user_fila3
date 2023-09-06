@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Modules\User\Models\TeamInvitation as TeamInvitationModel;
 
-final class TeamInvitation extends Mailable
+class TeamInvitation extends Mailable
 {
     use Queueable;
     use SerializesModels;

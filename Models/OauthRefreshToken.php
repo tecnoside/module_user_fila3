@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
-use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Carbon;
 use Laravel\Passport\RefreshToken as PassportRefreshToken;
 
 /**
  * Modules\User\Models\OauthRefreshToken.
  *
- * @property string                                     $id
- * @property string                                     $access_token_id
- * @property bool                                       $revoked
- * @property Carbon|null $expires_at
+ * @property string                $id
+ * @property string                $access_token_id
+ * @property bool                  $revoked
+ * @property Carbon|null           $expires_at
  * @property OauthAccessToken|null $accessToken
  *
  * @method static Builder|OauthRefreshToken newModelQuery()
@@ -28,12 +28,12 @@ use Laravel\Passport\RefreshToken as PassportRefreshToken;
  * @mixin IdeHelperOauthRefreshToken
  * @mixin \Eloquent
  */
-final class OauthRefreshToken extends PassportRefreshToken
+class OauthRefreshToken extends PassportRefreshToken
 {
     /*
      * @var string
      */
     protected $connection = 'user';
-    
+
     // protected $fillable = ['id', 'access_token_id', 'revoked', 'expires_at'];
 }

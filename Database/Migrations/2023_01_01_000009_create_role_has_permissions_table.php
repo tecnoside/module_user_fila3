@@ -10,7 +10,7 @@ use Spatie\Permission\PermissionRegistrar;
 /**
  * Class CreateModelHasRolesTable.
  */
-final class CreateRoleHasPermissionsTable extends XotBaseMigration
+class CreateRoleHasPermissionsTable extends XotBaseMigration
 {
     /**
      * Run the migrations.
@@ -19,7 +19,7 @@ final class CreateRoleHasPermissionsTable extends XotBaseMigration
     {
         // -- CREATE --
         $this->tableCreate(
-            static function (Blueprint $blueprint) : void {
+            static function (Blueprint $blueprint): void {
                 $blueprint->unsignedBigInteger(PermissionRegistrar::$pivotPermission);
                 $blueprint->unsignedBigInteger(PermissionRegistrar::$pivotRole);
                 // *
@@ -43,7 +43,7 @@ final class CreateRoleHasPermissionsTable extends XotBaseMigration
         );
         // -- UPDATE --
         $this->tableUpdate(
-            static function (Blueprint $blueprint) : void {
+            static function (Blueprint $blueprint): void {
             }
         );
     }

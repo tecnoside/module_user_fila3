@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
-use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Carbon;
 use Laravel\Passport\PersonalAccessClient as PassportPersonalAccessClient;
 
 /**
  * Modules\User\Models\OauthPersonalAccessClient.
  *
- * @property int                                   $id
- * @property int                                   $client_id
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
+ * @property int              $id
+ * @property int              $client_id
+ * @property Carbon|null      $created_at
+ * @property Carbon|null      $updated_at
  * @property OauthClient|null $client
  *
  * @method static Builder|OauthPersonalAccessClient newModelQuery()
@@ -28,12 +28,12 @@ use Laravel\Passport\PersonalAccessClient as PassportPersonalAccessClient;
  * @mixin IdeHelperOauthPersonalAccessClient
  * @mixin \Eloquent
  */
-final class OauthPersonalAccessClient extends PassportPersonalAccessClient
+class OauthPersonalAccessClient extends PassportPersonalAccessClient
 {
     /**
      * @var string
      */
     protected $connection = 'user';
-    
+
     // protected $fillable = ['id', 'client_id'];
 }

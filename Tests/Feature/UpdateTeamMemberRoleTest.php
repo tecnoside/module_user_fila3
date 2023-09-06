@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Modules\User\Tests\Feature;
 
-use PHPUnit\Framework\Attributes\Test;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Jetstream\Http\Livewire\TeamMemberManager;
 use Livewire\Livewire;
 use Modules\User\Models\User;
 use Modules\User\Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
-final class UpdateTeamMemberRoleTest extends TestCase
+class UpdateTeamMemberRoleTest extends TestCase
 {
     use RefreshDatabase;
 

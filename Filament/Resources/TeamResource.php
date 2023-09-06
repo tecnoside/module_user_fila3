@@ -4,42 +4,40 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Resources;
 
-use Filament\Forms\Components\TextInput;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Actions\ViewAction;
-use Filament\Tables\Actions\EditAction;
-use Filament\Tables\Actions\DetachAction;
-use Modules\User\Filament\Resources\TeamResource\RelationManagers\UsersRelationManager;
-use Modules\User\Filament\Resources\TeamResource\Pages\ListTeams;
-use Modules\User\Filament\Resources\TeamResource\Pages\CreateTeam;
-use Modules\User\Filament\Resources\TeamResource\Pages\ViewTeam;
-use Modules\User\Filament\Resources\TeamResource\Pages\EditTeam;
+use ArtMin96\FilamentJet\FilamentJet;
 use Filament\Forms;
-use Filament\Tables;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Filament\Resources\Resource;
+use Filament\Tables;
+use Filament\Tables\Actions\DetachAction;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Actions\ViewAction;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Modules\User\Filament\Resources\TeamResource\Pages\CreateTeam;
+use Modules\User\Filament\Resources\TeamResource\Pages\EditTeam;
+use Modules\User\Filament\Resources\TeamResource\Pages\ListTeams;
+use Modules\User\Filament\Resources\TeamResource\Pages\ViewTeam;
+use Modules\User\Filament\Resources\TeamResource\RelationManagers\UsersRelationManager;
 use Modules\User\Models\Role;
 use Modules\User\Models\Team;
-use Filament\Resources\Resource;
-use ArtMin96\FilamentJet\FilamentJet;
-use Modules\User\Filament\Resources\TeamResource\Pages;
 use Savannabits\FilamentModules\Concerns\ContextualResource;
-use Modules\User\Filament\Resources\TeamResource\RelationManagers;
 
-final class TeamResource extends Resource
+class TeamResource extends Resource
 {
-    //////use ContextualResource;
+    // ////use ContextualResource;
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
     protected static ?string $navigationLabel = 'Teams';
-    
+
     protected static ?string $slug = 'teams';
-    
+
     protected static ?string $navigationGroup = 'Admin';
 
     public static function getModel(): string
     {
-        //return FilamentJet::teamModel();
+        // return FilamentJet::teamModel();
         return Team::class;
     }
 

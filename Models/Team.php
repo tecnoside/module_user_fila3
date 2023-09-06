@@ -44,7 +44,7 @@ use Modules\Xot\Datas\XotData;
  *
  * @mixin \Eloquent
  */
-final class Team extends BaseModel implements TeamContract
+class Team extends BaseModel implements TeamContract
 {
     protected $fillable = [
         'user_id',

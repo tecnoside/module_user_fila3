@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Modules\Xot\Http\Controllers\XotBaseController;
 use Webmozart\Assert\Assert;
 
-final class LoginController extends XotBaseController
+class LoginController extends XotBaseController
 {
     /**
      * Login api.

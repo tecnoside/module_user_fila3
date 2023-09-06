@@ -8,7 +8,7 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Modules\User\Contracts\TeamContract;
 use Modules\User\Contracts\UserContract;
 
-final class TeamSwitched
+class TeamSwitched
 {
     use Dispatchable;
 
@@ -26,7 +26,6 @@ final class TeamSwitched
          * The team member that was updated.
          */
         public UserContract $userContract
-    )
-    {
+    ) {
     }
 }

@@ -6,10 +6,10 @@ namespace Modules\User\Http\Middleware;
 
 use Modules\Xot\Http\Middleware\XotBaseFilamentMiddleware;
 
-final class FilamentMiddleware extends XotBaseFilamentMiddleware
+class FilamentMiddleware extends XotBaseFilamentMiddleware
 {
     public static string $module = 'User';
-    
+
     public static string $context = 'filament';
 
     /*

@@ -35,7 +35,7 @@ use Modules\Xot\Datas\XotData;
  *
  * @mixin \Eloquent
  */
-final class TeamInvitation extends BaseModel
+class TeamInvitation extends BaseModel
 {
     /**
      * @var string

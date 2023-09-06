@@ -7,7 +7,7 @@ namespace Modules\User\Events;
 use Illuminate\Foundation\Events\Dispatchable;
 use Modules\User\Contracts\TeamContract;
 
-final class InvitingTeamMember
+class InvitingTeamMember
 {
     use Dispatchable;
 
@@ -29,7 +29,6 @@ final class InvitingTeamMember
          * The role of the invitee.
          */
         public string $role
-    )
-    {
+    ) {
     }
 }

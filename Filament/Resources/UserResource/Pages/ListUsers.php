@@ -5,13 +5,12 @@ declare(strict_types=1);
 namespace Modules\User\Filament\Resources\UserResource\Pages;
 
 use Filament\Pages\Actions\CreateAction;
-use Modules\User\Filament\Resources\UserResource\Widgets\UserOverview;
-use Filament\Pages\Actions;
 use Filament\Resources\Pages\ListRecords;
 use Modules\User\Filament\Resources\UserResource;
+use Modules\User\Filament\Resources\UserResource\Widgets\UserOverview;
 use Savannabits\FilamentModules\Concerns\ContextualPage;
 
-final class ListUsers extends ListRecords
+class ListUsers extends ListRecords
 {
     // //use ContextualPage;
     protected static string $resource = UserResource::class;

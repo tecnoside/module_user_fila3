@@ -7,7 +7,7 @@ namespace Modules\User\Jobs;
 use Illuminate\Bus\Batchable;
 use Spatie\PersonalDataExport\Jobs\CreatePersonalDataExportJob as BaseCreatePersonalDataExportJob;
 
-final class CreatePersonalDataExportJob extends BaseCreatePersonalDataExportJob
+class CreatePersonalDataExportJob extends BaseCreatePersonalDataExportJob
 {
     use Batchable;
 }

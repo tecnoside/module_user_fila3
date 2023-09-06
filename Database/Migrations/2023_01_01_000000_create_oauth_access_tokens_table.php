@@ -5,12 +5,12 @@ declare(strict_types=1);
 use Illuminate\Database\Schema\Blueprint;
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
-final class CreateOauthAccessTokensTable extends XotBaseMigration
+class CreateOauthAccessTokensTable extends XotBaseMigration
 {
     public function up(): void
     {
         $this->tableCreate(
-            static function (Blueprint $blueprint) : void {
+            static function (Blueprint $blueprint): void {
                 $blueprint->string('id', 100)->primary();
                 $blueprint->unsignedBigInteger('user_id')->nullable()->index();
                 // $table->foreignIdFor(User::class);
@@ -25,7 +25,7 @@ final class CreateOauthAccessTokensTable extends XotBaseMigration
 
         // -- UPDATE --
         $this->tableUpdate(
-            static function (Blueprint $blueprint) : void {
+            static function (Blueprint $blueprint): void {
             }
         );
     }

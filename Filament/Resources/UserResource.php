@@ -8,8 +8,6 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Resources;
 
-use Closure;
-use Filament\Notifications\Notification;
 use Filament\Facades\Filament;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Group;
@@ -17,6 +15,7 @@ use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Actions\Action;
@@ -42,15 +41,15 @@ use Modules\User\Models\Role;
 use Modules\User\Models\User;
 use Modules\Xot\Filament\Resources\XotBaseResource;
 
-final class UserResource extends XotBaseResource
+class UserResource extends XotBaseResource
 {
     // protected static ?string $model = User::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-users';
 
-    private static bool|Closure $enablePasswordUpdates = true;
+    private static bool|\Closure $enablePasswordUpdates = true;
 
-    private static ?Closure $extendFormCallback = null;
+    private static ?\Closure $extendFormCallback = null;
 
     /*
     protected static function getNavigationLabel(): string
@@ -91,7 +90,7 @@ final class UserResource extends XotBaseResource
         ];
     }
 
-    public static function extendForm(Closure $callback): void
+    public static function extendForm(\Closure $callback): void
     {
         static::$extendFormCallback = $callback;
     }
@@ -163,7 +162,7 @@ final class UserResource extends XotBaseResource
                             ->content(static fn ($record) => $record?->created_at?->diffForHumans() ?? new HtmlString('&mdash;')),
                     ])->columnSpan(4),
                 ];
-                if (static::$extendFormCallback instanceof Closure) {
+                if (static::$extendFormCallback instanceof \Closure) {
                     return value(static::$extendFormCallback, $schema);
                 }
 
@@ -251,7 +250,7 @@ final class UserResource extends XotBaseResource
             ->defaultSort('created_at', 'desc');
     }
 
-    public static function enablePasswordUpdates(bool|Closure $condition = true): void
+    public static function enablePasswordUpdates(bool|\Closure $condition = true): void
     {
         static::$enablePasswordUpdates = $condition;
     }

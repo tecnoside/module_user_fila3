@@ -5,13 +5,12 @@ declare(strict_types=1);
 namespace Modules\User\Filament\Resources\UserResource\Pages;
 
 use Filament\Pages\Actions\DeleteAction;
-use Filament\Pages\Actions;
 use Filament\Resources\Pages\EditRecord;
 use Illuminate\Support\Facades\Hash;
 use Modules\User\Filament\Resources\UserResource;
 use Savannabits\FilamentModules\Concerns\ContextualPage;
 
-final class EditUser extends EditRecord
+class EditUser extends EditRecord
 {
     // //use ContextualPage;
     protected static string $resource = UserResource::class;

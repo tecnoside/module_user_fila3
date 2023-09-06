@@ -58,9 +58,9 @@ final class CreateModelHasRolesTable extends XotBaseMigration
             function (Blueprint $blueprint): void {
                 if (! $this->hasColumn('team_id')) {
                     $blueprint->foreignId('team_id')->nullable();
+                } else {
+                    $blueprint->string('team_id')->nullable()->change();
                 }
-
-                $blueprint->string('team_id')->nullable()->change();
                 if ($this->hasIndexName('model_has_roles_team_foreign_key_index')) {
                     $blueprint->dropIndex('model_has_roles_team_foreign_key_index');
                 }

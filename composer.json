@@ -40,6 +40,7 @@
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "*",
+        "driftingly/rector-laravel": "^0.24.1",
         "fakerphp/faker": "*",
         "friendsofphp/php-cs-fixer": "*",
         "laravel/pint": "*",
@@ -53,6 +54,8 @@
         "phpstan/phpstan-deprecation-rules": "*",
         "phpstan/phpstan-phpunit": "*",
         "psalm/plugin-laravel": "^2.8",
+        "rector/phpstan-rules": "^0.7.1",
+        "rector/rector": "^0.18.2",
         "spatie/laravel-ray": "*",
         "thecodingmachine/phpstan-safe-rule": "*",
         "tightenco/duster": "^2.2"

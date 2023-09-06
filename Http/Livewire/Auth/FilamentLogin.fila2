@@ -6,7 +6,7 @@ namespace Modules\User\Http\Livewire\Auth;
 
 use Savannabits\FilamentModules\Http\Livewire\Auth\BaseLogin;
 
-final class FilamentLogin extends BaseLogin
+class FilamentLogin extends BaseLogin
 {
     public static string $context = 'filament';
     

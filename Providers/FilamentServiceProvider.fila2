@@ -6,7 +6,7 @@ namespace Modules\User\Providers;
 
 use Modules\Xot\Providers\XotBaseContextServiceProvider;
 
-final class FilamentServiceProvider extends XotBaseContextServiceProvider
+class FilamentServiceProvider extends XotBaseContextServiceProvider
 {
     public static string $name = 'user-filament';
     

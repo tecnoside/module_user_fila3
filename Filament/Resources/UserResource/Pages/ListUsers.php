@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Resources\UserResource\Pages;
 
-use Filament\Pages\Actions\CreateAction;
+use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 use Modules\User\Filament\Resources\UserResource;
 use Modules\User\Filament\Resources\UserResource\Widgets\UserOverview;

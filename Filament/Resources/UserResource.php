@@ -207,10 +207,10 @@ class UserResource extends XotBaseResource
                     ->attribute('role_id'),
                 Filter::make('verified')
                     ->label(trans('filament-user::user.resource.verified'))
-                    ->query(static fn (Builder $builder): Builder => $builder->whereNotNull('email_verified_at')),
+                    ->query(static fn (Builder $query): Builder => $query->whereNotNull('email_verified_at')),
                 Filter::make('unverified')
                     ->label(trans('filament-user::user.resource.unverified'))
-                    ->query(static fn (Builder $builder): Builder => $builder->whereNull('email_verified_at')),
+                    ->query(static fn (Builder $query): Builder => $query->whereNull('email_verified_at')),
             ])
             ->actions([
                 EditAction::make(),

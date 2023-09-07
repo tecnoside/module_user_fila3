@@ -9,10 +9,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
-use Laravel\Sanctum\HasApiTokens;
+use Laravel\Passport\HasApiTokens;
 use Modules\User\Contracts\TeamContract;
-use Modules\User\Models\Models\Team;
 use Modules\User\Models\Role;
+use Modules\User\Models\Team;
 use Modules\Xot\Datas\XotData;
 
 // use Modules\User\Models\OwnerRole;
@@ -95,6 +95,8 @@ trait HasTeams
      */
     public function ownedTeams(): HasMany
     {
+        $xot = XotData::make();
+
         return $this->hasMany($xot->getTeamClass());
     }
 
@@ -183,7 +185,7 @@ trait HasTeams
             ->membership
             ->role;
 
-        return $role ? FilamentJet::findRole($role) : null;
+        return $role; // ? FilamentJet::findRole($role) : null;
     }
 
     /**
@@ -195,11 +197,13 @@ trait HasTeams
             return true;
         }
 
+        /*
         return $this->belongsToTeam($teamContract) && optional(FilamentJet::findRole($teamContract->users->where(
             'id',
             $this->id
         )->first()?->membership?->role))->key === $role;
-    }
+        */
+        return $this->belongsToTeam($teamContract) && $this->teamRole($teamContract)!= null;
 
     /**
      * Get the user's permissions for the given team.

@@ -204,6 +204,7 @@ trait HasTeams
         )->first()?->membership?->role))->key === $role;
         */
         return $this->belongsToTeam($teamContract) && $this->teamRole($teamContract)!= null;
+    }
 
     /**
      * Get the user's permissions for the given team.

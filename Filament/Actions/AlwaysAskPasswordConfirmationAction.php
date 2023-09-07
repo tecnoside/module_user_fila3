@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Actions;
 
+use Filament\Actions\Action;
 use Filament\Forms\Components\TextInput;
-use Filament\Pages\Actions\Action;
 
 class AlwaysAskPasswordConfirmationAction extends Action
 {

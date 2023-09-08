@@ -18,7 +18,7 @@ class LoginController extends XotBaseController
     {
         if (auth()->attempt(['email' => $request->email, 'password' => $request->password])) {
             Assert::notNull($user = auth()->user(), 'wip');
-
+            $success = [];
             $success['token'] = $user->createToken('MyApp')->accessToken;
             $success['name'] = $user->name;
 

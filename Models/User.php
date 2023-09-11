@@ -6,36 +6,37 @@ namespace Modules\User\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 // use Laravel\Sanctum\HasApiTokens;
-use Filament\Models\Contracts\FilamentUser;
-use Filament\Models\Contracts\HasAvatar;
-use Filament\Models\Contracts\HasTenants;
 use Filament\Panel;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\DatabaseNotification;
-use Illuminate\Notifications\DatabaseNotificationCollection;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Collection;
-use Laravel\Passport\Client;
-use Laravel\Passport\HasApiTokens;
 use Laravel\Passport\Token;
-use Modules\User\Contracts\UserContract as UserJetContract;
-use Modules\User\Database\Factories\UserFactory;
-use Modules\User\Models\Traits\CanExportPersonalData;
-use Modules\User\Models\Traits\HasProfilePhoto;
-use Modules\User\Models\Traits\HasTeams;
-use Modules\User\Models\Traits\TwoFactorAuthenticatable;
+use Laravel\Passport\Client;
+
+use Illuminate\Support\Carbon;
 use Modules\Xot\Datas\XotData;
-use Spatie\Permission\Models\Permission;
+use Illuminate\Support\Collection;
+use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Database\Eloquent\Model;
+use Filament\Models\Contracts\HasAvatar;
+use Illuminate\Notifications\Notifiable;
+use Modules\User\Models\Traits\HasTeams;
+use Spatie\Permission\Models\Permission;
+use Filament\Models\Contracts\HasTenants;
+use Illuminate\Database\Eloquent\Builder;
+use Filament\Models\Contracts\FilamentUser;
+use Modules\User\Models\Traits\HasProfilePhoto;
+use Modules\User\Database\Factories\UserFactory;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Notifications\DatabaseNotification;
 use Spatie\PersonalDataExport\ExportsPersonalData;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\User\Models\Traits\CanExportPersonalData;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Modules\User\Models\Traits\TwoFactorAuthenticatable;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Modules\User\Contracts\UserContract as UserJetContract;
+use Illuminate\Notifications\DatabaseNotificationCollection;
 
 /**
  * Modules\User\Models\User.
@@ -191,18 +192,5 @@ class User extends Authenticatable implements \Modules\Xot\Contracts\UserContrac
     // ----------------------
     // ---------------------
 
-    public function teams(): BelongsToMany
-    {
-        return $this->belongsToMany(Team::class);
-    }
 
-    public function canAccessTenant(Model $model): bool
-    {
-        return $this->teams->contains($model);
-    }
-
-    public function getTenants(Panel $panel): array|Collection
-    {
-        return $this->teams;
-    }
 }

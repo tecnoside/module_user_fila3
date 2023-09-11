@@ -27,7 +27,7 @@ use Savannabits\FilamentModules\Concerns\ContextualResource;
 class TeamResource extends Resource
 {
     // ////use ContextualResource;
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon = 'heroicon-o-users';
 
     protected static ?string $navigationLabel = 'Teams';
 

@@ -124,6 +124,8 @@ class UserResource extends XotBaseResource
                         'email' => TextInput::make('email')
                             ->required()
                             ->unique(ignoreRecord: true),
+                        'current_team_id'=>Select::make('current_team_id')
+                            ->relationship('teams','name'),
                         'password' => TextInput::make('password')
                             ->required()
                             ->password()

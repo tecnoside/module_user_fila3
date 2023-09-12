@@ -130,6 +130,7 @@ class User extends Authenticatable implements \Modules\Xot\Contracts\UserContrac
         'email',
         'password',
         'lang',
+        'current_team_id',
     ];
 
     /**

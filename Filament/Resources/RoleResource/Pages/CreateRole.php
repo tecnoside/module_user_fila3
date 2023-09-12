@@ -10,11 +10,11 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Modules\User\Filament\Resources\RoleResource;
 use Modules\User\Support\Utils;
-use Savannabits\FilamentModules\Concerns\ContextualPage;
+
 
 class CreateRole extends CreateRecord
 {
-    // //use ContextualPage;
+    // //
     public Collection $permissions;
 
     protected static string $resource = RoleResource::class;

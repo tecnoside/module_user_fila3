@@ -7,11 +7,11 @@ namespace Modules\User\Filament\Resources\TeamResource\Pages;
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 use Modules\User\Filament\Resources\TeamResource;
-use Savannabits\FilamentModules\Concerns\ContextualPage;
+
 
 class ListTeams extends ListRecords
 {
-    // //use ContextualPage;
+    // //
     protected static string $resource = TeamResource::class;
 
     protected function getActions(): array

@@ -1,58 +1,54 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Modules\User\Filament\Resources\UserResource\RelationManagers;
 
-use Filament\Forms\Components\Select;
+use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
-use Filament\Tables\Actions\AttachAction;
-use Filament\Tables\Columns\TextColumn;
+use Filament\Tables;
 use Filament\Tables\Table;
-use Modules\User\Filament\Resources\TeamResource;
-use Modules\User\Models\Role;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class TeamsRelationManager extends RelationManager
 {
     protected static string $relationship = 'teams';
 
-    protected static ?string $recordTitleAttribute = 'name';
-
     public function form(Form $form): Form
     {
-        $form = TeamResource::form($form);
-        /*
-        $childComponents = [];
-         Call to an undefined method Filament\Forms\Form::getSchema(). //FILAMENT 2
-        foreach ($form->getSchema() as $schema) {
-            $childComponents = array_merge($childComponents, $schema->getChildComponents());
-        }
-
-        $childComponents['role'] = Select::make('role')
-            ->options(Role::all()->pluck('name', 'name'));
-        $form->schema($childComponents);
-        */
-        return $form;
+        return $form
+            ->schema([
+                Forms\Components\TextInput::make('name')
+                    ->required()
+                    ->maxLength(255),
+            ]);
     }
 
     public function table(Table $table): Table
     {
-        $table = TeamResource::table($table);
-
-        $columns = $table->getColumns();
-        $columns['role'] = TextColumn::make('role');
-        $table->columns($columns);
-
-        $headerActions = $table->getHeaderActions();
-        $headerActions['attach'] = AttachAction::make()
-            ->form(static fn (AttachAction $attachAction): array => [
-                $attachAction->getRecordSelect(),
-                Select::make('role')
-                    ->options(Role::all()->pluck('name', 'name')),
+        return $table
+            ->recordTitleAttribute('name')
+            ->columns([
+                Tables\Columns\TextColumn::make('name'),
+            ])
+            ->filters([
+                //
+            ])
+            ->headerActions([
+                //Tables\Actions\CreateAction::make(),
+                Tables\Actions\AttachAction::make(),
+            ])
+            ->actions([
+                Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
+            ])
+            ->bulkActions([
+                Tables\Actions\BulkActionGroup::make([
+                    Tables\Actions\DeleteBulkAction::make(),
+                ]),
+            ])
+            ->emptyStateActions([
+                Tables\Actions\CreateAction::make(),
             ]);
-        $table->headerActions($headerActions);
-
-        return $table;
     }
 }

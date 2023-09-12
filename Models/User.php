@@ -112,6 +112,7 @@ class User extends Authenticatable implements \Modules\Xot\Contracts\UserContrac
     // use HasProfilePhoto; //ArtMin96
     // use HasTeams; //ArtMin96
     use Traits\HasTeams;
+    //use Traits\HasProfilePhoto;
     use Notifiable;
 
     /**
@@ -159,7 +160,7 @@ class User extends Authenticatable implements \Modules\Xot\Contracts\UserContrac
      * @var array<int, string>
      */
     protected $appends = [
-        'profile_photo_url',
+       // 'profile_photo_url',
     ];
 
     public function canAccessFilament(): bool

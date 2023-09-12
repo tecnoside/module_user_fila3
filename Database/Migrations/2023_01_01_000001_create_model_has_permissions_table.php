@@ -24,12 +24,12 @@ class CreateModelHasPermissionsTable extends XotBaseMigration
 
         // -- CREATE --
         $this->tableCreate(
-            static function (Blueprint $blueprint) use ($tableNames, $columnNames): void {
-                $blueprint->unsignedBigInteger(PermissionRegistrar::$pivotPermission);
-                $blueprint->string('model_type');
-                $blueprint->unsignedBigInteger($columnNames['model_morph_key']);
-                $blueprint->index([$columnNames['model_morph_key'], 'model_type'], 'model_has_permissions_model_id_model_type_index');
-                $blueprint->foreign(PermissionRegistrar::$pivotPermission)
+            static function (Blueprint $table) use ($tableNames, $columnNames): void {
+                $table->unsignedBigInteger(PermissionRegistrar::$pivotPermission);
+                $table->string('model_type');
+                $table->unsignedBigInteger($columnNames['model_morph_key']);
+                $table->index([$columnNames['model_morph_key'], 'model_type'], 'model_has_permissions_model_id_model_type_index');
+                $table->foreign(PermissionRegistrar::$pivotPermission)
                     ->references('id') // permission id
                     ->on($tableNames['permissions'])
                     ->onDelete('cascade');
@@ -37,7 +37,7 @@ class CreateModelHasPermissionsTable extends XotBaseMigration
         );
         // -- UPDATE --
         $this->tableUpdate(
-            static function (Blueprint $blueprint): void {
+            static function (Blueprint $table): void {
             }
         );
     }

@@ -10,11 +10,11 @@ use Filament\Resources\Pages\ListRecords;
 use Filament\Tables\Actions\BulkAction;
 use Illuminate\Database\Eloquent\Collection;
 use Modules\User\Filament\Resources\PermissionResource;
-use Savannabits\FilamentModules\Concerns\ContextualPage;
+
 
 class ListPermissions extends ListRecords
 {
-    // //use ContextualPage;
+    // //
     protected static string $resource = PermissionResource::class;
 
     protected function getHeaderActions(): array

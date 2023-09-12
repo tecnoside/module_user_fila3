@@ -10,22 +10,22 @@ class CreateOauthAccessTokensTable extends XotBaseMigration
     public function up(): void
     {
         $this->tableCreate(
-            static function (Blueprint $blueprint): void {
-                $blueprint->string('id', 100)->primary();
-                $blueprint->unsignedBigInteger('user_id')->nullable()->index();
+            static function (Blueprint $table): void {
+                $table->string('id', 100)->primary();
+                $table->unsignedBigInteger('user_id')->nullable()->index();
                 // $table->foreignIdFor(User::class);
-                $blueprint->unsignedBigInteger('client_id');
-                $blueprint->string('name')->nullable();
-                $blueprint->text('scopes')->nullable();
-                $blueprint->boolean('revoked');
-                $blueprint->timestamps();
-                $blueprint->dateTime('expires_at')->nullable();
+                $table->unsignedBigInteger('client_id');
+                $table->string('name')->nullable();
+                $table->text('scopes')->nullable();
+                $table->boolean('revoked');
+                $table->timestamps();
+                $table->dateTime('expires_at')->nullable();
             }
         );
 
         // -- UPDATE --
         $this->tableUpdate(
-            static function (Blueprint $blueprint): void {
+            static function (Blueprint $table): void {
             }
         );
     }

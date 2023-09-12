@@ -24,11 +24,11 @@ class CreateModelHasRolesTable extends XotBaseMigration
 
         // -- CREATE --
         $this->tableCreate(
-            static function (Blueprint $blueprint) use ($columnNames): void {
-                $blueprint->unsignedBigInteger(PermissionRegistrar::$pivotRole);
-                $blueprint->string('model_type');
-                $blueprint->unsignedBigInteger($columnNames['model_morph_key']);
-                $blueprint->index([$columnNames['model_morph_key'], 'model_type'], 'model_has_roles_model_id_model_type_index');
+            static function (Blueprint $table) use ($columnNames): void {
+                $table->unsignedBigInteger(PermissionRegistrar::$pivotRole);
+                $table->string('model_type');
+                $table->unsignedBigInteger($columnNames['model_morph_key']);
+                $table->index([$columnNames['model_morph_key'], 'model_type'], 'model_has_roles_model_id_model_type_index');
                 /*
                 $table->foreign(PermissionRegistrar::$pivotRole)
                         ->references('id') // role id
@@ -37,15 +37,15 @@ class CreateModelHasRolesTable extends XotBaseMigration
                 */
                 /*
                 if ($teams) {
-                    $blueprint->unsignedBigInteger($columnNames['team_foreign_key']);
-                    $blueprint->index($columnNames['team_foreign_key'], 'model_has_roles_team_foreign_key_index');
+                    $table->unsignedBigInteger($columnNames['team_foreign_key']);
+                    $table->index($columnNames['team_foreign_key'], 'model_has_roles_team_foreign_key_index');
 
-                    $blueprint->primary(
+                    $table->primary(
                         [$columnNames['team_foreign_key'], PermissionRegistrar::$pivotRole, $columnNames['model_morph_key'], 'model_type'],
                         'model_has_roles_role_model_type_primary'
                     );
                 } else {
-                    $blueprint->primary(
+                    $table->primary(
                         [PermissionRegistrar::$pivotRole, $columnNames['model_morph_key'], 'model_type'],
                         'model_has_roles_role_model_type_primary'
                     );
@@ -55,18 +55,18 @@ class CreateModelHasRolesTable extends XotBaseMigration
         );
         // -- UPDATE --
         $this->tableUpdate(
-            function (Blueprint $blueprint): void {
+            function (Blueprint $table): void {
                 if (! $this->hasColumn('team_id')) {
-                    $blueprint->foreignId('team_id')->nullable();
+                    $table->foreignId('team_id')->nullable();
                 } else {
-                    $blueprint->string('team_id')->nullable()->change();
+                    $table->string('team_id')->nullable()->change();
                 }
                 if ($this->hasIndexName('model_has_roles_team_foreign_key_index')) {
-                    $blueprint->dropIndex('model_has_roles_team_foreign_key_index');
+                    $table->dropIndex('model_has_roles_team_foreign_key_index');
                 }
 
                 if ($this->hasIndexName('model_has_roles_model_id_model_type_index')) {
-                    $blueprint->dropIndex('model_has_roles_model_id_model_type_index');
+                    $table->dropIndex('model_has_roles_model_id_model_type_index');
                 }
             }
         );

@@ -17,31 +17,31 @@ class CreateUsersTable extends XotBaseMigration
     {
         // -- CREATE --
         $this->tableCreate(
-            static function (Blueprint $blueprint): void {
-                $blueprint->id();
-                $blueprint->string('name');
-                $blueprint->string('email')->unique();
-                $blueprint->timestamp('email_verified_at')->nullable();
-                $blueprint->string('password');
-                $blueprint->rememberToken();
-                $blueprint->foreignId('current_team_id')->nullable();
-                $blueprint->string('profile_photo_path', 2048)->nullable();
-                $blueprint->timestamps();
+            static function (Blueprint $table): void {
+                $table->id();
+                $table->string('name');
+                $table->string('email')->unique();
+                $table->timestamp('email_verified_at')->nullable();
+                $table->string('password');
+                $table->rememberToken();
+                $table->foreignId('current_team_id')->nullable();
+                $table->string('profile_photo_path', 2048)->nullable();
+                $table->timestamps();
             }
         );
         // -- UPDATE --
         $this->tableUpdate(
-            function (Blueprint $blueprint): void {
+            function (Blueprint $table): void {
                 if (! $this->hasColumn('current_team_id')) {
-                    $blueprint->foreignId('current_team_id')->nullable();
+                    $table->foreignId('current_team_id')->nullable();
                 }
 
                 if (! $this->hasColumn('profile_photo_path')) {
-                    $blueprint->string('profile_photo_path', 2048)->nullable();
+                    $table->string('profile_photo_path', 2048)->nullable();
                 }
 
                 if (! $this->hasColumn('lang')) {
-                    $blueprint->string('lang', 3)->nullable();
+                    $table->string('lang', 3)->nullable();
                 }
             }
         );

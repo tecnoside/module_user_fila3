@@ -14,19 +14,19 @@ class CreateTeamInvitationsTable extends XotBaseMigration
     {
         // -- CREATE --
         $this->tableCreate(
-            static function (Blueprint $blueprint): void {
-                $blueprint->id();
-                $blueprint->foreignId('team_id')->constrained()->cascadeOnDelete();
-                $blueprint->string('email');
-                $blueprint->string('role')->nullable();
-                $blueprint->timestamps();
-                $blueprint->unique(['team_id', 'email']);
+            static function (Blueprint $table): void {
+                $table->id();
+                $table->foreignId('team_id')->constrained()->cascadeOnDelete();
+                $table->string('email');
+                $table->string('role')->nullable();
+                $table->timestamps();
+                $table->unique(['team_id', 'email']);
             }
         );
 
         // -- UPDATE --
         $this->tableUpdate(
-            static function (Blueprint $blueprint): void {
+            static function (Blueprint $table): void {
                 // if (! $this->hasColumn('email')) {
                 //    $table->string('email')->nullable();
                 // }

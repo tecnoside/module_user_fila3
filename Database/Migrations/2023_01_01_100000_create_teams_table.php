@@ -14,19 +14,19 @@ class CreateTeamsTable extends XotBaseMigration
     {
         // -- CREATE --
         $this->tableCreate(
-            static function (Blueprint $blueprint): void {
-                $blueprint->id();
-                $blueprint->foreignId('user_id')->index();
+            static function (Blueprint $table): void {
+                $table->id();
+                $table->foreignId('user_id')->index();
                 // $table->foreignIdFor(User::class);
-                $blueprint->string('name');
-                $blueprint->boolean('personal_team');
-                $blueprint->timestamps();
+                $table->string('name');
+                $table->boolean('personal_team');
+                $table->timestamps();
             }
         );
 
         // -- UPDATE --
         $this->tableUpdate(
-            static function (Blueprint $blueprint): void {
+            static function (Blueprint $table): void {
                 // if (! $this->hasColumn('email')) {
                 //    $table->string('email')->nullable();
                 // }

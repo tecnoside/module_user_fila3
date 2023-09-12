@@ -8,12 +8,12 @@ use Filament\Actions\DeleteAction;
 use Filament\Resources\Pages\EditRecord;
 use Illuminate\Support\Facades\Hash;
 use Modules\User\Filament\Resources\UserResource;
-use Savannabits\FilamentModules\Concerns\ContextualPage;
+
 use Webmozart\Assert\Assert;
 
 class EditUser extends EditRecord
 {
-    // //use ContextualPage;
+    // //
     protected static string $resource = UserResource::class;
 
     /* --- dovrebbe fare il mutator da controllare

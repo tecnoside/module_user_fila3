@@ -19,19 +19,19 @@ class CreateRoleHasPermissionsTable extends XotBaseMigration
     {
         // -- CREATE --
         $this->tableCreate(
-            static function (Blueprint $blueprint): void {
-                $blueprint->unsignedBigInteger(PermissionRegistrar::$pivotPermission);
-                $blueprint->unsignedBigInteger(PermissionRegistrar::$pivotRole);
+            static function (Blueprint $table): void {
+                $table->unsignedBigInteger(PermissionRegistrar::$pivotPermission);
+                $table->unsignedBigInteger(PermissionRegistrar::$pivotRole);
                 // *
-                $blueprint->foreign(PermissionRegistrar::$pivotPermission)
+                $table->foreign(PermissionRegistrar::$pivotPermission)
                     ->references('id') // permission id
                     ->on('permissions')
                     ->onDelete('cascade');
-                $blueprint->foreign(PermissionRegistrar::$pivotRole)
+                $table->foreign(PermissionRegistrar::$pivotRole)
                     ->references('id') // role id
                     ->on('roles')
                     ->onDelete('cascade');
-                $blueprint->primary(
+                $table->primary(
                     [
                         PermissionRegistrar::$pivotPermission,
                         PermissionRegistrar::$pivotRole,
@@ -43,7 +43,7 @@ class CreateRoleHasPermissionsTable extends XotBaseMigration
         );
         // -- UPDATE --
         $this->tableUpdate(
-            static function (Blueprint $blueprint): void {
+            static function (Blueprint $table): void {
             }
         );
     }

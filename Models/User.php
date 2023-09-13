@@ -112,6 +112,7 @@ class User extends Authenticatable implements \Modules\Xot\Contracts\UserContrac
     // use HasProfilePhoto; //ArtMin96
     // use HasTeams; //ArtMin96
     use Traits\HasTeams;
+    use Traits\HasTenants;
     //use Traits\HasProfilePhoto;
     use Notifiable;
 

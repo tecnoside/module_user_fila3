@@ -93,6 +93,10 @@ class Team extends BaseModel implements TeamContract
             ->as('membership');
     }
 
+    public function members(): BelongsToMany{
+        return $this->users();
+    }
+
     /**
      * Determine if the given user belongs to the team.
      */

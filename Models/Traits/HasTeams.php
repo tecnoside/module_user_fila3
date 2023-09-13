@@ -256,18 +256,4 @@ trait HasTeams
 
 
 
-    //public function teams(): BelongsToMany
-    //{
-    //    return $this->belongsToMany(Team::class);
-    //}
-
-    public function canAccessTenant(Model $model): bool
-    {
-        return $this->teams->contains($model);
-    }
-
-    public function getTenants(Panel $panel): array|Collection
-    {
-        return $this->teams;
-    }
 }

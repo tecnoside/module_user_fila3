@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace Modules\User\Http\Livewire\Team;
 
+use Livewire\Component;
+use Illuminate\View\View;
 use Filament\Facades\Filament;
+use Modules\Xot\Datas\XotData;
 use ArtMin96\FilamentJet\FilamentJet;
+use Modules\User\Events\TeamSwitched;
 use Filament\Notifications\Notification;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\View\View;
-use Livewire\Component;
-use Modules\User\Events\TeamSwitched;
 use Modules\User\Http\Livewire\Traits\Properties\HasUserProperty;
 
 class Change extends Component
@@ -19,8 +20,11 @@ class Change extends Component
 
     public Collection $teams;
 
+    public XotData $xot;
+
     public function mount(): void
     {
+        $this->xot=XotData::make();
         $this->teams = Filament::auth()->user()?->allTeams();
     }
 
@@ -31,8 +35,9 @@ class Change extends Component
      */
     public function switchTeam($teamId)
     {
-        dddx('aaa');
-        $team = FilamentJet::newTeamModel()->findOrFail($teamId);
+
+        $teamClass=$this->xot->getTeamClass();
+        $team = $teamClass::findOrFail($teamId);
 
         if (! $this->user->switchTeam($team)) {
             abort(403);

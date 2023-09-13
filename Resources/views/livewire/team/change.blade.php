@@ -1,5 +1,4 @@
-@if ($teams->isNotEmpty())
-    <x-filament::dropdown placement="bottom-end">
+<x-filament::dropdown placement="bottom-end">
         <x-slot name="trigger" class="ml-4">
             <button  @class([
                 'flex flex-shrink-0 w-10 h-10 rounded-full bg-gray-200 items-center justify-center',
@@ -22,5 +21,5 @@
                 </x-filament::dropdown.list.item>
             @endforeach
         </x-filament::dropdown.list>
-    </x-filament::dropdown>
-@endif
+</x-filament::dropdown>
+

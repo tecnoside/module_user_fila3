@@ -101,7 +101,7 @@ use Illuminate\Notifications\DatabaseNotificationCollection;
  *
  * @mixin \Eloquent
  */
-class User extends Authenticatable implements \Modules\Xot\Contracts\UserContract, FilamentUser, HasTenants
+class User extends Authenticatable implements \Modules\Xot\Contracts\UserContract, FilamentUser, HasTenants, \Modules\User\Contracts\UserContract
 { /* , HasAvatar, UserJetContract, ExportsPersonalData */
     /* , HasTeamsContract */
     use HasApiTokens;

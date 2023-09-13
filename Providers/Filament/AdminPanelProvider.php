@@ -15,11 +15,12 @@ class AdminPanelProvider extends XotBasePanelProvider
 
     public function panel(Panel $panel): Panel
     {
+        /*
         FilamentView::registerRenderHook(
             'panels::user-menu.before',
             fn (): string =>  Blade::render('@livewire(\'team.change\')'),
         );
-
+        */
         return parent::panel($panel);
     }
 }

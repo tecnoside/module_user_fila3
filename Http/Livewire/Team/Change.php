@@ -31,6 +31,7 @@ class Change extends Component
      */
     public function switchTeam($teamId)
     {
+        dddx('aaa');
         $team = FilamentJet::newTeamModel()->findOrFail($teamId);
 
         if (! $this->user->switchTeam($team)) {

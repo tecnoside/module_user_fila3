@@ -2,13 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Modules\User\Http\Livewire;
+namespace Modules\User\Http\Livewire\Team;
 
-use Livewire\Component;
-use Illuminate\View\View;
 use Filament\Facades\Filament;
 use ArtMin96\FilamentJet\FilamentJet;
-use Modules\User\Events\TeamSwitched;
 use Filament\Notifications\Notification;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\View\View;
@@ -16,7 +13,7 @@ use Livewire\Component;
 use Modules\User\Events\TeamSwitched;
 use Modules\User\Http\Livewire\Traits\Properties\HasUserProperty;
 
-class SwitchableTeam extends Component
+class Change extends Component
 {
     use HasUserProperty;
 
@@ -52,6 +49,6 @@ class SwitchableTeam extends Component
 
     public function render(): View
     {
-        return view('filament-jet::components.switchable-team');
+        return view('user::livewire.team.change');
     }
 }

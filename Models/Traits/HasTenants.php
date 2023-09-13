@@ -33,7 +33,8 @@ trait HasTenants
 
     public function canAccessTenant(Model $tenant): bool
     {
-        return $this->teams->contains($tenant);
+        //return $this->teams->contains($tenant);
+        return true;
     }
 
     public function getTenants(Panel $panel): array|Collection

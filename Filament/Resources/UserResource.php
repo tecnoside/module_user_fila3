@@ -154,7 +154,7 @@ class UserResource extends XotBaseResource
                             'new_password_confirmation' => TextInput::make('new_password_confirmation')
                                 ->password()
                                 ->label('Confirm New Password')
-                                ->rule('required', static fn ($get): bool => (bool) $get('new_password'))
+                                ->rule('required', fn ($get): bool => (bool) $get('new_password'))
                                 ->same('new_password')
                                 ->dehydrated(false),
                         ])->visible(static::$enablePasswordUpdates),
@@ -232,7 +232,7 @@ class UserResource extends XotBaseResource
                         TextInput::make('new_password_confirmation')
                             ->password()
                             ->label('Confirm New Password')
-                            ->rule('required', static fn ($get): bool => (bool) $get('new_password'))
+                            ->rule('required', fn ($get): bool => (bool) $get('new_password'))
                             ->same('new_password'),
                     ])
                     ->icon('heroicon-o-key')

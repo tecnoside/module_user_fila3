@@ -312,9 +312,9 @@ class RoleResource extends XotBaseResource
     private function refreshSelectAllStateViaEntities(\Closure $set, \Closure $get): void
     {
         $entitiesStates = collect(FilamentShield::getResources())
-            ->when(Utils::isPageEntityEnabled(), static fn ($entities) => $entities->merge(FilamentShield::getPages()))
+            ->when(Utils::isPageEntityEnabled(), fn ($entities) => $entities->merge(FilamentShield::getPages()))
             ->when(Utils::isWidgetEntityEnabled(), fn ($entities) => $entities->merge(FilamentShield::getWidgets()))
-            ->when(Utils::isCustomPermissionEntityEnabled(), static fn ($entities) => $entities->merge(static::getCustomEntities()))
+            ->when(Utils::isCustomPermissionEntityEnabled(), fn ($entities) => $entities->merge(static::getCustomEntities()))
             ->map(static function ($entity) use ($get): bool {
                 if (is_array($entity)) {
                     return (bool) $get($entity['resource']);

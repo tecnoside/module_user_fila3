@@ -84,7 +84,7 @@ class RoleResource extends XotBaseResource
                                     ->label(static::trans('fields.select_all.name'))
                                     ->helperText(static::trans('fields.select_all.message'))
                                     ->reactive()
-                                    ->afterStateUpdated(static function (\Closure $set, $state): void {
+                                    ->afterStateUpdated(static function (\Filament\Forms\Set $set, $state): void {
                                         static::refreshEntitiesStatesViaSelectAll($set, $state);
                                     })
                                     ->dehydrated(static fn ($state): bool => $state),
@@ -233,7 +233,7 @@ class RoleResource extends XotBaseResource
             $permissions[] = Checkbox::make($permission.'_'.$entity['resource'])
                 ->label(FilamentShield::getLocalizedResourcePermissionLabel($permission))
                 ->extraAttributes(['class' => 'text-primary-600'])
-                ->afterStateHydrated(static function (\Closure $set, \Closure $get, $record) use ($entity, $permission): void {
+                ->afterStateHydrated(static function (\Filament\Forms\Set $set, \Filament\Forms\Get $get, $record) use ($entity, $permission): void {
                     if (is_null($record)) {
                         return;
                     }
@@ -243,7 +243,7 @@ class RoleResource extends XotBaseResource
                     static::refreshSelectAllStateViaEntities($set, $get);
                 })
                 ->reactive()
-                ->afterStateUpdated(static function (\Closure $set, \Closure $get, $state) use ($entity): void {
+                ->afterStateUpdated(static function (\Filament\Forms\Set $set, \Filament\Forms\Get $get, $state) use ($entity): void {
                     static::refreshResourceEntityStateAfterUpdate($set, $get, $entity);
                     if (! $state) {
                         $set($entity['resource'], false);
@@ -443,7 +443,7 @@ class RoleResource extends XotBaseResource
                     Checkbox::make($customPermission)
                         ->label(Str::of($customPermission)->headline())
                         ->inline()
-                        ->afterStateHydrated(static function (\Closure $set, \Closure $get, $record) use ($customPermission): void {
+                        ->afterStateHydrated(static function (\Filament\Forms\Set $set, \Filament\Forms\Get $get, $record) use ($customPermission): void {
                             if (is_null($record)) {
                                 return;
                             }
@@ -452,7 +452,7 @@ class RoleResource extends XotBaseResource
                             static::refreshSelectAllStateViaEntities($set, $get);
                         })
                         ->reactive()
-                        ->afterStateUpdated(static function (\Closure $set, \Closure $get, $state): void {
+                        ->afterStateUpdated(static function (\Filament\Forms\Set $set, \Filament\Forms\Get $get, $state): void {
                             if (! $state) {
                                 $set('select_all', false);
                             }

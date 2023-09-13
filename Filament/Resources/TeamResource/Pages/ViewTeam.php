@@ -14,7 +14,7 @@ class ViewTeam extends ViewRecord
     // //
     protected static string $resource = TeamResource::class;
 
-    protected function getActions(): array
+    protected function getHeaderActions(): array
     {
         return [
             EditAction::make(),

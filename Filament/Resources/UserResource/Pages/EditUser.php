@@ -27,7 +27,7 @@ class EditUser extends EditRecord
         $this->record->password = Hash::make($this->data['new_password']);
     }
     */
-    protected function getActions(): array
+    protected function getHeaderActions(): array
     {
         return [
             DeleteAction::make(),

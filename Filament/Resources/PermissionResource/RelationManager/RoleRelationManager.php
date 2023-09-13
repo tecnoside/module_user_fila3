@@ -19,7 +19,7 @@ class RoleRelationManager extends RelationManager
 
     protected static ?string $recordTitleAttribute = 'name';
 
-    protected static function getModelLabel(): string
+    protected static function getModelLabel(): ?string
     {
         // return __('filament-spatie-roles-permissions::filament-spatie.section.role');
         return __('filament-spatie-roles-permissions::filament-spatie.section.role');

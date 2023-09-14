@@ -11,11 +11,11 @@
         <x-filament::dropdown.list>
             @foreach ($teams as $team)
                 <x-filament::dropdown.list.item
-                    :color="'secondary'"
+                    {{-- :color="'secondary'" --}}
                     :href="'#'"
                     :icon="$this->user->isCurrentTeam($team) ? 'heroicon-o-check-circle' : ''"
                     tag="a"
-                    wire:click="switchTeam({{ $team->id }})"
+                    wire:click="switchTeam({{ $team->id }})"                    
                 >
                     {{ $team->name }}
                 </x-filament::dropdown.list.item>

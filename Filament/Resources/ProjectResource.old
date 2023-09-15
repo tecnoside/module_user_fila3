@@ -16,7 +16,7 @@ use Savannabits\FilamentModules\Concerns\ContextualResource;
 
 class ProjectResource extends Resource
 {
-    //use ContextualResource;
+    //
     protected static ?string $model = Project::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';

@@ -22,11 +22,10 @@ use Modules\User\Filament\Resources\TeamResource\Pages\ViewTeam;
 use Modules\User\Filament\Resources\TeamResource\RelationManagers\UsersRelationManager;
 use Modules\User\Models\Role;
 use Modules\User\Models\Team;
-use Savannabits\FilamentModules\Concerns\ContextualResource;
 
 class TeamResource extends Resource
 {
-    // ////use ContextualResource;
+    // ////
     protected static ?string $navigationIcon = 'heroicon-o-users';
 
     protected static ?string $navigationLabel = 'Teams';

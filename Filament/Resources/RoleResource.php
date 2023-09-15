@@ -34,11 +34,10 @@ use Modules\User\Filament\Resources\RoleResource\RelationManagers\UsersRelationM
 use Modules\User\Models\Role;
 use Modules\User\Support\Utils;
 use Modules\Xot\Filament\Resources\XotBaseResource;
-use Savannabits\FilamentModules\Concerns\ContextualResource;
 
 class RoleResource extends XotBaseResource
 { /* implements HasShieldPermissions */
-    // ////use ContextualResource;
+    // ////
     protected static ?string $model = Role::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-shield-check';
@@ -234,7 +233,7 @@ class RoleResource extends XotBaseResource
                 ->label(FilamentShield::getLocalizedResourcePermissionLabel($permission))
                 ->extraAttributes(['class' => 'text-primary-600'])
                 ->afterStateHydrated(static function (\Filament\Forms\Set $set, \Filament\Forms\Get $get, $record) use ($entity, $permission): void {
-                    if (is_null($record)) {
+                    if (null === $record) {
                         return;
                     }
 
@@ -316,7 +315,7 @@ class RoleResource extends XotBaseResource
             ->when(Utils::isWidgetEntityEnabled(), fn ($entities) => $entities->merge(FilamentShield::getWidgets()))
             ->when(Utils::isCustomPermissionEntityEnabled(), fn ($entities) => $entities->merge(static::getCustomEntities()))
             ->map(static function ($entity) use ($get): bool {
-                if (is_array($entity)) {
+                if (\is_array($entity)) {
                     return (bool) $get($entity['resource']);
                 }
 
@@ -385,7 +384,7 @@ class RoleResource extends XotBaseResource
             ->values()
             ->groupBy(static fn ($item) => $item)->map->count()
             ->reduce(static function (array $counts, $role, $key) use ($entity): array {
-                $count = is_countable(Utils::getResourcePermissionPrefixes($entity['fqcn'])) ? count(Utils::getResourcePermissionPrefixes($entity['fqcn'])) : 0;
+                $count = is_countable(Utils::getResourcePermissionPrefixes($entity['fqcn'])) ? \count(Utils::getResourcePermissionPrefixes($entity['fqcn'])) : 0;
                 $counts[$key] = $role > 1 && $role === $count;
 
                 return $counts;
@@ -444,7 +443,7 @@ class RoleResource extends XotBaseResource
                         ->label(Str::of($customPermission)->headline())
                         ->inline()
                         ->afterStateHydrated(static function (\Filament\Forms\Set $set, \Filament\Forms\Get $get, $record) use ($customPermission): void {
-                            if (is_null($record)) {
+                            if (null === $record) {
                                 return;
                             }
 

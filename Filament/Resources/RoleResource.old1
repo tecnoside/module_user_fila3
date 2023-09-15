@@ -22,7 +22,7 @@ use Savannabits\FilamentModules\Concerns\ContextualResource;
 
 class RoleResource extends XotBaseResource
 { /* implements HasShieldPermissions */
-    // ////use ContextualResource;
+    // ////
     // protected static ?string $model = Role::class;
     protected static ?string $recordTitleAttribute = 'name';
 

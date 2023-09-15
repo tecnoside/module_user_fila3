@@ -3,3 +3,5 @@
 /build
 *.cache
 *.phar
+.git-blame-ignore-revs
+.git-rewrite

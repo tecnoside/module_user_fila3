@@ -8,9 +8,9 @@ declare(strict_types=1);
 namespace Modules\User\Providers\Filament;
 
 use Filament\Panel;
-use Modules\Xot\Providers\Filament\XotBasePanelProvider;
 use Filament\Support\Facades\FilamentView;
 use Illuminate\Support\Facades\Blade;
+use Modules\Xot\Providers\Filament\XotBasePanelProvider;
 
 class AdminPanelProvider extends XotBasePanelProvider
 {
@@ -18,10 +18,13 @@ class AdminPanelProvider extends XotBasePanelProvider
 
     public function panel(Panel $panel): Panel
     {
-
+        FilamentView::registerRenderHook(
+            'panels::auth.login.form.after',
+            fn (): string => Blade::render('@livewire(\'socialite.buttons\')'),
+        );
         FilamentView::registerRenderHook(
             'panels::user-menu.before',
-            fn (): string =>  Blade::render('@livewire(\'team.change\')'),
+            fn (): string => Blade::render('@livewire(\'team.change\')'),
         );
 
         return parent::panel($panel);

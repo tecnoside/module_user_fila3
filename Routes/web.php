@@ -1,6 +1,10 @@
 <?php
-
+/**
+ * @see https://github.com/DutchCodingCompany/filament-socialite/blob/main/routes/web.php
+ */
 declare(strict_types=1);
+
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +21,19 @@ Route::prefix('user')->group(function() {
     Route::get('/', 'UserController@index');
 });
 */
+
+// Route::domain(config('filament.domain'))
+//    ->middleware(config('filament.middleware.base'))
+Route::namespace('Socialite')
+->name('socialite.')
+->group(function () {
+    Route::get('/admin/login/{provider}',
+        'LoginController@redirectToProvider',
+    )
+        ->name('oauth.redirect');
+
+    Route::get('/admin/login/{provider}/callback',
+        'LoginController@processCallback',
+    )
+        ->name('oauth.callback');
+});

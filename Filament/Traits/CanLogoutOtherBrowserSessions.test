@@ -27,7 +27,7 @@ trait CanLogoutOtherBrowserSessions
             'password_hash_'.Auth::getDefaultDriver() => Auth::user()->getAuthPassword(),
         ]);
 
-        $this->emit('loggedOut');
+        $this->dispatch('loggedOut');
 
         Notification::make()
             ->title(__('filament-jet::account/browser-sessions.messages.cleared'))

@@ -43,6 +43,7 @@ class CreateUsersTable extends XotBaseMigration
                 if (! $this->hasColumn('lang')) {
                     $table->string('lang', 3)->nullable();
                 }
+                $table->softDeletes();
             }
         );
     }

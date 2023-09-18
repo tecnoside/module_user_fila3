@@ -79,7 +79,7 @@ class ApiTokens extends Page
         $this->name = '';
         $this->permissions = FilamentJet::$defaultPermissions;
 
-        $this->emit('tokenCreated');
+        $this->dispatch('tokenCreated');
     }
 
     protected function displayTokenValue($token): void

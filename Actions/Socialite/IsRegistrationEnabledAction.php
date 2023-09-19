@@ -16,7 +16,7 @@ class IsRegistrationEnabledAction
     /**
      * Execute the action.
      */
-    public function execute(string $provider): bool
+    public function execute(): bool
     {
         return config('filament-socialite.registration');
     }

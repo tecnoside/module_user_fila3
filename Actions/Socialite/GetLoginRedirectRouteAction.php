@@ -18,6 +18,7 @@ class GetLoginRedirectRouteAction
      */
     public function execute(): string
     {
-        return config('filament-socialite.login_redirect_route') ?? 'filament.pages.dashboard';
+        // return config('filament-socialite.login_redirect_route') ?? 'filament.pages.dashboard';
+        return 'filament.admin.pages.dashboard';
     }
 }

@@ -15,6 +15,7 @@ use Laravel\Socialite\Facades\Socialite;
 use Laravel\Socialite\Two\InvalidStateException;
 use Modules\User\Actions\Socialite\GetDomainAllowListAction;
 use Modules\User\Actions\Socialite\GetGuardAction;
+use Modules\User\Actions\Socialite\GetLoginRedirectRouteAction;
 use Modules\User\Actions\Socialite\GetProviderScopesAction;
 use Modules\User\Actions\Socialite\IsProviderConfiguredAction;
 use Modules\User\Actions\Socialite\IsRegistrationEnabledAction;
@@ -175,7 +176,6 @@ class LoginController extends Controller
 
     public function processCallback(string $provider)
     {
-        dddx($provider);
         // See if provider exists
         if (! app(IsProviderConfiguredAction::class)->execute($provider)) {
             throw ProviderNotConfigured::make($provider);

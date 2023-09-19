@@ -19,8 +19,8 @@ class GetGuardAction
      */
     public function execute(): StatefulGuard
     {
-        return auth()->guard(
-            config('filament.auth.guard')
-        );
+        $guard = config('filament.auth.guard');
+
+        return auth()->guard($guard);
     }
 }

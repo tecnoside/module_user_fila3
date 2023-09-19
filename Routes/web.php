@@ -32,8 +32,8 @@ Route::namespace('Socialite')
     )
         ->name('oauth.redirect');
 
-    Route::get('/admin/login/{provider}/callback',
-        'LoginController@processCallback',
+    Route::get('/sso/{provider}/callback',
+        'ProcessCallbackController',
     )
         ->name('oauth.callback');
 });

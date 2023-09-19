@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
+use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -42,17 +43,17 @@ use Spatie\Permission\Models\Role as SpatieRole;
  *
  * @method static Builder|Role whereTeamId($value)
  *
- * @mixin \Eloquent
+ * @mixin Eloquent
  */
 class Role extends SpatieRole
 {
     use HasFactory;
 
-    public const ROLE_ADMINISTRATOR = 1;
+    final public const ROLE_ADMINISTRATOR = 1;
 
-    public const ROLE_OWNER = 2;
+    final public const ROLE_OWNER = 2;
 
-    public const ROLE_USER = 3;
+    final public const ROLE_USER = 3;
 
     /**
      * @var string

@@ -33,10 +33,8 @@ class Password implements Rule
 
     /**
      * The message that should be used when validation fails.
-     *
-     * @var string
      */
-    private $message = '';
+    private string $message = '';
 
     /**
      * Determine if the validation rule passes.

@@ -6,6 +6,7 @@ namespace Modules\User\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 // use Laravel\Sanctum\HasApiTokens;
+use Eloquent;
 use Filament\Panel;
 use Laravel\Passport\Token;
 use Laravel\Passport\Client;
@@ -99,9 +100,9 @@ use Illuminate\Notifications\DatabaseNotificationCollection;
  * @property \Modules\EWall\Models\Profile|null                  $profile
  * @property \Illuminate\Database\Eloquent\Collection<int, Team> $teams
  *
- * @mixin \Eloquent
+ * @mixin Eloquent
  */
-class User extends Authenticatable implements \Modules\Xot\Contracts\UserContract, FilamentUser, HasTenants, \Modules\User\Contracts\UserContract
+class User extends Authenticatable implements \Modules\Xot\Contracts\UserContract, FilamentUser, HasTenants, UserJetContract
 { /* , HasAvatar, UserJetContract, ExportsPersonalData */
     /* , HasTeamsContract */
     use HasApiTokens;
@@ -111,7 +112,7 @@ class User extends Authenticatable implements \Modules\Xot\Contracts\UserContrac
     use HasRoles;
     // use HasProfilePhoto; //ArtMin96
     // use HasTeams; //ArtMin96
-    use Traits\HasTeams;
+    use HasTeams;
     use Traits\HasTenants;
     //use Traits\HasProfilePhoto;
     use Notifiable;
@@ -165,7 +166,7 @@ class User extends Authenticatable implements \Modules\Xot\Contracts\UserContrac
        // 'profile_photo_url',
     ];
 
-    public function canAccessFilament(\Filament\Panel $panel): bool
+    public function canAccessFilament(Panel $panel): bool
     {
         // return $this->role_id === Role::ROLE_ADMINISTRATOR;
         return true;

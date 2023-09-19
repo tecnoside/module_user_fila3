@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Models\Traits;
 
+use Exception;
 use Illuminate\Support\Str;
 use Modules\User\Models\Role;
 use Modules\User\Models\Team;
@@ -133,7 +134,7 @@ trait HasTeams
         }
 
         if (! $res instanceof TeamContract) {
-            throw new \Exception('strange things');
+            throw new Exception('strange things');
         }
 
         return $res;
@@ -182,13 +183,11 @@ trait HasTeams
             return null;
         }
 
-        $role = $teamContract->users
+        return $teamContract->users
             ->where('id', $this->id)
             ->first()
             ->membership
-            ->role;
-
-        return $role; // ? FilamentJet::findRole($role) : null;
+            ->role; // ? FilamentJet::findRole($role) : null;
     }
 
     /**
@@ -206,7 +205,7 @@ trait HasTeams
             $this->id
         )->first()?->membership?->role))->key === $role;
         */
-        return $this->belongsToTeam($teamContract) && $this->teamRole($teamContract)!= null;
+        return $this->belongsToTeam($teamContract) && $this->teamRole($teamContract) != null;
     }
 
     /**

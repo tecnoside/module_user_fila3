@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Modules\User\Http\Livewire\Team;
 
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Redirector;
 use Livewire\Component;
 use Illuminate\View\View;
 use Filament\Facades\Filament;
@@ -31,7 +34,7 @@ class Change extends Component
     /**
      * Update the authenticated user's current team.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @return Application|RedirectResponse|Redirector
      */
     public function switchTeam($teamId)
     {

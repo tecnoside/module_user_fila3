@@ -7,6 +7,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Contracts;
 
+use Modules\User\Models\Role;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -89,7 +90,7 @@ interface HasTeamsContract
     /**
      * Get the role that the user has on the team.
      *
-     * @return \Modules\User\Models\Role|null
+     * @return Role|null
      */
     public function teamRole(TeamContract $teamContract);
 

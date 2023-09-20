@@ -166,7 +166,7 @@ class User extends Authenticatable implements \Modules\Xot\Contracts\UserContrac
        // 'profile_photo_url',
     ];
 
-    public function canAccessFilament(Panel $panel): bool
+    public function canAccessFilament(\Filament\Panel $panel): bool
     {
         // return $this->role_id === Role::ROLE_ADMINISTRATOR;
         return true;

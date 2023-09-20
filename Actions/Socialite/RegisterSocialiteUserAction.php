@@ -1,6 +1,7 @@
 <?php
 /**
  * @see https://github.com/DutchCodingCompany/filament-socialite
+ * ---
  */
 
 declare(strict_types=1);
@@ -16,7 +17,7 @@ use Modules\User\Events;
 use Modules\User\Models\User;
 use Spatie\QueueableAction\QueueableAction;
 
-class registerSocialiteUserAction
+class RegisterSocialiteUserAction
 {
     use QueueableAction;
 

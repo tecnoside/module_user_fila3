@@ -18,8 +18,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Modules\Xot\Datas\XotData;
 
-class RolesRelationManager extends RelationManager
-{
+class RolesRelationManager extends RelationManager {
     protected static string $relationship = 'roles';
 
     protected static ?string $recordTitleAttribute = 'name';
@@ -31,8 +30,7 @@ class RolesRelationManager extends RelationManager
     //    dddx('a');
     // }
 
-    public function form(Form $form): Form
-    {
+    public function form(Form $form): Form {
         return $form
             ->schema([
                 TextInput::make('name')
@@ -45,8 +43,7 @@ class RolesRelationManager extends RelationManager
             ]);
     }
 
-    public function table(Table $table): Table
-    {
+    public function table(Table $table): Table {
         $xotData = XotData::make();
 
         return $table
@@ -65,7 +62,7 @@ class RolesRelationManager extends RelationManager
                     //     return $data;
                     // }),
                     ->form(static fn (AttachAction $action): array => [
-                        $attachAction->getRecordSelect(),
+                        $action->getRecordSelect(),
                         // Forms\Components\TextInput::make('team_id')->required(),
                         Select::make('team_id')
                             ->options($xotData->getTeamClass()::get()->pluck('name', 'id')),

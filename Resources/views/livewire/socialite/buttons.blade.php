@@ -20,6 +20,6 @@
         @endforeach
     </div>
 @else
-    <span>NO PROVIDERS</span>
+    <span></span>
 @endif
 </div>

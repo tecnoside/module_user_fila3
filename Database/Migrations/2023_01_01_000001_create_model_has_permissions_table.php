@@ -24,7 +24,7 @@ class CreateModelHasPermissionsTable extends XotBaseMigration
 
         // -- CREATE --
         $this->tableCreate(
-            static function (Blueprint $table) use ($tableNames, $columnNames): void {
+            function (Blueprint $table) use ($tableNames, $columnNames): void {
                 $table->unsignedBigInteger(PermissionRegistrar::$pivotPermission);
                 $table->string('model_type');
                 $table->unsignedBigInteger($columnNames['model_morph_key']);
@@ -37,7 +37,7 @@ class CreateModelHasPermissionsTable extends XotBaseMigration
         );
         // -- UPDATE --
         $this->tableUpdate(
-            static function (Blueprint $table): void {
+            function (Blueprint $table): void {
             }
         );
     }

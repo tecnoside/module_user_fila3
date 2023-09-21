@@ -17,7 +17,7 @@ class CreateUsersTable extends XotBaseMigration
     {
         // -- CREATE --
         $this->tableCreate(
-            static function (Blueprint $table): void {
+            function (Blueprint $table): void {
                 $table->id();
                 $table->string('name');
                 $table->string('email')->unique();

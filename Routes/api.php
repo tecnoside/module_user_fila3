@@ -4,6 +4,11 @@ declare(strict_types=1);
 
 use Illuminate\Support\Facades\Route;
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+
 // use Modules\User\Http\Controllers\Api\UserController;
 
 /*
@@ -49,3 +54,22 @@ Route::prefix('/user')
             */
         }
     );
+
+    Route::middleware('auth:api', 'scope:view-user')->get('/user', function (Request $request) {
+        return $request->user();
+    });
+    
+    Route::middleware('auth:api')->get('/logmeout', function (Request $request) {
+        $user =  $request->user();
+        $accessToken = $user->token();
+        DB::table('oauth_refresh_tokens')
+        ->where('access_token_id', $accessToken->id)
+        ->delete();
+        $user->token()->delete();
+    
+    
+        return response()->json([
+            'message' => 'Successfully logged out',
+            'session' => session()->all()
+        ]);
+    });

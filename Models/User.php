@@ -54,6 +54,7 @@ use Illuminate\Notifications\DatabaseNotificationCollection;
  * @property string|null                                               $remember_token
  * @property int|null                                                  $current_team_id
  * @property string|null                                               $profile_photo_path
+ * @property bool                                                      $is_active
  * @property Carbon|null                                               $created_at
  * @property Carbon|null                                               $updated_at
  * @property \Illuminate\Database\Eloquent\Collection<int, Client>     $clients
@@ -133,6 +134,7 @@ class User extends Authenticatable implements \Modules\Xot\Contracts\UserContrac
         'password',
         'lang',
         'current_team_id',
+        'is_active',
     ];
 
     /**

@@ -20,6 +20,7 @@ class CreateUsersTable extends XotBaseMigration
             function (Blueprint $table): void {
                 $table->id();
                 $table->string('name');
+                $table->string('surname');
                 $table->string('email')->unique();
                 $table->timestamp('email_verified_at')->nullable();
                 $table->string('password');
@@ -32,6 +33,10 @@ class CreateUsersTable extends XotBaseMigration
         // -- UPDATE --
         $this->tableUpdate(
             function (Blueprint $table): void {
+                if (! $this->hasColumn('surname')) {
+                    $table->string('surname')->after('name');
+                }
+
                 if (! $this->hasColumn('current_team_id')) {
                     $table->foreignId('current_team_id')->nullable();
                 }
@@ -47,7 +52,7 @@ class CreateUsersTable extends XotBaseMigration
                 if (! $this->hasColumn('is_active')) {
                     $table->boolean('is_active')->default(true);
                 }
-                //$table->softDeletes();
+                $table->softDeletes();
             }
         );
     }

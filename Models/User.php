@@ -38,12 +38,15 @@ use Modules\User\Models\Traits\TwoFactorAuthenticatable;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Modules\User\Contracts\UserContract as UserJetContract;
 use Illuminate\Notifications\DatabaseNotificationCollection;
+use Modules\Egea\Models\MobileDevice;
+use Modules\Egea\Models\MobileDeviceUser;
 
 /**
  * Modules\User\Models\User.
  *
  * @property int                                                       $id
  * @property string                                                    $name
+ * @property string                                                    $surname
  * @property string                                                    $email
  * @property string                                                    $api_token
  * @property Carbon|null                                               $email_verified_at
@@ -130,6 +133,7 @@ class User extends Authenticatable implements \Modules\Xot\Contracts\UserContrac
      */
     protected $fillable = [
         'name',
+        'surname',
         'email',
         'password',
         'lang',
@@ -157,6 +161,7 @@ class User extends Authenticatable implements \Modules\Xot\Contracts\UserContrac
     protected $casts = [
         'email_verified_at' => 'datetime',
         // 'password' => 'hashed', //Call to undefined cast [hashed] on column [password] in model [Modules\User\Models\User].
+        'is_active' => 'boolean',
     ];
 
     /**
@@ -192,6 +197,15 @@ class User extends Authenticatable implements \Modules\Xot\Contracts\UserContrac
     public function canAccessPanel(Panel $panel): bool
     {
         return true; // str_ends_with($this->email, '@yourdomain.com') && $this->hasVerifiedEmail();
+    }
+
+    public function mobileDevices(): BelongsToMany
+    {
+        return $this
+            ->belongsToMany(MobileDevice::class)
+            ->using(MobileDeviceUser::class)
+            ->withPivot(MobileDeviceUser::$additionalPivotFields)
+            ->withTimestamps();
     }
 
     // ----------------------

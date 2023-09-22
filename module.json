@@ -8,5 +8,10 @@
         "Modules\\User\\Providers\\UserServiceProvider",
         "Modules\\User\\Providers\\Filament\\AdminPanelProvider"
     ],
+    "migration": {
+        "seeds": [
+            "Modules\\User\\Database\\Seeders\\RolesSeeder"
+        ]
+    },
     "files": []
 }

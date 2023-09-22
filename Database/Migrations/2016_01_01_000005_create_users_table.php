@@ -28,6 +28,7 @@ class CreateUsersTable extends XotBaseMigration
                 $table->foreignId('current_team_id')->nullable();
                 $table->string('profile_photo_path', 2048)->nullable();
                 $table->timestamps();
+                $table->softDeletes();
             }
         );
         // -- UPDATE --
@@ -52,7 +53,6 @@ class CreateUsersTable extends XotBaseMigration
                 if (! $this->hasColumn('is_active')) {
                     $table->boolean('is_active')->default(true);
                 }
-                $table->softDeletes();
             }
         );
     }

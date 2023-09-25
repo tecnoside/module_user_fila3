@@ -45,7 +45,7 @@ class UserServiceProvider extends XotBaseServiceProvider
 
         Passport::tokensCan([
             'view-user' => 'View user information',
-            'core technicians' => 'the tecnicians can ',
+            'core-technicians' => 'the tecnicians can ',
         ]);
     }
 }

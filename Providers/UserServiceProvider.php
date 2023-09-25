@@ -44,7 +44,8 @@ class UserServiceProvider extends XotBaseServiceProvider
         Passport::personalAccessTokensExpireIn(now()->addMonths(6));
 
         Passport::tokensCan([
-            'view-user' => "View user information"
+            'view-user' => 'View user information',
+            'core technicians' => 'the tecnicians can ',
         ]);
     }
 }

@@ -53,7 +53,7 @@ Route::prefix('/user')
         }
     );
 
-Route::middleware('auth:api', 'scope:view-user')->get('/v2/user', function (Request $request) {
+Route::middleware('auth:api'/* , 'scope:view-user' */)->get('/v2/user', function (Request $request) {
     return $request->user();
 });
 

@@ -53,6 +53,9 @@ class CreateUsersTable extends XotBaseMigration
                 if (! $this->hasColumn('is_active')) {
                     $table->boolean('is_active')->default(true);
                 }
+                if (! $this->hasColumn('deleted_at')) {
+                    $table->softDeletes();
+                }
             }
         );
     }

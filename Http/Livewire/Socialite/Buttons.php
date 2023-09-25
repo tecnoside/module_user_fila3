@@ -8,7 +8,7 @@ use Livewire\Component;
 
 class Buttons extends Component
 {
-    public function render()
+    public function render(): \Illuminate\View\View
     {
         // $providers = FilamentSocialite::getProviderButtons();
         $providers = config('filament-socialite.providers');

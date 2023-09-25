@@ -3,8 +3,9 @@
 declare(strict_types=1);
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Webmozart\Assert\Assert;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 // use Modules\User\Http\Controllers\Api\UserController;
@@ -58,7 +59,8 @@ Route::middleware('auth:api'/* , 'scope:view-user' */)->get('/v2/user', function
 });
 
 Route::middleware('auth:api')->get('/v2/logmeout', function (Request $request) {
-    $user = $request->user();
+    // $user = $request->user();
+    Assert::notNull($user = $request->user());
     $accessToken = $user->token();
     DB::table('oauth_refresh_tokens')
     ->where('access_token_id', $accessToken->id)

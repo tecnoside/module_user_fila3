@@ -1,6 +1,7 @@
 <?php
 /**
  * @see https://github.com/Althinect/filament-spatie-roles-permissions/tree/2.x
+ * @see https://github.com/phpsa/filament-authentication/blob/main/src/Resources/PermissionResource.php
  */
 
 declare(strict_types=1);
@@ -32,8 +33,7 @@ use Modules\User\Models\Permission;
 use Modules\User\Models\Role;
 use Modules\Xot\Filament\Resources\XotBaseResource;
 
-class PermissionResource extends XotBaseResource
-{
+class PermissionResource extends XotBaseResource {
     protected static ?string $navigationIcon = 'heroicon-o-lock-closed';
 
     // public static function shouldRegisterNavigation(): bool
@@ -61,8 +61,7 @@ class PermissionResource extends XotBaseResource
     //    return __('filament-spatie-roles-permissions::filament-spatie.section.permissions');
     // }
 
-    public static function form(Form $form): Form
-    {
+    public static function form(Form $form): Form {
         return $form
             ->schema([
                 Card::make()
@@ -84,8 +83,7 @@ class PermissionResource extends XotBaseResource
             ]);
     }
 
-    public static function table(Table $table): Table
-    {
+    public static function table(Table $table): Table {
         return $table
             ->columns([
                 TextColumn::make('id')
@@ -147,20 +145,17 @@ class PermissionResource extends XotBaseResource
         // ])
     }
 
-    public static function getRelations(): array
-    {
+    public static function getRelations(): array {
         return [
             RoleRelationManager::class,
         ];
     }
 
-    public static function getNavigationBadge(): ?string
-    {
+    public static function getNavigationBadge(): ?string {
         return (string) static::getModel()::count();
     }
 
-    public static function getPages(): array
-    {
+    public static function getPages(): array {
         return [
             'index' => ListPermissions::route('/'),
             'create' => CreatePermission::route('/create'),

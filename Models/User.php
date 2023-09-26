@@ -211,6 +211,16 @@ class User extends Authenticatable implements \Modules\Xot\Contracts\UserContrac
     // ----------------------
     // ----------------------
     // ---------------------
+    /**
+     * Get the entity's notifications.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
+    public function notifications()
+    {
+        //return $this->morphMany(DatabaseNotification::class, 'notifiable')->latest();
+        return $this->morphMany(\Modules\Notify\Models\Notification::class, 'notifiable')->latest();
+    }
 
 
 }

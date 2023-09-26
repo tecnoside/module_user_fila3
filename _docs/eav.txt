@@ -2,6 +2,9 @@ https://github.com/yemenpoint/filament-custom-fields
 
 https://github.com/tanthammar/filament-extras
 
-
-
 https://blog.moonguard.dev/setting-page-with-filament
+
+https://github.com/rinvex/laravel-attributes
+
+https://github.com/spatie/laravel-schemaless-attributes
+

@@ -17,9 +17,10 @@ class CreateUsersTable extends XotBaseMigration
     {
         // -- CREATE --
         $this->tableCreate(
-            static function (Blueprint $table): void {
+            function (Blueprint $table): void {
                 $table->id();
                 $table->string('name');
+                $table->string('surname');
                 $table->string('email')->unique();
                 $table->timestamp('email_verified_at')->nullable();
                 $table->string('password');
@@ -27,11 +28,16 @@ class CreateUsersTable extends XotBaseMigration
                 $table->foreignId('current_team_id')->nullable();
                 $table->string('profile_photo_path', 2048)->nullable();
                 $table->timestamps();
+                $table->softDeletes();
             }
         );
         // -- UPDATE --
         $this->tableUpdate(
             function (Blueprint $table): void {
+                if (! $this->hasColumn('surname')) {
+                    $table->string('surname')->after('name');
+                }
+
                 if (! $this->hasColumn('current_team_id')) {
                     $table->foreignId('current_team_id')->nullable();
                 }
@@ -43,7 +49,13 @@ class CreateUsersTable extends XotBaseMigration
                 if (! $this->hasColumn('lang')) {
                     $table->string('lang', 3)->nullable();
                 }
-                $table->softDeletes();
+
+                if (! $this->hasColumn('is_active')) {
+                    $table->boolean('is_active')->default(true);
+                }
+                if (! $this->hasColumn('deleted_at')) {
+                    $table->softDeletes();
+                }
             }
         );
     }

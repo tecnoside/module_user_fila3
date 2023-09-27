@@ -4,6 +4,7 @@
  */
 declare(strict_types=1);
 
+use Filament\Facades\Filament;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,3 +38,12 @@ Route::namespace('Socialite')
     )
         ->name('oauth.callback');
 });
+
+/**
+ * ..
+ */
+Route::namespace('\\')
+    ->group(function(){
+        Route::get('/login',  Filament::getPanel('admin')->getLoginRouteAction())->name('login');
+    }
+);

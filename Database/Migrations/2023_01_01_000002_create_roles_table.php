@@ -30,7 +30,7 @@ class CreateRolesTable extends XotBaseMigration
 
         // -- CREATE --
         $this->tableCreate(
-            static function (Blueprint $table) use ($columnNames): void {
+            function (Blueprint $table) use ($columnNames): void {
                 // $teams = config('permission.teams');
                 $table->bigIncrements('id');
                 // role id

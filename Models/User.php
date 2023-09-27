@@ -38,12 +38,15 @@ use Modules\User\Models\Traits\TwoFactorAuthenticatable;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Modules\User\Contracts\UserContract as UserJetContract;
 use Illuminate\Notifications\DatabaseNotificationCollection;
+use Modules\Egea\Models\MobileDevice;
+use Modules\Egea\Models\MobileDeviceUser;
 
 /**
  * Modules\User\Models\User.
  *
  * @property int                                                       $id
  * @property string                                                    $name
+ * @property string                                                    $surname
  * @property string                                                    $email
  * @property string                                                    $api_token
  * @property Carbon|null                                               $email_verified_at
@@ -54,6 +57,7 @@ use Illuminate\Notifications\DatabaseNotificationCollection;
  * @property string|null                                               $remember_token
  * @property int|null                                                  $current_team_id
  * @property string|null                                               $profile_photo_path
+ * @property bool                                                      $is_active
  * @property Carbon|null                                               $created_at
  * @property Carbon|null                                               $updated_at
  * @property \Illuminate\Database\Eloquent\Collection<int, Client>     $clients
@@ -129,10 +133,12 @@ class User extends Authenticatable implements \Modules\Xot\Contracts\UserContrac
      */
     protected $fillable = [
         'name',
+        'surname',
         'email',
         'password',
         'lang',
         'current_team_id',
+        'is_active',
     ];
 
     /**
@@ -155,6 +161,7 @@ class User extends Authenticatable implements \Modules\Xot\Contracts\UserContrac
     protected $casts = [
         'email_verified_at' => 'datetime',
         // 'password' => 'hashed', //Call to undefined cast [hashed] on column [password] in model [Modules\User\Models\User].
+        'is_active' => 'boolean',
     ];
 
     /**
@@ -192,9 +199,28 @@ class User extends Authenticatable implements \Modules\Xot\Contracts\UserContrac
         return true; // str_ends_with($this->email, '@yourdomain.com') && $this->hasVerifiedEmail();
     }
 
+    public function mobileDevices(): BelongsToMany
+    {
+        return $this
+            ->belongsToMany(MobileDevice::class)
+            ->using(MobileDeviceUser::class)
+            ->withPivot(MobileDeviceUser::$additionalPivotFields)
+            ->withTimestamps();
+    }
+
     // ----------------------
     // ----------------------
     // ---------------------
+    /**
+     * Get the entity's notifications.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
+    public function notifications()
+    {
+        //return $this->morphMany(DatabaseNotification::class, 'notifiable')->latest();
+        return $this->morphMany(\Modules\Notify\Models\Notification::class, 'notifiable')->latest();
+    }
 
 
 }

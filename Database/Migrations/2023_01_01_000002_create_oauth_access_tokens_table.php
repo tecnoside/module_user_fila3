@@ -15,7 +15,17 @@ class CreateOauthAccessTokensTable extends XotBaseMigration
         $xot = XotData::make();
         $userClass = $xot->getUserClass();
         $this->tableCreate(
+<<<<<<< HEAD
 <<<<<<< HEAD:Database/Migrations/2023_01_01_000002_create_oauth_access_tokens_table.php
+=======
+<<<<<<< HEAD:Database/Migrations/2023_01_01_000000_create_oauth_access_tokens_table.php
+            function (Blueprint $table) use ($userClass) {
+                $table->string('id', 100)->primary();
+                // $table->unsignedBigInteger('user_id')->nullable()->index();
+                $table->foreignIdFor($userClass, 'user_id')->nullable()->index();
+                $table->unsignedBigInteger('client_id');
+=======
+>>>>>>> master
             function (Blueprint $table): void {
                 $table->string('id', 100)->primary();
                 //$table->unsignedBigInteger('user_id')->nullable()->index();
@@ -24,6 +34,7 @@ class CreateOauthAccessTokensTable extends XotBaseMigration
                 //$table->uuid('client_id');
                 $table->foreignIdFor(User::class, 'user_id')->nullable()->index();
                 $table->foreignIdFor(OauthClient::class, 'client_id');
+<<<<<<< HEAD
 =======
             function (Blueprint $table) use ($userClass) {
                 $table->string('id', 100)->primary();
@@ -31,6 +42,9 @@ class CreateOauthAccessTokensTable extends XotBaseMigration
                 $table->foreignIdFor($userClass, 'user_id')->nullable()->index();
                 $table->unsignedBigInteger('client_id');
 >>>>>>> 5bfca74 (.):Database/Migrations/2023_01_01_000000_create_oauth_access_tokens_table.php
+=======
+>>>>>>> 010b661c570d5d6244a5bdbf1e60619c65665565:Database/Migrations/2023_01_01_000002_create_oauth_access_tokens_table.php
+>>>>>>> master
                 $table->string('name')->nullable();
                 $table->text('scopes')->nullable();
                 $table->boolean('revoked');
@@ -41,12 +55,21 @@ class CreateOauthAccessTokensTable extends XotBaseMigration
 
         // -- UPDATE --
         $this->tableUpdate(
+<<<<<<< HEAD
 <<<<<<< HEAD:Database/Migrations/2023_01_01_000002_create_oauth_access_tokens_table.php
             function (Blueprint $table): void {}
 =======
             function (Blueprint $table): void {
             }
 >>>>>>> 5bfca74 (.):Database/Migrations/2023_01_01_000000_create_oauth_access_tokens_table.php
+=======
+<<<<<<< HEAD:Database/Migrations/2023_01_01_000000_create_oauth_access_tokens_table.php
+            function (Blueprint $table): void {
+            }
+=======
+            function (Blueprint $table): void {}
+>>>>>>> 010b661c570d5d6244a5bdbf1e60619c65665565:Database/Migrations/2023_01_01_000002_create_oauth_access_tokens_table.php
+>>>>>>> master
         );
     }
 }

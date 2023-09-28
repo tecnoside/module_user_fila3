@@ -195,7 +195,8 @@ class User extends Authenticatable implements \Modules\Xot\Contracts\UserContrac
     public function canAccessPanel(Panel $panel): bool
     {
         if ('admin' !== $panel->getId()) {
-            return $this->hasRole($panel->getId().'::admin');
+            $role=$panel->getId();
+            return $this->hasRole($role);
         }
 
         return true; // str_ends_with($this->email, '@yourdomain.com') && $this->hasVerifiedEmail();

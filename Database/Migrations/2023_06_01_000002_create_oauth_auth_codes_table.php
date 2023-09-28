@@ -6,6 +6,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Modules\User\Models\OauthClient;
 use Modules\User\Models\User;
 use Modules\Xot\Database\Migrations\XotBaseMigration;
+use Modules\Xot\Datas\XotData;
 
 class CreateOauthAuthCodesTable extends XotBaseMigration
 {

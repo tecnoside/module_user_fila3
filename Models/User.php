@@ -6,6 +6,9 @@ namespace Modules\User\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 // use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Modules\Notify\Models\Notification;
 use Eloquent;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Models\Contracts\HasAvatar;
@@ -59,16 +62,16 @@ use Spatie\PersonalDataExport\ExportsPersonalData;
  * @property bool                                                      $is_active
  * @property Carbon|null                                               $created_at
  * @property Carbon|null                                               $updated_at
- * @property \Illuminate\Database\Eloquent\Collection<int, Client>     $clients
+ * @property Collection<int, Client> $clients
  * @property int|null                                                  $clients_count
  * @property string                                                    $profile_photo_url
  * @property DatabaseNotificationCollection<int, DatabaseNotification> $notifications
  * @property int|null                                                  $notifications_count
- * @property \Illuminate\Database\Eloquent\Collection<int, Permission> $permissions
+ * @property Collection<int, Permission> $permissions
  * @property int|null                                                  $permissions_count
- * @property \Illuminate\Database\Eloquent\Collection<int, Role>       $roles
+ * @property Collection<int, Role> $roles
  * @property int|null                                                  $roles_count
- * @property \Illuminate\Database\Eloquent\Collection<int, Token>      $tokens
+ * @property Collection<int, Token> $tokens
  * @property int|null                                                  $tokens_count
  *
  * @method static Builder|User newModelQuery()
@@ -99,9 +102,9 @@ use Spatie\PersonalDataExport\ExportsPersonalData;
  * @method static Builder|User whereLang($value)
  *
  * @property Team|null                                           $currentTeam
- * @property \Illuminate\Database\Eloquent\Collection<int, Team> $ownedTeams
+ * @property Collection<int, Team> $ownedTeams
  * @property \Modules\EWall\Models\Profile|null                  $profile
- * @property \Illuminate\Database\Eloquent\Collection<int, Team> $teams
+ * @property Collection<int, Team> $teams
  *
  * @mixin Eloquent
  */
@@ -226,11 +229,11 @@ class User extends Authenticatable implements \Modules\Xot\Contracts\UserContrac
     /**
      * Get the entity's notifications.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     * @return MorphMany
      */
     public function notifications()
     {
         // return $this->morphMany(DatabaseNotification::class, 'notifiable')->latest();
-        return $this->morphMany(\Modules\Notify\Models\Notification::class, 'notifiable')->latest();
+        return $this->morphMany(Notification::class, 'notifiable')->latest();
     }
 }

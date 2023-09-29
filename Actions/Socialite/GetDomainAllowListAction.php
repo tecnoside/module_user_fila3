@@ -18,8 +18,6 @@ class GetDomainAllowListAction
      */
     public function execute(): string|array
     {
-        $domains = config('filament-socialite.domain_allowlist');
-
-        return $domains;
+        return config('filament-socialite.domain_allowlist');
     }
 }

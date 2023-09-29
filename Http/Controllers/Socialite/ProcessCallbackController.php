@@ -8,6 +8,8 @@ declare(strict_types=1);
 
 namespace Modules\User\Http\Controllers\Socialite;
 
+use Modules\User\Events\UserNotAllowed;
+use Modules\User\Events\RegistrationNotEnabled;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Request;
 use Laravel\Socialite\Facades\Socialite;
@@ -41,7 +43,7 @@ class ProcessCallbackController extends Controller
 
         // Verify if user is allowed
         if (! app(IsUserAllowedAction::class)->execute($oauthUser)) {
-            Events\UserNotAllowed::dispatch($oauthUser);
+            UserNotAllowed::dispatch($oauthUser);
 
             return app(RedirectToLoginAction::class)->execute('auth.user-not-allowed');
         }
@@ -54,7 +56,7 @@ class ProcessCallbackController extends Controller
 
         // See if registration is allowed
         if (! app(IsRegistrationEnabledAction::class)->execute()) {
-            Events\RegistrationNotEnabled::dispatch($provider, $oauthUser);
+            RegistrationNotEnabled::dispatch($provider, $oauthUser);
 
             return app(RedirectToLoginAction::class)->execute('auth.registration-not-enabled');
         }

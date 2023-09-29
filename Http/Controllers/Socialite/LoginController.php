@@ -4,6 +4,12 @@ declare(strict_types=1);
 
 namespace Modules\User\Http\Controllers\Socialite;
 
+use Modules\User\Events\InvalidState;
+use Modules\User\Events\Login;
+use Modules\User\Events\SocialiteUserConnected;
+use Modules\User\Events\Registered;
+use Modules\User\Events\UserNotAllowed;
+use Modules\User\Events\RegistrationNotEnabled;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 // use DutchCodingCompany\FilamentSocialite\FilamentSocialite;
@@ -52,7 +58,7 @@ class LoginController extends Controller
         try {
             return Socialite::driver($provider)->user();
         } catch (InvalidStateException $e) {
-            Events\InvalidState::dispatch($e);
+            InvalidState::dispatch($e);
         }
 
         return null;
@@ -69,7 +75,7 @@ class LoginController extends Controller
     protected function redirectToLogin(string $message): RedirectResponse
     {
         // Redirect back to the login route with an error message attached
-        return redirect()->route(config('filament-socialite.login_page_route', 'filament.auth.login'))
+        return to_route(config('filament-socialite.login_page_route', 'filament.auth.login'))
                 ->withErrors([
                     'email' => [
                         __($message),
@@ -82,7 +88,7 @@ class LoginController extends Controller
         $domains = app(GetDomainAllowListAction::class)->execute();
 
         // When no domains are specified, all users are allowed
-        if (\count($domains) < 1) {
+        if ((is_countable($domains) ? \count($domains) : 0) < 1) {
             return true;
         }
 
@@ -91,13 +97,8 @@ class LoginController extends Controller
             ->afterLast('@')
             ->lower()
             ->__toString();
-
         // See if everything after @ is in the domains array
-        if (\in_array($emailDomain, $domains, true)) {
-            return true;
-        }
-
-        return false;
+        return \in_array($emailDomain, $domains, true);
     }
 
     protected function loginUser(SocialiteUser $socialiteUser)
@@ -107,7 +108,7 @@ class LoginController extends Controller
         $guard->login($socialiteUser->user, config('filament-socialite.remember_login', false));
 
         // Dispatch the login event
-        Events\Login::dispatch($socialiteUser);
+        Login::dispatch($socialiteUser);
 
         $url = app(GetLoginRedirectRouteAction::class)->execute();
         // Redirect as intended
@@ -123,7 +124,7 @@ class LoginController extends Controller
         $socialiteUser = $this->createSocialiteUser(provider: $provider, oauthUser: $oauthUser, user: $user);
 
         // Dispatch the socialite user connected event
-        Events\SocialiteUserConnected::dispatch($socialiteUser);
+        SocialiteUserConnected::dispatch($socialiteUser);
 
         // Login the user
         return $this->loginUser($socialiteUser);
@@ -131,27 +132,24 @@ class LoginController extends Controller
 
     public function createSocialiteUser(string $provider, SocialiteUserContract $oauthUser, Model $user)
     {
-        $socialiteUser = SocialiteUser::create([
+        return SocialiteUser::create([
             'user_id' => $user->getKey(),
             'provider' => $provider,
             'provider_id' => $oauthUser->getId(),
         ]);
-
-        return $socialiteUser;
     }
 
     public function createUser(SocialiteUserContract $oauthUser)
     {
         $xot = XotData::make();
         $userClass = $xot->getUserClass();
-        $user = $userClass::create(
+
+        return $userClass::create(
             [
                 'name' => $oauthUser->getName(),
                 'email' => $oauthUser->getEmail(),
             ]
         );
-
-        return $user;
     }
 
     protected function registerOauthUser(string $provider, SocialiteUserContract $oauthUser)
@@ -168,7 +166,7 @@ class LoginController extends Controller
         });
 
         // Dispatch the registered event
-        Events\Registered::dispatch($socialiteUser);
+        Registered::dispatch($socialiteUser);
 
         // Login the user
         return $this->loginUser($socialiteUser);
@@ -183,26 +181,26 @@ class LoginController extends Controller
 
         // Try to retrieve existing user
         $oauthUser = $this->retrieveOauthUser($provider);
-        if (null === $oauthUser) {
+        if (!$oauthUser instanceof SocialiteUserContract) {
             return $this->redirectToLogin('auth.login-failed');
         }
 
         // Verify if user is allowed
         if (! $this->isUserAllowed($oauthUser)) {
-            Events\UserNotAllowed::dispatch($oauthUser);
+            UserNotAllowed::dispatch($oauthUser);
 
             return $this->redirectToLogin('auth.user-not-allowed');
         }
 
         // Try to find a socialite user
         $socialiteUser = $this->retrieveSocialiteUser($provider, $oauthUser);
-        if ($socialiteUser) {
+        if ($socialiteUser instanceof SocialiteUser) {
             return $this->loginUser($socialiteUser);
         }
 
         // See if registration is allowed
         if (! app(IsRegistrationEnabledAction::class)->execute()) {
-            Events\RegistrationNotEnabled::dispatch($provider, $oauthUser);
+            RegistrationNotEnabled::dispatch($provider, $oauthUser);
 
             return $this->redirectToLogin('auth.registration-not-enabled');
         }

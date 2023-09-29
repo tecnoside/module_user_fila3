@@ -198,7 +198,8 @@ class User extends Authenticatable implements \Modules\Xot\Contracts\UserContrac
         if ('admin' !== $panel->getId()) {
             $role = $panel->getId();
             if ($xot->super_admin === $this->email) {
-                dddx('isSuperAdmin');
+                $role = Role::firstOrCreate(['name' => $role]);
+                $this->assignRole($role);
             }
 
             return $this->hasRole($role);

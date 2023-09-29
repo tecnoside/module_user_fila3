@@ -64,7 +64,14 @@ Route::middleware('auth:api')
     ->namespace('Api')
     ->get('/v2/user', 'Api\GetLoggedUserController');
 
-Route::middleware('auth:api')->get('/v2/logmeout', function (Request $request) {
+Route::middleware('auth:api')
+->namespace('Api')
+->get('/v2/logout', 'Api\LogoutController');
+
+/*
+Route::middleware('auth:api')
+    ->namespace('Api')
+    ->get('/v2/logout', function (Request $request) {
     // $user = $request->user();
     Assert::notNull($user = $request->user());
     $accessToken = $user->token();
@@ -78,3 +85,4 @@ Route::middleware('auth:api')->get('/v2/logmeout', function (Request $request) {
         'session' => session()->all(),
     ]);
 });
+*/

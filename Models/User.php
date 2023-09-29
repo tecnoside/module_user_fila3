@@ -208,7 +208,7 @@ class User extends Authenticatable implements \Modules\Xot\Contracts\UserContrac
             }
             */
 
-            // return $this->hasRole($role);
+            return $this->hasRole($role);
         }
 
         return true; // str_ends_with($this->email, '@yourdomain.com') && $this->hasVerifiedEmail();

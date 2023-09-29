@@ -34,8 +34,9 @@ use Modules\User\Models\Traits\HasProfilePhoto;
 use Modules\User\Models\Traits\HasTeams;
 use Modules\User\Models\Traits\TwoFactorAuthenticatable;
 use Modules\Xot\Datas\XotData;
-use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
+// use Spatie\Permission\Models\Permission;
+// use Spatie\Permission\Models\Role;
+
 use Spatie\Permission\Traits\HasRoles;
 use Spatie\PersonalDataExport\ExportsPersonalData;
 

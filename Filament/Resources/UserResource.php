@@ -8,40 +8,37 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Resources;
 
-use Filament\Tables;
-use Filament\Forms\Form;
-use Filament\Tables\Table;
-use Modules\User\Models\Role;
-use Modules\User\Models\User;
 use Filament\Facades\Filament;
-use Filament\Resources\Resource;
-use Illuminate\Support\HtmlString;
 use Filament\Forms\Components\Card;
-use Filament\Tables\Actions\Action;
-use Filament\Tables\Filters\Filter;
 use Filament\Forms\Components\Group;
-use Illuminate\Support\Facades\Hash;
-use Filament\Forms\Components\Select;
-use Filament\Tables\Actions\EditAction;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Forms\Components\TextInput;
-use Filament\Notifications\Notification;
-use Filament\Tables\Filters\SelectFilter;
-use Illuminate\Validation\Rules\Password;
 use Filament\Forms\Components\Placeholder;
-use Filament\Tables\Columns\BooleanColumn;
-use Filament\Tables\Actions\DeleteBulkAction;
-use Illuminate\Contracts\Database\Eloquent\Builder;
-use Modules\Xot\Filament\Resources\XotBaseResource;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Form;
+use Filament\Notifications\Notification;
 use Filament\Resources\RelationManagers\RelationGroup;
+use Filament\Resources\Resource;
+use Filament\Tables;
+use Filament\Tables\Actions\Action;
+use Filament\Tables\Actions\DeleteBulkAction;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Columns\BooleanColumn;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\Filter;
+use Filament\Tables\Filters\SelectFilter;
+use Filament\Tables\Table;
+use Illuminate\Contracts\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\HtmlString;
+use Illuminate\Validation\Rules\Password;
+use Modules\User\Filament\Resources\UserResource\Pages\CreateUser;
 use Modules\User\Filament\Resources\UserResource\Pages\EditUser;
 use Modules\User\Filament\Resources\UserResource\Pages\ListUsers;
-use Modules\User\Filament\Resources\UserResource\Pages\CreateUser;
 use Modules\User\Filament\Resources\UserResource\RelationManagers;
 use Modules\User\Filament\Resources\UserResource\Widgets\UserOverview;
-use Modules\User\Filament\Resources\UserResource\RelationManagers\RolesRelationManager;
-use Modules\User\Filament\Resources\UserResource\RelationManagers\TeamsRelationManager;
-use Modules\User\Filament\Resources\UserResource\RelationManagers\ProfileRelationManager;
+use Modules\User\Models\Role;
+use Modules\User\Models\User;
+use Modules\Xot\Filament\Resources\XotBaseResource;
 
 class UserResource extends XotBaseResource
 {
@@ -267,9 +264,9 @@ class UserResource extends XotBaseResource
     */
 
     public function hasCombinedRelationManagerTabsWithContent(): bool
-{
-    return true;
-}
+    {
+        return true;
+    }
 
     public static function getRelations(): array
     {
@@ -277,7 +274,7 @@ class UserResource extends XotBaseResource
             RelationManagers\TeamsRelationManager::class,
             RelationManagers\ProfileRelationManager::class,
             RelationManagers\RolesRelationManager::class,
-            //---PASSPORT
+            // ---PASSPORT
             RelationGroup::make('Passport', [
                 RelationManagers\TokensRelationManager::class,
                 RelationManagers\ClientsRelationManager::class,

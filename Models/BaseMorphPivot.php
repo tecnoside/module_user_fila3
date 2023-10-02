@@ -27,7 +27,7 @@ abstract class BaseMorphPivot extends MorphPivot
      * @var bool
      */
     public $timestamps = true;
-    
+
     /**
      * Indicates whether attributes are snake cased on arrays.
      *
@@ -48,7 +48,7 @@ abstract class BaseMorphPivot extends MorphPivot
      * @var string
      */
     protected $connection = 'user';
-    
+
     /**
      * @var array
      */
@@ -69,7 +69,7 @@ abstract class BaseMorphPivot extends MorphPivot
         'user_id',
         'note',
     ];
-    
+
     protected $casts = ['created_at' => 'datetime', 'updated_at' => 'datetime', 'deleted_at' => 'datetime'];
 
     /**

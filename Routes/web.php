@@ -39,11 +39,11 @@ Route::namespace('Socialite')
         ->name('oauth.callback');
 });
 
-/**
+/*
  * ..
  */
 Route::namespace('\\')
-    ->group(function(){
-        Route::get('/login',  Filament::getPanel('admin')->getLoginRouteAction())->name('login');
+    ->group(function () {
+        Route::get('/login', Filament::getPanel('admin')->getLoginRouteAction())->name('login');
     }
-);
+    );

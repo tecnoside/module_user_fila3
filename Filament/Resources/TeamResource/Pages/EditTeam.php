@@ -9,7 +9,6 @@ use Filament\Pages\Actions\ViewAction;
 use Filament\Resources\Pages\EditRecord;
 use Modules\User\Filament\Resources\TeamResource;
 
-
 class EditTeam extends EditRecord
 {
     // //

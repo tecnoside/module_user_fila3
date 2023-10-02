@@ -8,7 +8,6 @@ use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 use Modules\User\Filament\Resources\RoleResource;
 
-
 class ListRoles extends ListRecords
 {
     // //

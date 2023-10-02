@@ -9,12 +9,11 @@ declare(strict_types=1);
 namespace Modules\User\Actions\Socialite;
 
 // use DutchCodingCompany\FilamentSocialite\FilamentSocialite;
-use Modules\User\Events\SocialiteUserConnected;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Socialite\Contracts\User as SocialiteUserContract;
-// use DutchCodingCompany\FilamentSocialite\FilamentSocialite;
 use Laravel\Socialite\Facades\Socialite;
-use Modules\User\Events;
+// use DutchCodingCompany\FilamentSocialite\FilamentSocialite;
+use Modules\User\Events\SocialiteUserConnected;
 use Modules\User\Models\User;
 use Spatie\QueueableAction\QueueableAction;
 

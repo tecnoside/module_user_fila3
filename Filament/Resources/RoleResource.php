@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Resources;
 
-use Closure;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\Grid;
@@ -38,7 +37,8 @@ use Modules\User\Models\Role;
 use Modules\User\Support\Utils;
 use Modules\Xot\Filament\Resources\XotBaseResource;
 
-class RoleResource extends XotBaseResource { /* implements HasShieldPermissions */
+class RoleResource extends XotBaseResource
+{ /* implements HasShieldPermissions */
     // ////
     protected static ?string $model = Role::class;
 
@@ -48,7 +48,8 @@ class RoleResource extends XotBaseResource { /* implements HasShieldPermissions 
 
     private static ?Collection $permissionsCollection = null;
 
-    public static function getPermissionPrefixes(): array {
+    public static function getPermissionPrefixes(): array
+    {
         return [
             'view',
             'view_any',
@@ -59,7 +60,8 @@ class RoleResource extends XotBaseResource { /* implements HasShieldPermissions 
         ];
     }
 
-    public static function form(Form $form): Form {
+    public static function form(Form $form): Form
+    {
         return $form
             ->schema([
                 Grid::make()
@@ -157,7 +159,8 @@ class RoleResource extends XotBaseResource { /* implements HasShieldPermissions 
             ]);
     }
 
-    public static function table(Table $table): Table {
+    public static function table(Table $table): Table
+    {
         return $table
             ->columns([
                 BadgeColumn::make('name')
@@ -188,13 +191,15 @@ class RoleResource extends XotBaseResource { /* implements HasShieldPermissions 
             ]);
     }
 
-    public static function getRelations(): array {
+    public static function getRelations(): array
+    {
         return [
             UsersRelationManager::class,
         ];
     }
 
-    public static function getPages(): array {
+    public static function getPages(): array
+    {
         return [
             'index' => ListRoles::route('/'),
             'create' => CreateRole::route('/create'),
@@ -203,7 +208,8 @@ class RoleResource extends XotBaseResource { /* implements HasShieldPermissions 
         ];
     }
 
-    public static function getModel(): string {
+    public static function getModel(): string
+    {
         return Utils::getRoleModel();
     }
 
@@ -217,11 +223,13 @@ class RoleResource extends XotBaseResource { /* implements HasShieldPermissions 
     | Resource Related Logic Start     |
     *----------------------------------*/
 
-    public static function getResourceEntitiesSchema(): array {
+    public static function getResourceEntitiesSchema(): array
+    {
         return [];
     }
 
-    public static function getResourceEntityPermissionsSchema(array $entity): ?array {
+    public static function getResourceEntityPermissionsSchema(array $entity): ?array
+    {
         return collect(Utils::getResourcePermissionPrefixes($entity['fqcn']))->reduce(static function (array $permissions, string $permission) use ($entity): array {
             $permissions[] = Checkbox::make($permission.'_'.$entity['resource'])
                 ->label(FilamentShield::getLocalizedResourcePermissionLabel($permission))
@@ -297,11 +305,13 @@ class RoleResource extends XotBaseResource { /* implements HasShieldPermissions 
     }
     */
 
-    public static function getNavigationBadge(): ?string {
+    public static function getNavigationBadge(): ?string
+    {
         return (string) static::getModel()::count();
     }
 
-    private function refreshSelectAllStateViaEntities(Closure $set, Closure $get): void {
+    private function refreshSelectAllStateViaEntities(\Closure $set, \Closure $get): void
+    {
         $entitiesStates = collect(FilamentShield::getResources())
             ->when(Utils::isPageEntityEnabled(), fn ($entities) => $entities->merge(FilamentShield::getPages()))
             ->when(Utils::isWidgetEntityEnabled(), fn ($entities) => $entities->merge(FilamentShield::getWidgets()))
@@ -323,7 +333,8 @@ class RoleResource extends XotBaseResource { /* implements HasShieldPermissions 
         }
     }
 
-    private function refreshEntitiesStatesViaSelectAll(Closure $set, $state): void {
+    private function refreshEntitiesStatesViaSelectAll(\Closure $set, $state): void
+    {
         collect(FilamentShield::getResources())->each(static function (array $entity) use ($set, $state): void {
             $set($entity['resource'], $state);
             collect(Utils::getResourcePermissionPrefixes($entity['fqcn']))->each(static function (string $permission) use ($entity, $set, $state): void {
@@ -350,7 +361,8 @@ class RoleResource extends XotBaseResource { /* implements HasShieldPermissions 
         });
     }
 
-    private function refreshResourceEntityStateAfterUpdate(Closure $set, Closure $get, array $entity): void {
+    private function refreshResourceEntityStateAfterUpdate(\Closure $set, \Closure $get, array $entity): void
+    {
         $collection = collect(Utils::getResourcePermissionPrefixes($entity['fqcn']))
             ->map(static fn (string $permission): bool => (bool) $get($permission.'_'.$entity['resource']));
 
@@ -363,7 +375,8 @@ class RoleResource extends XotBaseResource { /* implements HasShieldPermissions 
         }
     }
 
-    private function refreshResourceEntityStateAfterHydrated(Model $model, Closure $set, array $entity): void {
+    private function refreshResourceEntityStateAfterHydrated(Model $model, \Closure $set, array $entity): void
+    {
         $entities = $model->permissions->pluck('name')
             ->reduce(static function (array $roles, $role): array {
                 $roles[$role] = Str::afterLast($role, '_');
@@ -396,7 +409,8 @@ class RoleResource extends XotBaseResource { /* implements HasShieldPermissions 
     | Page Related Logic Start       |
     *----------------------------------*/
 
-    private function getPageEntityPermissionsSchema(): array {
+    private function getPageEntityPermissionsSchema(): array
+    {
         return [];
     }
 
@@ -408,7 +422,8 @@ class RoleResource extends XotBaseResource { /* implements HasShieldPermissions 
     | Widget Related Logic Start       |
     *----------------------------------*/
 
-    private function getWidgetEntityPermissionSchema(): ?array {
+    private function getWidgetEntityPermissionSchema(): ?array
+    {
         return [];
     }
 
@@ -416,11 +431,13 @@ class RoleResource extends XotBaseResource { /* implements HasShieldPermissions 
     | Widget Related Logic End          |
     *----------------------------------*/
 
-    private function getCustomEntities(): ?Collection {
+    private function getCustomEntities(): ?Collection
+    {
         return collect();
     }
 
-    private function getCustomEntitiesPermisssionSchema(): ?array {
+    private function getCustomEntitiesPermisssionSchema(): ?array
+    {
         return collect(static::getCustomEntities())->reduce(static function (array $customEntities, $customPermission): array {
             $customEntities[] = Grid::make()
                 ->schema([

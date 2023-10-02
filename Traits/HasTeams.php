@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace Modules\User\Traits;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Support\Collection;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Modules\User\Models\Team;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Laravel\Passport\HasApiTokens;
+use Modules\User\Models\Team;
 use Modules\User\OwnerRole;
 use Modules\Xot\Datas\XotData;
 
@@ -131,7 +131,7 @@ trait HasTeams
             return false;
         }
 
-        return $this->ownsTeam($team) || $this->teams->contains(fn($t) => $t->id === $team->id);
+        return $this->ownsTeam($team) || $this->teams->contains(fn ($t) => $t->id === $team->id);
     }
 
     /**

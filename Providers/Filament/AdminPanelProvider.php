@@ -1,17 +1,17 @@
 <?php
 /**
- * ---
+ * ---.
  */
 
 declare(strict_types=1);
 
 namespace Modules\User\Providers\Filament;
 
-use Filament\Panel;
-use Illuminate\Support\Facades\Blade;
-use Filament\Support\Facades\FilamentView;
-use Modules\Xot\Providers\Filament\XotBasePanelProvider;
 use Filament\Notifications\Livewire\DatabaseNotifications;
+use Filament\Panel;
+use Filament\Support\Facades\FilamentView;
+use Illuminate\Support\Facades\Blade;
+use Modules\Xot\Providers\Filament\XotBasePanelProvider;
 
 class AdminPanelProvider extends XotBasePanelProvider
 {
@@ -23,7 +23,7 @@ class AdminPanelProvider extends XotBasePanelProvider
             'panels::auth.login.form.after',
             fn (): string => Blade::render('@livewire(\'socialite.buttons\')'),
         );
-        
+
         /* -- moved into Notify
         DatabaseNotifications::trigger('notifications.database-notifications-trigger');
         FilamentView::registerRenderHook(
@@ -35,10 +35,6 @@ class AdminPanelProvider extends XotBasePanelProvider
             'panels::user-menu.before',
             fn (): string => Blade::render('@livewire(\'team.change\')'),
         );
-        
-        
-        
-        
 
         return parent::panel($panel);
     }

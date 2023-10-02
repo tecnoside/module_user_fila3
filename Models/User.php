@@ -6,20 +6,19 @@ namespace Modules\User\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 // use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
-use Modules\Notify\Models\Notification;
 use Eloquent;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Models\Contracts\HasAvatar;
 use Filament\Models\Contracts\HasTenants;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Notifications\DatabaseNotificationCollection;
@@ -30,6 +29,7 @@ use Laravel\Passport\HasApiTokens;
 use Laravel\Passport\Token;
 use Modules\Egea\Models\MobileDevice;
 use Modules\Egea\Models\MobileDeviceUser;
+use Modules\Notify\Models\Notification;
 use Modules\User\Contracts\UserContract as UserJetContract;
 use Modules\User\Database\Factories\UserFactory;
 use Modules\User\Models\Traits\CanExportPersonalData;
@@ -62,16 +62,16 @@ use Spatie\PersonalDataExport\ExportsPersonalData;
  * @property bool                                                      $is_active
  * @property Carbon|null                                               $created_at
  * @property Carbon|null                                               $updated_at
- * @property Collection<int, Client> $clients
+ * @property Collection<int, Client>                                   $clients
  * @property int|null                                                  $clients_count
  * @property string                                                    $profile_photo_url
  * @property DatabaseNotificationCollection<int, DatabaseNotification> $notifications
  * @property int|null                                                  $notifications_count
- * @property Collection<int, Permission> $permissions
+ * @property Collection<int, Permission>                               $permissions
  * @property int|null                                                  $permissions_count
- * @property Collection<int, Role> $roles
+ * @property Collection<int, Role>                                     $roles
  * @property int|null                                                  $roles_count
- * @property Collection<int, Token> $tokens
+ * @property Collection<int, Token>                                    $tokens
  * @property int|null                                                  $tokens_count
  *
  * @method static Builder|User newModelQuery()
@@ -101,10 +101,10 @@ use Spatie\PersonalDataExport\ExportsPersonalData;
  *
  * @method static Builder|User whereLang($value)
  *
- * @property Team|null                                           $currentTeam
- * @property Collection<int, Team> $ownedTeams
- * @property \Modules\EWall\Models\Profile|null                  $profile
- * @property Collection<int, Team> $teams
+ * @property Team|null                          $currentTeam
+ * @property Collection<int, Team>              $ownedTeams
+ * @property \Modules\EWall\Models\Profile|null $profile
+ * @property Collection<int, Team>              $teams
  *
  * @mixin Eloquent
  */
@@ -175,7 +175,7 @@ class User extends Authenticatable implements \Modules\Xot\Contracts\UserContrac
         // 'profile_photo_url',
     ];
 
-    public function canAccessFilament(\Filament\Panel $panel): bool
+    public function canAccessFilament(Panel $panel): bool
     {
         // return $this->role_id === Role::ROLE_ADMINISTRATOR;
         return true;

@@ -9,7 +9,6 @@ use Filament\Resources\Pages\ListRecords;
 use Modules\User\Filament\Resources\UserResource;
 use Modules\User\Filament\Resources\UserResource\Widgets\UserOverview;
 
-
 class ListUsers extends ListRecords
 {
     // //

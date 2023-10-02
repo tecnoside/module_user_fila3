@@ -4,19 +4,16 @@ declare(strict_types=1);
 
 namespace Modules\User\Models\Traits;
 
-use Exception;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
+use Laravel\Passport\HasApiTokens;
+use Modules\User\Contracts\TeamContract;
 use Modules\User\Models\Role;
 use Modules\User\Models\Team;
 use Modules\Xot\Datas\XotData;
-use Illuminate\Support\Collection;
-use Laravel\Passport\HasApiTokens;
-use Illuminate\Database\Eloquent\Model;
-use Modules\User\Contracts\TeamContract;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Filament\Panel;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 // use Modules\User\Models\OwnerRole;
 
@@ -108,7 +105,7 @@ trait HasTeams
      */
     public function teams(): BelongsToMany
     {
-        $xot=XotData::make();
+        $xot = XotData::make();
         $pivotClass = $xot->getMembershipClass();
         $pivot = app($pivotClass);
         $pivotTable = $pivot->getTable();
@@ -134,7 +131,7 @@ trait HasTeams
         }
 
         if (! $res instanceof TeamContract) {
-            throw new Exception('strange things');
+            throw new \Exception('strange things');
         }
 
         return $res;
@@ -205,7 +202,7 @@ trait HasTeams
             $this->id
         )->first()?->membership?->role))->key === $role;
         */
-        return $this->belongsToTeam($teamContract) && $this->teamRole($teamContract) != null;
+        return $this->belongsToTeam($teamContract) && null != $this->teamRole($teamContract);
     }
 
     /**
@@ -252,7 +249,4 @@ trait HasTeams
             || (Str::endsWith($permission, ':create') && in_array('*:create', $permissions))
             || (Str::endsWith($permission, ':update') && in_array('*:update', $permissions));
     }
-
-
-
 }

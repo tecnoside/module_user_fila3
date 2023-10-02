@@ -34,6 +34,7 @@ class IsUserAllowedAction
             ->afterLast('@')
             ->lower()
             ->__toString();
+
         // See if everything after @ is in the domains array
         return \in_array($emailDomain, $domains, true);
     }

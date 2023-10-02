@@ -7,12 +7,11 @@ declare(strict_types=1);
 
 namespace Modules\User\Actions\Socialite;
 
-use Modules\User\Events\InvalidState;
 use Laravel\Socialite\Contracts\User as SocialiteUserContract;
-// use DutchCodingCompany\FilamentSocialite\FilamentSocialite;
 use Laravel\Socialite\Facades\Socialite;
+// use DutchCodingCompany\FilamentSocialite\FilamentSocialite;
 use Laravel\Socialite\Two\InvalidStateException;
-use Modules\User\Events;
+use Modules\User\Events\InvalidState;
 use Spatie\QueueableAction\QueueableAction;
 
 class RetrieveOauthUserAction

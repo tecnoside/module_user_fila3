@@ -21,6 +21,7 @@ class RedirectToLoginAction
     public function execute(string $message): RedirectResponse
     {
         dddx($message);
+
         // Redirect back to the login route with an error message attached
         return to_route(config('filament-socialite.login_page_route', 'filament.auth.login'))
                 ->withErrors([

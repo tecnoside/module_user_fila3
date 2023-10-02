@@ -8,8 +8,6 @@ declare(strict_types=1);
 
 namespace Modules\User\Http\Controllers\Socialite;
 
-use Modules\User\Events\UserNotAllowed;
-use Modules\User\Events\RegistrationNotEnabled;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Request;
 use Laravel\Socialite\Facades\Socialite;
@@ -22,7 +20,8 @@ use Modules\User\Actions\Socialite\RegisterOauthUserAction;
 use Modules\User\Actions\Socialite\RegisterSocialiteUserAction;
 use Modules\User\Actions\Socialite\RetrieveOauthUserAction;
 use Modules\User\Actions\Socialite\RetrieveSocialiteUserAction;
-use Modules\User\Events;
+use Modules\User\Events\RegistrationNotEnabled;
+use Modules\User\Events\UserNotAllowed;
 use Modules\User\Exceptions\ProviderNotConfigured;
 use Modules\User\Models\User;
 
@@ -64,6 +63,7 @@ class ProcessCallbackController extends Controller
         // See if a user already exists, but not for this socialite provider
         // $user = app()->call($this->socialite->getUserResolver(), ['provider' => $provider, 'oauthUser' => $oauthUser, 'socialite' => $this->socialite]);
         $user = User::firstWhere(['email' => $oauthUser->getEmail()]);
+
         // Handle registration
         return $user
             ? app(RegisterSocialiteUserAction::class)->execute($provider, $oauthUser, $user)

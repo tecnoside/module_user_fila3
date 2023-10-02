@@ -66,6 +66,6 @@ use Spatie\Permission\Models\Role;
  *
  * @mixin \Eloquent
  */
-interface UserContract extends CanResetPassword, HasTeamsContract, ModelContract, MustVerifyEmail, PassportHasApiTokensContract /*, TwoFactorAuthenticatableContract*/
-{
+interface UserContract extends CanResetPassword, HasTeamsContract, ModelContract, MustVerifyEmail, PassportHasApiTokensContract
+{ /* , TwoFactorAuthenticatableContract */
 }

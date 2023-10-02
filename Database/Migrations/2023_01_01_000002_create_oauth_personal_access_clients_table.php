@@ -13,8 +13,8 @@ class CreateOauthPersonalAccessClientsTable extends XotBaseMigration
         $this->tableCreate(
             function (Blueprint $table): void {
                 $table->bigIncrements('id');
-                //$table->unsignedBigInteger('client_id');
-                //$table->uuid('client_id');
+                // $table->unsignedBigInteger('client_id');
+                // $table->uuid('client_id');
                 $table->foreignIdFor(OauthClient::class, 'client_id');
                 $table->timestamps();
             }
@@ -22,7 +22,8 @@ class CreateOauthPersonalAccessClientsTable extends XotBaseMigration
 
         // -- UPDATE --
         $this->tableUpdate(
-            function (Blueprint $table): void {}
+            function (Blueprint $table): void {
+            }
         );
     }
 }

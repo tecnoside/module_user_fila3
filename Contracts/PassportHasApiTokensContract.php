@@ -1,6 +1,6 @@
 <?php
 /**
- * --- 
+ * ---.
  */
 
 declare(strict_types=1);
@@ -8,9 +8,10 @@ declare(strict_types=1);
 namespace Modules\User\Contracts;
 
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Laravel\Passport\PersonalAccessTokenResult;
 use Laravel\Passport\Token;
 use Laravel\Passport\TransientToken;
-use Laravel\Passport\PersonalAccessTokenResult;
+
 /**
  * @propery \Laravel\Passport\Token|\Laravel\Passport\TransientToken|null $accessToken;
  */

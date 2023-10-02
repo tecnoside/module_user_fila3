@@ -7,11 +7,10 @@ declare(strict_types=1);
 
 namespace Modules\User\Actions\Socialite;
 
-use Modules\User\Events\Registered;
 use Illuminate\Support\Facades\DB;
 use Laravel\Socialite\Contracts\User as SocialiteUserContract;
 use Laravel\Socialite\Facades\Socialite;
-use Modules\User\Events;
+use Modules\User\Events\Registered;
 use Modules\User\Models\User;
 use Spatie\QueueableAction\QueueableAction;
 

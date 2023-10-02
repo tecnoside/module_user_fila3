@@ -13,20 +13,23 @@ use Illuminate\Support\Str;
 use Modules\User\Filament\Resources\RoleResource;
 use Modules\User\Support\Utils;
 
-class EditRole extends EditRecord {
+class EditRole extends EditRecord
+{
     // //
     public Collection $permissions;
 
     protected static string $resource = RoleResource::class;
 
-    protected function getHeaderActions(): array {
+    protected function getHeaderActions(): array
+    {
         return [
             ViewAction::make(),
             DeleteAction::make(),
         ];
     }
 
-    protected function mutateFormDataBeforeSave(array $data): array {
+    protected function mutateFormDataBeforeSave(array $data): array
+    {
         $this->permissions = collect($data)->filter(static fn ($permission, $key): bool => ! in_array($key, ['name', 'guard_name', 'select_all']) && Str::contains($key, '_'))->keys();
 
         return Arr::only($data, ['name', 'guard_name']);
@@ -35,7 +38,8 @@ class EditRole extends EditRecord {
     /**
      *  ---.
      */
-    public function afterSave(): void {
+    public function afterSave(): void
+    {
         $permissionModels = collect();
         $this->permissions->each(function ($permission) use ($permissionModels): void {
             $permissionModels->push(Utils::getPermissionModel()::firstOrCreate([

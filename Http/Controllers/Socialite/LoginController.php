@@ -4,28 +4,27 @@ declare(strict_types=1);
 
 namespace Modules\User\Http\Controllers\Socialite;
 
-use Modules\User\Events\InvalidState;
-use Modules\User\Events\Login;
-use Modules\User\Events\SocialiteUserConnected;
-use Modules\User\Events\Registered;
-use Modules\User\Events\UserNotAllowed;
-use Modules\User\Events\RegistrationNotEnabled;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
-// use DutchCodingCompany\FilamentSocialite\FilamentSocialite;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Laravel\Socialite\Contracts\User as SocialiteUserContract;
 use Laravel\Socialite\Facades\Socialite;
 use Laravel\Socialite\Two\InvalidStateException;
+// use DutchCodingCompany\FilamentSocialite\FilamentSocialite;
 use Modules\User\Actions\Socialite\GetDomainAllowListAction;
 use Modules\User\Actions\Socialite\GetGuardAction;
 use Modules\User\Actions\Socialite\GetLoginRedirectRouteAction;
 use Modules\User\Actions\Socialite\GetProviderScopesAction;
 use Modules\User\Actions\Socialite\IsProviderConfiguredAction;
 use Modules\User\Actions\Socialite\IsRegistrationEnabledAction;
-use Modules\User\Events;
+use Modules\User\Events\InvalidState;
+use Modules\User\Events\Login;
+use Modules\User\Events\Registered;
+use Modules\User\Events\RegistrationNotEnabled;
+use Modules\User\Events\SocialiteUserConnected;
+use Modules\User\Events\UserNotAllowed;
 use Modules\User\Exceptions\ProviderNotConfigured;
 use Modules\User\Models\SocialiteUser;
 use Modules\User\Models\User;
@@ -97,6 +96,7 @@ class LoginController extends Controller
             ->afterLast('@')
             ->lower()
             ->__toString();
+
         // See if everything after @ is in the domains array
         return \in_array($emailDomain, $domains, true);
     }
@@ -111,6 +111,7 @@ class LoginController extends Controller
         Login::dispatch($socialiteUser);
 
         $url = app(GetLoginRedirectRouteAction::class)->execute();
+
         // Redirect as intended
         return redirect()->intended(
             route($url)
@@ -181,7 +182,7 @@ class LoginController extends Controller
 
         // Try to retrieve existing user
         $oauthUser = $this->retrieveOauthUser($provider);
-        if (!$oauthUser instanceof SocialiteUserContract) {
+        if (! $oauthUser instanceof SocialiteUserContract) {
             return $this->redirectToLogin('auth.login-failed');
         }
 
@@ -208,6 +209,7 @@ class LoginController extends Controller
         // See if a user already exists, but not for this socialite provider
         // $user = app()->call($this->socialite->getUserResolver(), ['provider' => $provider, 'oauthUser' => $oauthUser, 'socialite' => $this->socialite]);
         $user = User::firstWhere(['email' => $oauthUser->getEmail()]);
+
         // Handle registration
         return $user
             ? $this->registerSocialiteUser($provider, $oauthUser, $user)

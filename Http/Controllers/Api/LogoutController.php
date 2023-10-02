@@ -8,6 +8,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Modules\Egea\Models\MobileDeviceUser;
+use Modules\User\Models\OauthRefreshToken;
 use Modules\Xot\Datas\JsonResponseData;
 use Modules\Xot\Http\Controllers\XotBaseController;
 use Webmozart\Assert\Assert;
@@ -21,9 +22,12 @@ class LogoutController extends XotBaseController
     {
         Assert::notNull($user = $request->user());
         $accessToken = $user->token();
+        /*
         DB::table('oauth_refresh_tokens')
             ->where('access_token_id', $accessToken->id)
             ->delete();
+        */
+        OauthRefreshToken::where('access_token_id', $accessToken->id)->delete();
         $user->token()->delete();
 
         MobileDeviceUser::where('user_id', $user->id)->update('logout_at', now());

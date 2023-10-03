@@ -42,8 +42,23 @@ Route::namespace('Socialite')
 /*
  * ..
  */
+
+$panel=Filament::getPanel('admin');
+
+//Route::get('/login', $panel->getLoginRouteAction())->name('login');
+
+/*
 Route::namespace('\\')
-    ->group(function () {
-        Route::get('/login', Filament::getPanel('admin')->getLoginRouteAction())->name('login');
+    //->middleware($panel->getMiddleware())
+    //->middleware('guest')
+    ->group(function () use($panel){
+        Route::get('/login', $panel->getLoginRouteAction())->name('login');
+        //Route::redirect('/admin/login');
     }
     );
+*/
+
+Route::get('/login', function () {
+    //return view('welcome');
+    return redirect('/admin/login');
+});

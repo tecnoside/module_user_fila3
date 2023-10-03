@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
+declare(strict_types=1);
+
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Database\Migrations\Migration;
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
 class CreatePasswordResetsTable extends XotBaseMigration
@@ -12,14 +12,15 @@ class CreatePasswordResetsTable extends XotBaseMigration
      *
      * @return void
      */
-    public function up() {
+    public function up()
+    {
         // -- CREATE --
         $this->tableCreate(
             function (Blueprint $table) {
                 $table->id();
                 $table->string('email')->index();
                 $table->string('token');
-                //$table->timestamp('created_at')->nullable();
+                // $table->timestamp('created_at')->nullable();
                 $table->timestamps();
                 $table->string('created_by')->nullable();
                 $table->string('updated_by')->nullable();
@@ -35,4 +36,4 @@ class CreatePasswordResetsTable extends XotBaseMigration
             }
         );
     }
-};
+}

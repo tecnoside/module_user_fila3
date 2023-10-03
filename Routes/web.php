@@ -61,4 +61,4 @@ Route::namespace('\\')
 Route::get('/login', function () {
     // return view('welcome');
     return redirect('/admin/login');
-});
+})->name('login');

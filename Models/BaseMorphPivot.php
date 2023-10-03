@@ -36,7 +36,6 @@ abstract class BaseMorphPivot extends MorphPivot
      * @var bool
      *           public static $snakeAttributes = true;
      */
-
     /**
      * Undocumented variable.
      *

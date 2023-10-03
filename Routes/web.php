@@ -26,18 +26,18 @@ Route::prefix('user')->group(function() {
 // Route::domain(config('filament.domain'))
 //    ->middleware(config('filament.middleware.base'))
 Route::namespace('Socialite')
-->name('socialite.')
-->group(function () {
-    Route::get('/admin/login/{provider}',
-        'LoginController@redirectToProvider',
-    )
-        ->name('oauth.redirect');
+    ->name('socialite.')
+    ->group(function () {
+        Route::get('/admin/login/{provider}',
+            'LoginController@redirectToProvider',
+        )
+            ->name('oauth.redirect');
 
-    Route::get('/sso/{provider}/callback',
-        'ProcessCallbackController',
-    )
-        ->name('oauth.callback');
-});
+        Route::get('/sso/{provider}/callback',
+            'ProcessCallbackController',
+        )
+            ->name('oauth.callback');
+    });
 
 /*
  * ..

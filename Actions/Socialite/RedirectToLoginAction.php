@@ -24,10 +24,10 @@ class RedirectToLoginAction
 
         // Redirect back to the login route with an error message attached
         return to_route(config('filament-socialite.login_page_route', 'filament.auth.login'))
-                ->withErrors([
-                    'email' => [
-                        __($message),
-                    ],
-                ]);
+            ->withErrors([
+                'email' => [
+                    __($message),
+                ],
+            ]);
     }
 }

@@ -65,8 +65,8 @@ Route::middleware('auth:api')
     ->get('/v2/user', 'Api\GetLoggedUserController');
 
 Route::middleware('auth:api')
-->namespace('Api')
-->get('/v2/logout', 'Api\LogoutController');
+    ->namespace('Api')
+    ->get('/v2/logout', 'Api\LogoutController');
 
 /*
 Route::middleware('auth:api')

@@ -15,7 +15,7 @@
                     :href="'#'"
                     :icon="$this->user->isCurrentTeam($team) ? 'heroicon-o-check-circle' : ''"
                     tag="a"
-                    wire:click="switchTeam({{ $team->id }})"                    
+                    wire:click="switchTeam({{ $team->id }})"
                 >
                     {{ $team->name }}
                 </x-filament::dropdown.list.item>

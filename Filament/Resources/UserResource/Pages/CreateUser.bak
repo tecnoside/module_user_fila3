@@ -4,7 +4,7 @@ namespace Modules\User\Filament\Resources\UserResource\Pages;
 
 use Modules\User\Filament\Resources\UserResource;
 use Modules\User\Models\Role;
-use Filament\Pages\Actions;
+use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Contracts\Support\Htmlable;

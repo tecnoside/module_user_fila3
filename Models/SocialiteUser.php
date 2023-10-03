@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 /**
- * inspired by  DutchCodingCompany\FilamentSocialite
+ * inspired by  DutchCodingCompany\FilamentSocialite.
  */
 
 namespace Modules\User\Models;

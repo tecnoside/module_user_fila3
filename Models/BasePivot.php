@@ -36,17 +36,17 @@ abstract class BasePivot extends Pivot
      * @var string
      */
     protected $connection = 'user';
-    
+
     /**
      * @var array
      */
     protected $appends = [];
-    
+
     /**
      * @var array<string, string>
      */
     protected $casts = ['created_at' => 'datetime', 'updated_at' => 'datetime'];
-    
+
     /**
      * Undocumented variable.
      *

@@ -25,7 +25,7 @@ class IsUserAllowedAction
         $domains = app(GetDomainAllowListAction::class)->execute();
 
         // When no domains are specified, all users are allowed
-        if (\count($domains) < 1) {
+        if ((is_countable($domains) ? \count($domains) : 0) < 1) {
             return true;
         }
 
@@ -36,10 +36,6 @@ class IsUserAllowedAction
             ->__toString();
 
         // See if everything after @ is in the domains array
-        if (\in_array($emailDomain, $domains, true)) {
-            return true;
-        }
-
-        return false;
+        return \in_array($emailDomain, $domains, true);
     }
 }

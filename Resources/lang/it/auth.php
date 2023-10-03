@@ -1,7 +1,8 @@
 <?php
 
-return [
+declare(strict_types=1);
 
+return [
     'login-via' => 'Or log in via',
 
     'login-failed' => 'Login failed, please try again.',

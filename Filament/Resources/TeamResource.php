@@ -22,6 +22,7 @@ use Modules\User\Filament\Resources\TeamResource\Pages\ViewTeam;
 use Modules\User\Filament\Resources\TeamResource\RelationManagers\UsersRelationManager;
 use Modules\User\Models\Role;
 use Modules\User\Models\Team;
+use Modules\Xot\Datas\XotData;
 
 class TeamResource extends Resource
 {
@@ -37,7 +38,10 @@ class TeamResource extends Resource
     public static function getModel(): string
     {
         // return FilamentJet::teamModel();
-        return Team::class;
+        // return Team::class;
+        $xot = XotData::make();
+
+        return $xot->getTeamClass();
     }
 
     public static function form(Form $form): Form
@@ -79,7 +83,7 @@ class TeamResource extends Resource
                 EditAction::make(),
                 // Tables\Actions\EditAction::make(),
                 // Tables\Actions\DissociateAction::make(),
-                DetachAction::make(),
+                // DetachAction::make(),
                 // Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([

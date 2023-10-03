@@ -10,7 +10,7 @@ namespace Modules\User\Actions\Socialite;
 use Illuminate\Support\Facades\DB;
 use Laravel\Socialite\Contracts\User as SocialiteUserContract;
 use Laravel\Socialite\Facades\Socialite;
-use Modules\User\Events;
+use Modules\User\Events\Registered;
 use Modules\User\Models\User;
 use Spatie\QueueableAction\QueueableAction;
 
@@ -35,7 +35,7 @@ class RegisterOauthUserAction
         });
 
         // Dispatch the registered event
-        Events\Registered::dispatch($socialiteUser);
+        Registered::dispatch($socialiteUser);
 
         // Login the user
         return app(LoginUserAction::class)->execute($socialiteUser);

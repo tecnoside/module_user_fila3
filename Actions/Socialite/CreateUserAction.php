@@ -23,13 +23,12 @@ class CreateUserAction
     {
         $xot = XotData::make();
         $userClass = $xot->getUserClass();
-        $user = $userClass::create(
+
+        return $userClass::create(
             [
                 'name' => $oauthUser->getName(),
                 'email' => $oauthUser->getEmail(),
             ]
         );
-
-        return $user;
     }
 }

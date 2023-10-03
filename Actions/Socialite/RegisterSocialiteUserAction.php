@@ -11,9 +11,9 @@ namespace Modules\User\Actions\Socialite;
 // use DutchCodingCompany\FilamentSocialite\FilamentSocialite;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Socialite\Contracts\User as SocialiteUserContract;
-// use DutchCodingCompany\FilamentSocialite\FilamentSocialite;
 use Laravel\Socialite\Facades\Socialite;
-use Modules\User\Events;
+// use DutchCodingCompany\FilamentSocialite\FilamentSocialite;
+use Modules\User\Events\SocialiteUserConnected;
 use Modules\User\Models\User;
 use Spatie\QueueableAction\QueueableAction;
 
@@ -31,7 +31,7 @@ class RegisterSocialiteUserAction
         $socialiteUser = app(CreateSocialiteUserAction::class)->execute(provider: $provider, oauthUser: $oauthUser, user: $user);
 
         // Dispatch the socialite user connected event
-        Events\SocialiteUserConnected::dispatch($socialiteUser);
+        SocialiteUserConnected::dispatch($socialiteUser);
 
         // Login the user
         return app(LoginUserAction::class)->execute($socialiteUser);

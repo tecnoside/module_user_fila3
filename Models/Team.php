@@ -93,7 +93,8 @@ class Team extends BaseModel implements TeamContract
             ->as('membership');
     }
 
-    public function members(): BelongsToMany{
+    public function members(): BelongsToMany
+    {
         return $this->users();
     }
 

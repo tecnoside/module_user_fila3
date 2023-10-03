@@ -29,7 +29,7 @@ class CreateModelHasRolesTable extends XotBaseMigration
                 $table->unsignedBigInteger(PermissionRegistrar::$pivotRole);
                 $table->string('model_type');
                 $table->unsignedBigInteger($columnNames['model_morph_key']);
-                //$table->index([$columnNames['model_morph_key'], 'model_type'], 'model_has_roles_model_id_model_type_index');
+                // $table->index([$columnNames['model_morph_key'], 'model_type'], 'model_has_roles_model_id_model_type_index');
                 /*
                 $table->foreign(PermissionRegistrar::$pivotRole)
                         ->references('id') // role id
@@ -59,7 +59,7 @@ class CreateModelHasRolesTable extends XotBaseMigration
             function (Blueprint $table): void {
                 if (! $this->hasColumn('id')) {
                     $table->dropIndex('PRIMARY');
-                    $table->id();
+                    $table->uuid('id');
                 }
                 if (! $this->hasColumn('team_id')) {
                     $table->foreignId('team_id')->nullable();

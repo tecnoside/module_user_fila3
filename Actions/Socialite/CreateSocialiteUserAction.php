@@ -22,12 +22,10 @@ class CreateSocialiteUserAction
      */
     public function execute(string $provider, SocialiteUserContract $oauthUser, Model $user)
     {
-        $socialiteUser = SocialiteUser::create([
+        return SocialiteUser::create([
             'user_id' => $user->getKey(),
             'provider' => $provider,
             'provider_id' => $oauthUser->getId(),
         ]);
-
-        return $socialiteUser;
     }
 }

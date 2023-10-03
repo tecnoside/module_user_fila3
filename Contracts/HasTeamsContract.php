@@ -1,18 +1,18 @@
 <?php
 /**
- * --- Artmin 
+ * --- Artmin.
  */
 
 declare(strict_types=1);
 
 namespace Modules\User\Contracts;
 
-use Modules\User\Models\Role;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
+use Modules\User\Models\Role;
 
 /**
  * Modules\User\Contracts\HasTeamsContract.

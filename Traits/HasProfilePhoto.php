@@ -23,7 +23,7 @@ trait HasProfilePhoto
             $this->forceFill([
                 'profile_photo_path' => $photo,
             ])->save();
-            if (!$previous) {
+            if (! $previous) {
                 return;
             }
 

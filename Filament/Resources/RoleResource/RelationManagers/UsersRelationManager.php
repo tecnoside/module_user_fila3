@@ -8,18 +8,21 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
+use Filament\Tables\Actions\AttachAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Modules\User\Filament\Resources\UserResource;
 
-class UsersRelationManager extends RelationManager {
+class UsersRelationManager extends RelationManager
+{
     protected static string $relationship = 'users';
 
     // protected static ?string $inverseRelationship = 'teams';
 
     protected static ?string $recordTitleAttribute = 'name';
 
-    public function form(Form $form): Form {
+    public function form(Form $form): Form
+    {
         return UserResource::form($form);
         /*
         return $form
@@ -31,14 +34,15 @@ class UsersRelationManager extends RelationManager {
         */
     }
 
-    public function table(Table $table): Table {
+    public function table(Table $table): Table
+    {
         $table = UserResource::table($table);
         $columns = $table->getColumns();
         $columns = collect($columns)->except(['teams.name', 'role.name', 'roles.name'])->all();
         $columns['role'] = TextColumn::make('role');
         $table->columns($columns);
         $headerActions = $table->getHeaderActions();
-        $headerActions['attach'] = Tables\Actions\AttachAction::make();
+        $headerActions['attach'] = AttachAction::make();
         $table = $table->headerActions($headerActions);
 
         return $table;

@@ -11,7 +11,6 @@ use Filament\Tables\Actions\BulkAction;
 use Illuminate\Database\Eloquent\Collection;
 use Modules\User\Filament\Resources\PermissionResource;
 
-
 class ListPermissions extends ListRecords
 {
     // //

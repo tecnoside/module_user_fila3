@@ -8,7 +8,6 @@ use Filament\Actions\EditAction;
 use Filament\Resources\Pages\ViewRecord;
 use Modules\User\Filament\Resources\PermissionResource;
 
-
 class ViewPermission extends ViewRecord
 {
     // //

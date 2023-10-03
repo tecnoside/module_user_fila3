@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Modules\User\Traits;
 
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Routing\Redirector;
 use Illuminate\Http\Response;
+use Illuminate\Routing\Redirector;
 
 trait RedirectsActions
 {

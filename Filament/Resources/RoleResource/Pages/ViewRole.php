@@ -8,7 +8,6 @@ use Filament\Pages\Actions\EditAction;
 use Filament\Resources\Pages\ViewRecord;
 use Modules\User\Filament\Resources\RoleResource;
 
-
 class ViewRole extends ViewRecord
 {
     // //

@@ -3,10 +3,10 @@
 declare(strict_types=1);
 
 use Illuminate\Http\Request;
-use Webmozart\Assert\Assert;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use Webmozart\Assert\Assert;
 
 // use Modules\User\Http\Controllers\Api\UserController;
 
@@ -54,11 +54,24 @@ Route::prefix('/user')
         }
     );
 
-Route::middleware('auth:api'/* , 'scope:view-user' */)->get('/v2/user', function (Request $request) {
-    return $request->user();
+/*
+Route::middleware('auth:api' , 'scope:view-user' )
+    ->get('/v2/user', function (Request $request) {
+        return $request->user();
 });
+*/
+Route::middleware('auth:api')
+    ->namespace('Api')
+    ->get('/v2/user', 'Api\GetLoggedUserController');
 
-Route::middleware('auth:api')->get('/v2/logmeout', function (Request $request) {
+Route::middleware('auth:api')
+->namespace('Api')
+->get('/v2/logout', 'Api\LogoutController');
+
+/*
+Route::middleware('auth:api')
+    ->namespace('Api')
+    ->get('/v2/logout', function (Request $request) {
     // $user = $request->user();
     Assert::notNull($user = $request->user());
     $accessToken = $user->token();
@@ -72,3 +85,4 @@ Route::middleware('auth:api')->get('/v2/logmeout', function (Request $request) {
         'session' => session()->all(),
     ]);
 });
+*/

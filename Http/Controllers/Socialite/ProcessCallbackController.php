@@ -20,7 +20,8 @@ use Modules\User\Actions\Socialite\RegisterOauthUserAction;
 use Modules\User\Actions\Socialite\RegisterSocialiteUserAction;
 use Modules\User\Actions\Socialite\RetrieveOauthUserAction;
 use Modules\User\Actions\Socialite\RetrieveSocialiteUserAction;
-use Modules\User\Events;
+use Modules\User\Events\RegistrationNotEnabled;
+use Modules\User\Events\UserNotAllowed;
 use Modules\User\Exceptions\ProviderNotConfigured;
 use Modules\User\Models\User;
 
@@ -41,7 +42,7 @@ class ProcessCallbackController extends Controller
 
         // Verify if user is allowed
         if (! app(IsUserAllowedAction::class)->execute($oauthUser)) {
-            Events\UserNotAllowed::dispatch($oauthUser);
+            UserNotAllowed::dispatch($oauthUser);
 
             return app(RedirectToLoginAction::class)->execute('auth.user-not-allowed');
         }
@@ -54,7 +55,7 @@ class ProcessCallbackController extends Controller
 
         // See if registration is allowed
         if (! app(IsRegistrationEnabledAction::class)->execute()) {
-            Events\RegistrationNotEnabled::dispatch($provider, $oauthUser);
+            RegistrationNotEnabled::dispatch($provider, $oauthUser);
 
             return app(RedirectToLoginAction::class)->execute('auth.registration-not-enabled');
         }
@@ -62,6 +63,7 @@ class ProcessCallbackController extends Controller
         // See if a user already exists, but not for this socialite provider
         // $user = app()->call($this->socialite->getUserResolver(), ['provider' => $provider, 'oauthUser' => $oauthUser, 'socialite' => $this->socialite]);
         $user = User::firstWhere(['email' => $oauthUser->getEmail()]);
+
         // Handle registration
         return $user
             ? app(RegisterSocialiteUserAction::class)->execute($provider, $oauthUser, $user)

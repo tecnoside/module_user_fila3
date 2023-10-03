@@ -43,9 +43,9 @@ Route::namespace('Socialite')
  * ..
  */
 
-$panel=Filament::getPanel('admin');
+$panel = Filament::getPanel('admin');
 
-//Route::get('/login', $panel->getLoginRouteAction())->name('login');
+// Route::get('/login', $panel->getLoginRouteAction())->name('login');
 
 /*
 Route::namespace('\\')
@@ -59,6 +59,6 @@ Route::namespace('\\')
 */
 
 Route::get('/login', function () {
-    //return view('welcome');
+    // return view('welcome');
     return redirect('/admin/login');
 });

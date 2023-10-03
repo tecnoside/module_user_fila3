@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
-class CreatePasswordResetTokensTable extends XotBaseMigration
+class CreatePasswordResetsTable extends XotBaseMigration
 {
     /**
      * Run the migrations.
@@ -16,10 +16,15 @@ class CreatePasswordResetTokensTable extends XotBaseMigration
         // -- CREATE --
         $this->tableCreate(
             function (Blueprint $table) {
-            $table->string('email')->primary();
-            $table->string('token');
-            $table->timestamp('created_at')->nullable();
-        });
+                $table->id();
+                $table->string('email')->index();
+                $table->string('token');
+                //$table->timestamp('created_at')->nullable();
+                $table->timestamps();
+                $table->string('created_by')->nullable();
+                $table->string('updated_by')->nullable();
+            }
+        );
 
         // -- UPDATE --
         $this->tableUpdate(

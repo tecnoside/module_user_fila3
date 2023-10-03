@@ -4,12 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\User\Models\Traits;
 
-use Exception;
 use Illuminate\Bus\Batch;
 use Illuminate\Support\Facades\Bus;
 use Modules\User\Models\Jobs\CreatePersonalDataExportJob;
 use Spatie\PersonalDataExport\ExportsPersonalData;
-use Throwable;
 
 /**
  * Undocumented trait.
@@ -23,12 +21,12 @@ trait ProcessesExport
     public int $exportProgress = 0;
 
     /**
-     * @throws Throwable
+     * @throws \Throwable
      */
     public function export(): void
     {
         if (! $this->user instanceof ExportsPersonalData) {
-            throw new Exception('user must implemtents Spatie\PersonalDataExport\ExportsPersonalData');
+            throw new \Exception('user must implemtents Spatie\PersonalDataExport\ExportsPersonalData');
         }
 
         $batch = Bus::batch(new CreatePersonalDataExportJob($this->user))

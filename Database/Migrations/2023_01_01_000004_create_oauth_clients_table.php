@@ -33,6 +33,7 @@ class CreateOauthClientsTable extends XotBaseMigration
                 if ('string' !== $this->getColumnType('id')) {
                     $table->uuid('id')->change();  // is  just primary
                 }
+                $this->updateUser($table);
             }
         );
     }

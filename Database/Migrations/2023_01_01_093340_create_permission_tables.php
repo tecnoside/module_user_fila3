@@ -41,7 +41,6 @@ class CreatePermissionTables extends XotBaseMigration
 
     public function down(): void
     {
-        /** @var array $tableNames */
         $tableNames = config('permission.table_names');
 
         if (empty($tableNames)) {

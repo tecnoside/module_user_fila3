@@ -13,6 +13,7 @@ use Filament\Models\Contracts\HasTenants;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -36,10 +37,10 @@ use Modules\User\Models\Traits\CanExportPersonalData;
 use Modules\User\Models\Traits\HasProfilePhoto;
 use Modules\User\Models\Traits\HasTeams;
 use Modules\User\Models\Traits\TwoFactorAuthenticatable;
-use Modules\Xot\Datas\XotData;
 // use Spatie\Permission\Models\Permission;
 // use Spatie\Permission\Models\Role;
 
+use Modules\Xot\Datas\XotData;
 use Spatie\Permission\Traits\HasRoles;
 use Spatie\PersonalDataExport\ExportsPersonalData;
 
@@ -119,8 +120,10 @@ class User extends Authenticatable implements \Modules\Xot\Contracts\UserContrac
     // use HasProfilePhoto; //ArtMin96
     // use HasTeams; //ArtMin96
     use HasTeams;
+    use HasUuids;
     // use Traits\HasProfilePhoto;
     use Notifiable;
+
     use Traits\HasTenants;
 
     /**
@@ -164,6 +167,7 @@ class User extends Authenticatable implements \Modules\Xot\Contracts\UserContrac
         'email_verified_at' => 'datetime',
         // 'password' => 'hashed', //Call to undefined cast [hashed] on column [password] in model [Modules\User\Models\User].
         'is_active' => 'boolean',
+        'id' => 'string',
     ];
 
     /**

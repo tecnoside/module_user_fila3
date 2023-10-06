@@ -25,5 +25,15 @@ class CreateOauthRefreshTokensTable extends XotBaseMigration
                 $table->dateTime('expires_at')->nullable();
             }
         );
+
+        // -- UPDATE --
+        $this->tableUpdate(
+            function (Blueprint $table) {
+                // if (! $this->hasColumn('email')) {
+                //    $table->string('email')->nullable();
+                // }
+                $this->updateUser($table);
+            }
+        );
     }
 }

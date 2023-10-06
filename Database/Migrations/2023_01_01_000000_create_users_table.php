@@ -18,7 +18,7 @@ class CreateUsersTable extends XotBaseMigration
         // -- CREATE --
         $this->tableCreate(
             function (Blueprint $table): void {
-                $table->id();
+                $table->uuid('id')->primary();
                 $table->string('name');
                 $table->string('surname');
                 $table->string('email')->unique();
@@ -56,6 +56,12 @@ class CreateUsersTable extends XotBaseMigration
                 if (! $this->hasColumn('deleted_at')) {
                     $table->softDeletes();
                 }
+
+                if (in_array($this->getColumnType('id'), ['bigint'], true)) {
+                    $table->uuid('id')->change();
+                }
+
+                $this->updateUser($table);
             }
         );
     }

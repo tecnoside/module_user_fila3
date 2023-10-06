@@ -21,11 +21,11 @@ class CreateRolesTable extends XotBaseMigration
         $tableNames = config('permission.table_names');
         $columnNames = config('permission.column_names');
         if (! is_array($tableNames)) {
-            throw new Exception('[' . __LINE__ . '][' . __FILE__ . ']');
+            throw new Exception('['.__LINE__.']['.__FILE__.']');
         }
 
         if (! is_array($columnNames)) {
-            throw new Exception('[' . __LINE__ . '][' . __FILE__ . ']');
+            throw new Exception('['.__LINE__.']['.__FILE__.']');
         }
 
         // -- CREATE --
@@ -72,6 +72,7 @@ class CreateRolesTable extends XotBaseMigration
                 if ($this->hasIndexName('name_guard_name_unique')) {
                     $table->dropIndex('roles_name_guard_name_unique');
                 }
+                $this->updateUser($table);
             }
         );
     }

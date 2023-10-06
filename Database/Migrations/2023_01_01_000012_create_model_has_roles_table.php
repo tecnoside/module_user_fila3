@@ -24,11 +24,12 @@ class CreateModelHasRolesTable extends XotBaseMigration
 
         // -- CREATE --
         $this->tableCreate(
-            function (Blueprint $table) use ($columnNames): void {
-                $table->id();
+            function (Blueprint $table): void {
+                $table->uuid('id')->primary();
                 $table->unsignedBigInteger(PermissionRegistrar::$pivotRole);
                 $table->string('model_type');
-                $table->unsignedBigInteger($columnNames['model_morph_key']);
+                $table->string('model_id');
+                // $table->unsignedBigInteger($columnNames['model_morph_key']);
                 // $table->index([$columnNames['model_morph_key'], 'model_type'], 'model_has_roles_model_id_model_type_index');
                 /*
                 $table->foreign(PermissionRegistrar::$pivotRole)
@@ -73,6 +74,8 @@ class CreateModelHasRolesTable extends XotBaseMigration
                 if ($this->hasIndexName('model_has_roles_model_id_model_type_index')) {
                     $table->dropIndex('model_has_roles_model_id_model_type_index');
                 }
+
+                $this->updateUser($table);
             }
         );
     }

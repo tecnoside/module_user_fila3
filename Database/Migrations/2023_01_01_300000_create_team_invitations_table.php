@@ -15,7 +15,7 @@ class CreateTeamInvitationsTable extends XotBaseMigration
         // -- CREATE --
         $this->tableCreate(
             function (Blueprint $table): void {
-                $table->id();
+                $table->uuid('id')->primary();
                 $table->foreignId('team_id')->constrained()->cascadeOnDelete();
                 $table->string('email');
                 $table->string('role')->nullable();
@@ -30,6 +30,7 @@ class CreateTeamInvitationsTable extends XotBaseMigration
                 // if (! $this->hasColumn('email')) {
                 //    $table->string('email')->nullable();
                 // }
+                $this->updateUser($table);
             }
         );
     }

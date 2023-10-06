@@ -13,8 +13,10 @@ class CreateTeamInvitationsTable extends XotBaseMigration
     public function up(): void
     {
         // -- CREATE --
+
         $this->tableCreate(
             function (Blueprint $table): void {
+                $table->drop('team_invitations');
                 $table->uuid('id')->primary();
                 $table->uuid('team_id')->nullable()->index();
                 $table->string('email');
@@ -30,7 +32,7 @@ class CreateTeamInvitationsTable extends XotBaseMigration
                 // if (! $this->hasColumn('email')) {
                 //    $table->string('email')->nullable();
                 // }
-                // $this->updateUser($table);
+                $this->updateUser($table);
             }
         );
     }

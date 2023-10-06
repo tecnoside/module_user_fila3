@@ -169,8 +169,8 @@ class User extends Authenticatable implements \Modules\Xot\Contracts\UserContrac
         'is_active' => 'boolean',
         'id' => 'string',
         'roles.pivot.id' => 'string',
-        //https://github.com/beitsafe/laravel-uuid-auditing
-        //ALTER TABLE model_has_role CHANGE COLUMN `id` `id` CHAR(37) NOT NULL DEFAULT uuid();
+        // https://github.com/beitsafe/laravel-uuid-auditing
+        // ALTER TABLE model_has_role CHANGE COLUMN `id` `id` CHAR(37) NOT NULL DEFAULT uuid();
     ];
 
     /**

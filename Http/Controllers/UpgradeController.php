@@ -1,14 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\User\Http\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Modules\User\Models\User;
+use Illuminate\Support\Str;
 use Modules\User\Models\ModelHasRole;
 use Modules\User\Models\TeamUser;
+use Modules\User\Models\User;
 
 class UpgradeController extends Controller
 {
@@ -16,25 +17,23 @@ class UpgradeController extends Controller
     {
         $users = User::get();
 
-        foreach($users as $user) {
-            if(strlen((string)$user->id) >= 32) { //gia' convertito
+        foreach ($users as $user) {
+            if (strlen((string) $user->id) >= 32) { // gia' convertito
                 continue;
             }
             $old_id = $user->id;
             $new_id = Str::uuid();
             $where = ['user_id' => $old_id];
-            $morph = ['model_type' => 'user','model_id' => $old_id];
+            $morph = ['model_type' => 'user', 'model_id' => $old_id];
             $rows = ModelHasRole::where($morph)->update(['model_id' => $new_id]);
             $rows = TeamUser::where($where)->update(['user_id' => $new_id]);
             $user->id = $new_id;
             $user->save();
             echo '<br> from :'.$old_id.' => '.$new_id;
-
         }
         echo '<hr/>+Done';
     }
 }
-
 
 /*
 from :10 => 95cda850-dd86-4de3-86bc-6caf0ee18293

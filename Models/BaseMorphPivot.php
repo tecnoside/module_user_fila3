@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\MorphPivot;
 use Modules\Xot\Services\FactoryService;
 use Modules\Xot\Traits\Updater;
-use Illuminate\Database\Eloquent\Concerns\HasUuids;
 
 /**
  * Class BaseMorphPivot.
@@ -18,7 +18,7 @@ abstract class BaseMorphPivot extends MorphPivot
 {
     use HasFactory;
     use Updater;
-    //use HasUuids;
+    // use HasUuids;
 
     /**
      * @var bool

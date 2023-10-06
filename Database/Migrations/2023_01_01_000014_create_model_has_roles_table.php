@@ -76,12 +76,10 @@ class CreateModelHasRolesTable extends XotBaseMigration
                 }
                 if ($this->hasIndexName('model_has_role_model_id_index')) {
                     $table->dropIndex('model_has_role_model_id_index');
-
                 }
 
                 $this->updateUser($table);
                 $this->updateTimestamps($table);
-
             }
         );
     }

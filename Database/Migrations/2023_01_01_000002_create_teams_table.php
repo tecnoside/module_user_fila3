@@ -28,7 +28,6 @@ class CreateTeamsTable extends XotBaseMigration
         // -- UPDATE --
         $this->tableUpdate(
             function (Blueprint $table): void {
-                $table->drop('team_invitations');
                 // if (! $this->hasColumn('email')) {
                 //    $table->string('email')->nullable();
                 // }

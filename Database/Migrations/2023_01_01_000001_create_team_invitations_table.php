@@ -16,7 +16,6 @@ class CreateTeamInvitationsTable extends XotBaseMigration
 
         $this->tableCreate(
             function (Blueprint $table): void {
-                $table->drop('team_invitations');
                 $table->uuid('id')->primary();
                 $table->uuid('team_id')->nullable()->index();
                 $table->string('email');

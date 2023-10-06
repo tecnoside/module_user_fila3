@@ -30,7 +30,7 @@ class CreateTeamInvitationsTable extends XotBaseMigration
                 // if (! $this->hasColumn('email')) {
                 //    $table->string('email')->nullable();
                 // }
-                //$this->updateUser($table);
+                // $this->updateUser($table);
             }
         );
     }

@@ -168,6 +168,9 @@ class User extends Authenticatable implements \Modules\Xot\Contracts\UserContrac
         // 'password' => 'hashed', //Call to undefined cast [hashed] on column [password] in model [Modules\User\Models\User].
         'is_active' => 'boolean',
         'id' => 'string',
+        'roles.pivot.id' => 'string',
+        //https://github.com/beitsafe/laravel-uuid-auditing
+        //ALTER TABLE model_has_role CHANGE COLUMN `id` `id` CHAR(37) NOT NULL DEFAULT uuid();
     ];
 
     /**

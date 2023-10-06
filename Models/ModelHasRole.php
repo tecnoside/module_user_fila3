@@ -6,6 +6,7 @@ namespace Modules\User\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Modules\User\Database\Factories\ModelHasRoleFactory;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 
 /**
  * Modules\User\Models\ModelHasRole.
@@ -28,10 +29,44 @@ use Modules\User\Database\Factories\ModelHasRoleFactory;
  */
 class ModelHasRole extends BaseMorphPivot
 {
+    use HasUuids;
+    use Traits\UuidTrait;
     /**
      * @var array<string>
      *
      * @psalm-var list{'role_id', 'model_type', 'model_id'}
      */
-    protected $fillable = ['role_id', 'model_type', 'model_id', 'team_id'];
+    protected $fillable = ['id','role_id', 'model_type', 'model_id', 'team_id'];
+
+    /**
+    * @var bool
+    */
+    public $incrementing = false;
+
+    protected $keyType = 'string';
+
+    protected $casts = [
+        'id' => 'string'
+    ];
+
+    /**
+     * Create a new pivot model from raw values returned from a query.
+     * @param  \Illuminate\Database\Eloquent\Model $parent
+     * @param  array $attributes
+     * @param  string $table
+     * @param  bool $exists
+     * @return static
+     * @throws \Exception
+     */
+    public static function fromRawAttributes(Model $parent, $attributes, $table, $exists = false)
+    {
+        //https://laracasts.com/discuss/channels/eloquent/generating-custom-id-uuid-for-many-to-many-relationship-pivot-table
+        //https://www.appsloveworld.com/php/394/laravel-eloquent-uuid-in-a-pivot-table
+        dddx('a');
+        if (!$exists and !array_key_exists('id', $attributes)) {
+            $attributes['id'] = Uuid::generate()->string;
+        }
+        return parent::fromRawAttributes($parent, $attributes, $table, $exists);
+    }
+
 }

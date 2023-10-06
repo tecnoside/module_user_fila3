@@ -60,7 +60,7 @@ class CreateModelHasRolesTable extends XotBaseMigration
             function (Blueprint $table): void {
                 if (! $this->hasColumn('id')) {
                     $table->dropIndex('PRIMARY');
-                    $table->uuid('id');
+                    $table->uuid('id')->first();
                 }
                 if (! $this->hasColumn('team_id')) {
                     $table->foreignId('team_id')->nullable();
@@ -74,8 +74,14 @@ class CreateModelHasRolesTable extends XotBaseMigration
                 if ($this->hasIndexName('model_has_roles_model_id_model_type_index')) {
                     $table->dropIndex('model_has_roles_model_id_model_type_index');
                 }
+                if ($this->hasIndexName('model_has_role_model_id_index')) {
+                    $table->dropIndex('model_has_role_model_id_index');
+
+                }
 
                 $this->updateUser($table);
+                $this->updateTimestamps($table);
+
             }
         );
     }

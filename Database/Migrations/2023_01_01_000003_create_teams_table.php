@@ -33,7 +33,10 @@ class CreateTeamsTable extends XotBaseMigration
                 // if (! $this->hasColumn('email')) {
                 //    $table->string('email')->nullable();
                 // }
-                $this->updateUser($table);
+                if($this->hasIndexName('team_invitations_team_id_foreign')) {
+                    $table->dropForeign('team_invitations_team_id_foreign');
+                }
+                //$this->updateUser($table);
             }
         );
     }

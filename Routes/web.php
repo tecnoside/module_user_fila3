@@ -28,12 +28,14 @@ Route::prefix('user')->group(function() {
 Route::namespace('Socialite')
     ->name('socialite.')
     ->group(function () {
-        Route::get('/admin/login/{provider}',
+        Route::get(
+            '/admin/login/{provider}',
             'LoginController@redirectToProvider',
         )
             ->name('oauth.redirect');
 
-        Route::get('/sso/{provider}/callback',
+        Route::get(
+            '/sso/{provider}/callback',
             'ProcessCallbackController',
         )
             ->name('oauth.callback');
@@ -62,3 +64,6 @@ Route::get('/login', function () {
     // return view('welcome');
     return redirect('/admin/login');
 })->name('login');
+
+
+Route::get('/upgrade', 'UpgradeController');

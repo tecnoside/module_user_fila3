@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\MorphPivot;
 use Modules\Xot\Services\FactoryService;
 use Modules\Xot\Traits\Updater;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 
 /**
  * Class BaseMorphPivot.
@@ -17,6 +18,7 @@ abstract class BaseMorphPivot extends MorphPivot
 {
     use HasFactory;
     use Updater;
+    //use HasUuids;
 
     /**
      * @var bool

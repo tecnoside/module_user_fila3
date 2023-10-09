@@ -31,12 +31,19 @@ class AdminPanelProvider extends XotBasePanelProvider
             fn (): string => Blade::render('@livewire(\'database-notifications\')'),
         );
         //*/
-        /*
+        // *
         FilamentView::registerRenderHook(
             'panels::user-menu.before',
             fn (): string => Blade::render('@livewire(\'team.change\')'),
         );
+        // */
+        /*
+        $panel->renderHook(
+            'panels::user-menu.before',
+            fn (): string => Blade::render('@livewire(\'team.change\')'),
+        );
         */
+
         return parent::panel($panel);
     }
 }

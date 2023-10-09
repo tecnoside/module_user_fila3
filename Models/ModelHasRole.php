@@ -6,6 +6,7 @@ namespace Modules\User\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Database\Eloquent\Model;
 use Modules\User\Database\Factories\ModelHasRoleFactory;
 
 /**
@@ -52,10 +53,9 @@ class ModelHasRole extends BaseMorphPivot
     /**
      * Create a new pivot model from raw values returned from a query.
      *
-     * @param \Illuminate\Database\Eloquent\Model $parent
-     * @param array                               $attributes
-     * @param string                              $table
-     * @param bool                                $exists
+     * @param array  $attributes
+     * @param string $table
+     * @param bool   $exists
      *
      * @throws \Exception
      *

@@ -32,11 +32,11 @@ class CreateRolesTable extends XotBaseMigration
         $this->tableCreate(
             function (Blueprint $table) use ($columnNames): void {
                 // $teams = config('permission.teams');
-                $table->bigIncrements('id');
+                $table->uuid('id')->primary();
                 // role id
                 // if ($teams || config('permission.testing')) { // permission.testing is a fix for sqlite testing
                 $table->unsignedBigInteger($columnNames['team_foreign_key'])->nullable();
-                $table->index($columnNames['team_foreign_key'], 'roles_team_foreign_key_index');
+                //$table->index($columnNames['team_foreign_key'], 'roles_team_foreign_key_index');
                 // $table
                 //    ->foreignIdFor(
                 //        model: $xot->getUserClass(),

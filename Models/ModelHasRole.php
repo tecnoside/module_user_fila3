@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
+use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Modules\User\Database\Factories\ModelHasRoleFactory;
@@ -52,14 +53,13 @@ class ModelHasRole extends BaseMorphPivot
     /**
      * Create a new pivot model from raw values returned from a query.
      *
-     * @param \Illuminate\Database\Eloquent\Model $parent
-     * @param array                               $attributes
-     * @param string                              $table
-     * @param bool                                $exists
-     *
-     * @throws \Exception
-     *
+     * @param  \Illuminate\Database\Eloquent\Model  $parent
+     * @param  array  $attributes
+     * @param  string  $table
+     * @param  bool  $exists
      * @return static
+     *
+     * @throws Exception
      */
     public static function fromRawAttributes(Model $parent, $attributes, $table, $exists = false)
     {

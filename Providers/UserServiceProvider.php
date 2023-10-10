@@ -26,6 +26,9 @@ class UserServiceProvider extends XotBaseServiceProvider
     public function bootCallback(): void
     {
         $this->registerPassport();
+        $this->commands([
+            \Modules\User\Console\Commands\AssignModuleCommand::class,
+        ]);
     }
 
     public function registerPassport(): void

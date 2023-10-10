@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace Modules\User\Http\Livewire\Team;
 
-use Livewire\Component;
-use Illuminate\View\View;
 use Filament\Facades\Filament;
-use Modules\Xot\Datas\XotData;
-use Illuminate\Routing\Redirector;
-use Illuminate\Http\RedirectResponse;
-use Modules\User\Events\TeamSwitched;
 use Filament\Notifications\Notification;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Redirector;
+use Illuminate\View\View;
+use Livewire\Component;
+use Modules\User\Events\TeamSwitched;
 use Modules\User\Http\Livewire\Traits\Properties\HasUserProperty;
+use Modules\Xot\Datas\XotData;
 
 class Change extends Component
 {
@@ -40,7 +40,7 @@ class Change extends Component
         $teamClass = $this->xot->getTeamClass();
         $team = $teamClass::findOrFail($teamId);
 
-        if (!$this->user->switchTeam($team)) {
+        if (! $this->user->switchTeam($team)) {
             abort(403);
         }
 

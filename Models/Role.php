@@ -52,7 +52,7 @@ use Spatie\Permission\Models\Role as SpatieRole;
 class Role extends SpatieRole
 {
     use HasFactory;
-    //use HasUuids;
+    // use HasUuids;
 
     final public const ROLE_ADMINISTRATOR = 1;
 
@@ -65,8 +65,7 @@ class Role extends SpatieRole
      */
     protected $connection = 'user';
 
-
-    //protected $fillable=['id','']
+    // protected $fillable=['id','']
 
     /**
      * Get all of the teams the user belongs to.

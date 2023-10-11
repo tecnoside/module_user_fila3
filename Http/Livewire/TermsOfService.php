@@ -5,9 +5,7 @@ declare(strict_types=1);
 namespace Modules\User\Http\Livewire;
 
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Str;
 use Livewire\Component;
-use Modules\Tenant\Services\TenantService;
 
 use function Safe\file_get_contents;
 
@@ -15,6 +13,9 @@ use Webmozart\Assert\Assert;
 
 class TermsOfService extends Component
 {
+
+    public bool $accepted = false;
+
     /**
      * Show the terms of service for the application.
      *
@@ -22,16 +23,18 @@ class TermsOfService extends Component
      */
     public function render()
     {
-        Assert::string($termsFile = TenantService::localizedMarkdownPath('terms.md'), 'wip');
+        // $this->accepted = true;
+        $text = null;
+        if(config('terms-of-service')){
+            $text = config('terms-of-service.text');
+        }
 
-        $view = view('filament-jet::livewire.terms-of-service', [
-            'terms' => Str::markdown(file_get_contents($termsFile)),
+        return view('user::livewire.terms-of-service', [
+            'text' => $text
         ]);
+    }
 
-        $view->layout('filament::components.layouts.base', [
-            'title' => __('filament-jet::registration.terms_of_service'),
-        ]);
-
-        return $view;
+    public function testfunction(){
+        dddx('wip');
     }
 }

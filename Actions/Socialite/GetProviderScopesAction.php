@@ -10,6 +10,8 @@ namespace Modules\User\Actions\Socialite;
 use Illuminate\Support\Arr;
 use Spatie\QueueableAction\QueueableAction;
 
+use function is_array;
+
 class GetProviderScopesAction
 {
     use QueueableAction;
@@ -20,8 +22,8 @@ class GetProviderScopesAction
     public function execute(string $provider): array
     {
         $services = config('services');
-        $scopes = Arr::get($services, $provider.'.scopes');
-        if (! \is_array($scopes)) {
+        $scopes = Arr::get($services, $provider . '.scopes');
+        if (! is_array($scopes)) {
             return [];
         }
 

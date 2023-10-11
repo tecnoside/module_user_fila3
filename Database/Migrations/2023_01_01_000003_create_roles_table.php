@@ -9,13 +9,15 @@ use Modules\Xot\Database\Migrations\XotBaseMigration;
 /**
  * Class CreateRolesTable.
  */
-class CreateRolesTable extends XotBaseMigration {
+class CreateRolesTable extends XotBaseMigration
+{
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up() {
+    public function up()
+    {
         $tableNames = config('permission.table_names');
         $columnNames = config('permission.column_names');
         if (! is_array($tableNames)) {

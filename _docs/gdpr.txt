@@ -1,0 +1,8 @@
+https://github.com/scify/laravel-cookies-consent
+
+https://codebrisk.com/blog/make-your-laravel-app-compliant-with-the-eu-gdpr-cookie-law
+
+
+
+pagine di esempio
+https://forge.laravel.com/data-processing-agreement

@@ -15,24 +15,22 @@ use Modules\User\Models\OauthPersonalAccessClient;
 use Modules\User\Models\OauthRefreshToken;
 use Modules\Xot\Providers\XotBaseServiceProvider;
 
-class UserServiceProvider extends XotBaseServiceProvider
-{
+class UserServiceProvider extends XotBaseServiceProvider {
     public string $module_name = 'user';
 
     protected string $module_dir = __DIR__;
 
     protected string $module_ns = __NAMESPACE__;
 
-    public function bootCallback(): void
-    {
+    public function bootCallback(): void {
         $this->registerPassport();
         $this->commands([
             \Modules\User\Console\Commands\AssignModuleCommand::class,
+            \Modules\User\Console\Commands\AssignRoleCommand::class,
         ]);
     }
 
-    public function registerPassport(): void
-    {
+    public function registerPassport(): void {
         Passport::usePersonalAccessClientModel(OauthPersonalAccessClient::class);
         Passport::useTokenModel(OauthAccessToken::class);
         Passport::useRefreshTokenModel(OauthRefreshToken::class);

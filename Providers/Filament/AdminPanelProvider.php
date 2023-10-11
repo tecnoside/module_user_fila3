@@ -14,21 +14,20 @@ use Filament\Support\Facades\FilamentView;
 use Illuminate\Support\Facades\Blade;
 use Modules\Xot\Providers\Filament\XotBasePanelProvider;
 
-class AdminPanelProvider extends XotBasePanelProvider
-{
+class AdminPanelProvider extends XotBasePanelProvider {
     protected string $module = 'User';
 
-    public function panel(Panel $panel): Panel
-    {
+    public function panel(Panel $panel): Panel {
         FilamentView::registerRenderHook(
             'panels::auth.login.form.after',
             fn (): string => Blade::render('@livewire(\'socialite.buttons\')'),
         );
+        /*
         FilamentView::registerRenderHook(
             'panels::auth.login.form.after',
             fn (): string => Blade::render('@livewire(\'terms-of-service\')'),
         );
-
+        */
         /* -- moved into Notify
         DatabaseNotifications::trigger('notifications.database-notifications-trigger');
         FilamentView::registerRenderHook(

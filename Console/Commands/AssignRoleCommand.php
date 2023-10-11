@@ -14,7 +14,8 @@ use Modules\User\Models\User;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
-class AssignRoleCommand extends Command {
+class AssignRoleCommand extends Command
+{
     /**
      * The name and signature of the console command.
      *
@@ -34,14 +35,16 @@ class AssignRoleCommand extends Command {
      *
      * @return void
      */
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
     }
 
     /**
      * Execute the console command.
      */
-    public function handle() {
+    public function handle()
+    {
         $email = text('email ?');
         $user = User::firstWhere(['email' => $email]);
 
@@ -82,7 +85,8 @@ class AssignRoleCommand extends Command {
      *
      * @return array
      */
-    protected function getOptions() {
+    protected function getOptions()
+    {
         return [
             ['example', null, InputOption::VALUE_OPTIONAL, 'An example option.', null],
         ];

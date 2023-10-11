@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Modules\User\Console\Commands;
 
-use Modules\User\Models\Role;
+use Illuminate\Console\Command;
 
+use function Laravel\Prompts\multiselect;
+use function Laravel\Prompts\text;
+
+use Modules\User\Models\Role;
 use Modules\User\Models\User;
 use Modules\Xot\Datas\XotData;
-
-use Illuminate\Console\Command;
-use function Laravel\Prompts\text;
-use function Laravel\Prompts\multiselect;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputOption;
 
 class AssignTeamCommand extends Command
 {
@@ -48,9 +48,9 @@ class AssignTeamCommand extends Command
     {
         $email = text('email ?');
         $user = User::firstWhere(['email' => $email]);
-        $xot=XotData::make();
-        $teamClass=$xot->getTeamClass();
-        
+        $xot = XotData::make();
+        $teamClass = $xot->getTeamClass();
+
         $opts = $teamClass::all()->pluck('name', 'id');
 
         $rows = multiselect(

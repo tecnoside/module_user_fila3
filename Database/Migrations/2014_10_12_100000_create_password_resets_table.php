@@ -21,9 +21,7 @@ class CreatePasswordResetsTable extends XotBaseMigration
                 $table->string('email')->index();
                 $table->string('token');
                 // $table->timestamp('created_at')->nullable();
-                $table->timestamps();
-                $table->string('created_by')->nullable();
-                $table->string('updated_by')->nullable();
+                $this->timestamps($table);
             }
         );
 
@@ -33,7 +31,7 @@ class CreatePasswordResetsTable extends XotBaseMigration
                 // if (! $this->hasColumn('email')) {
                 //    $table->string('email')->nullable();
                 // }
-                $this->updateUser($table);
+                // $this->updateUser($table);
             }
         );
     }

@@ -21,6 +21,7 @@ use Filament\Tables\Table;
 class TeamsRelationManager extends RelationManager
 {
     protected static string $relationship = 'teams';
+    protected static ?string $recordTitleAttribute = 'name';
 
     public function form(Form $form): Form
     {
@@ -37,6 +38,7 @@ class TeamsRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('name')
             ->columns([
+                TextColumn::make('id'),
                 TextColumn::make('name'),
             ])
             ->filters([

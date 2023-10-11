@@ -51,6 +51,7 @@ class RolesRelationManager extends RelationManager
 
         return $table
             ->columns([
+                TextColumn::make('id'),
                 TextColumn::make('name'),
                 TextColumn::make('team_id'),
             ])

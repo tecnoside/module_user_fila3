@@ -167,6 +167,7 @@ class RoleResource extends XotBaseResource
     {
         return $table
             ->columns([
+                TextColumn::make('id'),
                 BadgeColumn::make('name')
                     ->label(static::trans('fields.name'))
                     ->formatStateUsing(static fn ($state): string => Str::headline($state))

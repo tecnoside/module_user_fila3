@@ -29,6 +29,7 @@ class UserServiceProvider extends XotBaseServiceProvider
         $this->commands([
             \Modules\User\Console\Commands\AssignModuleCommand::class,
             \Modules\User\Console\Commands\AssignRoleCommand::class,
+            \Modules\User\Console\Commands\AssignTeamCommand::class,
         ]);
     }
 

@@ -7,13 +7,8 @@ namespace Modules\User\Http\Livewire;
 use Illuminate\Contracts\View\View;
 use Livewire\Component;
 
-use function Safe\file_get_contents;
-
-use Webmozart\Assert\Assert;
-
 class TermsOfService extends Component
 {
-
     public bool $accepted = false;
 
     /**
@@ -25,16 +20,17 @@ class TermsOfService extends Component
     {
         // $this->accepted = true;
         $text = null;
-        if(config('terms-of-service')){
+        if (config('terms-of-service')) {
             $text = config('terms-of-service.text');
         }
 
         return view('user::livewire.terms-of-service', [
-            'text' => $text
+            'text' => $text,
         ]);
     }
 
-    public function testfunction(){
+    public function testfunction()
+    {
         dddx('wip');
     }
 }

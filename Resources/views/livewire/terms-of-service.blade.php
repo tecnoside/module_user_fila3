@@ -1,5 +1,5 @@
 <div>
-    @if($text != null)
+    @if ($text != null)
         <div>
             <x-filament::input.checkbox
                 wire:click="testfunction"

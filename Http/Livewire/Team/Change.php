@@ -7,19 +7,18 @@ namespace Modules\User\Http\Livewire\Team;
 use Filament\Facades\Filament;
 use Filament\Notifications\Notification;
 use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
 use Illuminate\View\View;
 use Livewire\Component;
 use Modules\User\Events\TeamSwitched;
-use Modules\User\Models\User;
 use Modules\User\Http\Livewire\Traits\Properties\HasUserProperty;
+use Modules\User\Models\User;
 use Modules\Xot\Datas\XotData;
 
 class Change extends Component
 {
-    //use HasUserProperty;
+    // use HasUserProperty;
 
     public array $teams;
 

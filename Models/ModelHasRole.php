@@ -16,7 +16,7 @@ use Modules\User\Database\Factories\ModelHasRoleFactory;
  *
  * @property int    $role_id
  * @property string $model_type
- * @property int    $model_id
+ * @property string    $model_id
  *
  * @method static ModelHasRoleFactory  factory($count = null, $state = [])
  * @method static Builder|ModelHasRole newModelQuery()

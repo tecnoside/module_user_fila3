@@ -13,21 +13,24 @@ use Illuminate\Routing\Redirector;
 use Illuminate\View\View;
 use Livewire\Component;
 use Modules\User\Events\TeamSwitched;
+use Modules\User\Models\User;
 use Modules\User\Http\Livewire\Traits\Properties\HasUserProperty;
 use Modules\Xot\Datas\XotData;
 
 class Change extends Component
 {
-    use HasUserProperty;
+    //use HasUserProperty;
 
-    public Collection $teams;
+    public array $teams;
 
     public XotData $xot;
+    public User $user;
 
     public function mount(): void
     {
         $this->xot = XotData::make();
-        $this->teams = Filament::auth()->user()?->allTeams();
+        $this->user = Filament::auth()->user();
+        $this->teams = $this->user->allTeams()->toArray();
     }
 
     /**

@@ -30,9 +30,6 @@ use Modules\User\Models\SocialiteUser;
 use Modules\User\Models\User;
 use Modules\Xot\Datas\XotData;
 
-use function count;
-use function in_array;
-
 class LoginController extends Controller
 {
     /*
@@ -90,7 +87,7 @@ class LoginController extends Controller
         $domains = app(GetDomainAllowListAction::class)->execute();
 
         // When no domains are specified, all users are allowed
-        if ((is_countable($domains) ? count($domains) : 0) < 1) {
+        if ((is_countable($domains) ? \count($domains) : 0) < 1) {
             return true;
         }
 
@@ -101,7 +98,7 @@ class LoginController extends Controller
             ->__toString();
 
         // See if everything after @ is in the domains array
-        return in_array($emailDomain, $domains, true);
+        return \in_array($emailDomain, $domains, true);
     }
 
     protected function loginUser(SocialiteUser $socialiteUser)

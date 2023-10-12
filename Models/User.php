@@ -131,6 +131,8 @@ class User extends Authenticatable implements \Modules\Xot\Contracts\UserContrac
      */
     protected $connection = 'user';
 
+    public $incrementing = false;
+
     /**
      * The attributes that are mass assignable.
      *

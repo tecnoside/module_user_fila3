@@ -29,7 +29,7 @@ class UpgradeController extends Controller
             $rows = TeamUser::where($where)->update(['user_id' => $new_id]);
             $user->id = $new_id;
             $user->save();
-            echo '<br> from :' . $old_id . ' => ' . $new_id;
+            echo '<br> from :'.$old_id.' => '.$new_id;
         }
         echo '<hr/>+Done';
     }

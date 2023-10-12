@@ -5,14 +5,15 @@ declare(strict_types=1);
 namespace Modules\User\Console\Commands;
 
 use Illuminate\Console\Command;
+
+use function Laravel\Prompts\multiselect;
+use function Laravel\Prompts\text;
+
 use Modules\User\Models\Role;
 use Modules\User\Models\User;
 use Modules\Xot\Datas\XotData;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
-
-use function Laravel\Prompts\multiselect;
-use function Laravel\Prompts\text;
 
 class AssignTeamCommand extends Command
 {
@@ -71,7 +72,7 @@ class AssignTeamCommand extends Command
             $user->assignRole($role);
         }
         */
-        $this->info(implode(', ', $rows) . ' assigned to ' . $email);
+        $this->info(implode(', ', $rows).' assigned to '.$email);
     }
 
     /**

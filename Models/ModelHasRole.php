@@ -17,7 +17,7 @@ use function array_key_exists;
  *
  * @mixin IdeHelperModelHasRole
  *
- * @property int    $role_id
+ * @property string $role_id
  * @property string $model_type
  * @property string $model_id
  *
@@ -42,16 +42,15 @@ class ModelHasRole extends BaseMorphPivot
      */
     protected $fillable = ['id', 'role_id', 'model_type', 'model_id', 'team_id'];
 
-    /**
-     * @var bool
-     */
-    public $incrementing = false;
-
-    protected $keyType = 'string';
+    protected $connection = 'user';
 
     protected $casts = [
         'id' => 'string',
     ];
+
+    protected $primaryKey = 'id';
+    public $incrementing = false;
+    protected $keyType = 'string';
 
     /**
      * Create a new pivot model from raw values returned from a query.

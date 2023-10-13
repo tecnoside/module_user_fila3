@@ -28,7 +28,7 @@ class CreateModelHasRolesTable extends XotBaseMigration
                 $table->uuid('id')->primary()->first();
                 $table->unsignedBigInteger(PermissionRegistrar::$pivotRole);
                 $table->string('model_type');
-                $table->string('model_id');
+                $table->uuid('model_id');
                 // $table->unsignedBigInteger($columnNames['model_morph_key']);
                 // $table->index([$columnNames['model_morph_key'], 'model_type'], 'model_has_roles_model_id_model_type_index');
                 /*
@@ -80,6 +80,14 @@ class CreateModelHasRolesTable extends XotBaseMigration
 
                 if (in_array($this->getColumnType('role_id'), ['bigint'], true)) {
                     $table->uuid('role_id')->change();
+                }
+
+                if (in_array($this->getColumnType('model_id'), ['bigint', 'string'], true)) {
+                    $table->uuid('model_id')->change();
+                }
+
+                if (in_array($this->getColumnType('id'), ['uuid'], false)) {
+                    $table->uuid('model_id')->change();
                 }
 
                 $this->updateUser($table);

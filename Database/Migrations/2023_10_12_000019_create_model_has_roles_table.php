@@ -86,7 +86,7 @@ class CreateModelHasRolesTable extends XotBaseMigration
                     $table->uuid('model_id')->change();
                 }
 
-                if (in_array($this->getColumnType('id'), ['uuid'], false)) {
+                if (in_array(! $this->getColumnType('id'), ['uuid'], true)) {
                     $table->uuid('id')->change();
                 }
 

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 declare(strict_types=1);
 
@@ -6,14 +6,13 @@ namespace Modules\User\Traits;
 
 use Webpatser\Uuid\Uuid;
 
-trait Uuids {
-
+trait Uuids
+{
     protected static function boot()
     {
         parent::boot();
 
-        static::creating(function ($model)
-        {
+        static::creating(function ($model) {
             $model->{$model->getKeyName()} = Uuid::generate()->string;
         });
     }

@@ -20,9 +20,9 @@ class CreateConsentsTable extends XotBaseMigration
                 $table->uuid('treatment_id');
                 $table->string('subject_id');
                 $table->timestamps();
-    
+
                 $table->unique(['subject_id', 'treatment_id']);
-    
+
                 $table->foreign('treatment_id')->references('id')->on('gdpr_treatment');
             }
         );

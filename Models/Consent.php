@@ -1,11 +1,11 @@
-<?php 
+<?php
 
 declare(strict_types=1);
 
 namespace Modules\User\Models;
 
-use Modules\User\Traits\Uuids;
 use Illuminate\Database\Eloquent\Model;
+use Modules\User\Traits\Uuids;
 
 class Consent extends Model
 {

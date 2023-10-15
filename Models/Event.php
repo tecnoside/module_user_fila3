@@ -1,12 +1,12 @@
-<?php 
+<?php
 
 declare(strict_types=1);
 
 namespace Modules\User\Models;
 
-use Modules\User\Traits\Uuids;
-use Illuminate\Support\Facades\Crypt;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Crypt;
+use Modules\User\Traits\Uuids;
 
 class Event extends Model
 {

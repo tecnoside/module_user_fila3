@@ -4,15 +4,14 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Crypt;
 use Modules\User\Traits\Uuids;
 
-class Event extends Model
+class Event extends BaseModel
 {
     use Uuids;
 
-    protected $table = 'event';
+    // protected $table = 'event';
 
     public $fillable = ['id', 'action', 'treatment_id', 'consent_id', 'subject_id', 'payload'];
 

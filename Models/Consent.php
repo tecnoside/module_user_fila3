@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Modules\User\Traits\Uuids;
 
-class Consent extends Model
+class Consent extends BaseModel
 {
     use Uuids;
 
-    protected $table = 'consent';
+    // protected $table = 'consent';
 
     public $incrementing = false;
 

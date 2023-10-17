@@ -6,14 +6,15 @@ namespace Modules\User\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
+
+use function Laravel\Prompts\multiselect;
+use function Laravel\Prompts\text;
+
 use Modules\User\Models\Role;
 use Modules\User\Models\User;
 use Nwidart\Modules\Facades\Module;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
-
-use function Laravel\Prompts\multiselect;
-use function Laravel\Prompts\text;
 
 class AssignModuleCommand extends Command
 {
@@ -70,11 +71,11 @@ class AssignModuleCommand extends Command
 
         foreach ($modules as $module) {
             $module_low = Str::lower($module);
-            $role = $module_low . '::admin';
+            $role = $module_low.'::admin';
             $role = Role::firstOrCreate(['name' => $role]);
             $user->assignRole($role);
         }
-        $this->info(implode(', ', $modules) . ' assigned to ' . $email);
+        $this->info(implode(', ', $modules).' assigned to '.$email);
     }
 
     /**

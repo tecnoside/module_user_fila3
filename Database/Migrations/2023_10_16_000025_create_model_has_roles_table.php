@@ -83,13 +83,15 @@ class CreateModelHasRolesTable extends XotBaseMigration
                     $table->uuid('role_id')->change();
                 }
 
-                if (in_array($this->getColumnType('model_id'), ['bigint', 'string'], true)) {
-                    $table->uuid('model_id')->change();
-                }
+                // --- spostato in xotbasemigration updateUser
+                // if (in_array($this->getColumnType('model_id'), ['bigint', 'string'], true)) {
+                //    $table->uuid('model_id')->change();
+                // }
 
-                if (in_array($this->getColumnType('id'), ['int', 'bigint'], true)) {
-                    $table->uuid('id')->change();
-                }
+                // --- spostato in xotbasemigration updateUset
+                // if (in_array($this->getColumnType('id'), ['int', 'bigint'], true)) {
+                //    $table->uuid('id')->change();
+                // }
 
                 $this->updateUser($table);
                 $this->updateTimestamps($table);

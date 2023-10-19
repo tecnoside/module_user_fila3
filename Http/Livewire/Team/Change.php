@@ -63,7 +63,7 @@ class Change extends Component
             'view'=>$view,
         ];
         if(count($this->teams)==0){
-            $view='ui::empty';
+            $view='ui::livewire.empty';
         }
         return view($view,$view_params);
     }

@@ -20,7 +20,8 @@ class CreateSocialiteUserTable extends XotBaseMigration
         // -- CREATE --
         $this->tableCreate(
             function (Blueprint $table) use ($userClass) {
-                $table->uuid('id')->primary();
+                // $table->uuid('id')->primary();
+                $table->id();
                 $table->foreignIdFor($userClass, 'user_id');
                 $table->string('provider');
                 $table->string('provider_id');
@@ -36,9 +37,9 @@ class CreateSocialiteUserTable extends XotBaseMigration
                 ]);
                 */
 
-                $table->timestamps();
-                $table->string('created_by')->nullable();
-                $table->string('updated_by')->nullable();
+                // $table->timestamps();
+                // $table->string('created_by')->nullable();
+                // $table->string('updated_by')->nullable();
             });
 
         // -- UPDATE --
@@ -47,6 +48,7 @@ class CreateSocialiteUserTable extends XotBaseMigration
                 // if (! $this->hasColumn('email')) {
                 //    $table->string('email')->nullable();
                 // }
+                $this->updateTimestamps($table);
                 $this->updateUser($table);
             }
         );

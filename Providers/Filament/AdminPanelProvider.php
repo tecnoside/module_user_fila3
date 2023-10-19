@@ -25,10 +25,12 @@ class AdminPanelProvider extends XotBasePanelProvider
             fn (): string => Blade::render('@livewire(\'socialite.buttons\')'),
         );
 
+        /*-- moved into Gdpr
         FilamentView::registerRenderHook(
             'panels::auth.login.form.after',
             fn (): string => Blade::render('@livewire(\'terms-of-service\')'),
         );
+        */
 
         /* -- moved into Notify
         DatabaseNotifications::trigger('notifications.database-notifications-trigger');

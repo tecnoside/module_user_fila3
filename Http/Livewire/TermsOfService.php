@@ -29,7 +29,7 @@ class TermsOfService extends Component
         ]);
     }
 
-    public function testfunction()
+    public function testfunction(): void
     {
         dddx('wip');
     }

@@ -21,7 +21,7 @@ class LogoutController extends XotBaseController
     public function __invoke(Request $request): JsonResponse
     {
         Assert::notNull($user = $request->user());
-        $accessToken = $user->token();
+        Assert::notNull($accessToken = $user->token());
         /*
         DB::table('oauth_refresh_tokens')
             ->where('access_token_id', $accessToken->id)

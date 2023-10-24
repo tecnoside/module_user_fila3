@@ -43,7 +43,7 @@ class AssignRoleCommand extends Command
     /**
      * Execute the console command.
      */
-    public function handle()
+    public function handle(): void
     {
         $email = text('email ?');
         $user = User::firstWhere(['email' => $email]);

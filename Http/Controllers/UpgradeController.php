@@ -13,7 +13,7 @@ use Modules\User\Models\User;
 
 class UpgradeController extends Controller
 {
-    public function __invoke(Request $request)
+    public function __invoke(Request $request): void
     {
         $users = User::get();
 

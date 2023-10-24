@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace Modules\User\Http\Controllers\Api;
 
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Webmozart\Assert\Assert;
+use Illuminate\Http\JsonResponse;
 use Modules\Xot\Datas\JsonResponseData;
 use Modules\Xot\Http\Controllers\XotBaseController;
 
@@ -16,7 +17,7 @@ class GetLoggedUserController extends XotBaseController
      */
     public function __invoke(Request $request): JsonResponse
     {
-        $user = $request->user();
+        Assert::notNull($user = $request->user());
 
         return JsonResponseData::from([
             'message' => 'logged user',

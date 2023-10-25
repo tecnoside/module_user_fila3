@@ -179,10 +179,13 @@ trait HasTeams
         if (! $this->belongsToTeam($teamContract)) {
             return null;
         }
-
-        return $teamContract->users()
-            ->where('id', $this->id)
-            ->first()
+        Assert::notNull($user = $teamContract->users()->where('id', $this->id)->first());
+        // return $teamContract->users()
+        //     ->where('id', $this->id)
+        //     ->first()
+        //     ->membership
+        //     ->role; // ? FilamentJet::findRole($role) : null;
+        return $user
             ->membership
             ->role; // ? FilamentJet::findRole($role) : null;
     }

@@ -39,6 +39,11 @@ class LoginController extends Controller
     }
     */
 
+    /**
+     * Undocumented function
+     *
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
+     */
     public function redirectToProvider(string $provider)
     {
         if (! app(IsProviderConfiguredAction::class)->execute($provider)) {

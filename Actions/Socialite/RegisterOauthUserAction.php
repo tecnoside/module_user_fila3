@@ -20,6 +20,8 @@ class RegisterOauthUserAction
 
     /**
      * Execute the action.
+     *
+     * @return mixed
      */
     public function execute(string $provider, SocialiteUserContract $oauthUser)
     {

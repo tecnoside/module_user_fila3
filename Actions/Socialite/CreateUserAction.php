@@ -19,7 +19,7 @@ class CreateUserAction
     /**
      * Execute the action.
      */
-    public function execute(SocialiteUserContract $oauthUser)
+    public function execute(SocialiteUserContract $oauthUser): SocialiteUserContract
     {
         $xot = XotData::make();
         $userClass = $xot->getUserClass();

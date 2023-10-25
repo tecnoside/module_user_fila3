@@ -7,6 +7,7 @@ namespace Modules\User\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 use Modules\User\Database\Factories\ModelHasRoleFactory;
 
 /**
@@ -34,8 +35,6 @@ class ModelHasRole extends BaseMorphPivot
     // use Traits\UuidTrait;
     /**
      * @var array<string>
-     *
-     * @psalm-var list{'role_id', 'model_type', 'model_id'}
      */
     protected $fillable = ['id', 'role_id', 'model_type', 'model_id', 'team_id'];
 
@@ -68,7 +67,7 @@ class ModelHasRole extends BaseMorphPivot
         // https://www.appsloveworld.com/php/394/laravel-eloquent-uuid-in-a-pivot-table
         dddx('a');
         if (! $exists && ! \array_key_exists('id', $attributes)) {
-            $attributes['id'] = Uuid::generate()->string;
+            $attributes['id'] = Str::uuid(); // Uuid::generate()->string;
         }
 
         return parent::fromRawAttributes($parent, $attributes, $table, $exists);

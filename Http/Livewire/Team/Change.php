@@ -4,24 +4,24 @@ declare(strict_types=1);
 
 namespace Modules\User\Http\Livewire\Team;
 
-use Livewire\Component;
-use Illuminate\View\View;
-use Webmozart\Assert\Assert;
-use Modules\User\Models\User;
 use Filament\Facades\Filament;
-use Modules\Xot\Datas\XotData;
-use Illuminate\Routing\Redirector;
-use Illuminate\Http\RedirectResponse;
-use Modules\User\Events\TeamSwitched;
 use Filament\Notifications\Notification;
 use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Redirector;
+use Illuminate\View\View;
+use Livewire\Component;
+use Modules\User\Events\TeamSwitched;
 use Modules\User\Http\Livewire\Traits\Properties\HasUserProperty;
+use Modules\User\Models\User;
+use Modules\Xot\Datas\XotData;
+use Webmozart\Assert\Assert;
 
 class Change extends Component
 {
     // use HasUserProperty;
 
-    public array $teams=[];
+    public array $teams = [];
 
     public XotData $xot;
     public User $user;
@@ -54,19 +54,21 @@ class Change extends Component
             ->title(__('Team switched'))
             ->success()
             ->send();
+        Assert::string($path = config('filament.path'));
 
-        return redirect(config('filament.path'), 303);
+        return redirect($path, 303);
     }
 
     public function render(): View
     {
-        $view='user::livewire.team.change';
-        $view_params=[
-            'view'=>$view,
+        $view = 'user::livewire.team.change';
+        $view_params = [
+            'view' => $view,
         ];
-        if(count($this->teams)==0){
-            $view='ui::livewire.empty';
+        if (0 === \count($this->teams)) {
+            $view = 'ui::livewire.empty';
         }
-        return view($view,$view_params);
+
+        return view($view, $view_params);
     }
 }

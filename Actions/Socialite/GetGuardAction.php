@@ -7,8 +7,10 @@ declare(strict_types=1);
 
 namespace Modules\User\Actions\Socialite;
 
+use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use Spatie\QueueableAction\QueueableAction;
+use Webmozart\Assert\Assert;
 
 class GetGuardAction
 {
@@ -16,10 +18,12 @@ class GetGuardAction
 
     /**
      * Execute the action.
+     *
+     * @return StatefulGuard|Guard
      */
-    public function execute(): StatefulGuard
+    public function execute()
     {
-        $guard = config('filament.auth.guard');
+        Assert::string($guard = config('filament.auth.guard'));
 
         return auth()->guard($guard);
     }

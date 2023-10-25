@@ -20,7 +20,7 @@ class CreateSocialiteUserAction
     /**
      * Execute the action.
      */
-    public function execute(string $provider, SocialiteUserContract $oauthUser, Model $user)
+    public function execute(string $provider, SocialiteUserContract $oauthUser, Model $user): SocialiteUser
     {
         return SocialiteUser::create([
             'user_id' => $user->getKey(),

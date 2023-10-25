@@ -103,6 +103,9 @@ class Team extends BaseModel implements TeamContract
      */
     public function hasUser(UserContract $userContract): bool
     {
+        // Parameter #1 $key of method Illuminate\Database\Eloquent\Collection<int,Modules\User\Models\User>::contains() expects (callable(Modules\User\Models\User, int):
+        // bool)|int|Modules\User\Models\User|string, Modules\User\Contracts\UserContract given.
+        // ✏️  User\Models\Team.php
         if ($this->users->contains($userContract)) {
             return true;
         }

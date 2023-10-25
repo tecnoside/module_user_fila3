@@ -39,6 +39,7 @@ class CreatePermissionTables extends XotBaseMigration
             ->forget($cache_key);
     }
 
+    /* -- is in xotbasemigration
     public function down(): void
     {
         $tableNames = config('permission.table_names');
@@ -53,4 +54,5 @@ class CreatePermissionTables extends XotBaseMigration
         Schema::drop($tableNames['roles']);
         Schema::drop($tableNames['permissions']);
     }
+    */
 }

@@ -33,7 +33,7 @@ trait HasTeams
             return false;
         }
 
-        return $teamContract->id ===
+        return $teamContract->getKey() ===
             $this->currentTeam->id;
     }
 
@@ -43,7 +43,7 @@ trait HasTeams
     public function currentTeam(): BelongsTo
     {
         $xot = XotData::make();
-        if (is_null($this->current_team_id) && $this->id) {
+        if (null === $this->current_team_id && $this->id) {
             $this->switchTeam($this->personalTeam());
         }
 
@@ -69,7 +69,7 @@ trait HasTeams
         }
 
         $this->forceFill([
-            'current_team_id' => $teamContract->id,
+            'current_team_id' => $teamContract->getKey(),
         ])->save();
 
         $this->setRelation('currentTeam', $teamContract);
@@ -142,7 +142,7 @@ trait HasTeams
      */
     public function ownsTeam(?TeamContract $teamContract): bool
     {
-        if (is_null($teamContract)) {
+        if (null === $teamContract) {
             return false;
         }
 
@@ -154,7 +154,7 @@ trait HasTeams
      */
     public function belongsToTeam(?TeamContract $teamContract): bool
     {
-        if (is_null($teamContract)) {
+        if (null === $teamContract) {
             return false;
         }
 
@@ -180,7 +180,7 @@ trait HasTeams
             return null;
         }
 
-        return $teamContract->users
+        return $teamContract->users()
             ->where('id', $this->id)
             ->first()
             ->membership
@@ -202,7 +202,7 @@ trait HasTeams
             $this->id
         )->first()?->membership?->role))->key === $role;
         */
-        return $this->belongsToTeam($teamContract) && null != $this->teamRole($teamContract);
+        return $this->belongsToTeam($teamContract) && null !== $this->teamRole($teamContract);
     }
 
     /**
@@ -235,7 +235,7 @@ trait HasTeams
         }
 
         if (
-            in_array(HasApiTokens::class, class_uses_recursive($this))
+            \in_array(HasApiTokens::class, class_uses_recursive($this), true)
             && ! $this->tokenCan($permission)
             && null !== $this->currentAccessToken()
         ) {
@@ -244,9 +244,9 @@ trait HasTeams
 
         $permissions = $this->teamPermissions($teamContract);
 
-        return in_array($permission, $permissions)
-            || in_array('*', $permissions)
-            || (Str::endsWith($permission, ':create') && in_array('*:create', $permissions))
-            || (Str::endsWith($permission, ':update') && in_array('*:update', $permissions));
+        return \in_array($permission, $permissions, true)
+            || \in_array('*', $permissions, true)
+            || (Str::endsWith($permission, ':create') && \in_array('*:create', $permissions, true))
+            || (Str::endsWith($permission, ':update') && \in_array('*:update', $permissions, true));
     }
 }

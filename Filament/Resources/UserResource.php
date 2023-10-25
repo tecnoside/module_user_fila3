@@ -156,11 +156,12 @@ class UserResource extends XotBaseResource
                                 ->rule('required', fn ($get): bool => (bool) $get('new_password'))
                                 ->same('new_password')
                                 ->dehydrated(false),
-                        ])->visible(static::$enablePasswordUpdates),
+                        ])// ->visible(static::$enablePasswordUpdates)
+                        ,
                     ])->columnSpan(8),
                     'right' => Card::make([
                         'created_at' => Placeholder::make('created_at')
-                            ->content( fn ($record) => $record?->created_at?->diffForHumans() ?? new HtmlString('&mdash;')),
+                            ->content(fn ($record) => $record?->created_at?->diffForHumans() ?? new HtmlString('&mdash;')),
                     ])->columnSpan(4),
                 ];
                 if (static::$extendFormCallback instanceof \Closure) {

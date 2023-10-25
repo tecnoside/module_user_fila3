@@ -16,7 +16,7 @@ class UpgradeController extends Controller
     public function __invoke(Request $request): void
     {
         $users = User::get();
-
+        /* da id a uuid
         foreach ($users as $user) {
             if (strlen((string) $user->id) >= 32) { // gia' convertito
                 continue;
@@ -31,6 +31,7 @@ class UpgradeController extends Controller
             $user->save();
             echo '<br> from :'.$old_id.' => '.$new_id;
         }
+        */
         echo '<hr/>+Done';
     }
 }

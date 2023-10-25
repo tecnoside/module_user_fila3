@@ -18,6 +18,13 @@ class GetDomainAllowListAction
      */
     public function execute(): string|array
     {
-        return config('filament-socialite.domain_allowlist');
+        $res = config('filament-socialite.domain_allowlist');
+        if (\is_string($res)) {
+            return $res;
+        }
+        if (\is_array($res)) {
+            return $res;
+        }
+        throw new \Exception('WIP');
     }
 }

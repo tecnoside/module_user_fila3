@@ -6,7 +6,7 @@ namespace Modules\User\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Collection;
-use Modules\Egea\Constants\Core\UserType;
+use Modules\User\Enums\UserType;
 use Modules\User\Models\Role;
 
 class RolesSeeder extends Seeder

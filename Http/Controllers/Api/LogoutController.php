@@ -27,8 +27,8 @@ class LogoutController extends XotBaseController
             ->where('access_token_id', $accessToken->id)
             ->delete();
         */
-        OauthRefreshToken::where('access_token_id', $accessToken->id)->delete();
-        $user->token()->delete();
+        OauthRefreshToken::where('access_token_id', $accessToken->getKey())->delete();
+        $user->token()?->delete();
 
         MobileDeviceUser::where('user_id', $user->id)->update(['logout_at' => now()]);
 

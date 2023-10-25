@@ -4,16 +4,17 @@ declare(strict_types=1);
 
 namespace Modules\User\Models\Traits;
 
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
-use Laravel\Passport\HasApiTokens;
-use Modules\User\Contracts\TeamContract;
+use Webmozart\Assert\Assert;
 use Modules\User\Models\Role;
 use Modules\User\Models\Team;
 use Modules\Xot\Datas\XotData;
+use Illuminate\Support\Collection;
+use Laravel\Passport\HasApiTokens;
+use Modules\User\Contracts\TeamContract;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 // use Modules\User\Models\OwnerRole;
 

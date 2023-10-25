@@ -4,15 +4,16 @@ declare(strict_types=1);
 
 namespace Modules\User\Console\Commands;
 
-use Illuminate\Console\Command;
-
-use function Laravel\Prompts\multiselect;
-use function Laravel\Prompts\text;
+use Webmozart\Assert\Assert;
 
 use Modules\User\Models\Role;
 use Modules\User\Models\User;
-use Symfony\Component\Console\Input\InputArgument;
+
+use Illuminate\Console\Command;
+use function Laravel\Prompts\text;
+use function Laravel\Prompts\multiselect;
 use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Input\InputArgument;
 
 class AssignRoleCommand extends Command
 {
@@ -46,8 +47,10 @@ class AssignRoleCommand extends Command
     public function handle(): void
     {
         $email = text('email ?');
-        $user = User::firstWhere(['email' => $email]);
-
+        Assert::notNull($user = User::firstWhere(['email' => $email]));
+        /**
+         * @var array
+         */
         $opts = Role::all()->pluck('name', 'name');
 
         $rows = multiselect(

@@ -27,7 +27,7 @@ use Modules\User\Models\User;
 
 class ProcessCallbackController extends Controller
 {
-    public function __invoke(Request $request, string $provider)
+    public function __invoke(Request $request, string $provider): \Illuminate\Http\RedirectResponse
     {
         // See if provider exists
         if (! app(IsProviderConfiguredAction::class)->execute($provider)) {

@@ -54,7 +54,10 @@ class Change extends Component
             ->title(__('Team switched'))
             ->success()
             ->send();
-        Assert::string($path = config('filament.path'));
+        /**
+         * @var string|null
+         */
+        $path = config('filament.path');
 
         return redirect($path, 303);
     }

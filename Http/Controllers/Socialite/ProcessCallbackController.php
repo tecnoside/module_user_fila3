@@ -30,9 +30,10 @@ class ProcessCallbackController extends Controller
     /**
      * Undocumented function
      *
-     * @return mixed
+     * @return \Illuminate\Http\RedirectResponse
+     * 
      */
-    public function __invoke(Request $request, string $provider): \Illuminate\Http\RedirectResponse
+    public function __invoke(Request $request, string $provider)
     {
         // See if provider exists
         if (! app(IsProviderConfiguredAction::class)->execute($provider)) {

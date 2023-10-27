@@ -43,6 +43,7 @@
     "require-dev": {
         "barryvdh/laravel-ide-helper": "*",
         "driftingly/rector-laravel": "*",
+        "enlightn/enlightn": "*",
         "fakerphp/faker": "*",
         "friendsofphp/php-cs-fixer": "*",
         "laravel/pint": "*",
@@ -59,13 +60,23 @@
         "rector/phpstan-rules": "*",
         "rector/rector": "*",
         "spatie/laravel-ray": "*",
+        "symplify/phpstan-rules": "*",
         "thecodingmachine/phpstan-safe-rule": "*",
-        "tightenco/duster": "*"
+        "tightenco/duster": "*",
+        "vimeo/psalm": "*"
     },
     "repositories": [
         {
-        "type": "path",
-        "url": "../module_xot_fila3"
+            "type": "path",
+            "url": "../module_xot_fila3"
+        },
+        {
+            "type": "path",
+            "url": "../module_tenant_fila3"
+        },
+        {
+            "type": "path",
+            "url": "../module_ui_fila3"
         }
     ],
     "scripts": {

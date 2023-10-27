@@ -1,5 +1,5 @@
 {
-    "name": "laraxot/module_user_fila",
+    "name": "laraxot/module_user_fila3",
     "description": "user module for user management",
     "keywords": [
         "laraxot",
@@ -11,7 +11,7 @@
         "Users",
         "Users management"
     ],
-    "homepage": "https://github.com/laraxot/module_user_fila",
+    "homepage": "https://github.com/laraxot/module_user_fila3",
     "license": "MIT",
     "authors": [{
         "name": "Marco Sottana",
@@ -34,9 +34,11 @@
         }
     },
     "require": {
+        "laravel/passport": "*",
+        "laraxot/module_tenant_fila3": "*",
         "laraxot/module_xot_fila3": "dev-master",
         "spatie/laravel-personal-data-export": "*",
-        "laravel/passport": "*"
+        "thecodingmachine/safe": "*"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "*",
@@ -60,6 +62,12 @@
         "thecodingmachine/phpstan-safe-rule": "*",
         "tightenco/duster": "*"
     },
+    "repositories": [
+        {
+        "type": "path",
+        "url": "../module_xot_fila3"
+        }
+    ],
     "scripts": {
         "post-autoload-dump": [
             "@php vendor/bin/testbench package:discover --ansi"

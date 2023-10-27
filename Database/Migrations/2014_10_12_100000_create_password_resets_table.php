@@ -9,14 +9,12 @@ class CreatePasswordResetsTable extends XotBaseMigration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         // -- CREATE --
         $this->tableCreate(
-            function (Blueprint $table) {
+            function (Blueprint $table): void {
                 $table->uuid('id')->primary();
                 $table->string('email')->index();
                 $table->string('token');
@@ -27,7 +25,7 @@ class CreatePasswordResetsTable extends XotBaseMigration
 
         // -- UPDATE --
         $this->tableUpdate(
-            function (Blueprint $table) {
+            function (Blueprint $table): void {
                 // if (! $this->hasColumn('email')) {
                 //    $table->string('email')->nullable();
                 // }

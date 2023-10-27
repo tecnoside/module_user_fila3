@@ -8,7 +8,6 @@ namespace Modules\User\Models;
 // use Laravel\Sanctum\HasApiTokens;
 use Eloquent;
 use Filament\Models\Contracts\FilamentUser;
-use Filament\Models\Contracts\HasAvatar;
 use Filament\Models\Contracts\HasTenants;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Builder;
@@ -16,7 +15,6 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
@@ -33,16 +31,9 @@ use Modules\Egea\Models\MobileDeviceUser;
 use Modules\Notify\Models\Notification;
 use Modules\User\Contracts\UserContract as UserJetContract;
 use Modules\User\Database\Factories\UserFactory;
-use Modules\User\Models\Traits\CanExportPersonalData;
-use Modules\User\Models\Traits\HasProfilePhoto;
 use Modules\User\Models\Traits\HasTeams;
-use Modules\User\Models\Traits\TwoFactorAuthenticatable;
-// use Spatie\Permission\Models\Permission;
-// use Spatie\Permission\Models\Role;
-
 use Modules\Xot\Datas\XotData;
 use Spatie\Permission\Traits\HasRoles;
-use Spatie\PersonalDataExport\ExportsPersonalData;
 
 /**
  * Modules\User\Models\User.
@@ -110,28 +101,31 @@ use Spatie\PersonalDataExport\ExportsPersonalData;
  * @mixin Eloquent
  */
 class User extends Authenticatable implements \Modules\Xot\Contracts\UserContract, FilamentUser, HasTenants, UserJetContract
-{ /* , HasAvatar, UserJetContract, ExportsPersonalData */
+{
+    /* , HasAvatar, UserJetContract, ExportsPersonalData */
     /* , HasTeamsContract */
     use HasApiTokens;
     use HasFactory;
+
     // use TwoFactorAuthenticatable; //ArtMin96
     // use CanExportPersonalData; //ArtMin96
     use HasRoles;
+
     // use HasProfilePhoto; //ArtMin96
     // use HasTeams; //ArtMin96
     use HasTeams;
     use HasUuids;
+
     // use Traits\HasProfilePhoto;
     use Notifiable;
-
     use Traits\HasTenants;
+
+    public $incrementing = false;
 
     /**
      * @var string
      */
     protected $connection = 'user';
-
-    public $incrementing = false;
 
     /**
      * The attributes that are mass assignable.
@@ -184,7 +178,7 @@ class User extends Authenticatable implements \Modules\Xot\Contracts\UserContrac
         // 'profile_photo_url',
     ];
 
-    public function canAccessFilament(Panel $panel = null): bool
+    public function canAccessFilament(?Panel $panel = null): bool
     {
         // return $this->role_id === Role::ROLE_ADMINISTRATOR;
         return true;
@@ -197,17 +191,9 @@ class User extends Authenticatable implements \Modules\Xot\Contracts\UserContrac
         return $this->hasOne($profileClass);
     }
 
-    /**
-     * Create a new factory instance for the model.
-     */
-    protected static function newFactory(): Factory
-    {
-        return UserFactory::new();
-    }
-
     public function canAccessPanel(Panel $panel): bool
     {
-        if ('admin' !== $panel->getId()) {
+        if ($panel->getId() !== 'admin') {
             $role = $panel->getId();
             /*
             $xot = XotData::make();
@@ -244,5 +230,13 @@ class User extends Authenticatable implements \Modules\Xot\Contracts\UserContrac
     {
         // return $this->morphMany(DatabaseNotification::class, 'notifiable')->latest();
         return $this->morphMany(Notification::class, 'notifiable')->latest();
+    }
+
+    /**
+     * Create a new factory instance for the model.
+     */
+    protected static function newFactory(): Factory
+    {
+        return UserFactory::new();
     }
 }

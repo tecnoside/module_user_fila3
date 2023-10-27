@@ -7,6 +7,7 @@ namespace Modules\User\Http\Controllers\Socialite;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Controller;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Laravel\Socialite\Contracts\User as SocialiteUserContract;
@@ -38,11 +39,10 @@ class LoginController extends Controller
     ) {
     }
     */
-
     /**
      * Undocumented function
      *
-     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
+     * @return Redirector|RedirectResponse
      */
     public function redirectToProvider(string $provider)
     {
@@ -55,6 +55,71 @@ class LoginController extends Controller
         return Socialite::with($provider)
             ->scopes($scopes)
             ->redirect();
+    }
+
+    public function createSocialiteUser(string $provider, SocialiteUserContract $oauthUser, Model $user)
+    {
+        return SocialiteUser::create([
+            'user_id' => $user->getKey(),
+            'provider' => $provider,
+            'provider_id' => $oauthUser->getId(),
+        ]);
+    }
+
+    public function createUser(SocialiteUserContract $oauthUser)
+    {
+        $xot = XotData::make();
+        $userClass = $xot->getUserClass();
+
+        return $userClass::create(
+            [
+                'name' => $oauthUser->getName(),
+                'email' => $oauthUser->getEmail(),
+            ]
+        );
+    }
+
+    public function processCallback(string $provider)
+    {
+        // See if provider exists
+        if (! app(IsProviderConfiguredAction::class)->execute($provider)) {
+            throw ProviderNotConfigured::make($provider);
+        }
+
+        // Try to retrieve existing user
+        $oauthUser = $this->retrieveOauthUser($provider);
+        if (! $oauthUser instanceof SocialiteUserContract) {
+            return $this->redirectToLogin('auth.login-failed');
+        }
+
+        // Verify if user is allowed
+        if (! $this->isUserAllowed($oauthUser)) {
+            UserNotAllowed::dispatch($oauthUser);
+
+            return $this->redirectToLogin('auth.user-not-allowed');
+        }
+
+        // Try to find a socialite user
+        $socialiteUser = $this->retrieveSocialiteUser($provider, $oauthUser);
+        if ($socialiteUser instanceof SocialiteUser) {
+            return $this->loginUser($socialiteUser);
+        }
+
+        // See if registration is allowed
+        if (! app(IsRegistrationEnabledAction::class)->execute()) {
+            RegistrationNotEnabled::dispatch($provider, $oauthUser);
+
+            return $this->redirectToLogin('auth.registration-not-enabled');
+        }
+
+        // See if a user already exists, but not for this socialite provider
+        // $user = app()->call($this->socialite->getUserResolver(), ['provider' => $provider, 'oauthUser' => $oauthUser, 'socialite' => $this->socialite]);
+        $user = User::firstWhere(['email' => $oauthUser->getEmail()]);
+
+        // Handle registration
+        return $user
+            ? $this->registerSocialiteUser($provider, $oauthUser, $user)
+            : $this->registerOauthUser($provider, $oauthUser);
     }
 
     protected function retrieveOauthUser(string $provider): ?SocialiteUserContract
@@ -136,28 +201,6 @@ class LoginController extends Controller
         return $this->loginUser($socialiteUser);
     }
 
-    public function createSocialiteUser(string $provider, SocialiteUserContract $oauthUser, Model $user)
-    {
-        return SocialiteUser::create([
-            'user_id' => $user->getKey(),
-            'provider' => $provider,
-            'provider_id' => $oauthUser->getId(),
-        ]);
-    }
-
-    public function createUser(SocialiteUserContract $oauthUser)
-    {
-        $xot = XotData::make();
-        $userClass = $xot->getUserClass();
-
-        return $userClass::create(
-            [
-                'name' => $oauthUser->getName(),
-                'email' => $oauthUser->getEmail(),
-            ]
-        );
-    }
-
     protected function registerOauthUser(string $provider, SocialiteUserContract $oauthUser)
     {
         $socialiteUser = DB::transaction(function () use ($provider, $oauthUser) {
@@ -166,9 +209,7 @@ class LoginController extends Controller
             $user = $this->createUser(oauthUser: $oauthUser);
             // Create a socialite user
             // return app()->call($this->socialite->getCreateSocialiteUserCallback(), ['provider' => $provider, 'oauthUser' => $oauthUser, 'user' => $user, 'socialite' => $this->socialite]);
-            $socialiteUser = $this->createSocialiteUser(provider: $provider, oauthUser: $oauthUser, user: $user);
-
-            return $socialiteUser;
+            return $this->createSocialiteUser(provider: $provider, oauthUser: $oauthUser, user: $user);
         });
 
         // Dispatch the registered event
@@ -176,48 +217,5 @@ class LoginController extends Controller
 
         // Login the user
         return $this->loginUser($socialiteUser);
-    }
-
-    public function processCallback(string $provider)
-    {
-        // See if provider exists
-        if (! app(IsProviderConfiguredAction::class)->execute($provider)) {
-            throw ProviderNotConfigured::make($provider);
-        }
-
-        // Try to retrieve existing user
-        $oauthUser = $this->retrieveOauthUser($provider);
-        if (! $oauthUser instanceof SocialiteUserContract) {
-            return $this->redirectToLogin('auth.login-failed');
-        }
-
-        // Verify if user is allowed
-        if (! $this->isUserAllowed($oauthUser)) {
-            UserNotAllowed::dispatch($oauthUser);
-
-            return $this->redirectToLogin('auth.user-not-allowed');
-        }
-
-        // Try to find a socialite user
-        $socialiteUser = $this->retrieveSocialiteUser($provider, $oauthUser);
-        if ($socialiteUser instanceof SocialiteUser) {
-            return $this->loginUser($socialiteUser);
-        }
-
-        // See if registration is allowed
-        if (! app(IsRegistrationEnabledAction::class)->execute()) {
-            RegistrationNotEnabled::dispatch($provider, $oauthUser);
-
-            return $this->redirectToLogin('auth.registration-not-enabled');
-        }
-
-        // See if a user already exists, but not for this socialite provider
-        // $user = app()->call($this->socialite->getUserResolver(), ['provider' => $provider, 'oauthUser' => $oauthUser, 'socialite' => $this->socialite]);
-        $user = User::firstWhere(['email' => $oauthUser->getEmail()]);
-
-        // Handle registration
-        return $user
-            ? $this->registerSocialiteUser($provider, $oauthUser, $user)
-            : $this->registerOauthUser($provider, $oauthUser);
     }
 }

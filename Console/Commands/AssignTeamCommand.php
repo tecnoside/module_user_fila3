@@ -4,17 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\User\Console\Commands;
 
-use Webmozart\Assert\Assert;
-
-use Modules\User\Models\Role;
-use Modules\User\Models\User;
-
-use Modules\Xot\Datas\XotData;
 use Illuminate\Console\Command;
-use function Laravel\Prompts\text;
 use function Laravel\Prompts\multiselect;
+use function Laravel\Prompts\text;
+use Modules\User\Models\User;
+use Modules\Xot\Datas\XotData;
 use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Input\InputArgument;
+use Webmozart\Assert\Assert;
 
 class AssignTeamCommand extends Command
 {
@@ -89,10 +85,8 @@ class AssignTeamCommand extends Command
      */
     /**
      * Get the console command options.
-     *
-     * @return array
      */
-    protected function getOptions()
+    protected function getOptions(): array
     {
         return [
             ['example', null, InputOption::VALUE_OPTIONAL, 'An example option.', null],

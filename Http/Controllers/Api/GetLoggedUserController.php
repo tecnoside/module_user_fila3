@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Modules\User\Http\Controllers\Api;
 
-use Illuminate\Http\Request;
-use Webmozart\Assert\Assert;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Modules\Xot\Datas\JsonResponseData;
 use Modules\Xot\Http\Controllers\XotBaseController;
+use Webmozart\Assert\Assert;
 
 class GetLoggedUserController extends XotBaseController
 {

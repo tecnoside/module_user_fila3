@@ -4,17 +4,18 @@ declare(strict_types=1);
 
 namespace Modules\User\Models\Traits;
 
+use Exception;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
-use Webmozart\Assert\Assert;
+use Laravel\Passport\HasApiTokens;
+use Modules\User\Contracts\TeamContract;
 use Modules\User\Models\Role;
 use Modules\User\Models\Team;
 use Modules\Xot\Datas\XotData;
-use Illuminate\Support\Collection;
-use Laravel\Passport\HasApiTokens;
-use Modules\User\Contracts\TeamContract;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Webmozart\Assert\Assert;
 
 // use Modules\User\Models\OwnerRole;
 
@@ -30,7 +31,7 @@ trait HasTeams
      */
     public function isCurrentTeam(TeamContract $teamContract): bool
     {
-        if (! $teamContract instanceof TeamContract || null === $this->currentTeam) {
+        if (! $teamContract instanceof TeamContract || $this->currentTeam === null) {
             return false;
         }
 
@@ -44,11 +45,11 @@ trait HasTeams
     public function currentTeam(): BelongsTo
     {
         $xot = XotData::make();
-        if (null === $this->current_team_id && $this->id) {
+        if ($this->current_team_id === null && $this->id) {
             $this->switchTeam($this->personalTeam());
         }
 
-        if (0 === $this->allTeams()->count()) {
+        if ($this->allTeams()->count() === 0) {
             $this->current_team_id = null;
             $this->update();
         }
@@ -127,12 +128,12 @@ trait HasTeams
     public function personalTeam(): ?TeamContract
     {
         $res = $this->ownedTeams->where('personal_team', true)->first();
-        if (null === $res) {
+        if ($res === null) {
             return null;
         }
 
         if (! $res instanceof TeamContract) {
-            throw new \Exception('strange things');
+            throw new Exception('strange things');
         }
 
         return $res;
@@ -143,7 +144,7 @@ trait HasTeams
      */
     public function ownsTeam(?TeamContract $teamContract): bool
     {
-        if (null === $teamContract) {
+        if (! $teamContract instanceof TeamContract) {
             return false;
         }
 
@@ -155,7 +156,7 @@ trait HasTeams
      */
     public function belongsToTeam(?TeamContract $teamContract): bool
     {
-        if (null === $teamContract) {
+        if (! $teamContract instanceof TeamContract) {
             return false;
         }
 
@@ -181,6 +182,7 @@ trait HasTeams
             return null;
         }
         Assert::notNull($user = $teamContract->users()->where('id', $this->id)->first());
+
         // return $teamContract->users()
         //     ->where('id', $this->id)
         //     ->first()
@@ -206,7 +208,7 @@ trait HasTeams
             $this->id
         )->first()?->membership?->role))->key === $role;
         */
-        return $this->belongsToTeam($teamContract) && null !== $this->teamRole($teamContract);
+        return $this->belongsToTeam($teamContract) && $this->teamRole($teamContract) !== null;
     }
 
     /**
@@ -241,7 +243,7 @@ trait HasTeams
         if (
             \in_array(HasApiTokens::class, class_uses_recursive($this), true)
             && ! $this->tokenCan($permission)
-            && null !== $this->currentAccessToken()
+            && $this->currentAccessToken() !== null
         ) {
             return false;
         }

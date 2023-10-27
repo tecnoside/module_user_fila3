@@ -19,17 +19,6 @@ class RoleRelationManager extends RelationManager
 
     protected static ?string $recordTitleAttribute = 'name';
 
-    protected static function getModelLabel(): ?string
-    {
-        // return __('filament-spatie-roles-permissions::filament-spatie.section.role');
-        return __('filament-spatie-roles-permissions::filament-spatie.section.role');
-    }
-
-    protected static function getPluralModelLabel(): string
-    {
-        return __('filament-spatie-roles-permissions::filament-spatie.section.roles');
-    }
-
     public function form(Form $form): Form
     {
         return $form
@@ -54,5 +43,16 @@ class RoleRelationManager extends RelationManager
             ])
             ->filters([
             ]);
+    }
+
+    protected static function getModelLabel(): ?string
+    {
+        // return __('filament-spatie-roles-permissions::filament-spatie.section.role');
+        return __('filament-spatie-roles-permissions::filament-spatie.section.role');
+    }
+
+    protected static function getPluralModelLabel(): string
+    {
+        return __('filament-spatie-roles-permissions::filament-spatie.section.roles');
     }
 }

@@ -10,14 +10,12 @@ class CreateOauthRefreshTokensTable extends XotBaseMigration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         // -- CREATE --
         $this->tableCreate(
-            function (Blueprint $table) {
+            function (Blueprint $table): void {
                 $table->string('id', 100)->primary();
                 // $table->string('access_token_id', 100)->index();
                 $table->foreignIdFor(OauthAccessToken::class, 'access_token_id')->index();
@@ -28,7 +26,7 @@ class CreateOauthRefreshTokensTable extends XotBaseMigration
 
         // -- UPDATE --
         $this->tableUpdate(
-            function (Blueprint $table) {
+            function (Blueprint $table): void {
                 // if (! $this->hasColumn('email')) {
                 //    $table->string('email')->nullable();
                 // }

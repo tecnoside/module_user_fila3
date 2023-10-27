@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 use Illuminate\Database\Schema\Blueprint;
 use Modules\User\Models\OauthClient;
-use Modules\User\Models\User;
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 use Modules\Xot\Datas\XotData;
 
@@ -15,7 +14,7 @@ class CreateOauthAuthCodesTable extends XotBaseMigration
         $xot = XotData::make();
         $userClass = $xot->getUserClass();
         $this->tableCreate(
-            static function (Blueprint $table) use ($userClass) {
+            static function (Blueprint $table) use ($userClass): void {
                 $table->string('id', 100)->primary();
                 // $table->unsignedBigInteger('user_id')->index();
                 // $table->unsignedBigInteger('client_id');

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Models\Traits;
 
+use Exception;
 use Illuminate\Support\Facades\Storage;
 use Modules\User\Models\Features;
 
@@ -70,8 +71,8 @@ trait HasProfilePhoto
      */
     public function photoExists(): bool
     {
-        if (null === $this->profile_photo_path) {
-            throw new \Exception('['.__LINE__.']['.__FILE__.']');
+        if ($this->profile_photo_path === null) {
+            throw new Exception('['.__LINE__.']['.__FILE__.']');
         }
 
         return Storage::disk($this->profilePhotoDisk())->exists($this->profile_photo_path);

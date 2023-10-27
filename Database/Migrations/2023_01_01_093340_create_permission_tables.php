@@ -1,17 +1,15 @@
 <?php
 
 declare(strict_types=1);
-use Illuminate\Support\Facades\Schema;
+
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
 class CreatePermissionTables extends XotBaseMigration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         /** @var array $tableNames */
         $tableNames = config('permission.table_names');
@@ -35,7 +33,7 @@ class CreatePermissionTables extends XotBaseMigration
         $cache_key = config('permission.cache.key');
 
         app('cache')
-            ->store('default' !== $cache_store ? $cache_store : null)
+            ->store($cache_store !== 'default' ? $cache_store : null)
             ->forget($cache_key);
     }
 

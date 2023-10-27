@@ -6,7 +6,6 @@ namespace Modules\User\Http\Controllers\Api;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Modules\Egea\Models\MobileDeviceUser;
 use Modules\User\Models\OauthRefreshToken;
 use Modules\Xot\Datas\JsonResponseData;

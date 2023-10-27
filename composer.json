@@ -40,25 +40,25 @@
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "*",
-        "driftingly/rector-laravel": "^0.24.1",
+        "driftingly/rector-laravel": "*",
         "fakerphp/faker": "*",
         "friendsofphp/php-cs-fixer": "*",
         "laravel/pint": "*",
         "nunomaduro/collision": "*",
         "nunomaduro/larastan": "*",
-        "nunomaduro/phpinsights": "^2.8",
+        "nunomaduro/phpinsights": "*",
         "orchestra/testbench": "*",
         "pestphp/pest": "*",
         "pestphp/pest-plugin-arch": "*",
         "pestphp/pest-plugin-laravel": "*",
         "phpstan/phpstan-deprecation-rules": "*",
         "phpstan/phpstan-phpunit": "*",
-        "psalm/plugin-laravel": "^2.8",
-        "rector/phpstan-rules": "^0.7.1",
-        "rector/rector": "^0.18.2",
+        "psalm/plugin-laravel": "*",
+        "rector/phpstan-rules": "*",
+        "rector/rector": "*",
         "spatie/laravel-ray": "*",
         "thecodingmachine/phpstan-safe-rule": "*",
-        "tightenco/duster": "^2.2"
+        "tightenco/duster": "*"
     },
     "scripts": {
         "post-autoload-dump": [

@@ -13,6 +13,7 @@ use Laravel\Passport\Client as PassportClient;
 class OauthClient extends PassportClient
 {
     use HasUuids;
+
     /**
      * @var string
      */

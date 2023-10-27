@@ -14,7 +14,7 @@ use Filament\Support\Contracts\HasLabel;
 
 // use Datomatic\LaravelEnumHelper\LaravelEnumHelper;
 
-enum UserType: string implements HasLabel, HasColor, HasIcon
+enum UserType: string implements HasColor, HasIcon, HasLabel
 {
     // use LaravelEnumHelper;
 

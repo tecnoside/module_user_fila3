@@ -4,10 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Resources\RoleResource\RelationManagers;
 
-use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
-use Filament\Tables;
 use Filament\Tables\Actions\AttachAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -43,9 +41,7 @@ class UsersRelationManager extends RelationManager
         $table->columns($columns);
         $headerActions = $table->getHeaderActions();
         $headerActions['attach'] = AttachAction::make();
-        $table = $table->headerActions($headerActions);
-
-        return $table;
+        return $table->headerActions($headerActions);
         /*
         return $table
             ->columns([

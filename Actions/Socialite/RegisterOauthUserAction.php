@@ -9,9 +9,7 @@ namespace Modules\User\Actions\Socialite;
 
 use Illuminate\Support\Facades\DB;
 use Laravel\Socialite\Contracts\User as SocialiteUserContract;
-use Laravel\Socialite\Facades\Socialite;
 use Modules\User\Events\Registered;
-use Modules\User\Models\User;
 use Spatie\QueueableAction\QueueableAction;
 
 class RegisterOauthUserAction
@@ -31,9 +29,7 @@ class RegisterOauthUserAction
             $user = app(CreateUserAction::class)->execute(oauthUser: $oauthUser);
             // Create a socialite user
             // return app()->call($this->socialite->getCreateSocialiteUserCallback(), ['provider' => $provider, 'oauthUser' => $oauthUser, 'user' => $user, 'socialite' => $this->socialite]);
-            $socialiteUser = app(CreateSocialiteUserAction::class)->execute(provider: $provider, oauthUser: $oauthUser, user: $user);
-
-            return $socialiteUser;
+            return app(CreateSocialiteUserAction::class)->execute(provider: $provider, oauthUser: $oauthUser, user: $user);
         });
 
         // Dispatch the registered event

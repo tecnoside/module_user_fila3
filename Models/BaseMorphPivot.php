@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
-use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\MorphPivot;
@@ -72,7 +71,8 @@ abstract class BaseMorphPivot extends MorphPivot
     ];
 
     protected $casts = ['created_at' => 'datetime', 'updated_at' => 'datetime',
-'deleted_at' => 'datetime'];
+        'deleted_at' => 'datetime',
+    ];
 
     /**
      * Create a new factory instance for the model.

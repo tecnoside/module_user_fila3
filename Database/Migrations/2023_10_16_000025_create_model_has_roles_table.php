@@ -79,7 +79,7 @@ class CreateModelHasRolesTable extends XotBaseMigration
                     $table->dropIndex('model_has_role_model_id_index');
                 }
 
-                if (in_array($this->getColumnType('role_id'), ['bigint'], true)) {
+                if ($this->getColumnType('role_id') === 'bigint') {
                     $table->uuid('role_id')->change();
                 }
 

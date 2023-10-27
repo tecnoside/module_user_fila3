@@ -6,14 +6,11 @@ namespace Modules\User\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
-
 use function Laravel\Prompts\multiselect;
 use function Laravel\Prompts\text;
-
 use Modules\User\Models\Role;
 use Modules\User\Models\User;
 use Nwidart\Modules\Facades\Module;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
 class AssignModuleCommand extends Command
@@ -44,10 +41,8 @@ class AssignModuleCommand extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return void
      */
-    public function handle()
+    public function handle(): void
     {
         $email = text('email ?');
         $user = User::firstWhere(['email' => $email]);
@@ -93,10 +88,8 @@ class AssignModuleCommand extends Command
      */
     /**
      * Get the console command options.
-     *
-     * @return array
      */
-    protected function getOptions()
+    protected function getOptions(): array
     {
         return [
             ['example', null, InputOption::VALUE_OPTIONAL, 'An example option.', null],

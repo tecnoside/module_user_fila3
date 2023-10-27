@@ -14,7 +14,7 @@ class CreateOauthAccessTokensTable extends XotBaseMigration
         $xot = XotData::make();
         $userClass = $xot->getUserClass();
         $this->tableCreate(
-            function (Blueprint $table) use ($userClass) {
+            function (Blueprint $table) use ($userClass): void {
                 $table->string('id', 100)->primary();
                 $table->foreignIdFor($userClass, 'user_id')->nullable()->index();
                 $table->foreignIdFor(OauthClient::class, 'client_id');

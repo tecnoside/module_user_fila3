@@ -12,7 +12,6 @@ use Illuminate\Routing\Redirector;
 use Illuminate\View\View;
 use Livewire\Component;
 use Modules\User\Events\TeamSwitched;
-use Modules\User\Http\Livewire\Traits\Properties\HasUserProperty;
 use Modules\User\Models\User;
 use Modules\Xot\Datas\XotData;
 use Webmozart\Assert\Assert;
@@ -24,6 +23,7 @@ class Change extends Component
     public array $teams = [];
 
     public XotData $xot;
+
     public User $user;
 
     public function mount(): void
@@ -68,7 +68,7 @@ class Change extends Component
         $view_params = [
             'view' => $view,
         ];
-        if (0 === \count($this->teams)) {
+        if ($this->teams === []) {
             $view = 'ui::livewire.empty';
         }
 

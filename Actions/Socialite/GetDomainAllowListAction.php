@@ -7,6 +7,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Actions\Socialite;
 
+use Exception;
 use Spatie\QueueableAction\QueueableAction;
 
 class GetDomainAllowListAction
@@ -25,6 +26,6 @@ class GetDomainAllowListAction
         if (\is_array($res)) {
             return $res;
         }
-        throw new \Exception('WIP');
+        throw new Exception('WIP');
     }
 }

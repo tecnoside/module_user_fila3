@@ -8,9 +8,9 @@ declare(strict_types=1);
 
 namespace Modules\User\Http\Controllers\Socialite;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Request;
-use Laravel\Socialite\Facades\Socialite;
 use Modules\User\Actions\Socialite\IsProviderConfiguredAction;
 use Modules\User\Actions\Socialite\IsRegistrationEnabledAction;
 use Modules\User\Actions\Socialite\IsUserAllowedAction;
@@ -30,8 +30,7 @@ class ProcessCallbackController extends Controller
     /**
      * Undocumented function
      *
-     * @return \Illuminate\Http\RedirectResponse
-     * 
+     * @return RedirectResponse
      */
     public function __invoke(Request $request, string $provider)
     {
@@ -42,7 +41,7 @@ class ProcessCallbackController extends Controller
 
         // Try to retrieve existing user
         $oauthUser = app(RetrieveOauthUserAction::class)->execute($provider);
-        if (null === $oauthUser) {
+        if ($oauthUser === null) {
             return app(RedirectToLoginAction::class)->execute('auth.login-failed');
         }
 

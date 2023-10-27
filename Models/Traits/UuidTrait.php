@@ -11,9 +11,9 @@ use Illuminate\Support\Str;
 
 trait UuidTrait
 {
-    public static function bootUuidTrait()
+    public static function bootUuidTrait(): void
     {
-        static::creating(function ($model) {
+        static::creating(function ($model): void {
             $model->keyType = 'string';
             $model->incrementing = false;
 
@@ -21,12 +21,12 @@ trait UuidTrait
         });
     }
 
-    public function getIncrementing()
+    public function getIncrementing(): bool
     {
         return false;
     }
 
-    public function getKeyType()
+    public function getKeyType(): string
     {
         return 'string';
     }

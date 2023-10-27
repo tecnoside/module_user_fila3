@@ -8,7 +8,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Resources;
 
-use Filament\Facades\Filament;
+use Closure;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Placeholder;
@@ -17,8 +17,6 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Filament\Resources\RelationManagers\RelationGroup;
-use Filament\Resources\Resource;
-use Filament\Tables;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
@@ -34,7 +32,11 @@ use Illuminate\Validation\Rules\Password;
 use Modules\User\Filament\Resources\UserResource\Pages\CreateUser;
 use Modules\User\Filament\Resources\UserResource\Pages\EditUser;
 use Modules\User\Filament\Resources\UserResource\Pages\ListUsers;
-use Modules\User\Filament\Resources\UserResource\RelationManagers;
+use Modules\User\Filament\Resources\UserResource\RelationManagers\ClientsRelationManager;
+use Modules\User\Filament\Resources\UserResource\RelationManagers\ProfileRelationManager;
+use Modules\User\Filament\Resources\UserResource\RelationManagers\RolesRelationManager;
+use Modules\User\Filament\Resources\UserResource\RelationManagers\TeamsRelationManager;
+use Modules\User\Filament\Resources\UserResource\RelationManagers\TokensRelationManager;
 use Modules\User\Filament\Resources\UserResource\Widgets\UserOverview;
 use Modules\User\Models\Role;
 use Modules\User\Models\User;
@@ -46,9 +48,9 @@ class UserResource extends XotBaseResource
 
     protected static ?string $navigationIcon = 'heroicon-o-users';
 
-    private static bool|\Closure $enablePasswordUpdates = true;
+    private static bool|Closure $enablePasswordUpdates = true;
 
-    private static ?\Closure $extendFormCallback = null;
+    private static ?Closure $extendFormCallback = null;
 
     /*
     protected static function getNavigationLabel(): string
@@ -164,7 +166,7 @@ class UserResource extends XotBaseResource
                             ->content(fn ($record) => $record?->created_at?->diffForHumans() ?? new HtmlString('&mdash;')),
                     ])->columnSpan(4),
                 ];
-                if (static::$extendFormCallback instanceof \Closure) {
+                if (static::$extendFormCallback instanceof Closure) {
                     return value(static::$extendFormCallback, $schema);
                 }
 
@@ -252,7 +254,7 @@ class UserResource extends XotBaseResource
             ->defaultSort('created_at', 'desc');
     }
 
-    public static function enablePasswordUpdates(bool|\Closure $condition = true): void
+    public static function enablePasswordUpdates(bool|Closure $condition = true): void
     {
         static::$enablePasswordUpdates = $condition;
     }
@@ -272,13 +274,13 @@ class UserResource extends XotBaseResource
     public static function getRelations(): array
     {
         return [
-            RelationManagers\TeamsRelationManager::class,
-            RelationManagers\ProfileRelationManager::class,
-            RelationManagers\RolesRelationManager::class,
+            TeamsRelationManager::class,
+            ProfileRelationManager::class,
+            RolesRelationManager::class,
             // ---PASSPORT
             RelationGroup::make('Passport', [
-                RelationManagers\TokensRelationManager::class,
-                RelationManagers\ClientsRelationManager::class,
+                TokensRelationManager::class,
+                ClientsRelationManager::class,
             ]),
         ];
     }

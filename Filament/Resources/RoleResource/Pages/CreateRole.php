@@ -9,7 +9,6 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Modules\User\Filament\Resources\RoleResource;
-use Modules\User\Support\Utils;
 
 class CreateRole extends CreateRecord
 {

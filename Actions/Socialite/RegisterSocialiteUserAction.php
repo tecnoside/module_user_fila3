@@ -11,10 +11,8 @@ namespace Modules\User\Actions\Socialite;
 // use DutchCodingCompany\FilamentSocialite\FilamentSocialite;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Socialite\Contracts\User as SocialiteUserContract;
-use Laravel\Socialite\Facades\Socialite;
 // use DutchCodingCompany\FilamentSocialite\FilamentSocialite;
 use Modules\User\Events\SocialiteUserConnected;
-use Modules\User\Models\User;
 use Spatie\QueueableAction\QueueableAction;
 
 class RegisterSocialiteUserAction

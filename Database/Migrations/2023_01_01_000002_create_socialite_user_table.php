@@ -10,16 +10,14 @@ class CreateSocialiteUserTable extends XotBaseMigration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         $xot = XotData::make();
         $userClass = $xot->getUserClass();
         // -- CREATE --
         $this->tableCreate(
-            function (Blueprint $table) use ($userClass) {
+            function (Blueprint $table) use ($userClass): void {
                 // $table->uuid('id')->primary();
                 $table->id();
                 $table->foreignIdFor($userClass, 'user_id');
@@ -40,11 +38,12 @@ class CreateSocialiteUserTable extends XotBaseMigration
                 // $table->timestamps();
                 // $table->string('created_by')->nullable();
                 // $table->string('updated_by')->nullable();
-            });
+            }
+        );
 
         // -- UPDATE --
         $this->tableUpdate(
-            function (Blueprint $table) {
+            function (Blueprint $table): void {
                 // if (! $this->hasColumn('email')) {
                 //    $table->string('email')->nullable();
                 // }

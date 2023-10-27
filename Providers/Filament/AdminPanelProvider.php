@@ -8,7 +8,6 @@ declare(strict_types=1);
 
 namespace Modules\User\Providers\Filament;
 
-use Filament\Notifications\Livewire\DatabaseNotifications;
 use Filament\Panel;
 use Filament\Support\Facades\FilamentView;
 use Illuminate\Support\Facades\Blade;

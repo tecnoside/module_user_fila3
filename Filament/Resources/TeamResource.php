@@ -4,13 +4,9 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Resources;
 
-use ArtMin96\FilamentJet\FilamentJet;
-use Filament\Forms;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Tables;
-use Filament\Tables\Actions\DetachAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
@@ -20,8 +16,6 @@ use Modules\User\Filament\Resources\TeamResource\Pages\EditTeam;
 use Modules\User\Filament\Resources\TeamResource\Pages\ListTeams;
 use Modules\User\Filament\Resources\TeamResource\Pages\ViewTeam;
 use Modules\User\Filament\Resources\TeamResource\RelationManagers\UsersRelationManager;
-use Modules\User\Models\Role;
-use Modules\User\Models\Team;
 use Modules\Xot\Datas\XotData;
 
 class TeamResource extends Resource

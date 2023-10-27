@@ -2,11 +2,7 @@
 
 declare(strict_types=1);
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
-use Webmozart\Assert\Assert;
 
 // use Modules\User\Http\Controllers\Api\UserController;
 

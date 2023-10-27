@@ -6,9 +6,6 @@ namespace Modules\User\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Str;
-use Modules\User\Models\ModelHasRole;
-use Modules\User\Models\TeamUser;
 use Modules\User\Models\User;
 
 class UpgradeController extends Controller

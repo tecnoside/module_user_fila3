@@ -27,7 +27,7 @@ Route::prefix('user')->group(function() {
 //    ->middleware(config('filament.middleware.base'))
 Route::namespace('Socialite')
     ->name('socialite.')
-    ->group(function () {
+    ->group(function (): void {
         Route::get(
             '/admin/login/{provider}',
             'LoginController@redirectToProvider',
@@ -60,9 +60,8 @@ Route::namespace('\\')
     );
 */
 
-Route::get('/login', function () {
+Route::get('/login', fn () =>
     // return view('welcome');
-    return redirect('/admin/login');
-})->name('login');
+    redirect('/admin/login'))->name('login');
 
 Route::get('/upgrade', 'UpgradeController');

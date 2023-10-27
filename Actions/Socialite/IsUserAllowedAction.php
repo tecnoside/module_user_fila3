@@ -10,7 +10,6 @@ namespace Modules\User\Actions\Socialite;
 // use DutchCodingCompany\FilamentSocialite\FilamentSocialite;
 use Illuminate\Support\Str;
 use Laravel\Socialite\Contracts\User as SocialiteUserContract;
-use Modules\User\Models\User;
 use Spatie\QueueableAction\QueueableAction;
 
 class IsUserAllowedAction

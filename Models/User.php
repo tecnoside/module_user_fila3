@@ -178,7 +178,7 @@ class User extends Authenticatable implements \Modules\Xot\Contracts\UserContrac
         // 'profile_photo_url',
     ];
 
-    public function canAccessFilament(?Panel $panel = null): bool
+    public function canAccessFilament(Panel $panel = null): bool
     {
         // return $this->role_id === Role::ROLE_ADMINISTRATOR;
         return true;
@@ -193,7 +193,7 @@ class User extends Authenticatable implements \Modules\Xot\Contracts\UserContrac
 
     public function canAccessPanel(Panel $panel): bool
     {
-        if ($panel->getId() !== 'admin') {
+        if ('admin' !== $panel->getId()) {
             $role = $panel->getId();
             /*
             $xot = XotData::make();

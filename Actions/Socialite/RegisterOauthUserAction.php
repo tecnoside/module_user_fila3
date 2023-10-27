@@ -18,8 +18,6 @@ class RegisterOauthUserAction
 
     /**
      * Execute the action.
-     *
-     * @return mixed
      */
     public function execute(string $provider, SocialiteUserContract $oauthUser)
     {
@@ -27,6 +25,7 @@ class RegisterOauthUserAction
             // Create a user
             // $user = app()->call($this->socialite->getCreateUserCallback(), ['provider' => $provider, 'oauthUser' => $oauthUser, 'socialite' => $this->socialite]);
             $user = app(CreateUserAction::class)->execute(oauthUser: $oauthUser);
+
             // Create a socialite user
             // return app()->call($this->socialite->getCreateSocialiteUserCallback(), ['provider' => $provider, 'oauthUser' => $oauthUser, 'user' => $user, 'socialite' => $this->socialite]);
             return app(CreateSocialiteUserAction::class)->execute(provider: $provider, oauthUser: $oauthUser, user: $user);

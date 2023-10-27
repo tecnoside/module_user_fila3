@@ -41,6 +41,7 @@ class UsersRelationManager extends RelationManager
         $table->columns($columns);
         $headerActions = $table->getHeaderActions();
         $headerActions['attach'] = AttachAction::make();
+
         return $table->headerActions($headerActions);
         /*
         return $table

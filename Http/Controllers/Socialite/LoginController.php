@@ -40,7 +40,7 @@ class LoginController extends Controller
     }
     */
     /**
-     * Undocumented function
+     * Undocumented function.
      *
      * @return Redirector|RedirectResponse
      */
@@ -207,6 +207,7 @@ class LoginController extends Controller
             // Create a user
             // $user = app()->call($this->socialite->getCreateUserCallback(), ['provider' => $provider, 'oauthUser' => $oauthUser, 'socialite' => $this->socialite]);
             $user = $this->createUser(oauthUser: $oauthUser);
+
             // Create a socialite user
             // return app()->call($this->socialite->getCreateSocialiteUserCallback(), ['provider' => $provider, 'oauthUser' => $oauthUser, 'user' => $user, 'socialite' => $this->socialite]);
             return $this->createSocialiteUser(provider: $provider, oauthUser: $oauthUser, user: $user);

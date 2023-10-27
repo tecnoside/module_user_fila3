@@ -28,7 +28,7 @@ use Modules\User\Models\User;
 class ProcessCallbackController extends Controller
 {
     /**
-     * Undocumented function
+     * Undocumented function.
      *
      * @return RedirectResponse
      */
@@ -41,7 +41,7 @@ class ProcessCallbackController extends Controller
 
         // Try to retrieve existing user
         $oauthUser = app(RetrieveOauthUserAction::class)->execute($provider);
-        if ($oauthUser === null) {
+        if (null === $oauthUser) {
             return app(RedirectToLoginAction::class)->execute('auth.login-failed');
         }
 

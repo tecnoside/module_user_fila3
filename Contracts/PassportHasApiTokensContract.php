@@ -41,7 +41,7 @@ interface PassportHasApiTokensContract
     /**
      * Determine if the current API token has a given scope.
      *
-     * @param  string  $scope
+     * @param string $scope
      *
      * @return bool
      */
@@ -50,7 +50,7 @@ interface PassportHasApiTokensContract
     /**
      * Create a new personal access token for the user.
      *
-     * @param  string  $name
+     * @param string $name
      *
      * @return PersonalAccessTokenResult
      */
@@ -59,7 +59,7 @@ interface PassportHasApiTokensContract
     /**
      * Set the current access token for the user.
      *
-     * @param  Token|TransientToken  $accessToken
+     * @param Token|TransientToken $accessToken
      *
      * @return $this
      */

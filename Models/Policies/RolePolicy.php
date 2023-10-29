@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Modules\User\Models\Policies;
 
-use Modules\User\Models\Role as Post;
 use Modules\User\Models\User;
-use Modules\Xot\Models\Policies\XotBasePolicy;
+use Modules\User\Models\Role as Post;
+use Modules\User\Models\Policies\UserBasePolicy;
 
-class RolePolicy extends XotBasePolicy
+class RolePolicy extends UserBasePolicy
 {
     /**
      * Determine whether the user can view any models.

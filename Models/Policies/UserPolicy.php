@@ -6,9 +6,9 @@ namespace Modules\User\Models\Policies;
 
 use Modules\User\Models\User;
 use Modules\User\Models\User as Post;
-use Modules\Xot\Models\Policies\XotBasePolicy;
+use Modules\User\Models\Policies\UserBasePolicy;
 
-class UserPolicy extends XotBasePolicy
+class UserPolicy extends UserBasePolicy
 {
     /**
      * Determine whether the user can view any models.

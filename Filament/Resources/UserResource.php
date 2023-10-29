@@ -46,8 +46,8 @@ class UserResource extends XotBaseResource
     // protected static ?string $model = User::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-users';
-
-    private static bool|\Closure $enablePasswordUpdates = true;
+    // Static property Modules\User\Filament\Resources\UserResource::$enablePasswordUpdates is never read, only written.
+    // private static bool|\Closure $enablePasswordUpdates = true;
 
     private static ?\Closure $extendFormCallback = null;
 

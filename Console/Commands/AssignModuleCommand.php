@@ -4,15 +4,16 @@ declare(strict_types=1);
 
 namespace Modules\User\Console\Commands;
 
-use Illuminate\Console\Command;
 use Illuminate\Support\Str;
-
-use function Laravel\Prompts\multiselect;
-use function Laravel\Prompts\text;
+use Webmozart\Assert\Assert;
 
 use Modules\User\Models\Role;
 use Modules\User\Models\User;
+
+use Illuminate\Console\Command;
+use function Laravel\Prompts\text;
 use Nwidart\Modules\Facades\Module;
+use function Laravel\Prompts\multiselect;
 use Symfony\Component\Console\Input\InputOption;
 
 class AssignModuleCommand extends Command
@@ -47,7 +48,7 @@ class AssignModuleCommand extends Command
     public function handle(): void
     {
         $email = text('email ?');
-        $user = User::firstWhere(['email' => $email]);
+        Assert::notNull($user = User::firstWhere(['email' => $email]));
         /*
         $modules = collect(Module::all())->map(function ($module) {
             return $module->getName();

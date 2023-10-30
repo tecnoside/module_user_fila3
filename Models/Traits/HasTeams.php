@@ -178,7 +178,7 @@ trait HasTeams
         // }
 
         if (! $this->belongsToTeam($teamContract)) {
-            return;
+            return null;
         }
         Assert::notNull($user = $teamContract->users()->where('id', $this->id)->first());
 

@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\User\Models\Policies;
 
-use Modules\User\Models\User;
 use Modules\User\Models\Role as Post;
-use Modules\User\Models\Policies\UserBasePolicy;
+use Modules\User\Models\User;
 
 class RolePolicy extends UserBasePolicy
 {

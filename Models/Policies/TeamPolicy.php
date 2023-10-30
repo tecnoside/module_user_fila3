@@ -6,7 +6,6 @@ namespace Modules\User\Models\Policies;
 
 use Modules\User\Models\Team;
 use Modules\User\Models\User;
-use Modules\User\Models\Policies\UserBasePolicy;
 
 class TeamPolicy extends UserBasePolicy
 {

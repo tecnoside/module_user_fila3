@@ -6,6 +6,7 @@ namespace Modules\User\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 // use Laravel\Sanctum\HasApiTokens;
+use Modules\EWall\Models\Profile;
 use Eloquent;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Models\Contracts\HasTenants;
@@ -95,7 +96,7 @@ use Spatie\Permission\Traits\HasRoles;
  *
  * @property Team|null                          $currentTeam
  * @property Collection<int, Team>              $ownedTeams
- * @property \Modules\EWall\Models\Profile|null $profile
+ * @property Profile|null $profile
  * @property Collection<int, Team>              $teams
  *
  * @mixin Eloquent

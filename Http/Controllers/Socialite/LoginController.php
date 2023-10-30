@@ -57,6 +57,9 @@ class LoginController extends Controller
             ->redirect();
     }
 
+    /**
+     * @return SocialiteUser
+     */
     public function createSocialiteUser(string $provider, SocialiteUserContract $oauthUser, Model $user)
     {
         return SocialiteUser::create([
@@ -79,6 +82,9 @@ class LoginController extends Controller
         );
     }
 
+    /**
+     * @return RedirectResponse
+     */
     public function processCallback(string $provider)
     {
         // See if provider exists
@@ -171,6 +177,9 @@ class LoginController extends Controller
         return \in_array($emailDomain, $domains, true);
     }
 
+    /**
+     * @return RedirectResponse
+     */
     protected function loginUser(SocialiteUser $socialiteUser)
     {
         $guard = app(GetGuardAction::class)->execute();
@@ -188,6 +197,9 @@ class LoginController extends Controller
         );
     }
 
+    /**
+     * @return RedirectResponse
+     */
     protected function registerSocialiteUser(string $provider, SocialiteUserContract $oauthUser, Model $user)
     {
         // Create a socialite user
@@ -201,6 +213,9 @@ class LoginController extends Controller
         return $this->loginUser($socialiteUser);
     }
 
+    /**
+     * @return RedirectResponse
+     */
     protected function registerOauthUser(string $provider, SocialiteUserContract $oauthUser)
     {
         $socialiteUser = DB::transaction(function () use ($provider, $oauthUser) {

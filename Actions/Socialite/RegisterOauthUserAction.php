@@ -7,6 +7,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Actions\Socialite;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Laravel\Socialite\Contracts\User as SocialiteUserContract;
 use Modules\User\Events\Registered;
@@ -18,6 +19,8 @@ class RegisterOauthUserAction
 
     /**
      * Execute the action.
+     *
+     * @return RedirectResponse
      */
     public function execute(string $provider, SocialiteUserContract $oauthUser)
     {

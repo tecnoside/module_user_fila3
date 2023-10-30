@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
+use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
@@ -59,7 +60,7 @@ class ModelHasRole extends BaseMorphPivot
      * @param  bool  $exists
      * @return static
      *
-     * @throws \Exception
+     * @throws Exception
      */
     public static function fromRawAttributes(Model $parent, $attributes, $table, $exists = false)
     {

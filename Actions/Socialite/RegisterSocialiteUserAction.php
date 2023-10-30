@@ -9,6 +9,7 @@ declare(strict_types=1);
 namespace Modules\User\Actions\Socialite;
 
 // use DutchCodingCompany\FilamentSocialite\FilamentSocialite;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Socialite\Contracts\User as SocialiteUserContract;
 // use DutchCodingCompany\FilamentSocialite\FilamentSocialite;
@@ -21,6 +22,8 @@ class RegisterSocialiteUserAction
 
     /**
      * Execute the action.
+     *
+     * @return RedirectResponse
      */
     public function execute(string $provider, SocialiteUserContract $oauthUser, Model $user)
     {

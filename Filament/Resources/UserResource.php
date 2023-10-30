@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Resources;
 
+use Closure;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Placeholder;
@@ -49,7 +50,7 @@ class UserResource extends XotBaseResource
     // Static property Modules\User\Filament\Resources\UserResource::$enablePasswordUpdates is never read, only written.
     // private static bool|\Closure $enablePasswordUpdates = true;
 
-    private static ?\Closure $extendFormCallback = null;
+    private static ?Closure $extendFormCallback = null;
 
     /*
     protected static function getNavigationLabel(): string
@@ -165,7 +166,7 @@ class UserResource extends XotBaseResource
                             ->content(fn ($record) => $record?->created_at?->diffForHumans() ?? new HtmlString('&mdash;')),
                     ])->columnSpan(4),
                 ];
-                if (static::$extendFormCallback instanceof \Closure) {
+                if (static::$extendFormCallback instanceof Closure) {
                     return value(static::$extendFormCallback, $schema);
                 }
 
@@ -253,7 +254,7 @@ class UserResource extends XotBaseResource
             ->defaultSort('created_at', 'desc');
     }
 
-    public static function enablePasswordUpdates(bool|\Closure $condition = true): void
+    public static function enablePasswordUpdates(bool|Closure $condition = true): void
     {
         static::$enablePasswordUpdates = $condition;
     }

@@ -36,7 +36,10 @@ class ApiTokensTable extends Component implements HasTable
      *
      * @var array<string, string>
      */
-    protected $listeners = [
+    /**
+* @var array<string, string>
+*/
+protected $listeners = [
         'tokenCreated' => '$refresh',
     ];
 

@@ -143,10 +143,11 @@ class User extends Authenticatable implements \Modules\Xot\Contracts\UserContrac
         'is_active',
     ];
 
+
     /**
      * The attributes that should be hidden for serialization.
      *
-     * @var array<int, string>
+     * @var array<string>
      */
     protected $hidden = [
         'password',
@@ -174,6 +175,11 @@ class User extends Authenticatable implements \Modules\Xot\Contracts\UserContrac
      * The accessors to append to the model's array form.
      *
      * @var array<int, string>
+     */
+     /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
      */
     protected $appends = [
         // 'profile_photo_url',

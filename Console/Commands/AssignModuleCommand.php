@@ -69,7 +69,7 @@ class AssignModuleCommand extends Command
         );
 
         foreach ($modules as $module) {
-            $module_low = Str::lower($module);
+            $module_low = Str::lower((string)$module);
             $role = $module_low.'::admin';
             $role = Role::firstOrCreate(['name' => $role]);
             $user->assignRole($role);

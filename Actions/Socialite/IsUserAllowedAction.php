@@ -9,8 +9,9 @@ namespace Modules\User\Actions\Socialite;
 
 // use DutchCodingCompany\FilamentSocialite\FilamentSocialite;
 use Illuminate\Support\Str;
-use Laravel\Socialite\Contracts\User as SocialiteUserContract;
+use Webmozart\Assert\Assert;
 use Spatie\QueueableAction\QueueableAction;
+use Laravel\Socialite\Contracts\User as SocialiteUserContract;
 
 class IsUserAllowedAction
 {
@@ -22,12 +23,12 @@ class IsUserAllowedAction
     public function execute(SocialiteUserContract $user): bool
     {
         $domains = app(GetDomainAllowListAction::class)->execute();
-
+        Assert::isArray($domains);
         // When no domains are specified, all users are allowed
         if ((is_countable($domains) ? \count($domains) : 0) < 1) {
             return true;
         }
-
+        Assert::notNull($user->getEmail());
         // Get the domain of the email for the specified user
         $emailDomain = Str::of($user->getEmail())
             ->afterLast('@')

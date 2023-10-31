@@ -18,7 +18,7 @@ class RedirectToLoginAction
     /**
      * Execute the action.
      */
-    public function execute(string $message): RedirectResponse
+    public function execute(string $message): void
     {
         dddx($message);
 

@@ -36,7 +36,7 @@ class RolesSeeder extends Seeder
 
         $this->command->getOutput()->comment('<info>Newly created roles</info>');
         $this->command->getOutput()->table(
-            static::$OUTPUT_TABLE_HEADERS,
+            self::$OUTPUT_TABLE_HEADERS,
             array_map(
                 fn (Role $role): array => [
                     $role->id,

@@ -166,8 +166,8 @@ class UserResource extends XotBaseResource
                             ->content(fn ($record) => $record?->created_at?->diffForHumans() ?? new HtmlString('&mdash;')),
                     ])->columnSpan(4),
                 ];
-                if (static::$extendFormCallback instanceof Closure) {
-                    return value(static::$extendFormCallback, $schema);
+                if (self::$extendFormCallback instanceof Closure) {
+                    return value(self::$extendFormCallback, $schema);
                 }
 
                 return $schema;
@@ -254,10 +254,10 @@ class UserResource extends XotBaseResource
             ->defaultSort('created_at', 'desc');
     }
 
-    public static function enablePasswordUpdates(bool|Closure $condition = true): void
-    {
-        static::$enablePasswordUpdates = $condition;
-    }
+    // public static function enablePasswordUpdates(bool|Closure $condition = true): void
+    // {
+    //     static::$enablePasswordUpdates = $condition;
+    // }
 
     /*
     public static function getModel(): string

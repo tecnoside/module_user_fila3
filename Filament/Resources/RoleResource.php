@@ -235,7 +235,7 @@ class RoleResource extends XotBaseResource
                 ->label(FilamentShield::getLocalizedResourcePermissionLabel($permission))
                 ->extraAttributes(['class' => 'text-primary-600'])
                 ->afterStateHydrated(static function (Set $set, Get $get, $record) use ($entity, $permission): void {
-                    if ($record === null) {
+                    if (null === $record) {
                         return;
                     }
 
@@ -324,37 +324,37 @@ class RoleResource extends XotBaseResource
                 return (bool) $get($entity);
             });
 
-        if ($entitiesStates->containsStrict(false) === false) {
+        if (false === $entitiesStates->containsStrict(false)) {
             $set('select_all', true);
         }
 
-        if ($entitiesStates->containsStrict(false) === true) {
+        if (true === $entitiesStates->containsStrict(false)) {
             $set('select_all', false);
         }
     }
 
     private function refreshEntitiesStatesViaSelectAll(\Closure $set, $state): void
     {
-        collect(FilamentShield::getResources())->each(static function (array $entity) use ($set, $state): void {
+        collect(FilamentShield::getResources())->each(function (array $entity) use ($set, $state): void {
             $set($entity['resource'], $state);
-            collect(Utils::getResourcePermissionPrefixes($entity['fqcn']))->each(static function (string $permission) use ($entity, $set, $state): void {
+            collect(Utils::getResourcePermissionPrefixes($entity['fqcn']))->each(function (string $permission) use ($entity, $set, $state): void {
                 $set($permission.'_'.$entity['resource'], $state);
             });
         });
 
-        collect(FilamentShield::getPages())->each(static function ($page) use ($set, $state): void {
+        collect(FilamentShield::getPages())->each(function ($page) use ($set, $state): void {
             if (Utils::isPageEntityEnabled()) {
                 $set($page, $state);
             }
         });
 
-        collect(FilamentShield::getWidgets())->each(static function ($widget) use ($set, $state): void {
+        collect(FilamentShield::getWidgets())->each(function ($widget) use ($set, $state): void {
             if (Utils::isWidgetEntityEnabled()) {
                 $set($widget, $state);
             }
         });
 
-        static::getCustomEntities()->each(static function ($custom) use ($set, $state): void {
+        static::getCustomEntities()->each(function ($custom) use ($set, $state): void {
             if (Utils::isCustomPermissionEntityEnabled()) {
                 $set($custom, $state);
             }
@@ -445,7 +445,7 @@ class RoleResource extends XotBaseResource
                         ->label(Str::of($customPermission)->headline())
                         ->inline()
                         ->afterStateHydrated(static function (Set $set, Get $get, $record) use ($customPermission): void {
-                            if ($record === null) {
+                            if (null === $record) {
                                 return;
                             }
 

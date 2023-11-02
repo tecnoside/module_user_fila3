@@ -29,6 +29,7 @@ class EditRole extends EditRecord
     public function afterSave(): void
     {
         $permissionModels = collect();
+        Assert::isArray($this->data);
         $this->permissions->each(function ($permission) use ($permissionModels): void {
             $permissionModels->push(Utils::getPermissionModel()::firstOrCreate([
                 'name' => $permission,

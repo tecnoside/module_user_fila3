@@ -59,6 +59,10 @@ class PermissionResource extends XotBaseResource
 
     public static function form(Form $form): Form
     {
+        $guard_names = config('filament-spatie-roles-permissions.guard_names');
+        $default_guard_name = config('filament-spatie-roles-permissions.default_guard_name');
+        $preload_roles = config('filament-spatie-roles-permissions.preload_roles', true);
+
         return $form
             ->schema([
                 Card::make()
@@ -68,13 +72,13 @@ class PermissionResource extends XotBaseResource
                                 ->label(static::trans('fields.name')),
                             Select::make('guard_name')
                                 ->label(static::trans('fields.guard_name'))
-                                ->options(config('filament-spatie-roles-permissions.guard_names'))
-                                ->default(config('filament-spatie-roles-permissions.default_guard_name')),
+                                ->options($guard_names)
+                                ->default($default_guard_name),
                             Select::make('roles')
                                 ->multiple()
                                 ->label(static::trans('fields.roles'))
                                 ->relationship('roles', 'name')
-                                ->preload(config('filament-spatie-roles-permissions.preload_roles', true)),
+                                ->preload($preload_roles),
                         ]),
                     ]),
             ]);

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\User\Events;
 
 use Illuminate\Foundation\Events\Dispatchable;
+use Modules\Xot\Contracts\UserContract;
 
 class AddingTeam
 {
@@ -19,7 +20,7 @@ class AddingTeam
         /**
          * The team owner.
          */
-        public $owner
+        public UserContract $owner
     ) {
     }
 }

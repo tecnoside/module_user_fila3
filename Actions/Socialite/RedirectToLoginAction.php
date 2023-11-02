@@ -8,7 +8,9 @@ declare(strict_types=1);
 namespace Modules\User\Actions\Socialite;
 
 // use DutchCodingCompany\FilamentSocialite\FilamentSocialite;
+use Illuminate\Http\RedirectResponse;
 use Spatie\QueueableAction\QueueableAction;
+use Webmozart\Assert\Assert;
 
 class RedirectToLoginAction
 {
@@ -17,16 +19,15 @@ class RedirectToLoginAction
     /**
      * Execute the action.
      */
-    public function execute(string $message): void
+    public function execute(string $message): RedirectResponse
     {
-        dddx($message);
-
+        Assert::string($route_name = config('filament-socialite.login_page_route', 'filament.auth.login'));
         // Redirect back to the login route with an error message attached
-        // return to_route(config('filament-socialite.login_page_route', 'filament.auth.login'))
-        //     ->withErrors([
-        //         'email' => [
-        //             __($message),
-        //         ],
-        //     ]);
+        return redirect()->route($route_name)
+                ->withErrors([
+                    'email' => [
+                        __($message),
+                    ],
+                ]);
     }
 }

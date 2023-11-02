@@ -1,35 +1,46 @@
 <?php
+/**
+ * @see https://github.com/DutchCodingCompany/filament-socialite
+ */
 
 declare(strict_types=1);
 
-namespace Modules\User\Http\Controllers\Api;
+namespace Modules\User\Actions\Socialite;
 
+// use DutchCodingCompany\FilamentSocialite\FilamentSocialite;
+use Webmozart\Assert\Assert;
+use Filament\Facades\Filament;
+use Illuminate\Http\RedirectResponse;
+use Modules\User\Models\SocialiteUser;
+use Modules\Xot\Contracts\UserContract;
+use Spatie\QueueableAction\QueueableAction;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Modules\Egea\Models\MobileDeviceUser;
-use Modules\User\Actions\Socialite\LogoutUserAction;
 use Modules\User\Models\OauthRefreshToken;
 use Modules\Xot\Datas\JsonResponseData;
 use Modules\Xot\Http\Controllers\XotBaseController;
 use Webmozart\Assert\Assert;
 
-class LogoutController extends XotBaseController
+
+class LogoutUserAction
 {
+    use QueueableAction;
+
     /**
-     * Login api.
+     * Execute the action.
+     *
+     * @return void
      */
-    public function __invoke(Request $request): JsonResponse
+    public function execute(UserContract $user)
     {
-        Assert::notNull($user = $request->user());
-        app(LogoutUserAction::class)->execute($user);
+        Assert::notNull($accessToken = $user->token());
         /*
         DB::table('oauth_refresh_tokens')
             ->where('access_token_id', $accessToken->id)
             ->delete();
         */
 
-        /*
-        Assert::notNull($accessToken = $user->token());
         // Assert::methodExists($accessToken, 'delete');
         if (method_exists($accessToken, 'getKey')) {
             OauthRefreshToken::where('access_token_id', $accessToken->getKey())->delete();
@@ -40,18 +51,6 @@ class LogoutController extends XotBaseController
         }
 
         MobileDeviceUser::where('user_id', $user->id)->update(['logout_at' => now()]);
-        */
-        /*
-        return response()->json([
-            'message' => 'Successfully logged out',
-            'session' => session()->all(),
-        ]);
-        */
 
-        return JsonResponseData::from([
-            'message' => 'logout succefully',
-            // 'data' => $user->toArray(),
-            'data' => session()->all(),
-        ])->response();
     }
 }

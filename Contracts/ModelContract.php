@@ -6,6 +6,7 @@
 declare(strict_types=1);
 
 namespace Modules\User\Contracts;
+use Modules\Xot\Contracts\UserContract;
 
 /**
  * Modules\User\Contracts\ModelContract.

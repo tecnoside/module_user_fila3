@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 use Modules\User\Models\Role;
+use Modules\Xot\Contracts\UserContract;
 
 /**
  * Modules\User\Contracts\HasTeamsContract.

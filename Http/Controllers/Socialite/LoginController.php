@@ -68,7 +68,7 @@ class LoginController extends Controller
     /**
      * @return SocialiteUser
      */
-    public function createSocialiteUser(string $provider, SocialiteUserContract $oauthUser, Model $user)
+    public function createSocialiteUser(string $provider, SocialiteUserContract $oauthUser, UserContract $user)
     {
         return SocialiteUser::create([
             'user_id' => $user->getKey(),
@@ -184,7 +184,7 @@ class LoginController extends Controller
     /**
      * @return RedirectResponse
      */
-    protected function registerSocialiteUser(string $provider, SocialiteUserContract $oauthUser, Model $user)
+    protected function registerSocialiteUser(string $provider, SocialiteUserContract $oauthUser, UserContract $user)
     {
         // Create a socialite user
         // $socialiteUser = app()->call($this->socialite->getCreateSocialiteUserCallback(), ['provider' => $provider, 'oauthUser' => $oauthUser, 'user' => $user, 'socialite' => $this->socialite]);

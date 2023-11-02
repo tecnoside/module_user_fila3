@@ -9,9 +9,9 @@ namespace Modules\User\Actions\Socialite;
 
 // use DutchCodingCompany\FilamentSocialite\FilamentSocialite;
 use Illuminate\Support\Str;
-use Webmozart\Assert\Assert;
-use Spatie\QueueableAction\QueueableAction;
 use Laravel\Socialite\Contracts\User as SocialiteUserContract;
+use Spatie\QueueableAction\QueueableAction;
+use Webmozart\Assert\Assert;
 
 class IsUserAllowedAction
 {

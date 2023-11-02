@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\User\Models\Traits;
 
-use Exception;
 use BaconQrCode\Renderer\Color\Rgb;
 use BaconQrCode\Renderer\Image\SvgImageBackEnd;
 use BaconQrCode\Renderer\ImageRenderer;
@@ -49,8 +48,8 @@ trait TwoFactorAuthenticatable
      */
     public function recoveryCodes()
     {
-        if ($this->two_factor_recovery_codes === null) {
-            throw new Exception('['.__LINE__.']['.__FILE__.']');
+        if (null === $this->two_factor_recovery_codes) {
+            throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
 
         return (array) json_decode((string) decrypt($this->two_factor_recovery_codes), true, 512, JSON_THROW_ON_ERROR);
@@ -59,16 +58,16 @@ trait TwoFactorAuthenticatable
     /**
      * Replace the given recovery code with a new one in the user's stored codes.
      *
-     * @param  string  $code
+     * @param string $code
      */
     public function replaceRecoveryCode($code): void
     {
-        if ($code === null) {
-            throw new Exception('['.__LINE__.']['.__FILE__.']');
+        if (null === $code) {
+            throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
 
-        if ($this->two_factor_recovery_codes === null) {
-            throw new Exception('['.__LINE__.']['.__FILE__.']');
+        if (null === $this->two_factor_recovery_codes) {
+            throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
 
         $this->forceFill([
@@ -88,7 +87,7 @@ trait TwoFactorAuthenticatable
         $svg = (new Writer(
             new ImageRenderer(
                 new RendererStyle(192, 0, null, null, Fill::uniformColor(new Rgb(255, 255, 255), new Rgb(45, 55, 72))),
-                new SvgImageBackEnd
+                new SvgImageBackEnd()
             )
         ))->writeString($this->twoFactorQrCodeUrl());
 
@@ -103,12 +102,12 @@ trait TwoFactorAuthenticatable
     public function twoFactorQrCodeUrl()
     {
         $app_name = (string) config('app.name');
-        if ($app_name === null) {
-            throw new Exception('['.__LINE__.']['.__FILE__.']');
+        if (null === $app_name) {
+            throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
 
-        if ($this->two_factor_secret === null) {
-            throw new Exception('['.__LINE__.']['.__FILE__.']');
+        if (null === $this->two_factor_secret) {
+            throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
 
         return app(TwoFactorAuthenticationProvider::class)->qrCodeUrl(

@@ -28,7 +28,7 @@ abstract class UserBasePolicy
             return true;
         }
 
-        if ($user->email === $xotData->super_admin && $xotData->super_admin !== null) {
+        if ($user->email === $xotData->super_admin && null !== $xotData->super_admin) {
             try {
                 $user->assignRole('super-admin');
             } catch (RoleDoesNotExist) {

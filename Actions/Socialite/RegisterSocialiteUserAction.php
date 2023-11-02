@@ -9,8 +9,8 @@ declare(strict_types=1);
 namespace Modules\User\Actions\Socialite;
 
 // use DutchCodingCompany\FilamentSocialite\FilamentSocialite;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\RedirectResponse;
 use Laravel\Socialite\Contracts\User as SocialiteUserContract;
 // use DutchCodingCompany\FilamentSocialite\FilamentSocialite;
 use Modules\User\Events\SocialiteUserConnected;

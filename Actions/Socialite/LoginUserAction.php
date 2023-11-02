@@ -8,8 +8,8 @@ declare(strict_types=1);
 namespace Modules\User\Actions\Socialite;
 
 // use DutchCodingCompany\FilamentSocialite\FilamentSocialite;
-use Illuminate\Http\RedirectResponse;
 use Filament\Facades\Filament;
+use Illuminate\Http\RedirectResponse;
 use Modules\User\Models\SocialiteUser;
 use Spatie\QueueableAction\QueueableAction;
 

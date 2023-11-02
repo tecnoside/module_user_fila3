@@ -50,7 +50,7 @@ class UserResource extends XotBaseResource
     // Static property Modules\User\Filament\Resources\UserResource::$enablePasswordUpdates is never read, only written.
     // private static bool|\Closure $enablePasswordUpdates = true;
 
-    private static ?Closure $extendFormCallback = null;
+    private static ?\Closure $extendFormCallback = null;
 
     /*
     protected static function getNavigationLabel(): string
@@ -166,7 +166,7 @@ class UserResource extends XotBaseResource
                             ->content(fn ($record) => $record?->created_at?->diffForHumans() ?? new HtmlString('&mdash;')),
                     ])->columnSpan(4),
                 ];
-                if (self::$extendFormCallback instanceof Closure) {
+                if (self::$extendFormCallback instanceof \Closure) {
                     return value(self::$extendFormCallback, $schema);
                 }
 

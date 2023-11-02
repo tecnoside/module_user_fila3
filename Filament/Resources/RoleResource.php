@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Resources;
 
-use Closure;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\Grid;
@@ -236,7 +235,7 @@ class RoleResource extends XotBaseResource
                 ->label(FilamentShield::getLocalizedResourcePermissionLabel($permission))
                 ->extraAttributes(['class' => 'text-primary-600'])
                 ->afterStateHydrated(static function (Set $set, Get $get, $record) use ($entity, $permission): void {
-                    if ($record === null) {
+                    if (null === $record) {
                         return;
                     }
 
@@ -311,7 +310,7 @@ class RoleResource extends XotBaseResource
         return (string) static::getModel()::count();
     }
 
-    private function refreshSelectAllStateViaEntities(Closure $set, Closure $get): void
+    private function refreshSelectAllStateViaEntities(\Closure $set, \Closure $get): void
     {
         $entitiesStates = collect(FilamentShield::getResources())
             ->when(Utils::isPageEntityEnabled(), fn ($entities) => $entities->merge(FilamentShield::getPages()))
@@ -325,16 +324,16 @@ class RoleResource extends XotBaseResource
                 return (bool) $get($entity);
             });
 
-        if ($entitiesStates->containsStrict(false) === false) {
+        if (false === $entitiesStates->containsStrict(false)) {
             $set('select_all', true);
         }
 
-        if ($entitiesStates->containsStrict(false) === true) {
+        if (true === $entitiesStates->containsStrict(false)) {
             $set('select_all', false);
         }
     }
 
-    private function refreshEntitiesStatesViaSelectAll(Closure $set, $state): void
+    private function refreshEntitiesStatesViaSelectAll(\Closure $set, $state): void
     {
         collect(FilamentShield::getResources())->each(static function (array $entity) use ($set, $state): void {
             $set($entity['resource'], $state);
@@ -362,7 +361,7 @@ class RoleResource extends XotBaseResource
         });
     }
 
-    private function refreshResourceEntityStateAfterUpdate(Closure $set, Closure $get, array $entity): void
+    private function refreshResourceEntityStateAfterUpdate(\Closure $set, \Closure $get, array $entity): void
     {
         $collection = collect(Utils::getResourcePermissionPrefixes($entity['fqcn']))
             ->map(static fn (string $permission): bool => (bool) $get($permission.'_'.$entity['resource']));
@@ -376,7 +375,7 @@ class RoleResource extends XotBaseResource
         }
     }
 
-    private function refreshResourceEntityStateAfterHydrated(Model $model, Closure $set, array $entity): void
+    private function refreshResourceEntityStateAfterHydrated(Model $model, \Closure $set, array $entity): void
     {
         $entities = $model->permissions->pluck('name')
             ->reduce(static function (array $roles, $role): array {
@@ -446,7 +445,7 @@ class RoleResource extends XotBaseResource
                         ->label(Str::of($customPermission)->headline())
                         ->inline()
                         ->afterStateHydrated(static function (Set $set, Get $get, $record) use ($customPermission): void {
-                            if ($record === null) {
+                            if (null === $record) {
                                 return;
                             }
 

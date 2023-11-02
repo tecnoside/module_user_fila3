@@ -41,7 +41,7 @@ abstract class BasePivot extends Pivot
     /**
      * @var array
      */
-     /**
+    /**
      * The accessors to append to the model's array form.
      *
      * @var array

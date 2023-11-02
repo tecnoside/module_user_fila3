@@ -176,9 +176,10 @@ trait HasTeams
         // if ($this->ownsTeam($team)) {
         //    return new OwnerRole();
         // }
+        $res=null;
 
         if (! $this->belongsToTeam($teamContract)) {
-            return;
+            return $res;
         }
         Assert::notNull($user = $teamContract->users()->where('id', $this->id)->first());
         Assert::isInstanceOf($user, \Modules\User\Models\User::class);

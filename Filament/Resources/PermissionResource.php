@@ -134,7 +134,7 @@ class PermissionResource extends XotBaseResource
                 BulkAction::make('Attach Role')
                     ->action(static function (Collection $collection, array $data): void {
                         foreach ($collection as $record) {
-                            Assert::isInstanceOf($record,Permission::class);
+                            Assert::isInstanceOf($record, Permission::class);
                             $record->roles()->sync($data['role']);
                             $record->save();
                         }

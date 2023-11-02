@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 namespace Modules\User\Contracts;
-use Modules\Xot\Contracts\UserContract;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Carbon;

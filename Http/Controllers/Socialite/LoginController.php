@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\User\Http\Controllers\Socialite;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Controller;
 use Illuminate\Routing\Redirector;

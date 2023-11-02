@@ -11,8 +11,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use Modules\User\Contracts\TeamContract;
-use Modules\User\Contracts\UserContract;
+use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Datas\XotData;
+
 
 /**
  * Modules\User\Models\Team.
@@ -106,16 +107,16 @@ class Team extends BaseModel implements TeamContract
     /**
      * Determine if the given user belongs to the team.
      */
-    public function hasUser(UserContract $userContract): bool
+    public function hasUser(UserContract $user): bool
     {
         // Parameter #1 $key of method Illuminate\Database\Eloquent\Collection<int,Modules\User\Models\User>::contains() expects (callable(Modules\User\Models\User, int):
         // bool)|int|Modules\User\Models\User|string, Modules\User\Contracts\UserContract given.
         // ✏️  User\Models\Team.php
-        if ($this->users->contains($userContract)) {
+        if ($this->users->contains(get_class($user))) {
             return true;
         }
 
-        return $userContract->ownsTeam($this);
+        return $user->ownsTeam($this);
     }
 
     /**

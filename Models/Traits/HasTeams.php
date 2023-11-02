@@ -226,7 +226,7 @@ trait HasTeams
             return [];
         }
 
-        return (array) $this->teamRole($teamContract)?->permissions ?? [];
+        return (array) $this->teamRole($teamContract)?->permissions ;
     }
 
     /**

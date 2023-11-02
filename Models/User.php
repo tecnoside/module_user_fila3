@@ -30,7 +30,7 @@ use Modules\Egea\Models\MobileDevice;
 use Modules\Egea\Models\MobileDeviceUser;
 use Modules\EWall\Models\Profile;
 use Modules\Notify\Models\Notification;
-use Modules\User\Contracts\UserContract as UserJetContract;
+use Modules\Xot\Contracts\UserContract as UserJetContract;
 use Modules\User\Database\Factories\UserFactory;
 use Modules\User\Models\Traits\HasTeams;
 use Modules\Xot\Datas\XotData;

@@ -6,7 +6,7 @@ namespace Modules\User\Events;
 
 use Illuminate\Foundation\Events\Dispatchable;
 use Modules\User\Contracts\TeamContract;
-use Modules\User\Contracts\UserContract;
+use Modules\Xot\Contracts\UserContract;
 
 class RemovingTeamMember
 {

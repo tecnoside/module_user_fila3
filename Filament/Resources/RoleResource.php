@@ -409,7 +409,7 @@ class RoleResource extends XotBaseResource
     | Page Related Logic Start       |
     *----------------------------------*/
 
-    private function getPageEntityPermissionsSchema(): array
+    private static function getPageEntityPermissionsSchema(): array
     {
         return [];
     }
@@ -422,7 +422,7 @@ class RoleResource extends XotBaseResource
     | Widget Related Logic Start       |
     *----------------------------------*/
 
-    private function getWidgetEntityPermissionSchema(): ?array
+    private static function getWidgetEntityPermissionSchema(): ?array
     {
         return [];
     }
@@ -431,12 +431,12 @@ class RoleResource extends XotBaseResource
     | Widget Related Logic End          |
     *----------------------------------*/
 
-    private function getCustomEntities(): ?Collection
+    private static function getCustomEntities(): ?Collection
     {
         return collect();
     }
 
-    private function getCustomEntitiesPermisssionSchema(): ?array
+    private static function getCustomEntitiesPermisssionSchema(): ?array
     {
         return collect(static::getCustomEntities())->reduce(static function (array $customEntities, $customPermission): array {
             $customEntities[] = Grid::make()

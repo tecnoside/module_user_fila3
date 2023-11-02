@@ -11,12 +11,18 @@ use Modules\User\Database\Factories\ModelHasPermissionFactory;
  * Modules\User\Models\ModelHasPermission.
  *
  * @mixin IdeHelperModelHasPermission
- *
  * @method static ModelHasPermissionFactory  factory($count = null, $state = [])
  * @method static Builder|ModelHasPermission newModelQuery()
  * @method static Builder|ModelHasPermission newQuery()
  * @method static Builder|ModelHasPermission query()
- *
+ * @property int $id
+ * @property int $permission_id
+ * @property string $model_type
+ * @property string $model_id
+ * @method static Builder|ModelHasPermission whereId($value)
+ * @method static Builder|ModelHasPermission whereModelId($value)
+ * @method static Builder|ModelHasPermission whereModelType($value)
+ * @method static Builder|ModelHasPermission wherePermissionId($value)
  * @mixin \Eloquent
  */
 class ModelHasPermission extends BaseMorphPivot

@@ -11,14 +11,12 @@ use Illuminate\Database\Eloquent\Builder;
  *
  * @property int $permission_id
  * @property int $role_id
- *
  * @method static \Modules\LU\Database\Factories\RoleHasPermissionFactory factory($count = null, $state = [])
  * @method static Builder|RoleHasPermission                               newModelQuery()
  * @method static Builder|RoleHasPermission                               newQuery()
  * @method static Builder|RoleHasPermission                               query()
  * @method static Builder|RoleHasPermission                               wherePermissionId($value)
  * @method static Builder|RoleHasPermission                               whereRoleId($value)
- *
  * @mixin IdeHelperRoleHasPermission
  * @mixin \Eloquent
  */

@@ -16,7 +16,6 @@ use Illuminate\Support\Carbon;
  * @property string|null $role
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
- *
  * @method static Builder|Membership newModelQuery()
  * @method static Builder|Membership newQuery()
  * @method static Builder|Membership query()
@@ -26,13 +25,13 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Membership whereTeamId($value)
  * @method static Builder|Membership whereUpdatedAt($value)
  * @method static Builder|Membership whereUserId($value)
- *
  * @mixin IdeHelperMembership
- *
  * @property string|null $customer_id
- *
  * @method static Builder|Membership whereCustomerId($value)
- *
+ * @property string|null $created_by
+ * @property string|null $updated_by
+ * @method static Builder|Membership whereCreatedBy($value)
+ * @method static Builder|Membership whereUpdatedBy($value)
  * @mixin \Eloquent
  */
 class Membership extends BasePivot

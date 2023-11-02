@@ -6,7 +6,6 @@ namespace Modules\User\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 // use Laravel\Sanctum\HasApiTokens;
-use Modules\EWall\Models\Profile;
 use Eloquent;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Models\Contracts\HasTenants;
@@ -29,6 +28,7 @@ use Laravel\Passport\HasApiTokens;
 use Laravel\Passport\Token;
 use Modules\Egea\Models\MobileDevice;
 use Modules\Egea\Models\MobileDeviceUser;
+use Modules\EWall\Models\Profile;
 use Modules\Notify\Models\Notification;
 use Modules\User\Contracts\UserContract as UserJetContract;
 use Modules\User\Database\Factories\UserFactory;
@@ -94,10 +94,10 @@ use Spatie\Permission\Traits\HasRoles;
  *
  * @method static Builder|User whereLang($value)
  *
- * @property Team|null                          $currentTeam
- * @property Collection<int, Team>              $ownedTeams
- * @property Profile|null $profile
- * @property Collection<int, Team>              $teams
+ * @property Team|null             $currentTeam
+ * @property Collection<int, Team> $ownedTeams
+ * @property Profile|null          $profile
+ * @property Collection<int, Team> $teams
  *
  * @mixin Eloquent
  */
@@ -143,11 +143,10 @@ class User extends Authenticatable implements \Modules\Xot\Contracts\UserContrac
         'is_active',
     ];
 
-
     /**
      * The attributes that should be hidden for serialization.
      *
-     * @var array<string>
+     * @var array<int, string>
      */
     protected $hidden = [
         'password',
@@ -176,7 +175,7 @@ class User extends Authenticatable implements \Modules\Xot\Contracts\UserContrac
      *
      * @var array<int, string>
      */
-     /**
+    /**
      * The accessors to append to the model's array form.
      *
      * @var array
@@ -200,7 +199,7 @@ class User extends Authenticatable implements \Modules\Xot\Contracts\UserContrac
 
     public function canAccessPanel(Panel $panel): bool
     {
-        if ($panel->getId() !== 'admin') {
+        if ('admin' !== $panel->getId()) {
             $role = $panel->getId();
             /*
             $xot = XotData::make();

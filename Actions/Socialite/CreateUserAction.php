@@ -7,10 +7,11 @@ declare(strict_types=1);
 
 namespace Modules\User\Actions\Socialite;
 
-use Laravel\Socialite\Contracts\User as SocialiteUserContract;
-// use DutchCodingCompany\FilamentSocialite\FilamentSocialite;
 use Modules\Xot\Datas\XotData;
+// use DutchCodingCompany\FilamentSocialite\FilamentSocialite;
+use Modules\Xot\Contracts\UserContract;
 use Spatie\QueueableAction\QueueableAction;
+use Laravel\Socialite\Contracts\User as SocialiteUserContract;
 
 class CreateUserAction
 {
@@ -19,7 +20,7 @@ class CreateUserAction
     /**
      * Execute the action.
      */
-    public function execute(SocialiteUserContract $oauthUser): SocialiteUserContract
+    public function execute(SocialiteUserContract $oauthUser): UserContract
     {
         $xot = XotData::make();
         $userClass = $xot->getUserClass();

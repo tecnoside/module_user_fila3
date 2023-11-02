@@ -14,6 +14,7 @@ use Illuminate\Http\RedirectResponse;
 use Laravel\Socialite\Contracts\User as SocialiteUserContract;
 // use DutchCodingCompany\FilamentSocialite\FilamentSocialite;
 use Modules\User\Events\SocialiteUserConnected;
+use Modules\User\Models\User;
 use Spatie\QueueableAction\QueueableAction;
 
 class RegisterSocialiteUserAction
@@ -25,7 +26,7 @@ class RegisterSocialiteUserAction
      *
      * @return RedirectResponse
      */
-    public function execute(string $provider, SocialiteUserContract $oauthUser, Model $user)
+    public function execute(string $provider, SocialiteUserContract $oauthUser, User $user)
     {
         // Create a socialite user
         // $socialiteUser = app()->call($this->socialite->getCreateSocialiteUserCallback(), ['provider' => $provider, 'oauthUser' => $oauthUser, 'user' => $user, 'socialite' => $this->socialite]);

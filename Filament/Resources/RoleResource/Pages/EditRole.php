@@ -29,11 +29,11 @@ class EditRole extends EditRecord
     public function afterSave(): void
     {
         $permissionModels = collect();
-        Assert::isArray($this->data);
-        $this->permissions->each(function ($permission) use ($permissionModels): void {
+        Assert::isArray($data = $this->data);
+        $this->permissions->each(function ($permission) use ($permissionModels, $data): void {
             $permissionModels->push(Utils::getPermissionModel()::firstOrCreate([
                 'name' => $permission,
-                'guard_name' => $this->data['guard_name'],
+                'guard_name' => $data['guard_name'] ?? 'web',
             ]));
         });
         Assert::isInstanceOf($this->record, Role::class);

@@ -27,6 +27,7 @@ use Modules\User\Filament\Resources\PermissionResource\Pages\ViewPermission;
 use Modules\User\Filament\Resources\PermissionResource\RelationManager\RoleRelationManager;
 use Modules\User\Models\Role;
 use Modules\Xot\Filament\Resources\XotBaseResource;
+use Webmozart\Assert\Assert;
 
 class PermissionResource extends XotBaseResource
 {
@@ -59,9 +60,9 @@ class PermissionResource extends XotBaseResource
 
     public static function form(Form $form): Form
     {
-        $guard_names = config('filament-spatie-roles-permissions.guard_names');
-        $default_guard_name = config('filament-spatie-roles-permissions.default_guard_name');
-        $preload_roles = config('filament-spatie-roles-permissions.preload_roles', true);
+        Assert::isArray($guard_names = config('filament-spatie-roles-permissions.guard_names'));
+        Assert::string($default_guard_name = config('filament-spatie-roles-permissions.default_guard_name'));
+        Assert::boolean($preload_roles = config('filament-spatie-roles-permissions.preload_roles', true));
 
         return $form
             ->schema([

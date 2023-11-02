@@ -26,7 +26,7 @@ class ListPermissions extends ListRecords
 
     protected function getTableBulkActions(): array
     {
-        $roleModel = config('permission.models.role');
+        Assert::classExists($roleModel = config('permission.models.role'));
 
         return [
             BulkAction::make('Attach Role')

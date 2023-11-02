@@ -209,7 +209,7 @@ class User extends Authenticatable implements \Modules\Xot\Contracts\UserContrac
 
     public function canAccessPanel(Panel $panel): bool
     {
-        if ('admin' !== $panel->getId()) {
+        if ($panel->getId() !== 'admin') {
             $role = $panel->getId();
             /*
             $xot = XotData::make();

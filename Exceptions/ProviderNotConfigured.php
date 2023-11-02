@@ -8,6 +8,6 @@ final class ProviderNotConfigured extends \LogicException
 {
     public static function make(string $provider): static
     {
-        return new static('Provider "'.$provider.'" is not configured.');
+        return new self('Provider "'.$provider.'" is not configured.');
     }
 }

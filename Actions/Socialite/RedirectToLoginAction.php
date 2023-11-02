@@ -25,10 +25,10 @@ class RedirectToLoginAction
 
         // Redirect back to the login route with an error message attached
         return redirect()->route($route_name)
-                ->withErrors([
-                    'email' => [
-                        __($message),
-                    ],
-                ]);
+            ->withErrors([
+                'email' => [
+                    __($message),
+                ],
+            ]);
     }
 }

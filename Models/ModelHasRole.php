@@ -60,13 +60,12 @@ class ModelHasRole extends BaseMorphPivot
     /**
      * Create a new pivot model from raw values returned from a query.
      *
-     * @param array  $attributes
-     * @param string $table
-     * @param bool   $exists
+     * @param  array  $attributes
+     * @param  string  $table
+     * @param  bool  $exists
+     * @return static
      *
      * @throws \Exception
-     *
-     * @return static
      */
     public static function fromRawAttributes(Model $parent, $attributes, $table, $exists = false)
     {

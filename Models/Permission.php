@@ -23,6 +23,7 @@ use Spatie\Permission\Models\Permission as SpatiePermission;
  * @property int|null                    $roles_count
  * @property Collection<int, User>       $users
  * @property int|null                    $users_count
+ *
  * @method static Builder|Permission newModelQuery()
  * @method static Builder|Permission newQuery()
  * @method static Builder|Permission permission($permissions)
@@ -33,9 +34,11 @@ use Spatie\Permission\Models\Permission as SpatiePermission;
  * @method static Builder|Permission whereId($value)
  * @method static Builder|Permission whereName($value)
  * @method static Builder|Permission whereUpdatedAt($value)
+ *
  * @property Collection<int, SpatiePermission>               $permissions
  * @property Collection<int, \Spatie\Permission\Models\Role> $roles
  * @property Collection<int, User>                           $users
+ *
  * @mixin IdeHelperPermission
  * @mixin \Eloquent
  */

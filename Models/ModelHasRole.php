@@ -14,9 +14,11 @@ use Modules\User\Database\Factories\ModelHasRoleFactory;
  * Modules\User\Models\ModelHasRole.
  *
  * @mixin IdeHelperModelHasRole
+ *
  * @property string $role_id
  * @property string $model_type
  * @property string $model_id
+ *
  * @method static ModelHasRoleFactory  factory($count = null, $state = [])
  * @method static Builder|ModelHasRole newModelQuery()
  * @method static Builder|ModelHasRole newQuery()
@@ -24,10 +26,13 @@ use Modules\User\Database\Factories\ModelHasRoleFactory;
  * @method static Builder|ModelHasRole whereModelId($value)
  * @method static Builder|ModelHasRole whereModelType($value)
  * @method static Builder|ModelHasRole whereRoleId($value)
- * @property string $id
+ *
+ * @property string      $id
  * @property string|null $team_id
+ *
  * @method static Builder|ModelHasRole whereId($value)
  * @method static Builder|ModelHasRole whereTeamId($value)
+ *
  * @mixin \Eloquent
  */
 class ModelHasRole extends BaseMorphPivot

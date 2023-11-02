@@ -66,6 +66,7 @@ use Spatie\Permission\Traits\HasRoles;
  * @property int|null                                                  $roles_count
  * @property Collection<int, Token>                                    $tokens
  * @property int|null                                                  $tokens_count
+ *
  * @method static Builder|User newModelQuery()
  * @method static Builder|User newQuery()
  * @method static Builder|User permission($permissions)
@@ -84,24 +85,30 @@ use Spatie\Permission\Traits\HasRoles;
  * @method static Builder|User whereTwoFactorRecoveryCodes($value)
  * @method static Builder|User whereTwoFactorSecret($value)
  * @method static Builder|User whereUpdatedAt($value)
+ *
  * @mixin IdeHelperUser
+ *
  * @property string|null $lang
  * @property int|null    $owned_teams_count
  * @property int|null    $teams_count
+ *
  * @method static Builder|User whereLang($value)
- * @property Team|null             $currentTeam
- * @property Collection<int, Team> $ownedTeams
- * @property Profile|null          $profile
- * @property Collection<int, Team> $teams
- * @property string|null $full_name
- * @property string|null $deleted_at
- * @property-read Collection<int, MobileDevice> $mobileDevices
- * @property-read int|null $mobile_devices_count
+ *
+ * @property Team|null                     $currentTeam
+ * @property Collection<int, Team>         $ownedTeams
+ * @property Profile|null                  $profile
+ * @property Collection<int, Team>         $teams
+ * @property string|null                   $full_name
+ * @property string|null                   $deleted_at
+ * @property Collection<int, MobileDevice> $mobileDevices
+ * @property int|null                      $mobile_devices_count
+ *
  * @method static \Modules\User\Database\Factories\UserFactory factory($count = null, $state = [])
- * @method static Builder|User whereDeletedAt($value)
- * @method static Builder|User whereFullName($value)
- * @method static Builder|User whereIsActive($value)
- * @method static Builder|User whereSurname($value)
+ * @method static Builder|User                                 whereDeletedAt($value)
+ * @method static Builder|User                                 whereFullName($value)
+ * @method static Builder|User                                 whereIsActive($value)
+ * @method static Builder|User                                 whereSurname($value)
+ *
  * @mixin Eloquent
  */
 class User extends Authenticatable implements \Modules\Xot\Contracts\UserContract, FilamentUser, HasTenants, UserJetContract

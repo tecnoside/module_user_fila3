@@ -26,6 +26,7 @@ use Modules\Xot\Datas\XotData;
  * @property User|null                                           $owner
  * @property \Illuminate\Database\Eloquent\Collection<int, User> $users
  * @property int|null                                            $users_count
+ *
  * @method static Builder|Team newModelQuery()
  * @method static Builder|Team newQuery()
  * @method static Builder|Team query()
@@ -35,12 +36,16 @@ use Modules\Xot\Datas\XotData;
  * @method static Builder|Team wherePersonalTeam($value)
  * @method static Builder|Team whereUpdatedAt($value)
  * @method static Builder|Team whereUserId($value)
+ *
  * @mixin IdeHelperTeam
- * @property \Illuminate\Database\Eloquent\Collection<int, TeamInvitation> $teamInvitations
- * @property int|null                                                      $team_invitations_count
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\User> $members
- * @property-read int|null $members_count
+ *
+ * @property \Illuminate\Database\Eloquent\Collection<int, TeamInvitation>            $teamInvitations
+ * @property int|null                                                                 $team_invitations_count
+ * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\User> $members
+ * @property int|null                                                                 $members_count
+ *
  * @method static \Modules\User\Database\Factories\TeamFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Team extends BaseModel implements TeamContract

@@ -5,11 +5,10 @@ declare(strict_types=1);
 namespace Modules\User\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
-
 use Modules\User\Models\Team;
 
-class TeamFactory extends Factory {
+class TeamFactory extends Factory
+{
     /**
      * The name of the factory's corresponding model.
      *
@@ -22,13 +21,12 @@ class TeamFactory extends Factory {
      *
      * @return array
      */
-    public function definition() {
-
-
+    public function definition()
+    {
         return [
             'user_id' => $this->faker->integer,
             'name' => $this->faker->name,
-            'personal_team' => $this->faker->boolean
+            'personal_team' => $this->faker->boolean,
         ];
     }
 }

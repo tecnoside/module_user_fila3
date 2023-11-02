@@ -7,12 +7,11 @@ declare(strict_types=1);
 
 namespace Modules\User\Actions\Socialite;
 
-use Modules\User\Models\User;
 // use DutchCodingCompany\FilamentSocialite\FilamentSocialite;
+use Laravel\Socialite\Contracts\User as SocialiteUserContract;
 use Modules\User\Models\SocialiteUser;
 use Modules\Xot\Contracts\UserContract;
 use Spatie\QueueableAction\QueueableAction;
-use Laravel\Socialite\Contracts\User as SocialiteUserContract;
 
 class CreateSocialiteUserAction
 {

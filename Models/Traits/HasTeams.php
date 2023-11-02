@@ -182,14 +182,14 @@ trait HasTeams
         }
         Assert::notNull($user = $teamContract->users()->where('id', $this->id)->first());
         Assert::isInstanceOf($user, \Modules\User\Models\User::class);
-
+        // Access to an undefined property Modules\User\Models\User::$membership.
         // return $teamContract->users()
         //     ->where('id', $this->id)
         //     ->first()
         //     ->membership
         //     ->role; // ? FilamentJet::findRole($role) : null;
         return $user
-            ->membership
+            ->getRelationValue('membership')
             ->role; // ? FilamentJet::findRole($role) : null;
     }
 

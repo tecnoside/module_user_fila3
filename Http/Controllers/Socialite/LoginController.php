@@ -9,17 +9,16 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Controller;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 use Laravel\Socialite\Contracts\User as SocialiteUserContract;
 use Laravel\Socialite\Facades\Socialite;
 use Laravel\Socialite\Two\InvalidStateException;
 // use DutchCodingCompany\FilamentSocialite\FilamentSocialite;
-use Modules\User\Actions\Socialite\GetDomainAllowListAction;
 use Modules\User\Actions\Socialite\GetGuardAction;
 use Modules\User\Actions\Socialite\GetLoginRedirectRouteAction;
 use Modules\User\Actions\Socialite\GetProviderScopesAction;
 use Modules\User\Actions\Socialite\IsProviderConfiguredAction;
 use Modules\User\Actions\Socialite\IsRegistrationEnabledAction;
+use Modules\User\Actions\Socialite\IsUserAllowedAction;
 use Modules\User\Actions\Socialite\RedirectToLoginAction;
 use Modules\User\Events\InvalidState;
 use Modules\User\Events\Login;
@@ -111,7 +110,7 @@ class LoginController extends Controller
         }
 
         // Verify if user is allowed
-        if (! $this->isUserAllowed($oauthUser)) {
+        if (! app(IsUserAllowedAction::class)->execute($oauthUser)) {
             UserNotAllowed::dispatch($oauthUser);
 
             return app(RedirectToLoginAction::class)->execute('auth.user-not-allowed');
@@ -159,33 +158,15 @@ class LoginController extends Controller
             ->first();
     }
 
-    protected function isUserAllowed(SocialiteUserContract $user): bool
-    {
-        $domains = app(GetDomainAllowListAction::class)->execute();
-
-        // When no domains are specified, all users are allowed
-        if ((is_countable($domains) ? \count($domains) : 0) < 1) {
-            return true;
-        }
-
-        // Get the domain of the email for the specified user
-        $emailDomain = Str::of($user->getEmail())
-            ->afterLast('@')
-            ->lower()
-            ->__toString();
-
-        // See if everything after @ is in the domains array
-        return \in_array($emailDomain, $domains, true);
-    }
-
     /**
      * @return RedirectResponse
      */
     protected function loginUser(SocialiteUser $socialiteUser)
     {
         $guard = app(GetGuardAction::class)->execute();
+        Assert::boolean($remember_login = config('filament-socialite.remember_login', false));
         // Log the user in
-        $guard->login($socialiteUser->user, config('filament-socialite.remember_login', false));
+        $guard->login($socialiteUser->user, $remember_login);
 
         // Dispatch the login event
         Login::dispatch($socialiteUser);

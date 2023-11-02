@@ -4,34 +4,35 @@ declare(strict_types=1);
 
 namespace Modules\User\Http\Controllers\Socialite;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Str;
+use Webmozart\Assert\Assert;
+use Modules\User\Models\User;
+use Modules\User\Events\Login;
+use Modules\Xot\Datas\XotData;
 use Illuminate\Routing\Controller;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
-use Laravel\Socialite\Contracts\User as SocialiteUserContract;
-use Laravel\Socialite\Facades\Socialite;
-use Laravel\Socialite\Two\InvalidStateException;
-// use DutchCodingCompany\FilamentSocialite\FilamentSocialite;
-use Modules\User\Actions\Socialite\GetDomainAllowListAction;
-use Modules\User\Actions\Socialite\GetGuardAction;
-use Modules\User\Actions\Socialite\GetLoginRedirectRouteAction;
-use Modules\User\Actions\Socialite\GetProviderScopesAction;
-use Modules\User\Actions\Socialite\IsProviderConfiguredAction;
-use Modules\User\Actions\Socialite\IsRegistrationEnabledAction;
-use Modules\User\Events\InvalidState;
-use Modules\User\Events\Login;
 use Modules\User\Events\Registered;
+// use DutchCodingCompany\FilamentSocialite\FilamentSocialite;
+use Illuminate\Http\RedirectResponse;
+use Modules\User\Events\InvalidState;
+use Modules\User\Models\SocialiteUser;
+use Illuminate\Database\Eloquent\Model;
+use Modules\User\Events\UserNotAllowed;
+use Modules\Xot\Contracts\UserContract;
+use Laravel\Socialite\Facades\Socialite;
 use Modules\User\Events\RegistrationNotEnabled;
 use Modules\User\Events\SocialiteUserConnected;
-use Modules\User\Events\UserNotAllowed;
+use Laravel\Socialite\Two\InvalidStateException;
+use Modules\User\Actions\Socialite\GetGuardAction;
 use Modules\User\Exceptions\ProviderNotConfigured;
-use Modules\User\Models\SocialiteUser;
-use Modules\User\Models\User;
-use Modules\Xot\Contracts\UserContract;
-use Modules\Xot\Datas\XotData;
-use Webmozart\Assert\Assert;
+use Modules\User\Actions\Socialite\RedirectToLoginAction;
+use Modules\User\Actions\Socialite\GetProviderScopesAction;
+use Modules\User\Actions\Socialite\GetDomainAllowListAction;
+use Laravel\Socialite\Contracts\User as SocialiteUserContract;
+use Modules\User\Actions\Socialite\IsProviderConfiguredAction;
+use Modules\User\Actions\Socialite\GetLoginRedirectRouteAction;
+use Modules\User\Actions\Socialite\IsRegistrationEnabledAction;
 
 class LoginController extends Controller
 {
@@ -103,14 +104,14 @@ class LoginController extends Controller
         // Try to retrieve existing user
         $oauthUser = $this->retrieveOauthUser($provider);
         if (! $oauthUser instanceof SocialiteUserContract) {
-            return $this->redirectToLogin('auth.login-failed');
+            return app(RedirectToLoginAction::class)->execute('auth.login-failed');
         }
 
         // Verify if user is allowed
         if (! $this->isUserAllowed($oauthUser)) {
             UserNotAllowed::dispatch($oauthUser);
 
-            return $this->redirectToLogin('auth.user-not-allowed');
+            return app(RedirectToLoginAction::class)->execute('auth.user-not-allowed');
         }
 
         // Try to find a socialite user
@@ -123,7 +124,7 @@ class LoginController extends Controller
         if (! app(IsRegistrationEnabledAction::class)->execute()) {
             RegistrationNotEnabled::dispatch($provider, $oauthUser);
 
-            return $this->redirectToLogin('auth.registration-not-enabled');
+            return app(RedirectToLoginAction::class)->execute('auth.registration-not-enabled');
         }
 
         // See if a user already exists, but not for this socialite provider
@@ -155,16 +156,7 @@ class LoginController extends Controller
             ->first();
     }
 
-    protected function redirectToLogin(string $message): RedirectResponse
-    {
-        // Redirect back to the login route with an error message attached
-        return to_route(config('filament-socialite.login_page_route', 'filament.auth.login'))
-            ->withErrors([
-                'email' => [
-                    __($message),
-                ],
-            ]);
-    }
+ 
 
     protected function isUserAllowed(SocialiteUserContract $user): bool
     {

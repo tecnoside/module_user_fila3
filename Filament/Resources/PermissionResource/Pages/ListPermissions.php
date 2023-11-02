@@ -10,6 +10,7 @@ use Filament\Resources\Pages\ListRecords;
 use Filament\Tables\Actions\BulkAction;
 use Illuminate\Database\Eloquent\Collection;
 use Modules\User\Filament\Resources\PermissionResource;
+use Webmozart\Assert\Assert;
 
 class ListPermissions extends ListRecords
 {
@@ -31,6 +32,7 @@ class ListPermissions extends ListRecords
             BulkAction::make('Attach Role')
                 ->action(static function (Collection $collection, array $data): void {
                     foreach ($collection as $record) {
+                        Assert::isInstanceOf($record, \Modules\User\Models\User::class);
                         $record->roles()->sync($data['role']);
                         $record->save();
                     }

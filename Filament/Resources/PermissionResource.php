@@ -8,26 +8,27 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Resources;
 
+use Filament\Forms\Form;
+use Filament\Tables\Table;
+use Webmozart\Assert\Assert;
+use Modules\User\Models\Role;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Grid;
+use Modules\User\Models\Permission;
 use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
 use Filament\Tables\Actions\BulkAction;
-use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Table;
+use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Collection;
-use Modules\User\Filament\Resources\PermissionResource\Pages\CreatePermission;
-use Modules\User\Filament\Resources\PermissionResource\Pages\EditPermission;
-use Modules\User\Filament\Resources\PermissionResource\Pages\ListPermissions;
-use Modules\User\Filament\Resources\PermissionResource\Pages\ViewPermission;
-use Modules\User\Filament\Resources\PermissionResource\RelationManager\RoleRelationManager;
-use Modules\User\Models\Role;
+use Filament\Tables\Actions\DeleteBulkAction;
 use Modules\Xot\Filament\Resources\XotBaseResource;
-use Webmozart\Assert\Assert;
+use Modules\User\Filament\Resources\PermissionResource\Pages\EditPermission;
+use Modules\User\Filament\Resources\PermissionResource\Pages\ViewPermission;
+use Modules\User\Filament\Resources\PermissionResource\Pages\ListPermissions;
+use Modules\User\Filament\Resources\PermissionResource\Pages\CreatePermission;
+use Modules\User\Filament\Resources\PermissionResource\RelationManager\RoleRelationManager;
 
 class PermissionResource extends XotBaseResource
 {

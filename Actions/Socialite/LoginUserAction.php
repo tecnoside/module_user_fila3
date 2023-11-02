@@ -12,6 +12,7 @@ use Filament\Facades\Filament;
 use Illuminate\Http\RedirectResponse;
 use Modules\User\Models\SocialiteUser;
 use Spatie\QueueableAction\QueueableAction;
+use Webmozart\Assert\Assert;
 
 class LoginUserAction
 {
@@ -24,7 +25,7 @@ class LoginUserAction
      */
     public function execute(SocialiteUser $socialiteUser)
     {
-        $user = $socialiteUser->user;
+        Assert::notNull($user = $socialiteUser->user);
         Filament::auth()->login($user);
 
         // session()->regenerate();

@@ -48,7 +48,8 @@ class AssignRoleCommand extends Command
         Assert::notNull($user = User::firstWhere(['email' => $email]));
         $opts = Role::all()
             ->pluck('name', 'name')
-            ->toArray();
+            // ->toArray()
+        ;
 
         $rows = multiselect(
             label: 'What roles',

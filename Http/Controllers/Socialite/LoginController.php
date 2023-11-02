@@ -29,6 +29,7 @@ use Modules\User\Events\UserNotAllowed;
 use Modules\User\Exceptions\ProviderNotConfigured;
 use Modules\User\Models\SocialiteUser;
 use Modules\User\Models\User;
+use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Datas\XotData;
 use Webmozart\Assert\Assert;
 
@@ -53,7 +54,8 @@ class LoginController extends Controller
 
         $scopes = App(GetProviderScopesAction::class)->execute($provider);
         $socialite = Socialite::with($provider);
-        Assert::isInstanceOf($socialite, \Laravel\Socialite\Contracts\Provider::class);
+        // Assert::isInstanceOf($socialite, \Laravel\Socialite\Contracts\Provider::class);
+        Assert::methodExists($socialite, 'scopes');
 
         return $socialite
             ->scopes($scopes)
@@ -72,6 +74,9 @@ class LoginController extends Controller
         ]);
     }
 
+    /**
+     * @return UserContract
+     */
     public function createUser(SocialiteUserContract $oauthUser)
     {
         $xot = XotData::make();

@@ -24,7 +24,7 @@ class TeamFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => $this->faker->integer,
+            // 'user_id' => $this->faker->integer,
             'name' => $this->faker->name,
             'personal_team' => $this->faker->boolean,
         ];

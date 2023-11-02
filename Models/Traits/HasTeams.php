@@ -181,7 +181,7 @@ trait HasTeams
             return;
         }
         Assert::notNull($user = $teamContract->users()->where('id', $this->id)->first());
-
+        Assert::isInstanceOf($user, \Modules\User\Models\User::class);
         // return $teamContract->users()
         //     ->where('id', $this->id)
         //     ->first()

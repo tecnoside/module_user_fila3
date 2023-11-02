@@ -84,13 +84,14 @@ class Team extends BaseModel implements TeamContract
     public function users(): BelongsToMany
     {
         $xotData = XotData::make();
+        $userClass = $xotData->getUserClass();
         $membershipClass = $xotData->getMembershipClass();
         $pivot = app($membershipClass);
         $pivotTable = $pivot->getTable();
         $pivotDbName = $pivot->getConnection()->getDatabaseName();
         $pivotTableFull = $pivotDbName.'.'.$pivotTable;
 
-        return $this->belongsToMany($xotData->getUserClass(), $pivotTableFull, 'team_id')
+        return $this->belongsToMany($userClass, $pivotTableFull, 'team_id')
             ->using($membershipClass)
             ->withPivot('role')
             ->withTimestamps()

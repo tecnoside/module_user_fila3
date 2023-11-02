@@ -30,6 +30,7 @@ use Modules\User\Exceptions\ProviderNotConfigured;
 use Modules\User\Models\SocialiteUser;
 use Modules\User\Models\User;
 use Modules\Xot\Datas\XotData;
+use Webmozart\Assert\Assert;
 
 class LoginController extends Controller
 {
@@ -51,8 +52,10 @@ class LoginController extends Controller
         }
 
         $scopes = App(GetProviderScopesAction::class)->execute($provider);
+        $socialite = Socialite::with($provider);
+        Assert::isInstanceOf($socialite, \Laravel\Socialite\Contracts\Provider::class);
 
-        return Socialite::with($provider)
+        return $socialite
             ->scopes($scopes)
             ->redirect();
     }

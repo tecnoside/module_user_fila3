@@ -8,20 +8,11 @@ declare(strict_types=1);
 namespace Modules\User\Actions\Socialite;
 
 // use DutchCodingCompany\FilamentSocialite\FilamentSocialite;
-use Webmozart\Assert\Assert;
-use Filament\Facades\Filament;
-use Illuminate\Http\RedirectResponse;
-use Modules\User\Models\SocialiteUser;
-use Modules\Xot\Contracts\UserContract;
-use Spatie\QueueableAction\QueueableAction;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Modules\Egea\Models\MobileDeviceUser;
 use Modules\User\Models\OauthRefreshToken;
-use Modules\Xot\Datas\JsonResponseData;
-
-
-
+use Modules\Xot\Contracts\UserContract;
+use Spatie\QueueableAction\QueueableAction;
+use Webmozart\Assert\Assert;
 
 class LogoutUserAction
 {
@@ -51,6 +42,5 @@ class LogoutUserAction
         }
 
         MobileDeviceUser::where('user_id', $user->id)->update(['logout_at' => now()]);
-
     }
 }

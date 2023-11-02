@@ -41,6 +41,7 @@ class LogoutUserAction
             // $user->token()?->delete();
         }
 
-        MobileDeviceUser::where('user_id', $user->id)->update(['logout_at' => now()]);
+        MobileDeviceUser::where('user_id', $user->getKey())
+            ->update(['logout_at' => now()]);
     }
 }

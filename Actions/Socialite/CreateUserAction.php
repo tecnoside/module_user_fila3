@@ -23,7 +23,6 @@ class CreateUserAction
      */
     public function execute(SocialiteUserContract $oauthUser): UserContract
     {
-        
         $xot = XotData::make();
         $userClass = $xot->getUserClass();
 
@@ -33,7 +32,7 @@ class CreateUserAction
                 'email' => $oauthUser->getEmail(),
             ]
         );
-        
+
         /*
         return User::create(
             [

@@ -7,8 +7,8 @@ namespace Modules\User\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 // use Laravel\Sanctum\HasApiTokens;
 use Eloquent;
-use Filament\Models\Contracts\FilamentUser;
-use Filament\Models\Contracts\HasTenants;
+
+
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
@@ -32,86 +32,11 @@ use Modules\EWall\Models\Profile;
 use Modules\Notify\Models\Notification;
 use Modules\User\Database\Factories\UserFactory;
 use Modules\User\Models\Traits\HasTeams;
-use Modules\Xot\Contracts\UserContract as UserJetContract;
+use Modules\Xot\Contracts\UserContract ;
 use Modules\Xot\Datas\XotData;
 use Spatie\Permission\Traits\HasRoles;
 
-/**
- * Modules\User\Models\User.
- *
- * @property int                                                       $id
- * @property string                                                    $name
- * @property string                                                    $surname
- * @property string                                                    $email
- * @property string                                                    $api_token
- * @property Carbon|null                                               $email_verified_at
- * @property string                                                    $password
- * @property string|null                                               $two_factor_secret
- * @property string|null                                               $two_factor_recovery_codes
- * @property string|null                                               $two_factor_confirmed_at
- * @property string|null                                               $remember_token
- * @property int|null                                                  $current_team_id
- * @property string|null                                               $profile_photo_path
- * @property bool                                                      $is_active
- * @property Carbon|null                                               $created_at
- * @property Carbon|null                                               $updated_at
- * @property Collection<int, Client>                                   $clients
- * @property int|null                                                  $clients_count
- * @property string                                                    $profile_photo_url
- * @property DatabaseNotificationCollection<int, DatabaseNotification> $notifications
- * @property int|null                                                  $notifications_count
- * @property Collection<int, Permission>                               $permissions
- * @property int|null                                                  $permissions_count
- * @property Collection<int, Role>                                     $roles
- * @property int|null                                                  $roles_count
- * @property Collection<int, Token>                                    $tokens
- * @property int|null                                                  $tokens_count
- *
- * @method static Builder|User newModelQuery()
- * @method static Builder|User newQuery()
- * @method static Builder|User permission($permissions)
- * @method static Builder|User query()
- * @method static Builder|User role($roles, $guard = null)
- * @method static Builder|User whereCreatedAt($value)
- * @method static Builder|User whereCurrentTeamId($value)
- * @method static Builder|User whereEmail($value)
- * @method static Builder|User whereEmailVerifiedAt($value)
- * @method static Builder|User whereId($value)
- * @method static Builder|User whereName($value)
- * @method static Builder|User wherePassword($value)
- * @method static Builder|User whereProfilePhotoPath($value)
- * @method static Builder|User whereRememberToken($value)
- * @method static Builder|User whereTwoFactorConfirmedAt($value)
- * @method static Builder|User whereTwoFactorRecoveryCodes($value)
- * @method static Builder|User whereTwoFactorSecret($value)
- * @method static Builder|User whereUpdatedAt($value)
- *
- * @mixin IdeHelperUser
- *
- * @property string|null $lang
- * @property int|null    $owned_teams_count
- * @property int|null    $teams_count
- *
- * @method static Builder|User whereLang($value)
- *
- * @property Team|null                     $currentTeam
- * @property Collection<int, Team>         $ownedTeams
- * @property Profile|null                  $profile
- * @property Collection<int, Team>         $teams
- * @property string|null                   $full_name
- * @property string|null                   $deleted_at
- * @property Collection<int, MobileDevice> $mobileDevices
- * @property int|null                      $mobile_devices_count
- *
- * @method static \Modules\User\Database\Factories\UserFactory factory($count = null, $state = [])
- * @method static Builder|User                                 whereDeletedAt($value)
- * @method static Builder|User                                 whereFullName($value)
- * @method static Builder|User                                 whereIsActive($value)
- * @method static Builder|User                                 whereSurname($value)
- *
- * @mixin Eloquent
- */
-class User extends Authenticatable implements \Modules\Xot\Contracts\UserContract, FilamentUser, HasTenants, UserJetContract
+class User extends Authenticatable implements UserContract
 {
     /* , HasAvatar, UserJetContract, ExportsPersonalData */
     /* , HasTeamsContract */
@@ -129,7 +54,7 @@ class User extends Authenticatable implements \Modules\Xot\Contracts\UserContrac
 
     // use Traits\HasProfilePhoto;
     use Notifiable;
-    use Traits\HasTenants;
+    //use Traits\HasTenants;
 
     public $incrementing = false;
 

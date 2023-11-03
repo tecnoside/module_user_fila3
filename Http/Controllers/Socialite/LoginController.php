@@ -56,6 +56,9 @@ class LoginController extends Controller
         /** @var Socialite $socialite */
         // Assert::isInstanceOf($socialite, \Laravel\Socialite\Contracts\Provider::class);
         // Assert::methodExists($socialite, 'scopes');
+        if(!is_object($socialite)){
+            throw new \Exception('WIP');
+        }
         if (! method_exists(get_class($socialite), 'scopes')) {
             throw new \Exception('wip');
         }

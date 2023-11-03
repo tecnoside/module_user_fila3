@@ -88,17 +88,8 @@ class PermissionResource extends XotBaseResource
 
     public static function table(Table $table): Table
     {
-<<<<<<< HEAD
-<<<<<<< HEAD
         Assert::boolean($isToggledHiddenByDefault = config('filament-spatie-roles-permissions.toggleable_guard_names.permissions.isToggledHiddenByDefault', true));
 
-=======
-        Assert::bollean($isToggledHiddenByDefault= config('filament-spatie-roles-permissions.toggleable_guard_names.permissions.isToggledHiddenByDefault', true));
->>>>>>> 697de18 (up)
-=======
-        Assert::boolean($isToggledHiddenByDefault = config('filament-spatie-roles-permissions.toggleable_guard_names.permissions.isToggledHiddenByDefault', true));
-
->>>>>>> 2721cf8 (up)
         return $table
             ->columns([
                 TextColumn::make('id')

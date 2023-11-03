@@ -21,13 +21,9 @@ class CreateUserAction
     /**
      * Execute the action.
      */
-<<<<<<< HEAD
     public function execute(SocialiteUserContract $oauthUser): UserContract
-=======
-    public function execute(SocialiteUserContract $oauthUser): User
->>>>>>> 697de18 (up)
     {
-        /*
+        
         $xot = XotData::make();
         $userClass = $xot->getUserClass();
 
@@ -37,12 +33,14 @@ class CreateUserAction
                 'email' => $oauthUser->getEmail(),
             ]
         );
-        */
+        
+        /*
         return User::create(
             [
                 'name' => $oauthUser->getName(),
                 'email' => $oauthUser->getEmail(),
             ]
         );
+        */
     }
 }

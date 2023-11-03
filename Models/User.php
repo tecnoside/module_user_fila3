@@ -7,8 +7,6 @@ namespace Modules\User\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 // use Laravel\Sanctum\HasApiTokens;
 use Eloquent;
-
-
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
@@ -23,7 +21,6 @@ use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Notifications\DatabaseNotificationCollection;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Carbon;
-use Laravel\Passport\Client;
 use Laravel\Passport\HasApiTokens;
 use Laravel\Passport\Token;
 use Modules\Egea\Models\MobileDevice;
@@ -32,71 +29,73 @@ use Modules\EWall\Models\Profile;
 use Modules\Notify\Models\Notification;
 use Modules\User\Database\Factories\UserFactory;
 use Modules\User\Models\Traits\HasTeams;
-use Modules\Xot\Contracts\UserContract ;
+use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Datas\XotData;
 use Spatie\Permission\Traits\HasRoles;
 
 /**
- * Modules\User\Models\User
+ * Modules\User\Models\User.
  *
- * @property string $id
- * @property string $uuid
- * @property string $name
- * @property string $last_name
- * @property string $first_name
- * @property string $surname
- * @property string $email
- * @property Carbon|null $email_verified_at
- * @property string $password
- * @property string|null $remember_token
- * @property int|null $current_team_id
- * @property string|null $profile_photo_path
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
- * @property string|null $deleted_at
- * @property string|null $lang
- * @property bool $is_active
- * @property-read Collection<int, \Modules\User\Models\OauthClient> $clients
- * @property-read int|null $clients_count
- * @property-read \Modules\User\Models\Team|null $currentTeam
- * @property-read Collection<int, MobileDevice> $mobileDevices
- * @property-read int|null $mobile_devices_count
- * @property-read DatabaseNotificationCollection<int, Notification> $notifications
- * @property-read int|null $notifications_count
- * @property-read Collection<int, \Modules\User\Models\Team> $ownedTeams
- * @property-read int|null $owned_teams_count
- * @property-read Collection<int, \Modules\User\Models\Permission> $permissions
- * @property-read int|null $permissions_count
- * @property-read \Modules\Camping\Models\Profile|null $profile
- * @property-read Collection<int, \Modules\User\Models\Role> $roles
- * @property-read int|null $roles_count
- * @property-read Collection<int, \Modules\User\Models\Team> $teams
- * @property-read int|null $teams_count
- * @property-read Collection<int, \Modules\User\Models\OauthAccessToken> $tokens
- * @property-read int|null $tokens_count
+ * @property string                                                 $id
+ * @property string                                                 $uuid
+ * @property string                                                 $name
+ * @property string                                                 $last_name
+ * @property string                                                 $first_name
+ * @property string                                                 $surname
+ * @property string                                                 $email
+ * @property Carbon|null                                            $email_verified_at
+ * @property string                                                 $password
+ * @property string|null                                            $remember_token
+ * @property int|null                                               $current_team_id
+ * @property string|null                                            $profile_photo_path
+ * @property Carbon|null                                            $created_at
+ * @property Carbon|null                                            $updated_at
+ * @property string|null                                            $deleted_at
+ * @property string|null                                            $lang
+ * @property bool                                                   $is_active
+ * @property Collection<int, \Modules\User\Models\OauthClient>      $clients
+ * @property int|null                                               $clients_count
+ * @property \Modules\User\Models\Team|null                         $currentTeam
+ * @property Collection<int, MobileDevice>                          $mobileDevices
+ * @property int|null                                               $mobile_devices_count
+ * @property DatabaseNotificationCollection<int, Notification>      $notifications
+ * @property int|null                                               $notifications_count
+ * @property Collection<int, \Modules\User\Models\Team>             $ownedTeams
+ * @property int|null                                               $owned_teams_count
+ * @property Collection<int, \Modules\User\Models\Permission>       $permissions
+ * @property int|null                                               $permissions_count
+ * @property \Modules\Camping\Models\Profile|null                   $profile
+ * @property Collection<int, \Modules\User\Models\Role>             $roles
+ * @property int|null                                               $roles_count
+ * @property Collection<int, \Modules\User\Models\Team>             $teams
+ * @property int|null                                               $teams_count
+ * @property Collection<int, \Modules\User\Models\OauthAccessToken> $tokens
+ * @property int|null                                               $tokens_count
+ *
  * @method static \Modules\User\Database\Factories\UserFactory factory($count = null, $state = [])
- * @method static Builder|User newModelQuery()
- * @method static Builder|User newQuery()
- * @method static Builder|User permission($permissions)
- * @method static Builder|User query()
- * @method static Builder|User role($roles, $guard = null)
- * @method static Builder|User whereCreatedAt($value)
- * @method static Builder|User whereCurrentTeamId($value)
- * @method static Builder|User whereDeletedAt($value)
- * @method static Builder|User whereEmail($value)
- * @method static Builder|User whereEmailVerifiedAt($value)
- * @method static Builder|User whereFirstName($value)
- * @method static Builder|User whereId($value)
- * @method static Builder|User whereIsActive($value)
- * @method static Builder|User whereLang($value)
- * @method static Builder|User whereLastName($value)
- * @method static Builder|User whereName($value)
- * @method static Builder|User wherePassword($value)
- * @method static Builder|User whereProfilePhotoPath($value)
- * @method static Builder|User whereRememberToken($value)
- * @method static Builder|User whereSurname($value)
- * @method static Builder|User whereUpdatedAt($value)
- * @method static Builder|User whereUuid($value)
+ * @method static Builder|User                                 newModelQuery()
+ * @method static Builder|User                                 newQuery()
+ * @method static Builder|User                                 permission($permissions)
+ * @method static Builder|User                                 query()
+ * @method static Builder|User                                 role($roles, $guard = null)
+ * @method static Builder|User                                 whereCreatedAt($value)
+ * @method static Builder|User                                 whereCurrentTeamId($value)
+ * @method static Builder|User                                 whereDeletedAt($value)
+ * @method static Builder|User                                 whereEmail($value)
+ * @method static Builder|User                                 whereEmailVerifiedAt($value)
+ * @method static Builder|User                                 whereFirstName($value)
+ * @method static Builder|User                                 whereId($value)
+ * @method static Builder|User                                 whereIsActive($value)
+ * @method static Builder|User                                 whereLang($value)
+ * @method static Builder|User                                 whereLastName($value)
+ * @method static Builder|User                                 whereName($value)
+ * @method static Builder|User                                 wherePassword($value)
+ * @method static Builder|User                                 whereProfilePhotoPath($value)
+ * @method static Builder|User                                 whereRememberToken($value)
+ * @method static Builder|User                                 whereSurname($value)
+ * @method static Builder|User                                 whereUpdatedAt($value)
+ * @method static Builder|User                                 whereUuid($value)
+ *
  * @mixin Eloquent
  */
 class User extends Authenticatable implements UserContract
@@ -117,7 +116,7 @@ class User extends Authenticatable implements UserContract
 
     // use Traits\HasProfilePhoto;
     use Notifiable;
-    //use Traits\HasTenants;
+    // use Traits\HasTenants;
 
     public $incrementing = false;
 
@@ -197,7 +196,7 @@ class User extends Authenticatable implements UserContract
 
     public function canAccessPanel(Panel $panel): bool
     {
-        if ($panel->getId() !== 'admin') {
+        if ('admin' !== $panel->getId()) {
             $role = $panel->getId();
             /*
             $xot = XotData::make();

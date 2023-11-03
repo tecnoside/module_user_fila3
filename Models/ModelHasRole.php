@@ -8,35 +8,36 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
-use Modules\User\Database\Factories\ModelHasRoleFactory;
 
 /**
  * Modules\User\Models\ModelHasRole.
  *
- * @property string $id
- * @property string $uuid
- * @property string $role_id
- * @property string $model_type
- * @property string $model_id
- * @property string|null $team_id
+ * @property string                          $id
+ * @property string                          $uuid
+ * @property string                          $role_id
+ * @property string                          $model_type
+ * @property string                          $model_id
+ * @property string|null                     $team_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property string|null $updated_by
- * @property string|null $created_by
+ * @property string|null                     $updated_by
+ * @property string|null                     $created_by
+ *
  * @method static \Modules\User\Database\Factories\ModelHasRoleFactory factory($count = null, $state = [])
- * @method static Builder|ModelHasRole newModelQuery()
- * @method static Builder|ModelHasRole newQuery()
- * @method static Builder|ModelHasRole query()
- * @method static Builder|ModelHasRole whereCreatedAt($value)
- * @method static Builder|ModelHasRole whereCreatedBy($value)
- * @method static Builder|ModelHasRole whereId($value)
- * @method static Builder|ModelHasRole whereModelId($value)
- * @method static Builder|ModelHasRole whereModelType($value)
- * @method static Builder|ModelHasRole whereRoleId($value)
- * @method static Builder|ModelHasRole whereTeamId($value)
- * @method static Builder|ModelHasRole whereUpdatedAt($value)
- * @method static Builder|ModelHasRole whereUpdatedBy($value)
- * @method static Builder|ModelHasRole whereUuid($value)
+ * @method static Builder|ModelHasRole                                 newModelQuery()
+ * @method static Builder|ModelHasRole                                 newQuery()
+ * @method static Builder|ModelHasRole                                 query()
+ * @method static Builder|ModelHasRole                                 whereCreatedAt($value)
+ * @method static Builder|ModelHasRole                                 whereCreatedBy($value)
+ * @method static Builder|ModelHasRole                                 whereId($value)
+ * @method static Builder|ModelHasRole                                 whereModelId($value)
+ * @method static Builder|ModelHasRole                                 whereModelType($value)
+ * @method static Builder|ModelHasRole                                 whereRoleId($value)
+ * @method static Builder|ModelHasRole                                 whereTeamId($value)
+ * @method static Builder|ModelHasRole                                 whereUpdatedAt($value)
+ * @method static Builder|ModelHasRole                                 whereUpdatedBy($value)
+ * @method static Builder|ModelHasRole                                 whereUuid($value)
+ *
  * @mixin \Eloquent
  */
 class ModelHasRole extends BaseMorphPivot
@@ -64,12 +65,13 @@ class ModelHasRole extends BaseMorphPivot
     /**
      * Create a new pivot model from raw values returned from a query.
      *
-     * @param  array  $attributes
-     * @param  string  $table
-     * @param  bool  $exists
-     * @return static
+     * @param array  $attributes
+     * @param string $table
+     * @param bool   $exists
      *
      * @throws \Exception
+     *
+     * @return static
      */
     public static function fromRawAttributes(Model $parent, $attributes, $table, $exists = false)
     {

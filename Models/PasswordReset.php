@@ -11,30 +11,24 @@ use Modules\User\Database\Factories\PasswordResetFactory;
 /**
  * Modules\User\Models\PasswordReset.
  *
- * @property string      $email
- * @property string      $token
+ * @property int $id
+ * @property string $email
+ * @property string $token
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $created_by
  * @property string|null $updated_by
- *
- * @method static PasswordResetFactory  factory($count = null, $state = [])
+ * @method static \Modules\User\Database\Factories\PasswordResetFactory factory($count = null, $state = [])
  * @method static Builder|PasswordReset newModelQuery()
  * @method static Builder|PasswordReset newQuery()
  * @method static Builder|PasswordReset query()
  * @method static Builder|PasswordReset whereCreatedAt($value)
  * @method static Builder|PasswordReset whereCreatedBy($value)
  * @method static Builder|PasswordReset whereEmail($value)
+ * @method static Builder|PasswordReset whereId($value)
  * @method static Builder|PasswordReset whereToken($value)
  * @method static Builder|PasswordReset whereUpdatedAt($value)
  * @method static Builder|PasswordReset whereUpdatedBy($value)
- *
- * @mixin IdeHelperPasswordReset
- *
- * @property int $id
- *
- * @method static Builder|PasswordReset whereId($value)
- *
  * @mixin \Eloquent
  */
 class PasswordReset extends BaseModel

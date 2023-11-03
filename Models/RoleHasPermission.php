@@ -9,17 +9,15 @@ use Illuminate\Database\Eloquent\Builder;
 /**
  * Modules\User\Models\RoleHasPermission.
  *
+ * @property string $uuid
  * @property int $permission_id
  * @property int $role_id
- *
- * @method static \Modules\LU\Database\Factories\RoleHasPermissionFactory factory($count = null, $state = [])
- * @method static Builder|RoleHasPermission                               newModelQuery()
- * @method static Builder|RoleHasPermission                               newQuery()
- * @method static Builder|RoleHasPermission                               query()
- * @method static Builder|RoleHasPermission                               wherePermissionId($value)
- * @method static Builder|RoleHasPermission                               whereRoleId($value)
- *
- * @mixin IdeHelperRoleHasPermission
+ * @method static Builder|RoleHasPermission newModelQuery()
+ * @method static Builder|RoleHasPermission newQuery()
+ * @method static Builder|RoleHasPermission query()
+ * @method static Builder|RoleHasPermission wherePermissionId($value)
+ * @method static Builder|RoleHasPermission whereRoleId($value)
+ * @method static Builder|RoleHasPermission whereUuid($value)
  * @mixin \Eloquent
  */
 class RoleHasPermission extends BasePivot

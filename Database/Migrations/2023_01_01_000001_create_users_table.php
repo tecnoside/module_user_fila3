@@ -19,8 +19,10 @@ class CreateUsersTable extends XotBaseMigration
         $this->tableCreate(
             function (Blueprint $table): void {
                 $table->uuid('id')->primary();
-                $table->string('name');
-                $table->string('surname');
+
+                $table->string('name'); //questo e' il nickname non nome 
+                $table->string('first_name');
+                $table->string('last_name');
                 $table->string('email')->unique();
                 $table->timestamp('email_verified_at')->nullable();
                 $table->string('password');
@@ -34,8 +36,11 @@ class CreateUsersTable extends XotBaseMigration
         // -- UPDATE --
         $this->tableUpdate(
             function (Blueprint $table): void {
-                if (! $this->hasColumn('surname')) {
-                    $table->string('surname')->after('name');
+                if (! $this->hasColumn('first_name')) {
+                    $table->string('first_name')->after('name');
+                }
+                if (! $this->hasColumn('last_name')) {
+                    $table->string('last_name')->after('name');
                 }
 
                 if (! $this->hasColumn('current_team_id')) {
@@ -55,10 +60,6 @@ class CreateUsersTable extends XotBaseMigration
                 }
                 if (! $this->hasColumn('deleted_at')) {
                     $table->softDeletes();
-                }
-
-                if ($this->getColumnType('id') === 'bigint') {
-                    $table->uuid('id')->change();
                 }
 
                 $this->updateUser($table);

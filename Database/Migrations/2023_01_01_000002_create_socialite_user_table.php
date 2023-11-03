@@ -48,7 +48,7 @@ class CreateSocialiteUserTable extends XotBaseMigration
                 //    $table->string('email')->nullable();
                 // }
                 $this->updateTimestamps($table);
-                $this->updateUser($table);
+                //$this->updateUser($table);
             }
         );
     }

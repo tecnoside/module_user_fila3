@@ -11,21 +11,18 @@ use Laravel\Passport\RefreshToken as PassportRefreshToken;
 /**
  * Modules\User\Models\OauthRefreshToken.
  *
- * @property string                $id
- * @property string                $access_token_id
- * @property bool                  $revoked
- * @property Carbon|null           $expires_at
- * @property OauthAccessToken|null $accessToken
- *
+ * @property string $uuid
+ * @property string $access_token_id
+ * @property bool $revoked
+ * @property Carbon|null $expires_at
+ * @property-read \Modules\User\Models\OauthAccessToken|null $accessToken
  * @method static Builder|OauthRefreshToken newModelQuery()
  * @method static Builder|OauthRefreshToken newQuery()
  * @method static Builder|OauthRefreshToken query()
  * @method static Builder|OauthRefreshToken whereAccessTokenId($value)
  * @method static Builder|OauthRefreshToken whereExpiresAt($value)
- * @method static Builder|OauthRefreshToken whereId($value)
  * @method static Builder|OauthRefreshToken whereRevoked($value)
- *
- * @mixin IdeHelperOauthRefreshToken
+ * @method static Builder|OauthRefreshToken whereUuid($value)
  * @mixin \Eloquent
  */
 class OauthRefreshToken extends PassportRefreshToken

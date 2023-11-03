@@ -57,7 +57,7 @@ class CreateUsersTable extends XotBaseMigration
                     $table->softDeletes();
                 }
 
-                if ('bigint' === $this->getColumnType('id')) {
+                if ($this->getColumnType('id') === 'bigint') {
                     $table->uuid('id')->change();
                 }
 

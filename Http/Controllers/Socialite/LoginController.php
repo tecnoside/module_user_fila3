@@ -53,6 +53,7 @@ class LoginController extends Controller
 
         $scopes = App(GetProviderScopesAction::class)->execute($provider);
         $socialite = Socialite::with($provider);
+        /** @var Socialite $socialite */
         // Assert::isInstanceOf($socialite, \Laravel\Socialite\Contracts\Provider::class);
         // Assert::methodExists($socialite, 'scopes');
         if (! method_exists($socialite, 'scopes')) {

@@ -11,8 +11,10 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Laravel\Passport\HasApiTokens;
 use Modules\User\Contracts\TeamContract;
+use Modules\User\Models\Membership;
 use Modules\User\Models\Role;
 use Modules\User\Models\Team;
+use Modules\User\Models\User;
 use Modules\Xot\Datas\XotData;
 use Webmozart\Assert\Assert;
 
@@ -182,17 +184,21 @@ trait HasTeams
             return $role;
         }
         Assert::notNull($user = $teamContract->users()->where('id', $this->id)->first());
-        Assert::isInstanceOf($user, \Modules\User\Models\User::class);
-
+        Assert::isInstanceOf($user, User::class);
+        /** @var User $user */
         // Access to an undefined property Modules\User\Models\User::$membership.
         // return $teamContract->users()
         //     ->where('id', $this->id)
         //     ->first()
         //     ->membership
         //     ->role; // ? FilamentJet::findRole($role) : null;
-        return $user
-            ->getRelationValue('membership')
-            ->role; // ? FilamentJet::findRole($role) : null;
+        /** @var Membership $membership */
+        $membership = $user
+            ->getRelationValue('membership'); // ? FilamentJet::findRole($role) : null;
+        
+        /** @var Role|null $role */
+        $role = $membership->role;
+        return $role;
     }
 
     /**

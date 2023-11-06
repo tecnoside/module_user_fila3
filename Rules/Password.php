@@ -39,7 +39,7 @@ class Password implements Rule
     /**
      * Determine if the validation rule passes.
      *
-     * @param  string  $attribute
+     * @param string $attribute
      */
     public function passes($attribute, $value): bool
     {
@@ -57,7 +57,7 @@ class Password implements Rule
             return Str::length($value) >= $this->length;
         }
 
-        if (preg_match('/[\W_]/', $value) !== 0) {
+        if (0 !== preg_match('/[\W_]/', $value)) {
             return Str::length($value) >= $this->length;
         }
 
@@ -71,7 +71,7 @@ class Password implements Rule
      */
     public function message()
     {
-        if ($this->message !== '' && $this->message !== '0') {
+        if ('' !== $this->message && '0' !== $this->message) {
             return $this->message;
         }
 

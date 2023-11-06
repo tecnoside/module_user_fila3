@@ -62,9 +62,8 @@ class ProcessCallbackController extends Controller
                 SetDefaultRolesBySocialiteUserAction::class,
                 [
                     'provider' => $provider,
-                    'userModel' => $socialiteUser->user,
                 ]
-            )->execute($oauthUser);
+            )->execute($socialiteUser->user, $oauthUser);
 
             return app(LoginUserAction::class)->execute($socialiteUser);
         }

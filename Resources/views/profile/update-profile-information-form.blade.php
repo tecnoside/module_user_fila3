@@ -88,8 +88,8 @@
             {{ __('Saved.') }}
         </x-action-message>
 
-        <x-button wire:loading.attr="disabled" wire:target="photo">
+        <x-filament::button wire:loading.attr="disabled" wire:target="photo">
             {{ __('Save') }}
-        </x-button>
+        </x-filament::button>
     </x-slot>
 </x-form-section>

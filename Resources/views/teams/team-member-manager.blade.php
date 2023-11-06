@@ -68,9 +68,9 @@
                         {{ __('Added.') }}
                     </x-action-message>
 
-                    <x-button>
+                    <x-filament::button>
                         {{ __('Add') }}
-                    </x-button>
+                    </x-filament::button>
                 </x-slot>
             </x-form-section>
         </div>
@@ -210,9 +210,9 @@
                 {{ __('Cancel') }}
             </x-secondary-button>
 
-            <x-button class="ml-3" wire:click="updateRole" wire:loading.attr="disabled">
+            <x-filament::button class="ml-3" wire:click="updateRole" wire:loading.attr="disabled">
                 {{ __('Save') }}
-            </x-button>
+            </x-filament::button>
         </x-slot>
     </x-dialog-modal>
 

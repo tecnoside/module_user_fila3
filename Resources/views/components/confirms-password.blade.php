@@ -38,9 +38,9 @@
             {{ __('Cancel') }}
         </x-secondary-button>
 
-        <x-button class="ml-3" dusk="confirm-password-button" wire:click="confirmPassword" wire:loading.attr="disabled">
+        <x-filament::button class="ml-3" dusk="confirm-password-button" wire:click="confirmPassword" wire:loading.attr="disabled">
             {{ $button }}
-        </x-button>
+        </x-filament::button>
     </x-slot>
 </x-dialog-modal>
 @endonce

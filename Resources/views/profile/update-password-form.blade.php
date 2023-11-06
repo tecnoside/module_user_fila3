@@ -32,8 +32,8 @@
             {{ __('Saved.') }}
         </x-action-message>
 
-        <x-button>
+        <x-filament::button>
             {{ __('Save') }}
-        </x-button>
+        </x-filament::button>
     </x-slot>
 </x-form-section>

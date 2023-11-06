@@ -29,8 +29,8 @@
     </x-slot>
 
     <x-slot name="actions">
-        <x-button>
+        <x-filament::button>
             {{ __('Create') }}
-        </x-button>
+        </x-filament::button>
     </x-slot>
 </x-form-section>

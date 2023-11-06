@@ -19,9 +19,9 @@
                 @csrf
 
                 <div>
-                    <x-button type="submit">
+                    <x-filament::button type="submit">
                         {{ __('Resend Verification Email') }}
-                    </x-button>
+                    </x-filament::button>
                 </div>
             </form>
 

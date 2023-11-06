@@ -52,9 +52,9 @@
         @endif
 
         <div class="flex items-center mt-5">
-            <x-button wire:click="confirmLogout" wire:loading.attr="disabled">
+            <x-filament::button wire:click="confirmLogout" wire:loading.attr="disabled">
                 {{ __('Log Out Other Browser Sessions') }}
-            </x-button>
+            </x-filament::button>
 
             <x-action-message class="ml-3" on="loggedOut">
                 {{ __('Done.') }}
@@ -87,11 +87,11 @@
                     {{ __('Cancel') }}
                 </x-secondary-button>
 
-                <x-button class="ml-3"
+                <x-filament::button class="ml-3"
                             wire:click="logoutOtherBrowserSessions"
                             wire:loading.attr="disabled">
                     {{ __('Log Out Other Browser Sessions') }}
-                </x-button>
+                </x-filament::button>
             </x-slot>
         </x-dialog-modal>
     </x-slot>

@@ -44,8 +44,8 @@ class RoleResource extends XotBaseResource
     protected static ?string $navigationIcon = 'heroicon-o-shield-check';
 
     protected static ?string $recordTitleAttribute = 'name';
-
-    private static ?Collection $permissionsCollection = null;
+    //Static property Modules\User\Filament\Resources\RoleResource::$permissionsCollection is never read, only written.
+    // private static ?Collection $permissionsCollection = null;
 
     public static function getPermissionPrefixes(): array
     {
@@ -257,7 +257,8 @@ class RoleResource extends XotBaseResource
 
             return $permissions;
         }, collect())
-            ->toArray();
+            // ->toArray()
+            ;
     }
 
     /*
@@ -310,7 +311,8 @@ class RoleResource extends XotBaseResource
         return (string) static::getModel()::count();
     }
 
-    private function refreshSelectAllStateViaEntities(\Closure $set, \Closure $get): void
+    // public function refreshSelectAllStateViaEntities(\Closure $set, \Closure $get): void
+    public static function refreshSelectAllStateViaEntities(Set $set, Get $get): void
     {
         $entitiesStates = collect(FilamentShield::getResources())
             ->when(Utils::isPageEntityEnabled(), fn ($entities) => $entities->merge(FilamentShield::getPages()))
@@ -333,7 +335,8 @@ class RoleResource extends XotBaseResource
         }
     }
 
-    private function refreshEntitiesStatesViaSelectAll(\Closure $set, $state): void
+    // private function refreshEntitiesStatesViaSelectAll(\Closure $set, $state): void
+    public static function refreshEntitiesStatesViaSelectAll(Set $set, $state): void
     {
         collect(FilamentShield::getResources())->each(function (array $entity) use ($set, $state): void {
             $set($entity['resource'], $state);
@@ -409,7 +412,7 @@ class RoleResource extends XotBaseResource
     | Page Related Logic Start       |
     *----------------------------------*/
 
-    private static function getPageEntityPermissionsSchema(): array
+    public static function getPageEntityPermissionsSchema(): array
     {
         return [];
     }
@@ -422,7 +425,7 @@ class RoleResource extends XotBaseResource
     | Widget Related Logic Start       |
     *----------------------------------*/
 
-    private static function getWidgetEntityPermissionSchema(): ?array
+    public static function getWidgetEntityPermissionSchema(): ?array
     {
         return [];
     }
@@ -431,12 +434,12 @@ class RoleResource extends XotBaseResource
     | Widget Related Logic End          |
     *----------------------------------*/
 
-    private static function getCustomEntities(): ?Collection
+    public static function getCustomEntities(): ?Collection
     {
         return collect();
     }
 
-    private static function getCustomEntitiesPermisssionSchema(): ?array
+    public static function getCustomEntitiesPermisssionSchema(): ?array
     {
         return collect(static::getCustomEntities())->reduce(static function (array $customEntities, $customPermission): array {
             $customEntities[] = Grid::make()

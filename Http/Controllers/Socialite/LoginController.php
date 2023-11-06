@@ -34,7 +34,7 @@ class LoginController extends Controller
 {
     /**
      * Redirects the user to the appropriate SSO
-     * authentication provider
+     * authentication provider.
      */
     public function redirectToProvider(string $provider): RedirectResponse
     {

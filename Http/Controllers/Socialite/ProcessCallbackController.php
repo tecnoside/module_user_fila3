@@ -29,10 +29,9 @@ use Modules\User\Models\User;
 class ProcessCallbackController extends Controller
 {
     /**
-     * Undocumented function
+     * Undocumented function.
      *
      * @return \Illuminate\Http\RedirectResponse
-     *
      */
     public function __invoke(Request $request, string $provider)
     {

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\User\Actions\Socialite\Utils;
 
 use Illuminate\Support\Str;
@@ -15,10 +17,10 @@ final class UserNameFieldsResolver
     public readonly ?string $name;
     public readonly ?string $surname;
 
-    private function __construct(User $user) {
+    private function __construct(User $user)
+    {
         $this->name = $this->resolveName($user);
         $this->surname = $this->resolveSurname($user);
-
     }
 
     public static function make(User $user): self
@@ -37,7 +39,7 @@ final class UserNameFieldsResolver
     }
 
     /**
-     * @param  string  $searchMethod use self constants (NAME_SEARCH, SURNAME_SEARCH)
+     * @param string $searchMethod use self constants (NAME_SEARCH, SURNAME_SEARCH)
      */
     private function resolveNameFields(User $idpUser, string $searchMethod): string
     {

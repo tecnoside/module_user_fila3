@@ -25,7 +25,10 @@ class CreateSocialiteUserAction
         return SocialiteUser::create([
             'user_id' => $user->getKey(),
             'provider' => $provider,
-            'provider_id' => $oauthUser->getId(),
+            'provider_id' => $oauthUser->getEmail(),
+            'name' => $oauthUser->getName(),
+            'email' => $oauthUser->getId(),
+            'avatar' => $oauthUser->getAvatar(),
         ]);
     }
 }

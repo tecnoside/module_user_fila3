@@ -28,7 +28,8 @@ class UserServiceProvider extends XotBaseServiceProvider
 
     public function bootCallback(): void
     {
-        $this->registerPassport();
+        $this->registerAuthenticationProviders();
+        $this->registerEventListener();
         $this->commands([
             AssignModuleCommand::class,
             AssignRoleCommand::class,
@@ -36,7 +37,13 @@ class UserServiceProvider extends XotBaseServiceProvider
         ]);
     }
 
-    public function registerPassport(): void
+    protected function registerAuthenticationProviders(): void
+    {
+        $this->registerPassport();
+        $this->registerSocialite();
+    }
+
+    private function registerPassport(): void
     {
         Passport::usePersonalAccessClientModel(OauthPersonalAccessClient::class);
         Passport::useTokenModel(OauthAccessToken::class);
@@ -55,5 +62,15 @@ class UserServiceProvider extends XotBaseServiceProvider
             'view-user' => 'View user information',
             'core-technicians' => 'the tecnicians can ',
         ]);
+    }
+
+    private function registerSocialite(): void
+    {
+        $this->app->register(\SocialiteProviders\Manager\ServiceProvider::class);
+    }
+
+    protected function registerEventListener(): void
+    {
+        $this->app->register(EventServiceProvider::class);
     }
 }

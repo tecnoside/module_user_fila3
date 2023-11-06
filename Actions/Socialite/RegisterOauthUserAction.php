@@ -10,28 +10,32 @@ namespace Modules\User\Actions\Socialite;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Laravel\Socialite\Contracts\User as SocialiteUserContract;
+use Laravel\Socialite\Facades\Socialite;
 use Modules\User\Events\Registered;
+use Modules\User\Models\User;
 use Spatie\QueueableAction\QueueableAction;
 
 class RegisterOauthUserAction
 {
     use QueueableAction;
 
-    /**
-     * Execute the action.
-     *
-     * @return RedirectResponse
-     */
-    public function execute(string $provider, SocialiteUserContract $oauthUser)
+    public function execute(string $provider, SocialiteUserContract $oauthUser): RedirectResponse
     {
         $socialiteUser = DB::transaction(function () use ($provider, $oauthUser) {
             // Create a user
-            // $user = app()->call($this->socialite->getCreateUserCallback(), ['provider' => $provider, 'oauthUser' => $oauthUser, 'socialite' => $this->socialite]);
-            $user = app(CreateUserAction::class)->execute(oauthUser: $oauthUser);
+            $user = app(CreateUserAction::class)
+                ->execute(
+                    provider: $provider,
+                    oauthUser: $oauthUser,
+                );
 
-            // Create a socialite user
-            // return app()->call($this->socialite->getCreateSocialiteUserCallback(), ['provider' => $provider, 'oauthUser' => $oauthUser, 'user' => $user, 'socialite' => $this->socialite]);
-            return app(CreateSocialiteUserAction::class)->execute(provider: $provider, oauthUser: $oauthUser, user: $user);
+            // Create a new socialite user instance
+            return app(CreateSocialiteUserAction::class)
+                ->execute(
+                    provider: $provider,
+                    oauthUser: $oauthUser,
+                    user: $user,
+                );
         });
 
         // Dispatch the registered event

@@ -8,9 +8,9 @@ declare(strict_types=1);
 
 namespace Modules\User\Http\Controllers\Socialite;
 
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Request;
+use Laravel\Socialite\Facades\Socialite;
 use Modules\User\Actions\Socialite\IsProviderConfiguredAction;
 use Modules\User\Actions\Socialite\IsRegistrationEnabledAction;
 use Modules\User\Actions\Socialite\IsUserAllowedAction;
@@ -20,6 +20,7 @@ use Modules\User\Actions\Socialite\RegisterOauthUserAction;
 use Modules\User\Actions\Socialite\RegisterSocialiteUserAction;
 use Modules\User\Actions\Socialite\RetrieveOauthUserAction;
 use Modules\User\Actions\Socialite\RetrieveSocialiteUserAction;
+use Modules\User\Actions\Socialite\SetDefaultRolesBySocialiteUserAction;
 use Modules\User\Events\RegistrationNotEnabled;
 use Modules\User\Events\UserNotAllowed;
 use Modules\User\Exceptions\ProviderNotConfigured;
@@ -28,9 +29,10 @@ use Modules\User\Models\User;
 class ProcessCallbackController extends Controller
 {
     /**
-     * Undocumented function.
+     * Undocumented function
      *
-     * @return RedirectResponse
+     * @return \Illuminate\Http\RedirectResponse
+     *
      */
     public function __invoke(Request $request, string $provider)
     {
@@ -41,7 +43,7 @@ class ProcessCallbackController extends Controller
 
         // Try to retrieve existing user
         $oauthUser = app(RetrieveOauthUserAction::class)->execute($provider);
-        if ($oauthUser === null) {
+        if (null === $oauthUser) {
             return app(RedirectToLoginAction::class)->execute('auth.login-failed');
         }
 
@@ -55,6 +57,15 @@ class ProcessCallbackController extends Controller
         // Try to find a socialite user
         $socialiteUser = app(RetrieveSocialiteUserAction::class)->execute($provider, $oauthUser);
         if ($socialiteUser) {
+            // Associate default roles to the existing "real" user, if needed
+            app(
+                SetDefaultRolesBySocialiteUserAction::class,
+                [
+                    'provider' => $provider,
+                    'userModel' => $socialiteUser->user,
+                ]
+            )->execute($oauthUser);
+
             return app(LoginUserAction::class)->execute($socialiteUser);
         }
 
@@ -67,7 +78,7 @@ class ProcessCallbackController extends Controller
 
         // See if a user already exists, but not for this socialite provider
         // $user = app()->call($this->socialite->getUserResolver(), ['provider' => $provider, 'oauthUser' => $oauthUser, 'socialite' => $this->socialite]);
-        $user = User::firstWhere(['email' => $oauthUser->getEmail()]);
+        $user = User::query()->firstWhere(['email' => $oauthUser->getEmail()]);
 
         // Handle registration
         return $user

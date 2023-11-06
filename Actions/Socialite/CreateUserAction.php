@@ -7,10 +7,8 @@ declare(strict_types=1);
 
 namespace Modules\User\Actions\Socialite;
 
+use Illuminate\Contracts\Auth\Authenticatable;
 use Laravel\Socialite\Contracts\User as SocialiteUserContract;
-use Modules\User\Models\User;
-// use DutchCodingCompany\FilamentSocialite\FilamentSocialite;
-use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Datas\XotData;
 use Spatie\QueueableAction\QueueableAction;
 
@@ -21,25 +19,37 @@ class CreateUserAction
     /**
      * Execute the action.
      */
-    public function execute(SocialiteUserContract $oauthUser): UserContract
+    public function execute(string $provider, SocialiteUserContract $oauthUser): Authenticatable
     {
-        $xot = XotData::make();
-        $userClass = $xot->getUserClass();
-
-        return $userClass::create(
+        // Resolve `users` table required attributes
+        // from the identity provider
+        $userAttributes = app(
+            GetUserModelAttributesFromSocialiteAction::class,
             [
-                'name' => $oauthUser->getName(),
-                'email' => $oauthUser->getEmail(),
+                'provider' => $provider,
+                'oauthUser' => $oauthUser,
+            ],
+        );
+
+        // Store the new entity into `users` table
+        $userClass = XotData::resolveUserClass();
+        $newlyCreatedUser = $userClass::create(
+            [
+                'name' => $userAttributes->name,
+                'surname' => $userAttributes->surname,
+                'email' => $userAttributes->email,
             ]
         );
 
-        /*
-        return User::create(
+        // Finally, assign the default set of roles
+        app(
+            SetDefaultRolesBySocialiteUserAction::class,
             [
-                'name' => $oauthUser->getName(),
-                'email' => $oauthUser->getEmail(),
+                'provider' => $provider,
+                'userModel' => $newlyCreatedUser,
             ]
-        );
-        */
+        )->execute(userModel: $newlyCreatedUser, oauthUser: $oauthUser);
+
+        return $newlyCreatedUser->refresh();
     }
 }

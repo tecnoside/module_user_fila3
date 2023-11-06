@@ -9,12 +9,12 @@ declare(strict_types=1);
 namespace Modules\User\Actions\Socialite;
 
 // use DutchCodingCompany\FilamentSocialite\FilamentSocialite;
-use Illuminate\Http\RedirectResponse;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Laravel\Socialite\Contracts\User as SocialiteUserContract;
-// use DutchCodingCompany\FilamentSocialite\FilamentSocialite;
 use Modules\User\Events\SocialiteUserConnected;
-use Modules\User\Models\User;
 use Spatie\QueueableAction\QueueableAction;
+
+// use DutchCodingCompany\FilamentSocialite\FilamentSocialite;
 
 class RegisterSocialiteUserAction
 {
@@ -22,14 +22,25 @@ class RegisterSocialiteUserAction
 
     /**
      * Execute the action.
-     *
-     * @return RedirectResponse
      */
-    public function execute(string $provider, SocialiteUserContract $oauthUser, User $user)
+    public function execute(string $provider, SocialiteUserContract $oauthUser, Authenticatable $user)
     {
-        // Create a socialite user
-        // $socialiteUser = app()->call($this->socialite->getCreateSocialiteUserCallback(), ['provider' => $provider, 'oauthUser' => $oauthUser, 'user' => $user, 'socialite' => $this->socialite]);
-        $socialiteUser = app(CreateSocialiteUserAction::class)->execute(provider: $provider, oauthUser: $oauthUser, user: $user);
+        // Create a new SocialiteUser instance
+        $socialiteUser = app(CreateSocialiteUserAction::class)
+            ->execute(
+                provider: $provider,
+                oauthUser: $oauthUser,
+                user: $user,
+            );
+
+        // Assign default roles to user, if needed
+        app(
+            SetDefaultRolesBySocialiteUserAction::class,
+            [
+                'provider' => $provider,
+                'userModel' => $user,
+            ]
+        )->execute(userModel: $user, oauthUser: $oauthUser);
 
         // Dispatch the socialite user connected event
         SocialiteUserConnected::dispatch($socialiteUser);

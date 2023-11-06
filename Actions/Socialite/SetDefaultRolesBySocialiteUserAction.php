@@ -60,15 +60,15 @@ class SetDefaultRolesBySocialiteUserAction
             : (array) config("services.{$this->provider}.email_domains.client.role_names_search");
 
         $rolesToSet = Role::query()
-                ->where(
-                    function (Builder $query) use ($defaultRoleNames) {
-                        foreach ($defaultRoleNames as $roleName) {
-                            $query->orWhere('name', 'LIKE', $roleName);
-                        }
+            ->where(
+                function (Builder $query) use ($defaultRoleNames) {
+                    foreach ($defaultRoleNames as $roleName) {
+                        $query->orWhere('name', 'LIKE', $roleName);
                     }
-                )
-                ->where('guard_name', '=', $this->defaultUserGuard)
-                ->get();
+                }
+            )
+            ->where('guard_name', '=', $this->defaultUserGuard)
+            ->get();
 
         $userModel->assignRole($rolesToSet);
     }

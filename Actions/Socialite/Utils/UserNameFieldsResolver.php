@@ -15,6 +15,7 @@ final class UserNameFieldsResolver
     private const SURNAME_SEARCH = 'after';
 
     public readonly ?string $name;
+
     public readonly ?string $surname;
 
     private function __construct(User $user)
@@ -39,7 +40,7 @@ final class UserNameFieldsResolver
     }
 
     /**
-     * @param string $searchMethod use self constants (NAME_SEARCH, SURNAME_SEARCH)
+     * @param  string  $searchMethod use self constants (NAME_SEARCH, SURNAME_SEARCH)
      */
     private function resolveNameFields(User $idpUser, string $searchMethod): string
     {

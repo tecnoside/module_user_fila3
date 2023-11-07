@@ -50,7 +50,7 @@ trait ProcessesExport
 
     public function updateExportProgress(): void
     {
-        if (null !== $this->exportBatch) {
+        if ($this->exportBatch !== null) {
             $this->exportProgress = $this->exportBatch->progress();
         }
     }

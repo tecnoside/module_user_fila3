@@ -235,7 +235,7 @@ class RoleResource extends XotBaseResource
                 ->label(FilamentShield::getLocalizedResourcePermissionLabel($permission))
                 ->extraAttributes(['class' => 'text-primary-600'])
                 ->afterStateHydrated(static function (Set $set, Get $get, $record) use ($entity, $permission): void {
-                    if (null === $record) {
+                    if ($record === null) {
                         return;
                     }
 
@@ -256,9 +256,8 @@ class RoleResource extends XotBaseResource
                 ->dehydrated(static fn ($state): bool => $state);
 
             return $permissions;
-        }, collect())
-            // ->toArray()
-        ;
+        }, collect());
+        // ->toArray()
     }
 
     /*
@@ -326,11 +325,11 @@ class RoleResource extends XotBaseResource
                 return (bool) $get($entity);
             });
 
-        if (false === $entitiesStates->containsStrict(false)) {
+        if ($entitiesStates->containsStrict(false) === false) {
             $set('select_all', true);
         }
 
-        if (true === $entitiesStates->containsStrict(false)) {
+        if ($entitiesStates->containsStrict(false) === true) {
             $set('select_all', false);
         }
     }
@@ -448,7 +447,7 @@ class RoleResource extends XotBaseResource
                         ->label(Str::of($customPermission)->headline())
                         ->inline()
                         ->afterStateHydrated(static function (Set $set, Get $get, $record) use ($customPermission): void {
-                            if (null === $record) {
+                            if ($record === null) {
                                 return;
                             }
 

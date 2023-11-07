@@ -29,6 +29,7 @@ use Modules\User\Exceptions\ProviderNotConfigured;
 use Modules\User\Models\SocialiteUser;
 use Modules\User\Models\User;
 use Modules\Xot\Datas\XotData;
+use Webmozart\Assert\Assert;
 
 class LoginController extends Controller
 {
@@ -71,7 +72,9 @@ class LoginController extends Controller
     protected function redirectToLogin(string $message): RedirectResponse
     {
         // Redirect back to the login route with an error message attached
-        return to_route(config('filament-socialite.login_page_route', 'filament.auth.login'))
+        Assert::string($route_name = config('filament-socialite.login_page_route', 'filament.auth.login'));
+
+        return to_route($route_name)
             ->withErrors([
                 'email' => [
                     __($message),

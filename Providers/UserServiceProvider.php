@@ -8,9 +8,7 @@ declare(strict_types=1);
 namespace Modules\User\Providers;
 
 use Laravel\Passport\Passport;
-use Modules\User\Console\Commands\AssignModuleCommand;
-use Modules\User\Console\Commands\AssignRoleCommand;
-use Modules\User\Console\Commands\AssignTeamCommand;
+use Modules\User\Console\Commands;
 use Modules\User\Models\OauthAccessToken;
 use Modules\User\Models\OauthAuthCode;
 use Modules\User\Models\OauthClient;
@@ -31,9 +29,10 @@ class UserServiceProvider extends XotBaseServiceProvider
         $this->registerAuthenticationProviders();
         $this->registerEventListener();
         $this->commands([
-            AssignModuleCommand::class,
-            AssignRoleCommand::class,
-            AssignTeamCommand::class,
+            Commands\AssignModuleCommand::class,
+            Commands\AssignRoleCommand::class,
+            Commands\AssignTeamCommand::class,
+            Commands\SuperAdminCommand::class,
         ]);
     }
 

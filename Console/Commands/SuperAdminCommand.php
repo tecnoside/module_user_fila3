@@ -5,30 +5,31 @@ declare(strict_types=1);
 namespace Modules\User\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Str;
 
-use function Laravel\Prompts\multiselect;
 use function Laravel\Prompts\text;
 
+use Modules\User\Models\Role;
 use Modules\User\Models\User;
-use Modules\Xot\Datas\XotData;
+use Nwidart\Modules\Facades\Module;
 use Symfony\Component\Console\Input\InputOption;
 use Webmozart\Assert\Assert;
 
-class AssignTeamCommand extends Command
+class SuperAdminCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $name = 'user:assign-team';
+    protected $name = 'user:super-admin';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Assign a team to user';
+    protected $description = 'Assign super-admin to user';
 
     /**
      * Create a new command instance.
@@ -47,31 +48,17 @@ class AssignTeamCommand extends Command
     {
         $email = text('email ?');
         Assert::notNull($user = User::firstWhere(['email' => $email]));
-        $xot = XotData::make();
-        $teamClass = $xot->getTeamClass();
 
-        $opts = $teamClass::all()->pluck('name', 'id');
-
-        $rows = multiselect(
-            label: 'What teams',
-            options: $opts,
-            required: true,
-            scroll: 10,
-            // validate: function (array $values) {
-            //  return ! \in_array(\count($values), [1, 2], true)
-            //    ? 'A maximum of two'
-            //  : null;
-            // }
-        );
-
-        $user->teams()->sync($rows);
-        /*
-        foreach ($rows as $row) {
-            $role = Role::firstOrCreate(['name' => $row]);
+        $role = Role::firstOrCreate(['name' => 'super-admin']);
+        $user->assignRole($role);
+        $modules_opts = array_keys(Module::all());
+        foreach ($modules_opts as $module) {
+            $role_name = Str::lower($module).'::admin';
+            $role = Role::firstOrCreate(['name' => $role_name]);
             $user->assignRole($role);
         }
-        */
-        $this->info(implode(', ', $rows).' assigned to '.$email);
+
+        $this->info('super-admin assigned to '.$email);
     }
 
     /**

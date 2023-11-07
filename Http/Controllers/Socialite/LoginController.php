@@ -178,7 +178,7 @@ class LoginController extends Controller
         return $this->loginUser($socialiteUser);
     }
 
-    public function processCallback(string $provider)
+    public function processCallback(string $provider): Redirector|RedirectResponse
     {
         // See if provider exists
         if (! app(IsProviderConfiguredAction::class)->execute($provider)) {

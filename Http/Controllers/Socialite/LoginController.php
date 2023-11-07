@@ -103,7 +103,7 @@ class LoginController extends Controller
     }
 
     /**
-     * Undocumented function
+     * Undocumented function.
      */
     protected function loginUser(SocialiteUser $socialiteUser): Redirector|RedirectResponse
     {

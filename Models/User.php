@@ -8,32 +8,30 @@ namespace Modules\User\Models;
 // use Laravel\Sanctum\HasApiTokens;
 use Eloquent;
 use Filament\Panel;
-use Laravel\Passport\Token;
-use Illuminate\Support\Carbon;
-use Modules\Xot\Datas\XotData;
-use Modules\User\Models\Device;
-use Modules\EWall\Models\Profile;
-use Laravel\Passport\HasApiTokens;
-use Modules\User\Models\DeviceUser;
-use Modules\Egea\Models\MobileDevice;
-use Spatie\Permission\Traits\HasRoles;
-use Modules\Notify\Models\Notification;
-use Modules\Xot\Contracts\UserContract;
-use Illuminate\Notifications\Notifiable;
-use Modules\User\Models\Traits\HasTeams;
 use Illuminate\Database\Eloquent\Builder;
-use Modules\Egea\Models\MobileDeviceUser;
 use Illuminate\Database\Eloquent\Collection;
-use Modules\User\Database\Factories\UserFactory;
-use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Notifications\DatabaseNotificationCollection;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Carbon;
+use Laravel\Passport\HasApiTokens;
+use Laravel\Passport\Token;
+use Modules\Egea\Models\MobileDevice;
+use Modules\Egea\Models\MobileDeviceUser;
+use Modules\EWall\Models\Profile;
+use Modules\Notify\Models\Notification;
+use Modules\User\Database\Factories\UserFactory;
+use Modules\User\Models\Traits\HasTeams;
+use Modules\Xot\Contracts\UserContract;
+use Modules\Xot\Datas\XotData;
+use Spatie\Permission\Traits\HasRoles;
 
 /**
  * Modules\User\Models\User.
@@ -228,10 +226,10 @@ class User extends Authenticatable implements UserContract
 
     public function Devices(): BelongsToMany
     {
-        $pivot_class=DeviceUser::class;
-        $pivot=app($pivot_class);
-        $pivot_fields=$pivot->getFillable();
-        
+        $pivot_class = DeviceUser::class;
+        $pivot = app($pivot_class);
+        $pivot_fields = $pivot->getFillable();
+
         return $this
             ->belongsToMany(Device::class)
             ->using($pivot_class)

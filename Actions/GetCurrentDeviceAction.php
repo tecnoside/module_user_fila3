@@ -10,10 +10,7 @@ namespace Modules\User\Actions;
 // use DutchCodingCompany\FilamentSocialite\FilamentSocialite;
 use Jenssegers\Agent\Agent;
 use Modules\User\Models\Device;
-use Modules\User\Models\SocialiteUser;
-use Modules\Xot\Contracts\UserContract;
 use Spatie\QueueableAction\QueueableAction;
-use Laravel\Socialite\Contracts\User as SocialiteUserContract;
 
 class GetCurrentDeviceAction
 {
@@ -22,28 +19,29 @@ class GetCurrentDeviceAction
     /**
      * Execute the action.
      */
-    public function execute():Device{
+    public function execute(): Device
+    {
         $agent = new Agent();
 
-        $data=[
-            'device'=> $agent->device(),
-            'platform'=> $agent->platform(),
+        $data = [
+            'device' => $agent->device(),
+            'platform' => $agent->platform(),
             'browser' => $agent->browser(),
-            //'version' => $agent->version($agent->browser()),
+            // 'version' => $agent->version($agent->browser()),
             'is_desktop' => $agent->isDesktop(),
             'is_mobile' => $agent->isMobile(),
             'is_tablet' => $agent->isTablet(),
             'is_phone' => $agent->isPhone(),
             'is_robot' => $agent->isRobot(),
-            //'robot' => $agent->robot(),
+            // 'robot' => $agent->robot(),
         ];
-        $up=[
+        $up = [
             'version' => $agent->version($agent->browser()),
             'robot' => $agent->robot(),
         ];
-        $device=Device::firstOrCreate($data);
+        $device = Device::firstOrCreate($data);
         $device->update($up);
-        return $device;
 
+        return $device;
     }
 }

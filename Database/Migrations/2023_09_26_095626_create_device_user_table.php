@@ -1,10 +1,10 @@
 <?php
 
-use Modules\Xot\Datas\XotData;
-use Illuminate\Support\Facades\Schema;
+declare(strict_types=1);
+
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Database\Migrations\Migration;
 use Modules\Xot\Database\Migrations\XotBaseMigration;
+use Modules\Xot\Datas\XotData;
 
 class CreateDeviceUserTable extends XotBaseMigration
 {
@@ -19,16 +19,16 @@ class CreateDeviceUserTable extends XotBaseMigration
         $userClass = $xot->getUserClass();
         // -- CREATE --
         $this->tableCreate(
-            function (Blueprint $table) use ($userClass) {
+            function (Blueprint $table) {
                 $table->id();
-                $table->string('device_id',36)->nullable()->index();
-                $table->string('user_id',36)->nullable()->index();
+                $table->string('device_id', 36)->nullable()->index();
+                $table->string('user_id', 36)->nullable()->index();
                 $table->dateTime('login_at')->nullable();
                 $table->dateTime('logout_at')->nullable();
             }
         );
-         // -- UPDATE --
-         $this->tableUpdate(
+        // -- UPDATE --
+        $this->tableUpdate(
             function (Blueprint $table) {
                 // if (! $this->hasColumn('email')) {
                 //    $table->string('email')->nullable();
@@ -37,6 +37,4 @@ class CreateDeviceUserTable extends XotBaseMigration
             }
         );
     }
-
-    
-};
+}

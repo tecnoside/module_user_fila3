@@ -52,7 +52,7 @@ abstract class BasePivot extends Pivot
      * @var array<string, string>
      */
     protected $casts = [
-        'created_at' => 'datetime', 
+        'created_at' => 'datetime',
         'updated_at' => 'datetime',
         'deleted_at' => 'datetime',
     ];

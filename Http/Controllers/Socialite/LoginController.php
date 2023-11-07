@@ -7,12 +7,13 @@ namespace Modules\User\Http\Controllers\Socialite;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Controller;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Laravel\Socialite\Contracts\User as SocialiteUserContract;
 use Laravel\Socialite\Facades\Socialite;
-use Laravel\Socialite\Two\InvalidStateException;
 // use DutchCodingCompany\FilamentSocialite\FilamentSocialite;
+use Laravel\Socialite\Two\InvalidStateException;
 use Modules\User\Actions\Socialite\GetDomainAllowListAction;
 use Modules\User\Actions\Socialite\GetGuardAction;
 use Modules\User\Actions\Socialite\GetLoginRedirectRouteAction;
@@ -92,7 +93,7 @@ class LoginController extends Controller
         }
 
         // Get the domain of the email for the specified user
-        $emailDomain = Str::of($user->getEmail())
+        $emailDomain = Str::of((string) $user->getEmail())
             ->afterLast('@')
             ->lower()
             ->__toString();
@@ -101,11 +102,15 @@ class LoginController extends Controller
         return \in_array($emailDomain, $domains, true);
     }
 
-    protected function loginUser(SocialiteUser $socialiteUser)
+    /**
+     * Undocumented function
+     */
+    protected function loginUser(SocialiteUser $socialiteUser): Redirector|RedirectResponse
     {
         $guard = app(GetGuardAction::class)->execute();
+        Assert::boolean($remember_me = config('filament-socialite.remember_login', false));
         // Log the user in
-        $guard->login($socialiteUser->user, config('filament-socialite.remember_login', false));
+        $guard->login($socialiteUser->user, $remember_me);
 
         // Dispatch the login event
         Login::dispatch($socialiteUser);

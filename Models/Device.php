@@ -13,6 +13,7 @@ class Device extends BaseModel
      */
     protected $fillable = [
         'id',
+        'mobile_id',
         'languages', // ['en-us', 'en'] ;
         'device', // "Macintosh"
         'platform', // "OS X"

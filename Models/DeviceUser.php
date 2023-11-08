@@ -17,6 +17,8 @@ class DeviceUser extends BasePivot
         'user_id',
         'login_at',
         'logout_at',
+        'push_notifications_token',
+        'push_notifications_enabled',
     ];
 
     /**

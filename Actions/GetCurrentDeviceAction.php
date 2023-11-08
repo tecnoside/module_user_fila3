@@ -42,7 +42,7 @@ class GetCurrentDeviceAction
         if (null != $mobile_id) {
             $device = Device::firstOrCreate(['mobile_id' => $mobile_id]);
             $device->update(array_merge($data, $up));
-            dddx($device);
+            
 
             return $device;
         }

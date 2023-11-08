@@ -3,11 +3,11 @@
 declare(strict_types=1);
 
 return [
-    'login-via' => 'Or log in via',
+    'login-via' => 'Accedi con',
 
-    'login-failed' => 'Login failed, please try again.',
+    'login-failed' => 'Login fallito, riprova.',
 
-    'user-not-allowed' => 'Your email is not part of a domain that is allowed.',
+    'user-not-allowed' => 'La tua email non appartiene ad un dominio valido.',
 
-    'registration-not-enabled' => 'Registration of a new user is not allowed.',
+    'registration-not-enabled' => 'Non è possibile registrare un nuovo utente.',
 ];

@@ -18,7 +18,7 @@ final class UserNameFieldsResolver
 
     public readonly ?string $surname;
 
-    private function __construct(User $user)
+    public function __construct(User $user)
     {
         $this->name = $this->resolveName($user);
         $this->surname = $this->resolveSurname($user);
@@ -49,7 +49,7 @@ final class UserNameFieldsResolver
         $nameSection = $this->resolveNameFieldByNameAttributeAnalysis($idpUser->getName(), $searchMethod);
 
         if ($nameSection->isNotEmpty()) {
-            return $nameSection;
+            return (string) $nameSection;
         }
 
         // If the section was empty, try the "hard way"
@@ -63,7 +63,7 @@ final class UserNameFieldsResolver
             $nameSection->isNotEmpty()
             && ! filter_var((string) $nameSection, FILTER_VALIDATE_EMAIL)
         ) {
-            return $nameSection;
+            return (string) $nameSection;
         }
 
         // If both sections were empty, try the "hardest way"

@@ -7,6 +7,7 @@ namespace Modules\User\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 // use Laravel\Sanctum\HasApiTokens;
 use Eloquent;
+use Filament\Models\Contracts\HasName;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
@@ -98,7 +99,7 @@ use Spatie\Permission\Traits\HasRoles;
  *
  * @mixin Eloquent
  */
-class User extends Authenticatable implements UserContract
+class User extends Authenticatable implements UserContract, HasName
 {
     /* , HasAvatar, UserJetContract, ExportsPersonalData */
     /* , HasTeamsContract */
@@ -186,6 +187,15 @@ class User extends Authenticatable implements UserContract
     {
         // return $this->role_id === Role::ROLE_ADMINISTRATOR;
         return true;
+    }
+
+    public function getFilamentName(): string
+    {
+        return sprintf(
+            "%s %s",
+            $this->name,
+            $this->surname,
+        );
     }
 
     public function profile(): HasOne

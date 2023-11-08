@@ -23,8 +23,8 @@ class GetUserModelAttributesFromSocialiteAction
         private readonly SocialiteUserContract $oauthUser,
     ) {
         $nameFieldsResolver = app(UserNameFieldsResolver::class, ['user' => $this->oauthUser]);
-        $this->name = $nameFieldsResolver->getName();
-        $this->surname = $nameFieldsResolver->getSurname();
+        $this->name = $nameFieldsResolver->name;
+        $this->surname = $nameFieldsResolver->surname;
         $this->email = $this->oauthUser->getEmail();
     }
 }

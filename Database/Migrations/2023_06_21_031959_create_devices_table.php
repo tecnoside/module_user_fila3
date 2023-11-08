@@ -17,15 +17,6 @@ class CreateDevicesTable extends XotBaseMigration
         // -- CREATE --
         $this->tableCreate(
             function (Blueprint $table) {
-<<<<<<< HEAD
-                $table->id();
-                // $table->foreignId('user_id')->nullable()->index();
-                $table->string('mobile_id')->nullable();
-                $table->string('device')->nullable();
-                $table->string('platform')->nullable();
-                $table->string('browser')->nullable();
-                $table->string('version')->nullable();
-=======
                 $table->id('id');
                 $table->string('mobile_id')->nullable()->index();
                 // 'id',
@@ -36,16 +27,10 @@ class CreateDevicesTable extends XotBaseMigration
                 $table->string('version')->nullable(); // $agent->version($browser)
                 $table->boolean('is_robot')->nullable(); // bool
                 $table->string('robot')->nullable(); // the robot name
->>>>>>> 818057d (up)
                 $table->boolean('is_desktop')->nullable();
                 $table->boolean('is_mobile')->nullable();
                 $table->boolean('is_tablet')->nullable();
                 $table->boolean('is_phone')->nullable();
-<<<<<<< HEAD
-                $table->boolean('is_robot')->nullable();
-                $table->string('robot')->nullable();
-=======
->>>>>>> 818057d (up)
             });
 
         // -- UPDATE --

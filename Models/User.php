@@ -99,7 +99,7 @@ use Spatie\Permission\Traits\HasRoles;
  *
  * @mixin Eloquent
  */
-class User extends Authenticatable implements UserContract, HasName
+class User extends Authenticatable implements HasName, UserContract
 {
     /* , HasAvatar, UserJetContract, ExportsPersonalData */
     /* , HasTeamsContract */
@@ -207,7 +207,7 @@ class User extends Authenticatable implements UserContract, HasName
 
     public function canAccessPanel(Panel $panel): bool
     {
-        if ('admin' !== $panel->getId()) {
+        if ($panel->getId() !== 'admin') {
             $role = $panel->getId();
             /*
             $xot = XotData::make();

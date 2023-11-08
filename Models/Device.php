@@ -6,15 +6,6 @@ namespace Modules\User\Models;
 
 class Device extends BaseModel
 {
-<<<<<<< HEAD
-    protected $fillable = [
-        'id',
-        'mobile_id',
-        'device',
-        'platform',
-        'browser',
-        'version',
-=======
     /**
      * Undocumented variable.
      *
@@ -29,15 +20,10 @@ class Device extends BaseModel
         'version', // $agent->version($browser)
         'is_robot', // bool
         'robot', // the robot name
->>>>>>> 818057d (up)
         'is_desktop',
         'is_mobile',
         'is_tablet',
         'is_phone',
-<<<<<<< HEAD
-        'is_robot',
-        'robot',
-=======
     ];
 
     /**
@@ -46,6 +32,5 @@ class Device extends BaseModel
     protected $casts = [
         // 'id' => 'string',
         'locales' => 'array',
->>>>>>> 818057d (up)
     ];
 }

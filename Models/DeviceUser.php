@@ -9,7 +9,7 @@ class DeviceUser extends BasePivot
     /**
      * Undocumented variable.
      *
-     * @var array
+     * @var array<string>
      */
     protected $fillable = [
         'id',

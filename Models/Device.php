@@ -9,7 +9,7 @@ class Device extends BaseModel
     /**
      * Undocumented variable.
      *
-     * @var array
+     * @var array<string>
      */
     protected $fillable = [
         'id',

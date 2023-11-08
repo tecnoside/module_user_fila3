@@ -75,6 +75,9 @@ abstract class BaseMorphPivot extends MorphPivot
         'note',
     ];
 
+    /**
+     * @var array<string, string>
+     */
     protected $casts = ['created_at' => 'datetime', 'updated_at' => 'datetime',
         'deleted_at' => 'datetime',
     ];

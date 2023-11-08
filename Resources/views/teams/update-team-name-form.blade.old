@@ -1,4 +1,4 @@
-<x-form-section submit="updateTeamName">
+<form submit="updateTeamName">
     <x-slot name="title">
         {{ __('Team Name') }}
     </x-slot>
@@ -10,7 +10,7 @@
     <x-slot name="form">
         <!-- Team Owner Information -->
         <div class="col-span-6">
-            <x-label value="{{ __('Team Owner') }}" />
+            <x-filament-forms::field-wrapper.label value="{{ __('Team Owner') }}" />
 
             <div class="flex items-center mt-2">
                 <img class="w-12 h-12 rounded-full object-cover" src="{{ $team->owner->profile_photo_url }}" alt="{{ $team->owner->name }}">
@@ -24,7 +24,7 @@
 
         <!-- Team Name -->
         <div class="col-span-6 sm:col-span-4">
-            <x-label for="name" value="{{ __('Team Name') }}" />
+            <x-filament-forms::field-wrapper.label for="name" value="{{ __('Team Name') }}" />
 
             <x-input id="name"
                         type="text"
@@ -32,7 +32,7 @@
                         wire:model.defer="state.name"
                         :disabled="! Gate::check('update', $team)" />
 
-            <x-input-error for="name" class="mt-2" />
+            <x-filament-forms::field-wrapper.hint for="name" class="mt-2" />
         </div>
     </x-slot>
 
@@ -47,4 +47,4 @@
             </x-filament::button>
         </x-slot>
     @endif
-</x-form-section>
+</form>

@@ -1,6 +1,6 @@
 <div>
     <!-- Generate API Token -->
-    <x-form-section submit="createApiToken">
+    <form submit="createApiToken">
         <x-slot name="title">
             {{ __('Create API Token') }}
         </x-slot>
@@ -12,20 +12,20 @@
         <x-slot name="form">
             <!-- Token Name -->
             <div class="col-span-6 sm:col-span-4">
-                <x-label for="name" value="{{ __('Token Name') }}" />
+                <x-filament-forms::field-wrapper.label for="name" value="{{ __('Token Name') }}" />
                 <x-input id="name" type="text" class="mt-1 block w-full" wire:model.defer="createApiTokenForm.name" autofocus />
-                <x-input-error for="name" class="mt-2" />
+                <x-filament-forms::field-wrapper.hint for="name" class="mt-2" />
             </div>
 
             <!-- Token Permissions -->
             @if (Laravel\Jetstream\Jetstream::hasPermissions())
                 <div class="col-span-6">
-                    <x-label for="permissions" value="{{ __('Permissions') }}" />
+                    <x-filament-forms::field-wrapper.label for="permissions" value="{{ __('Permissions') }}" />
 
                     <div class="mt-2 grid grid-cols-1 md:grid-cols-2 gap-4">
                         @foreach (Laravel\Jetstream\Jetstream::$permissions as $permission)
-                            <label class="flex items-center">
-                                <x-checkbox wire:model.defer="createApiTokenForm.permissions" :value="$permission"/>
+                            <x-filament-forms::field-wrapper.label class="flex items-center">
+                                <x-filament::input.checkbox wire:model.defer="createApiTokenForm.permissions" :value="$permission"/>
                                 <span class="ml-2 text-sm text-gray-600">{{ $permission }}</span>
                             </label>
                         @endforeach
@@ -43,10 +43,10 @@
                 {{ __('Create') }}
             </x-filament::button>
         </x-slot>
-    </x-form-section>
+    </form>
 
     @if ($this->user->tokens->isNotEmpty())
-        <x-section-border />
+        <hr/>
 
         <!-- Manage API Tokens -->
         <div class="mt-10 sm:mt-0">
@@ -127,8 +127,8 @@
         <x-slot name="content">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 @foreach (Laravel\Jetstream\Jetstream::$permissions as $permission)
-                    <label class="flex items-center">
-                        <x-checkbox wire:model.defer="updateApiTokenForm.permissions" :value="$permission"/>
+                    <x-filament-forms::field-wrapper.label class="flex items-center">
+                        <x-filament::input.checkbox wire:model.defer="updateApiTokenForm.permissions" :value="$permission"/>
                         <span class="ml-2 text-sm text-gray-600">{{ $permission }}</span>
                     </label>
                 @endforeach

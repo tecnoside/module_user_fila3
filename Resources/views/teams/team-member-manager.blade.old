@@ -1,10 +1,10 @@
 <div>
     @if (Gate::check('addTeamMember', $team))
-        <x-section-border />
+        <hr/>
 
         <!-- Add Team Member -->
         <div class="mt-10 sm:mt-0">
-            <x-form-section submit="addTeamMember">
+            <form submit="addTeamMember">
                 <x-slot name="title">
                     {{ __('Add Team Member') }}
                 </x-slot>
@@ -22,16 +22,16 @@
 
                     <!-- Member Email -->
                     <div class="col-span-6 sm:col-span-4">
-                        <x-label for="email" value="{{ __('Email') }}" />
+                        <x-filament-forms::field-wrapper.label for="email" value="{{ __('Email') }}" />
                         <x-input id="email" type="email" class="mt-1 block w-full" wire:model.defer="addTeamMemberForm.email" />
-                        <x-input-error for="email" class="mt-2" />
+                        <x-filament-forms::field-wrapper.hint for="email" class="mt-2" />
                     </div>
 
                     <!-- Role -->
                     @if (count($this->roles) > 0)
                         <div class="col-span-6 lg:col-span-4">
-                            <x-label for="role" value="{{ __('Role') }}" />
-                            <x-input-error for="role" class="mt-2" />
+                            <x-filament-forms::field-wrapper.label for="role" value="{{ __('Role') }}" />
+                            <x-filament-forms::field-wrapper.hint for="role" class="mt-2" />
 
                             <div class="relative z-0 mt-1 border border-gray-200 rounded-lg cursor-pointer">
                                 @foreach ($this->roles as $index => $role)
@@ -72,12 +72,12 @@
                         {{ __('Add') }}
                     </x-filament::button>
                 </x-slot>
-            </x-form-section>
+            </form>
         </div>
     @endif
 
     @if ($team->teamInvitations->isNotEmpty() && Gate::check('addTeamMember', $team))
-        <x-section-border />
+        <hr/>
 
         <!-- Team Member Invitations -->
         <div class="mt-10 sm:mt-0">
@@ -114,7 +114,7 @@
     @endif
 
     @if ($team->users->isNotEmpty())
-        <x-section-border />
+        <hr/>
 
         <!-- Manage Team Members -->
         <div class="mt-10 sm:mt-0">

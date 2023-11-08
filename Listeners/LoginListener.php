@@ -31,7 +31,7 @@ class LoginListener
         $user = $event->user;
         // $user->devices()->syncWithoutDetaching($device->id,['login_at'=>now(),'logout_at'=>null]);
         // $res= $user->devices()->syncWithPivotValues($device->id,['login_at'=>now(),'logout_at'=>null]);
-        $pivot = DeviceUser::firstOrCreate(['user_id' => $user->id, 'device_id' => $device->id]);
+        $pivot = DeviceUser::firstOrCreate(['user_id' => $user->getAuthIdentifier(), 'device_id' => $device->id]);
         $pivot->update(['login_at' => now(), 'logout_at' => null]);
     }
 }

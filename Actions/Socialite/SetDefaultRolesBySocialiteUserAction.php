@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Laravel\Socialite\Contracts\User as SocialiteUserContract;
 use Modules\User\Actions\Socialite\Utils\EmailDomainAnalyzer;
 use Modules\User\Models\Role;
+use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Datas\XotData;
 use Spatie\Permission\Guard;
 use Spatie\QueueableAction\QueueableAction;
@@ -36,7 +37,7 @@ class SetDefaultRolesBySocialiteUserAction
         );
     }
 
-    public function execute(Model $userModel, SocialiteUserContract $oauthUser): void
+    public function execute(UserContract $userModel, SocialiteUserContract $oauthUser): void
     {
         $this->domainAnalyzer->setUser($oauthUser);
 

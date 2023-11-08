@@ -19,12 +19,11 @@ class GetCurrentDeviceAction
     /**
      * Execute the action.
      */
-    public function execute(string $mobile_id=null): Device
+    public function execute(string $mobile_id = null): Device
     {
         $agent = new Agent();
 
         $data = [
-            
             'device' => $agent->device(),
             'platform' => $agent->platform(),
             'browser' => $agent->browser(),
@@ -40,9 +39,10 @@ class GetCurrentDeviceAction
             'version' => $agent->version($agent->browser()),
             'robot' => $agent->robot(),
         ];
-        if($mobile_id!=null){
-            $device = Device::firstOrCreate(['mobile_id'=>$mobile_id]);    
-            $device->update(array_merge($data,$up));
+        if (null != $mobile_id) {
+            $device = Device::firstOrCreate(['mobile_id' => $mobile_id]);
+            $device->update(array_merge($data, $up));
+
             return $device;
         }
 

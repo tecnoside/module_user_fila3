@@ -35,7 +35,7 @@ class CreateDeviceUserTable extends XotBaseMigration
                 if (! $this->hasColumn('push_notifications_enabled')) {
                     $table->boolean('push_notifications_enabled')->nullable();
                 }
-                
+
                 $this->updateTimestamps($table);
             }
         );

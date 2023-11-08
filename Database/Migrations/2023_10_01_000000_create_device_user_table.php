@@ -29,9 +29,13 @@ class CreateDeviceUserTable extends XotBaseMigration
         // -- UPDATE --
         $this->tableUpdate(
             function (Blueprint $table) {
-                // if (! $this->hasColumn('email')) {
-                //    $table->string('email')->nullable();
-                // }
+                if (! $this->hasColumn('push_notifications_token')) {
+                    $table->string('push_notifications_token')->nullable();
+                }
+                if (! $this->hasColumn('push_notifications_enabled')) {
+                    $table->boolean('push_notifications_enabled')->nullable();
+                }
+                
                 $this->updateTimestamps($table);
             }
         );

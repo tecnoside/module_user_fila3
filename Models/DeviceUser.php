@@ -32,5 +32,7 @@ class DeviceUser extends BasePivot
         'device_id' => 'string',
         // 'id' => 'string',
         // 'locales' => 'array',
+        'push_notifications_token'=>'string',
+        'push_notifications_enabled'=>'boolean'
     ];
 }

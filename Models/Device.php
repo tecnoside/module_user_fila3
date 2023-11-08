@@ -13,7 +13,7 @@ class Device extends BaseModel
      */
     protected $fillable = [
         'id',
-        'mobile_id',
+        'mobile_id', //mattia
         'languages', // ['en-us', 'en'] ;
         'device', // "Macintosh"
         'platform', // "OS X"
@@ -32,6 +32,7 @@ class Device extends BaseModel
      */
     protected $casts = [
         // 'id' => 'string',
-        'locales' => 'array',
+        //'locales' => 'array',
+        'languages'=> 'array',
     ];
 }

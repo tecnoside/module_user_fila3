@@ -20,8 +20,8 @@ abstract class BaseUuidModel extends Model
     // use Searchable;
     // //use Cachable;
     use HasFactory;
-    use Updater;
     use HasUuids;
+    use Updater;
 
     /**
      * Indicates whether attributes are snake cased on arrays.
@@ -72,6 +72,7 @@ abstract class BaseUuidModel extends Model
      * @var string
      */
     protected $primaryKey = 'id';
+
     /**
      * Undocumented variable.
      *

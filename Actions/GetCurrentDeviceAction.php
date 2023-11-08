@@ -21,7 +21,7 @@ class GetCurrentDeviceAction
      */
     public function execute(): Device
     {
-        $agent = new Agent();
+        $agent = new Agent;
 
         $data = [
             'device' => $agent->device(),

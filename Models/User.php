@@ -192,7 +192,7 @@ class User extends Authenticatable implements UserContract, HasName
     public function getFilamentName(): string
     {
         return sprintf(
-            "%s %s",
+            '%s %s',
             $this->name,
             $this->surname,
         );

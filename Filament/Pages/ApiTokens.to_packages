@@ -86,6 +86,6 @@ class ApiTokens extends Page
     {
         $this->plainTextToken = explode('|', $token->plainTextToken, 2)[1];
 
-        $this->dispatchBrowserEvent('open-modal', ['id' => 'showing-token-modal']);
+        $this->dispatch('open-modal', ['id' => 'showing-token-modal']);
     }
 }

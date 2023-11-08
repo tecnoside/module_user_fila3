@@ -9,6 +9,7 @@ namespace Modules\User\Actions\Socialite;
 
 // use DutchCodingCompany\FilamentSocialite\FilamentSocialite;
 use Modules\Egea\Models\MobileDeviceUser;
+use Modules\User\Models\DeviceUser;
 use Modules\User\Models\OauthRefreshToken;
 use Modules\Xot\Contracts\UserContract;
 use Spatie\QueueableAction\QueueableAction;
@@ -41,7 +42,11 @@ class LogoutUserAction
             // $user->token()?->delete();
         }
 
+        /*
         MobileDeviceUser::where('user_id', $user->getKey())
+            ->update(['logout_at' => now()]);
+        */
+        DeviceUser::where('user_id', $user->getKey())
             ->update(['logout_at' => now()]);
     }
 }

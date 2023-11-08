@@ -223,8 +223,12 @@ class User extends Authenticatable implements UserContract
             ->withTimestamps();
     }
     */
+<<<<<<< HEAD
 
     public function Devices(): BelongsToMany
+=======
+    public function devices(): BelongsToMany
+>>>>>>> 818057d (up)
     {
         $pivot_class = DeviceUser::class;
         $pivot = app($pivot_class);

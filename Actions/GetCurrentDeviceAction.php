@@ -43,7 +43,6 @@ class GetCurrentDeviceAction
             $device = Device::firstOrCreate(['mobile_id' => $mobile_id]);
             $device->update(array_merge($data, $up));
             
-
             return $device;
         }
 

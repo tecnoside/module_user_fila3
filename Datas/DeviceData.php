@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\Users\Datas;
+namespace Modules\User\Datas;
 
 use Carbon\Carbon;
 use Illuminate\Support\Str;

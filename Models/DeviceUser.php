@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
 class DeviceUser extends BasePivot
 {
     /**
@@ -37,4 +39,9 @@ class DeviceUser extends BasePivot
         'push_notifications_token' => 'string',
         'push_notifications_enabled' => 'boolean',
     ];
+
+    public function device(): BelongsTo
+    {
+        return $this->belongsTo(Device::class);
+    }
 }

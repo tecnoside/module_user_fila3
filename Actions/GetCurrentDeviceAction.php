@@ -36,7 +36,7 @@ class GetCurrentDeviceAction
             // 'robot' => $agent->robot(),
         ];
         $up = [
-            'version' => $agent->version($agent->browser()),
+            'version' => $agent->version((string)$agent->browser()),
             'robot' => $agent->robot(),
         ];
         if (null != $mobile_id) {

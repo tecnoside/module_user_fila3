@@ -47,7 +47,7 @@ class ModelHasRole extends BaseMorphPivot
     /**
      * Undocumented variable.
      *
-     * @var array
+     * @var array<string, string>
      */
     protected $casts = [
         //    'id' => 'string',

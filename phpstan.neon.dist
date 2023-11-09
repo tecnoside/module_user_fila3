@@ -15,12 +15,12 @@ parameters:
         - '#PHPDoc tag @mixin contains unknown class #'
 
     excludePaths:
-        - ./build/*
-        - ./vendor/*
+        - ./*/build/*
         - ./*/vendor/*
-        - ./docs/*
-        - ./Tests/*
-        - ./_ide_helper.php
+        - ./*/docs/*
+        - ./*/Tests/*
+        - ./*/_ide_helper.php
+        #- ./Modules/User/Filament/Resources/RoleResource.php
 
     bootstrapFiles:
     #    - ./Services/vendor/autoload.php

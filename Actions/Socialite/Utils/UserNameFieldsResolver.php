@@ -46,7 +46,8 @@ final class UserNameFieldsResolver
     {
         // Silly way: trying to split name field on first blank space
         // occurrence. If we're lucky, this will be enough.
-        $nameSection = $this->resolveNameFieldByNameAttributeAnalysis($idpUser->getName(), $searchMethod);
+
+        $nameSection = $this->resolveNameFieldByNameAttributeAnalysis((string) $idpUser->getName(), $searchMethod);
 
         if ($nameSection->isNotEmpty()) {
             return (string) $nameSection;
@@ -68,7 +69,7 @@ final class UserNameFieldsResolver
 
         // If both sections were empty, try the "hardest way"
         // by analyzing email address
-        return Str::of($idpUser->getEmail())
+        return Str::of((string)$idpUser->getEmail())
             ->trim()
             ->before('@')
             ->$searchMethod('.') // If no point is available, the whole string should be returned

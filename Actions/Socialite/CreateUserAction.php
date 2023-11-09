@@ -7,10 +7,11 @@ declare(strict_types=1);
 
 namespace Modules\User\Actions\Socialite;
 
+use Modules\Xot\Datas\XotData;
+use Modules\Xot\Contracts\UserContract;
+use Spatie\QueueableAction\QueueableAction;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Laravel\Socialite\Contracts\User as SocialiteUserContract;
-use Modules\Xot\Datas\XotData;
-use Spatie\QueueableAction\QueueableAction;
 
 class CreateUserAction
 {
@@ -19,7 +20,7 @@ class CreateUserAction
     /**
      * Execute the action.
      */
-    public function execute(string $provider, SocialiteUserContract $oauthUser): Authenticatable
+    public function execute(string $provider, SocialiteUserContract $oauthUser): UserContract
     {
         // Resolve `users` table required attributes
         // from the identity provider

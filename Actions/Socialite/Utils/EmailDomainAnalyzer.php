@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Modules\User\Actions\Socialite\Utils;
 
+use Exception;
 use Illuminate\Support\Str;
+use Webmozart\Assert\Assert;
 use Laravel\Socialite\Contracts\User;
 
 final class EmailDomainAnalyzer
@@ -36,7 +38,7 @@ final class EmailDomainAnalyzer
         return Str::of($this->firstPartyDomain())
             ->after('@')
             ->exactly(
-                Str::of($this->ssoUser->getEmail())->after('@'),
+                Str::of((string)$this->ssoUser->getEmail())->after('@'),
             );
     }
 
@@ -51,21 +53,30 @@ final class EmailDomainAnalyzer
         return Str::of($clientEmailDomain)
             ->after('@')
             ->exactly(
-                Str::of($this->ssoUser->getEmail())->after('@'),
+                Str::of((string)$this->ssoUser->getEmail())->after('@'),
             );
     }
 
     private function firstPartyDomain(): string
     {
-        return config("services.{$this->ssoProvider}.email_domains.first_party.tld");
+        Assert::string($res= config("services.{$this->ssoProvider}.email_domains.first_party.tld"));
+        return $res;
     }
 
     private function clientDomain(): ?string
     {
         $domain = config("services.{$this->ssoProvider}.email_domains.client.tld");
-
+        if(is_string($domain)){
+            return $domain;
+        }
+        if(is_null($domain)){
+            return $domain;
+        }
+        throw new Exception('wip');
+        /*
         return empty($domain)
             ? null
             : $domain;
+            */
     }
 }

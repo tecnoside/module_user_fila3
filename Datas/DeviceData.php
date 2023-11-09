@@ -70,7 +70,7 @@ class DeviceData extends Data
 
     public function getSynchronizationId(string $apiName): string
     {
-        if (null !== $this->synchronizationId) {
+        if ($this->synchronizationId !== null) {
             return $this->synchronizationId;
         }
 

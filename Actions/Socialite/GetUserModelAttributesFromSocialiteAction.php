@@ -25,11 +25,11 @@ class GetUserModelAttributesFromSocialiteAction
         $nameFieldsResolver = app(UserNameFieldsResolver::class, ['user' => $this->oauthUser]);
         $this->name = $nameFieldsResolver->name;
         $this->surname = $nameFieldsResolver->surname;
-        $this->email = (string)$this->oauthUser->getEmail();
+        $this->email = (string) $this->oauthUser->getEmail();
     }
 
-
-    public function getProvider():string {
+    public function getProvider(): string
+    {
         return $this->provider;
     }
 }

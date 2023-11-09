@@ -69,7 +69,7 @@ final class UserNameFieldsResolver
 
         // If both sections were empty, try the "hardest way"
         // by analyzing email address
-        return Str::of((string)$idpUser->getEmail())
+        return Str::of((string) $idpUser->getEmail())
             ->trim()
             ->before('@')
             ->$searchMethod('.') // If no point is available, the whole string should be returned

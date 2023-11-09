@@ -4,35 +4,34 @@ declare(strict_types=1);
 
 namespace Modules\User\Http\Controllers\Socialite;
 
-use Illuminate\Support\Str;
-use Webmozart\Assert\Assert;
-use Modules\User\Models\User;
-use Modules\User\Events\Login;
-use Modules\Xot\Datas\XotData;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Controller;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\DB;
-// use DutchCodingCompany\FilamentSocialite\FilamentSocialite;
-use Modules\User\Events\Registered;
-use Illuminate\Http\RedirectResponse;
-use Modules\User\Events\InvalidState;
-use Modules\User\Models\SocialiteUser;
-use Illuminate\Database\Eloquent\Model;
-use Modules\User\Events\UserNotAllowed;
-use Modules\Xot\Contracts\UserContract;
+use Illuminate\Support\Str;
+use Laravel\Socialite\Contracts\User as SocialiteUserContract;
 use Laravel\Socialite\Facades\Socialite;
+use Laravel\Socialite\Two\InvalidStateException;
+// use DutchCodingCompany\FilamentSocialite\FilamentSocialite;
+use Modules\User\Actions\Socialite\CreateSocialiteUserAction;
+use Modules\User\Actions\Socialite\GetDomainAllowListAction;
+use Modules\User\Actions\Socialite\GetGuardAction;
+use Modules\User\Actions\Socialite\GetLoginRedirectRouteAction;
+use Modules\User\Actions\Socialite\GetProviderScopesAction;
+use Modules\User\Actions\Socialite\IsProviderConfiguredAction;
+use Modules\User\Actions\Socialite\IsRegistrationEnabledAction;
+use Modules\User\Events\InvalidState;
+use Modules\User\Events\Login;
+use Modules\User\Events\Registered;
 use Modules\User\Events\RegistrationNotEnabled;
 use Modules\User\Events\SocialiteUserConnected;
-use Laravel\Socialite\Two\InvalidStateException;
-use Modules\User\Actions\Socialite\GetGuardAction;
+use Modules\User\Events\UserNotAllowed;
 use Modules\User\Exceptions\ProviderNotConfigured;
-use Modules\User\Actions\Socialite\GetProviderScopesAction;
-use Modules\User\Actions\Socialite\GetDomainAllowListAction;
-use Modules\User\Actions\Socialite\CreateSocialiteUserAction;
-use Laravel\Socialite\Contracts\User as SocialiteUserContract;
-use Modules\User\Actions\Socialite\IsProviderConfiguredAction;
-use Modules\User\Actions\Socialite\GetLoginRedirectRouteAction;
-use Modules\User\Actions\Socialite\IsRegistrationEnabledAction;
+use Modules\User\Models\SocialiteUser;
+use Modules\User\Models\User;
+use Modules\Xot\Contracts\UserContract;
+use Modules\Xot\Datas\XotData;
+use Webmozart\Assert\Assert;
 
 class LoginController extends Controller
 {
@@ -47,13 +46,14 @@ class LoginController extends Controller
         }
 
         $scopes = App(GetProviderScopesAction::class)->execute($provider);
-        $socialiteProvider=Socialite::with($provider);
-        if(!is_object($socialiteProvider)){
+        $socialiteProvider = Socialite::with($provider);
+        if (! is_object($socialiteProvider)) {
             throw new \Exception('wip');
         }
-        if(!method_exists($socialiteProvider,'scopes')){
+        if (! method_exists($socialiteProvider, 'scopes')) {
             throw new \Exception('wip');
         }
+
         return $socialiteProvider
             ->scopes($scopes)
             ->redirect();
@@ -117,7 +117,7 @@ class LoginController extends Controller
     {
         $guard = app(GetGuardAction::class)->execute();
         Assert::boolean($remember_me = config('filament-socialite.remember_login', false));
-        Assert::isInstanceOf($user=$socialiteUser->user,\Illuminate\Contracts\Auth\Authenticatable::class);
+        Assert::isInstanceOf($user = $socialiteUser->user, \Illuminate\Contracts\Auth\Authenticatable::class);
         // Log the user in
         $guard->login($user, $remember_me);
 
@@ -132,11 +132,11 @@ class LoginController extends Controller
         );
     }
 
-    protected function registerSocialiteUser(string $provider, SocialiteUserContract $oauthUser, UserContract $user):Redirector|RedirectResponse
+    protected function registerSocialiteUser(string $provider, SocialiteUserContract $oauthUser, UserContract $user): Redirector|RedirectResponse
     {
         // Create a socialite user
         // $socialiteUser = app()->call($this->socialite->getCreateSocialiteUserCallback(), ['provider' => $provider, 'oauthUser' => $oauthUser, 'user' => $user, 'socialite' => $this->socialite]);
-        //$socialiteUser = $this->createSocialiteUser(provider: $provider, oauthUser: $oauthUser, user: $user);
+        // $socialiteUser = $this->createSocialiteUser(provider: $provider, oauthUser: $oauthUser, user: $user);
         $socialiteUser = app(CreateSocialiteUserAction::class)->execute(provider: $provider, oauthUser: $oauthUser, user: $user);
         // Dispatch the socialite user connected event
         SocialiteUserConnected::dispatch($socialiteUser);
@@ -156,7 +156,7 @@ class LoginController extends Controller
     }
     */
 
-    public function createUser(SocialiteUserContract $oauthUser):UserContract
+    public function createUser(SocialiteUserContract $oauthUser): UserContract
     {
         $xot = XotData::make();
         $userClass = $xot->getUserClass();
@@ -169,7 +169,7 @@ class LoginController extends Controller
         );
     }
 
-    protected function registerOauthUser(string $provider, SocialiteUserContract $oauthUser):Redirector|RedirectResponse
+    protected function registerOauthUser(string $provider, SocialiteUserContract $oauthUser): Redirector|RedirectResponse
     {
         $socialiteUser = DB::transaction(function () use ($provider, $oauthUser) {
             // Create a user
@@ -177,8 +177,9 @@ class LoginController extends Controller
             $user = $this->createUser(oauthUser: $oauthUser);
             // Create a socialite user
             // return app()->call($this->socialite->getCreateSocialiteUserCallback(), ['provider' => $provider, 'oauthUser' => $oauthUser, 'user' => $user, 'socialite' => $this->socialite]);
-            //$socialiteUser = $this->createSocialiteUser(provider: $provider, oauthUser: $oauthUser, user: $user);
+            // $socialiteUser = $this->createSocialiteUser(provider: $provider, oauthUser: $oauthUser, user: $user);
             $socialiteUser = app(CreateSocialiteUserAction::class)->execute(provider: $provider, oauthUser: $oauthUser, user: $user);
+
             return $socialiteUser;
         });
 

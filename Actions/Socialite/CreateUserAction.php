@@ -7,11 +7,10 @@ declare(strict_types=1);
 
 namespace Modules\User\Actions\Socialite;
 
-use Modules\Xot\Datas\XotData;
-use Modules\Xot\Contracts\UserContract;
-use Spatie\QueueableAction\QueueableAction;
-use Illuminate\Contracts\Auth\Authenticatable;
 use Laravel\Socialite\Contracts\User as SocialiteUserContract;
+use Modules\Xot\Contracts\UserContract;
+use Modules\Xot\Datas\XotData;
+use Spatie\QueueableAction\QueueableAction;
 
 class CreateUserAction
 {

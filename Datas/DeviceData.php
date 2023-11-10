@@ -9,11 +9,11 @@ declare(strict_types=1);
 namespace Modules\User\Datas;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Modules\Egea\Models\Synchronization;
 use Spatie\LaravelData\Data;
 use Webmozart\Assert\Assert;
-use Illuminate\Database\Eloquent\Model;
-use Modules\Egea\Models\Synchronization;
 
 /**
  * Undocumented class.
@@ -72,19 +72,19 @@ class DeviceData extends Data
 
     public function getSynchronizationId(string $apiName): string
     {
-        if ($this->synchronizationId !== null) {
+        if (null !== $this->synchronizationId) {
             return $this->synchronizationId;
         }
-        $synchronizationClass=config('morph_map.synchronization');
-        if($synchronizationClass==null){
-            $synchronizationClass='\Modules\Egea\Models\Synchronization';
+        $synchronizationClass = config('morph_map.synchronization');
+        if (null == $synchronizationClass) {
+            $synchronizationClass = '\Modules\Egea\Models\Synchronization';
         }
-        //fare contract 
-        //Assert::isInstanceOf($synchronizationClass,Model::class);
-        //$synchronization = Synchronization::create([
+        // fare contract
+        // Assert::isInstanceOf($synchronizationClass,Model::class);
+        // $synchronization = Synchronization::create([
         /** @phpstan-ignore-next-line */
-        //$synchronization = $synchronizationClass::create([
-        $synchronization = Synchronization::create([  
+        // $synchronization = $synchronizationClass::create([
+        $synchronization = Synchronization::create([
             'user_id' => auth()->id(),
             'mobile_device_id' => $this->deviceId,
             'application' => $this->application ?? 'No-Set',

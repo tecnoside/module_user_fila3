@@ -147,6 +147,7 @@ class Team extends BaseModel implements TeamContract
      */
     public function removeUser(UserContract $userContract): void
     {
+        /** @phpstan-ignore-next-line */
         if ($userContract->current_team_id === $this->id) {
             $userContract->forceFill([
                 'current_team_id' => null,

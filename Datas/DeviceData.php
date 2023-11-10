@@ -10,8 +10,10 @@ namespace Modules\User\Datas;
 
 use Carbon\Carbon;
 use Illuminate\Support\Str;
-use Modules\Egea\Models\Synchronization;
 use Spatie\LaravelData\Data;
+use Webmozart\Assert\Assert;
+use Illuminate\Database\Eloquent\Model;
+use Modules\Egea\Models\Synchronization;
 
 /**
  * Undocumented class.
@@ -73,8 +75,16 @@ class DeviceData extends Data
         if ($this->synchronizationId !== null) {
             return $this->synchronizationId;
         }
-
-        $synchronization = Synchronization::create([
+        $synchronizationClass=config('morph_map.synchronization');
+        if($synchronizationClass==null){
+            $synchronizationClass='\Modules\Egea\Models\Synchronization';
+        }
+        //fare contract 
+        //Assert::isInstanceOf($synchronizationClass,Model::class);
+        //$synchronization = Synchronization::create([
+        /** @phpstan-ignore-next-line */
+        //$synchronization = $synchronizationClass::create([
+        $synchronization = Synchronization::create([  
             'user_id' => auth()->id(),
             'mobile_device_id' => $this->deviceId,
             'application' => $this->application ?? 'No-Set',

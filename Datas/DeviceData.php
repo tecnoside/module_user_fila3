@@ -83,8 +83,8 @@ class DeviceData extends Data
         // Assert::isInstanceOf($synchronizationClass,Model::class);
         // $synchronization = Synchronization::create([
         /** @phpstan-ignore-next-line */
-        // $synchronization = $synchronizationClass::create([
-        $synchronization = Synchronization::create([
+        $synchronization = $synchronizationClass::create([
+        //$synchronization = Synchronization::create([
             'user_id' => auth()->id(),
             'mobile_device_id' => $this->deviceId,
             'application' => $this->application ?? 'No-Set',

@@ -13,7 +13,9 @@ class GetUserModelAttributesFromSocialiteAction
     use QueueableAction;
 
     public readonly string $name;
+
     public readonly string $first_name;
+
     public readonly string $last_name;
 
     public readonly string $email;

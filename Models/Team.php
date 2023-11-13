@@ -18,13 +18,11 @@ use Modules\Xot\Datas\XotData;
  * Modules\User\Models\Team.
  *
  * @property int                                                                                $id
- * @property string                                                                             $user_id
+ * @property int                                                                                $user_id
  * @property string                                                                             $name
  * @property int                                                                                $personal_team
  * @property Carbon|null                                                                        $created_at
  * @property Carbon|null                                                                        $updated_at
- * @property string|null                                                                        $updated_by
- * @property string|null                                                                        $created_by
  * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\User>           $members
  * @property int|null                                                                           $members_count
  * @property \Modules\User\Models\User|null                                                     $owner
@@ -38,12 +36,10 @@ use Modules\Xot\Datas\XotData;
  * @method static Builder|Team                                 newQuery()
  * @method static Builder|Team                                 query()
  * @method static Builder|Team                                 whereCreatedAt($value)
- * @method static Builder|Team                                 whereCreatedBy($value)
  * @method static Builder|Team                                 whereId($value)
  * @method static Builder|Team                                 whereName($value)
  * @method static Builder|Team                                 wherePersonalTeam($value)
  * @method static Builder|Team                                 whereUpdatedAt($value)
- * @method static Builder|Team                                 whereUpdatedBy($value)
  * @method static Builder|Team                                 whereUserId($value)
  *
  * @mixin \Eloquent

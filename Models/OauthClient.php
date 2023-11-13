@@ -10,7 +10,7 @@ use Laravel\Passport\Client as PassportClient;
 /**
  * Modules\User\Models\OauthClient.
  *
- * @property string                                                                               $uuid
+ * @property string                                                                               $id
  * @property string|null                                                                          $user_id
  * @property string                                                                               $name
  * @property string|null                                                                          $secret
@@ -33,6 +33,7 @@ use Laravel\Passport\Client as PassportClient;
  * @method static \Illuminate\Database\Eloquent\Builder|OauthClient  newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|OauthClient  query()
  * @method static \Illuminate\Database\Eloquent\Builder|OauthClient  whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OauthClient  whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|OauthClient  whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|OauthClient  wherePasswordClient($value)
  * @method static \Illuminate\Database\Eloquent\Builder|OauthClient  wherePersonalAccessClient($value)
@@ -42,11 +43,6 @@ use Laravel\Passport\Client as PassportClient;
  * @method static \Illuminate\Database\Eloquent\Builder|OauthClient  whereSecret($value)
  * @method static \Illuminate\Database\Eloquent\Builder|OauthClient  whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|OauthClient  whereUserId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|OauthClient  whereUuid($value)
- *
- * @property string $id
- *
- * @method static \Illuminate\Database\Eloquent\Builder|OauthClient whereId($value)
  *
  * @mixin \Eloquent
  */

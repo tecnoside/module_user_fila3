@@ -24,8 +24,8 @@ class DeviceFactory extends Factory
     public function definition()
     {
         return [
-            'id' => $this->faker->randomNumber,
-            'mobile_id' => $this->faker->integer,
+            // 'id' => $this->faker->randomNumber,
+            // 'mobile_id' => $this->faker->integer,
             'device' => $this->faker->word,
             'platform' => $this->faker->word,
             'browser' => $this->faker->word,

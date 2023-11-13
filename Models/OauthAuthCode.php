@@ -11,28 +11,22 @@ use Laravel\Passport\AuthCode as PassportAuthCode;
 /**
  * Modules\User\Models\OauthAuthCode.
  *
- * @property string                                $uuid
- * @property string|null                           $user_id
- * @property string|null                           $client_id
- * @property string|null                           $scopes
- * @property bool                                  $revoked
- * @property Carbon|null                           $expires_at
- * @property \Modules\User\Models\OauthClient|null $client
- *
+ * @property string $id
+ * @property string|null $user_id
+ * @property string|null $client_id
+ * @property string|null $scopes
+ * @property bool $revoked
+ * @property Carbon|null $expires_at
+ * @property-read \Modules\User\Models\OauthClient|null $client
  * @method static Builder|OauthAuthCode newModelQuery()
  * @method static Builder|OauthAuthCode newQuery()
  * @method static Builder|OauthAuthCode query()
  * @method static Builder|OauthAuthCode whereClientId($value)
  * @method static Builder|OauthAuthCode whereExpiresAt($value)
+ * @method static Builder|OauthAuthCode whereId($value)
  * @method static Builder|OauthAuthCode whereRevoked($value)
  * @method static Builder|OauthAuthCode whereScopes($value)
  * @method static Builder|OauthAuthCode whereUserId($value)
- * @method static Builder|OauthAuthCode whereUuid($value)
- *
- * @property string $id
- *
- * @method static Builder|OauthAuthCode whereId($value)
- *
  * @mixin \Eloquent
  */
 class OauthAuthCode extends PassportAuthCode

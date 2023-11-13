@@ -5,11 +5,10 @@ declare(strict_types=1);
 namespace Modules\User\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
-
 use Modules\User\Models\Device;
 
-class DeviceFactory extends Factory {
+class DeviceFactory extends Factory
+{
     /**
      * The name of the factory's corresponding model.
      *
@@ -22,9 +21,8 @@ class DeviceFactory extends Factory {
      *
      * @return array
      */
-    public function definition() {
-
-
+    public function definition()
+    {
         return [
             'id' => $this->faker->randomNumber,
             'mobile_id' => $this->faker->integer,
@@ -37,7 +35,7 @@ class DeviceFactory extends Factory {
             'is_desktop' => $this->faker->boolean,
             'is_mobile' => $this->faker->boolean,
             'is_tablet' => $this->faker->boolean,
-            'is_phone' => $this->faker->boolean
+            'is_phone' => $this->faker->boolean,
         ];
     }
 }

@@ -27,6 +27,7 @@ use Modules\Xot\Datas\XotData;
  * @property string|null                     $created_by
  * @property string|null                     $updated_by
  * @property \Modules\User\Models\User|null  $user
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser query()
@@ -42,6 +43,7 @@ use Modules\Xot\Datas\XotData;
  * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser whereUpdatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser whereUserId($value)
+ *
  * @mixin \Eloquent
  */
 class SocialiteUser extends BaseModel

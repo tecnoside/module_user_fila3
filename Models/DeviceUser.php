@@ -21,6 +21,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string|null                      $push_notifications_token
  * @property bool|null                        $push_notifications_enabled
  * @property \Modules\User\Models\Device|null $device
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|DeviceUser newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|DeviceUser newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|DeviceUser query()
@@ -35,6 +36,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder|DeviceUser whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|DeviceUser whereUpdatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|DeviceUser whereUserId($value)
+ *
  * @mixin \Eloquent
  */
 class DeviceUser extends BasePivot

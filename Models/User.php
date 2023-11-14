@@ -70,6 +70,7 @@ use Spatie\Permission\Traits\HasRoles;
  * @property int|null                                               $teams_count
  * @property Collection<int, \Modules\User\Models\OauthAccessToken> $tokens
  * @property int|null                                               $tokens_count
+ *
  * @method static \Modules\User\Database\Factories\UserFactory factory($count = null, $state = [])
  * @method static Builder|User                                 newModelQuery()
  * @method static Builder|User                                 newQuery()
@@ -91,8 +92,11 @@ use Spatie\Permission\Traits\HasRoles;
  * @method static Builder|User                                 whereProfilePhotoPath($value)
  * @method static Builder|User                                 whereRememberToken($value)
  * @method static Builder|User                                 whereUpdatedAt($value)
+ *
  * @property string $surname
+ *
  * @method static Builder|User whereSurname($value)
+ *
  * @mixin Eloquent
  */
 class User extends Authenticatable implements HasName, UserContract
@@ -207,7 +211,7 @@ class User extends Authenticatable implements HasName, UserContract
     public function canAccessPanel(Panel $panel): bool
     {
         // $panel->default('admin');
-        if ($panel->getId() !== 'admin') {
+        if ('admin' !== $panel->getId()) {
             $role = $panel->getId();
             /*
             $xot = XotData::make();

@@ -18,6 +18,7 @@ use Laravel\Passport\AuthCode as PassportAuthCode;
  * @property bool                                  $revoked
  * @property Carbon|null                           $expires_at
  * @property \Modules\User\Models\OauthClient|null $client
+ *
  * @method static Builder|OauthAuthCode newModelQuery()
  * @method static Builder|OauthAuthCode newQuery()
  * @method static Builder|OauthAuthCode query()
@@ -27,6 +28,7 @@ use Laravel\Passport\AuthCode as PassportAuthCode;
  * @method static Builder|OauthAuthCode whereRevoked($value)
  * @method static Builder|OauthAuthCode whereScopes($value)
  * @method static Builder|OauthAuthCode whereUserId($value)
+ *
  * @mixin \Eloquent
  */
 class OauthAuthCode extends PassportAuthCode

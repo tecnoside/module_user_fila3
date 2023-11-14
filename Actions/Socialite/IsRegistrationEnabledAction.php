@@ -15,14 +15,13 @@ class IsRegistrationEnabledAction
 {
     use QueueableAction;
 
-/**
+    /**
      * Execute the action.
      */
-
-
     public function execute(): bool
     {
         Assert::boolean(config('filament-socialite.registration'));
+
         return config('filament-socialite.registration');
     }
 }

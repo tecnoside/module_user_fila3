@@ -19,18 +19,16 @@ class LoginUserAction
 {
     use QueueableAction;
 
-/**
+    /**
      * Execute the action.
      *
      * @return RedirectResponse
      */
-
-
     public function execute(SocialiteUser $socialiteUser)
     {
         Assert::notNull($user = $socialiteUser->user);
         Filament::auth()->login($user);
-    // session()->regenerate();
+        // session()->regenerate();
 
         return redirect()->intended(Filament::getUrl());
     }

@@ -17,11 +17,9 @@ class RetrieveSocialiteUserAction
 {
     use QueueableAction;
 
-/**
+    /**
      * Execute the action.
      */
-
-
     public function execute(string $provider, SocialiteUserContract $user): ?SocialiteUser
     {
         return SocialiteUser::query()

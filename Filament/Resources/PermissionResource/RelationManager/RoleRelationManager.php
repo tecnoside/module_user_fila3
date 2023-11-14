@@ -18,6 +18,7 @@ class RoleRelationManager extends RelationManager
 {
     protected static string $relationship = 'roles';
     protected static ?string $recordTitleAttribute = 'name';
+
     public function form(Form $form): Form
     {
         return $form

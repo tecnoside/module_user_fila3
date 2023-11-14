@@ -48,36 +48,36 @@ class UserResource extends XotBaseResource
     // protected static ?string $model = User::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-users';
-// Static property Modules\User\Filament\Resources\UserResource::$enablePasswordUpdates is never read, only written.
+    // Static property Modules\User\Filament\Resources\UserResource::$enablePasswordUpdates is never read, only written.
     // private static bool|\Closure $enablePasswordUpdates = true;
 
     private static ?\Closure $extendFormCallback = null;
-/*
-    protected static function getNavigationLabel(): string
-    {
-        return trans('filament-user::user.resource.label');
-    }
+    /*
+        protected static function getNavigationLabel(): string
+        {
+            return trans('filament-user::user.resource.label');
+        }
 
-    public static function getPluralLabel(): string
-    {
-        return trans('filament-user::user.resource.label');
-    }
+        public static function getPluralLabel(): string
+        {
+            return trans('filament-user::user.resource.label');
+        }
 
-    public static function getLabel(): string
-    {
-        return trans('filament-user::user.resource.single');
-    }
+        public static function getLabel(): string
+        {
+            return trans('filament-user::user.resource.single');
+        }
 
-    protected static function getNavigationGroup(): ?string
-    {
-        return config('filament-user.group');
-    }
+        protected static function getNavigationGroup(): ?string
+        {
+            return config('filament-user.group');
+        }
 
-    protected function getTitle(): string
-    {
-        return trans('filament-user::user.resource.title.resource');
-    }
-    */
+        protected function getTitle(): string
+        {
+            return trans('filament-user::user.resource.title.resource');
+        }
+        */
 
     public static function getNavigationBadge(): ?string
     {
@@ -118,7 +118,6 @@ class UserResource extends XotBaseResource
     {
         return $form
             ->schema(static function () {
-
                 $schema = [
                     'left' => Card::make([
                         'name' => TextInput::make('name')
@@ -221,7 +220,6 @@ class UserResource extends XotBaseResource
                 EditAction::make(),
                 Action::make('changePassword')
                     ->action(static function (User $user, array $data): void {
-
                         $user->update([
                             'password' => Hash::make($data['new_password']),
                         ]);

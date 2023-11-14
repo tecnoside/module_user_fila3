@@ -15,11 +15,9 @@ class GetProviderScopesAction
 {
     use QueueableAction;
 
-/**
+    /**
      * Execute the action.
      */
-
-
     public function execute(string $provider): array
     {
         /**

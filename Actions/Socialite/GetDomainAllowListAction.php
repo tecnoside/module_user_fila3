@@ -15,11 +15,9 @@ class GetDomainAllowListAction
 {
     use QueueableAction;
 
-/**
+    /**
      * Execute the action.
      */
-
-
     public function execute(): array
     {
         $res = config('filament-socialite.domain_allowlist');

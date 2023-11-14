@@ -20,21 +20,19 @@ class LogoutUserAction
 {
     use QueueableAction;
 
-/**
+    /**
      * Execute the action.
      *
      * @return void
      */
-
-
     public function execute(UserContract $user)
     {
         Assert::notNull($accessToken = $user->token());
-    /*
-        DB::table('oauth_refresh_tokens')
-            ->where('access_token_id', $accessToken->id)
-            ->delete();
-        */
+        /*
+            DB::table('oauth_refresh_tokens')
+                ->where('access_token_id', $accessToken->id)
+                ->delete();
+            */
 
         // Assert::methodExists($accessToken, 'delete');
         if (method_exists($accessToken, 'getKey')) {
@@ -42,7 +40,7 @@ class LogoutUserAction
         }
         if (method_exists($accessToken, 'delete')) {
             $accessToken->delete();
-// $user->token()?->delete();
+            // $user->token()?->delete();
         }
 
         /*

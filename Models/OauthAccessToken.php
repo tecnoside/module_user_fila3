@@ -12,7 +12,7 @@ use Laravel\Passport\Token as PassportToken;
 /**
  * Modules\User\Models\OauthAccessToken.
  *
- * @property string                                $uuid
+ * @property string                                $id
  * @property string|null                           $user_id
  * @property string                                $client_id
  * @property string|null                           $name
@@ -30,12 +30,12 @@ use Laravel\Passport\Token as PassportToken;
  * @method static Builder|OauthAccessToken whereClientId($value)
  * @method static Builder|OauthAccessToken whereCreatedAt($value)
  * @method static Builder|OauthAccessToken whereExpiresAt($value)
+ * @method static Builder|OauthAccessToken whereId($value)
  * @method static Builder|OauthAccessToken whereName($value)
  * @method static Builder|OauthAccessToken whereRevoked($value)
  * @method static Builder|OauthAccessToken whereScopes($value)
  * @method static Builder|OauthAccessToken whereUpdatedAt($value)
  * @method static Builder|OauthAccessToken whereUserId($value)
- * @method static Builder|OauthAccessToken whereUuid($value)
  *
  * @mixin \Eloquent
  */

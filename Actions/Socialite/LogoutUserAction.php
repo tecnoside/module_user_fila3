@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @see https://github.com/DutchCodingCompany/filament-socialite
  */
@@ -28,10 +29,10 @@ class LogoutUserAction
     {
         Assert::notNull($accessToken = $user->token());
         /*
-        DB::table('oauth_refresh_tokens')
-            ->where('access_token_id', $accessToken->id)
-            ->delete();
-        */
+            DB::table('oauth_refresh_tokens')
+                ->where('access_token_id', $accessToken->id)
+                ->delete();
+            */
 
         // Assert::methodExists($accessToken, 'delete');
         if (method_exists($accessToken, 'getKey')) {

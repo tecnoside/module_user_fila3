@@ -14,7 +14,9 @@ class GetUserModelAttributesFromSocialiteAction
 
     public readonly string $name;
 
-    public readonly string $surname;
+    public readonly string $first_name;
+
+    public readonly string $last_name;
 
     public readonly string $email;
 
@@ -24,7 +26,8 @@ class GetUserModelAttributesFromSocialiteAction
     ) {
         $nameFieldsResolver = app(UserNameFieldsResolver::class, ['user' => $this->oauthUser]);
         $this->name = $nameFieldsResolver->name;
-        $this->surname = $nameFieldsResolver->surname;
+        $this->first_name = $nameFieldsResolver->name;
+        $this->last_name = $nameFieldsResolver->surname;
         $this->email = (string) $this->oauthUser->getEmail();
     }
 

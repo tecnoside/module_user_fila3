@@ -11,7 +11,7 @@ use Laravel\Passport\AuthCode as PassportAuthCode;
 /**
  * Modules\User\Models\OauthAuthCode.
  *
- * @property string                                $uuid
+ * @property string                                $id
  * @property string|null                           $user_id
  * @property string|null                           $client_id
  * @property string|null                           $scopes
@@ -24,10 +24,10 @@ use Laravel\Passport\AuthCode as PassportAuthCode;
  * @method static Builder|OauthAuthCode query()
  * @method static Builder|OauthAuthCode whereClientId($value)
  * @method static Builder|OauthAuthCode whereExpiresAt($value)
+ * @method static Builder|OauthAuthCode whereId($value)
  * @method static Builder|OauthAuthCode whereRevoked($value)
  * @method static Builder|OauthAuthCode whereScopes($value)
  * @method static Builder|OauthAuthCode whereUserId($value)
- * @method static Builder|OauthAuthCode whereUuid($value)
  *
  * @mixin \Eloquent
  */

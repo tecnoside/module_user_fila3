@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 /**
  * @see https://spatie.be/docs/laravel-permission/v5/advanced-usage/uuid
  */

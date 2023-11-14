@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @see https://github.com/DutchCodingCompany/filament-socialite
  */
@@ -27,7 +28,6 @@ class LoginUserAction
     {
         Assert::notNull($user = $socialiteUser->user);
         Filament::auth()->login($user);
-
         // session()->regenerate();
 
         return redirect()->intended(Filament::getUrl());

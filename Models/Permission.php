@@ -12,7 +12,7 @@ use Spatie\Permission\Models\Permission as SpatiePermission;
 /**
  * Modules\User\Models\Permission.
  *
- * @property string                                     $uuid
+ * @property int                                        $id
  * @property string                                     $name
  * @property string                                     $guard_name
  * @property Carbon|null                                $created_at
@@ -31,9 +31,9 @@ use Spatie\Permission\Models\Permission as SpatiePermission;
  * @method static \Illuminate\Database\Eloquent\Builder|Permission role($roles, $guard = null)
  * @method static Builder|Permission                               whereCreatedAt($value)
  * @method static Builder|Permission                               whereGuardName($value)
+ * @method static Builder|Permission                               whereId($value)
  * @method static Builder|Permission                               whereName($value)
  * @method static Builder|Permission                               whereUpdatedAt($value)
- * @method static Builder|Permission                               whereUuid($value)
  *
  * @mixin \Eloquent
  */

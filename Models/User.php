@@ -38,11 +38,9 @@ use Spatie\Permission\Traits\HasRoles;
  * Modules\User\Models\User.
  *
  * @property string                                                 $id
- * @property string                                                 $uuid
  * @property string                                                 $name
- * @property string                                                 $last_name
  * @property string                                                 $first_name
- * @property string                                                 $surname
+ * @property string                                                 $last_name
  * @property string                                                 $email
  * @property Carbon|null                                            $email_verified_at
  * @property string                                                 $password
@@ -57,8 +55,8 @@ use Spatie\Permission\Traits\HasRoles;
  * @property Collection<int, \Modules\User\Models\OauthClient>      $clients
  * @property int|null                                               $clients_count
  * @property \Modules\User\Models\Team|null                         $currentTeam
- * @property Collection<int, MobileDevice>                          $mobileDevices
- * @property int|null                                               $mobile_devices_count
+ * @property Collection<int, \Modules\User\Models\Device>           $devices
+ * @property int|null                                               $devices_count
  * @property DatabaseNotificationCollection<int, Notification>      $notifications
  * @property int|null                                               $notifications_count
  * @property Collection<int, \Modules\User\Models\Team>             $ownedTeams
@@ -93,9 +91,11 @@ use Spatie\Permission\Traits\HasRoles;
  * @method static Builder|User                                 wherePassword($value)
  * @method static Builder|User                                 whereProfilePhotoPath($value)
  * @method static Builder|User                                 whereRememberToken($value)
- * @method static Builder|User                                 whereSurname($value)
  * @method static Builder|User                                 whereUpdatedAt($value)
- * @method static Builder|User                                 whereUuid($value)
+ *
+ * @property string $surname
+ *
+ * @method static Builder|User whereSurname($value)
  *
  * @mixin Eloquent
  */
@@ -117,6 +117,7 @@ class User extends Authenticatable implements HasName, UserContract
 
     // use Traits\HasProfilePhoto;
     use Notifiable;
+
     // use Traits\HasTenants;
 
     /**
@@ -135,7 +136,8 @@ class User extends Authenticatable implements HasName, UserContract
      */
     protected $fillable = [
         'name',
-        'surname',
+        'fist_name',
+        'last_name',
         'email',
         'password',
         'lang',
@@ -192,9 +194,10 @@ class User extends Authenticatable implements HasName, UserContract
     public function getFilamentName(): string
     {
         return sprintf(
-            '%s %s',
+            '%s %s %s',
             $this->name,
-            $this->surname,
+            $this->first_name,
+            $this->last_name,
         );
     }
 
@@ -207,6 +210,7 @@ class User extends Authenticatable implements HasName, UserContract
 
     public function canAccessPanel(Panel $panel): bool
     {
+        // $panel->default('admin');
         if ('admin' !== $panel->getId()) {
             $role = $panel->getId();
             /*

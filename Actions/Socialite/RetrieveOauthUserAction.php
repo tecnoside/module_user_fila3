@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @see https://github.com/DutchCodingCompany/filament-socialite
  */
@@ -24,7 +25,8 @@ class RetrieveOauthUserAction
     public function execute(string $provider): ?SocialiteUserContract
     {
         try {
-            return Socialite::driver($provider)->user(); // SocialiteProviders\Manager\OAuth2\User
+            return Socialite::driver($provider)->user();
+            // SocialiteProviders\Manager\OAuth2\User
         } catch (InvalidStateException $e) {
             InvalidState::dispatch($e);
         }

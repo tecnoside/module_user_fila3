@@ -31,7 +31,8 @@ class CreateDevicesTable extends XotBaseMigration
                 $table->boolean('is_mobile')->nullable();
                 $table->boolean('is_tablet')->nullable();
                 $table->boolean('is_phone')->nullable();
-            });
+            }
+        );
 
         // -- UPDATE --
         $this->tableUpdate(

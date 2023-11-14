@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Builder;
 /**
  * Modules\User\Models\ModelHasRole.
  *
- * @property string                          $id
  * @property string                          $uuid
  * @property string                          $role_id
  * @property string                          $model_type
@@ -26,7 +25,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|ModelHasRole                                 query()
  * @method static Builder|ModelHasRole                                 whereCreatedAt($value)
  * @method static Builder|ModelHasRole                                 whereCreatedBy($value)
- * @method static Builder|ModelHasRole                                 whereId($value)
  * @method static Builder|ModelHasRole                                 whereModelId($value)
  * @method static Builder|ModelHasRole                                 whereModelType($value)
  * @method static Builder|ModelHasRole                                 whereRoleId($value)
@@ -34,6 +32,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|ModelHasRole                                 whereUpdatedAt($value)
  * @method static Builder|ModelHasRole                                 whereUpdatedBy($value)
  * @method static Builder|ModelHasRole                                 whereUuid($value)
+ *
+ * @property int $id
+ *
+ * @method static Builder|ModelHasRole whereId($value)
  *
  * @mixin \Eloquent
  */

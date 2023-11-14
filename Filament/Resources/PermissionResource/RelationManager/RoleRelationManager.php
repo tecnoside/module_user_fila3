@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @see https://github.com/Althinect/filament-spatie-roles-permissions/blob/2.x/src/Resources/PermissionResource/RelationManager/RoleRelationManager.php
  */

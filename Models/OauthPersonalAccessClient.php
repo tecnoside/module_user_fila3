@@ -11,6 +11,7 @@ use Laravel\Passport\PersonalAccessClient as PassportPersonalAccessClient;
 /**
  * Modules\User\Models\OauthPersonalAccessClient.
  *
+ * @property int                                   $id
  * @property string                                $uuid
  * @property string                                $client_id
  * @property Carbon|null                           $created_at
@@ -22,6 +23,7 @@ use Laravel\Passport\PersonalAccessClient as PassportPersonalAccessClient;
  * @method static Builder|OauthPersonalAccessClient query()
  * @method static Builder|OauthPersonalAccessClient whereClientId($value)
  * @method static Builder|OauthPersonalAccessClient whereCreatedAt($value)
+ * @method static Builder|OauthPersonalAccessClient whereId($value)
  * @method static Builder|OauthPersonalAccessClient whereUpdatedAt($value)
  * @method static Builder|OauthPersonalAccessClient whereUuid($value)
  *

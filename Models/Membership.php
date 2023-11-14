@@ -33,6 +33,10 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Membership whereUserId($value)
  * @method static Builder|Membership whereUuid($value)
  *
+ * @property string|null $customer_id
+ *
+ * @method static Builder|Membership whereCustomerId($value)
+ *
  * @mixin \Eloquent
  */
 class Membership extends BasePivot

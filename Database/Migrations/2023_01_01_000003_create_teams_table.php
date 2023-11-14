@@ -1,7 +1,9 @@
 <?php
+
 /**
  * ---.
  */
+
 declare(strict_types=1);
 
 use Illuminate\Database\Schema\Blueprint;
@@ -15,29 +17,24 @@ class CreateTeamsTable extends XotBaseMigration
     public function up(): void
     {
         // -- CREATE --
-        $this->tableCreate(
-            function (Blueprint $table): void {
-                // $table->drop('team_invitations');
-                $table->uuid('id')->primary();
-                $table->foreignId('user_id')->index();
-                // $table->foreignIdFor(User::class);
-                $table->string('name');
-                $table->boolean('personal_team');
-                $table->timestamps();
-            }
-        );
-
+        $this->tableCreate(function (Blueprint $table): void {
+            // $table->drop('team_invitations');
+            $table->uuid('id')->primary();
+            $table->foreignId('user_id')->index();
+            // $table->foreignIdFor(User::class);
+            $table->string('name');
+            $table->boolean('personal_team');
+            $table->timestamps();
+        });
         // -- UPDATE --
-        $this->tableUpdate(
-            function (Blueprint $table): void {
-                // if (! $this->hasColumn('email')) {
-                //    $table->string('email')->nullable();
-                // }
-                if ($this->hasIndexName('team_invitations_team_id_foreign')) {
-                    $table->dropForeign('team_invitations_team_id_foreign');
-                }
-                // $this->updateUser($table);
+        $this->tableUpdate(function (Blueprint $table): void {
+            // if (! $this->hasColumn('email')) {
+            //    $table->string('email')->nullable();
+            // }
+            if ($this->hasIndexName('team_invitations_team_id_foreign')) {
+                $table->dropForeign('team_invitations_team_id_foreign');
             }
-        );
+            // $this->updateUser($table);
+        });
     }
 }

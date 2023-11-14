@@ -33,6 +33,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|ModelHasRole                                 whereUpdatedBy($value)
  * @method static Builder|ModelHasRole                                 whereUuid($value)
  *
+ * @property int $id
+ *
+ * @method static Builder|ModelHasRole whereId($value)
+ *
  * @mixin \Eloquent
  */
 class ModelHasRole extends BaseMorphPivot

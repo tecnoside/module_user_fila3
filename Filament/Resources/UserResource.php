@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @see https://github.com/ryangjchandler/filament-user-resource/blob/main/src/Resources/UserResource.php
  * @see https://github.com/3x1io/filament-user/blob/main/src/Resources/UserResource.php
@@ -51,33 +52,32 @@ class UserResource extends XotBaseResource
     // private static bool|\Closure $enablePasswordUpdates = true;
 
     private static ?\Closure $extendFormCallback = null;
-
     /*
-    protected static function getNavigationLabel(): string
-    {
-        return trans('filament-user::user.resource.label');
-    }
+        protected static function getNavigationLabel(): string
+        {
+            return trans('filament-user::user.resource.label');
+        }
 
-    public static function getPluralLabel(): string
-    {
-        return trans('filament-user::user.resource.label');
-    }
+        public static function getPluralLabel(): string
+        {
+            return trans('filament-user::user.resource.label');
+        }
 
-    public static function getLabel(): string
-    {
-        return trans('filament-user::user.resource.single');
-    }
+        public static function getLabel(): string
+        {
+            return trans('filament-user::user.resource.single');
+        }
 
-    protected static function getNavigationGroup(): ?string
-    {
-        return config('filament-user.group');
-    }
+        protected static function getNavigationGroup(): ?string
+        {
+            return config('filament-user.group');
+        }
 
-    protected function getTitle(): string
-    {
-        return trans('filament-user::user.resource.title.resource');
-    }
-    */
+        protected function getTitle(): string
+        {
+            return trans('filament-user::user.resource.title.resource');
+        }
+        */
 
     public static function getNavigationBadge(): ?string
     {

@@ -33,6 +33,10 @@ use Illuminate\Support\Carbon;
  * @method static Builder|TeamUser whereUserId($value)
  * @method static Builder|TeamUser whereUuid($value)
  *
+ * @property string|null $customer_id
+ *
+ * @method static Builder|TeamUser whereCustomerId($value)
+ *
  * @mixin \Eloquent
  */
 class TeamUser extends BasePivot

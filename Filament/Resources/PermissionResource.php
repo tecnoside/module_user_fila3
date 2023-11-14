@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @see https://github.com/Althinect/filament-spatie-roles-permissions/tree/2.x
  * @see https://github.com/phpsa/filament-authentication/blob/main/src/Resources/PermissionResource.php
@@ -33,7 +34,6 @@ use Webmozart\Assert\Assert;
 class PermissionResource extends XotBaseResource
 {
     protected static ?string $navigationIcon = 'heroicon-o-lock-closed';
-
     // public static function shouldRegisterNavigation(): bool
     // {
     //    return config('filament-spatie-roles-permissions.should_register_on_navigation.permissions', true);

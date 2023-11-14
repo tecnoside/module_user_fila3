@@ -93,6 +93,10 @@ use Spatie\Permission\Traits\HasRoles;
  * @method static Builder|User                                 whereRememberToken($value)
  * @method static Builder|User                                 whereUpdatedAt($value)
  *
+ * @property string $surname
+ *
+ * @method static Builder|User whereSurname($value)
+ *
  * @mixin Eloquent
  */
 class User extends Authenticatable implements HasName, UserContract
@@ -113,6 +117,7 @@ class User extends Authenticatable implements HasName, UserContract
 
     // use Traits\HasProfilePhoto;
     use Notifiable;
+
     // use Traits\HasTenants;
 
     /**
@@ -206,7 +211,7 @@ class User extends Authenticatable implements HasName, UserContract
     public function canAccessPanel(Panel $panel): bool
     {
         // $panel->default('admin');
-        if ($panel->getId() !== 'admin') {
+        if ('admin' !== $panel->getId()) {
             $role = $panel->getId();
             /*
             $xot = XotData::make();

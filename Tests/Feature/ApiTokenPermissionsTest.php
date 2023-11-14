@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @see https://github.com/nWidart/laravel-modules/blob/master/tests/BaseTestCase.php
  */
@@ -33,13 +34,11 @@ class ApiTokenPermissionsTest extends TestCase
         }
 
         $this->actingAs($user = User::factory()->withPersonalTeam()->create());
-
         $token = $user->tokens()->create([
             'name' => 'Test Token',
             'token' => Str::random(40),
             'abilities' => ['create', 'read'],
         ]);
-
         Livewire::test(ApiTokenManager::class)
             ->set(['managingPermissionsFor' => $token])
             ->set(['updateApiTokenForm' => [
@@ -49,7 +48,6 @@ class ApiTokenPermissionsTest extends TestCase
                 ],
             ]])
             ->call('updateApiToken');
-
         $this->assertTrue($user->fresh()->tokens->first()->can('delete'));
         $this->assertFalse($user->fresh()->tokens->first()->can('read'));
         $this->assertFalse($user->fresh()->tokens->first()->can('missing-permission'));

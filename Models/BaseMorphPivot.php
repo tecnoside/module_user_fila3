@@ -17,6 +17,7 @@ abstract class BaseMorphPivot extends MorphPivot
 {
     use HasFactory;
     use Updater;
+
     // use HasUuids;
 
     /**

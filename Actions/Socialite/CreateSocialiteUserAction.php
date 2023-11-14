@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @see https://github.com/DutchCodingCompany/filament-socialite
  */
@@ -17,9 +18,11 @@ class CreateSocialiteUserAction
 {
     use QueueableAction;
 
-    /**
+/**
      * Execute the action.
      */
+
+
     public function execute(string $provider, SocialiteUserContract $oauthUser, UserContract $user): SocialiteUser
     {
         return SocialiteUser::create([

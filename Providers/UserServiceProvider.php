@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ---.
  */
@@ -19,11 +20,8 @@ use Modules\Xot\Providers\XotBaseServiceProvider;
 class UserServiceProvider extends XotBaseServiceProvider
 {
     public string $module_name = 'user';
-
     protected string $module_dir = __DIR__;
-
     protected string $module_ns = __NAMESPACE__;
-
     public function bootCallback(): void
     {
         $this->registerAuthenticationProviders();
@@ -56,7 +54,6 @@ class UserServiceProvider extends XotBaseServiceProvider
         Passport::tokensExpireIn(now()->addDays(1));
         Passport::refreshTokensExpireIn(now()->addDays(30));
         Passport::personalAccessTokensExpireIn(now()->addMonths(6));
-
         Passport::tokensCan([
             'view-user' => 'View user information',
             'core-technicians' => 'the tecnicians can ',

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @see https://github.com/DutchCodingCompany/filament-socialite
  */
@@ -19,15 +20,17 @@ class LogoutUserAction
 {
     use QueueableAction;
 
-    /**
+/**
      * Execute the action.
      *
      * @return void
      */
+
+
     public function execute(UserContract $user)
     {
         Assert::notNull($accessToken = $user->token());
-        /*
+    /*
         DB::table('oauth_refresh_tokens')
             ->where('access_token_id', $accessToken->id)
             ->delete();
@@ -39,7 +42,7 @@ class LogoutUserAction
         }
         if (method_exists($accessToken, 'delete')) {
             $accessToken->delete();
-            // $user->token()?->delete();
+// $user->token()?->delete();
         }
 
         /*

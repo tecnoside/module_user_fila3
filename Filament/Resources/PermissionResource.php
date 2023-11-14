@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @see https://github.com/Althinect/filament-spatie-roles-permissions/tree/2.x
  * @see https://github.com/phpsa/filament-authentication/blob/main/src/Resources/PermissionResource.php
@@ -33,8 +34,7 @@ use Webmozart\Assert\Assert;
 class PermissionResource extends XotBaseResource
 {
     protected static ?string $navigationIcon = 'heroicon-o-lock-closed';
-
-    // public static function shouldRegisterNavigation(): bool
+// public static function shouldRegisterNavigation(): bool
     // {
     //    return config('filament-spatie-roles-permissions.should_register_on_navigation.permissions', true);
     // }
@@ -64,7 +64,6 @@ class PermissionResource extends XotBaseResource
         Assert::isArray($guard_names = config('filament-spatie-roles-permissions.guard_names'));
         Assert::string($default_guard_name = config('filament-spatie-roles-permissions.default_guard_name'));
         Assert::boolean($preload_roles = config('filament-spatie-roles-permissions.preload_roles', true));
-
         return $form
             ->schema([
                 Card::make()
@@ -89,7 +88,6 @@ class PermissionResource extends XotBaseResource
     public static function table(Table $table): Table
     {
         Assert::boolean($isToggledHiddenByDefault = config('filament-spatie-roles-permissions.toggleable_guard_names.permissions.isToggledHiddenByDefault', true));
-
         return $table
             ->columns([
                 TextColumn::make('id')
@@ -134,6 +132,7 @@ class PermissionResource extends XotBaseResource
                 // ]),
                 BulkAction::make('Attach Role')
                     ->action(function (Collection $collection, array $data): void {
+
                         foreach ($collection as $record) {
                             Assert::isInstanceOf($record, Permission::class);
                             $record->roles()->sync($data['role']);
@@ -147,7 +146,7 @@ class PermissionResource extends XotBaseResource
                             ->required(),
                     ])->deselectRecordsAfterCompletion(),
             ]);
-        // ->emptyStateActions([
+// ->emptyStateActions([
         //    Tables\Actions\CreateAction::make(),
         // ])
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @see https://github.com/DutchCodingCompany/filament-socialite
  */
@@ -13,9 +14,11 @@ class GetProviderButtonsAction
 {
     use QueueableAction;
 
-    /**
+/**
      * Execute the action.
      */
+
+
     public function execute(): array
     {
         return [];

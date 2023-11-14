@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @see https://github.com/DutchCodingCompany/filament-socialite
  */
@@ -14,9 +15,11 @@ class GetProviderScopesAction
 {
     use QueueableAction;
 
-    /**
+/**
      * Execute the action.
      */
+
+
     public function execute(string $provider): array
     {
         /**

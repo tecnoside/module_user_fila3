@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @see https://github.com/DutchCodingCompany/filament-socialite
  */
@@ -13,9 +14,11 @@ class GetLoginRedirectRouteAction
 {
     use QueueableAction;
 
-    /**
+/**
      * Execute the action.
      */
+
+
     public function execute(): string
     {
         // return config('filament-socialite.login_redirect_route') ?? 'filament.pages.dashboard';

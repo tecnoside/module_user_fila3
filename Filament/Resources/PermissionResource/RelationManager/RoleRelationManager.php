@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @see https://github.com/Althinect/filament-spatie-roles-permissions/blob/2.x/src/Resources/PermissionResource/RelationManager/RoleRelationManager.php
  */
@@ -16,9 +17,7 @@ use Filament\Tables\Table;
 class RoleRelationManager extends RelationManager
 {
     protected static string $relationship = 'roles';
-
     protected static ?string $recordTitleAttribute = 'name';
-
     public function form(Form $form): Form
     {
         return $form

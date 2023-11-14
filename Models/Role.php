@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ---.
  */
@@ -50,20 +51,17 @@ use Spatie\Permission\Models\Role as SpatieRole;
 class Role extends SpatieRole
 {
     use HasFactory;
+
     // use HasUuids;
 
     final public const ROLE_ADMINISTRATOR = 1;
-
     final public const ROLE_OWNER = 2;
-
     final public const ROLE_USER = 3;
-
-    /**
+/**
      * @var string
      */
     protected $connection = 'user';
-
-    // protected $fillable=['id','']
+// protected $fillable=['id','']
 
     /**
      * Get all of the teams the user belongs to.
@@ -72,7 +70,6 @@ class Role extends SpatieRole
     {
         $xotData = XotData::make();
         $teamClass = $xotData->getTeamClass();
-
         return $this->belongsTo($teamClass);
         /*
         $pivotClass = $xot->getMembershipClass();

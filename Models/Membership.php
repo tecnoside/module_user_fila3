@@ -10,16 +10,15 @@ use Illuminate\Support\Carbon;
 /**
  * Modules\User\Models\Membership.
  *
- * @property int         $id
- * @property string      $uuid
+ * @property string $uuid
+ * @property int $id
  * @property string|null $team_id
- * @property string|null $user_id
+ * @property string $user_id
  * @property string|null $role
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $created_by
  * @property string|null $updated_by
- *
  * @method static Builder|Membership newModelQuery()
  * @method static Builder|Membership newQuery()
  * @method static Builder|Membership query()
@@ -32,11 +31,6 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Membership whereUpdatedBy($value)
  * @method static Builder|Membership whereUserId($value)
  * @method static Builder|Membership whereUuid($value)
- *
- * @property string|null $customer_id
- *
- * @method static Builder|Membership whereCustomerId($value)
- *
  * @mixin \Eloquent
  */
 class Membership extends BasePivot

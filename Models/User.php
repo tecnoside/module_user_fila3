@@ -37,66 +37,58 @@ use Spatie\Permission\Traits\HasRoles;
 /**
  * Modules\User\Models\User.
  *
- * @property string                                                 $id
- * @property string                                                 $name
- * @property string                                                 $first_name
- * @property string                                                 $last_name
- * @property string                                                 $email
- * @property Carbon|null                                            $email_verified_at
- * @property string                                                 $password
- * @property string|null                                            $remember_token
- * @property int|null                                               $current_team_id
- * @property string|null                                            $profile_photo_path
- * @property Carbon|null                                            $created_at
- * @property Carbon|null                                            $updated_at
- * @property string|null                                            $deleted_at
- * @property string|null                                            $lang
- * @property bool                                                   $is_active
- * @property Collection<int, \Modules\User\Models\OauthClient>      $clients
- * @property int|null                                               $clients_count
- * @property \Modules\User\Models\Team|null                         $currentTeam
- * @property Collection<int, \Modules\User\Models\Device>           $devices
- * @property int|null                                               $devices_count
- * @property DatabaseNotificationCollection<int, Notification>      $notifications
- * @property int|null                                               $notifications_count
- * @property Collection<int, \Modules\User\Models\Team>             $ownedTeams
- * @property int|null                                               $owned_teams_count
- * @property Collection<int, \Modules\User\Models\Permission>       $permissions
- * @property int|null                                               $permissions_count
- * @property \Modules\Camping\Models\Profile|null                   $profile
- * @property Collection<int, \Modules\User\Models\Role>             $roles
- * @property int|null                                               $roles_count
- * @property Collection<int, \Modules\User\Models\Team>             $teams
- * @property int|null                                               $teams_count
- * @property Collection<int, \Modules\User\Models\OauthAccessToken> $tokens
- * @property int|null                                               $tokens_count
- *
- * @method static \Modules\User\Database\Factories\UserFactory factory($count = null, $state = [])
- * @method static Builder|User                                 newModelQuery()
- * @method static Builder|User                                 newQuery()
- * @method static Builder|User                                 permission($permissions)
- * @method static Builder|User                                 query()
- * @method static Builder|User                                 role($roles, $guard = null)
- * @method static Builder|User                                 whereCreatedAt($value)
- * @method static Builder|User                                 whereCurrentTeamId($value)
- * @method static Builder|User                                 whereDeletedAt($value)
- * @method static Builder|User                                 whereEmail($value)
- * @method static Builder|User                                 whereEmailVerifiedAt($value)
- * @method static Builder|User                                 whereFirstName($value)
- * @method static Builder|User                                 whereId($value)
- * @method static Builder|User                                 whereIsActive($value)
- * @method static Builder|User                                 whereLang($value)
- * @method static Builder|User                                 whereLastName($value)
- * @method static Builder|User                                 whereName($value)
- * @method static Builder|User                                 wherePassword($value)
- * @method static Builder|User                                 whereProfilePhotoPath($value)
- * @method static Builder|User                                 whereRememberToken($value)
- * @method static Builder|User                                 whereUpdatedAt($value)
- *
+ * @property string $id
+ * @property string $name
  * @property string $surname
- *
+ * @property string $email
+ * @property Carbon|null $email_verified_at
+ * @property string $password
+ * @property string|null $remember_token
+ * @property int|null $current_team_id
+ * @property string|null $profile_photo_path
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property string|null $lang
+ * @property bool $is_active
+ * @property string|null $deleted_at
+ * @property-read Collection<int, \Modules\User\Models\OauthClient> $clients
+ * @property-read int|null $clients_count
+ * @property-read \Modules\Quaeris\Models\Customer|null $currentTeam
+ * @property-read Collection<int, \Modules\User\Models\Device> $devices
+ * @property-read int|null $devices_count
+ * @property-read DatabaseNotificationCollection<int, Notification> $notifications
+ * @property-read int|null $notifications_count
+ * @property-read Collection<int, \Modules\Quaeris\Models\Customer> $ownedTeams
+ * @property-read int|null $owned_teams_count
+ * @property-read Collection<int, \Modules\User\Models\Permission> $permissions
+ * @property-read int|null $permissions_count
+ * @property-read \Modules\Quaeris\Models\Profile|null $profile
+ * @property-read Collection<int, \Modules\User\Models\Role> $roles
+ * @property-read int|null $roles_count
+ * @property-read Collection<int, \Modules\Quaeris\Models\Customer> $teams
+ * @property-read int|null $teams_count
+ * @property-read Collection<int, \Modules\User\Models\OauthAccessToken> $tokens
+ * @property-read int|null $tokens_count
+ * @method static \Modules\User\Database\Factories\UserFactory factory($count = null, $state = [])
+ * @method static Builder|User newModelQuery()
+ * @method static Builder|User newQuery()
+ * @method static Builder|User permission($permissions)
+ * @method static Builder|User query()
+ * @method static Builder|User role($roles, $guard = null)
+ * @method static Builder|User whereCreatedAt($value)
+ * @method static Builder|User whereCurrentTeamId($value)
+ * @method static Builder|User whereDeletedAt($value)
+ * @method static Builder|User whereEmail($value)
+ * @method static Builder|User whereEmailVerifiedAt($value)
+ * @method static Builder|User whereId($value)
+ * @method static Builder|User whereIsActive($value)
+ * @method static Builder|User whereLang($value)
+ * @method static Builder|User whereName($value)
+ * @method static Builder|User wherePassword($value)
+ * @method static Builder|User whereProfilePhotoPath($value)
+ * @method static Builder|User whereRememberToken($value)
  * @method static Builder|User whereSurname($value)
- *
+ * @method static Builder|User whereUpdatedAt($value)
  * @mixin Eloquent
  */
 class User extends Authenticatable implements HasName, UserContract

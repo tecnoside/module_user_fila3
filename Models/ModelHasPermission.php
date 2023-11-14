@@ -13,7 +13,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property int    $permission_id
  * @property string $model_type
  * @property string $model_id
- *
  * @method static \Modules\User\Database\Factories\ModelHasPermissionFactory factory($count = null, $state = [])
  * @method static Builder|ModelHasPermission                                 newModelQuery()
  * @method static Builder|ModelHasPermission                                 newQuery()
@@ -22,7 +21,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|ModelHasPermission                                 whereModelId($value)
  * @method static Builder|ModelHasPermission                                 whereModelType($value)
  * @method static Builder|ModelHasPermission                                 wherePermissionId($value)
- *
  * @mixin \Eloquent
  */
 class ModelHasPermission extends BaseMorphPivot

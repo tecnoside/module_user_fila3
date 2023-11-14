@@ -23,7 +23,6 @@ namespace Modules\User\Models;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string|null                     $updated_by
  * @property string|null                     $created_by
- *
  * @method static \Modules\User\Database\Factories\DeviceFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Device   newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Device   newQuery()
@@ -44,7 +43,6 @@ namespace Modules\User\Models;
  * @method static \Illuminate\Database\Eloquent\Builder|Device   whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Device   whereUpdatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Device   whereVersion($value)
- *
  * @mixin \Eloquent
  */
 class Device extends BaseModel

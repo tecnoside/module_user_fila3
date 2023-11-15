@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-[submodule "docs"]
-	path = docs
-	url = git@github.com:laraxot/doc_user.git
-=======
 #[submodule "docs"]
 #	path = docs
 #	url = https://github.com/laraxot/doc_user.git
->>>>>>> 89d9c88 (up)
+#   url = git@github.com:laraxot/doc_user.git

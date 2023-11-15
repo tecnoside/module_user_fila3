@@ -27,7 +27,7 @@ class GetUserModelAttributesFromSocialiteAction
         $nameFieldsResolver = app(UserNameFieldsResolver::class, ['user' => $this->oauthUser]);
         $this->name = $nameFieldsResolver->name;
         $this->first_name = $nameFieldsResolver->name;
-        $this->last_name = $nameFieldsResolver->surname;
+        $this->last_name = $nameFieldsResolver->last_name;
         $this->email = (string) $this->oauthUser->getEmail();
     }
 

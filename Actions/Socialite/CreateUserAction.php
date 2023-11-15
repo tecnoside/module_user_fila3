@@ -37,7 +37,7 @@ class CreateUserAction
             [
                 'name' => $userAttributes->name,
                 'first_name' => $userAttributes->name,
-                'last_name' => $userAttributes->surname,
+                'last_name' => $userAttributes->last_name,
                 'email' => $userAttributes->email,
             ]
         );

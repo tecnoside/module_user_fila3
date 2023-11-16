@@ -12,18 +12,17 @@ use Laravel\Passport\Token as PassportToken;
 /**
  * Modules\User\Models\OauthAccessToken.
  *
- * @property string                                $id
- * @property string|null                           $user_id
- * @property int                                   $client_id
- * @property string|null                           $name
- * @property array|null                            $scopes
- * @property bool                                  $revoked
- * @property Carbon|null                           $created_at
- * @property Carbon|null                           $updated_at
- * @property Carbon|null                           $expires_at
- * @property \Modules\User\Models\OauthClient|null $client
- * @property \Modules\User\Models\User|null        $user
- *
+ * @property string $id
+ * @property string|null $user_id
+ * @property string $client_id
+ * @property string|null $name
+ * @property array|null $scopes
+ * @property bool $revoked
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property Carbon|null $expires_at
+ * @property-read \Modules\User\Models\OauthClient|null $client
+ * @property-read \Modules\User\Models\User|null $user
  * @method static Builder|OauthAccessToken newModelQuery()
  * @method static Builder|OauthAccessToken newQuery()
  * @method static Builder|OauthAccessToken query()
@@ -36,7 +35,6 @@ use Laravel\Passport\Token as PassportToken;
  * @method static Builder|OauthAccessToken whereScopes($value)
  * @method static Builder|OauthAccessToken whereUpdatedAt($value)
  * @method static Builder|OauthAccessToken whereUserId($value)
- *
  * @mixin \Eloquent
  */
 class OauthAccessToken extends PassportToken

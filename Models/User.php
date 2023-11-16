@@ -267,4 +267,15 @@ class User extends Authenticatable implements HasName, UserContract
     {
         return UserFactory::new();
     }
+
+    public function getFullNameAttribute(?string $value):?string {
+        if($value!=null){
+            return $value;
+        }
+
+        $value=$this->first_name.' '.$this->last_name;
+        return $value;
+
+    }
+
 }

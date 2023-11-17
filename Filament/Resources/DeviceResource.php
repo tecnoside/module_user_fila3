@@ -1,19 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\User\Filament\Resources;
 
-use Filament\Forms;
-use Filament\Tables;
 use Filament\Forms\Form;
-use Filament\Tables\Table;
-use Modules\User\Models\Device;
-use Filament\Resources\Resource;
+use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Modules\Xot\Filament\Resources\XotBaseResource;
+use Filament\Tables\Table;
 use Modules\User\Filament\Resources\DeviceResource\Pages;
 use Modules\User\Filament\Resources\DeviceResource\RelationManagers;
+use Modules\User\Models\Device;
+use Modules\Xot\Filament\Resources\XotBaseResource;
 
 class DeviceResource extends XotBaseResource
 {
@@ -25,7 +23,6 @@ class DeviceResource extends XotBaseResource
     {
         return $form
             ->schema([
-                //
             ]);
     }
 
@@ -48,7 +45,6 @@ class DeviceResource extends XotBaseResource
                 TextColumn::make('is_phone'),
             ])
             ->filters([
-                //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -59,7 +55,6 @@ class DeviceResource extends XotBaseResource
                 ]),
             ])
             ->emptyStateActions([
-
             ]);
     }
 

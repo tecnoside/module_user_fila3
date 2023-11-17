@@ -1,15 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\User\Filament\Resources\UserResource\RelationManagers;
 
 use Filament\Forms;
-use Filament\Tables;
 use Filament\Forms\Form;
-use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Modules\User\Filament\Resources\DeviceResource;
 use Filament\Resources\RelationManagers\RelationManager;
+use Filament\Tables;
+use Filament\Tables\Table;
+use Modules\User\Filament\Resources\DeviceResource;
 
 class DevicesRelationManager extends RelationManager
 {
@@ -27,7 +27,8 @@ class DevicesRelationManager extends RelationManager
 
     public function table(Table $table): Table
     {
-        $table=DeviceResource::table($table);
+        $table = DeviceResource::table($table);
+
         return $table;
         /*
         return $table

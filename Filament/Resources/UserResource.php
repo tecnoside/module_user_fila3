@@ -38,6 +38,8 @@ use Modules\User\Filament\Resources\UserResource\RelationManagers\ProfileRelatio
 use Modules\User\Filament\Resources\UserResource\RelationManagers\RolesRelationManager;
 use Modules\User\Filament\Resources\UserResource\RelationManagers\TeamsRelationManager;
 use Modules\User\Filament\Resources\UserResource\RelationManagers\TokensRelationManager;
+use Modules\User\Filament\Resources\UserResource\RelationManagers;
+
 use Modules\User\Filament\Resources\UserResource\Widgets\UserOverview;
 use Modules\User\Models\Role;
 use Modules\User\Models\User;
@@ -274,13 +276,14 @@ class UserResource extends XotBaseResource
     public static function getRelations(): array
     {
         return [
-            TeamsRelationManager::class,
-            ProfileRelationManager::class,
-            RolesRelationManager::class,
+            RelationManagers\DevicesRelationManager::class,
+            RelationManagers\TeamsRelationManager::class,
+            RelationManagers\ProfileRelationManager::class,
+            RelationManagers\RolesRelationManager::class,
             // ---PASSPORT
             RelationGroup::make('Passport', [
-                TokensRelationManager::class,
-                ClientsRelationManager::class,
+                RelationManagers\TokensRelationManager::class,
+                RelationManagers\ClientsRelationManager::class,
             ]),
         ];
     }

@@ -1,7 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 declare(strict_types=1);
 
+=======
+>>>>>>> 8867dc4 (up)
 return [
     'baseUrl' => 'https://jigsaw-docs-template.tighten.co',
     'production' => true,

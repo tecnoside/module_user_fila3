@@ -1,10 +1,7 @@
 <?php
 
-<<<<<<< HEAD
 declare(strict_types=1);
 
-=======
->>>>>>> 8867dc4 (up)
 namespace App\Listeners;
 
 use Illuminate\Support\Str;
@@ -34,11 +31,7 @@ class GenerateSitemap
         collect($jigsaw->getOutputPaths())
             ->reject(function ($path) {
                 return $this->isExcluded($path);
-<<<<<<< HEAD
-            })->each(static function ($path) use ($baseUrl, $sitemap) {
-=======
             })->each(function ($path) use ($baseUrl, $sitemap) {
->>>>>>> 8867dc4 (up)
                 $sitemap->addItem(rtrim($baseUrl, '/').$path, time(), Sitemap::DAILY);
             });
 

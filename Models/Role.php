@@ -21,31 +21,29 @@ use Spatie\Permission\Models\Role as SpatieRole;
 /**
  * Modules\User\Models\Role.
  *
- * @property int                                              $id
- * @property string                                           $uuid
- * @property string|null                                      $team_id
- * @property string                                           $name
- * @property string                                           $guard_name
- * @property Carbon|null                                      $created_at
- * @property Carbon|null                                      $updated_at
- * @property Collection<int, \Modules\User\Models\Permission> $permissions
- * @property int|null                                         $permissions_count
- * @property Team|null $team
- * @property Collection<int, User> $users
- * @property int|null                                         $users_count
- *
- * @method static Builder|Role                               newModelQuery()
- * @method static Builder|Role                               newQuery()
- * @method static Builder|Role permission($permissions)
- * @method static Builder|Role                               query()
- * @method static Builder|Role                               whereCreatedAt($value)
- * @method static Builder|Role                               whereGuardName($value)
- * @method static Builder|Role                               whereId($value)
- * @method static Builder|Role                               whereName($value)
- * @method static Builder|Role                               whereTeamId($value)
- * @method static Builder|Role                               whereUpdatedAt($value)
- * @method static Builder|Role                               whereUuid($value)
- *
+ * @property int $id
+ * @property string $uuid
+ * @property string|null $team_id
+ * @property string $name
+ * @property string $guard_name
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property-read Collection<int, \Modules\User\Models\Permission> $permissions
+ * @property-read int|null $permissions_count
+ * @property-read \Modules\User\Models\Team|null $team
+ * @property-read Collection<int, \Modules\User\Models\User> $users
+ * @property-read int|null $users_count
+ * @method static Builder|Role newModelQuery()
+ * @method static Builder|Role newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Role permission($permissions)
+ * @method static Builder|Role query()
+ * @method static Builder|Role whereCreatedAt($value)
+ * @method static Builder|Role whereGuardName($value)
+ * @method static Builder|Role whereId($value)
+ * @method static Builder|Role whereName($value)
+ * @method static Builder|Role whereTeamId($value)
+ * @method static Builder|Role whereUpdatedAt($value)
+ * @method static Builder|Role whereUuid($value)
  * @mixin Eloquent
  */
 class Role extends SpatieRole

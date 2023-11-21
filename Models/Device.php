@@ -12,25 +12,25 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 /**
  * Modules\User\Models\Device.
  *
- * @property int                             $id
- * @property string|null                     $mobile_id
- * @property array|null                      $languages
- * @property string|null                     $device
- * @property string|null                     $platform
- * @property string|null                     $browser
- * @property string|null                     $version
- * @property int|null                        $is_robot
- * @property string|null                     $robot
- * @property int|null                        $is_desktop
- * @property int|null                        $is_mobile
- * @property int|null                        $is_tablet
- * @property int|null                        $is_phone
+ * @property int $id
+ * @property string|null $mobile_id
+ * @property string|null $device
+ * @property string|null $platform
+ * @property string|null $browser
+ * @property string|null $version
+ * @property int|null $is_desktop
+ * @property int|null $is_mobile
+ * @property int|null $is_tablet
+ * @property int|null $is_phone
+ * @property int|null $is_robot
+ * @property string|null $robot
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
- * @property string|null                     $updated_by
- * @property string|null                     $created_by
- *
- * @method static DeviceFactory factory($count = null, $state = [])
+ * @property string|null $updated_by
+ * @property string|null $created_by
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\User> $users
+ * @property-read int|null $users_count
+ * @method static \Modules\User\Database\Factories\DeviceFactory factory($count = null, $state = [])
  * @method static Builder|Device newModelQuery()
  * @method static Builder|Device newQuery()
  * @method static Builder|Device query()
@@ -44,14 +44,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @method static Builder|Device whereIsPhone($value)
  * @method static Builder|Device whereIsRobot($value)
  * @method static Builder|Device whereIsTablet($value)
- * @method static Builder|Device whereLanguages($value)
  * @method static Builder|Device whereMobileId($value)
  * @method static Builder|Device wherePlatform($value)
  * @method static Builder|Device whereRobot($value)
  * @method static Builder|Device whereUpdatedAt($value)
  * @method static Builder|Device whereUpdatedBy($value)
  * @method static Builder|Device whereVersion($value)
- *
  * @mixin \Eloquent
  */
 class Device extends BaseModel

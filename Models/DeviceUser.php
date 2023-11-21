@@ -11,19 +11,18 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 /**
  * Modules\User\Models\DeviceUser.
  *
- * @property int                              $id
- * @property string                           $device_id
- * @property string                           $user_id
+ * @property int $id
+ * @property string|null $device_id
+ * @property string|null $user_id
  * @property Carbon|null $login_at
  * @property Carbon|null $logout_at
- * @property string|null                      $push_notifications_token
- * @property bool|null                        $push_notifications_enabled
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
- * @property string|null                      $updated_by
- * @property string|null                      $created_by
- * @property Device|null $device
- *
+ * @property string|null $updated_by
+ * @property string|null $created_by
+ * @property string|null $push_notifications_token
+ * @property bool|null $push_notifications_enabled
+ * @property-read \Modules\User\Models\Device|null $device
  * @method static Builder|DeviceUser newModelQuery()
  * @method static Builder|DeviceUser newQuery()
  * @method static Builder|DeviceUser query()
@@ -38,7 +37,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static Builder|DeviceUser whereUpdatedAt($value)
  * @method static Builder|DeviceUser whereUpdatedBy($value)
  * @method static Builder|DeviceUser whereUserId($value)
- *
  * @mixin \Eloquent
  */
 class DeviceUser extends BasePivot

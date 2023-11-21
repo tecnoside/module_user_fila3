@@ -39,7 +39,8 @@ use Spatie\Permission\Traits\HasRoles;
  *
  * @property string                                                 $id
  * @property string                                                 $name
- * @property string                                                 $surname
+ * @property string                                                 $first_name
+ * @property string                                                 $last_name
  * @property string                                                 $email
  * @property Carbon|null                                            $email_verified_at
  * @property string                                                 $password
@@ -48,24 +49,24 @@ use Spatie\Permission\Traits\HasRoles;
  * @property string|null                                            $profile_photo_path
  * @property Carbon|null                                            $created_at
  * @property Carbon|null                                            $updated_at
+ * @property string|null                                            $deleted_at
  * @property string|null                                            $lang
  * @property bool                                                   $is_active
- * @property string|null                                            $deleted_at
  * @property Collection<int, \Modules\User\Models\OauthClient>      $clients
  * @property int|null                                               $clients_count
- * @property \Modules\Quaeris\Models\Customer|null                  $currentTeam
+ * @property \Modules\User\Models\Team|null                         $currentTeam
  * @property Collection<int, \Modules\User\Models\Device>           $devices
  * @property int|null                                               $devices_count
  * @property DatabaseNotificationCollection<int, Notification>      $notifications
  * @property int|null                                               $notifications_count
- * @property Collection<int, \Modules\Quaeris\Models\Customer>      $ownedTeams
+ * @property Collection<int, \Modules\User\Models\Team>             $ownedTeams
  * @property int|null                                               $owned_teams_count
  * @property Collection<int, \Modules\User\Models\Permission>       $permissions
  * @property int|null                                               $permissions_count
- * @property \Modules\Quaeris\Models\Profile|null                   $profile
+ * @property \Modules\Camping\Models\Profile|null                   $profile
  * @property Collection<int, \Modules\User\Models\Role>             $roles
  * @property int|null                                               $roles_count
- * @property Collection<int, \Modules\Quaeris\Models\Customer>      $teams
+ * @property Collection<int, \Modules\User\Models\Team>             $teams
  * @property int|null                                               $teams_count
  * @property Collection<int, \Modules\User\Models\OauthAccessToken> $tokens
  * @property int|null                                               $tokens_count
@@ -81,14 +82,15 @@ use Spatie\Permission\Traits\HasRoles;
  * @method static Builder|User                                 whereDeletedAt($value)
  * @method static Builder|User                                 whereEmail($value)
  * @method static Builder|User                                 whereEmailVerifiedAt($value)
+ * @method static Builder|User                                 whereFirstName($value)
  * @method static Builder|User                                 whereId($value)
  * @method static Builder|User                                 whereIsActive($value)
  * @method static Builder|User                                 whereLang($value)
+ * @method static Builder|User                                 whereLastName($value)
  * @method static Builder|User                                 whereName($value)
  * @method static Builder|User                                 wherePassword($value)
  * @method static Builder|User                                 whereProfilePhotoPath($value)
  * @method static Builder|User                                 whereRememberToken($value)
- * @method static Builder|User                                 whereSurname($value)
  * @method static Builder|User                                 whereUpdatedAt($value)
  *
  * @mixin Eloquent
@@ -264,5 +266,16 @@ class User extends Authenticatable implements HasName, UserContract
     protected static function newFactory(): Factory
     {
         return UserFactory::new();
+    }
+
+    public function getFullNameAttribute(?string $value): ?string
+    {
+        if (null != $value) {
+            return $value;
+        }
+
+        $value = $this->first_name.' '.$this->last_name;
+
+        return $value;
     }
 }

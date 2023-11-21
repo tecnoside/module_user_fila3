@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
 /**
  * Modules\User\Models\Device.
  *
@@ -80,4 +82,17 @@ class Device extends BaseModel
         // 'locales' => 'array',
         'languages' => 'array',
     ];
+
+    public function users(): BelongsToMany
+    {
+        $pivot_class = DeviceUser::class;
+        $pivot = app($pivot_class);
+        $pivot_fields = $pivot->getFillable();
+
+        return $this
+            ->belongsToMany(User::class)
+            ->using($pivot_class)
+            ->withPivot($pivot_fields)
+            ->withTimestamps();
+    }
 }

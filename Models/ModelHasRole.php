@@ -9,11 +9,11 @@ use Illuminate\Database\Eloquent\Builder;
 /**
  * Modules\User\Models\ModelHasRole.
  *
- * @property string                          $uuid
+ * @property int                             $id
  * @property string                          $role_id
  * @property string                          $model_type
  * @property string                          $model_id
- * @property string|null                     $team_id
+ * @property int|null                        $team_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string|null                     $updated_by
@@ -25,13 +25,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|ModelHasRole                                 query()
  * @method static Builder|ModelHasRole                                 whereCreatedAt($value)
  * @method static Builder|ModelHasRole                                 whereCreatedBy($value)
+ * @method static Builder|ModelHasRole                                 whereId($value)
  * @method static Builder|ModelHasRole                                 whereModelId($value)
  * @method static Builder|ModelHasRole                                 whereModelType($value)
  * @method static Builder|ModelHasRole                                 whereRoleId($value)
  * @method static Builder|ModelHasRole                                 whereTeamId($value)
  * @method static Builder|ModelHasRole                                 whereUpdatedAt($value)
  * @method static Builder|ModelHasRole                                 whereUpdatedBy($value)
- * @method static Builder|ModelHasRole                                 whereUuid($value)
  *
  * @mixin \Eloquent
  */

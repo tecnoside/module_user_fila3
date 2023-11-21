@@ -22,14 +22,15 @@ use Spatie\Permission\Models\Role as SpatieRole;
  * Modules\User\Models\Role.
  *
  * @property int                                              $id
+ * @property string                                           $uuid
+ * @property string|null                                      $team_id
  * @property string                                           $name
  * @property string                                           $guard_name
  * @property Carbon|null                                      $created_at
  * @property Carbon|null                                      $updated_at
- * @property int|null                                         $team_id
  * @property Collection<int, \Modules\User\Models\Permission> $permissions
  * @property int|null                                         $permissions_count
- * @property \Modules\Quaeris\Models\Customer|null            $team
+ * @property \Modules\User\Models\Team|null                   $team
  * @property Collection<int, \Modules\User\Models\User>       $users
  * @property int|null                                         $users_count
  *
@@ -43,6 +44,7 @@ use Spatie\Permission\Models\Role as SpatieRole;
  * @method static Builder|Role                               whereName($value)
  * @method static Builder|Role                               whereTeamId($value)
  * @method static Builder|Role                               whereUpdatedAt($value)
+ * @method static Builder|Role                               whereUuid($value)
  *
  * @mixin Eloquent
  */

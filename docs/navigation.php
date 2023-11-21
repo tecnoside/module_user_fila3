@@ -1,7 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 declare(strict_types=1);
 
+=======
+>>>>>>> 26206f3 (up)
 return [
     'Getting Started' => [
         'url' => 'docs/getting-started',

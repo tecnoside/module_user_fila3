@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Http\Controllers\Socialite;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Request;
 use Laravel\Socialite\Facades\Socialite;
@@ -31,7 +32,7 @@ class ProcessCallbackController extends Controller
     /**
      * Undocumented function.
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function __invoke(Request $request, string $provider)
     {

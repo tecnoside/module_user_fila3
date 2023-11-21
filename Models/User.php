@@ -52,26 +52,26 @@ use Spatie\Permission\Traits\HasRoles;
  * @property string|null                                            $deleted_at
  * @property string|null                                            $lang
  * @property bool                                                   $is_active
- * @property Collection<int, \Modules\User\Models\OauthClient>      $clients
+ * @property Collection<int, OauthClient> $clients
  * @property int|null                                               $clients_count
- * @property \Modules\User\Models\Team|null                         $currentTeam
- * @property Collection<int, \Modules\User\Models\Device>           $devices
+ * @property Team|null $currentTeam
+ * @property Collection<int, Device> $devices
  * @property int|null                                               $devices_count
  * @property DatabaseNotificationCollection<int, Notification>      $notifications
  * @property int|null                                               $notifications_count
- * @property Collection<int, \Modules\User\Models\Team>             $ownedTeams
+ * @property Collection<int, Team> $ownedTeams
  * @property int|null                                               $owned_teams_count
- * @property Collection<int, \Modules\User\Models\Permission>       $permissions
+ * @property Collection<int, Permission> $permissions
  * @property int|null                                               $permissions_count
  * @property \Modules\Camping\Models\Profile|null                   $profile
- * @property Collection<int, \Modules\User\Models\Role>             $roles
+ * @property Collection<int, Role> $roles
  * @property int|null                                               $roles_count
- * @property Collection<int, \Modules\User\Models\Team>             $teams
+ * @property Collection<int, Team> $teams
  * @property int|null                                               $teams_count
- * @property Collection<int, \Modules\User\Models\OauthAccessToken> $tokens
+ * @property Collection<int, OauthAccessToken> $tokens
  * @property int|null                                               $tokens_count
  *
- * @method static \Modules\User\Database\Factories\UserFactory factory($count = null, $state = [])
+ * @method static UserFactory factory($count = null, $state = [])
  * @method static Builder|User                                 newModelQuery()
  * @method static Builder|User                                 newQuery()
  * @method static Builder|User                                 permission($permissions)
@@ -274,8 +274,6 @@ class User extends Authenticatable implements HasName, UserContract
             return $value;
         }
 
-        $value = $this->first_name.' '.$this->last_name;
-
-        return $value;
+        return $this->first_name.' '.$this->last_name;
     }
 }

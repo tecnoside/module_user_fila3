@@ -74,6 +74,7 @@ class AssignModuleCommand extends Command
             $role = Role::firstOrCreate(['name' => $role]);
             $user->assignRole($role);
         }
+        
         $this->info(implode(', ', $modules).' assigned to '.$email);
     }
 

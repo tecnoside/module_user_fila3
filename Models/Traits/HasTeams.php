@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Models\Traits;
 
+use Exception;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -134,7 +135,7 @@ trait HasTeams
         }
 
         if (! $res instanceof TeamContract) {
-            throw new \Exception('strange things');
+            throw new Exception('strange things');
         }
 
         return $res;
@@ -183,6 +184,7 @@ trait HasTeams
         if (! $this->belongsToTeam($teamContract)) {
             return $role;
         }
+        
         Assert::notNull($user = $teamContract->users()->where('id', $this->id)->first());
         Assert::isInstanceOf($user, User::class);
         /** @var User $user */
@@ -248,6 +250,7 @@ trait HasTeams
         if (! $this->belongsToTeam($teamContract)) {
             return false;
         }
+        
         /* --WIP
         if (
             \in_array(HasApiTokens::class, class_uses_recursive($this), true)

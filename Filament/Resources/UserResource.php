@@ -9,6 +9,12 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Resources;
 
+use Modules\User\Filament\Resources\UserResource\RelationManagers\DevicesRelationManager;
+use Modules\User\Filament\Resources\UserResource\RelationManagers\TeamsRelationManager;
+use Modules\User\Filament\Resources\UserResource\RelationManagers\ProfileRelationManager;
+use Modules\User\Filament\Resources\UserResource\RelationManagers\RolesRelationManager;
+use Modules\User\Filament\Resources\UserResource\RelationManagers\TokensRelationManager;
+use Modules\User\Filament\Resources\UserResource\RelationManagers\ClientsRelationManager;
 use Closure;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Group;
@@ -44,10 +50,12 @@ class UserResource extends XotBaseResource
     // protected static ?string $model = User::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-users';
+    
     // Static property Modules\User\Filament\Resources\UserResource::$enablePasswordUpdates is never read, only written.
     // private static bool|\Closure $enablePasswordUpdates = true;
 
-    private static ?\Closure $extendFormCallback = null;
+    private static ?Closure $extendFormCallback = null;
+    
     /*
         protected static function getNavigationLabel(): string
         {
@@ -151,7 +159,7 @@ class UserResource extends XotBaseResource
                             'new_password_confirmation' => TextInput::make('new_password_confirmation')
                                 ->password()
                                 ->label('Confirm New Password')
-                                ->rule('required', fn ($get): bool => (bool) $get('new_password'))
+                                ->rule('required', static fn($get): bool => (bool) $get('new_password'))
                                 ->same('new_password')
                                 ->dehydrated(false),
                         ])// ->visible(static::$enablePasswordUpdates)
@@ -159,10 +167,10 @@ class UserResource extends XotBaseResource
                     ])->columnSpan(8),
                     'right' => Card::make([
                         'created_at' => Placeholder::make('created_at')
-                            ->content(fn ($record) => $record?->created_at?->diffForHumans() ?? new HtmlString('&mdash;')),
+                            ->content(static fn($record) => $record?->created_at?->diffForHumans() ?? new HtmlString('&mdash;')),
                     ])->columnSpan(4),
                 ];
-                if (self::$extendFormCallback instanceof \Closure) {
+                if (self::$extendFormCallback instanceof Closure) {
                     return value(self::$extendFormCallback, $schema);
                 }
 
@@ -230,7 +238,7 @@ class UserResource extends XotBaseResource
                         TextInput::make('new_password_confirmation')
                             ->password()
                             ->label('Confirm New Password')
-                            ->rule('required', fn ($get): bool => (bool) $get('new_password'))
+                            ->rule('required', static fn($get): bool => (bool) $get('new_password'))
                             ->same('new_password'),
                     ])
                     ->icon('heroicon-o-key')
@@ -270,14 +278,14 @@ class UserResource extends XotBaseResource
     public static function getRelations(): array
     {
         return [
-            RelationManagers\DevicesRelationManager::class,
-            RelationManagers\TeamsRelationManager::class,
-            RelationManagers\ProfileRelationManager::class,
-            RelationManagers\RolesRelationManager::class,
+            DevicesRelationManager::class,
+            TeamsRelationManager::class,
+            ProfileRelationManager::class,
+            RolesRelationManager::class,
             // ---PASSPORT
             RelationGroup::make('Passport', [
-                RelationManagers\TokensRelationManager::class,
-                RelationManagers\ClientsRelationManager::class,
+                TokensRelationManager::class,
+                ClientsRelationManager::class,
             ]),
         ];
     }

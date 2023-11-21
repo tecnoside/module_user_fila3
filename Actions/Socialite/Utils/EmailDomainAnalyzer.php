@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Actions\Socialite\Utils;
 
+use Exception;
 use Illuminate\Support\Str;
 use Laravel\Socialite\Contracts\User;
 use Webmozart\Assert\Assert;
@@ -26,10 +27,7 @@ final class EmailDomainAnalyzer
 
     public function hasUnrecognizedDomain(): bool
     {
-        return ! (
-            $this->hasFirstPartyDomain()
-            || $this->hasClientDomain()
-        );
+        return !$this->hasFirstPartyDomain() && !$this->hasClientDomain();
     }
 
     public function hasFirstPartyDomain(): bool
@@ -45,7 +43,7 @@ final class EmailDomainAnalyzer
     {
         $clientEmailDomain = $this->clientDomain();
 
-        if (empty($clientEmailDomain)) {
+        if ($clientEmailDomain === null || $clientEmailDomain === '') {
             return false;
         }
 
@@ -58,21 +56,23 @@ final class EmailDomainAnalyzer
 
     private function firstPartyDomain(): string
     {
-        Assert::string($res = config("services.{$this->ssoProvider}.email_domains.first_party.tld"));
+        Assert::string($res = config(sprintf('services.%s.email_domains.first_party.tld', $this->ssoProvider)));
 
         return $res;
     }
 
     private function clientDomain(): ?string
     {
-        $domain = config("services.{$this->ssoProvider}.email_domains.client.tld");
+        $domain = config(sprintf('services.%s.email_domains.client.tld', $this->ssoProvider));
         if (is_string($domain)) {
             return $domain;
         }
+        
         if (is_null($domain)) {
             return $domain;
         }
-        throw new \Exception('wip');
+        
+        throw new Exception('wip');
         /*
         return empty($domain)
             ? null

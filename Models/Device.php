@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
+use Illuminate\Support\Carbon;
+use Modules\User\Database\Factories\DeviceFactory;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
@@ -22,32 +25,32 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @property int|null                        $is_mobile
  * @property int|null                        $is_tablet
  * @property int|null                        $is_phone
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
  * @property string|null                     $updated_by
  * @property string|null                     $created_by
  *
- * @method static \Modules\User\Database\Factories\DeviceFactory factory($count = null, $state = [])
- * @method static \Illuminate\Database\Eloquent\Builder|Device   newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Device   newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Device   query()
- * @method static \Illuminate\Database\Eloquent\Builder|Device   whereBrowser($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Device   whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Device   whereCreatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Device   whereDevice($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Device   whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Device   whereIsDesktop($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Device   whereIsMobile($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Device   whereIsPhone($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Device   whereIsRobot($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Device   whereIsTablet($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Device   whereLanguages($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Device   whereMobileId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Device   wherePlatform($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Device   whereRobot($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Device   whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Device   whereUpdatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Device   whereVersion($value)
+ * @method static DeviceFactory factory($count = null, $state = [])
+ * @method static Builder|Device newModelQuery()
+ * @method static Builder|Device newQuery()
+ * @method static Builder|Device query()
+ * @method static Builder|Device whereBrowser($value)
+ * @method static Builder|Device whereCreatedAt($value)
+ * @method static Builder|Device whereCreatedBy($value)
+ * @method static Builder|Device whereDevice($value)
+ * @method static Builder|Device whereId($value)
+ * @method static Builder|Device whereIsDesktop($value)
+ * @method static Builder|Device whereIsMobile($value)
+ * @method static Builder|Device whereIsPhone($value)
+ * @method static Builder|Device whereIsRobot($value)
+ * @method static Builder|Device whereIsTablet($value)
+ * @method static Builder|Device whereLanguages($value)
+ * @method static Builder|Device whereMobileId($value)
+ * @method static Builder|Device wherePlatform($value)
+ * @method static Builder|Device whereRobot($value)
+ * @method static Builder|Device whereUpdatedAt($value)
+ * @method static Builder|Device whereUpdatedBy($value)
+ * @method static Builder|Device whereVersion($value)
  *
  * @mixin \Eloquent
  */

@@ -28,7 +28,7 @@ class CreateRolesTable extends XotBaseMigration
 
         // -- CREATE --
         $this->tableCreate(
-            function (Blueprint $table) use ($columnNames): void {
+            static function (Blueprint $table) use ($columnNames) : void {
                 // $teams = config('permission.teams');
                 $table->uuid('id')->primary();
                 // role id
@@ -70,6 +70,7 @@ class CreateRolesTable extends XotBaseMigration
                 if ($this->hasIndexName('name_guard_name_unique')) {
                     $table->dropIndex('roles_name_guard_name_unique');
                 }
+                
                 $this->updateUser($table);
             }
         );

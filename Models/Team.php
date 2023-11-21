@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
+use Modules\User\Database\Factories\TeamFactory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -23,15 +24,15 @@ use Modules\Xot\Datas\XotData;
  * @property int                                                                                $personal_team
  * @property Carbon|null                                                                        $created_at
  * @property Carbon|null                                                                        $updated_at
- * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\User>           $members
+ * @property \Illuminate\Database\Eloquent\Collection<int, User> $members
  * @property int|null                                                                           $members_count
- * @property \Modules\User\Models\User|null                                                     $owner
- * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\TeamInvitation> $teamInvitations
+ * @property User|null $owner
+ * @property \Illuminate\Database\Eloquent\Collection<int, TeamInvitation> $teamInvitations
  * @property int|null                                                                           $team_invitations_count
- * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\User>           $users
+ * @property \Illuminate\Database\Eloquent\Collection<int, User> $users
  * @property int|null                                                                           $users_count
  *
- * @method static \Modules\User\Database\Factories\TeamFactory factory($count = null, $state = [])
+ * @method static TeamFactory factory($count = null, $state = [])
  * @method static Builder|Team                                 newModelQuery()
  * @method static Builder|Team                                 newQuery()
  * @method static Builder|Team                                 query()
@@ -107,7 +108,7 @@ class Team extends BaseModel implements TeamContract
         // Parameter #1 $key of method Illuminate\Database\Eloquent\Collection<int,Modules\User\Models\User>::contains() expects (callable(Modules\User\Models\User, int):
         // bool)|int|Modules\User\Models\User|string, Modules\User\Contracts\UserContract given.
         // ✏️  User\Models\Team.php
-        if ($this->users->contains(get_class($user))) {
+        if ($this->users->contains($user::class)) {
             return true;
         }
 

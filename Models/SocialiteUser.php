@@ -8,6 +8,8 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
+use Illuminate\Support\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Modules\Xot\Datas\XotData;
@@ -23,27 +25,27 @@ use Modules\Xot\Datas\XotData;
  * @property string|null                     $name
  * @property string|null                     $email
  * @property string|null                     $avatar
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
  * @property string|null                     $updated_by
  * @property string|null                     $created_by
- * @property \Modules\User\Models\User|null  $user
+ * @property User|null $user
  *
- * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser query()
- * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser whereAvatar($value)
- * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser whereCreatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser whereEmail($value)
- * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser whereProvider($value)
- * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser whereProviderId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser whereToken($value)
- * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser whereUpdatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser whereUserId($value)
+ * @method static Builder|SocialiteUser newModelQuery()
+ * @method static Builder|SocialiteUser newQuery()
+ * @method static Builder|SocialiteUser query()
+ * @method static Builder|SocialiteUser whereAvatar($value)
+ * @method static Builder|SocialiteUser whereCreatedAt($value)
+ * @method static Builder|SocialiteUser whereCreatedBy($value)
+ * @method static Builder|SocialiteUser whereEmail($value)
+ * @method static Builder|SocialiteUser whereId($value)
+ * @method static Builder|SocialiteUser whereName($value)
+ * @method static Builder|SocialiteUser whereProvider($value)
+ * @method static Builder|SocialiteUser whereProviderId($value)
+ * @method static Builder|SocialiteUser whereToken($value)
+ * @method static Builder|SocialiteUser whereUpdatedAt($value)
+ * @method static Builder|SocialiteUser whereUpdatedBy($value)
+ * @method static Builder|SocialiteUser whereUserId($value)
  *
  * @mixin \Eloquent
  */

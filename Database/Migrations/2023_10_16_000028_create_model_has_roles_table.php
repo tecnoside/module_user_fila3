@@ -24,7 +24,7 @@ class CreateModelHasRolesTable extends XotBaseMigration
 
         // -- CREATE --
         $this->tableCreate(
-            function (Blueprint $table): void {
+            static function (Blueprint $table) : void {
                 // $table->uuid('id')->primary()->first();
                 $table->id();
                 $table->unsignedBigInteger(PermissionRegistrar::$pivotRole);
@@ -42,7 +42,7 @@ class CreateModelHasRolesTable extends XotBaseMigration
                 if ($teams) {
                     $table->unsignedBigInteger($columnNames['team_foreign_key']);
                     $table->index($columnNames['team_foreign_key'], 'model_has_roles_team_foreign_key_index');
-
+                
                     $table->primary(
                         [$columnNames['team_foreign_key'], PermissionRegistrar::$pivotRole, $columnNames['model_morph_key'], 'model_type'],
                         'model_has_roles_role_model_type_primary'
@@ -68,6 +68,7 @@ class CreateModelHasRolesTable extends XotBaseMigration
                 } else {
                     $table->string('team_id')->nullable()->change();
                 }
+                
                 if ($this->hasIndexName('model_has_roles_team_foreign_key_index')) {
                     $table->dropIndex('model_has_roles_team_foreign_key_index');
                 }
@@ -75,6 +76,7 @@ class CreateModelHasRolesTable extends XotBaseMigration
                 if ($this->hasIndexName('model_has_roles_model_id_model_type_index')) {
                     $table->dropIndex('model_has_roles_model_id_model_type_index');
                 }
+                
                 if ($this->hasIndexName('model_has_role_model_id_index')) {
                     $table->dropIndex('model_has_role_model_id_index');
                 }

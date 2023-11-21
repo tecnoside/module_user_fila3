@@ -75,10 +75,12 @@ class DeviceData extends Data
         if ($this->synchronizationId !== null) {
             return $this->synchronizationId;
         }
+        
         $synchronizationClass = config('morph_map.synchronization');
         if ($synchronizationClass == null) {
             $synchronizationClass = '\Modules\Egea\Models\Synchronization';
         }
+        
         // fare contract
         // Assert::isInstanceOf($synchronizationClass,Model::class);
         // $synchronization = Synchronization::create([

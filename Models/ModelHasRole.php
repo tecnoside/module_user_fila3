@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
+use Illuminate\Support\Carbon;
+use Modules\User\Database\Factories\ModelHasRoleFactory;
 use Illuminate\Database\Eloquent\Builder;
 
 /**
@@ -14,12 +16,12 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string                          $model_type
  * @property string                          $model_id
  * @property int|null                        $team_id
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
  * @property string|null                     $updated_by
  * @property string|null                     $created_by
  *
- * @method static \Modules\User\Database\Factories\ModelHasRoleFactory factory($count = null, $state = [])
+ * @method static ModelHasRoleFactory factory($count = null, $state = [])
  * @method static Builder|ModelHasRole                                 newModelQuery()
  * @method static Builder|ModelHasRole                                 newQuery()
  * @method static Builder|ModelHasRole                                 query()

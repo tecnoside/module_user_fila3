@@ -30,13 +30,13 @@ use Spatie\Permission\Models\Role as SpatieRole;
  * @property Carbon|null                                      $updated_at
  * @property Collection<int, \Modules\User\Models\Permission> $permissions
  * @property int|null                                         $permissions_count
- * @property \Modules\User\Models\Team|null                   $team
- * @property Collection<int, \Modules\User\Models\User>       $users
+ * @property Team|null $team
+ * @property Collection<int, User> $users
  * @property int|null                                         $users_count
  *
  * @method static Builder|Role                               newModelQuery()
  * @method static Builder|Role                               newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Role permission($permissions)
+ * @method static Builder|Role permission($permissions)
  * @method static Builder|Role                               query()
  * @method static Builder|Role                               whereCreatedAt($value)
  * @method static Builder|Role                               whereGuardName($value)
@@ -64,6 +64,7 @@ class Role extends SpatieRole
      * @var string
      */
     protected $connection = 'user';
+    
     // protected $fillable=['id','']
 
     /**

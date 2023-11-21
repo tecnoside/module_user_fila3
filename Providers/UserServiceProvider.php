@@ -8,6 +8,11 @@ declare(strict_types=1);
 
 namespace Modules\User\Providers;
 
+use Modules\User\Console\Commands\AssignModuleCommand;
+use Modules\User\Console\Commands\AssignRoleCommand;
+use Modules\User\Console\Commands\AssignTeamCommand;
+use Modules\User\Console\Commands\SuperAdminCommand;
+use SocialiteProviders\Manager\ServiceProvider;
 use Laravel\Passport\Passport;
 use Modules\User\Console\Commands;
 use Modules\User\Models\OauthAccessToken;
@@ -30,10 +35,10 @@ class UserServiceProvider extends XotBaseServiceProvider
         $this->registerAuthenticationProviders();
         $this->registerEventListener();
         $this->commands([
-            Commands\AssignModuleCommand::class,
-            Commands\AssignRoleCommand::class,
-            Commands\AssignTeamCommand::class,
-            Commands\SuperAdminCommand::class,
+            AssignModuleCommand::class,
+            AssignRoleCommand::class,
+            AssignTeamCommand::class,
+            SuperAdminCommand::class,
         ]);
     }
 
@@ -65,7 +70,7 @@ class UserServiceProvider extends XotBaseServiceProvider
 
     private function registerSocialite(): void
     {
-        $this->app->register(\SocialiteProviders\Manager\ServiceProvider::class);
+        $this->app->register(ServiceProvider::class);
     }
 
     protected function registerEventListener(): void

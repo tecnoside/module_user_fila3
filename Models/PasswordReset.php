@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
+use Illuminate\Support\Carbon;
+use Modules\User\Database\Factories\PasswordResetFactory;
 use Illuminate\Database\Eloquent\Builder;
 
 /**
@@ -12,13 +14,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @property int                             $id
  * @property string                          $email
  * @property string                          $token
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
  * @property string|null                     $user_id
  * @property string|null                     $updated_by
  * @property string|null                     $created_by
  *
- * @method static \Modules\User\Database\Factories\PasswordResetFactory factory($count = null, $state = [])
+ * @method static PasswordResetFactory factory($count = null, $state = [])
  * @method static Builder|PasswordReset                                 newModelQuery()
  * @method static Builder|PasswordReset                                 newQuery()
  * @method static Builder|PasswordReset                                 query()

@@ -4,6 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Resources;
 
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Actions\BulkActionGroup;
+use Filament\Tables\Actions\DeleteBulkAction;
+use Modules\User\Filament\Resources\DeviceResource\RelationManagers\UsersRelationManager;
+use Modules\User\Filament\Resources\DeviceResource\Pages\ListDevices;
+use Modules\User\Filament\Resources\DeviceResource\Pages\CreateDevice;
+use Modules\User\Filament\Resources\DeviceResource\Pages\EditDevice;
 use Filament\Forms\Form;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
@@ -47,11 +54,11 @@ class DeviceResource extends XotBaseResource
             ->filters([
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                EditAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
                 ]),
             ])
             ->emptyStateActions([
@@ -61,16 +68,16 @@ class DeviceResource extends XotBaseResource
     public static function getRelations(): array
     {
         return [
-            RelationManagers\UsersRelationManager::class,
+            UsersRelationManager::class,
         ];
     }
 
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListDevices::route('/'),
-            'create' => Pages\CreateDevice::route('/create'),
-            'edit' => Pages\EditDevice::route('/{record}/edit'),
+            'index' => ListDevices::route('/'),
+            'create' => CreateDevice::route('/create'),
+            'edit' => EditDevice::route('/{record}/edit'),
         ];
     }
 }

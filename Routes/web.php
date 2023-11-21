@@ -27,13 +27,12 @@ Route::prefix('user')->group(function() {
 //    ->middleware(config('filament.middleware.base'))
 Route::namespace('Socialite')
     ->name('socialite.')
-    ->group(function (): void {
+    ->group(static function () : void {
         Route::get(
             '/admin/login/{provider}',
             'LoginController@redirectToProvider',
         )
             ->name('oauth.redirect');
-
         Route::get(
             '/sso/{provider}/callback',
             'ProcessCallbackController',
@@ -60,8 +59,6 @@ Route::namespace('\\')
     );
 */
 
-Route::get('/login', fn () =>
-    // return view('welcome');
-    redirect('/admin/login'))->name('login');
+Route::get('/login', static fn() => redirect('/admin/login'))->name('login');
 
 Route::get('/upgrade', 'UpgradeController');

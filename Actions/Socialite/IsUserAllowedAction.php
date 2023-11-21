@@ -29,6 +29,7 @@ class IsUserAllowedAction
         if ((is_countable($domains) ? \count($domains) : 0) < 1) {
             return true;
         }
+        
         Assert::notNull($user->getEmail());
         // Get the domain of the email for the specified user
         $emailDomain = Str::of($user->getEmail())

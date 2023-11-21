@@ -67,6 +67,7 @@ class AssignRoleCommand extends Command
             $role = Role::firstOrCreate(['name' => $row]);
             $user->assignRole($role);
         }
+        
         $this->info(implode(', ', $rows).' assigned to '.$email);
     }
 

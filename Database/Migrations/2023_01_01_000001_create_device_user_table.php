@@ -14,11 +14,11 @@ class CreateDeviceUserTable extends XotBaseMigration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         // -- CREATE --
         $this->tableCreate(
-            function (Blueprint $table) {
+            static function (Blueprint $table) : void {
                 $table->id('id');
                 $table->foreignIdFor(Device::class, 'device_id')->index();
                 $table->foreignIdFor(User::class, 'user_id')->index();
@@ -28,10 +28,11 @@ class CreateDeviceUserTable extends XotBaseMigration
         );
         // -- UPDATE --
         $this->tableUpdate(
-            function (Blueprint $table) {
+            function (Blueprint $table): void {
                 if (! $this->hasColumn('push_notifications_token')) {
                     $table->string('push_notifications_token')->nullable();
                 }
+                
                 if (! $this->hasColumn('push_notifications_enabled')) {
                     $table->boolean('push_notifications_enabled')->nullable();
                 }

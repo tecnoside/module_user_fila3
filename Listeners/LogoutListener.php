@@ -24,7 +24,7 @@ class LogoutListener
      *
      * @return void
      */
-    public function handle(Logout $event)
+    public function handle(Logout $event): void
     {
         // Session::flash('login-success', 'Hello ' . $event->user->name . ', welcome back!');
         $device = app(GetCurrentDeviceAction::class)->execute();

@@ -14,10 +14,9 @@ trait UuidTrait
 {
     public static function bootUuidTrait(): void
     {
-        static::creating(function ($model): void {
+        static::creating(static function ($model) : void {
             $model->keyType = 'string';
             $model->incrementing = false;
-
             $model->{$model->getKeyName()} = $model->{$model->getKeyName()} ?: (string) Str::orderedUuid();
         });
     }

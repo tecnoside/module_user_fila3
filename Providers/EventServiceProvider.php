@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\User\Providers;
 
+use Modules\User\Listeners\LoginListener;
+use Modules\User\Listeners\LogoutListener;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Events\Logout;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -22,10 +24,10 @@ class EventServiceProvider extends ServiceProvider
             Auth0ExtendSocialite::class.'@handle',
         ],
         Login::class => [
-            \Modules\User\Listeners\LoginListener::class,
+            LoginListener::class,
         ],
         Logout::class => [
-            \Modules\User\Listeners\LogoutListener::class,
+            LogoutListener::class,
         ],
     ];
 }

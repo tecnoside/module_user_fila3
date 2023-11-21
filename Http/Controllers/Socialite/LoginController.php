@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\User\Http\Controllers\Socialite;
 
+use Exception;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Controller;
 use Illuminate\Routing\Redirector;
@@ -48,10 +50,11 @@ class LoginController extends Controller
         $scopes = App(GetProviderScopesAction::class)->execute($provider);
         $socialiteProvider = Socialite::with($provider);
         if (! is_object($socialiteProvider)) {
-            throw new \Exception('wip');
+            throw new Exception('wip');
         }
+        
         if (! method_exists($socialiteProvider, 'scopes')) {
-            throw new \Exception('wip');
+            throw new Exception('wip');
         }
 
         return $socialiteProvider
@@ -63,8 +66,8 @@ class LoginController extends Controller
     {
         try {
             return Socialite::driver($provider)->user();
-        } catch (InvalidStateException $e) {
-            InvalidState::dispatch($e);
+        } catch (InvalidStateException $invalidStateException) {
+            InvalidState::dispatch($invalidStateException);
         }
 
         return null;
@@ -117,7 +120,7 @@ class LoginController extends Controller
     {
         $guard = app(GetGuardAction::class)->execute();
         Assert::boolean($remember_me = config('filament-socialite.remember_login', false));
-        Assert::isInstanceOf($user = $socialiteUser->user, \Illuminate\Contracts\Auth\Authenticatable::class);
+        Assert::isInstanceOf($user = $socialiteUser->user, Authenticatable::class);
         // Log the user in
         $guard->login($user, $remember_me);
 

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Resources\PermissionResource\Pages;
 
+use Modules\User\Models\User;
 use Filament\Actions\CreateAction;
 use Filament\Forms\Components\Select;
 use Filament\Resources\Pages\ListRecords;
@@ -30,9 +31,9 @@ class ListPermissions extends ListRecords
 
         return [
             BulkAction::make('Attach Role')
-                ->action(function (Collection $collection, array $data): void {
+                ->action(static function (Collection $collection, array $data) : void {
                     foreach ($collection as $record) {
-                        Assert::isInstanceOf($record, \Modules\User\Models\User::class);
+                        Assert::isInstanceOf($record, User::class);
                         $record->roles()->sync($data['role']);
                         $record->save();
                     }

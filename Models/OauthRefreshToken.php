@@ -15,7 +15,7 @@ use Laravel\Passport\RefreshToken as PassportRefreshToken;
  * @property string                                     $access_token_id
  * @property bool                                       $revoked
  * @property Carbon|null                                $expires_at
- * @property \Modules\User\Models\OauthAccessToken|null $accessToken
+ * @property OauthAccessToken|null $accessToken
  *
  * @method static Builder|OauthRefreshToken newModelQuery()
  * @method static Builder|OauthRefreshToken newQuery()

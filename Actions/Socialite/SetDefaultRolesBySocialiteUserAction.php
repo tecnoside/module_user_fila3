@@ -17,9 +17,9 @@ class SetDefaultRolesBySocialiteUserAction
 {
     use QueueableAction;
 
-    private EmailDomainAnalyzer $domainAnalyzer;
+    private readonly EmailDomainAnalyzer $domainAnalyzer;
 
-    private string $defaultUserGuard;
+    private readonly string $defaultUserGuard;
 
     public function __construct(
         private readonly string $provider,
@@ -56,12 +56,12 @@ class SetDefaultRolesBySocialiteUserAction
         }
 
         $defaultRoleNames = $this->domainAnalyzer->hasFirstPartyDomain()
-            ? (array) config("services.{$this->provider}.email_domains.first_party.role_names_search")
-            : (array) config("services.{$this->provider}.email_domains.client.role_names_search");
+            ? (array) config(sprintf('services.%s.email_domains.first_party.role_names_search', $this->provider))
+            : (array) config(sprintf('services.%s.email_domains.client.role_names_search', $this->provider));
 
         $rolesToSet = Role::query()
             ->where(
-                function (Builder $query) use ($defaultRoleNames) {
+                static function (Builder $query) use ($defaultRoleNames) : void {
                     foreach ($defaultRoleNames as $roleName) {
                         $query->orWhere('name', 'LIKE', $roleName);
                     }

@@ -21,8 +21,8 @@ use Laravel\Passport\Token as PassportToken;
  * @property Carbon|null                           $created_at
  * @property Carbon|null                           $updated_at
  * @property Carbon|null                           $expires_at
- * @property \Modules\User\Models\OauthClient|null $client
- * @property \Modules\User\Models\User|null        $user
+ * @property OauthClient|null $client
+ * @property User|null $user
  *
  * @method static Builder|OauthAccessToken newModelQuery()
  * @method static Builder|OauthAccessToken newQuery()

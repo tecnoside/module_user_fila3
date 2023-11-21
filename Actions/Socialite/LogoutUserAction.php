@@ -25,7 +25,7 @@ class LogoutUserAction
      *
      * @return void
      */
-    public function execute(UserContract $user)
+    public function execute(UserContract $user): void
     {
         Assert::notNull($accessToken = $user->token());
         /*
@@ -38,6 +38,7 @@ class LogoutUserAction
         if (method_exists($accessToken, 'getKey')) {
             OauthRefreshToken::where('access_token_id', $accessToken->getKey())->delete();
         }
+        
         if (method_exists($accessToken, 'delete')) {
             $accessToken->delete();
             // $user->token()?->delete();

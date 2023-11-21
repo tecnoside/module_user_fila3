@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Resources;
 
+use Closure;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\Grid;
@@ -44,6 +45,7 @@ class RoleResource extends XotBaseResource
     protected static ?string $navigationIcon = 'heroicon-o-shield-check';
 
     protected static ?string $recordTitleAttribute = 'name';
+    
     // Static property Modules\User\Filament\Resources\RoleResource::$permissionsCollection is never read, only written.
     // private static ?Collection $permissionsCollection = null;
 
@@ -314,9 +316,9 @@ class RoleResource extends XotBaseResource
     public static function refreshSelectAllStateViaEntities(Set $set, Get $get): void
     {
         $entitiesStates = collect(FilamentShield::getResources())
-            ->when(Utils::isPageEntityEnabled(), fn ($entities) => $entities->merge(FilamentShield::getPages()))
+            ->when(Utils::isPageEntityEnabled(), static fn($entities) => $entities->merge(FilamentShield::getPages()))
             ->when(Utils::isWidgetEntityEnabled(), fn ($entities) => $entities->merge(FilamentShield::getWidgets()))
-            ->when(Utils::isCustomPermissionEntityEnabled(), fn ($entities) => $entities->merge(static::getCustomEntities()))
+            ->when(Utils::isCustomPermissionEntityEnabled(), static fn($entities) => $entities->merge(static::getCustomEntities()))
             ->map(static function ($entity) use ($get): bool {
                 if (\is_array($entity)) {
                     return (bool) $get($entity['resource']);
@@ -337,33 +339,33 @@ class RoleResource extends XotBaseResource
     // private function refreshEntitiesStatesViaSelectAll(\Closure $set, $state): void
     public static function refreshEntitiesStatesViaSelectAll(Set $set, $state): void
     {
-        collect(FilamentShield::getResources())->each(function (array $entity) use ($set, $state): void {
+        collect(FilamentShield::getResources())->each(static function (array $entity) use ($set, $state) : void {
             $set($entity['resource'], $state);
-            collect(Utils::getResourcePermissionPrefixes($entity['fqcn']))->each(function (string $permission) use ($entity, $set, $state): void {
+            collect(Utils::getResourcePermissionPrefixes($entity['fqcn']))->each(static function (string $permission) use ($entity, $set, $state) : void {
                 $set($permission.'_'.$entity['resource'], $state);
             });
         });
 
-        collect(FilamentShield::getPages())->each(function ($page) use ($set, $state): void {
+        collect(FilamentShield::getPages())->each(static function ($page) use ($set, $state) : void {
             if (Utils::isPageEntityEnabled()) {
                 $set($page, $state);
             }
         });
 
-        collect(FilamentShield::getWidgets())->each(function ($widget) use ($set, $state): void {
+        collect(FilamentShield::getWidgets())->each(static function ($widget) use ($set, $state) : void {
             if (Utils::isWidgetEntityEnabled()) {
                 $set($widget, $state);
             }
         });
 
-        static::getCustomEntities()->each(function ($custom) use ($set, $state): void {
+        static::getCustomEntities()->each(static function ($custom) use ($set, $state) : void {
             if (Utils::isCustomPermissionEntityEnabled()) {
                 $set($custom, $state);
             }
         });
     }
 
-    private function refreshResourceEntityStateAfterUpdate(\Closure $set, \Closure $get, array $entity): void
+    private function refreshResourceEntityStateAfterUpdate(Closure $set, Closure $get, array $entity): void
     {
         $collection = collect(Utils::getResourcePermissionPrefixes($entity['fqcn']))
             ->map(static fn (string $permission): bool => (bool) $get($permission.'_'.$entity['resource']));
@@ -377,7 +379,7 @@ class RoleResource extends XotBaseResource
         }
     }
 
-    private function refreshResourceEntityStateAfterHydrated(Model $model, \Closure $set, array $entity): void
+    private function refreshResourceEntityStateAfterHydrated(Model $model, Closure $set, array $entity): void
     {
         $entities = $model->permissions->pluck('name')
             ->reduce(static function (array $roles, $role): array {

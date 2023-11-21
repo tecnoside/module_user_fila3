@@ -24,7 +24,7 @@ class LoginListener
      *
      * @return void
      */
-    public function handle(Login $event)
+    public function handle(Login $event): void
     {
         // Session::flash('login-success', 'Hello ' . $event->user->name . ', welcome back!');
         $device = app(GetCurrentDeviceAction::class)->execute();

@@ -62,23 +62,29 @@ final class UserNameFieldsResolver
             ? ($idpUser->getRaw()['name'] ?? '')
             : '';
         $nameSection = $this->resolveNameFieldByNameAttributeAnalysis((string) $nameField, $searchMethod);
-
-        if (
-            $nameSection->isNotEmpty()
-            && ! filter_var((string) $nameSection, FILTER_VALIDATE_EMAIL)
-        ) {
-            return (string) $nameSection;
+        if (!$nameSection->isNotEmpty()) {
+            // If both sections were empty, try the "hardest way"
+            // by analyzing email address
+            return Str::of((string) $idpUser->getEmail())
+                ->trim()
+                ->before('@')
+                ->$searchMethod('.') // If no point is available, the whole string should be returned
+                ->trim()
+                ->title()
+                ->toString();
         }
-
-        // If both sections were empty, try the "hardest way"
-        // by analyzing email address
-        return Str::of((string) $idpUser->getEmail())
-            ->trim()
-            ->before('@')
-            ->$searchMethod('.') // If no point is available, the whole string should be returned
-            ->trim()
-            ->title()
-            ->toString();
+        if (filter_var((string) $nameSection, FILTER_VALIDATE_EMAIL)) {
+            // If both sections were empty, try the "hardest way"
+            // by analyzing email address
+            return Str::of((string) $idpUser->getEmail())
+                ->trim()
+                ->before('@')
+                ->$searchMethod('.') // If no point is available, the whole string should be returned
+                ->trim()
+                ->title()
+                ->toString();
+        }
+        return (string) $nameSection;
     }
 
     private function resolveNameFieldByNameAttributeAnalysis(string $nameField, string $searchMethod): Stringable

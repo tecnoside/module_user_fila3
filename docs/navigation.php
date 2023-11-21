@@ -1,18 +1,5 @@
 <?php
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-declare(strict_types=1);
-
-=======
->>>>>>> 26206f3 (up)
->>>>>>> 6f72a7ec3f85459cfbd812fec75a874814ead61a
-=======
-declare(strict_types=1);
-
->>>>>>> 24f4dca (up)
 return [
     'Getting Started' => [
         'url' => 'docs/getting-started',

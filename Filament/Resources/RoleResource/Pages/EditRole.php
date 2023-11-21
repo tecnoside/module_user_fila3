@@ -19,7 +19,7 @@ class EditRole extends EditRecord
 {
     // //
     public Collection $permissions;
-    
+
     // public Role $record;
 
     protected static string $resource = RoleResource::class;
@@ -31,7 +31,7 @@ class EditRole extends EditRecord
     {
         $permissionModels = collect();
         Assert::isArray($data = $this->data);
-        $this->permissions->each(static function ($permission) use ($permissionModels, $data) : void {
+        $this->permissions->each(function ($permission) use ($permissionModels, $data) : void {
             $permissionModels->push(Utils::getPermissionModel()::firstOrCreate([
                 'name' => $permission,
                 'guard_name' => $data['guard_name'] ?? 'web',

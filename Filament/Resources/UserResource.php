@@ -50,12 +50,12 @@ class UserResource extends XotBaseResource
     // protected static ?string $model = User::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-users';
-    
+
     // Static property Modules\User\Filament\Resources\UserResource::$enablePasswordUpdates is never read, only written.
     // private static bool|\Closure $enablePasswordUpdates = true;
 
     private static ?Closure $extendFormCallback = null;
-    
+
     /*
         protected static function getNavigationLabel(): string
         {
@@ -121,7 +121,7 @@ class UserResource extends XotBaseResource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema(static function () {
+            ->schema(function () {
                 $schema = [
                     'left' => Card::make([
                         'name' => TextInput::make('name')
@@ -136,7 +136,7 @@ class UserResource extends XotBaseResource
                             ->password()
                             ->dehydrateStateUsing(static fn ($state) => Hash::make($state))
                             /*
-                            ->dehydrateStateUsing(static function ($state) use ($form){
+                            ->dehydrateStateUsing(function ($state) use ($form){
                                 if(!empty($state)){
                                     return Hash::make($state);
                                 }
@@ -159,7 +159,7 @@ class UserResource extends XotBaseResource
                             'new_password_confirmation' => TextInput::make('new_password_confirmation')
                                 ->password()
                                 ->label('Confirm New Password')
-                                ->rule('required', static fn($get): bool => (bool) $get('new_password'))
+                                ->rule('required', fn($get): bool => (bool) $get('new_password'))
                                 ->same('new_password')
                                 ->dehydrated(false),
                         ])// ->visible(static::$enablePasswordUpdates)
@@ -223,7 +223,7 @@ class UserResource extends XotBaseResource
             ->actions([
                 EditAction::make(),
                 Action::make('changePassword')
-                    ->action(static function (User $user, array $data): void {
+                    ->action(function (User $user, array $data): void {
                         $user->update([
                             'password' => Hash::make($data['new_password']),
                         ]);
@@ -238,7 +238,7 @@ class UserResource extends XotBaseResource
                         TextInput::make('new_password_confirmation')
                             ->password()
                             ->label('Confirm New Password')
-                            ->rule('required', static fn($get): bool => (bool) $get('new_password'))
+                            ->rule('required', fn($get): bool => (bool) $get('new_password'))
                             ->same('new_password'),
                     ])
                     ->icon('heroicon-o-key')

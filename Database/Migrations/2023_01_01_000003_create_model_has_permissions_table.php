@@ -24,7 +24,7 @@ class CreateModelHasPermissionsTable extends XotBaseMigration
 
         // -- CREATE --
         $this->tableCreate(
-            static function (Blueprint $table) use ($tableNames, $columnNames) : void {
+            function (Blueprint $table) use ($tableNames, $columnNames) : void {
                 // $table->uuid('id')->primary();
                 $table->id();
                 $table->unsignedBigInteger(PermissionRegistrar::$pivotPermission);

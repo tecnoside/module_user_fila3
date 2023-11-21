@@ -70,6 +70,7 @@ class SetDefaultRolesBySocialiteUserAction
             ->where('guard_name', '=', $this->defaultUserGuard)
             ->get();
 
+        // 73     Parameter #1 $roles of method Modules\Xot\Contracts\UserContract::assignRole() expects array, Illuminate\Database\Eloquent\Collection<int, Modules\User\Models\Role> given.
         $userModel->assignRole($rolesToSet);
     }
 }

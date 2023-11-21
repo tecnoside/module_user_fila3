@@ -21,7 +21,7 @@ class RegisterOauthUserAction
 
     public function execute(string $provider, SocialiteUserContract $oauthUser): RedirectResponse
     {
-        $socialiteUser = DB::transaction(static function () use ($provider, $oauthUser) {
+        $socialiteUser = DB::transaction(function () use ($provider, $oauthUser) {
             // Create a user
             $user = app(CreateUserAction::class)
                 ->execute(

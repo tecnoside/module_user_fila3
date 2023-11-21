@@ -17,7 +17,7 @@ class CreateTeamsTable extends XotBaseMigration
     public function up(): void
     {
         // -- CREATE --
-        $this->tableCreate(static function (Blueprint $table) : void {
+        $this->tableCreate(function (Blueprint $table) : void {
             // $table->drop('team_invitations');
             $table->uuid('id')->primary();
             $table->foreignId('user_id')->index();
@@ -34,7 +34,7 @@ class CreateTeamsTable extends XotBaseMigration
             if ($this->hasIndexName('team_invitations_team_id_foreign')) {
                 $table->dropForeign('team_invitations_team_id_foreign');
             }
-            
+
             // $this->updateUser($table);
         });
     }

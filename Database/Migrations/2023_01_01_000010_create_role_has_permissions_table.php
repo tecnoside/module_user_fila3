@@ -18,7 +18,7 @@ class CreateRoleHasPermissionsTable extends XotBaseMigration
     {
         // -- CREATE --
         $this->tableCreate(
-            static function (Blueprint $table) : void {
+            function (Blueprint $table) : void {
                 $table->unsignedBigInteger(PermissionRegistrar::$pivotPermission);
                 $table->unsignedBigInteger(PermissionRegistrar::$pivotRole);
                 // *

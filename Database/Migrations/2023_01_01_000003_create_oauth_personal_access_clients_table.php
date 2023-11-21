@@ -11,7 +11,7 @@ class CreateOauthPersonalAccessClientsTable extends XotBaseMigration
     public function up(): void
     {
         $this->tableCreate(
-            static function (Blueprint $table) : void {
+            function (Blueprint $table) : void {
                 $table->uuid('id')->primary();
                 // $table->unsignedBigInteger('client_id');
                 // $table->uuid('client_id');

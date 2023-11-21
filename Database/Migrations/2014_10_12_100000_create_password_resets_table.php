@@ -25,7 +25,7 @@ class CreatePasswordResetsTable extends XotBaseMigration
 
         // -- UPDATE --
         $this->tableUpdate(
-            static function (Blueprint $table) : void {
+            function (Blueprint $table) : void {
                 // if (! $this->hasColumn('email')) {
                 //    $table->string('email')->nullable();
                 // }

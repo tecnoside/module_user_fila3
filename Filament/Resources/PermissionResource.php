@@ -34,7 +34,7 @@ use Webmozart\Assert\Assert;
 class PermissionResource extends XotBaseResource
 {
     protected static ?string $navigationIcon = 'heroicon-o-lock-closed';
-    
+
     // public static function shouldRegisterNavigation(): bool
     // {
     //    return config('filament-spatie-roles-permissions.should_register_on_navigation.permissions', true);
@@ -134,7 +134,7 @@ class PermissionResource extends XotBaseResource
                 DeleteBulkAction::make(),
                 // ]),
                 BulkAction::make('Attach Role')
-                    ->action(static function (Collection $collection, array $data) : void {
+                    ->action(function (Collection $collection, array $data) : void {
                         foreach ($collection as $record) {
                             Assert::isInstanceOf($record, Permission::class);
                             $record->roles()->sync($data['role']);

@@ -39,8 +39,9 @@ use Spatie\Permission\Traits\HasRoles;
  *
  * @property string $id
  * @property string $name
- * @property string $first_name
  * @property string $last_name
+ * @property string $first_name
+ * @property string $surname
  * @property string $email
  * @property Carbon|null $email_verified_at
  * @property string $password
@@ -49,25 +50,25 @@ use Spatie\Permission\Traits\HasRoles;
  * @property string|null $profile_photo_path
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
- * @property string|null $deleted_at
  * @property string|null $lang
  * @property bool $is_active
+ * @property string|null $deleted_at
  * @property-read Collection<int, \Modules\User\Models\OauthClient> $clients
  * @property-read int|null $clients_count
- * @property-read \Modules\User\Models\Team|null $currentTeam
+ * @property-read \Modules\Quaeris\Models\Customer|null $currentTeam
  * @property-read Collection<int, \Modules\User\Models\Device> $devices
  * @property-read int|null $devices_count
  * @property-read string|null $full_name
  * @property-read DatabaseNotificationCollection<int, Notification> $notifications
  * @property-read int|null $notifications_count
- * @property-read Collection<int, \Modules\User\Models\Team> $ownedTeams
+ * @property-read Collection<int, \Modules\Quaeris\Models\Customer> $ownedTeams
  * @property-read int|null $owned_teams_count
  * @property-read Collection<int, \Modules\User\Models\Permission> $permissions
  * @property-read int|null $permissions_count
- * @property-read \Modules\Camping\Models\Profile|null $profile
+ * @property-read \Modules\Quaeris\Models\Profile|null $profile
  * @property-read Collection<int, \Modules\User\Models\Role> $roles
  * @property-read int|null $roles_count
- * @property-read Collection<int, \Modules\User\Models\Team> $teams
+ * @property-read Collection<int, \Modules\Quaeris\Models\Customer> $teams
  * @property-read int|null $teams_count
  * @property-read Collection<int, \Modules\User\Models\OauthAccessToken> $tokens
  * @property-read int|null $tokens_count
@@ -91,6 +92,7 @@ use Spatie\Permission\Traits\HasRoles;
  * @method static Builder|User wherePassword($value)
  * @method static Builder|User whereProfilePhotoPath($value)
  * @method static Builder|User whereRememberToken($value)
+ * @method static Builder|User whereSurname($value)
  * @method static Builder|User whereUpdatedAt($value)
  * @mixin Eloquent
  */

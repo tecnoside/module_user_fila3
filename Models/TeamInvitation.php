@@ -14,12 +14,12 @@ use Modules\Xot\Datas\XotData;
  * Modules\User\Models\TeamInvitation.
  *
  * @property int $id
- * @property string|null $team_id
+ * @property int $team_id
  * @property string $email
  * @property string|null $role
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
- * @property-read \Modules\User\Models\Team|null $team
+ * @property-read \Modules\Quaeris\Models\Customer $team
  * @method static \Modules\User\Database\Factories\TeamInvitationFactory factory($count = null, $state = [])
  * @method static Builder|TeamInvitation newModelQuery()
  * @method static Builder|TeamInvitation newQuery()

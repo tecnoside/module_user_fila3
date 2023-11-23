@@ -18,13 +18,11 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $updated_at
  * @property string|null $created_by
  * @property string|null $updated_by
- * @property string|null $customer_id
  * @method static Builder|TeamUser newModelQuery()
  * @method static Builder|TeamUser newQuery()
  * @method static Builder|TeamUser query()
  * @method static Builder|TeamUser whereCreatedAt($value)
  * @method static Builder|TeamUser whereCreatedBy($value)
- * @method static Builder|TeamUser whereCustomerId($value)
  * @method static Builder|TeamUser whereId($value)
  * @method static Builder|TeamUser whereRole($value)
  * @method static Builder|TeamUser whereTeamId($value)

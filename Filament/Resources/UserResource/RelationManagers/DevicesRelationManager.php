@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Modules\User\Filament\Resources\UserResource\RelationManagers;
 
 use Filament\Forms\Components\TextInput;
-use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
@@ -26,9 +25,21 @@ class DevicesRelationManager extends RelationManager
             ]);
     }
 
+    public static function extendTableCallback(): array
+    {
+        return [
+            'login_at' => Tables\Columns\TextColumn::make('login_at'),
+            'logout_at' => Tables\Columns\TextColumn::make('logout_at'),
+        ];
+    }
+
     public function table(Table $table): Table
     {
         $table = DeviceResource::table($table);
+
+        $columns = array_merge($table->getColumns(), static::extendTableCallback());
+
+        $table = $table->columns($columns);
 
         return $table;
         /*

@@ -23,6 +23,7 @@ use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Columns\BooleanColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Enums\FiltersLayout;
 use Filament\Tables\Filters\Filter;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
@@ -52,35 +53,6 @@ class UserResource extends XotBaseResource
 
     // Static property Modules\User\Filament\Resources\UserResource::$enablePasswordUpdates is never read, only written.
     // private static bool|\Closure $enablePasswordUpdates = true;
-
-    private static ?\Closure $extendFormCallback = null;
-
-    /*
-        protected static function getNavigationLabel(): string
-        {
-            return trans('filament-user::user.resource.label');
-        }
-
-        public static function getPluralLabel(): string
-        {
-            return trans('filament-user::user.resource.label');
-        }
-
-        public static function getLabel(): string
-        {
-            return trans('filament-user::user.resource.single');
-        }
-
-        protected static function getNavigationGroup(): ?string
-        {
-            return config('filament-user.group');
-        }
-
-        protected function getTitle(): string
-        {
-            return trans('filament-user::user.resource.title.resource');
-        }
-        */
 
     public static function getNavigationBadge(): ?string
     {
@@ -164,15 +136,7 @@ class UserResource extends XotBaseResource
                     ->content(fn ($record) => $record?->created_at?->diffForHumans() ?? new HtmlString('&mdash;')),
             ])->columnSpan(4),
         ];
-        /*
-        if (self::$extendFormCallback instanceof \Closure) {
-            return value(self::$extendFormCallback, $schema);
-        }
 
-        return $schema;
-            })
-            ->columns(12);
-            */
         $form->schema($schema)->columns(12);
 
         return $form;
@@ -192,7 +156,7 @@ class UserResource extends XotBaseResource
                 // Tables\Columns\TextColumn::make('email_verified_at')
                 //    ->dateTime(),
                 TextColumn::make('role.name')->toggleable(),
-                TextColumn::make('roles.name')->toggleable(),
+                TextColumn::make('roles.name')->toggleable()->wrap(),
                 // Tables\Columns\TextColumn::make('created_at')->dateTime(),
                 // Tables\Columns\TextColumn::make('updated_at')
                 //    ->dateTime(),
@@ -203,8 +167,10 @@ class UserResource extends XotBaseResource
                 //    ->dateTime(),
                 // Tables\Columns\TextColumn::make('photo'),
                 BooleanColumn::make('email_verified_at')->sortable()->searchable()->toggleable(),
+                ...static::extendTableCallback(),
             ])
             ->filters([
+                /*
                 SelectFilter::make('role')
                     ->options([
                         Role::ROLE_USER => 'User',
@@ -212,13 +178,14 @@ class UserResource extends XotBaseResource
                         Role::ROLE_ADMINISTRATOR => 'Administrator',
                     ])
                     ->attribute('role_id'),
+                */
                 Filter::make('verified')
-                    ->label(trans('filament-user::user.resource.verified'))
+                    ->label(trans('verified'))
                     ->query(fn (Builder $query): Builder => $query->whereNotNull('email_verified_at')),
                 Filter::make('unverified')
-                    ->label(trans('filament-user::user.resource.unverified'))
+                    ->label(trans('unverified'))
                     ->query(fn (Builder $query): Builder => $query->whereNull('email_verified_at')),
-            ])
+            ], layout: FiltersLayout::AboveContent)
             ->actions([
                 EditAction::make(),
                 Action::make('changePassword')

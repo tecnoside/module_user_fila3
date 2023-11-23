@@ -10,7 +10,6 @@ use Illuminate\Support\Carbon;
 /**
  * Modules\User\Models\TeamUser.
  *
- * @property int $id
  * @property string $uuid
  * @property string|null $team_id
  * @property string|null $user_id
@@ -24,7 +23,6 @@ use Illuminate\Support\Carbon;
  * @method static Builder|TeamUser query()
  * @method static Builder|TeamUser whereCreatedAt($value)
  * @method static Builder|TeamUser whereCreatedBy($value)
- * @method static Builder|TeamUser whereId($value)
  * @method static Builder|TeamUser whereRole($value)
  * @method static Builder|TeamUser whereTeamId($value)
  * @method static Builder|TeamUser whereUpdatedAt($value)

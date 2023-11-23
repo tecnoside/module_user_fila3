@@ -27,8 +27,8 @@ use Modules\Xot\Datas\XotData;
  * @property string|null $avatar
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
- * @property string|null $created_by
  * @property string|null $updated_by
+ * @property string|null $created_by
  * @property-read \Modules\User\Models\User|null $user
  * @method static Builder|SocialiteUser newModelQuery()
  * @method static Builder|SocialiteUser newQuery()

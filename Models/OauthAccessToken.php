@@ -14,7 +14,7 @@ use Laravel\Passport\Token as PassportToken;
  *
  * @property string $id
  * @property string|null $user_id
- * @property int $client_id
+ * @property string $client_id
  * @property string|null $name
  * @property array|null $scopes
  * @property bool $revoked

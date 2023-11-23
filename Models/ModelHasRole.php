@@ -11,11 +11,11 @@ use Illuminate\Database\Eloquent\Builder;
 /**
  * Modules\User\Models\ModelHasRole.
  *
+ * @property string $uuid
  * @property string $role_id
  * @property string $model_type
  * @property string $model_id
  * @property string|null $team_id
- * @property string $uuid
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $updated_by

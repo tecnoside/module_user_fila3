@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
-use Modules\User\Database\Factories\TeamFactory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -18,29 +17,31 @@ use Modules\Xot\Datas\XotData;
 /**
  * Modules\User\Models\Team.
  *
- * @property int $id
- * @property int $user_id
- * @property string $name
- * @property int $personal_team
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\User> $members
- * @property-read int|null $members_count
- * @property-read \Modules\User\Models\User|null $owner
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\TeamInvitation> $teamInvitations
- * @property-read int|null $team_invitations_count
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\User> $users
- * @property-read int|null $users_count
+ * @property int                                                                                $id
+ * @property int                                                                                $user_id
+ * @property string                                                                             $name
+ * @property int                                                                                $personal_team
+ * @property Carbon|null                                                                        $created_at
+ * @property Carbon|null                                                                        $updated_at
+ * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\User>           $members
+ * @property int|null                                                                           $members_count
+ * @property \Modules\User\Models\User|null                                                     $owner
+ * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\TeamInvitation> $teamInvitations
+ * @property int|null                                                                           $team_invitations_count
+ * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\User>           $users
+ * @property int|null                                                                           $users_count
+ *
  * @method static \Modules\User\Database\Factories\TeamFactory factory($count = null, $state = [])
- * @method static Builder|Team newModelQuery()
- * @method static Builder|Team newQuery()
- * @method static Builder|Team query()
- * @method static Builder|Team whereCreatedAt($value)
- * @method static Builder|Team whereId($value)
- * @method static Builder|Team whereName($value)
- * @method static Builder|Team wherePersonalTeam($value)
- * @method static Builder|Team whereUpdatedAt($value)
- * @method static Builder|Team whereUserId($value)
+ * @method static Builder|Team                                 newModelQuery()
+ * @method static Builder|Team                                 newQuery()
+ * @method static Builder|Team                                 query()
+ * @method static Builder|Team                                 whereCreatedAt($value)
+ * @method static Builder|Team                                 whereId($value)
+ * @method static Builder|Team                                 whereName($value)
+ * @method static Builder|Team                                 wherePersonalTeam($value)
+ * @method static Builder|Team                                 whereUpdatedAt($value)
+ * @method static Builder|Team                                 whereUserId($value)
+ *
  * @mixin \Eloquent
  */
 class Team extends BaseModel implements TeamContract
@@ -118,7 +119,7 @@ class Team extends BaseModel implements TeamContract
      */
     public function hasUserWithEmail(string $email): bool
     {
-        return $this->allUsers()->contains(static fn ($user): bool => $user->email === $email);
+        return $this->allUsers()->contains(fn ($user): bool => $user->email === $email);
     }
 
     /**

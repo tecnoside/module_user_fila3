@@ -9,12 +9,6 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Resources;
 
-use Modules\User\Filament\Resources\UserResource\RelationManagers\DevicesRelationManager;
-use Modules\User\Filament\Resources\UserResource\RelationManagers\TeamsRelationManager;
-use Modules\User\Filament\Resources\UserResource\RelationManagers\ProfileRelationManager;
-use Modules\User\Filament\Resources\UserResource\RelationManagers\RolesRelationManager;
-use Modules\User\Filament\Resources\UserResource\RelationManagers\TokensRelationManager;
-use Modules\User\Filament\Resources\UserResource\RelationManagers\ClientsRelationManager;
 use Closure;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Group;
@@ -39,7 +33,12 @@ use Illuminate\Validation\Rules\Password;
 use Modules\User\Filament\Resources\UserResource\Pages\CreateUser;
 use Modules\User\Filament\Resources\UserResource\Pages\EditUser;
 use Modules\User\Filament\Resources\UserResource\Pages\ListUsers;
-use Modules\User\Filament\Resources\UserResource\RelationManagers;
+use Modules\User\Filament\Resources\UserResource\RelationManagers\ClientsRelationManager;
+use Modules\User\Filament\Resources\UserResource\RelationManagers\DevicesRelationManager;
+use Modules\User\Filament\Resources\UserResource\RelationManagers\ProfileRelationManager;
+use Modules\User\Filament\Resources\UserResource\RelationManagers\RolesRelationManager;
+use Modules\User\Filament\Resources\UserResource\RelationManagers\TeamsRelationManager;
+use Modules\User\Filament\Resources\UserResource\RelationManagers\TokensRelationManager;
 use Modules\User\Filament\Resources\UserResource\Widgets\UserOverview;
 use Modules\User\Models\Role;
 use Modules\User\Models\User;
@@ -54,7 +53,7 @@ class UserResource extends XotBaseResource
     // Static property Modules\User\Filament\Resources\UserResource::$enablePasswordUpdates is never read, only written.
     // private static bool|\Closure $enablePasswordUpdates = true;
 
-    private static ?Closure $extendFormCallback = null;
+    private static ?\Closure $extendFormCallback = null;
 
     /*
         protected static function getNavigationLabel(): string
@@ -100,24 +99,6 @@ class UserResource extends XotBaseResource
     //    static::$extendFormCallback = $callback;
     // }
 
-    public static function formOld(Form $form): Form
-    {
-        return $form
-            ->schema([
-                TextInput::make('name')
-                    ->required()
-                    ->maxLength(255),
-                TextInput::make('email')
-                    ->email()
-                    ->required()
-                    ->maxLength(255)
-                    ->unique(),
-                Select::make('roles')
-                    ->multiple()
-                    ->relationship('roles', 'name'),
-            ]);
-    }
-
     public static function form(Form $form): Form
     {
         return $form
@@ -130,11 +111,12 @@ class UserResource extends XotBaseResource
                             ->required()
                             ->unique(ignoreRecord: true),
                         'current_team_id' => Select::make('current_team_id')
-                            ->relationship('teams', 'name'),
+                            ->label('current team')
+                           ->relationship('teams', 'name'),
                         'password' => TextInput::make('password')
                             ->required()
                             ->password()
-                            ->dehydrateStateUsing(static fn ($state) => Hash::make($state))
+                            ->dehydrateStateUsing(fn ($state) => Hash::make($state))
                             /*
                             ->dehydrateStateUsing(function ($state) use ($form){
                                 if(!empty($state)){
@@ -147,7 +129,7 @@ class UserResource extends XotBaseResource
                                 }
                             }),
                             */
-                            ->visible(static fn ($livewire): bool => $livewire instanceof CreateUser)
+                            ->visible(fn ($livewire): bool => $livewire instanceof CreateUser)
                             ->rule(Password::default()),
                         'new_password_group' => Group::make([
                             'new_password' => TextInput::make('new_password')
@@ -159,7 +141,7 @@ class UserResource extends XotBaseResource
                             'new_password_confirmation' => TextInput::make('new_password_confirmation')
                                 ->password()
                                 ->label('Confirm New Password')
-                                ->rule('required', fn($get): bool => (bool) $get('new_password'))
+                                ->rule('required', fn ($get): bool => (bool) $get('new_password'))
                                 ->same('new_password')
                                 ->dehydrated(false),
                         ])// ->visible(static::$enablePasswordUpdates)
@@ -167,10 +149,10 @@ class UserResource extends XotBaseResource
                     ])->columnSpan(8),
                     'right' => Card::make([
                         'created_at' => Placeholder::make('created_at')
-                            ->content(static fn($record) => $record?->created_at?->diffForHumans() ?? new HtmlString('&mdash;')),
+                            ->content(fn ($record) => $record?->created_at?->diffForHumans() ?? new HtmlString('&mdash;')),
                     ])->columnSpan(4),
                 ];
-                if (self::$extendFormCallback instanceof Closure) {
+                if (self::$extendFormCallback instanceof \Closure) {
                     return value(self::$extendFormCallback, $schema);
                 }
 
@@ -215,10 +197,10 @@ class UserResource extends XotBaseResource
                     ->attribute('role_id'),
                 Filter::make('verified')
                     ->label(trans('filament-user::user.resource.verified'))
-                    ->query(static fn (Builder $query): Builder => $query->whereNotNull('email_verified_at')),
+                    ->query(fn (Builder $query): Builder => $query->whereNotNull('email_verified_at')),
                 Filter::make('unverified')
                     ->label(trans('filament-user::user.resource.unverified'))
-                    ->query(static fn (Builder $query): Builder => $query->whereNull('email_verified_at')),
+                    ->query(fn (Builder $query): Builder => $query->whereNull('email_verified_at')),
             ])
             ->actions([
                 EditAction::make(),
@@ -238,7 +220,7 @@ class UserResource extends XotBaseResource
                         TextInput::make('new_password_confirmation')
                             ->password()
                             ->label('Confirm New Password')
-                            ->rule('required', fn($get): bool => (bool) $get('new_password'))
+                            ->rule('required', fn ($get): bool => (bool) $get('new_password'))
                             ->same('new_password'),
                     ])
                     ->icon('heroicon-o-key')
@@ -247,7 +229,7 @@ class UserResource extends XotBaseResource
                 Action::make('deactivate')
                     ->color('danger')
                     ->icon('heroicon-o-trash')
-                    ->action(static fn (User $user) => $user->delete())
+                    ->action(fn (User $user) => $user->delete())
                 // ->visible(fn (User $record): bool => $record->role_id === Role::ROLE_ADMINISTRATOR)
                 ,
             ])

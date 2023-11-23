@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Resources;
 
-use Closure;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\Grid;
@@ -89,7 +88,7 @@ class RoleResource extends XotBaseResource
                                     ->afterStateUpdated(function (Set $set, $state): void {
                                         static::refreshEntitiesStatesViaSelectAll($set, $state);
                                     })
-                                    ->dehydrated(static fn ($state): bool => $state),
+                                    ->dehydrated(fn ($state): bool => $state),
                             ])
                             ->columns([
                                 'sm' => 2,
@@ -99,7 +98,7 @@ class RoleResource extends XotBaseResource
                 Tabs::make('Permissions')
                     ->tabs([
                         Tab::make(static::trans('resources'))
-                            ->visible(static fn (): bool => Utils::isResourceEntityEnabled())
+                            ->visible(fn (): bool => Utils::isResourceEntityEnabled())
                             ->reactive()
                             ->schema([
                                 Grid::make([
@@ -142,7 +141,7 @@ class RoleResource extends XotBaseResource
                             ]),
 
                         Tab::make(static::trans('custom'))
-                            ->visible(static fn (): bool => Utils::isCustomPermissionEntityEnabled())
+                            ->visible(fn (): bool => Utils::isCustomPermissionEntityEnabled())
                             ->reactive()
                             ->schema([
                                 Grid::make([
@@ -167,7 +166,7 @@ class RoleResource extends XotBaseResource
                 TextColumn::make('id'),
                 BadgeColumn::make('name')
                     ->label(static::trans('fields.name'))
-                    ->formatStateUsing(static fn ($state): string => Str::headline($state))
+                    ->formatStateUsing(fn ($state): string => Str::headline($state))
                     ->colors(['primary'])
                     ->searchable(),
                 // Tables\Columns\TextColumn::make('team_id'),
@@ -237,7 +236,7 @@ class RoleResource extends XotBaseResource
                 ->label(FilamentShield::getLocalizedResourcePermissionLabel($permission))
                 ->extraAttributes(['class' => 'text-primary-600'])
                 ->afterStateHydrated(function (Set $set, Get $get, $record) use ($entity, $permission): void {
-                    if ($record === null) {
+                    if (null === $record) {
                         return;
                     }
 
@@ -255,7 +254,7 @@ class RoleResource extends XotBaseResource
 
                     static::refreshSelectAllStateViaEntities($set, $get);
                 })
-                ->dehydrated(static fn ($state): bool => $state);
+                ->dehydrated(fn ($state): bool => $state);
 
             return $permissions;
         }, collect());
@@ -316,9 +315,9 @@ class RoleResource extends XotBaseResource
     public static function refreshSelectAllStateViaEntities(Set $set, Get $get): void
     {
         $entitiesStates = collect(FilamentShield::getResources())
-            ->when(Utils::isPageEntityEnabled(), fn($entities) => $entities->merge(FilamentShield::getPages()))
+            ->when(Utils::isPageEntityEnabled(), fn ($entities) => $entities->merge(FilamentShield::getPages()))
             ->when(Utils::isWidgetEntityEnabled(), fn ($entities) => $entities->merge(FilamentShield::getWidgets()))
-            ->when(Utils::isCustomPermissionEntityEnabled(), fn($entities) => $entities->merge(static::getCustomEntities()))
+            ->when(Utils::isCustomPermissionEntityEnabled(), fn ($entities) => $entities->merge(static::getCustomEntities()))
             ->map(function ($entity) use ($get): bool {
                 if (\is_array($entity)) {
                     return (bool) $get($entity['resource']);
@@ -327,11 +326,11 @@ class RoleResource extends XotBaseResource
                 return (bool) $get($entity);
             });
 
-        if ($entitiesStates->containsStrict(false) === false) {
+        if (false === $entitiesStates->containsStrict(false)) {
             $set('select_all', true);
         }
 
-        if ($entitiesStates->containsStrict(false) === true) {
+        if (true === $entitiesStates->containsStrict(false)) {
             $set('select_all', false);
         }
     }
@@ -339,36 +338,36 @@ class RoleResource extends XotBaseResource
     // private function refreshEntitiesStatesViaSelectAll(\Closure $set, $state): void
     public static function refreshEntitiesStatesViaSelectAll(Set $set, $state): void
     {
-        collect(FilamentShield::getResources())->each(function (array $entity) use ($set, $state) : void {
+        collect(FilamentShield::getResources())->each(function (array $entity) use ($set, $state): void {
             $set($entity['resource'], $state);
-            collect(Utils::getResourcePermissionPrefixes($entity['fqcn']))->each(function (string $permission) use ($entity, $set, $state) : void {
+            collect(Utils::getResourcePermissionPrefixes($entity['fqcn']))->each(function (string $permission) use ($entity, $set, $state): void {
                 $set($permission.'_'.$entity['resource'], $state);
             });
         });
 
-        collect(FilamentShield::getPages())->each(function ($page) use ($set, $state) : void {
+        collect(FilamentShield::getPages())->each(function ($page) use ($set, $state): void {
             if (Utils::isPageEntityEnabled()) {
                 $set($page, $state);
             }
         });
 
-        collect(FilamentShield::getWidgets())->each(function ($widget) use ($set, $state) : void {
+        collect(FilamentShield::getWidgets())->each(function ($widget) use ($set, $state): void {
             if (Utils::isWidgetEntityEnabled()) {
                 $set($widget, $state);
             }
         });
 
-        static::getCustomEntities()->each(function ($custom) use ($set, $state) : void {
+        static::getCustomEntities()->each(function ($custom) use ($set, $state): void {
             if (Utils::isCustomPermissionEntityEnabled()) {
                 $set($custom, $state);
             }
         });
     }
 
-    private function refreshResourceEntityStateAfterUpdate(Closure $set, Closure $get, array $entity): void
+    private function refreshResourceEntityStateAfterUpdate(\Closure $set, \Closure $get, array $entity): void
     {
         $collection = collect(Utils::getResourcePermissionPrefixes($entity['fqcn']))
-            ->map(static fn (string $permission): bool => (bool) $get($permission.'_'.$entity['resource']));
+            ->map(fn (string $permission): bool => (bool) $get($permission.'_'.$entity['resource']));
 
         if (! $collection->containsStrict(false)) {
             $set($entity['resource'], true);
@@ -379,7 +378,7 @@ class RoleResource extends XotBaseResource
         }
     }
 
-    private function refreshResourceEntityStateAfterHydrated(Model $model, Closure $set, array $entity): void
+    private function refreshResourceEntityStateAfterHydrated(Model $model, \Closure $set, array $entity): void
     {
         $entities = $model->permissions->pluck('name')
             ->reduce(function (array $roles, $role): array {
@@ -388,7 +387,7 @@ class RoleResource extends XotBaseResource
                 return $roles;
             }, collect())
             ->values()
-            ->groupBy(static fn ($item) => $item)->map->count()
+            ->groupBy(fn ($item) => $item)->map->count()
             ->reduce(function (array $counts, $role, $key) use ($entity): array {
                 $count = is_countable(Utils::getResourcePermissionPrefixes($entity['fqcn'])) ? \count(Utils::getResourcePermissionPrefixes($entity['fqcn'])) : 0;
                 $counts[$key] = $role > 1 && $role === $count;
@@ -449,7 +448,7 @@ class RoleResource extends XotBaseResource
                         ->label(Str::of($customPermission)->headline())
                         ->inline()
                         ->afterStateHydrated(function (Set $set, Get $get, $record) use ($customPermission): void {
-                            if ($record === null) {
+                            if (null === $record) {
                                 return;
                             }
 
@@ -464,7 +463,7 @@ class RoleResource extends XotBaseResource
 
                             static::refreshSelectAllStateViaEntities($set, $get);
                         })
-                        ->dehydrated(static fn ($state): bool => $state),
+                        ->dehydrated(fn ($state): bool => $state),
                 ])
                 ->columns(1)
                 ->columnSpan(1);

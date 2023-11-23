@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\User\Models\Traits;
 
-use Exception;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -33,12 +32,12 @@ trait HasTeams
      */
     public function isCurrentTeam(TeamContract $teamContract): bool
     {
-        if (! $teamContract instanceof TeamContract || $this->currentTeam === null) {
+        if (! $teamContract instanceof TeamContract || null === $this->currentTeam) {
             return false;
         }
 
         return $teamContract->getKey() ===
-            $this->currentTeam->id;
+            $this->currentTeam->getKey();
     }
 
     /**
@@ -47,11 +46,11 @@ trait HasTeams
     public function currentTeam(): BelongsTo
     {
         $xot = XotData::make();
-        if ($this->current_team_id === null && $this->id) {
+        if (null === $this->current_team_id && $this->id) {
             $this->switchTeam($this->personalTeam());
         }
 
-        if ($this->allTeams()->count() === 0) {
+        if (0 === $this->allTeams()->count()) {
             $this->current_team_id = null;
             $this->update();
         }
@@ -130,12 +129,12 @@ trait HasTeams
     public function personalTeam(): ?TeamContract
     {
         $res = $this->ownedTeams->where('personal_team', true)->first();
-        if ($res === null) {
+        if (null === $res) {
             return null;
         }
 
         if (! $res instanceof TeamContract) {
-            throw new Exception('strange things');
+            throw new \Exception('strange things');
         }
 
         return $res;
@@ -166,7 +165,7 @@ trait HasTeams
             return true;
         }
 
-        return (bool) $this->teams->contains(static fn ($t): bool => $t->getKey() === $teamContract->getKey());
+        return (bool) $this->teams->contains(fn ($t): bool => $t->getKey() === $teamContract->getKey());
     }
 
     /**
@@ -184,7 +183,7 @@ trait HasTeams
         if (! $this->belongsToTeam($teamContract)) {
             return $role;
         }
-        
+
         Assert::notNull($user = $teamContract->users()->where('id', $this->id)->first());
         Assert::isInstanceOf($user, User::class);
         /** @var User $user */
@@ -219,7 +218,7 @@ trait HasTeams
             $this->id
         )->first()?->membership?->role))->key === $role;
         */
-        return $this->belongsToTeam($teamContract) && $this->teamRole($teamContract) !== null;
+        return $this->belongsToTeam($teamContract) && null !== $this->teamRole($teamContract);
     }
 
     /**
@@ -250,7 +249,7 @@ trait HasTeams
         if (! $this->belongsToTeam($teamContract)) {
             return false;
         }
-        
+
         /* --WIP
         if (
             \in_array(HasApiTokens::class, class_uses_recursive($this), true)

@@ -10,9 +10,9 @@ declare(strict_types=1);
 namespace Modules\User\Filament\Resources;
 
 use Closure;
-use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Placeholder;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -101,64 +101,81 @@ class UserResource extends XotBaseResource
 
     public static function form(Form $form): Form
     {
-        return $form
-            ->schema(function () {
-                $schema = [
-                    'left' => Card::make([
-                        'name' => TextInput::make('name')
-                            ->required(),
-                        'email' => TextInput::make('email')
-                            ->required()
-                            ->unique(ignoreRecord: true),
-                        'current_team_id' => Select::make('current_team_id')
-                            ->label('current team')
-                           ->relationship('teams', 'name'),
-                        'password' => TextInput::make('password')
-                            ->required()
-                            ->password()
-                            ->dehydrateStateUsing(fn ($state) => Hash::make($state))
-                            /*
-                            ->dehydrateStateUsing(function ($state) use ($form){
-                                if(!empty($state)){
-                                    return Hash::make($state);
-                                }
+        $schema = [
+            'left' => Section::make([
+                'name' => TextInput::make('name')
+                    ->required(),
+                'email' => TextInput::make('email')
+                    ->required()
+                    ->unique(ignoreRecord: true),
+                'current_team_id' => Select::make('current_team_id')
+                    ->label('current team')
+                   ->relationship('teams', 'name'),
+                /*
+                'password' => TextInput::make('password')
+                    ->required()
+                    ->password()
+                    ->dehydrateStateUsing(fn ($state) => Hash::make($state))
+                    ->rule(Password::default()),
+                */
+                'password' => TextInput::make('password')
+                    // ->label(trans('filament-user::user.resource.password'))
+                    ->password()
+                    ->maxLength(255)
+                    ->dehydrateStateUsing(static function ($state) use ($form) {
+                        return ! empty($state)
+                            ? Hash::make($state)
+                            : User::find($form->getColumns())?->password;
+                    }),
+                /*
+                    ->dehydrateStateUsing(function ($state) use ($form){
+                        if(!empty($state)){
+                            return Hash::make($state);
+                        }
 
-                                $user = User::find($form->getColumns());
-                                if($user){
-                                    return $user->password;
-                                }
-                            }),
-                            */
-                            ->visible(fn ($livewire): bool => $livewire instanceof CreateUser)
-                            ->rule(Password::default()),
-                        'new_password_group' => Group::make([
-                            'new_password' => TextInput::make('new_password')
-                                ->password()
-                                ->label('New Password')
-                                ->nullable()
-                                ->rule(Password::default())
-                                ->dehydrated(false),
-                            'new_password_confirmation' => TextInput::make('new_password_confirmation')
-                                ->password()
-                                ->label('Confirm New Password')
-                                ->rule('required', fn ($get): bool => (bool) $get('new_password'))
-                                ->same('new_password')
-                                ->dehydrated(false),
-                        ])// ->visible(static::$enablePasswordUpdates)
-                        ,
-                    ])->columnSpan(8),
-                    'right' => Card::make([
-                        'created_at' => Placeholder::make('created_at')
-                            ->content(fn ($record) => $record?->created_at?->diffForHumans() ?? new HtmlString('&mdash;')),
-                    ])->columnSpan(4),
-                ];
-                if (self::$extendFormCallback instanceof \Closure) {
-                    return value(self::$extendFormCallback, $schema);
-                }
+                        $user = User::find($form->getColumns());
+                        if($user){
+                            return $user->password;
+                        }
+                    }),
+                    */
 
-                return $schema;
+                //    ->visible(fn ($livewire): bool => $livewire instanceof CreateUser)
+                //    ->rule(Password::default()),
+                /*
+                        'password_group' => Group::make([
+                    'password' => TextInput::make('password')
+                        ->password()
+                        ->label('New Password')
+                        ->nullable()
+                        ->rule(Password::default())
+                        ->dehydrated(false),
+                    'password_confirmation' => TextInput::make('password_confirmation')
+                        ->password()
+                        ->label('Confirm New Password')
+                        ->rule('required', fn ($get): bool => (bool) $get('password'))
+                        ->same('password')
+                        ->dehydrated(false),
+                        ])// ->visible(static::$enablePasswordUpdates),
+                        */
+            ])->columnSpan(8),
+            'right' => Section::make([
+                'created_at' => Placeholder::make('created_at')
+                    ->content(fn ($record) => $record?->created_at?->diffForHumans() ?? new HtmlString('&mdash;')),
+            ])->columnSpan(4),
+        ];
+        /*
+        if (self::$extendFormCallback instanceof \Closure) {
+            return value(self::$extendFormCallback, $schema);
+        }
+
+        return $schema;
             })
             ->columns(12);
+            */
+        $form->schema($schema)->columns(12);
+
+        return $form;
     }
 
     public static function table(Table $table): Table

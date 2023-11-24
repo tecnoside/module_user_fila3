@@ -55,20 +55,20 @@ use Spatie\Permission\Traits\HasRoles;
  * @property bool $is_active
  * @property-read Collection<int, \Modules\User\Models\OauthClient> $clients
  * @property-read int|null $clients_count
- * @property-read \Modules\User\Models\Team|null $currentTeam
+ * @property-read \Modules\Quaeris\Models\Customer|null $currentTeam
  * @property-read Collection<int, \Modules\User\Models\Device> $devices
  * @property-read int|null $devices_count
  * @property-read string|null $full_name
  * @property-read DatabaseNotificationCollection<int, Notification> $notifications
  * @property-read int|null $notifications_count
- * @property-read Collection<int, \Modules\User\Models\Team> $ownedTeams
+ * @property-read Collection<int, \Modules\Quaeris\Models\Customer> $ownedTeams
  * @property-read int|null $owned_teams_count
  * @property-read Collection<int, \Modules\User\Models\Permission> $permissions
  * @property-read int|null $permissions_count
- * @property-read \Modules\Camping\Models\Profile|null $profile
+ * @property-read \Modules\Quaeris\Models\Profile|null $profile
  * @property-read Collection<int, \Modules\User\Models\Role> $roles
  * @property-read int|null $roles_count
- * @property-read Collection<int, \Modules\User\Models\Team> $teams
+ * @property-read Collection<int, \Modules\Quaeris\Models\Customer> $teams
  * @property-read int|null $teams_count
  * @property-read Collection<int, \Modules\User\Models\OauthAccessToken> $tokens
  * @property-read int|null $tokens_count

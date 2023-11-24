@@ -31,7 +31,7 @@ use Spatie\Permission\Models\Role as SpatieRole;
  * @property Carbon|null $updated_at
  * @property-read Collection<int, \Modules\User\Models\Permission> $permissions
  * @property-read int|null $permissions_count
- * @property-read \Modules\User\Models\Team|null $team
+ * @property-read \Modules\Quaeris\Models\Customer|null $team
  * @property-read Collection<int, \Modules\User\Models\User> $users
  * @property-read int|null $users_count
  * @method static Builder|Role newModelQuery()

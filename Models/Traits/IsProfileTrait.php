@@ -14,4 +14,14 @@ trait IsProfileTrait
     {
         return $this->belongsTo(User::class);
     }
+
+    // ---- mutators
+    public function getFullNameAttribute(?string $value): ?string
+    {
+        if (null != $value) {
+            return $value;
+        }
+
+        return $this->first_name.' '.$this->last_name;
+    }
 }

@@ -11,11 +11,11 @@ use Illuminate\Database\Eloquent\Builder;
 /**
  * Modules\User\Models\ModelHasRole.
  *
- * @property int $id
+ * @property string $uuid
  * @property string $role_id
  * @property string $model_type
  * @property string $model_id
- * @property int|null $team_id
+ * @property string|null $team_id
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $updated_by
@@ -26,13 +26,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|ModelHasRole query()
  * @method static Builder|ModelHasRole whereCreatedAt($value)
  * @method static Builder|ModelHasRole whereCreatedBy($value)
- * @method static Builder|ModelHasRole whereId($value)
  * @method static Builder|ModelHasRole whereModelId($value)
  * @method static Builder|ModelHasRole whereModelType($value)
  * @method static Builder|ModelHasRole whereRoleId($value)
  * @method static Builder|ModelHasRole whereTeamId($value)
  * @method static Builder|ModelHasRole whereUpdatedAt($value)
  * @method static Builder|ModelHasRole whereUpdatedBy($value)
+ * @method static Builder|ModelHasRole whereUuid($value)
  * @mixin \Eloquent
  */
 class ModelHasRole extends BaseMorphPivot

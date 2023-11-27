@@ -12,6 +12,7 @@ use Modules\Xot\Datas\XotData;
 /**
  * Modules\User\Models\TeamInvitation.
  *
+<<<<<<< Updated upstream
  * @property int $id
  * @property string|null $team_id
  * @property string $email
@@ -19,16 +20,13 @@ use Modules\Xot\Datas\XotData;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property-read \Modules\User\Models\Team|null $team
+=======
+ * @property-read \Modules\Quaeris\Models\Customer|null $team
+>>>>>>> Stashed changes
  * @method static \Modules\User\Database\Factories\TeamInvitationFactory factory($count = null, $state = [])
  * @method static Builder|TeamInvitation newModelQuery()
  * @method static Builder|TeamInvitation newQuery()
  * @method static Builder|TeamInvitation query()
- * @method static Builder|TeamInvitation whereCreatedAt($value)
- * @method static Builder|TeamInvitation whereEmail($value)
- * @method static Builder|TeamInvitation whereId($value)
- * @method static Builder|TeamInvitation whereRole($value)
- * @method static Builder|TeamInvitation whereTeamId($value)
- * @method static Builder|TeamInvitation whereUpdatedAt($value)
  * @mixin \Eloquent
  */
 class TeamInvitation extends BaseModel

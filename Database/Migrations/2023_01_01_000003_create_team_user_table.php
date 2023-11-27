@@ -15,7 +15,8 @@ class CreateTeamUserTable extends XotBaseMigration
         // -- CREATE --
         $this->tableCreate(
             function (Blueprint $table) : void {
-                $table->uuid('id')->primary();
+                //$table->uuid('id')->primary();
+                $table->id();
                 $table->foreignId('team_id');
                 $table->uuid('user_id')->nullable()->index();
                 // $table->foreignIdFor(User::class);
@@ -28,14 +29,14 @@ class CreateTeamUserTable extends XotBaseMigration
         // -- UPDATE --
         $this->tableUpdate(
             function (Blueprint $table): void {
-                if (! $this->hasColumn('created_by')) {
-                    $table->string('created_by')->nullable();
-                }
-                
-                if (! $this->hasColumn('updated_by')) {
-                    $table->string('updated_by')->nullable();
-                }
-                
+                //if (! $this->hasColumn('created_by')) {
+                //    $table->string('created_by')->nullable();
+                //}
+
+                //if (! $this->hasColumn('updated_by')) {
+                //    $table->string('updated_by')->nullable();
+                //}
+
                 $this->updateUser($table);
             }
         );

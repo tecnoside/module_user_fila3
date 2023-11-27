@@ -30,12 +30,13 @@ class CreateModelHasPermissionsTable extends XotBaseMigration
                 $table->unsignedBigInteger(PermissionRegistrar::$pivotPermission);
                 $table->string('model_type');
                 // $table->unsignedBigInteger($columnNames['model_morph_key']);
-                $table->string('model_id')->index();
+                $table->string('model_id',36)->index();
                 $table->index([$columnNames['model_morph_key'], 'model_type'], 'model_has_permissions_model_id_model_type_index');
                 $table->foreign(PermissionRegistrar::$pivotPermission)
-                    ->references('id') // permission id
-                    ->on($tableNames['permissions'])
-                    ->onDelete('cascade');
+                    //->references('id') // permission id
+                    //->on($tableNames['permissions'])
+                    //->onDelete('cascade')
+                    ;
             }
         );
         // -- UPDATE --

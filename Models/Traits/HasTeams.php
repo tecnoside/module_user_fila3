@@ -87,7 +87,6 @@ trait HasTeams
      */
     public function allTeams(): Collection
     {
-        // dov'è this->teams?
         return $this->ownedTeams->merge($this->teams)->sortBy('name');
     }
 
@@ -165,7 +164,7 @@ trait HasTeams
             return true;
         }
 
-        return (bool) $this->teams->contains(fn ($t): bool => $t->getKey() === $teamContract->getKey());
+        return (bool) $this->teams->contains(static fn ($t): bool => $t->getKey() === $teamContract->getKey());
     }
 
     /**

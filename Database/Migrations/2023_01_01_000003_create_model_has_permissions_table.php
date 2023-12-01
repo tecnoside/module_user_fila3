@@ -17,31 +17,22 @@ class CreateModelHasPermissionsTable extends XotBaseMigration
      */
     public function up(): void
     {
-        /** @var array $tableNames */
-        $tableNames = config('permission.table_names');
-        /** @var array $columnNames */
-        $columnNames = config('permission.column_names');
+
 
         // -- CREATE --
         $this->tableCreate(
-            function (Blueprint $table) use ($tableNames, $columnNames) : void {
-                // $table->uuid('id')->primary();
+            function (Blueprint $table) : void {
+
                 $table->id();
-                $table->unsignedBigInteger(PermissionRegistrar::$pivotPermission);
-                $table->string('model_type');
-                // $table->unsignedBigInteger($columnNames['model_morph_key']);
-                $table->string('model_id',36)->index();
-                $table->index([$columnNames['model_morph_key'], 'model_type'], 'model_has_permissions_model_id_model_type_index');
-                $table->foreign(PermissionRegistrar::$pivotPermission)
-                    //->references('id') // permission id
-                    //->on($tableNames['permissions'])
-                    //->onDelete('cascade')
-                    ;
+                $table->unsignedBigInteger('permission_id');
+                $table->uuidMorphs('model');
+
             }
         );
         // -- UPDATE --
         $this->tableUpdate(
             function (Blueprint $table): void {
+                $this->updateTimestamps($table);
                 $this->updateUser($table);
             }
         );

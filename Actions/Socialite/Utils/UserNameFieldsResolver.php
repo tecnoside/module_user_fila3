@@ -43,7 +43,7 @@ final class UserNameFieldsResolver
     }
 
     /**
-     * @param  string  $searchMethod use self constants (NAME_SEARCH, SURNAME_SEARCH)
+     * @param string $searchMethod use self constants (NAME_SEARCH, SURNAME_SEARCH)
      */
     private function resolveNameFields(User $idpUser, string $searchMethod): string
     {
@@ -62,7 +62,7 @@ final class UserNameFieldsResolver
             ? ($idpUser->getRaw()['name'] ?? '')
             : '';
         $nameSection = $this->resolveNameFieldByNameAttributeAnalysis((string) $nameField, $searchMethod);
-        if (!$nameSection->isNotEmpty()) {
+        if (! $nameSection->isNotEmpty()) {
             // If both sections were empty, try the "hardest way"
             // by analyzing email address
             return Str::of((string) $idpUser->getEmail())
@@ -84,6 +84,7 @@ final class UserNameFieldsResolver
                 ->title()
                 ->toString();
         }
+
         return (string) $nameSection;
     }
 

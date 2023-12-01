@@ -21,7 +21,7 @@ class AdminPanelProvider extends XotBasePanelProvider
     {
         FilamentView::registerRenderHook(
             'panels::auth.login.form.after',
-            static fn(): string => Blade::render("@livewire('socialite.buttons')"),
+            static fn (): string => Blade::render("@livewire('socialite.buttons')"),
         );
 
         /*-- moved into Gdpr
@@ -41,7 +41,7 @@ class AdminPanelProvider extends XotBasePanelProvider
 
         FilamentView::registerRenderHook(
             'panels::user-menu.before',
-            static fn(): string => Blade::render("@livewire('team.change')"),
+            static fn (): string => Blade::render("@livewire('team.change')"),
         );
 
         /*

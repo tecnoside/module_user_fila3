@@ -4,20 +4,20 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
-use Illuminate\Support\Carbon;
-use Modules\User\Database\Factories\DeviceFactory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
  * Modules\User\Models\Device.
  *
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\User> $users
- * @property-read int|null $users_count
+ * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\User> $users
+ * @property int|null                                                                 $users_count
+ *
  * @method static \Modules\User\Database\Factories\DeviceFactory factory($count = null, $state = [])
- * @method static Builder|Device newModelQuery()
- * @method static Builder|Device newQuery()
- * @method static Builder|Device query()
+ * @method static Builder|Device                                 newModelQuery()
+ * @method static Builder|Device                                 newQuery()
+ * @method static Builder|Device                                 query()
+ *
  * @mixin \Eloquent
  */
 class Device extends BaseModel

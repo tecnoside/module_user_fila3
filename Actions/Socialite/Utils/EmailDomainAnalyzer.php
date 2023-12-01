@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\User\Actions\Socialite\Utils;
 
-use Exception;
 use Illuminate\Support\Str;
 use Laravel\Socialite\Contracts\User;
 use Webmozart\Assert\Assert;
@@ -27,7 +26,7 @@ final class EmailDomainAnalyzer
 
     public function hasUnrecognizedDomain(): bool
     {
-        return !$this->hasFirstPartyDomain() && !$this->hasClientDomain();
+        return ! $this->hasFirstPartyDomain() && ! $this->hasClientDomain();
     }
 
     public function hasFirstPartyDomain(): bool
@@ -43,7 +42,7 @@ final class EmailDomainAnalyzer
     {
         $clientEmailDomain = $this->clientDomain();
 
-        if ($clientEmailDomain === null || $clientEmailDomain === '') {
+        if (null === $clientEmailDomain || '' === $clientEmailDomain) {
             return false;
         }
 
@@ -67,12 +66,12 @@ final class EmailDomainAnalyzer
         if (is_string($domain)) {
             return $domain;
         }
-        
+
         if (is_null($domain)) {
             return $domain;
         }
-        
-        throw new Exception('wip');
+
+        throw new \Exception('wip');
         /*
         return empty($domain)
             ? null

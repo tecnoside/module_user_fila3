@@ -21,8 +21,6 @@ class LogoutListener
 
     /**
      * Handle the event.
-     *
-     * @return void
      */
     public function handle(Logout $event): void
     {

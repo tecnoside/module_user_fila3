@@ -17,7 +17,7 @@ class CreateSocialiteUserTable extends XotBaseMigration
         $userClass = $xot->getUserClass();
         // -- CREATE --
         $this->tableCreate(
-            function (Blueprint $table) use ($userClass) : void {
+            function (Blueprint $table) use ($userClass): void {
                 // $table->uuid('id')->primary();
                 $table->id();
                 $table->foreignIdFor($userClass, 'user_id');

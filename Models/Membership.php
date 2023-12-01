@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Modules\User\Models;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Carbon;
 
 /**
  * Modules\User\Models\Membership.
@@ -13,6 +12,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Membership newModelQuery()
  * @method static Builder|Membership newQuery()
  * @method static Builder|Membership query()
+ *
  * @mixin \Eloquent
  */
 class Membership extends BasePivot

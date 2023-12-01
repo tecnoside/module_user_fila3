@@ -4,17 +4,18 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
-use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * Modules\User\Models\DeviceUser.
  *
- * @property-read \Modules\User\Models\Device|null $device
+ * @property \Modules\User\Models\Device|null $device
+ *
  * @method static Builder|DeviceUser newModelQuery()
  * @method static Builder|DeviceUser newQuery()
  * @method static Builder|DeviceUser query()
+ *
  * @mixin \Eloquent
  */
 class DeviceUser extends BasePivot

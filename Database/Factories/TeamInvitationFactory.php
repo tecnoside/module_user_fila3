@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\User\Database\Factories;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Database\Eloquent\Model;
 use Modules\User\Models\TeamInvitation;
 
 class TeamInvitationFactory extends Factory
@@ -19,8 +19,6 @@ class TeamInvitationFactory extends Factory
 
     /**
      * Define the model's default state.
-     *
-     * @return array
      */
     public function definition(): array
     {

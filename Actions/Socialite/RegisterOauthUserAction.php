@@ -28,6 +28,7 @@ class RegisterOauthUserAction
                     provider: $provider,
                     oauthUser: $oauthUser,
                 );
+
             // Create a new socialite user instance
             return app(CreateSocialiteUserAction::class)
                 ->execute(

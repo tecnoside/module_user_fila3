@@ -18,7 +18,7 @@ class CreatePermissionsTable extends XotBaseMigration
     {
         // -- CREATE --
         $this->tableCreate(
-            function (Blueprint $table) : void {
+            function (Blueprint $table): void {
                 $table->bigIncrements('id');
                 // permission id
                 $table->string('name');

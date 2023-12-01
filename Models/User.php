@@ -21,14 +21,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Notifications\DatabaseNotificationCollection;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Carbon;
 use Laravel\Passport\HasApiTokens;
-use Laravel\Passport\Token;
 use Modules\Egea\Models\MobileDevice;
 use Modules\Egea\Models\MobileDeviceUser;
 use Modules\EWall\Models\Profile;
 use Modules\Notify\Models\Notification;
-use Modules\User\Contracts\TeamContract;
 use Modules\User\Database\Factories\UserFactory;
 use Modules\User\Models\Traits\HasTeams;
 use Modules\Xot\Contracts\UserContract;
@@ -38,31 +35,33 @@ use Spatie\Permission\Traits\HasRoles;
 /**
  * Modules\User\Models\User.
  *
- * @property-read Collection<int, \Modules\User\Models\OauthClient> $clients
- * @property-read int|null $clients_count
- * @property-read \Modules\User\Models\Team|null $currentTeam
- * @property-read Collection<int, \Modules\User\Models\Device> $devices
- * @property-read int|null $devices_count
- * @property-read string|null $full_name
- * @property-read DatabaseNotificationCollection<int, Notification> $notifications
- * @property-read int|null $notifications_count
- * @property-read Collection<int, \Modules\User\Models\Team> $ownedTeams
- * @property-read int|null $owned_teams_count
- * @property-read Collection<int, \Modules\User\Models\Permission> $permissions
- * @property-read int|null $permissions_count
- * @property-read \Modules\Camping\Models\Profile|null $profile
- * @property-read Collection<int, \Modules\User\Models\Role> $roles
- * @property-read int|null $roles_count
- * @property-read Collection<int, \Modules\User\Models\Team> $teams
- * @property-read int|null $teams_count
- * @property-read Collection<int, \Modules\User\Models\OauthAccessToken> $tokens
- * @property-read int|null $tokens_count
+ * @property Collection<int, \Modules\User\Models\OauthClient>      $clients
+ * @property int|null                                               $clients_count
+ * @property \Modules\User\Models\Team|null                         $currentTeam
+ * @property Collection<int, \Modules\User\Models\Device>           $devices
+ * @property int|null                                               $devices_count
+ * @property string|null                                            $full_name
+ * @property DatabaseNotificationCollection<int, Notification>      $notifications
+ * @property int|null                                               $notifications_count
+ * @property Collection<int, \Modules\User\Models\Team>             $ownedTeams
+ * @property int|null                                               $owned_teams_count
+ * @property Collection<int, \Modules\User\Models\Permission>       $permissions
+ * @property int|null                                               $permissions_count
+ * @property \Modules\Camping\Models\Profile|null                   $profile
+ * @property Collection<int, \Modules\User\Models\Role>             $roles
+ * @property int|null                                               $roles_count
+ * @property Collection<int, \Modules\User\Models\Team>             $teams
+ * @property int|null                                               $teams_count
+ * @property Collection<int, \Modules\User\Models\OauthAccessToken> $tokens
+ * @property int|null                                               $tokens_count
+ *
  * @method static \Modules\User\Database\Factories\UserFactory factory($count = null, $state = [])
- * @method static Builder|User newModelQuery()
- * @method static Builder|User newQuery()
- * @method static Builder|User permission($permissions)
- * @method static Builder|User query()
- * @method static Builder|User role($roles, $guard = null)
+ * @method static Builder|User                                 newModelQuery()
+ * @method static Builder|User                                 newQuery()
+ * @method static Builder|User                                 permission($permissions)
+ * @method static Builder|User                                 query()
+ * @method static Builder|User                                 role($roles, $guard = null)
+ *
  * @mixin Eloquent
  */
 class User extends Authenticatable implements HasName, UserContract

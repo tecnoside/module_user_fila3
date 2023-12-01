@@ -61,7 +61,7 @@ class SetDefaultRolesBySocialiteUserAction
 
         $rolesToSet = Role::query()
             ->where(
-                static function (Builder $query) use ($defaultRoleNames) : void {
+                static function (Builder $query) use ($defaultRoleNames): void {
                     foreach ($defaultRoleNames as $roleName) {
                         $query->orWhere('name', 'LIKE', $roleName);
                     }

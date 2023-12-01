@@ -17,7 +17,7 @@ class CreateUsersTable extends XotBaseMigration
     {
         // -- CREATE --
         $this->tableCreate(
-            function (Blueprint $table) : void {
+            function (Blueprint $table): void {
                 $table->uuid('id')->primary();
                 $table->string('name');
                 // questo e' il nickname non nome
@@ -39,7 +39,7 @@ class CreateUsersTable extends XotBaseMigration
                 if (! $this->hasColumn('first_name')) {
                     $table->string('first_name')->after('name');
                 }
-                
+
                 if (! $this->hasColumn('last_name')) {
                     $table->string('last_name')->after('name');
                 }
@@ -59,7 +59,7 @@ class CreateUsersTable extends XotBaseMigration
                 if (! $this->hasColumn('is_active')) {
                     $table->boolean('is_active')->default(true);
                 }
-                
+
                 if (! $this->hasColumn('deleted_at')) {
                     $table->softDeletes();
                 }

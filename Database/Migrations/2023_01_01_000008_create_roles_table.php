@@ -28,6 +28,9 @@ class CreateRolesTable extends XotBaseMigration
         // -- UPDATE --
         $this->tableUpdate(
             function (Blueprint $table): void {
+                if (! $this->hasColumn('id')) {
+                    $table->id();
+                }
                 $this->updateTimestamps($table);
             }
         );

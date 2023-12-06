@@ -6,7 +6,7 @@
         "laravel",
         "filament",
         "module_user",
-        "Laravel", 
+        "Laravel",
         "User module",
         "Users",
         "Users management"
@@ -48,7 +48,7 @@
         "friendsofphp/php-cs-fixer": "*",
         "laravel/pint": "^1.13",
         "nunomaduro/collision": "*",
-        "nunomaduro/larastan": "^2.6",
+        "larastan/larastan": "^2.6",
         "nunomaduro/phpinsights": "^2.9",
         "orchestra/testbench": "*",
         "pestphp/pest": "*",

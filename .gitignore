@@ -6,3 +6,4 @@
 .git-blame-ignore-revs
 .git-rewrite
 .git-blame-ignore-revs
+.php-cs-fixer.cache

@@ -33,7 +33,7 @@
         "friendsofphp/php-cs-fixer": "*",
         "laravel/pint": "*",
         "nunomaduro/collision": "*",
-        "nunomaduro/larastan": "*",
+        "larastan/larastan": "*",
         "nunomaduro/phpinsights": "^2.8",
         "orchestra/testbench": "*",
         "pestphp/pest": "*",

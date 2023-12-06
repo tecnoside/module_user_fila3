@@ -12,20 +12,24 @@ use Illuminate\Database\Eloquent\Builder;
  * @property int $id
  * @property int $permission_id
  * @property int $role_id
+ *
  * @method static Builder|RoleHasPermission newModelQuery()
  * @method static Builder|RoleHasPermission newQuery()
  * @method static Builder|RoleHasPermission query()
  * @method static Builder|RoleHasPermission whereId($value)
  * @method static Builder|RoleHasPermission wherePermissionId($value)
  * @method static Builder|RoleHasPermission whereRoleId($value)
+ *
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property string|null $updated_by
- * @property string|null $created_by
+ * @property string|null                     $updated_by
+ * @property string|null                     $created_by
+ *
  * @method static Builder|RoleHasPermission whereCreatedAt($value)
  * @method static Builder|RoleHasPermission whereCreatedBy($value)
  * @method static Builder|RoleHasPermission whereUpdatedAt($value)
  * @method static Builder|RoleHasPermission whereUpdatedBy($value)
+ *
  * @mixin \Eloquent
  */
 class RoleHasPermission extends BasePivot

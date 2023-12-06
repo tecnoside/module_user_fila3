@@ -20,7 +20,6 @@ use Modules\Xot\Datas\XotData;
  * @property Carbon|null                           $updated_at
  * @property \Modules\User\Models\Team|null        $team
  * @property \Modules\Quaeris\Models\Customer|null $team
- *
  * @method static \Modules\User\Database\Factories\TeamInvitationFactory factory($count = null, $state = [])
  * @method static Builder|TeamInvitation                                 newModelQuery()
  * @method static Builder|TeamInvitation                                 newQuery()
@@ -31,7 +30,6 @@ use Modules\Xot\Datas\XotData;
  * @method static Builder|TeamInvitation                                 whereRole($value)
  * @method static Builder|TeamInvitation                                 whereTeamId($value)
  * @method static Builder|TeamInvitation                                 whereUpdatedAt($value)
- *
  * @mixin \Eloquent
  */
 class TeamInvitation extends BaseModel

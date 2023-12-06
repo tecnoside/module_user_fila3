@@ -23,6 +23,7 @@ use Laravel\Passport\Token as PassportToken;
  * @property Carbon|null                           $expires_at
  * @property \Modules\User\Models\OauthClient|null $client
  * @property \Modules\User\Models\User|null        $user
+ *
  * @method static Builder|OauthAccessToken newModelQuery()
  * @method static Builder|OauthAccessToken newQuery()
  * @method static Builder|OauthAccessToken query()
@@ -35,6 +36,7 @@ use Laravel\Passport\Token as PassportToken;
  * @method static Builder|OauthAccessToken whereScopes($value)
  * @method static Builder|OauthAccessToken whereUpdatedAt($value)
  * @method static Builder|OauthAccessToken whereUserId($value)
+ *
  * @mixin \Eloquent
  */
 class OauthAccessToken extends PassportToken

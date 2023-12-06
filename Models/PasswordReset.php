@@ -18,6 +18,7 @@ use Illuminate\Support\Carbon;
  * @property string|null $user_id
  * @property string|null $updated_by
  * @property string|null $created_by
+ *
  * @method static \Modules\User\Database\Factories\PasswordResetFactory factory($count = null, $state = [])
  * @method static Builder|PasswordReset                                 newModelQuery()
  * @method static Builder|PasswordReset                                 newQuery()
@@ -30,6 +31,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder|PasswordReset                                 whereUpdatedAt($value)
  * @method static Builder|PasswordReset                                 whereUpdatedBy($value)
  * @method static Builder|PasswordReset                                 whereUserId($value)
+ *
  * @mixin \Eloquent
  */
 class PasswordReset extends BaseModel

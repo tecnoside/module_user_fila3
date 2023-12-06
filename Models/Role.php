@@ -32,6 +32,7 @@ use Spatie\Permission\Models\Role as SpatieRole;
  * @property \Modules\User\Models\Team|null                   $team
  * @property Collection<int, \Modules\User\Models\User>       $users
  * @property int|null                                         $users_count
+ *
  * @method static Builder|Role                               newModelQuery()
  * @method static Builder|Role                               newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Role permission($permissions)
@@ -42,8 +43,11 @@ use Spatie\Permission\Models\Role as SpatieRole;
  * @method static Builder|Role                               whereTeamId($value)
  * @method static Builder|Role                               whereUpdatedAt($value)
  * @method static Builder|Role                               whereUuid($value)
+ *
  * @property int $id
+ *
  * @method static Builder|Role whereId($value)
+ *
  * @mixin Eloquent
  */
 class Role extends SpatieRole

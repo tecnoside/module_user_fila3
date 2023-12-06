@@ -11,9 +11,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * Modules\User\Models\DeviceUser.
  *
  * @property \Modules\User\Models\Device|null $device
+ *
  * @method static Builder|DeviceUser newModelQuery()
  * @method static Builder|DeviceUser newQuery()
  * @method static Builder|DeviceUser query()
+ *
  * @property int                             $id
  * @property string                          $device_id
  * @property string                          $user_id
@@ -25,6 +27,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string|null                     $updated_by
  * @property string|null                     $created_by
+ *
  * @method static Builder|DeviceUser whereCreatedAt($value)
  * @method static Builder|DeviceUser whereCreatedBy($value)
  * @method static Builder|DeviceUser whereDeviceId($value)
@@ -36,6 +39,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static Builder|DeviceUser whereUpdatedAt($value)
  * @method static Builder|DeviceUser whereUpdatedBy($value)
  * @method static Builder|DeviceUser whereUserId($value)
+ *
  * @mixin \Eloquent
  */
 class DeviceUser extends BasePivot

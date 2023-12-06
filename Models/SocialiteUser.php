@@ -17,9 +17,11 @@ use Modules\Xot\Datas\XotData;
  * Modules\User\Models\SocialiteUser.
  *
  * @property \Modules\User\Models\User|null $user
+ *
  * @method static Builder|SocialiteUser newModelQuery()
  * @method static Builder|SocialiteUser newQuery()
  * @method static Builder|SocialiteUser query()
+ *
  * @property int                             $id
  * @property string                          $user_id
  * @property string                          $provider
@@ -32,6 +34,7 @@ use Modules\Xot\Datas\XotData;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string|null                     $updated_by
  * @property string|null                     $created_by
+ *
  * @method static Builder|SocialiteUser whereAvatar($value)
  * @method static Builder|SocialiteUser whereCreatedAt($value)
  * @method static Builder|SocialiteUser whereCreatedBy($value)
@@ -44,6 +47,7 @@ use Modules\Xot\Datas\XotData;
  * @method static Builder|SocialiteUser whereUpdatedAt($value)
  * @method static Builder|SocialiteUser whereUpdatedBy($value)
  * @method static Builder|SocialiteUser whereUserId($value)
+ *
  * @mixin \Eloquent
  */
 class SocialiteUser extends BaseModel

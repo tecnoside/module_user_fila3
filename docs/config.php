@@ -20,6 +20,7 @@ return [
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     'navigation' => require_once ('navigation.php'),
 =======
 =======
@@ -49,6 +50,9 @@ return [
 =======
     'navigation' => require_once ('navigation.php'),
 >>>>>>> 2f8738b (Check & fix styling)
+=======
+    'navigation' => require_once('navigation.php'),
+>>>>>>> 0dfb290 (Dusting)
 
     // helpers
     'isActive' => function ($page, $path) {

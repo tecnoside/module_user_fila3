@@ -95,7 +95,6 @@ use Spatie\Permission\Traits\HasRoles;
  *
  * @mixin Eloquent
  */
-
 class User extends Authenticatable implements HasName, HasTenants, UserContract
 {
     /* , HasAvatar, UserJetContract, ExportsPersonalData */

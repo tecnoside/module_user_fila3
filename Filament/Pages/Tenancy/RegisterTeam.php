@@ -1,13 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\User\Filament\Pages\Tenancy;
 
-use Filament\Forms\Form;
-use Modules\Xot\Datas\XotData;
-use Illuminate\Database\Eloquent\Model;
 use Filament\Forms\Components\TextInput;
-use Modules\User\Contracts\TeamContract;
+use Filament\Forms\Form;
 use Filament\Pages\Tenancy\RegisterTenant;
+use Illuminate\Database\Eloquent\Model;
+use Modules\Xot\Datas\XotData;
 
 class RegisterTeam extends RegisterTenant
 {
@@ -25,14 +26,13 @@ class RegisterTeam extends RegisterTenant
             ]);
     }
 
-
     /**
-    * @param  array<string, mixed>  $data
-    */
-   protected function handleRegistration(array $data): Model
+     * @param array<string, mixed> $data
+     */
+    protected function handleRegistration(array $data): Model
     {
-        //$xot=XotData::make()
-        //$team = Team::create($data);
+        // $xot=XotData::make()
+        // $team = Team::create($data);
         $teamClass = XotData::make()->getTeamClass();
         $team = $teamClass::create($data);
 

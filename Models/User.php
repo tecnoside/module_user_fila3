@@ -95,15 +95,8 @@ use Spatie\Permission\Traits\HasRoles;
  *
  * @mixin Eloquent
  */
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 class User extends Authenticatable implements HasName, HasTenants, UserContract
-=======
-class User extends Authenticatable implements HasName, UserContract, HasTenants
->>>>>>> 3adfd10 (rebase 1/17)
-=======
-class User extends Authenticatable implements HasName, HasTenants, UserContract
->>>>>>> 62774b5 (5/17)
 {
     /* , HasAvatar, UserJetContract, ExportsPersonalData */
     /* , HasTeamsContract */
@@ -121,13 +114,7 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
 
     // use Traits\HasProfilePhoto;
     use Notifiable;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 
->>>>>>> 3adfd10 (rebase 1/17)
-=======
->>>>>>> 62774b5 (5/17)
     use Traits\HasTenants;
 
     /**

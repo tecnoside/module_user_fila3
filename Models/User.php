@@ -206,7 +206,7 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
     public function canAccessPanel(Panel $panel): bool
     {
         // $panel->default('admin');
-        if ('admin' !== $panel->getId()) {
+        if ($panel->getId() !== 'admin') {
             $role = $panel->getId();
             /*
             $xot = XotData::make();
@@ -269,7 +269,7 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
 
     public function getFullNameAttribute(?string $value): ?string
     {
-        if (null != $value) {
+        if ($value != null) {
             return $value;
         }
 

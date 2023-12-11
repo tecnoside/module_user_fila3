@@ -38,32 +38,33 @@
         "laraxot/module_tenant_fila3": "*",
         "laraxot/module_xot_fila3": "dev-master",
         "spatie/laravel-personal-data-export": "*",
-        "thecodingmachine/safe": "^2.5"
+        "thecodingmachine/safe": "*"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "*",
         "driftingly/rector-laravel": "*",
-        "enlightn/enlightn": "^2.5",
+        "enlightn/enlightn": "*",
         "fakerphp/faker": "*",
         "friendsofphp/php-cs-fixer": "*",
-        "laravel/pint": "^1.13",
-        "nunomaduro/collision": "*",
         "larastan/larastan": "^2.6",
-        "nunomaduro/phpinsights": "^2.9",
+        "laravel/pint": "*",
+        "nunomaduro/collision": "*",
+        "nunomaduro/larastan": "*",
+        "nunomaduro/phpinsights": "*",
         "orchestra/testbench": "*",
         "pestphp/pest": "*",
         "pestphp/pest-plugin-arch": "*",
         "pestphp/pest-plugin-laravel": "*",
         "phpstan/phpstan-deprecation-rules": "*",
         "phpstan/phpstan-phpunit": "*",
-        "psalm/plugin-laravel": "^2.8",
-        "rector/phpstan-rules": "^0.7.1",
+        "psalm/plugin-laravel": "*",
+        "rector/phpstan-rules": "*",
         "rector/rector": "*",
         "spatie/laravel-ray": "*",
-        "symplify/phpstan-rules": "^12.4",
-        "thecodingmachine/phpstan-safe-rule": "^1.2",
+        "symplify/phpstan-rules": "*",
+        "thecodingmachine/phpstan-safe-rule": "*",
         "tightenco/duster": "*",
-        "vimeo/psalm": "^5.15"
+        "vimeo/psalm": "*"
     },
     "repositories": [
         {

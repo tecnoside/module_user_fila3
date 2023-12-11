@@ -1,7 +1,10 @@
 <?php
 
+<<<<<<< Updated upstream
 declare(strict_types=1);
 
+=======
+>>>>>>> Stashed changes
 use Illuminate\Support\Str;
 
 return [
@@ -15,7 +18,19 @@ return [
     'docsearchIndexName' => env('DOCSEARCH_INDEX'),
 
     // navigation menu
+<<<<<<< HEAD
     'navigation' => require_once ('navigation.php'),
+=======
+<<<<<<< Updated upstream
+    'navigation' => require_once('navigation.php'),
+=======
+<<<<<<< Updated upstream
+    'navigation' => require_once ('navigation.php'),
+=======
+    'navigation' => require_once('navigation.php'),
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> 80d19d7 (ADD: HasTenants to User Model)
 
     // helpers
     'isActive' => function ($page, $path) {

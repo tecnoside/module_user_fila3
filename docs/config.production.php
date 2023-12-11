@@ -1,7 +1,10 @@
 <?php
 
+<<<<<<< Updated upstream
 declare(strict_types=1);
 
+=======
+>>>>>>> Stashed changes
 return [
     'baseUrl' => 'https://jigsaw-docs-template.tighten.co',
     'production' => true,

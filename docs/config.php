@@ -19,6 +19,7 @@ return [
 
     // navigation menu
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< Updated upstream
     'navigation' => require_once('navigation.php'),
 =======
@@ -31,6 +32,9 @@ return [
 =======
     'navigation' => require_once ('navigation.php'),
 >>>>>>> 1a41d3d (Check & fix styling)
+=======
+    'navigation' => require_once ('navigation.php'),
+>>>>>>> master
 
     // helpers
     'isActive' => function ($page, $path) {

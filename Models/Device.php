@@ -4,16 +4,19 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
+use Illuminate\Database\Eloquent\Collection;
+use Modules\User\Database\Factories\DeviceFactory;
+use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
  * Modules\User\Models\Device.
  *
- * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\User> $users
+ * @property Collection<int, \Modules\User\Models\User> $users
  * @property int|null                                                                 $users_count
  *
- * @method static \Modules\User\Database\Factories\DeviceFactory factory($count = null, $state = [])
+ * @method static DeviceFactory factory($count = null, $state = [])
  * @method static Builder|Device                                 newModelQuery()
  * @method static Builder|Device                                 newQuery()
  * @method static Builder|Device                                 query()
@@ -31,8 +34,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @property int|null                        $is_mobile
  * @property int|null                        $is_tablet
  * @property int|null                        $is_phone
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
  * @property string|null                     $updated_by
  * @property string|null                     $created_by
  *

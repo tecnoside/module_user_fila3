@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
+use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 
 /**
@@ -20,8 +21,8 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|RoleHasPermission wherePermissionId($value)
  * @method static Builder|RoleHasPermission whereRoleId($value)
  *
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
  * @property string|null                     $updated_by
  * @property string|null                     $created_by
  *

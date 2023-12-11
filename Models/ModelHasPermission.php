@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
+use Modules\User\Database\Factories\ModelHasPermissionFactory;
+use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 
 /**
@@ -14,7 +16,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string $model_type
  * @property string $model_id
  *
- * @method static \Modules\User\Database\Factories\ModelHasPermissionFactory factory($count = null, $state = [])
+ * @method static ModelHasPermissionFactory factory($count = null, $state = [])
  * @method static Builder|ModelHasPermission                                 newModelQuery()
  * @method static Builder|ModelHasPermission                                 newQuery()
  * @method static Builder|ModelHasPermission                                 query()
@@ -23,8 +25,8 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|ModelHasPermission                                 whereModelType($value)
  * @method static Builder|ModelHasPermission                                 wherePermissionId($value)
  *
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
  * @property string|null                     $updated_by
  * @property string|null                     $created_by
  *

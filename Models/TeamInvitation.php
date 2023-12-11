@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
+use Modules\User\Database\Factories\TeamInvitationFactory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
@@ -18,10 +19,10 @@ use Modules\Xot\Datas\XotData;
  * @property string|null                           $role
  * @property Carbon|null                           $created_at
  * @property Carbon|null                           $updated_at
- * @property \Modules\User\Models\Team|null        $team
+ * @property Team|null $team
  * @property \Modules\Quaeris\Models\Customer|null $team
  *
- * @method static \Modules\User\Database\Factories\TeamInvitationFactory factory($count = null, $state = [])
+ * @method static TeamInvitationFactory factory($count = null, $state = [])
  * @method static Builder|TeamInvitation                                 newModelQuery()
  * @method static Builder|TeamInvitation                                 newQuery()
  * @method static Builder|TeamInvitation                                 query()

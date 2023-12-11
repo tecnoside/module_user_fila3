@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
+use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * Modules\User\Models\DeviceUser.
  *
- * @property \Modules\User\Models\Device|null $device
+ * @property Device|null $device
  *
  * @method static Builder|DeviceUser newModelQuery()
  * @method static Builder|DeviceUser newQuery()
@@ -19,12 +20,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int                             $id
  * @property string                          $device_id
  * @property string                          $user_id
- * @property \Illuminate\Support\Carbon|null $login_at
- * @property \Illuminate\Support\Carbon|null $logout_at
+ * @property Carbon|null $login_at
+ * @property Carbon|null $logout_at
  * @property string|null                     $push_notifications_token
  * @property bool|null                       $push_notifications_enabled
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
  * @property string|null                     $updated_by
  * @property string|null                     $created_by
  *

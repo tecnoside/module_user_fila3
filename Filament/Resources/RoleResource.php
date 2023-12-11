@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Resources;
 
+use Closure;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\Grid;
@@ -364,7 +365,7 @@ class RoleResource extends XotBaseResource
         });
     }
 
-    private function refreshResourceEntityStateAfterUpdate(\Closure $set, \Closure $get, array $entity): void
+    private function refreshResourceEntityStateAfterUpdate(Closure $set, Closure $get, array $entity): void
     {
         $collection = collect(Utils::getResourcePermissionPrefixes($entity['fqcn']))
             ->map(fn (string $permission): bool => (bool) $get($permission.'_'.$entity['resource']));
@@ -378,7 +379,7 @@ class RoleResource extends XotBaseResource
         }
     }
 
-    private function refreshResourceEntityStateAfterHydrated(Model $model, \Closure $set, array $entity): void
+    private function refreshResourceEntityStateAfterHydrated(Model $model, Closure $set, array $entity): void
     {
         $entities = $model->permissions->pluck('name')
             ->reduce(function (array $roles, $role): array {

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
+use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 
 /**
@@ -18,8 +19,8 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null                     $team_id
  * @property string|null                     $user_id
  * @property string|null                     $role
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
  * @property string|null                     $created_by
  * @property string|null                     $updated_by
  * @property string|null                     $customer_id

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
+use Laravel\Passport\Database\Factories\ClientFactory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
@@ -24,14 +25,14 @@ use Laravel\Passport\Client as PassportClient;
  * @property bool                                                   $revoked
  * @property Carbon|null                                            $created_at
  * @property Carbon|null                                            $updated_at
- * @property Collection<int, \Modules\User\Models\OauthAuthCode>    $authCodes
+ * @property Collection<int, OauthAuthCode> $authCodes
  * @property int|null                                               $auth_codes_count
  * @property string|null                                            $plain_secret
- * @property Collection<int, \Modules\User\Models\OauthAccessToken> $tokens
+ * @property Collection<int, OauthAccessToken> $tokens
  * @property int|null                                               $tokens_count
  * @property \Modules\User\Models\User|null                         $user
  *
- * @method static \Laravel\Passport\Database\Factories\ClientFactory factory($count = null, $state = [])
+ * @method static ClientFactory factory($count = null, $state = [])
  * @method static Builder|OauthClient                                newModelQuery()
  * @method static Builder|OauthClient                                newQuery()
  * @method static Builder|OauthClient                                query()

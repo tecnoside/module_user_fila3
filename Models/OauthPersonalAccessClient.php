@@ -15,7 +15,7 @@ use Laravel\Passport\PersonalAccessClient as PassportPersonalAccessClient;
  * @property string                                $client_id
  * @property Carbon|null                           $created_at
  * @property Carbon|null                           $updated_at
- * @property \Modules\User\Models\OauthClient|null $client
+ * @property OauthClient|null $client
  *
  * @method static Builder|OauthPersonalAccessClient newModelQuery()
  * @method static Builder|OauthPersonalAccessClient newQuery()

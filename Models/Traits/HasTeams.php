@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Models\Traits;
 
+use Exception;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -133,7 +134,7 @@ trait HasTeams
         }
 
         if (! $res instanceof TeamContract) {
-            throw new \Exception('strange things');
+            throw new Exception('strange things');
         }
 
         return $res;

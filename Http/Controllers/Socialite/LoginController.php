@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Http\Controllers\Socialite;
 
+use Exception;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Controller;
@@ -49,11 +50,11 @@ class LoginController extends Controller
         $scopes = App(GetProviderScopesAction::class)->execute($provider);
         $socialiteProvider = Socialite::with($provider);
         if (! is_object($socialiteProvider)) {
-            throw new \Exception('wip');
+            throw new Exception('wip');
         }
 
         if (! method_exists($socialiteProvider, 'scopes')) {
-            throw new \Exception('wip');
+            throw new Exception('wip');
         }
 
         return $socialiteProvider

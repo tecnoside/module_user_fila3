@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Resources\UserResource\RelationManagers;
 
+use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
@@ -28,8 +29,8 @@ class DevicesRelationManager extends RelationManager
     public static function extendTableCallback(): array
     {
         return [
-            'login_at' => Tables\Columns\TextColumn::make('login_at'),
-            'logout_at' => Tables\Columns\TextColumn::make('logout_at'),
+            'login_at' => TextColumn::make('login_at'),
+            'logout_at' => TextColumn::make('logout_at'),
         ];
     }
 

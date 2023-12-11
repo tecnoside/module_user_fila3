@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\User\Models;
 
 use Filament\Models\Contracts\HasName;
+use Filament\Models\Contracts\HasTenants;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
@@ -94,7 +95,7 @@ use Spatie\Permission\Traits\HasRoles;
  *
  * @mixin Eloquent
  */
-class User extends Authenticatable implements HasName, UserContract
+class User extends Authenticatable implements HasName, UserContract, HasTenants
 {
     /* , HasAvatar, UserJetContract, ExportsPersonalData */
     /* , HasTeamsContract */
@@ -113,7 +114,7 @@ class User extends Authenticatable implements HasName, UserContract
     // use Traits\HasProfilePhoto;
     use Notifiable;
 
-    // use Traits\HasTenants;
+    use Traits\HasTenants;
 
     /**
      * @var string
@@ -273,6 +274,6 @@ class User extends Authenticatable implements HasName, UserContract
             return $value;
         }
 
-        return $this->first_name.' '.$this->last_name;
+        return $this->first_name . ' ' . $this->last_name;
     }
 }

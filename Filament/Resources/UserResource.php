@@ -94,7 +94,7 @@ class UserResource extends XotBaseResource
                     // ->label(trans('filament-user::user.resource.password'))
                     ->password()
                     ->maxLength(255)
-                    ->dehydrateStateUsing(static fn($state) => ! empty($state)
+                    ->dehydrateStateUsing(static fn ($state) => ! empty($state)
                         ? Hash::make($state)
                         : User::find($form->getColumns())?->password),
                 /*

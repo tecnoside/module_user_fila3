@@ -4,40 +4,40 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
-use Illuminate\Database\Eloquent\Collection;
-use Modules\User\Database\Factories\DeviceFactory;
-use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Carbon;
+use Modules\User\Database\Factories\DeviceFactory;
 
 /**
  * Modules\User\Models\Device.
  *
  * @property Collection<int, \Modules\User\Models\User> $users
- * @property int|null                                                                 $users_count
+ * @property int|null                                   $users_count
  *
- * @method static DeviceFactory factory($count = null, $state = [])
- * @method static Builder|Device                                 newModelQuery()
- * @method static Builder|Device                                 newQuery()
- * @method static Builder|Device                                 query()
+ * @method static DeviceFactory  factory($count = null, $state = [])
+ * @method static Builder|Device newModelQuery()
+ * @method static Builder|Device newQuery()
+ * @method static Builder|Device query()
  *
- * @property int                             $id
- * @property string|null                     $mobile_id
- * @property array|null                      $languages
- * @property string|null                     $device
- * @property string|null                     $platform
- * @property string|null                     $browser
- * @property string|null                     $version
- * @property int|null                        $is_robot
- * @property string|null                     $robot
- * @property int|null                        $is_desktop
- * @property int|null                        $is_mobile
- * @property int|null                        $is_tablet
- * @property int|null                        $is_phone
+ * @property int         $id
+ * @property string|null $mobile_id
+ * @property array|null  $languages
+ * @property string|null $device
+ * @property string|null $platform
+ * @property string|null $browser
+ * @property string|null $version
+ * @property int|null    $is_robot
+ * @property string|null $robot
+ * @property int|null    $is_desktop
+ * @property int|null    $is_mobile
+ * @property int|null    $is_tablet
+ * @property int|null    $is_phone
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
- * @property string|null                     $updated_by
- * @property string|null                     $created_by
+ * @property string|null $updated_by
+ * @property string|null $created_by
  *
  * @method static Builder|Device whereBrowser($value)
  * @method static Builder|Device whereCreatedAt($value)

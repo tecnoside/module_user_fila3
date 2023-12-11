@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
-use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Carbon;
 use Laravel\Passport\RefreshToken as PassportRefreshToken;
 
 /**
@@ -17,9 +17,9 @@ use Laravel\Passport\RefreshToken as PassportRefreshToken;
  * @method static Builder|OauthRefreshToken newQuery()
  * @method static Builder|OauthRefreshToken query()
  *
- * @property string                          $id
- * @property string                          $access_token_id
- * @property bool                            $revoked
+ * @property string      $id
+ * @property string      $access_token_id
+ * @property bool        $revoked
  * @property Carbon|null $expires_at
  *
  * @method static Builder|OauthRefreshToken whereAccessTokenId($value)

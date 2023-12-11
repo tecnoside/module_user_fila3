@@ -8,7 +8,6 @@ declare(strict_types=1);
 
 namespace Modules\User\Actions\Socialite;
 
-use Exception;
 use Illuminate\Support\Arr;
 use Spatie\QueueableAction\QueueableAction;
 
@@ -30,6 +29,6 @@ class GetDomainAllowListAction
             return $res;
         }
 
-        throw new Exception('check config filament-socialite.domain_allowlist');
+        throw new \Exception('check config filament-socialite.domain_allowlist');
     }
 }

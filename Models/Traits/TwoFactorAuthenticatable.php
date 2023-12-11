@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\User\Models\Traits;
 
-use Exception;
 use BaconQrCode\Renderer\Color\Rgb;
 use BaconQrCode\Renderer\Image\SvgImageBackEnd;
 use BaconQrCode\Renderer\ImageRenderer;
@@ -50,7 +49,7 @@ trait TwoFactorAuthenticatable
     public function recoveryCodes()
     {
         if (null === $this->two_factor_recovery_codes) {
-            throw new Exception('['.__LINE__.']['.__FILE__.']');
+            throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
 
         return (array) json_decode((string) decrypt($this->two_factor_recovery_codes), true, 512, JSON_THROW_ON_ERROR);
@@ -64,11 +63,11 @@ trait TwoFactorAuthenticatable
     public function replaceRecoveryCode($code): void
     {
         if (null === $code) {
-            throw new Exception('['.__LINE__.']['.__FILE__.']');
+            throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
 
         if (null === $this->two_factor_recovery_codes) {
-            throw new Exception('['.__LINE__.']['.__FILE__.']');
+            throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
 
         $this->forceFill([
@@ -104,11 +103,11 @@ trait TwoFactorAuthenticatable
     {
         $app_name = (string) config('app.name');
         if (null === $app_name) {
-            throw new Exception('['.__LINE__.']['.__FILE__.']');
+            throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
 
         if (null === $this->two_factor_secret) {
-            throw new Exception('['.__LINE__.']['.__FILE__.']');
+            throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
 
         return app(TwoFactorAuthenticationProvider::class)->qrCodeUrl(

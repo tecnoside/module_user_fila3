@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
-use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Carbon;
 
 /**
  * Modules\User\Models\TenantUser.
@@ -14,13 +14,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|TeamUser newQuery()
  * @method static Builder|TeamUser query()
  *
- * @property int                             $id
- * @property string|null                     $tenant_id
- * @property string|null                     $user_id
+ * @property int         $id
+ * @property string|null $tenant_id
+ * @property string|null $user_id
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
- * @property string|null                     $created_by
- * @property string|null                     $updated_by
+ * @property string|null $created_by
+ * @property string|null $updated_by
  *
  * @method static Builder|TeamUser whereCreatedAt($value)
  * @method static Builder|TeamUser whereCreatedBy($value)

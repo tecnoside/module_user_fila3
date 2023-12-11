@@ -8,3 +8,4 @@
 .git-blame-ignore-revs
 .php-cs-fixer.cache
 *.phar
+*.cache

@@ -1,10 +1,7 @@
 <?php
 
-<<<<<<< Updated upstream
 declare(strict_types=1);
 
-=======
->>>>>>> Stashed changes
 use Illuminate\Support\Str;
 
 return [
@@ -18,23 +15,7 @@ return [
     'docsearchIndexName' => env('DOCSEARCH_INDEX'),
 
     // navigation menu
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-    'navigation' => require_once('navigation.php'),
-=======
-<<<<<<< Updated upstream
     'navigation' => require_once ('navigation.php'),
-=======
-    'navigation' => require_once('navigation.php'),
->>>>>>> Stashed changes
->>>>>>> Stashed changes
-=======
-    'navigation' => require_once ('navigation.php'),
->>>>>>> 1a41d3d (Check & fix styling)
-=======
-    'navigation' => require_once ('navigation.php'),
->>>>>>> master
 
     // helpers
     'isActive' => function ($page, $path) {

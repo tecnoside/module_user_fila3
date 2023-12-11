@@ -281,6 +281,6 @@ class User extends Authenticatable implements HasName, UserContract, HasTenants
             return $value;
         }
 
-        return $this->first_name . ' ' . $this->last_name;
+        return $this->first_name.' '.$this->last_name;
     }
 }

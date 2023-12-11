@@ -21,7 +21,7 @@ class GetCurrentDeviceAction
      */
     public function execute(string $mobile_id = null): Device
     {
-        $agent = new Agent();
+        $agent = new Agent;
 
         $data = [
             'device' => $agent->device(),
@@ -39,7 +39,7 @@ class GetCurrentDeviceAction
             'version' => $agent->version((string) $agent->browser()),
             'robot' => $agent->robot(),
         ];
-        if (null != $mobile_id) {
+        if ($mobile_id != null) {
             $device = Device::firstOrCreate(['mobile_id' => $mobile_id]);
             $device->update([...$data, ...$up]);
 

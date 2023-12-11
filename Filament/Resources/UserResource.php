@@ -82,7 +82,7 @@ class UserResource extends XotBaseResource
                     ->unique(ignoreRecord: true),
                 'current_team_id' => Select::make('current_team_id')
                     ->label('current team')
-                   ->relationship('teams', 'name'),
+                    ->relationship('teams', 'name'),
                 /*
                 'password' => TextInput::make('password')
                     ->required()

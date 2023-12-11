@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-// use Laravel\Sanctum\HasApiTokens;
-use Eloquent;
 use Filament\Models\Contracts\HasName;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Builder;
@@ -14,6 +11,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
@@ -208,7 +206,7 @@ class User extends Authenticatable implements HasName, UserContract
     public function canAccessPanel(Panel $panel): bool
     {
         // $panel->default('admin');
-        if ('admin' !== $panel->getId()) {
+        if ($panel->getId() !== 'admin') {
             $role = $panel->getId();
             /*
             $xot = XotData::make();
@@ -271,7 +269,7 @@ class User extends Authenticatable implements HasName, UserContract
 
     public function getFullNameAttribute(?string $value): ?string
     {
-        if (null != $value) {
+        if ($value != null) {
             return $value;
         }
 

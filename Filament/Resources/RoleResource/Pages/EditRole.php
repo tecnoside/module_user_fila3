@@ -21,7 +21,6 @@ class EditRole extends EditRecord
     public Collection $permissions;
 
     // public Role $record;
-
     protected static string $resource = RoleResource::class;
 
     /**

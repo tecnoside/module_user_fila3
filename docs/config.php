@@ -19,8 +19,11 @@ return [
 
     // navigation menu
 <<<<<<< HEAD
+<<<<<<< HEAD
     'navigation' => require_once ('navigation.php'),
 =======
+=======
+>>>>>>> 64b880d (Check & fix styling)
 <<<<<<< Updated upstream
     'navigation' => require_once('navigation.php'),
 =======
@@ -30,7 +33,13 @@ return [
     'navigation' => require_once('navigation.php'),
 >>>>>>> Stashed changes
 >>>>>>> Stashed changes
+<<<<<<< HEAD
 >>>>>>> 80d19d7 (ADD: HasTenants to User Model)
+=======
+=======
+    'navigation' => require_once ('navigation.php'),
+>>>>>>> 1a41d3d (Check & fix styling)
+>>>>>>> 64b880d (Check & fix styling)
 
     // helpers
     'isActive' => function ($page, $path) {

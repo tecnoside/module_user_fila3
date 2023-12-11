@@ -23,6 +23,7 @@ return [
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     'navigation' => require_once ('navigation.php'),
 =======
 =======
@@ -61,6 +62,9 @@ return [
 =======
     'navigation' => require_once('navigation.php'),
 >>>>>>> ce72fb4 (rebase 1/3)
+=======
+    'navigation' => require_once ('navigation.php'),
+>>>>>>> ea2cf74 (Check & fix styling)
 
     // helpers
     'isActive' => function ($page, $path) {

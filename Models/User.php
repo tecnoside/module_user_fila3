@@ -95,7 +95,7 @@ use Spatie\Permission\Traits\HasRoles;
  *
  * @mixin Eloquent
  */
-class User extends Authenticatable implements HasName, UserContract, HasTenants
+class User extends Authenticatable implements HasName, HasTenants, UserContract
 {
     /* , HasAvatar, UserJetContract, ExportsPersonalData */
     /* , HasTeamsContract */
@@ -113,7 +113,6 @@ class User extends Authenticatable implements HasName, UserContract, HasTenants
 
     // use Traits\HasProfilePhoto;
     use Notifiable;
-
     use Traits\HasTenants;
 
     /**
@@ -207,7 +206,7 @@ class User extends Authenticatable implements HasName, UserContract, HasTenants
     public function canAccessPanel(Panel $panel): bool
     {
         // $panel->default('admin');
-        if ('admin' !== $panel->getId()) {
+        if ($panel->getId() !== 'admin') {
             $role = $panel->getId();
             /*
             $xot = XotData::make();
@@ -270,7 +269,7 @@ class User extends Authenticatable implements HasName, UserContract, HasTenants
 
     public function getFullNameAttribute(?string $value): ?string
     {
-        if (null != $value) {
+        if ($value != null) {
             return $value;
         }
 

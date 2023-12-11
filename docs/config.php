@@ -18,6 +18,7 @@ return [
     'docsearchIndexName' => env('DOCSEARCH_INDEX'),
 
     // navigation menu
+<<<<<<< HEAD
 <<<<<<< Updated upstream
     'navigation' => require_once('navigation.php'),
 =======
@@ -27,6 +28,9 @@ return [
     'navigation' => require_once('navigation.php'),
 >>>>>>> Stashed changes
 >>>>>>> Stashed changes
+=======
+    'navigation' => require_once ('navigation.php'),
+>>>>>>> 1a41d3d (Check & fix styling)
 
     // helpers
     'isActive' => function ($page, $path) {

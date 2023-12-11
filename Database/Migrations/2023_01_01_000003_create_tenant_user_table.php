@@ -20,9 +20,9 @@ class CreateTenantUserTable extends XotBaseMigration
                 $table->foreignId('tenant_id');
                 $table->uuid('user_id')->nullable()->index();
                 // $table->foreignIdFor(User::class);
-                //$table->string('role')->nullable();
-                //$table->timestamps();
-                //$table->unique(['team_id', 'user_id']);
+                // $table->string('role')->nullable();
+                // $table->timestamps();
+                // $table->unique(['team_id', 'user_id']);
             }
         );
 
@@ -37,8 +37,8 @@ class CreateTenantUserTable extends XotBaseMigration
                 //    $table->string('updated_by')->nullable();
                 // }
 
-                //$this->updateUser($table);
-                $this->updateTimestamps(table:$table,hasSoftDeletes:true);
+                // $this->updateUser($table);
+                $this->updateTimestamps(table: $table, hasSoftDeletes: true);
             }
         );
     }

@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace Modules\User\Models\Traits;
 
 use Filament\Panel;
-use Modules\Xot\Datas\XotData;
-use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
-use Modules\User\Contracts\TeamContract;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Collection;
+use Modules\User\Contracts\TeamContract;
+use Modules\Xot\Datas\XotData;
 
 // use Modules\User\Models\OwnerRole;
 
@@ -54,7 +54,7 @@ trait HasTenants
             ->using($pivotClass)
             ->withPivot('role')
             ->withTimestamps()
-            //->as('membership')
-            ;
+            // ->as('membership')
+        ;
     }
 }

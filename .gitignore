@@ -7,3 +7,4 @@
 .git-rewrite
 .git-blame-ignore-revs
 .php-cs-fixer.cache
+*.phar

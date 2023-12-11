@@ -1,10 +1,7 @@
 <?php
 
-<<<<<<< Updated upstream
 declare(strict_types=1);
 
-=======
->>>>>>> Stashed changes
 return [
     'Getting Started' => [
         'url' => 'docs/getting-started',

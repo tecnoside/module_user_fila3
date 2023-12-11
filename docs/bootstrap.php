@@ -1,6 +1,5 @@
 <?php
 
-<<<<<<< Updated upstream
 declare(strict_types=1);
 
 use App\Listeners\GenerateSitemap;
@@ -8,22 +7,4 @@ use App\Listeners\GenerateSitemap;
 /* @var $container \Illuminate\Container\Container */
 /* @var $events \TightenCo\Jigsaw\Events\EventBus */
 
-=======
-use App\Listeners\GenerateSitemap;
-use TightenCo\Jigsaw\Jigsaw;
-
-/** @var $container \Illuminate\Container\Container */
-/** @var $events \TightenCo\Jigsaw\Events\EventBus */
-
-/**
- * You can run custom code at different stages of the build process by
- * listening to the 'beforeBuild', 'afterCollections', and 'afterBuild' events.
- *
- * For example:
- *
- * $events->beforeBuild(function (Jigsaw $jigsaw) {
- *     // Your code here
- * });
- */
->>>>>>> Stashed changes
 $events->afterBuild(GenerateSitemap::class);

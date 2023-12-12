@@ -15,56 +15,7 @@ return [
     'docsearchIndexName' => env('DOCSEARCH_INDEX'),
 
     // navigation menu
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     'navigation' => require_once ('navigation.php'),
-=======
-=======
->>>>>>> 64b880d (Check & fix styling)
-<<<<<<< Updated upstream
-    'navigation' => require_once('navigation.php'),
-=======
-<<<<<<< Updated upstream
-    'navigation' => require_once ('navigation.php'),
-=======
-    'navigation' => require_once('navigation.php'),
->>>>>>> Stashed changes
->>>>>>> Stashed changes
-<<<<<<< HEAD
->>>>>>> 80d19d7 (ADD: HasTenants to User Model)
-=======
-=======
-    'navigation' => require_once ('navigation.php'),
->>>>>>> 1a41d3d (Check & fix styling)
->>>>>>> 64b880d (Check & fix styling)
-=======
-    'navigation' => require_once ('navigation.php'),
->>>>>>> 7a503fc (rebase 2/3)
-=======
-    'navigation' => require_once('navigation.php'),
->>>>>>> f9db65e (Dusting)
-=======
-    'navigation' => require_once ('navigation.php'),
->>>>>>> 2f8738b (Check & fix styling)
-=======
-    'navigation' => require_once('navigation.php'),
->>>>>>> 0dfb290 (Dusting)
-=======
-    'navigation' => require_once ('navigation.php'),
->>>>>>> 8b69aea (Check & fix styling)
-=======
-    'navigation' => require_once('navigation.php'),
->>>>>>> ce72fb4 (rebase 1/3)
-=======
-    'navigation' => require_once ('navigation.php'),
->>>>>>> ea2cf74 (Check & fix styling)
 
     // helpers
     'isActive' => function ($page, $path) {

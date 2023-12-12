@@ -12,3 +12,5 @@
 .git-blame-ignore-revs
 package-lock.json
 .php-cs-fixer.cache
+package-lock.json
+.git-rewrite/

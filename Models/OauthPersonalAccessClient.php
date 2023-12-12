@@ -11,11 +11,11 @@ use Laravel\Passport\PersonalAccessClient as PassportPersonalAccessClient;
 /**
  * Modules\User\Models\OauthPersonalAccessClient.
  *
- * @property string                                $uuid
- * @property string                                $client_id
- * @property Carbon|null                           $created_at
- * @property Carbon|null                           $updated_at
- * @property \Modules\User\Models\OauthClient|null $client
+ * @property string           $uuid
+ * @property string           $client_id
+ * @property Carbon|null      $created_at
+ * @property Carbon|null      $updated_at
+ * @property OauthClient|null $client
  *
  * @method static Builder|OauthPersonalAccessClient newModelQuery()
  * @method static Builder|OauthPersonalAccessClient newQuery()

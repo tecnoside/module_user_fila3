@@ -6,6 +6,7 @@ namespace Modules\User\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Carbon;
+use Modules\User\Database\Factories\ModelHasRoleFactory;
 
 /**
  * Modules\User\Models\ModelHasRole.
@@ -20,19 +21,19 @@ use Illuminate\Support\Carbon;
  * @property string|null $updated_by
  * @property string|null $created_by
  *
- * @method static \Modules\User\Database\Factories\ModelHasRoleFactory factory($count = null, $state = [])
- * @method static Builder|ModelHasRole                                 newModelQuery()
- * @method static Builder|ModelHasRole                                 newQuery()
- * @method static Builder|ModelHasRole                                 query()
- * @method static Builder|ModelHasRole                                 whereCreatedAt($value)
- * @method static Builder|ModelHasRole                                 whereCreatedBy($value)
- * @method static Builder|ModelHasRole                                 whereId($value)
- * @method static Builder|ModelHasRole                                 whereModelId($value)
- * @method static Builder|ModelHasRole                                 whereModelType($value)
- * @method static Builder|ModelHasRole                                 whereRoleId($value)
- * @method static Builder|ModelHasRole                                 whereTeamId($value)
- * @method static Builder|ModelHasRole                                 whereUpdatedAt($value)
- * @method static Builder|ModelHasRole                                 whereUpdatedBy($value)
+ * @method static ModelHasRoleFactory  factory($count = null, $state = [])
+ * @method static Builder|ModelHasRole newModelQuery()
+ * @method static Builder|ModelHasRole newQuery()
+ * @method static Builder|ModelHasRole query()
+ * @method static Builder|ModelHasRole whereCreatedAt($value)
+ * @method static Builder|ModelHasRole whereCreatedBy($value)
+ * @method static Builder|ModelHasRole whereId($value)
+ * @method static Builder|ModelHasRole whereModelId($value)
+ * @method static Builder|ModelHasRole whereModelType($value)
+ * @method static Builder|ModelHasRole whereRoleId($value)
+ * @method static Builder|ModelHasRole whereTeamId($value)
+ * @method static Builder|ModelHasRole whereUpdatedAt($value)
+ * @method static Builder|ModelHasRole whereUpdatedBy($value)
  *
  * @mixin \Eloquent
  */

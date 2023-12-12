@@ -34,6 +34,7 @@
         }
     },
     "require": {
+        "jenssegers/agent": "*",
         "laravel/passport": "*",
         "laraxot/module_tenant_fila3": "*",
         "laraxot/module_xot_fila3": "dev-master",
@@ -46,7 +47,7 @@
         "enlightn/enlightn": "*",
         "fakerphp/faker": "*",
         "friendsofphp/php-cs-fixer": "*",
-        "larastan/larastan": "^2.6",
+        "larastan/larastan": "*",
         "laravel/pint": "*",
         "nunomaduro/collision": "*",
         "larastan/larastan": "*",

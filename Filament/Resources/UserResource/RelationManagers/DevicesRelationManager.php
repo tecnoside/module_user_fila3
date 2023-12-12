@@ -8,6 +8,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Modules\User\Filament\Resources\DeviceResource;
 
@@ -28,8 +29,8 @@ class DevicesRelationManager extends RelationManager
     public static function extendTableCallback(): array
     {
         return [
-            'login_at' => Tables\Columns\TextColumn::make('login_at'),
-            'logout_at' => Tables\Columns\TextColumn::make('logout_at'),
+            'login_at' => TextColumn::make('login_at'),
+            'logout_at' => TextColumn::make('logout_at'),
         ];
     }
 

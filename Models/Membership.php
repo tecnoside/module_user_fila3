@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\User\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Carbon;
 
 /**
  * Modules\User\Models\Membership.
@@ -15,15 +16,15 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Membership newQuery()
  * @method static Builder|Membership query()
  *
- * @property int                             $id
- * @property string                          $uuid
- * @property string|null                     $team_id
- * @property string|null                     $user_id
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property string|null                     $created_by
- * @property string|null                     $updated_by
- * @property string|null                     $customer_id
+ * @property int         $id
+ * @property string      $uuid
+ * @property string|null $team_id
+ * @property string|null $user_id
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property string|null $created_by
+ * @property string|null $updated_by
+ * @property string|null $customer_id
  *
  * @method static Builder|Membership whereCreatedAt($value)
  * @method static Builder|Membership whereCreatedBy($value)

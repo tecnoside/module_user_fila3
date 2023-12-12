@@ -113,10 +113,6 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
 
     // use Traits\HasProfilePhoto;
     use Notifiable;
-<<<<<<< HEAD
-=======
-
->>>>>>> dev
     use Traits\HasTenants;
 
     /**

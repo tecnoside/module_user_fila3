@@ -53,8 +53,7 @@ trait HasTenants
         return $this->belongsToMany($xot->getTenantClass(), $pivotTableFull, null, 'tenant_id')
             ->using($pivotClass)
             ->withPivot('role')
-            ->withTimestamps()
-            // ->as('membership')
-        ;
+            ->withTimestamps();
+        // ->as('membership')
     }
 }

@@ -1,0 +1,55 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\User\Filament\Resources\TeamResource\RelationManagers;
+
+use Filament\Forms;
+use Filament\Tables;
+use Filament\Forms\Form;
+use Filament\Tables\Table;
+use Modules\User\Models\Role;
+use Modules\User\Filament\Resources\TeamResource;
+use Modules\User\Filament\Resources\UserResource;
+use Filament\Resources\RelationManagers\RelationManager;
+
+class UsersRelationManager extends RelationManager
+{
+    protected static string $relationship = 'users';
+
+    protected static ?string $recordTitleAttribute = 'name';
+
+    public static function form(Form $form): Form
+    {
+        $form = UserResource::form($form);
+        // $childComponents = [];
+        // foreach ($form->getSchema() as $schema) {
+        //     $childComponents = array_merge($childComponents, $schema->getChildComponents());
+        // }
+        // $childComponents['role'] = Forms\Components\Select::make('role')
+        //     ->options(Role::all()->pluck('name', 'name'));
+        // $form->schema($childComponents);
+
+        return $form;
+    }
+
+    public static function table(Table $table): Table
+    {
+        $table = UserResource::table($table);
+
+        // $columns = $table->getColumns();
+        // $columns['role'] = Tables\Columns\TextColumn::make('role');
+        // $table->columns($columns);
+
+        // $headerActions = $table->getHeaderActions();
+        // $headerActions['attach'] = Tables\Actions\AttachAction::make()
+        //     ->form(fn (Tables\Actions\AttachAction $action): array => [
+        //         $action->getRecordSelect(),
+        //         Forms\Components\Select::make('role_id')
+        //             ->options(Role::all()->pluck('name', 'id')),
+        //     ]);
+        // $table->headerActions($headerActions);
+
+        return $table;
+    }
+}

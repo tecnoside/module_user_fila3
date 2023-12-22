@@ -28,6 +28,7 @@ class CreateModelHasRolesTable extends XotBaseMigration
         // -- UPDATE --
         $this->tableUpdate(
             function (Blueprint $table): void {
+                $table->foreignId('team_id')->nullable()->change();
                 $this->updateUser($table);
                 $this->updateTimestamps($table);
             }

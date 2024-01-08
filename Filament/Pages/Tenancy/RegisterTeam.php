@@ -10,11 +10,6 @@ use Filament\Pages\Tenancy\RegisterTenant;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Xot\Datas\XotData;
 
-
-
-
-
-
 class RegisterTeam extends RegisterTenant
 {
     public static function getLabel(): string
@@ -32,7 +27,7 @@ class RegisterTeam extends RegisterTenant
     }
 
     /**
-     * @param array<string, mixed> $data
+     * @param  array<string, mixed>  $data
      */
     protected function handleRegistration(array $data): Model
     {

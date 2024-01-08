@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Modules\User\Filament\Pages\Tenancy;
@@ -6,8 +7,6 @@ namespace Modules\User\Filament\Pages\Tenancy;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Pages\Tenancy\EditTenantProfile;
-use Illuminate\Database\Eloquent\Model;
-
 
 class EditTeamProfile extends EditTenantProfile
 {

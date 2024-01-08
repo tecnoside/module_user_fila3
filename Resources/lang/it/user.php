@@ -27,6 +27,6 @@ return [
                 'parent_name' => 'Nome area livello superiore',
             ],
         ],
-        'change_password' => 'Cambio password'
+        'change_password' => 'Cambio password',
     ],
 ];

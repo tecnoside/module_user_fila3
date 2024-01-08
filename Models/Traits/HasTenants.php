@@ -7,11 +7,9 @@ namespace Modules\User\Models\Traits;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Modules\Xot\Datas\XotData;
 use Illuminate\Support\Collection;
 use Modules\User\Contracts\TeamContract;
-
-
+use Modules\Xot\Datas\XotData;
 
 // use Modules\User\Models\OwnerRole;
 
@@ -58,6 +56,4 @@ trait HasTenants
             ->withTimestamps();
         // ->as('membership')
     }
-
-
 }

@@ -9,18 +9,18 @@ declare(strict_types=1);
 namespace Modules\User\Providers;
 
 use Laravel\Passport\Passport;
-use Modules\User\Models\OauthClient;
-use Modules\User\Models\OauthAuthCode;
-use Modules\User\Models\OauthAccessToken;
-use Modules\User\Models\OauthRefreshToken;
-use SocialiteProviders\Manager\ServiceProvider;
-use Modules\Xot\Providers\XotBaseServiceProvider;
-use Modules\User\Models\OauthPersonalAccessClient;
+use Modules\User\Console\Commands\AssignModuleCommand;
 use Modules\User\Console\Commands\AssignRoleCommand;
 use Modules\User\Console\Commands\AssignTeamCommand;
 use Modules\User\Console\Commands\RemoveRoleCommand;
 use Modules\User\Console\Commands\SuperAdminCommand;
-use Modules\User\Console\Commands\AssignModuleCommand;
+use Modules\User\Models\OauthAccessToken;
+use Modules\User\Models\OauthAuthCode;
+use Modules\User\Models\OauthClient;
+use Modules\User\Models\OauthPersonalAccessClient;
+use Modules\User\Models\OauthRefreshToken;
+use Modules\Xot\Providers\XotBaseServiceProvider;
+use SocialiteProviders\Manager\ServiceProvider;
 
 class UserServiceProvider extends XotBaseServiceProvider
 {

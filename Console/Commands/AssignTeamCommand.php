@@ -5,13 +5,14 @@ declare(strict_types=1);
 namespace Modules\User\Console\Commands;
 
 use Illuminate\Console\Command;
+
+use function Laravel\Prompts\multiselect;
+use function Laravel\Prompts\text;
+
 use Modules\User\Models\User;
 use Modules\Xot\Datas\XotData;
 use Symfony\Component\Console\Input\InputOption;
 use Webmozart\Assert\Assert;
-
-use function Laravel\Prompts\multiselect;
-use function Laravel\Prompts\text;
 
 class AssignTeamCommand extends Command
 {
@@ -75,14 +76,6 @@ class AssignTeamCommand extends Command
 
     /**
      * Get the console command arguments.
-     *
-     * @return array
-     *               protected function getArguments()
-     *               {
-     *               return [
-     *               ['example', InputArgument::REQUIRED, 'An example argument.'],
-     *               ];
-     *               }
      */
     /**
      * Get the console command options.

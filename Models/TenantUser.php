@@ -39,11 +39,11 @@ class TenantUser extends BasePivot
 {
     protected $connection = 'user';
 
-    //public $incrementing = false;
+    // public $incrementing = false;
 
-    //protected $primaryKey = 'id';
+    // protected $primaryKey = 'id';
 
-    //protected $keyType = 'string';
+    // protected $keyType = 'string';
 
     /**
      * The attributes that are mass assignable.
@@ -62,10 +62,10 @@ class TenantUser extends BasePivot
      */
     protected $casts = [
         'id' => 'string',
-        //'email_verified_at' => 'datetime',
+        // 'email_verified_at' => 'datetime',
         // 'password' => 'hashed', //Call to undefined cast [hashed] on column [password] in model [Modules\User\Models\User].
-        //'is_active' => 'boolean',
-        //'roles.pivot.id' => 'string',
+        // 'is_active' => 'boolean',
+        // 'roles.pivot.id' => 'string',
         // https://github.com/beitsafe/laravel-uuid-auditing
         // ALTER TABLE model_has_role CHANGE COLUMN `id` `id` CHAR(37) NOT NULL DEFAULT uuid();
     ];

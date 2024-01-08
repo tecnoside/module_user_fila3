@@ -1,6 +1,6 @@
 <?php
 /**
- * ---
+ * ---.
  */
 
 declare(strict_types=1);
@@ -39,7 +39,7 @@ use Spatie\Permission\Traits\HasRoles;
  *
  * @property Collection<int, \Modules\User\Models\OauthClient>      $clients
  * @property int|null                                               $clients_count
- * @property \Modules\User\Models\Team|null                         $currentTeam
+ * @property Team|null                                              $currentTeam
  * @property Collection<int, \Modules\User\Models\Device>           $devices
  * @property int|null                                               $devices_count
  * @property string|null                                            $full_name
@@ -186,7 +186,7 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
         // 'profile_photo_url',
     ];
 
-    public function canAccessFilament(?Panel $panel = null): bool
+    public function canAccessFilament(Panel $panel = null): bool
     {
         // return $this->role_id === Role::ROLE_ADMINISTRATOR;
         return true;
@@ -212,7 +212,7 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
     public function canAccessPanel(Panel $panel): bool
     {
         // $panel->default('admin');
-        if ($panel->getId() !== 'admin') {
+        if ('admin' !== $panel->getId()) {
             $role = $panel->getId();
             /*
             $xot = XotData::make();
@@ -275,7 +275,7 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
 
     public function getFullNameAttribute(?string $value): ?string
     {
-        if ($value != null) {
+        if (null != $value) {
             return $value;
         }
 

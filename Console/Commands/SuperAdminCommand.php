@@ -6,13 +6,14 @@ namespace Modules\User\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
+
+use function Laravel\Prompts\text;
+
 use Modules\User\Models\Role;
 use Modules\User\Models\User;
 use Nwidart\Modules\Facades\Module;
 use Symfony\Component\Console\Input\InputOption;
 use Webmozart\Assert\Assert;
-
-use function Laravel\Prompts\text;
 
 class SuperAdminCommand extends Command
 {
@@ -62,14 +63,6 @@ class SuperAdminCommand extends Command
 
     /**
      * Get the console command arguments.
-     *
-     * @return array
-     *               protected function getArguments()
-     *               {
-     *               return [
-     *               ['example', InputArgument::REQUIRED, 'An example argument.'],
-     *               ];
-     *               }
      */
     /**
      * Get the console command options.

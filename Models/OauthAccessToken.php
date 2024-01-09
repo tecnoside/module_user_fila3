@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace Modules\User\Models;
 
 // use Laravel\Passport\AccessToken as PassportAccessToken;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Carbon;
 use Laravel\Passport\Token as PassportToken;
 
 class OauthAccessToken extends PassportToken

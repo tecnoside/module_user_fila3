@@ -74,7 +74,6 @@ class AssignTeamCommand extends Command
         $this->info(implode(', ', $rows).' assigned to '.$email);
     }
 
-
     /**
      * Get the console command options.
      */

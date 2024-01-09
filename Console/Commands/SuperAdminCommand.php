@@ -61,7 +61,6 @@ class SuperAdminCommand extends Command
         $this->info('super-admin assigned to '.$email);
     }
 
-
     /**
      * Get the console command options.
      */

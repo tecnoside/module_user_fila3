@@ -30,7 +30,11 @@ use Laravel\Passport\Database\Factories\ClientFactory;
  * @property string|null                       $plain_secret
  * @property Collection<int, OauthAccessToken> $tokens
  * @property int|null                          $tokens_count
+<<<<<<< HEAD
  * @property User|null                         $user
+=======
+ * @property \Modules\User\Models\User|null    $user
+>>>>>>> dev
  *
  * @method static ClientFactory       factory($count = null, $state = [])
  * @method static Builder|OauthClient newModelQuery()

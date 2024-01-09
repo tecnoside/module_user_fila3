@@ -63,6 +63,17 @@ class SuperAdminCommand extends Command
 
     /**
      * Get the console command arguments.
+<<<<<<< HEAD
+=======
+     *
+     * @return array
+     *               protected function getArguments()
+     *               {
+     *               return [
+     *               ['example', InputArgument::REQUIRED, 'An example argument.'],
+     *               ];
+     *               }
+>>>>>>> dev
      */
     /**
      * Get the console command options.

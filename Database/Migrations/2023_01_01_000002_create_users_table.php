@@ -64,8 +64,12 @@ class CreateUsersTable extends XotBaseMigration
                     $table->softDeletes();
                 }
 
+<<<<<<< HEAD
                 // $this->updateUser($table);
                 $this->updateTimestamps($table);
+=======
+                $this->updateUser($table);
+>>>>>>> dev
             }
         );
     }

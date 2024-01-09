@@ -1,11 +1,7 @@
 <?php
 
 /**
-<<<<<<< HEAD
  * ----.
-=======
- * ---.
->>>>>>> dev
  */
 
 declare(strict_types=1);
@@ -16,10 +12,7 @@ use Laravel\Passport\Passport;
 use Modules\User\Console\Commands\AssignModuleCommand;
 use Modules\User\Console\Commands\AssignRoleCommand;
 use Modules\User\Console\Commands\AssignTeamCommand;
-<<<<<<< HEAD
 use Modules\User\Console\Commands\RemoveRoleCommand;
-=======
->>>>>>> dev
 use Modules\User\Console\Commands\SuperAdminCommand;
 use Modules\User\Models\OauthAccessToken;
 use Modules\User\Models\OauthAuthCode;
@@ -44,10 +37,7 @@ class UserServiceProvider extends XotBaseServiceProvider
         $this->commands([
             AssignModuleCommand::class,
             AssignRoleCommand::class,
-<<<<<<< HEAD
             RemoveRoleCommand::class,
-=======
->>>>>>> dev
             AssignTeamCommand::class,
             SuperAdminCommand::class,
         ]);

@@ -15,40 +15,6 @@ use Modules\User\Database\Factories\TeamFactory;
 use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Datas\XotData;
 
-/**
- * Modules\User\Models\Team.
- *
- * @property int                                                                      $id
- * @property int                                                                      $user_id
- * @property string                                                                   $name
- * @property int                                                                      $personal_team
- * @property Carbon|null                                                              $created_at
- * @property Carbon|null                                                              $updated_at
- * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\User> $members
- * @property int|null                                                                 $members_count
- *                                                                                                            <<<<<<< HEAD
- * @property User|null                                                                $owner
- *                                                                                                            =======
- * @property User|null                                                                $owner
- *                                                                                                            >>>>>>> dev
- * @property \Illuminate\Database\Eloquent\Collection<int, TeamInvitation>            $teamInvitations
- * @property int|null                                                                 $team_invitations_count
- * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\User> $users
- * @property int|null                                                                 $users_count
- *
- * @method static TeamFactory  factory($count = null, $state = [])
- * @method static Builder|Team newModelQuery()
- * @method static Builder|Team newQuery()
- * @method static Builder|Team query()
- * @method static Builder|Team whereCreatedAt($value)
- * @method static Builder|Team whereId($value)
- * @method static Builder|Team whereName($value)
- * @method static Builder|Team wherePersonalTeam($value)
- * @method static Builder|Team whereUpdatedAt($value)
- * @method static Builder|Team whereUserId($value)
- *
- * @mixin \Eloquent
- */
 class Team extends BaseModel implements TeamContract
 {
     protected $fillable = [

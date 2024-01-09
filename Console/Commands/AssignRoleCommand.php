@@ -72,11 +72,7 @@ class AssignRoleCommand extends Command
         $this->info(implode(', ', $rows).' assigned to '.$email);
     }
 
-    /**
-     * Get the console command arguments.
-     * <<<<<<< HEAD
-     * =======.
-     */
+
     /**
      * Get the console command options.
      */

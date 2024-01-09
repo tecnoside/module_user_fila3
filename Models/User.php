@@ -1,10 +1,7 @@
 <?php
-<<<<<<< HEAD
 /**
  * ---.
  */
-=======
->>>>>>> dev
 
 declare(strict_types=1);
 
@@ -42,11 +39,7 @@ use Spatie\Permission\Traits\HasRoles;
  *
  * @property Collection<int, \Modules\User\Models\OauthClient>      $clients
  * @property int|null                                               $clients_count
-<<<<<<< HEAD
  * @property Team|null                                              $currentTeam
-=======
- * @property \Modules\User\Models\Team|null                         $currentTeam
->>>>>>> dev
  * @property Collection<int, \Modules\User\Models\Device>           $devices
  * @property int|null                                               $devices_count
  * @property string|null                                            $full_name
@@ -132,11 +125,8 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
 
     public $incrementing = false;
 
-<<<<<<< HEAD
     protected $primaryKey = 'id';
 
-=======
->>>>>>> dev
     protected $keyType = 'string';
 
     /**
@@ -146,11 +136,7 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
      */
     protected $fillable = [
         'name',
-<<<<<<< HEAD
         'first_name',
-=======
-        'fist_name',
->>>>>>> dev
         'last_name',
         'email',
         'password',
@@ -177,10 +163,7 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
      * @var array<string, string>
      */
     protected $casts = [
-<<<<<<< HEAD
         'id' => 'string',
-=======
->>>>>>> dev
         'email_verified_at' => 'datetime',
         // 'password' => 'hashed', //Call to undefined cast [hashed] on column [password] in model [Modules\User\Models\User].
         'is_active' => 'boolean',

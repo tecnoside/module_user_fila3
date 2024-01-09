@@ -47,16 +47,9 @@
         "enlightn/enlightn": "*",
         "fakerphp/faker": "*",
         "friendsofphp/php-cs-fixer": "*",
-<<<<<<< HEAD
         "larastan/larastan": "^2.7",
         "laravel/pint": "*",
         "nunomaduro/collision": "*",
-=======
-        "larastan/larastan": "*",
-        "laravel/pint": "*",
-        "nunomaduro/collision": "*",
-        "larastan/larastan": "*",
->>>>>>> dev
         "nunomaduro/phpinsights": "*",
         "orchestra/testbench": "*",
         "pestphp/pest": "*",

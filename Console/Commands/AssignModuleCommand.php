@@ -80,11 +80,6 @@ class AssignModuleCommand extends Command
     }
 
     /**
-     * Get the console command arguments.
-     * <<<<<<< HEAD
-     * =======.
-     */
-    /**
      * Get the console command options.
      */
     protected function getOptions(): array

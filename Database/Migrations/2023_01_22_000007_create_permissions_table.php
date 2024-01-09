@@ -33,10 +33,7 @@ class CreatePermissionsTable extends XotBaseMigration
         $this->tableUpdate(
             function (Blueprint $table): void {
                 $this->updateUser($table);
-<<<<<<< HEAD
                 $this->updateTimestamps($table);
-=======
->>>>>>> dev
             }
         );
     }

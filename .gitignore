@@ -5,21 +5,8 @@
 *.phar
 .git-blame-ignore-revs
 .git-rewrite
-<<<<<<< HEAD
 .php-cs-fixer.cache
 *.phar
 *.cache
 package-lock.json
 .git-rewrite/
-
-=======
-.git-blame-ignore-revs
-.php-cs-fixer.cache
-*.phar
-*.cache
-.git-blame-ignore-revs
-package-lock.json
-.php-cs-fixer.cache
-package-lock.json
-.git-rewrite/
->>>>>>> dev

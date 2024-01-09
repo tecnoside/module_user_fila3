@@ -31,10 +31,7 @@ use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\HtmlString;
 use Illuminate\Validation\Rules\Password;
-<<<<<<< HEAD
 use Modules\User\Filament\Actions\ChangePasswordAction;
-=======
->>>>>>> dev
 use Modules\User\Filament\Resources\UserResource\Pages\CreateUser;
 use Modules\User\Filament\Resources\UserResource\Pages\EditUser;
 use Modules\User\Filament\Resources\UserResource\Pages\ListUsers;
@@ -190,11 +187,8 @@ class UserResource extends XotBaseResource
             ], layout: FiltersLayout::AboveContent)
             ->actions([
                 EditAction::make(),
-<<<<<<< HEAD
                 ChangePasswordAction::make(),
                 /*
-=======
->>>>>>> dev
                 Action::make('changePassword')
                     ->action(function (User $user, array $data): void {
                         $user->update([
@@ -217,10 +211,7 @@ class UserResource extends XotBaseResource
                     ->icon('heroicon-o-key')
                 // ->visible(fn (User $record): bool => $record->role_id === Role::ROLE_ADMINISTRATOR)
                 ,
-<<<<<<< HEAD
                 */
-=======
->>>>>>> dev
                 Action::make('deactivate')
                     ->color('danger')
                     ->icon('heroicon-o-trash')

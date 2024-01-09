@@ -12,7 +12,8 @@ use Laravel\Passport\Token as PassportToken;
 /**
  * Modules\User\Models\OauthAccessToken.
  *
-<<<<<<< HEAD
+ * <<<<<<< HEAD
+ *
  * @property string           $id
  * @property string|null      $user_id
  * @property string           $client_id
@@ -24,19 +25,19 @@ use Laravel\Passport\Token as PassportToken;
  * @property Carbon|null      $expires_at
  * @property OauthClient|null $client
  * @property User|null        $user
-=======
- * @property string                         $id
- * @property string|null                    $user_id
- * @property string                         $client_id
- * @property string|null                    $name
- * @property array|null                     $scopes
- * @property bool                           $revoked
- * @property Carbon|null                    $created_at
- * @property Carbon|null                    $updated_at
- * @property Carbon|null                    $expires_at
- * @property OauthClient|null               $client
- * @property \Modules\User\Models\User|null $user
->>>>>>> dev
+ *                                        =======
+ * @property string           $id
+ * @property string|null      $user_id
+ * @property string           $client_id
+ * @property string|null      $name
+ * @property array|null       $scopes
+ * @property bool             $revoked
+ * @property Carbon|null      $created_at
+ * @property Carbon|null      $updated_at
+ * @property Carbon|null      $expires_at
+ * @property OauthClient|null $client
+ * @property User|null        $user
+ *                                        >>>>>>> dev
  *
  * @method static Builder|OauthAccessToken newModelQuery()
  * @method static Builder|OauthAccessToken newQuery()

@@ -17,11 +17,12 @@ use Modules\Xot\Datas\XotData;
 /**
  * Modules\User\Models\SocialiteUser.
  *
-<<<<<<< HEAD
+ * <<<<<<< HEAD
+ *
  * @property User|null $user
-=======
- * @property \Modules\User\Models\User|null $user
->>>>>>> dev
+ *                           =======
+ * @property User|null $user
+ *                           >>>>>>> dev
  *
  * @method static Builder|SocialiteUser newModelQuery()
  * @method static Builder|SocialiteUser newQuery()

@@ -26,11 +26,11 @@ use Modules\Xot\Datas\XotData;
  * @property Carbon|null                                                              $updated_at
  * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\User> $members
  * @property int|null                                                                 $members_count
-<<<<<<< HEAD
+ *                                                                                                            <<<<<<< HEAD
  * @property User|null                                                                $owner
-=======
- * @property \Modules\User\Models\User|null                                           $owner
->>>>>>> dev
+ *                                                                                                            =======
+ * @property User|null                                                                $owner
+ *                                                                                                            >>>>>>> dev
  * @property \Illuminate\Database\Eloquent\Collection<int, TeamInvitation>            $teamInvitations
  * @property int|null                                                                 $team_invitations_count
  * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\User> $users

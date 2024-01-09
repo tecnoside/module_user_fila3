@@ -37,11 +37,11 @@ trait HasTenants
     }
 
     /**
-<<<<<<< HEAD
+     * <<<<<<< HEAD
      * Get all of the tenants the user belongs to.
-=======
+     * =======
      * Get all of the teams the user belongs to.
->>>>>>> dev
+     * >>>>>>> dev.
      */
     public function tenants(): BelongsToMany
     {

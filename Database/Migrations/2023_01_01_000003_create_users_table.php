@@ -64,10 +64,6 @@ class CreateUsersTable extends XotBaseMigration
                     $table->softDeletes();
                 }
 
-                if ($this->hasColumn('id')) {
-                    $table->uuid('id')->primary()->change();
-                }
-
                 // $this->updateUser($table);
                 $this->updateTimestamps($table);
             }

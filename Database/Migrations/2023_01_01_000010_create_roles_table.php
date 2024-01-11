@@ -31,6 +31,9 @@ class CreateRolesTable extends XotBaseMigration
                 if (! $this->hasColumn('id')) {
                     $table->id();
                 }
+                if (! $this->hasColumn('team_id')) {
+                    $table->foreignId('team_id')->nullable()->index();
+                }
                 $this->updateTimestamps($table);
             }
         );

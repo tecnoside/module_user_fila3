@@ -30,7 +30,7 @@ class CreateOauthClientsTable extends XotBaseMigration
         // -- UPDATE --
         $this->tableUpdate(
             function (Blueprint $table): void {
-                if ('string' !== $this->getColumnType('id')) {
+                if ($this->getColumnType('id') !== 'string') {
                     $table->uuid('id')->change();  // is  just primary
                 }
 

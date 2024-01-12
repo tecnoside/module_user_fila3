@@ -19,7 +19,7 @@ class CreateTenant extends CreateRecord
     protected function handleRecordCreation(array $data): Model
     {
         $record = parent::handleRecordCreation(collect($data)->except('domain')->toArray());
-        $record->domains()->create(['domain' => collect($data)->get('domain')]);
+        // $record->domains()->create(['domain' => collect($data)->get('domain')]);
 
         return $record;
     }

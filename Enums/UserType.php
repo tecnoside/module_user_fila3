@@ -16,7 +16,7 @@ use Filament\Support\Contracts\HasLabel;
 
 enum UserType: string implements HasColor, HasIcon, HasLabel
 {
-    // use LaravelEnumHelper;
+    // //use LaravelEnumHelper;
 
     case MasterAdmin = 'master_admin';
     case BoUser = 'backoffice_user';

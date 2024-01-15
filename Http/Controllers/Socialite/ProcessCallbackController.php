@@ -43,7 +43,7 @@ class ProcessCallbackController extends Controller
 
         // Try to retrieve existing user
         $oauthUser = app(RetrieveOauthUserAction::class)->execute($provider);
-        if (null === $oauthUser) {
+        if ($oauthUser === null) {
             return app(RedirectToLoginAction::class)->execute('auth.login-failed');
         }
 

@@ -186,7 +186,7 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
         // 'profile_photo_url',
     ];
 
-    public function canAccessFilament(Panel $panel = null): bool
+    public function canAccessFilament(?Panel $panel = null): bool
     {
         // return $this->role_id === Role::ROLE_ADMINISTRATOR;
         return true;
@@ -212,7 +212,7 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
     public function canAccessPanel(Panel $panel): bool
     {
         // $panel->default('admin');
-        if ('admin' !== $panel->getId()) {
+        if ($panel->getId() !== 'admin') {
             $role = $panel->getId();
             /*
             $xot = XotData::make();
@@ -275,7 +275,7 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
 
     public function getFullNameAttribute(?string $value): ?string
     {
-        if (null != $value) {
+        if ($value != null) {
             return $value;
         }
 

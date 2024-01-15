@@ -33,7 +33,7 @@ class CreatePermissionTables extends XotBaseMigration
         $cache_key = config('permission.cache.key');
 
         app('cache')
-            ->store($cache_store !== 'default' ? $cache_store : null)
+            ->store('default' !== $cache_store ? $cache_store : null)
             ->forget($cache_key);
     }
 

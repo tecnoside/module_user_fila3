@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Pages\Tenancy;
 
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Modules\Xot\Datas\XotData;
+use Filament\Forms\Components\TextInput;
 use Filament\Pages\Tenancy\EditTenantProfile as BaseEditTenantProfile;
 
 class EditTenantProfile extends BaseEditTenantProfile
@@ -17,6 +18,9 @@ class EditTenantProfile extends BaseEditTenantProfile
 
     public function form(Form $form): Form
     {
+        $resource=XotData::make()->getTenantResourceClass();
+        return $resource::form($form);
+        /*
         return $form
             ->schema([
                 TextInput::make('name')
@@ -35,5 +39,6 @@ class EditTenantProfile extends BaseEditTenantProfile
                     ->label('user::tenancy.fields.email')
                     ->translateLabel(),
             ]);
+        */
     }
 }

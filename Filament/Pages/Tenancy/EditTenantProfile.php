@@ -9,7 +9,6 @@ use Filament\Forms\Form;
 use Filament\Pages\Tenancy\EditTenantProfile as BaseEditTenantProfile;
 use Modules\Xot\Datas\XotData;
 
-
 class EditTenantProfile extends BaseEditTenantProfile
 {
     public static function getLabel(): string

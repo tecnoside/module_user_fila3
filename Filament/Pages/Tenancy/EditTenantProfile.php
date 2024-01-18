@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Pages\Tenancy;
 
-use Filament\Forms\Form;
-use Modules\Xot\Datas\XotData;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Form;
 use Filament\Pages\Tenancy\EditTenantProfile as BaseEditTenantProfile;
 use Modules\Xot\Datas\XotData;
 
@@ -20,11 +19,16 @@ class EditTenantProfile extends BaseEditTenantProfile
     public function form(Form $form): Form
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         $resource = XotData::make()->getTenantResourceClass();
 
 =======
         $resource=XotData::make()->getTenantResourceClass();
 >>>>>>> 2bb7eaf (up)
+=======
+        $resource = XotData::make()->getTenantResourceClass();
+
+>>>>>>> 5b658ad (Check & fix styling)
         return $resource::form($form);
         /*
         return $form

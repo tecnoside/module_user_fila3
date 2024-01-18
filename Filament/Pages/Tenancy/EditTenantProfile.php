@@ -18,17 +18,8 @@ class EditTenantProfile extends BaseEditTenantProfile
 
     public function form(Form $form): Form
     {
-<<<<<<< HEAD
-<<<<<<< HEAD
         $resource = XotData::make()->getTenantResourceClass();
 
-=======
-        $resource=XotData::make()->getTenantResourceClass();
->>>>>>> 2bb7eaf (up)
-=======
-        $resource = XotData::make()->getTenantResourceClass();
-
->>>>>>> 5b658ad (Check & fix styling)
         return $resource::form($form);
         /*
         return $form

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\User\Tests\Unit\Models\Traits;
 
 use Modules\User\Models\Traits\CanExportPersonalData;
@@ -14,22 +16,16 @@ final class CanExportPersonalDataTest extends TestCase
 {
     private CanExportPersonalData $canExportPersonalData;
 
-    /**
-     * {@inheritdoc}
-     */
     protected function setUp(): void
     {
         parent::setUp();
 
-        /** @todo Correctly instantiate tested object to use it. */
+        /* @todo Correctly instantiate tested object to use it. */
         $this->canExportPersonalData = $this->getMockBuilder(CanExportPersonalData::class)
             ->setConstructorArgs([])
             ->getMockForTrait();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function tearDown(): void
     {
         parent::tearDown();
@@ -39,13 +35,13 @@ final class CanExportPersonalDataTest extends TestCase
 
     public function testPersonalDataExportName(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::markTestIncomplete();
     }
 
     public function testSelectPersonalData(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::markTestIncomplete();
     }
 }

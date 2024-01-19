@@ -1,9 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Unit\Modules\User\Listeners;
 
 use Illuminate\Auth\Events\Logout;
-use Mockery;
 use Modules\User\Listeners\LogoutListener;
 use Tests\TestCase;
 
@@ -16,9 +17,6 @@ final class LogoutListenerTest extends TestCase
 {
     private LogoutListener $logoutListener;
 
-    /**
-     * {@inheritdoc}
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -26,9 +24,6 @@ final class LogoutListenerTest extends TestCase
         $this->logoutListener = new LogoutListener();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function tearDown(): void
     {
         parent::tearDown();
@@ -38,9 +33,9 @@ final class LogoutListenerTest extends TestCase
 
     public function testHandle(): void
     {
-        $event = Mockery::mock(Logout::class);
+        $event = \Mockery::mock(Logout::class);
 
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         $this->logoutListener->handle($event);
     }
 }

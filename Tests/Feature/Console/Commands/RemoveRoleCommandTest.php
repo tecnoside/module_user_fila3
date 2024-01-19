@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\User\Tests\Feature\Console\Commands;
 
 use Modules\User\Console\Commands\RemoveRoleCommand;
@@ -14,9 +16,6 @@ final class RemoveRoleCommandTest extends TestCase
 {
     private RemoveRoleCommand $removeRoleCommand;
 
-    /**
-     * {@inheritdoc}
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -25,9 +24,6 @@ final class RemoveRoleCommandTest extends TestCase
         $this->app->instance(RemoveRoleCommand::class, $this->removeRoleCommand);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function tearDown(): void
     {
         parent::tearDown();
@@ -37,7 +33,7 @@ final class RemoveRoleCommandTest extends TestCase
 
     public function testHandle(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         $this->artisan('command:name')
             ->expectsOutput('Some expected output')
             ->assertExitCode(0);

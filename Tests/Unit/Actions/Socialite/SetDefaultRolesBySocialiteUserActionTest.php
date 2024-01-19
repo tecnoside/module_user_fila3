@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\User\Tests\Unit\Actions\Socialite;
 
 use Modules\User\Actions\Socialite\SetDefaultRolesBySocialiteUserAction;
@@ -16,9 +18,6 @@ final class SetDefaultRolesBySocialiteUserActionTest extends TestCase
 
     private string $provider;
 
-    /**
-     * {@inheritdoc}
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -27,20 +26,16 @@ final class SetDefaultRolesBySocialiteUserActionTest extends TestCase
         $this->setDefaultRolesBySocialiteUserAction = new SetDefaultRolesBySocialiteUserAction($this->provider);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function tearDown(): void
     {
         parent::tearDown();
 
-        unset($this->setDefaultRolesBySocialiteUserAction);
-        unset($this->provider);
+        unset($this->setDefaultRolesBySocialiteUserAction, $this->provider);
     }
 
     public function testExecute(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::markTestIncomplete();
     }
 }

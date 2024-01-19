@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\User\Tests\Unit\Tests\Feature;
 
 use Modules\User\Tests\Feature\PasswordResetTest;
@@ -14,20 +16,14 @@ final class PasswordResetTestTest extends TestCase
 {
     private PasswordResetTest $passwordResetTest;
 
-    /**
-     * {@inheritdoc}
-     */
     protected function setUp(): void
     {
         parent::setUp();
 
-        /** @todo Correctly instantiate tested object to use it. */
+        /* @todo Correctly instantiate tested object to use it. */
         $this->passwordResetTest = new PasswordResetTest();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function tearDown(): void
     {
         parent::tearDown();
@@ -37,25 +33,25 @@ final class PasswordResetTestTest extends TestCase
 
     public function testResetPasswordLinkScreenCanBeRendered(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::markTestIncomplete();
     }
 
     public function testResetPasswordLinkCanBeRequested(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::markTestIncomplete();
     }
 
     public function testResetPasswordScreenCanBeRendered(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::markTestIncomplete();
     }
 
     public function testPasswordCanBeResetWithValidToken(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::markTestIncomplete();
     }
 }

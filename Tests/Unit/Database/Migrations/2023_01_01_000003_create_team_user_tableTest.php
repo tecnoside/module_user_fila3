@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Unit;
 
-use CreateTeamUserTable;
 use Tests\TestCase;
 
 /**
@@ -12,22 +13,16 @@ use Tests\TestCase;
  */
 final class CreateTeamUserTableTest extends TestCase
 {
-    private CreateTeamUserTable $createTeamUserTable;
+    private \CreateTeamUserTable $createTeamUserTable;
 
-    /**
-     * {@inheritdoc}
-     */
     protected function setUp(): void
     {
         parent::setUp();
 
-        /** @todo Correctly instantiate tested object to use it. */
-        $this->createTeamUserTable = new CreateTeamUserTable();
+        /* @todo Correctly instantiate tested object to use it. */
+        $this->createTeamUserTable = new \CreateTeamUserTable();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function tearDown(): void
     {
         parent::tearDown();
@@ -37,7 +32,7 @@ final class CreateTeamUserTableTest extends TestCase
 
     public function testUp(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::markTestIncomplete();
     }
 }

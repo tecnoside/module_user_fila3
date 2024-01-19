@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\User\Tests\Unit\Tests\Feature;
 
 use Modules\User\Tests\Feature\BrowserSessionsTest;
@@ -14,20 +16,14 @@ final class BrowserSessionsTestTest extends TestCase
 {
     private BrowserSessionsTest $browserSessionsTest;
 
-    /**
-     * {@inheritdoc}
-     */
     protected function setUp(): void
     {
         parent::setUp();
 
-        /** @todo Correctly instantiate tested object to use it. */
+        /* @todo Correctly instantiate tested object to use it. */
         $this->browserSessionsTest = new BrowserSessionsTest();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function tearDown(): void
     {
         parent::tearDown();
@@ -37,7 +33,7 @@ final class BrowserSessionsTestTest extends TestCase
 
     public function testOtherBrowserSessionsCanBeLoggedOut(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::markTestIncomplete();
     }
 }

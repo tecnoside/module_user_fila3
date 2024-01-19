@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\User\Tests\Unit\Actions\Socialite;
 
 use Modules\User\Actions\Socialite\RegisterSocialiteUserAction;
@@ -14,20 +16,14 @@ final class RegisterSocialiteUserActionTest extends TestCase
 {
     private RegisterSocialiteUserAction $registerSocialiteUserAction;
 
-    /**
-     * {@inheritdoc}
-     */
     protected function setUp(): void
     {
         parent::setUp();
 
-        /** @todo Correctly instantiate tested object to use it. */
+        /* @todo Correctly instantiate tested object to use it. */
         $this->registerSocialiteUserAction = new RegisterSocialiteUserAction();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function tearDown(): void
     {
         parent::tearDown();
@@ -37,7 +33,7 @@ final class RegisterSocialiteUserActionTest extends TestCase
 
     public function testExecute(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::markTestIncomplete();
     }
 }

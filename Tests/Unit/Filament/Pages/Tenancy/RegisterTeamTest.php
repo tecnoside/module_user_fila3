@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\User\Filament\Tests\Unit\Pages\Tenancy;
 
 use Modules\User\Filament\Pages\Tenancy\RegisterTeam;
@@ -14,20 +16,14 @@ final class RegisterTeamTest extends TestCase
 {
     private RegisterTeam $registerTeam;
 
-    /**
-     * {@inheritdoc}
-     */
     protected function setUp(): void
     {
         parent::setUp();
 
-        /** @todo Correctly instantiate tested object to use it. */
+        /* @todo Correctly instantiate tested object to use it. */
         $this->registerTeam = new RegisterTeam();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function tearDown(): void
     {
         parent::tearDown();
@@ -37,13 +33,13 @@ final class RegisterTeamTest extends TestCase
 
     public function testGetLabel(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::markTestIncomplete();
     }
 
     public function testForm(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::markTestIncomplete();
     }
 }

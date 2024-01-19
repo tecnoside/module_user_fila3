@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\User\Tests\Unit\Tests\Feature;
 
 use Modules\User\Tests\Feature\InviteTeamMemberTest;
@@ -14,20 +16,14 @@ final class InviteTeamMemberTestTest extends TestCase
 {
     private InviteTeamMemberTest $inviteTeamMemberTest;
 
-    /**
-     * {@inheritdoc}
-     */
     protected function setUp(): void
     {
         parent::setUp();
 
-        /** @todo Correctly instantiate tested object to use it. */
+        /* @todo Correctly instantiate tested object to use it. */
         $this->inviteTeamMemberTest = new InviteTeamMemberTest();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function tearDown(): void
     {
         parent::tearDown();
@@ -37,13 +33,13 @@ final class InviteTeamMemberTestTest extends TestCase
 
     public function testTeamMembersCanBeInvitedToTeam(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::markTestIncomplete();
     }
 
     public function testTeamMemberInvitationsCanBeCancelled(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::markTestIncomplete();
     }
 }

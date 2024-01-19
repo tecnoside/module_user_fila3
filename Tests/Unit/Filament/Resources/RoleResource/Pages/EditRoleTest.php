@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\User\Filament\Resources\Tests\Unit\RoleResource\Pages;
 
 use Modules\User\Filament\Resources\RoleResource\Pages\EditRole;
@@ -14,20 +16,14 @@ final class EditRoleTest extends TestCase
 {
     private EditRole $editRole;
 
-    /**
-     * {@inheritdoc}
-     */
     protected function setUp(): void
     {
         parent::setUp();
 
-        /** @todo Correctly instantiate tested object to use it. */
+        /* @todo Correctly instantiate tested object to use it. */
         $this->editRole = new EditRole();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function tearDown(): void
     {
         parent::tearDown();
@@ -37,7 +33,7 @@ final class EditRoleTest extends TestCase
 
     public function testAfterSave(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::markTestIncomplete();
     }
 }

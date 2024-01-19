@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\User\Filament\Resources\Tests\Unit\RoleResource\RelationManagers;
 
 use Modules\User\Filament\Resources\RoleResource\RelationManagers\UsersRelationManager;
@@ -14,20 +16,14 @@ final class UsersRelationManagerTest extends TestCase
 {
     private UsersRelationManager $usersRelationManager;
 
-    /**
-     * {@inheritdoc}
-     */
     protected function setUp(): void
     {
         parent::setUp();
 
-        /** @todo Correctly instantiate tested object to use it. */
+        /* @todo Correctly instantiate tested object to use it. */
         $this->usersRelationManager = new UsersRelationManager();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function tearDown(): void
     {
         parent::tearDown();
@@ -37,13 +33,13 @@ final class UsersRelationManagerTest extends TestCase
 
     public function testForm(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::markTestIncomplete();
     }
 
     public function testTable(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::markTestIncomplete();
     }
 }

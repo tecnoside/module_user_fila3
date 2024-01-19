@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\User\Tests\Unit\Tests\Feature;
 
 use Modules\User\Tests\Feature\DeleteTeamTest;
@@ -14,20 +16,14 @@ final class DeleteTeamTestTest extends TestCase
 {
     private DeleteTeamTest $deleteTeamTest;
 
-    /**
-     * {@inheritdoc}
-     */
     protected function setUp(): void
     {
         parent::setUp();
 
-        /** @todo Correctly instantiate tested object to use it. */
+        /* @todo Correctly instantiate tested object to use it. */
         $this->deleteTeamTest = new DeleteTeamTest();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function tearDown(): void
     {
         parent::tearDown();
@@ -37,13 +33,13 @@ final class DeleteTeamTestTest extends TestCase
 
     public function testTeamsCanBeDeleted(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::markTestIncomplete();
     }
 
     public function testPersonalTeamsCantBeDeleted(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::markTestIncomplete();
     }
 }

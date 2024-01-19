@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\User\Tests\Unit\Database\Factories;
 
 use Modules\User\Database\Factories\ModelHasPermissionFactory;
@@ -14,20 +16,14 @@ final class ModelHasPermissionFactoryTest extends TestCase
 {
     private ModelHasPermissionFactory $modelHasPermissionFactory;
 
-    /**
-     * {@inheritdoc}
-     */
     protected function setUp(): void
     {
         parent::setUp();
 
-        /** @todo Correctly instantiate tested object to use it. */
+        /* @todo Correctly instantiate tested object to use it. */
         $this->modelHasPermissionFactory = new ModelHasPermissionFactory();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function tearDown(): void
     {
         parent::tearDown();
@@ -37,7 +33,7 @@ final class ModelHasPermissionFactoryTest extends TestCase
 
     public function testDefinition(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::markTestIncomplete();
     }
 }

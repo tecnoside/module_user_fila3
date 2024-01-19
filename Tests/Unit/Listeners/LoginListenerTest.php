@@ -1,9 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Unit\Modules\User\Listeners;
 
 use Illuminate\Auth\Events\Login;
-use Mockery;
 use Modules\User\Listeners\LoginListener;
 use Tests\TestCase;
 
@@ -16,9 +17,6 @@ final class LoginListenerTest extends TestCase
 {
     private LoginListener $loginListener;
 
-    /**
-     * {@inheritdoc}
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -26,9 +24,6 @@ final class LoginListenerTest extends TestCase
         $this->loginListener = new LoginListener();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function tearDown(): void
     {
         parent::tearDown();
@@ -38,9 +33,9 @@ final class LoginListenerTest extends TestCase
 
     public function testHandle(): void
     {
-        $event = Mockery::mock(Login::class);
+        $event = \Mockery::mock(Login::class);
 
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         $this->loginListener->handle($event);
     }
 }

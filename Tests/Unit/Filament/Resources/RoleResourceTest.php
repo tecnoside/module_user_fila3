@@ -1,9 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\User\Tests\Unit\Filament\Resources;
 
 use Modules\User\Filament\Resources\RoleResource;
-use ReflectionClass;
 use Tests\TestCase;
 
 /**
@@ -15,20 +16,14 @@ final class RoleResourceTest extends TestCase
 {
     private RoleResource $roleResource;
 
-    /**
-     * {@inheritdoc}
-     */
     protected function setUp(): void
     {
         parent::setUp();
 
-        /** @todo Correctly instantiate tested object to use it. */
+        /* @todo Correctly instantiate tested object to use it. */
         $this->roleResource = new RoleResource();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function tearDown(): void
     {
         parent::tearDown();
@@ -38,38 +33,38 @@ final class RoleResourceTest extends TestCase
 
     public function testGetPermissionPrefixes(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::markTestIncomplete();
     }
 
     public function testForm(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::markTestIncomplete();
     }
 
     public function testTable(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::markTestIncomplete();
     }
 
     public function testGetRelations(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::markTestIncomplete();
     }
 
     public function testGetPages(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::markTestIncomplete();
     }
 
     public function testGetModel(): void
     {
         $expected = '42';
-        $property = (new ReflectionClass(RoleResource::class))
+        $property = (new \ReflectionClass(RoleResource::class))
             ->getProperty('model');
         $property->setValue(null, $expected);
         self::assertSame($expected, RoleResource::getModel());
@@ -77,55 +72,55 @@ final class RoleResourceTest extends TestCase
 
     public function testGetResourceEntitiesSchema(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::markTestIncomplete();
     }
 
     public function testGetResourceEntityPermissionsSchema(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::markTestIncomplete();
     }
 
     public function testGetNavigationBadge(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::markTestIncomplete();
     }
 
     public function testRefreshSelectAllStateViaEntities(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::markTestIncomplete();
     }
 
     public function testRefreshEntitiesStatesViaSelectAll(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::markTestIncomplete();
     }
 
     public function testGetPageEntityPermissionsSchema(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::markTestIncomplete();
     }
 
     public function testGetWidgetEntityPermissionSchema(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::markTestIncomplete();
     }
 
     public function testGetCustomEntities(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::markTestIncomplete();
     }
 
     public function testGetCustomEntitiesPermisssionSchema(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::markTestIncomplete();
     }
 }

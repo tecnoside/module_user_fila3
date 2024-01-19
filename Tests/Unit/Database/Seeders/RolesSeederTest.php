@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\User\Tests\Unit\Database\Seeders;
 
 use Modules\User\Database\Seeders\RolesSeeder;
@@ -14,20 +16,14 @@ final class RolesSeederTest extends TestCase
 {
     private RolesSeeder $rolesSeeder;
 
-    /**
-     * {@inheritdoc}
-     */
     protected function setUp(): void
     {
         parent::setUp();
 
-        /** @todo Correctly instantiate tested object to use it. */
+        /* @todo Correctly instantiate tested object to use it. */
         $this->rolesSeeder = new RolesSeeder();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function tearDown(): void
     {
         parent::tearDown();
@@ -37,7 +33,7 @@ final class RolesSeederTest extends TestCase
 
     public function testRun(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::markTestIncomplete();
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Unit\Modules\User\Traits;
 
 use Modules\User\Traits\RedirectsActions;
@@ -14,22 +16,16 @@ final class RedirectsActionsTest extends TestCase
 {
     private RedirectsActions $redirectsActions;
 
-    /**
-     * {@inheritdoc}
-     */
     protected function setUp(): void
     {
         parent::setUp();
 
-        /** @todo Correctly instantiate tested object to use it. */
+        /* @todo Correctly instantiate tested object to use it. */
         $this->redirectsActions = $this->getMockBuilder(RedirectsActions::class)
             ->setConstructorArgs([])
             ->getMockForTrait();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function tearDown(): void
     {
         parent::tearDown();
@@ -39,7 +35,7 @@ final class RedirectsActionsTest extends TestCase
 
     public function testRedirectPath(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::markTestIncomplete();
     }
 }

@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Unit;
 
-use CreateDevicesTable;
 use Tests\TestCase;
 
 /**
@@ -12,22 +13,16 @@ use Tests\TestCase;
  */
 final class CreateDevicesTableTest extends TestCase
 {
-    private CreateDevicesTable $createDevicesTable;
+    private \CreateDevicesTable $createDevicesTable;
 
-    /**
-     * {@inheritdoc}
-     */
     protected function setUp(): void
     {
         parent::setUp();
 
-        /** @todo Correctly instantiate tested object to use it. */
-        $this->createDevicesTable = new CreateDevicesTable();
+        /* @todo Correctly instantiate tested object to use it. */
+        $this->createDevicesTable = new \CreateDevicesTable();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function tearDown(): void
     {
         parent::tearDown();
@@ -37,7 +32,7 @@ final class CreateDevicesTableTest extends TestCase
 
     public function testUp(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::markTestIncomplete();
     }
 }

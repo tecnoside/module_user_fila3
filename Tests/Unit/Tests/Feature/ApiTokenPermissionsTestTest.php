@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\User\Tests\Unit\Tests\Feature;
 
 use Modules\User\Tests\Feature\ApiTokenPermissionsTest;
@@ -14,20 +16,14 @@ final class ApiTokenPermissionsTestTest extends TestCase
 {
     private ApiTokenPermissionsTest $apiTokenPermissionsTest;
 
-    /**
-     * {@inheritdoc}
-     */
     protected function setUp(): void
     {
         parent::setUp();
 
-        /** @todo Correctly instantiate tested object to use it. */
+        /* @todo Correctly instantiate tested object to use it. */
         $this->apiTokenPermissionsTest = new ApiTokenPermissionsTest();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function tearDown(): void
     {
         parent::tearDown();
@@ -37,7 +33,7 @@ final class ApiTokenPermissionsTestTest extends TestCase
 
     public function testApiTokenPermissionsCanBeUpdated(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::markTestIncomplete();
     }
 }

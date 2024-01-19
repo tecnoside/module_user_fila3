@@ -1,9 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Unit\Modules\User\Datas;
 
 use Modules\User\Datas\DeviceData;
-use ReflectionClass;
 use Tests\TestCase;
 
 /**
@@ -15,20 +16,14 @@ final class DeviceDataTest extends TestCase
 {
     private DeviceData $deviceData;
 
-    /**
-     * {@inheritdoc}
-     */
     protected function setUp(): void
     {
         parent::setUp();
 
-        /** @todo Correctly instantiate tested object to use it. */
+        /* @todo Correctly instantiate tested object to use it. */
         $this->deviceData = new DeviceData();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function tearDown(): void
     {
         parent::tearDown();
@@ -38,20 +33,20 @@ final class DeviceDataTest extends TestCase
 
     public function testMake(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::markTestIncomplete();
     }
 
     public function testIsValid(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::markTestIncomplete();
     }
 
     public function testGetSynchronizationId(): void
     {
         $expected = '42';
-        $property = (new ReflectionClass(DeviceData::class))
+        $property = (new \ReflectionClass(DeviceData::class))
             ->getProperty('synchronizationId');
         $property->setValue($this->deviceData, $expected);
         self::assertSame($expected, $this->deviceData->getSynchronizationId());

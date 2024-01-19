@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Unit;
 
-use CreateModelHasPermissionsTable;
 use Tests\TestCase;
 
 /**
@@ -12,22 +13,16 @@ use Tests\TestCase;
  */
 final class CreateModelHasPermissionsTableTest extends TestCase
 {
-    private CreateModelHasPermissionsTable $createModelHasPermissionsTable;
+    private \CreateModelHasPermissionsTable $createModelHasPermissionsTable;
 
-    /**
-     * {@inheritdoc}
-     */
     protected function setUp(): void
     {
         parent::setUp();
 
-        /** @todo Correctly instantiate tested object to use it. */
-        $this->createModelHasPermissionsTable = new CreateModelHasPermissionsTable();
+        /* @todo Correctly instantiate tested object to use it. */
+        $this->createModelHasPermissionsTable = new \CreateModelHasPermissionsTable();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function tearDown(): void
     {
         parent::tearDown();
@@ -37,7 +32,7 @@ final class CreateModelHasPermissionsTableTest extends TestCase
 
     public function testUp(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::markTestIncomplete();
     }
 }

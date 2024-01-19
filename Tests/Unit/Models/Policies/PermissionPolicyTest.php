@@ -1,9 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\User\Tests\Unit\Models\Policies;
 
 use App\User;
-use Mockery;
 use Modules\User\Models\Policies\PermissionPolicy;
 use Modules\User\Models\User as UserAlias;
 use Tests\TestCase;
@@ -19,46 +20,39 @@ final class PermissionPolicyTest extends TestCase
 
     private User $user;
 
-    /**
-     * {@inheritdoc}
-     */
     protected function setUp(): void
     {
         parent::setUp();
 
-        /** @todo Correctly instantiate tested object to use it. */
+        /* @todo Correctly instantiate tested object to use it. */
         $this->permissionPolicy = new PermissionPolicy();
         $this->user = new User();
         $this->app->instance(PermissionPolicy::class, $this->permissionPolicy);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function tearDown(): void
     {
         parent::tearDown();
 
-        unset($this->permissionPolicy);
-        unset($this->user);
+        unset($this->permissionPolicy, $this->user);
     }
 
     public function testViewAnyWhenUnauthorized(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::assertFalse($this->user->can('viewAny', [PermissionPolicy::class]));
     }
 
     public function testViewAnyWhenAuthorized(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::assertTrue($this->user->can('viewAny', [PermissionPolicy::class]));
     }
 
     public function testViewWhenUnauthorized(): void
     {
         /** @todo This test is incomplete. */
-        $post = Mockery::mock(UserAlias::class);
+        $post = \Mockery::mock(UserAlias::class);
 
         self::assertFalse($this->user->can('view', $post));
     }
@@ -66,27 +60,27 @@ final class PermissionPolicyTest extends TestCase
     public function testViewWhenAuthorized(): void
     {
         /** @todo This test is incomplete. */
-        $post = Mockery::mock(UserAlias::class);
+        $post = \Mockery::mock(UserAlias::class);
 
         self::assertTrue($this->user->can('view', $post));
     }
 
     public function testCreateWhenUnauthorized(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::assertFalse($this->user->can('create', [PermissionPolicy::class]));
     }
 
     public function testCreateWhenAuthorized(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::assertTrue($this->user->can('create', [PermissionPolicy::class]));
     }
 
     public function testUpdateWhenUnauthorized(): void
     {
         /** @todo This test is incomplete. */
-        $post = Mockery::mock(UserAlias::class);
+        $post = \Mockery::mock(UserAlias::class);
 
         self::assertFalse($this->user->can('update', $post));
     }
@@ -94,7 +88,7 @@ final class PermissionPolicyTest extends TestCase
     public function testUpdateWhenAuthorized(): void
     {
         /** @todo This test is incomplete. */
-        $post = Mockery::mock(UserAlias::class);
+        $post = \Mockery::mock(UserAlias::class);
 
         self::assertTrue($this->user->can('update', $post));
     }
@@ -102,7 +96,7 @@ final class PermissionPolicyTest extends TestCase
     public function testDeleteWhenUnauthorized(): void
     {
         /** @todo This test is incomplete. */
-        $post = Mockery::mock(UserAlias::class);
+        $post = \Mockery::mock(UserAlias::class);
 
         self::assertFalse($this->user->can('delete', $post));
     }
@@ -110,7 +104,7 @@ final class PermissionPolicyTest extends TestCase
     public function testDeleteWhenAuthorized(): void
     {
         /** @todo This test is incomplete. */
-        $post = Mockery::mock(UserAlias::class);
+        $post = \Mockery::mock(UserAlias::class);
 
         self::assertTrue($this->user->can('delete', $post));
     }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\User\Tests\Unit\Models\Traits;
 
 use Modules\User\Models\Traits\IsTenants;
@@ -14,22 +16,16 @@ final class IsTenantsTest extends TestCase
 {
     private IsTenants $isTenants;
 
-    /**
-     * {@inheritdoc}
-     */
     protected function setUp(): void
     {
         parent::setUp();
 
-        /** @todo Correctly instantiate tested object to use it. */
+        /* @todo Correctly instantiate tested object to use it. */
         $this->isTenants = $this->getMockBuilder(IsTenants::class)
             ->setConstructorArgs([])
             ->getMockForTrait();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function tearDown(): void
     {
         parent::tearDown();
@@ -39,7 +35,7 @@ final class IsTenantsTest extends TestCase
 
     public function testUsers(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::markTestIncomplete();
     }
 }

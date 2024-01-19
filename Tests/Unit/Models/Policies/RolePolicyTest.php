@@ -1,9 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\User\Tests\Unit\Models\Policies;
 
 use App\User;
-use Mockery;
 use Modules\User\Models\Policies\RolePolicy;
 use Modules\User\Models\Role;
 use Tests\TestCase;
@@ -19,46 +20,39 @@ final class RolePolicyTest extends TestCase
 
     private User $user;
 
-    /**
-     * {@inheritdoc}
-     */
     protected function setUp(): void
     {
         parent::setUp();
 
-        /** @todo Correctly instantiate tested object to use it. */
+        /* @todo Correctly instantiate tested object to use it. */
         $this->rolePolicy = new RolePolicy();
         $this->user = new User();
         $this->app->instance(RolePolicy::class, $this->rolePolicy);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function tearDown(): void
     {
         parent::tearDown();
 
-        unset($this->rolePolicy);
-        unset($this->user);
+        unset($this->rolePolicy, $this->user);
     }
 
     public function testViewAnyWhenUnauthorized(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::assertFalse($this->user->can('viewAny', [RolePolicy::class]));
     }
 
     public function testViewAnyWhenAuthorized(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::assertTrue($this->user->can('viewAny', [RolePolicy::class]));
     }
 
     public function testViewWhenUnauthorized(): void
     {
         /** @todo This test is incomplete. */
-        $post = Mockery::mock(Role::class);
+        $post = \Mockery::mock(Role::class);
 
         self::assertFalse($this->user->can('view', $post));
     }
@@ -66,27 +60,27 @@ final class RolePolicyTest extends TestCase
     public function testViewWhenAuthorized(): void
     {
         /** @todo This test is incomplete. */
-        $post = Mockery::mock(Role::class);
+        $post = \Mockery::mock(Role::class);
 
         self::assertTrue($this->user->can('view', $post));
     }
 
     public function testCreateWhenUnauthorized(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::assertFalse($this->user->can('create', [RolePolicy::class]));
     }
 
     public function testCreateWhenAuthorized(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::assertTrue($this->user->can('create', [RolePolicy::class]));
     }
 
     public function testUpdateWhenUnauthorized(): void
     {
         /** @todo This test is incomplete. */
-        $post = Mockery::mock(Role::class);
+        $post = \Mockery::mock(Role::class);
 
         self::assertFalse($this->user->can('update', $post));
     }
@@ -94,7 +88,7 @@ final class RolePolicyTest extends TestCase
     public function testUpdateWhenAuthorized(): void
     {
         /** @todo This test is incomplete. */
-        $post = Mockery::mock(Role::class);
+        $post = \Mockery::mock(Role::class);
 
         self::assertTrue($this->user->can('update', $post));
     }
@@ -102,7 +96,7 @@ final class RolePolicyTest extends TestCase
     public function testAddTeamMemberWhenUnauthorized(): void
     {
         /** @todo This test is incomplete. */
-        $post = Mockery::mock(Role::class);
+        $post = \Mockery::mock(Role::class);
 
         self::assertFalse($this->user->can('addTeamMember', $post));
     }
@@ -110,7 +104,7 @@ final class RolePolicyTest extends TestCase
     public function testAddTeamMemberWhenAuthorized(): void
     {
         /** @todo This test is incomplete. */
-        $post = Mockery::mock(Role::class);
+        $post = \Mockery::mock(Role::class);
 
         self::assertTrue($this->user->can('addTeamMember', $post));
     }
@@ -118,7 +112,7 @@ final class RolePolicyTest extends TestCase
     public function testUpdateTeamMemberWhenUnauthorized(): void
     {
         /** @todo This test is incomplete. */
-        $post = Mockery::mock(Role::class);
+        $post = \Mockery::mock(Role::class);
 
         self::assertFalse($this->user->can('updateTeamMember', $post));
     }
@@ -126,7 +120,7 @@ final class RolePolicyTest extends TestCase
     public function testUpdateTeamMemberWhenAuthorized(): void
     {
         /** @todo This test is incomplete. */
-        $post = Mockery::mock(Role::class);
+        $post = \Mockery::mock(Role::class);
 
         self::assertTrue($this->user->can('updateTeamMember', $post));
     }
@@ -134,7 +128,7 @@ final class RolePolicyTest extends TestCase
     public function testRemoveTeamMemberWhenUnauthorized(): void
     {
         /** @todo This test is incomplete. */
-        $post = Mockery::mock(Role::class);
+        $post = \Mockery::mock(Role::class);
 
         self::assertFalse($this->user->can('removeTeamMember', $post));
     }
@@ -142,7 +136,7 @@ final class RolePolicyTest extends TestCase
     public function testRemoveTeamMemberWhenAuthorized(): void
     {
         /** @todo This test is incomplete. */
-        $post = Mockery::mock(Role::class);
+        $post = \Mockery::mock(Role::class);
 
         self::assertTrue($this->user->can('removeTeamMember', $post));
     }
@@ -150,7 +144,7 @@ final class RolePolicyTest extends TestCase
     public function testDeleteWhenUnauthorized(): void
     {
         /** @todo This test is incomplete. */
-        $post = Mockery::mock(Role::class);
+        $post = \Mockery::mock(Role::class);
 
         self::assertFalse($this->user->can('delete', $post));
     }
@@ -158,7 +152,7 @@ final class RolePolicyTest extends TestCase
     public function testDeleteWhenAuthorized(): void
     {
         /** @todo This test is incomplete. */
-        $post = Mockery::mock(Role::class);
+        $post = \Mockery::mock(Role::class);
 
         self::assertTrue($this->user->can('delete', $post));
     }

@@ -1,0 +1,43 @@
+<?php
+
+namespace Tests\Unit;
+
+use CreateTenantUserTable;
+use Tests\TestCase;
+
+/**
+ * Class CreateTenantUserTableTest.
+ *
+ * @covers \CreateTenantUserTable
+ */
+final class CreateTenantUserTableTest extends TestCase
+{
+    private CreateTenantUserTable $createTenantUserTable;
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        /** @todo Correctly instantiate tested object to use it. */
+        $this->createTenantUserTable = new CreateTenantUserTable();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function tearDown(): void
+    {
+        parent::tearDown();
+
+        unset($this->createTenantUserTable);
+    }
+
+    public function testUp(): void
+    {
+        /** @todo This test is incomplete. */
+        self::markTestIncomplete();
+    }
+}

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\User\Http\Livewire\Tests\Unit\Traits\Properties;
+namespace Modules\User\Tests\Unit\Http\Livewire\Traits\Properties;
 
 use Modules\User\Http\Livewire\Traits\Properties\HasUserProperty;
 use Tests\TestCase;

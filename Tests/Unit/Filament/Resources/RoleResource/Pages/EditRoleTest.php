@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\User\Filament\Resources\Tests\Unit\RoleResource\Pages;
+namespace Modules\User\Tests\Unit\Filament\Resources\RoleResource\Pages;
 
 use Modules\User\Filament\Resources\RoleResource\Pages\EditRole;
 use Tests\TestCase;

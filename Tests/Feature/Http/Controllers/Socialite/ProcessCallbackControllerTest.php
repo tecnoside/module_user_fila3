@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\User\Http\Tests\Feature\Controllers\Socialite;
+namespace Modules\User\Tests\Feature\Http\Controllers\Socialite;
 
 use Modules\User\Http\Controllers\Socialite\ProcessCallbackController;
 use Tests\TestCase;

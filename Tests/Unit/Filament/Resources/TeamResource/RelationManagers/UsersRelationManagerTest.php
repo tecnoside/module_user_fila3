@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\User\Filament\Resources\Tests\Unit\TeamResource\RelationManagers;
+namespace Modules\User\Tests\Unit\Filament\Resources\TeamResource\RelationManagers;
 
 use Modules\User\Filament\Resources\TeamResource\RelationManagers\UsersRelationManager;
 use Tests\TestCase;

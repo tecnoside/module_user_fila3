@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\User\Filament\Resources\Tests\Unit\TenantResource\RelationManagers;
+namespace Modules\User\Tests\Unit\Filament\Resources\TenantResource\RelationManagers;
 
 use Modules\User\Filament\Resources\TenantResource\RelationManagers\DomainsRelationManager;
 use Tests\TestCase;

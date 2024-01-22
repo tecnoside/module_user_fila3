@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\User\Http\Tests\Unit\Livewire\Team;
+namespace Modules\User\Tests\Unit\Http\Livewire\Team;
 
 use Modules\User\Http\Livewire\Team\Change;
 use Tests\TestCase;

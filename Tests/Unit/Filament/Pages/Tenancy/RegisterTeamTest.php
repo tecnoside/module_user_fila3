@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\User\Filament\Tests\Unit\Pages\Tenancy;
+namespace Modules\User\Tests\Unit\Filament\Pages\Tenancy;
 
 use Modules\User\Filament\Pages\Tenancy\RegisterTeam;
 use Tests\TestCase;

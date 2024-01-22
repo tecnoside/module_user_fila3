@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\User\Filament\Resources\Tests\Unit\PermissionResource\RelationManager;
+namespace Modules\User\Tests\Unit\Filament\Resources\PermissionResource\RelationManager;
 
 use Modules\User\Filament\Resources\PermissionResource\RelationManager\RoleRelationManager;
 use Tests\TestCase;

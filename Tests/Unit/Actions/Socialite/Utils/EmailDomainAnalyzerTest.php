@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\User\Actions\Tests\Unit\Socialite\Utils;
+namespace Modules\User\Tests\Unit\Actions\Socialite\Utils;
 
 use Modules\User\Actions\Socialite\Utils\EmailDomainAnalyzer;
 use Tests\TestCase;

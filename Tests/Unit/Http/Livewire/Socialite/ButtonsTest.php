@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\User\Http\Tests\Unit\Livewire\Socialite;
+namespace Modules\User\Tests\Unit\Http\Livewire\Socialite;
 
 use Modules\User\Http\Livewire\Socialite\Buttons;
 use Tests\TestCase;

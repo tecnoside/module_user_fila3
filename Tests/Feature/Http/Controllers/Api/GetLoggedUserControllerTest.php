@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\User\Http\Tests\Feature\Controllers\Api;
+namespace Modules\User\Tests\Feature\Http\Controllers\Api;
 
 use Modules\User\Http\Controllers\Api\GetLoggedUserController;
 use Tests\TestCase;

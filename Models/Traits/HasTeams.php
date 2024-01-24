@@ -251,7 +251,7 @@ trait HasTeams
 
         /* --WIP
         if (
-            \in_array(HasApiTokens::class, class_uses_recursive($this), true)
+            \in_array(HasApiTokens::class,  class_uses_recursive($this), false)
             && ! $this->tokenCan($permission)
             && $this->currentAccessToken() !== null
         ) {
@@ -261,9 +261,9 @@ trait HasTeams
 
         $permissions = $this->teamPermissions($teamContract);
 
-        return \in_array($permission, $permissions, true)
-            || \in_array('*', $permissions, true)
-            || (Str::endsWith($permission, ':create') && \in_array('*:create', $permissions, true))
-            || (Str::endsWith($permission, ':update') && \in_array('*:update', $permissions, true));
+        return \in_array($permission,  $permissions, false)
+            || \in_array('*',  $permissions, false)
+            || (Str::endsWith($permission, ':create') && \in_array('*:create',  $permissions, false))
+            || (Str::endsWith($permission, ':update') && \in_array('*:update',  $permissions, false));
     }
 }

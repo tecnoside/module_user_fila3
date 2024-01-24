@@ -109,7 +109,7 @@ class LoginController extends Controller
             ->__toString();
 
         // See if everything after @ is in the domains array
-        return \in_array($emailDomain,  $domains, false);
+        return \in_array($emailDomain, $domains, false);
     }
 
     /**

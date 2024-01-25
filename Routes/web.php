@@ -44,7 +44,7 @@ Route::namespace('Socialite')
  * ..
  */
 
-$panel = Filament::getPanel('admin');
+// $panel = Filament::getPanel('admin');
 
 // Route::get('/login', $panel->getLoginRouteAction())->name('login');
 

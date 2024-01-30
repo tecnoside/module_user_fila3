@@ -12,7 +12,7 @@ class UserPolicy extends UserBasePolicy
     /**
      * Determine whether the user can view any models.
      */
-    public function viewAny(Post $user): bool
+    public function viewAny(User $user): bool
     {
         return false;
     }
@@ -20,7 +20,7 @@ class UserPolicy extends UserBasePolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(Post $user, Post $post): bool
+    public function view(User $user, Post $post): bool
     {
         return true;
     }
@@ -30,7 +30,7 @@ class UserPolicy extends UserBasePolicy
      *
      * @return true
      */
-    public function create(Post $user): bool
+    public function create(User $user): bool
     {
         return true;
     }
@@ -38,7 +38,7 @@ class UserPolicy extends UserBasePolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(Post $user, Post $post): bool
+    public function update(User $user, Post $post): bool
     {
         return true;
     }
@@ -46,7 +46,7 @@ class UserPolicy extends UserBasePolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(Post $user, Post $post): bool
+    public function delete(User $user, Post $post): bool
     {
         // return $user->ownsTeam($team);
         return true;

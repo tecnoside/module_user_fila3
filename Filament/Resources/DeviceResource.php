@@ -27,14 +27,17 @@ class DeviceResource extends XotBaseResource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
-            ]);
+            ->schema(
+                [
+                ]
+            );
     }
 
     public static function table(Table $table): Table
     {
         return $table
-            ->columns([
+            ->columns(
+                [
                 TextColumn::make('id'),
                 TextColumn::make('mobile_id'),
                 // TextColumn::make('languages'),
@@ -49,19 +52,30 @@ class DeviceResource extends XotBaseResource
                 IconColumn::make('is_tablet')->boolean(),
                 IconColumn::make('is_phone')->boolean(),
                 // ...static::extendTableCallback(),
-            ])
-            ->filters([
-            ])
-            ->actions([
+                ]
+            )
+            ->filters(
+                [
+                ]
+            )
+            ->actions(
+                [
                 EditAction::make(),
-            ])
-            ->bulkActions([
-                BulkActionGroup::make([
+                ]
+            )
+            ->bulkActions(
+                [
+                BulkActionGroup::make(
+                    [
                     DeleteBulkAction::make(),
-                ]),
-            ])
-            ->emptyStateActions([
-            ]);
+                    ]
+                ),
+                ]
+            )
+            ->emptyStateActions(
+                [
+                ]
+            );
     }
 
     public static function getRelations(): array

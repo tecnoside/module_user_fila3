@@ -20,7 +20,8 @@ class RegisterTenant extends BaseRegisterTenant
     public function form(Form $form): Form
     {
         return $form
-            ->schema([
+            ->schema(
+                [
                 TextInput::make('name')
                     ->required()
                     ->label('user::tenancy.fields.name')
@@ -36,7 +37,8 @@ class RegisterTenant extends BaseRegisterTenant
                     ->email()
                     ->label('user::tenancy.fields.email')
                     ->translateLabel(),
-            ]);
+                ]
+            );
     }
 
     /**

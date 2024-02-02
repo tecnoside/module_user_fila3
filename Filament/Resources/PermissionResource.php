@@ -67,10 +67,13 @@ class PermissionResource extends XotBaseResource
         Assert::boolean($preload_roles = config('filament-spatie-roles-permissions.preload_roles', true));
 
         return $form
-            ->schema([
+            ->schema(
+                [
                 Card::make()
-                    ->schema([
-                        Grid::make(2)->schema([
+                    ->schema(
+                        [
+                        Grid::make(2)->schema(
+                            [
                             TextInput::make('name')
                                 ->label(static::trans('fields.name')),
                             Select::make('guard_name')
@@ -82,9 +85,12 @@ class PermissionResource extends XotBaseResource
                                 ->label(static::trans('fields.roles'))
                                 ->relationship('roles', 'name')
                                 ->preload($preload_roles),
-                        ]),
-                    ]),
-            ]);
+                            ]
+                        ),
+                        ]
+                    ),
+                ]
+            );
     }
 
     public static function table(Table $table): Table
@@ -92,7 +98,8 @@ class PermissionResource extends XotBaseResource
         Assert::boolean($isToggledHiddenByDefault = config('filament-spatie-roles-permissions.toggleable_guard_names.permissions.isToggledHiddenByDefault', true));
 
         return $table
-            ->columns([
+            ->columns(
+                [
                 TextColumn::make('id')
                     ->label('ID')
                     ->searchable(),
@@ -103,8 +110,10 @@ class PermissionResource extends XotBaseResource
                     ->toggleable(isToggledHiddenByDefault: $isToggledHiddenByDefault)
                     ->label(static::trans('fields.guard_name'))
                     ->searchable(),
-            ])
-            ->filters([
+                ]
+            )
+            ->filters(
+                [
                 /*
                 Filter::make('models')
                     ->form(function () {
@@ -125,29 +134,38 @@ class PermissionResource extends XotBaseResource
                         });
                     }),
                 */
-            ])->actions([
-                EditAction::make(),
-                ViewAction::make(),
-            ])
-            ->bulkActions([
+                ]
+            )->actions(
+                [
+                    EditAction::make(),
+                    ViewAction::make(),
+                    ]
+            )
+            ->bulkActions(
+                [
                 // Tables\Actions\BulkActionGroup::make([
                 DeleteBulkAction::make(),
                 // ]),
                 BulkAction::make('Attach Role')
-                    ->action(function (Collection $collection, array $data): void {
-                        foreach ($collection as $record) {
-                            Assert::isInstanceOf($record, Permission::class);
-                            $record->roles()->sync($data['role']);
-                            $record->save();
+                    ->action(
+                        function (Collection $collection, array $data): void {
+                            foreach ($collection as $record) {
+                                Assert::isInstanceOf($record, Permission::class);
+                                $record->roles()->sync($data['role']);
+                                $record->save();
+                            }
                         }
-                    })
-                    ->form([
+                    )
+                    ->form(
+                        [
                         Select::make('role')
                             ->label(static::trans('fields.role'))
                             ->options(Role::query()->pluck('name', 'id'))
                             ->required(),
-                    ])->deselectRecordsAfterCompletion(),
-            ]);
+                        ]
+                    )->deselectRecordsAfterCompletion(),
+                ]
+            );
         // ->emptyStateActions([
         //    Tables\Actions\CreateAction::make(),
         // ])

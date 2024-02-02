@@ -48,10 +48,12 @@ class LogoutController extends XotBaseController
         ]);
         */
 
-        return JsonResponseData::from([
+        return JsonResponseData::from(
+            [
             'message' => 'logout succefully',
             // 'data' => $user->toArray(),
             'data' => session()->all(),
-        ])->response();
+            ]
+        )->response();
     }
 }

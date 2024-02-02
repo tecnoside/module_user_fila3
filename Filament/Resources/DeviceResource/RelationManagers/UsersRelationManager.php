@@ -22,35 +22,51 @@ class UsersRelationManager extends RelationManager
     public function form(Form $form): Form
     {
         return $form
-            ->schema([
+            ->schema(
+                [
                 TextInput::make('device')
                     ->required()
                     ->maxLength(255),
-            ]);
+                ]
+            );
     }
 
     public function table(Table $table): Table
     {
         return $table
             ->recordTitleAttribute('device')
-            ->columns([
+            ->columns(
+                [
                 TextColumn::make('device'),
-            ])
-            ->filters([
-            ])
-            ->headerActions([
+                ]
+            )
+            ->filters(
+                [
+                ]
+            )
+            ->headerActions(
+                [
                 CreateAction::make(),
-            ])
-            ->actions([
+                ]
+            )
+            ->actions(
+                [
                 EditAction::make(),
                 DeleteAction::make(),
-            ])
-            ->bulkActions([
-                BulkActionGroup::make([
+                ]
+            )
+            ->bulkActions(
+                [
+                BulkActionGroup::make(
+                    [
                     DeleteBulkAction::make(),
-                ]),
-            ])
-            ->emptyStateActions([
-            ]);
+                    ]
+                ),
+                ]
+            )
+            ->emptyStateActions(
+                [
+                ]
+            );
     }
 }

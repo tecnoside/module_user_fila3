@@ -31,19 +31,23 @@ class ListPermissions extends ListRecords
 
         return [
             BulkAction::make('Attach Role')
-                ->action(function (Collection $collection, array $data): void {
-                    foreach ($collection as $record) {
-                        Assert::isInstanceOf($record, User::class);
-                        $record->roles()->sync($data['role']);
-                        $record->save();
+                ->action(
+                    function (Collection $collection, array $data): void {
+                        foreach ($collection as $record) {
+                            Assert::isInstanceOf($record, User::class);
+                            $record->roles()->sync($data['role']);
+                            $record->save();
+                        }
                     }
-                })
-                ->form([
+                )
+                ->form(
+                    [
                     Select::make('role')
                         ->label(__('filament-spatie-roles-permissions::filament-spatie.field.role'))
                         ->options($roleModel::query()->pluck('name', 'id'))
                         ->required(),
-                ])->deselectRecordsAfterCompletion(),
+                    ]
+                )->deselectRecordsAfterCompletion(),
         ];
     }
 }

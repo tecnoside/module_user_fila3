@@ -19,11 +19,13 @@ class DevicesRelationManager extends RelationManager
     public function form(Form $form): Form
     {
         return $form
-            ->schema([
+            ->schema(
+                [
                 TextInput::make('device')
                     ->required()
                     ->maxLength(255),
-            ]);
+                ]
+            );
     }
 
     public static function extendTableCallback(): array

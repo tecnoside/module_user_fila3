@@ -6,6 +6,15 @@ namespace Modules\User\Models;
 
 use Modules\User\Contracts\TenantContract;
 
+/**
+ * Modules\User\Models\Tenant
+ *
+ * @method static \Modules\User\Database\Factories\TenantFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder|Tenant newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Tenant newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Tenant query()
+ * @mixin \Eloquent
+ */
 class Tenant extends BaseModel implements TenantContract
 {
     protected $fillable = [

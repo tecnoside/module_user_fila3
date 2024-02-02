@@ -20,10 +20,12 @@ class RegisterTeam extends RegisterTenant
     public function form(Form $form): Form
     {
         return $form
-            ->schema([
+            ->schema(
+                [
                 TextInput::make('name'),
                 // ...
-            ]);
+                ]
+            );
     }
 
     /**

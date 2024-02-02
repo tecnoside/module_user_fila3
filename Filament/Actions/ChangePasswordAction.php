@@ -30,13 +30,18 @@ class ChangePasswordAction extends Action
         $this->translateLabel()
             ->label('user::user.actions.change_password')
             ->icon('heroicon-o-key')
-            ->action(function (User $user, array $data): void {
-                $user->update([
-                    'password' => Hash::make($data['new_password']),
-                ]);
-                Notification::make()->success()->title('Password changed successfully.');
-            })
-            ->form([
+            ->action(
+                function (User $user, array $data): void {
+                    $user->update(
+                        [
+                        'password' => Hash::make($data['new_password']),
+                        ]
+                    );
+                    Notification::make()->success()->title('Password changed successfully.');
+                }
+            )
+            ->form(
+                [
                 TextInput::make('new_password')
                     ->password()
                     ->label('New Password')
@@ -47,7 +52,8 @@ class ChangePasswordAction extends Action
                     ->label('Confirm New Password')
                     ->rule('required', fn ($get): bool => (bool) $get('new_password'))
                     ->same('new_password'),
-            ]);
+                ]
+            );
 
         // ->visible(fn (User $record): bool => $record->role_id === Role::ROLE_ADMINISTRATOR)
         // ->modalSubmitActionLabel(trans('camping::operation.actions.save'))

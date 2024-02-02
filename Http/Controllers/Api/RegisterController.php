@@ -17,12 +17,14 @@ class RegisterController extends XotBaseController
      */
     public function __invoke(Request $request): JsonResponse
     {
-        $validator = Validator::make($request->all(), [
+        $validator = Validator::make(
+            $request->all(), [
             'name' => 'required',
             'email' => 'required|email',
             'password' => 'required',
             'c_password' => 'required|same:password',
-        ]);
+            ]
+        );
 
         if ($validator->fails()) {
             return $this->sendError('Validation Error.', $validator->errors()->all());

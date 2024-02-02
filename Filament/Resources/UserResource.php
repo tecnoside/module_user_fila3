@@ -75,7 +75,8 @@ class UserResource extends XotBaseResource
     public static function form(Form $form): Form
     {
         $schema = [
-            'left' => Section::make([
+            'left' => Section::make(
+                [
                 'name' => TextInput::make('name')
                     ->required(),
                 'email' => TextInput::make('email')
@@ -95,9 +96,11 @@ class UserResource extends XotBaseResource
                     // ->label(trans('filament-user::user.resource.password'))
                     ->password()
                     ->maxLength(255)
-                    ->dehydrateStateUsing(static fn ($state) => ! empty($state)
+                    ->dehydrateStateUsing(
+                        static fn ($state) => ! empty($state)
                         ? Hash::make($state)
-                        : User::find($form->getColumns())?->password),
+                        : User::find($form->getColumns())?->password
+                    ),
                 /*
                     ->dehydrateStateUsing(function ($state) use ($form){
                         if(!empty($state)){
@@ -129,11 +132,14 @@ class UserResource extends XotBaseResource
                         ->dehydrated(false),
                         ])// ->visible(static::$enablePasswordUpdates),
                         */
-            ])->columnSpan(8),
-            'right' => Section::make([
+                ]
+            )->columnSpan(8),
+            'right' => Section::make(
+                [
                 'created_at' => Placeholder::make('created_at')
                     ->content(fn ($record) => $record?->created_at?->diffForHumans() ?? new HtmlString('&mdash;')),
-            ])->columnSpan(4),
+                ]
+            )->columnSpan(4),
         ];
 
         $form->schema($schema)->columns(12);
@@ -144,7 +150,8 @@ class UserResource extends XotBaseResource
     public static function table(Table $table): Table
     {
         return $table
-            ->columns([
+            ->columns(
+                [
                 TextColumn::make('id')->sortable(),
                 TextColumn::make('name')->sortable()->searchable(), // ->toggleable(),
                 TextColumn::make('email')->sortable()->searchable(),
@@ -167,8 +174,10 @@ class UserResource extends XotBaseResource
                 // Tables\Columns\TextColumn::make('photo'),
                 BooleanColumn::make('email_verified_at')->sortable()->searchable()->toggleable(),
                 ...static::extendTableCallback(),
-            ])
-            ->filters([
+                ]
+            )
+            ->filters(
+                [
                 /*
                 SelectFilter::make('role')
                     ->options([
@@ -184,8 +193,10 @@ class UserResource extends XotBaseResource
                 Filter::make('unverified')
                     ->label(trans('unverified'))
                     ->query(fn (Builder $query): Builder => $query->whereNull('email_verified_at')),
-            ], layout: FiltersLayout::AboveContent)
-            ->actions([
+                ], layout: FiltersLayout::AboveContent
+            )
+            ->actions(
+                [
                 EditAction::make(),
                 ChangePasswordAction::make(),
                 /*
@@ -218,11 +229,14 @@ class UserResource extends XotBaseResource
                     ->action(fn (User $user) => $user->delete())
                 // ->visible(fn (User $record): bool => $record->role_id === Role::ROLE_ADMINISTRATOR)
                 ,
-            ])
+                ]
+            )
 
-            ->bulkActions([
+            ->bulkActions(
+                [
                 DeleteBulkAction::make(),
-            ])
+                ]
+            )
             ->defaultSort('users.created_at', 'desc');
     }
 
@@ -251,10 +265,12 @@ class UserResource extends XotBaseResource
             ProfileRelationManager::class,
             RolesRelationManager::class,
             // ---PASSPORT
-            RelationGroup::make('Passport', [
+            RelationGroup::make(
+                'Passport', [
                 TokensRelationManager::class,
                 ClientsRelationManager::class,
-            ]),
+                ]
+            ),
         ];
     }
 

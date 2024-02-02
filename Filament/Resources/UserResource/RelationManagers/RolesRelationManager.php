@@ -32,7 +32,8 @@ class RolesRelationManager extends RelationManager
     public function form(Form $form): Form
     {
         return $form
-            ->schema([
+            ->schema(
+                [
                 TextInput::make('name')
                     ->required()
                     ->maxLength(255),
@@ -40,7 +41,8 @@ class RolesRelationManager extends RelationManager
                 Forms\Components\Select::make('team_id')
                     ->relationship('teams', 'name'),
                 */
-            ]);
+                ]
+            );
     }
 
     public function table(Table $table): Table
@@ -48,14 +50,19 @@ class RolesRelationManager extends RelationManager
         $xotData = XotData::make();
 
         return $table
-            ->columns([
+            ->columns(
+                [
                 TextColumn::make('id'),
                 TextColumn::make('name'),
                 TextColumn::make('team_id'),
-            ])
-            ->filters([
-            ])
-            ->headerActions([
+                ]
+            )
+            ->filters(
+                [
+                ]
+            )
+            ->headerActions(
+                [
                 // Tables\Actions\CreateAction::make(),
                 AttachAction::make()
                     // ->mutateFormDataUsing(function (array $data): array {
@@ -63,7 +70,8 @@ class RolesRelationManager extends RelationManager
                     //     $data['team_id'] = 2;
                     //     return $data;
                     // }),
-                    ->form(fn (AttachAction $action): array => [
+                    ->form(
+                        fn (AttachAction $action): array => [
                         $action->getRecordSelect(),
                         // Forms\Components\TextInput::make('team_id')->required(),
                         Select::make('team_id')
@@ -71,15 +79,21 @@ class RolesRelationManager extends RelationManager
                         // ->options(function($item){
                         //     dddx($this);
                         // })
-                    ]),
-            ])
-            ->actions([
+                        ]
+                    ),
+                ]
+            )
+            ->actions(
+                [
                 EditAction::make(),
                 // Tables\Actions\DeleteAction::make(),
                 DetachAction::make(),
-            ])
-            ->bulkActions([
+                ]
+            )
+            ->bulkActions(
+                [
                 DeleteBulkAction::make(),
-            ]);
+                ]
+            );
     }
 }

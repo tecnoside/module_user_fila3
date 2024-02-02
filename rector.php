@@ -11,9 +11,11 @@ use Rector\TypeDeclaration\Rector\ClassMethod\ReturnTypeFromStrictScalarReturnEx
 use RectorLaravel\Set\LaravelSetList;
 
 return static function (RectorConfig $rectorConfig): void {
-    $rectorConfig->paths([
+    $rectorConfig->paths(
+        [
         __DIR__,
-    ]);
+        ]
+    );
 
     // register a single rule
     // $rectorConfig->rule(InlineConstructorDefaultToPropertyRector::class);
@@ -22,13 +24,16 @@ return static function (RectorConfig $rectorConfig): void {
     //    ReturnTypeFromStrictNativeCallRector::class,
     //    ReturnTypeFromStrictScalarReturnExprRector::class,
     // ]);
-    $rectorConfig->rules([
+    $rectorConfig->rules(
+        [
         ReturnTypeFromStrictNativeCallRector::class,
         ReturnTypeFromStrictScalarReturnExprRector::class,
-    ]);
+        ]
+    );
 
     // define sets of rules
-    $rectorConfig->sets([
+    $rectorConfig->sets(
+        [
         PHPUnitLevelSetList::UP_TO_PHPUNIT_100,
         // SetList::DEAD_CODE,
         // SetList::CODE_QUALITY,
@@ -41,14 +46,17 @@ return static function (RectorConfig $rectorConfig): void {
         // SetList::PRIVATIZATION, //error "final class"
         // SetList::EARLY_RETURN,
         // SetList::INSTANCEOF,
-    ]);
+        ]
+    );
 
-    $rectorConfig->skip([
+    $rectorConfig->skip(
+        [
         // testdummy files
         '*/build',
         '*/docs',
         '*/vendor',
-    ]);
+        ]
+    );
 
     $rectorConfig->importNames();
 };

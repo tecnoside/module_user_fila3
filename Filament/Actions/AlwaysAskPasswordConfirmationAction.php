@@ -16,12 +16,14 @@ class AlwaysAskPasswordConfirmationAction extends Action
             ->modalSubheading(
                 __('filament-jet::jet.password_confirmation_modal.description')
             )
-            ->form([
+            ->form(
+                [
                 TextInput::make('current_password')
                     ->label(__('filament-jet::jet.password_confirmation_modal.current_password'))
                     ->required()
                     ->password()
                     ->rule('current_password'),
-            ]);
+                ]
+            );
     }
 }

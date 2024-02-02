@@ -24,38 +24,50 @@ class ProfileRelationManager extends RelationManager
     public function form(Form $form): Form
     {
         return $form
-            ->schema([
+            ->schema(
+                [
                 TextInput::make('ente'),
                 TextInput::make('matr'),
                 TextInput::make('first_name')
                     ->required()
                     ->maxLength(255),
                 TextInput::make('last_name'),
-            ]);
+                ]
+            );
     }
 
     public function table(Table $table): Table
     {
         return $table
-            ->columns([
+            ->columns(
+                [
                 TextColumn::make('id'),
                 TextColumn::make('ente'),
                 TextColumn::make('matr'),
                 TextColumn::make('first_name'),
                 TextColumn::make('last_name'),
-            ])
-            ->filters([
-            ])
-            ->headerActions([
+                ]
+            )
+            ->filters(
+                [
+                ]
+            )
+            ->headerActions(
+                [
                 CreateAction::make(),
-            ])
-            ->actions([
+                ]
+            )
+            ->actions(
+                [
                 ViewAction::make(),
                 EditAction::make(),
                 DeleteAction::make(),
-            ])
-            ->bulkActions([
+                ]
+            )
+            ->bulkActions(
+                [
                 DeleteBulkAction::make(),
-            ]);
+                ]
+            );
     }
 }

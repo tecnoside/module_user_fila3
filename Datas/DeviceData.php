@@ -84,8 +84,13 @@ class DeviceData extends Data
         // fare contract
         // Assert::isInstanceOf($synchronizationClass,Model::class);
         // $synchronization = Synchronization::create([
-        /** @phpstan-ignore-next-line */
-        $synchronization = $synchronizationClass::create([
+        /**
+* 
+         *
+ * @phpstan-ignore-next-line 
+*/
+        $synchronization = $synchronizationClass::create(
+            [
             // $synchronization = Synchronization::create([
             'user_id' => auth()->id(),
             'mobile_device_id' => $this->deviceId,
@@ -94,7 +99,8 @@ class DeviceData extends Data
             'api_name' => $apiName,
             'called_at' => Carbon::now(),
             // fulfilled_at
-        ]);
+            ]
+        );
         $this->synchronizationId = $synchronization->id;
 
         return $this->synchronizationId;

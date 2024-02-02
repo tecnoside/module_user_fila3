@@ -86,11 +86,13 @@ class LoginController extends Controller
         Assert::string($route_name = config('filament-socialite.login_page_route', 'filament.auth.login'));
 
         return to_route($route_name)
-            ->withErrors([
+            ->withErrors(
+                [
                 'email' => [
                     __($message),
                 ],
-            ]);
+                ]
+            );
     }
 
     protected function isUserAllowed(SocialiteUserContract $user): bool
@@ -173,17 +175,19 @@ class LoginController extends Controller
 
     protected function registerOauthUser(string $provider, SocialiteUserContract $oauthUser): Redirector|RedirectResponse
     {
-        $socialiteUser = DB::transaction(function () use ($provider, $oauthUser) {
-            // Create a user
-            // $user = app()->call($this->socialite->getCreateUserCallback(), ['provider' => $provider, 'oauthUser' => $oauthUser, 'socialite' => $this->socialite]);
-            $user = $this->createUser(oauthUser: $oauthUser);
-            // Create a socialite user
-            // return app()->call($this->socialite->getCreateSocialiteUserCallback(), ['provider' => $provider, 'oauthUser' => $oauthUser, 'user' => $user, 'socialite' => $this->socialite]);
-            // $socialiteUser = $this->createSocialiteUser(provider: $provider, oauthUser: $oauthUser, user: $user);
-            $socialiteUser = app(CreateSocialiteUserAction::class)->execute(provider: $provider, oauthUser: $oauthUser, user: $user);
+        $socialiteUser = DB::transaction(
+            function () use ($provider, $oauthUser) {
+                // Create a user
+                // $user = app()->call($this->socialite->getCreateUserCallback(), ['provider' => $provider, 'oauthUser' => $oauthUser, 'socialite' => $this->socialite]);
+                $user = $this->createUser(oauthUser: $oauthUser);
+                // Create a socialite user
+                // return app()->call($this->socialite->getCreateSocialiteUserCallback(), ['provider' => $provider, 'oauthUser' => $oauthUser, 'user' => $user, 'socialite' => $this->socialite]);
+                // $socialiteUser = $this->createSocialiteUser(provider: $provider, oauthUser: $oauthUser, user: $user);
+                $socialiteUser = app(CreateSocialiteUserAction::class)->execute(provider: $provider, oauthUser: $oauthUser, user: $user);
 
-            return $socialiteUser;
-        });
+                return $socialiteUser;
+            }
+        );
 
         // Dispatch the registered event
         Registered::dispatch($socialiteUser);

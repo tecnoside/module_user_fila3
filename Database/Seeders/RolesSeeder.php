@@ -27,10 +27,12 @@ class RolesSeeder extends Seeder
         Collection::make(UserType::cases())
             ->each(
                 static function (UserType $userType) use (&$roles): void {
-                    $roles[] = Role::firstOrCreate([
+                    $roles[] = Role::firstOrCreate(
+                        [
                         'name' => $userType->value,
                         'guard_name' => $userType->getDefaultGuard(),
-                    ]);
+                        ]
+                    );
                 },
             );
 

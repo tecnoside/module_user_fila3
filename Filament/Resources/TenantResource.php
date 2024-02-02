@@ -35,15 +35,19 @@ class TenantResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
-                Forms\Components\Section::make([
+            ->schema(
+                [
+                Forms\Components\Section::make(
+                    [
                     Forms\Components\TextInput::make('name')
                         ->required()
                         ->unique(table: 'tenants', ignoreRecord: true)->live(onBlur: true)
-                        ->afterStateUpdated(function (Forms\Set $set, $state) {
-                            $set('id', $slug = \Str::of($state)->slug('_')->toString());
-                            $set('domain', \Str::of($state)->slug()->toString());
-                        })->columnSpanFull(),
+                        ->afterStateUpdated(
+                            function (Forms\Set $set, $state) {
+                                $set('id', $slug = \Str::of($state)->slug('_')->toString());
+                                $set('domain', \Str::of($state)->slug()->toString());
+                            }
+                        )->columnSpanFull(),
                     Forms\Components\TextInput::make('id')
                         ->label('Unique ID')
                         ->required()
@@ -61,28 +65,40 @@ class TenantResource extends Resource
                     Forms\Components\TextInput::make('mobile')->tel(),
                     Forms\Components\ColorPicker::make('primary_color'),
                     Forms\Components\ColorPicker::make('secondary_color'),
-                ])->columns(),
-            ]);
+                    ]
+                )->columns(),
+                ]
+            );
     }
 
     public static function table(Table $table): Table
     {
         return $table
-            ->columns([
+            ->columns(
+                [
                 Tables\Columns\TextColumn::make('id')->label('ID')->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('name'),
-            ])
-            ->filters([
-            ])
-            ->actions([
+                ]
+            )
+            ->filters(
+                [
+                ]
+            )
+            ->actions(
+                [
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
+                ]
+            )
+            ->bulkActions(
+                [
+                Tables\Actions\BulkActionGroup::make(
+                    [
                     Tables\Actions\DeleteBulkAction::make(),
-                ]),
-            ]);
+                    ]
+                ),
+                ]
+            );
     }
 
     public static function getRelations(): array

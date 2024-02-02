@@ -70,13 +70,17 @@ trait TwoFactorAuthenticatable
             throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
 
-        $this->forceFill([
-            'two_factor_recovery_codes' => encrypt(str_replace(
-                $code,
-                RecoveryCode::generate(),
-                (string) decrypt($this->two_factor_recovery_codes)
-            )),
-        ])->save();
+        $this->forceFill(
+            [
+            'two_factor_recovery_codes' => encrypt(
+                str_replace(
+                    $code,
+                    RecoveryCode::generate(),
+                    (string) decrypt($this->two_factor_recovery_codes)
+                )
+            ),
+            ]
+        )->save();
     }
 
     /**

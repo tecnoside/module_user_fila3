@@ -19,9 +19,11 @@ class GetLoggedUserController extends XotBaseController
     {
         Assert::notNull($user = $request->user());
 
-        return JsonResponseData::from([
+        return JsonResponseData::from(
+            [
             'message' => 'logged user',
             'data' => $user->toArray(),
-        ])->response();
+            ]
+        )->response();
     }
 }

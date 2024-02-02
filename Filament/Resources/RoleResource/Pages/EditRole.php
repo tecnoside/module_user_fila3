@@ -30,12 +30,18 @@ class EditRole extends EditRecord
     {
         $permissionModels = collect();
         Assert::isArray($data = $this->data);
-        $this->permissions->each(function ($permission) use ($permissionModels, $data): void {
-            $permissionModels->push(Utils::getPermissionModel()::firstOrCreate([
-                'name' => $permission,
-                'guard_name' => $data['guard_name'] ?? 'web',
-            ]));
-        });
+        $this->permissions->each(
+            function ($permission) use ($permissionModels, $data): void {
+                $permissionModels->push(
+                    Utils::getPermissionModel()::firstOrCreate(
+                        [
+                        'name' => $permission,
+                        'guard_name' => $data['guard_name'] ?? 'web',
+                        ]
+                    )
+                );
+            }
+        );
         Assert::isInstanceOf($this->record, Role::class);
         $this->record->syncPermissions($permissionModels);
     }

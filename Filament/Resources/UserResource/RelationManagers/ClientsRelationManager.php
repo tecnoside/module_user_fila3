@@ -22,36 +22,52 @@ class ClientsRelationManager extends RelationManager
     public function form(Form $form): Form
     {
         return $form
-            ->schema([
+            ->schema(
+                [
                 TextInput::make('name')
                     ->required()
                     ->maxLength(255),
-            ]);
+                ]
+            );
     }
 
     public function table(Table $table): Table
     {
         return $table
             ->recordTitleAttribute('name')
-            ->columns([
+            ->columns(
+                [
                 TextColumn::make('name'),
-            ])
-            ->filters([
-            ])
-            ->headerActions([
+                ]
+            )
+            ->filters(
+                [
+                ]
+            )
+            ->headerActions(
+                [
                 CreateAction::make(),
-            ])
-            ->actions([
+                ]
+            )
+            ->actions(
+                [
                 EditAction::make(),
                 DeleteAction::make(),
-            ])
-            ->bulkActions([
-                BulkActionGroup::make([
+                ]
+            )
+            ->bulkActions(
+                [
+                BulkActionGroup::make(
+                    [
                     DeleteBulkAction::make(),
-                ]),
-            ])
-            ->emptyStateActions([
+                    ]
+                ),
+                ]
+            )
+            ->emptyStateActions(
+                [
                 // {{ tableEmptyStateActions }}
-            ]);
+                ]
+            );
     }
 }

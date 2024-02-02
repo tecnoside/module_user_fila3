@@ -71,9 +71,11 @@ trait HasTeams
             return false;
         }
 
-        $this->forceFill([
+        $this->forceFill(
+            [
             'current_team_id' => $teamContract->getKey(),
-        ])->save();
+            ]
+        )->save();
 
         $this->setRelation('currentTeam', $teamContract);
 
@@ -185,18 +187,30 @@ trait HasTeams
 
         Assert::notNull($user = $teamContract->users()->where('id', $this->id)->first());
         Assert::isInstanceOf($user, User::class);
-        /** @var User $user */
+        /**
+* 
+         *
+ * @var User $user 
+*/
         // Access to an undefined property Modules\User\Models\User::$membership.
         // return $teamContract->users()
         //     ->where('id', $this->id)
         //     ->first()
         //     ->membership
         //     ->role; // ? FilamentJet::findRole($role) : null;
-        /** @var Membership $membership */
+        /**
+* 
+         *
+ * @var Membership $membership 
+*/
         $membership = $user
             ->getRelationValue('membership'); // ? FilamentJet::findRole($role) : null;
 
-        /** @var Role|null $role */
+        /**
+* 
+         *
+ * @var Role|null $role 
+*/
         $role = $membership->role;
 
         return $role;

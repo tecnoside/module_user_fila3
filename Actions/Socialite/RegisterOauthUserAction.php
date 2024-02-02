@@ -21,22 +21,24 @@ class RegisterOauthUserAction
 
     public function execute(string $provider, SocialiteUserContract $oauthUser): RedirectResponse
     {
-        $socialiteUser = DB::transaction(function () use ($provider, $oauthUser) {
-            // Create a user
-            $user = app(CreateUserAction::class)
+        $socialiteUser = DB::transaction(
+            function () use ($provider, $oauthUser) {
+                // Create a user
+                $user = app(CreateUserAction::class)
                 ->execute(
                     provider: $provider,
                     oauthUser: $oauthUser,
                 );
 
-            // Create a new socialite user instance
-            return app(CreateSocialiteUserAction::class)
+                // Create a new socialite user instance
+                return app(CreateSocialiteUserAction::class)
                 ->execute(
                     provider: $provider,
                     oauthUser: $oauthUser,
                     user: $user,
                 );
-        });
+            }
+        );
 
         // Dispatch the registered event
         Registered::dispatch($socialiteUser);

@@ -34,13 +34,15 @@ class UserServiceProvider extends XotBaseServiceProvider
     {
         $this->registerAuthenticationProviders();
         $this->registerEventListener();
-        $this->commands([
+        $this->commands(
+            [
             AssignModuleCommand::class,
             AssignRoleCommand::class,
             RemoveRoleCommand::class,
             AssignTeamCommand::class,
             SuperAdminCommand::class,
-        ]);
+            ]
+        );
     }
 
     protected function registerAuthenticationProviders(): void
@@ -63,10 +65,12 @@ class UserServiceProvider extends XotBaseServiceProvider
         Passport::tokensExpireIn(now()->addDays(1));
         Passport::refreshTokensExpireIn(now()->addDays(30));
         Passport::personalAccessTokensExpireIn(now()->addMonths(6));
-        Passport::tokensCan([
+        Passport::tokensCan(
+            [
             'view-user' => 'View user information',
             'core-technicians' => 'the tecnicians can ',
-        ]);
+            ]
+        );
     }
 
     private function registerSocialite(): void

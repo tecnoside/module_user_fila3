@@ -63,11 +63,14 @@ class RoleResource extends XotBaseResource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
+            ->schema(
+                [
                 Grid::make()
-                    ->schema([
+                    ->schema(
+                        [
                         Card::make()
-                            ->schema([
+                            ->schema(
+                                [
                                 TextInput::make('name')
                                     ->label(static::trans('fields.name'))
                                     ->required()
@@ -85,84 +88,118 @@ class RoleResource extends XotBaseResource
                                     ->label(static::trans('fields.select_all.name'))
                                     ->helperText(static::trans('fields.select_all.message'))
                                     ->reactive()
-                                    ->afterStateUpdated(function (Set $set, $state): void {
-                                        static::refreshEntitiesStatesViaSelectAll($set, $state);
-                                    })
+                                    ->afterStateUpdated(
+                                        function (Set $set, $state): void {
+                                            static::refreshEntitiesStatesViaSelectAll($set, $state);
+                                        }
+                                    )
                                     ->dehydrated(fn ($state): bool => $state),
-                            ])
-                            ->columns([
+                                ]
+                            )
+                            ->columns(
+                                [
                                 'sm' => 2,
                                 'lg' => 3,
-                            ]),
-                    ]),
+                                ]
+                            ),
+                        ]
+                    ),
                 Tabs::make('Permissions')
-                    ->tabs([
+                    ->tabs(
+                        [
                         Tab::make(static::trans('resources'))
                             ->visible(fn (): bool => Utils::isResourceEntityEnabled())
                             ->reactive()
-                            ->schema([
-                                Grid::make([
+                            ->schema(
+                                [
+                                Grid::make(
+                                    [
                                     'sm' => 2,
                                     'lg' => 3,
-                                ])
+                                    ]
+                                )
                                     ->schema(static::getResourceEntitiesSchema())
-                                    ->columns([
+                                    ->columns(
+                                        [
                                         'sm' => 2,
                                         'lg' => 3,
-                                    ]),
-                            ]),
+                                        ]
+                                    ),
+                                ]
+                            ),
                         Tab::make(static::trans('pages'))
                             // ->visible(fn (): bool => (bool) Utils::isPageEntityEnabled() && (count(FilamentShield::getPages()) > 0 ? true : false))
                             ->reactive()
-                            ->schema([
-                                Grid::make([
+                            ->schema(
+                                [
+                                Grid::make(
+                                    [
                                     'sm' => 3,
                                     'lg' => 4,
-                                ])
+                                    ]
+                                )
                                     ->schema(static::getPageEntityPermissionsSchema())
-                                    ->columns([
+                                    ->columns(
+                                        [
                                         'sm' => 3,
                                         'lg' => 4,
-                                    ]),
-                            ]),
+                                        ]
+                                    ),
+                                ]
+                            ),
                         Tab::make(static::trans('widgets'))
                             // ->visible(fn (): bool => (bool) Utils::isWidgetEntityEnabled() && (count(FilamentShield::getWidgets()) > 0 ? true : false))
                             ->reactive()
-                            ->schema([
-                                Grid::make([
+                            ->schema(
+                                [
+                                Grid::make(
+                                    [
                                     'sm' => 3,
                                     'lg' => 4,
-                                ])
+                                    ]
+                                )
                                     ->schema(static::getWidgetEntityPermissionSchema())
-                                    ->columns([
+                                    ->columns(
+                                        [
                                         'sm' => 3,
                                         'lg' => 4,
-                                    ]),
-                            ]),
+                                        ]
+                                    ),
+                                ]
+                            ),
 
                         Tab::make(static::trans('custom'))
                             ->visible(fn (): bool => Utils::isCustomPermissionEntityEnabled())
                             ->reactive()
-                            ->schema([
-                                Grid::make([
+                            ->schema(
+                                [
+                                Grid::make(
+                                    [
                                     'sm' => 3,
                                     'lg' => 4,
-                                ])
+                                    ]
+                                )
                                     ->schema(static::getCustomEntitiesPermisssionSchema())
-                                    ->columns([
+                                    ->columns(
+                                        [
                                         'sm' => 3,
                                         'lg' => 4,
-                                    ]),
-                            ]),
-                    ])
+                                        ]
+                                    ),
+                                ]
+                            ),
+                        ]
+                    )
                     ->columnSpan('full'),
-            ]);
+                ]
+            );
     }
 
     public static function table(Table $table): Table
     {
         return $table
-            ->columns([
+            ->columns(
+                [
                 TextColumn::make('id'),
                 BadgeColumn::make('name')
                     ->label(static::trans('fields.name'))
@@ -180,16 +217,23 @@ class RoleResource extends XotBaseResource
                 TextColumn::make('updated_at')
                     ->label(static::trans('fields.updated_at'))
                     ->dateTime(),
-            ])
-            ->filters([
-            ])
-            ->actions([
+                ]
+            )
+            ->filters(
+                [
+                ]
+            )
+            ->actions(
+                [
                 EditAction::make(),
                 DeleteAction::make(),
-            ])
-            ->bulkActions([
+                ]
+            )
+            ->bulkActions(
+                [
                 DeleteBulkAction::make(),
-            ]);
+                ]
+            );
     }
 
     public static function getRelations(): array
@@ -231,33 +275,39 @@ class RoleResource extends XotBaseResource
 
     public static function getResourceEntityPermissionsSchema(array $entity): ?array
     {
-        return collect(Utils::getResourcePermissionPrefixes($entity['fqcn']))->reduce(function (array $permissions, string $permission) use ($entity): array {
-            $permissions[] = Checkbox::make($permission.'_'.$entity['resource'])
-                ->label(FilamentShield::getLocalizedResourcePermissionLabel($permission))
-                ->extraAttributes(['class' => 'text-primary-600'])
-                ->afterStateHydrated(function (Set $set, Get $get, $record) use ($entity, $permission): void {
-                    if (null === $record) {
-                        return;
-                    }
+        return collect(Utils::getResourcePermissionPrefixes($entity['fqcn']))->reduce(
+            function (array $permissions, string $permission) use ($entity): array {
+                $permissions[] = Checkbox::make($permission.'_'.$entity['resource'])
+                    ->label(FilamentShield::getLocalizedResourcePermissionLabel($permission))
+                    ->extraAttributes(['class' => 'text-primary-600'])
+                    ->afterStateHydrated(
+                        function (Set $set, Get $get, $record) use ($entity, $permission): void {
+                            if (null === $record) {
+                                return;
+                            }
 
-                    $set($permission.'_'.$entity['resource'], $record->checkPermissionTo($permission.'_'.$entity['resource']));
-                    static::refreshResourceEntityStateAfterHydrated($record, $set, $entity);
-                    static::refreshSelectAllStateViaEntities($set, $get);
-                })
+                            $set($permission.'_'.$entity['resource'], $record->checkPermissionTo($permission.'_'.$entity['resource']));
+                            static::refreshResourceEntityStateAfterHydrated($record, $set, $entity);
+                            static::refreshSelectAllStateViaEntities($set, $get);
+                        }
+                    )
                 ->reactive()
-                ->afterStateUpdated(function (Set $set, Get $get, $state) use ($entity): void {
-                    static::refreshResourceEntityStateAfterUpdate($set, $get, $entity);
-                    if (! $state) {
-                        $set($entity['resource'], false);
-                        $set('select_all', false);
-                    }
+                ->afterStateUpdated(
+                    function (Set $set, Get $get, $state) use ($entity): void {
+                        static::refreshResourceEntityStateAfterUpdate($set, $get, $entity);
+                        if (! $state) {
+                            $set($entity['resource'], false);
+                            $set('select_all', false);
+                        }
 
-                    static::refreshSelectAllStateViaEntities($set, $get);
-                })
+                        static::refreshSelectAllStateViaEntities($set, $get);
+                    }
+                )
                 ->dehydrated(fn ($state): bool => $state);
 
-            return $permissions;
-        }, collect());
+                return $permissions;
+            }, collect()
+        );
         // ->toArray()
     }
 
@@ -318,13 +368,15 @@ class RoleResource extends XotBaseResource
             ->when(Utils::isPageEntityEnabled(), fn ($entities) => $entities->merge(FilamentShield::getPages()))
             ->when(Utils::isWidgetEntityEnabled(), fn ($entities) => $entities->merge(FilamentShield::getWidgets()))
             ->when(Utils::isCustomPermissionEntityEnabled(), fn ($entities) => $entities->merge(static::getCustomEntities()))
-            ->map(function ($entity) use ($get): bool {
-                if (\is_array($entity)) {
-                    return (bool) $get($entity['resource']);
-                }
+            ->map(
+                function ($entity) use ($get): bool {
+                    if (\is_array($entity)) {
+                        return (bool) $get($entity['resource']);
+                    }
 
-                return (bool) $get($entity);
-            });
+                    return (bool) $get($entity);
+                }
+            );
 
         if (false === $entitiesStates->containsStrict(false)) {
             $set('select_all', true);
@@ -338,30 +390,40 @@ class RoleResource extends XotBaseResource
     // private function refreshEntitiesStatesViaSelectAll(\Closure $set, $state): void
     public static function refreshEntitiesStatesViaSelectAll(Set $set, $state): void
     {
-        collect(FilamentShield::getResources())->each(function (array $entity) use ($set, $state): void {
-            $set($entity['resource'], $state);
-            collect(Utils::getResourcePermissionPrefixes($entity['fqcn']))->each(function (string $permission) use ($entity, $set, $state): void {
-                $set($permission.'_'.$entity['resource'], $state);
-            });
-        });
-
-        collect(FilamentShield::getPages())->each(function ($page) use ($set, $state): void {
-            if (Utils::isPageEntityEnabled()) {
-                $set($page, $state);
+        collect(FilamentShield::getResources())->each(
+            function (array $entity) use ($set, $state): void {
+                $set($entity['resource'], $state);
+                collect(Utils::getResourcePermissionPrefixes($entity['fqcn']))->each(
+                    function (string $permission) use ($entity, $set, $state): void {
+                        $set($permission.'_'.$entity['resource'], $state);
+                    }
+                );
             }
-        });
+        );
 
-        collect(FilamentShield::getWidgets())->each(function ($widget) use ($set, $state): void {
-            if (Utils::isWidgetEntityEnabled()) {
-                $set($widget, $state);
+        collect(FilamentShield::getPages())->each(
+            function ($page) use ($set, $state): void {
+                if (Utils::isPageEntityEnabled()) {
+                    $set($page, $state);
+                }
             }
-        });
+        );
 
-        static::getCustomEntities()->each(function ($custom) use ($set, $state): void {
-            if (Utils::isCustomPermissionEntityEnabled()) {
-                $set($custom, $state);
+        collect(FilamentShield::getWidgets())->each(
+            function ($widget) use ($set, $state): void {
+                if (Utils::isWidgetEntityEnabled()) {
+                    $set($widget, $state);
+                }
             }
-        });
+        );
+
+        static::getCustomEntities()->each(
+            function ($custom) use ($set, $state): void {
+                if (Utils::isCustomPermissionEntityEnabled()) {
+                    $set($custom, $state);
+                }
+            }
+        );
     }
 
     private function refreshResourceEntityStateAfterUpdate(\Closure $set, \Closure $get, array $entity): void
@@ -381,19 +443,23 @@ class RoleResource extends XotBaseResource
     private function refreshResourceEntityStateAfterHydrated(Model $model, \Closure $set, array $entity): void
     {
         $entities = $model->permissions->pluck('name')
-            ->reduce(function (array $roles, $role): array {
-                $roles[$role] = Str::afterLast($role, '_');
+            ->reduce(
+                function (array $roles, $role): array {
+                    $roles[$role] = Str::afterLast($role, '_');
 
-                return $roles;
-            }, collect())
+                    return $roles;
+                }, collect()
+            )
             ->values()
             ->groupBy(fn ($item) => $item)->map->count()
-            ->reduce(function (array $counts, $role, $key) use ($entity): array {
-                $count = is_countable(Utils::getResourcePermissionPrefixes($entity['fqcn'])) ? \count(Utils::getResourcePermissionPrefixes($entity['fqcn'])) : 0;
-                $counts[$key] = $role > 1 && $role === $count;
+            ->reduce(
+                function (array $counts, $role, $key) use ($entity): array {
+                    $count = is_countable(Utils::getResourcePermissionPrefixes($entity['fqcn'])) ? \count(Utils::getResourcePermissionPrefixes($entity['fqcn'])) : 0;
+                    $counts[$key] = $role > 1 && $role === $count;
 
-                return $counts;
-            }, []);
+                    return $counts;
+                }, []
+            );
 
         // set entity's state if one are all permissions are true
         if (Arr::exists($entities, $entity['resource']) && Arr::get($entities, $entity['resource'])) {
@@ -441,34 +507,42 @@ class RoleResource extends XotBaseResource
 
     public static function getCustomEntitiesPermisssionSchema(): ?array
     {
-        return collect(static::getCustomEntities())->reduce(function (array $customEntities, $customPermission): array {
-            $customEntities[] = Grid::make()
-                ->schema([
-                    Checkbox::make($customPermission)
-                        ->label(Str::of($customPermission)->headline())
-                        ->inline()
-                        ->afterStateHydrated(function (Set $set, Get $get, $record) use ($customPermission): void {
-                            if (null === $record) {
-                                return;
-                            }
+        return collect(static::getCustomEntities())->reduce(
+            function (array $customEntities, $customPermission): array {
+                $customEntities[] = Grid::make()
+                    ->schema(
+                        [
+                        Checkbox::make($customPermission)
+                            ->label(Str::of($customPermission)->headline())
+                            ->inline()
+                            ->afterStateHydrated(
+                                function (Set $set, Get $get, $record) use ($customPermission): void {
+                                    if (null === $record) {
+                                        return;
+                                    }
 
-                            $set($customPermission, $record->checkPermissionTo($customPermission));
-                            static::refreshSelectAllStateViaEntities($set, $get);
-                        })
+                                    $set($customPermission, $record->checkPermissionTo($customPermission));
+                                    static::refreshSelectAllStateViaEntities($set, $get);
+                                }
+                            )
                         ->reactive()
-                        ->afterStateUpdated(function (Set $set, Get $get, $state): void {
-                            if (! $state) {
-                                $set('select_all', false);
-                            }
+                        ->afterStateUpdated(
+                            function (Set $set, Get $get, $state): void {
+                                if (! $state) {
+                                    $set('select_all', false);
+                                }
 
-                            static::refreshSelectAllStateViaEntities($set, $get);
-                        })
+                                static::refreshSelectAllStateViaEntities($set, $get);
+                            }
+                        )
                         ->dehydrated(fn ($state): bool => $state),
-                ])
+                        ]
+                    )
                 ->columns(1)
                 ->columnSpan(1);
 
-            return $customEntities;
-        }, []);
+                return $customEntities;
+            }, []
+        );
     }
 }

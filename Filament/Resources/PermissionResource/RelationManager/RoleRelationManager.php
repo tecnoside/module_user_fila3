@@ -23,27 +23,33 @@ class RoleRelationManager extends RelationManager
     public function form(Form $form): Form
     {
         return $form
-            ->schema([
+            ->schema(
+                [
                 TextInput::make('name')
                     ->label(__('filament-spatie-roles-permissions::filament-spatie.field.name')),
                 TextInput::make('guard_name')
                     ->label(__('filament-spatie-roles-permissions::filament-spatie.field.guard_name')),
-            ]);
+                ]
+            );
     }
 
     public function table(Table $table): Table
     {
         return $table
-            ->columns([
+            ->columns(
+                [
                 TextColumn::make('name')
                     ->searchable()
                     ->label(__('filament-spatie-roles-permissions::filament-spatie.field.name')),
                 TextColumn::make('guard_name')
                     ->searchable()
                     ->label(__('filament-spatie-roles-permissions::filament-spatie.field.guard_name')),
-            ])
-            ->filters([
-            ]);
+                ]
+            )
+            ->filters(
+                [
+                ]
+            );
     }
 
     protected static function getModelLabel(): ?string

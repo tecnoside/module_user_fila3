@@ -41,26 +41,33 @@ class TeamResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
+            ->schema(
+                [
                 'name' => TextInput::make('name')
                     ->required()
                     ->maxLength(255),
                 // 'role'=>Forms\Components\Select::make('role')
                 //    ->options(Role::all()->pluck('name', 'name')),
-            ]);
+                ]
+            );
     }
 
     public static function table(Table $table): Table
     {
         return $table
-            ->columns([
+            ->columns(
+                [
                 'id' => TextColumn::make('id'),
                 'name' => TextColumn::make('name'),
                 // Tables\Columns\TextColumn::make('role'),
-            ])
-            ->filters([
-            ])
-            ->headerActions([
+                ]
+            )
+            ->filters(
+                [
+                ]
+            )
+            ->headerActions(
+                [
                 // 'create' => Tables\Actions\CreateAction::make(),
                 // Tables\Actions\AssociateAction::make(),
                 // Tables\Actions\AttachAction::make()
@@ -71,20 +78,25 @@ class TeamResource extends Resource
                 //     Forms\Components\Select::make('role_id')
                 //         ->options(Role::all()->pluck('name', 'id'))
                 // ])
-            ])
-            ->actions([
+                ]
+            )
+            ->actions(
+                [
                 ViewAction::make(),
                 EditAction::make(),
                 // Tables\Actions\EditAction::make(),
                 // Tables\Actions\DissociateAction::make(),
                 // DetachAction::make(),
                 // Tables\Actions\DeleteAction::make(),
-            ])
-            ->bulkActions([
+                ]
+            )
+            ->bulkActions(
+                [
                 // Tables\Actions\DissociateBulkAction::make(),
                 // Tables\Actions\DetachBulkAction::make(),
                 // Tables\Actions\DeleteBulkAction::make(),
-            ]);
+                ]
+            );
     }
 
     public static function getRelations(): array

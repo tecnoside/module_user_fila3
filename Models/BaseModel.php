@@ -24,7 +24,7 @@ abstract class BaseModel extends Model
     /**
      * Indicates whether attributes are snake cased on arrays.
      *
-     * @see  https://laravel-news.com/6-eloquent-secrets
+     * @see https://laravel-news.com/6-eloquent-secrets
      *
      * @var bool
      */

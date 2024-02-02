@@ -19,20 +19,24 @@ trait HasProfilePhoto
      */
     public function updateProfilePhoto(?string $photo): void
     {
-        tap($this->profile_photo_path, function ($previous) use ($photo): void {
-            $this->forceFill([
-                'profile_photo_path' => $photo,
-            ])->save();
-            if (! $previous) {
-                return;
-            }
+        tap(
+            $this->profile_photo_path, function ($previous) use ($photo): void {
+                $this->forceFill(
+                    [
+                    'profile_photo_path' => $photo,
+                    ]
+                )->save();
+                if (! $previous) {
+                    return;
+                }
 
-            if ($photo) {
-                return;
-            }
+                if ($photo) {
+                    return;
+                }
 
-            Storage::disk($this->profilePhotoDisk())->delete($previous);
-        });
+                Storage::disk($this->profilePhotoDisk())->delete($previous);
+            }
+        );
     }
 
     /**
@@ -50,9 +54,11 @@ trait HasProfilePhoto
 
         Storage::disk($this->profilePhotoDisk())->delete($this->profile_photo_path);
 
-        $this->forceFill([
+        $this->forceFill(
+            [
             'profile_photo_path' => null,
-        ])->save();
+            ]
+        )->save();
     }
 
     /**

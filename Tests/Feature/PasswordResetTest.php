@@ -45,7 +45,7 @@ class PasswordResetTest extends TestCase
 
         $this->post(
             '/forgot-password', [
-            'email' => $user->email,
+                'email' => $user->email,
             ]
         );
 
@@ -67,7 +67,7 @@ class PasswordResetTest extends TestCase
 
         $response = $this->post(
             '/forgot-password', [
-            'email' => $user->email,
+                'email' => $user->email,
             ]
         );
 
@@ -97,7 +97,7 @@ class PasswordResetTest extends TestCase
 
         $response = $this->post(
             '/forgot-password', [
-            'email' => $user->email,
+                'email' => $user->email,
             ]
         );
 
@@ -105,10 +105,10 @@ class PasswordResetTest extends TestCase
             $user, ResetPassword::class, function (object $notification) use ($user): bool {
                 $response = $this->post(
                     '/reset-password', [
-                    'token' => $notification->token,
-                    'email' => $user->email,
-                    'password' => 'password',
-                    'password_confirmation' => 'password',
+                        'token' => $notification->token,
+                        'email' => $user->email,
+                        'password' => 'password',
+                        'password_confirmation' => 'password',
                     ]
                 );
 

@@ -30,7 +30,7 @@ class PasswordConfirmationTest extends TestCase
 
         $response = $this->actingAs($user)->post(
             '/user/confirm-password', [
-            'password' => 'password',
+                'password' => 'password',
             ]
         );
 
@@ -45,7 +45,7 @@ class PasswordConfirmationTest extends TestCase
 
         $response = $this->actingAs($user)->post(
             '/user/confirm-password', [
-            'password' => 'wrong-password',
+                'password' => 'wrong-password',
             ]
         );
 

@@ -24,9 +24,9 @@ class TokensRelationManager extends RelationManager
         return $form
             ->schema(
                 [
-                TextInput::make('name')
-                    ->required()
-                    ->maxLength(255),
+                    TextInput::make('name')
+                        ->required()
+                        ->maxLength(255),
                 ]
             );
     }
@@ -37,7 +37,7 @@ class TokensRelationManager extends RelationManager
             ->recordTitleAttribute('name')
             ->columns(
                 [
-                TextColumn::make('name'),
+                    TextColumn::make('name'),
                 ]
             )
             ->filters(
@@ -46,27 +46,27 @@ class TokensRelationManager extends RelationManager
             )
             ->headerActions(
                 [
-                CreateAction::make(),
+                    CreateAction::make(),
                 ]
             )
             ->actions(
                 [
-                EditAction::make(),
-                DeleteAction::make(),
+                    EditAction::make(),
+                    DeleteAction::make(),
                 ]
             )
             ->bulkActions(
                 [
-                BulkActionGroup::make(
-                    [
-                    DeleteBulkAction::make(),
-                    ]
-                ),
+                    BulkActionGroup::make(
+                        [
+                            DeleteBulkAction::make(),
+                        ]
+                    ),
                 ]
             )
             ->emptyStateActions(
                 [
-                // {{ tableEmptyStateActions }}
+                    // {{ tableEmptyStateActions }}
                 ]
             );
     }

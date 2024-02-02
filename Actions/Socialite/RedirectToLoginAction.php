@@ -28,9 +28,9 @@ class RedirectToLoginAction
         return redirect()->route($route_name)
             ->withErrors(
                 [
-                'email' => [
-                    __($message),
-                ],
+                    'email' => [
+                        __($message),
+                    ],
                 ]
             );
     }

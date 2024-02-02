@@ -38,20 +38,20 @@ class DeviceResource extends XotBaseResource
         return $table
             ->columns(
                 [
-                TextColumn::make('id'),
-                TextColumn::make('mobile_id'),
-                // TextColumn::make('languages'),
-                TextColumn::make('device'),
-                TextColumn::make('platform'),
-                TextColumn::make('browser'),
-                TextColumn::make('version'),
-                IconColumn::make('is_robot')->boolean(),
-                TextColumn::make('robot'),
-                IconColumn::make('is_desktop')->boolean(),
-                IconColumn::make('is_mobile')->boolean(),
-                IconColumn::make('is_tablet')->boolean(),
-                IconColumn::make('is_phone')->boolean(),
-                // ...static::extendTableCallback(),
+                    TextColumn::make('id'),
+                    TextColumn::make('mobile_id'),
+                    // TextColumn::make('languages'),
+                    TextColumn::make('device'),
+                    TextColumn::make('platform'),
+                    TextColumn::make('browser'),
+                    TextColumn::make('version'),
+                    IconColumn::make('is_robot')->boolean(),
+                    TextColumn::make('robot'),
+                    IconColumn::make('is_desktop')->boolean(),
+                    IconColumn::make('is_mobile')->boolean(),
+                    IconColumn::make('is_tablet')->boolean(),
+                    IconColumn::make('is_phone')->boolean(),
+                    // ...static::extendTableCallback(),
                 ]
             )
             ->filters(
@@ -60,16 +60,16 @@ class DeviceResource extends XotBaseResource
             )
             ->actions(
                 [
-                EditAction::make(),
+                    EditAction::make(),
                 ]
             )
             ->bulkActions(
                 [
-                BulkActionGroup::make(
-                    [
-                    DeleteBulkAction::make(),
-                    ]
-                ),
+                    BulkActionGroup::make(
+                        [
+                            DeleteBulkAction::make(),
+                        ]
+                    ),
                 ]
             )
             ->emptyStateActions(

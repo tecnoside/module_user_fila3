@@ -24,9 +24,9 @@ class UsersRelationManager extends RelationManager
         return $form
             ->schema(
                 [
-                TextInput::make('device')
-                    ->required()
-                    ->maxLength(255),
+                    TextInput::make('device')
+                        ->required()
+                        ->maxLength(255),
                 ]
             );
     }
@@ -37,7 +37,7 @@ class UsersRelationManager extends RelationManager
             ->recordTitleAttribute('device')
             ->columns(
                 [
-                TextColumn::make('device'),
+                    TextColumn::make('device'),
                 ]
             )
             ->filters(
@@ -46,22 +46,22 @@ class UsersRelationManager extends RelationManager
             )
             ->headerActions(
                 [
-                CreateAction::make(),
+                    CreateAction::make(),
                 ]
             )
             ->actions(
                 [
-                EditAction::make(),
-                DeleteAction::make(),
+                    EditAction::make(),
+                    DeleteAction::make(),
                 ]
             )
             ->bulkActions(
                 [
-                BulkActionGroup::make(
-                    [
-                    DeleteBulkAction::make(),
-                    ]
-                ),
+                    BulkActionGroup::make(
+                        [
+                            DeleteBulkAction::make(),
+                        ]
+                    ),
                 ]
             )
             ->emptyStateActions(

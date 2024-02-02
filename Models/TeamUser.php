@@ -13,6 +13,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder|TeamUser newModelQuery()
  * @method static Builder|TeamUser newQuery()
  * @method static Builder|TeamUser query()
+ *
  * @property int         $id
  * @property string      $uuid
  * @property string|null $team_id
@@ -23,6 +24,7 @@ use Illuminate\Support\Carbon;
  * @property string|null $created_by
  * @property string|null $updated_by
  * @property string|null $customer_id
+ *
  * @method static Builder|TeamUser whereCreatedAt($value)
  * @method static Builder|TeamUser whereCreatedBy($value)
  * @method static Builder|TeamUser whereCustomerId($value)
@@ -33,6 +35,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder|TeamUser whereUpdatedBy($value)
  * @method static Builder|TeamUser whereUserId($value)
  * @method static Builder|TeamUser whereUuid($value)
+ *
  * @mixin \Eloquent
  */
 class TeamUser extends BasePivot

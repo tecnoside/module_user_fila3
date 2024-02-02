@@ -26,13 +26,13 @@ class PrivacyPolicy extends Component
 
         $view = view(
             'filament-jet::livewire.privacy-policy', [
-            'terms' => Str::markdown(file_get_contents($policyFile)),
+                'terms' => Str::markdown(file_get_contents($policyFile)),
             ]
         );
 
         $view->layout(
             'filament::components.layouts.base', [
-            'title' => __('filament-jet::registration.privacy_policy'),
+                'title' => __('filament-jet::registration.privacy_policy'),
             ]
         );
 

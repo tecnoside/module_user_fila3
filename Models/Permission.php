@@ -23,18 +23,20 @@ use Spatie\Permission\Models\Permission as SpatiePermission;
  * @property int|null                                   $roles_count
  * @property Collection<int, \Modules\User\Models\User> $users
  * @property int|null                                   $users_count
- * @method static Builder|Permission newModelQuery()
- * @method static Builder|Permission newQuery()
- * @method static Builder|Permission permission($permissions)
- * @method static Builder|Permission query()
- * @method static Builder|Permission role($roles, $guard = null)
- * @method static Builder|Permission whereCreatedAt($value)
- * @method static Builder|Permission whereGuardName($value)
- * @method static Builder|Permission whereId($value)
- * @method static Builder|Permission whereName($value)
- * @method static Builder|Permission whereUpdatedAt($value)
+ *
+ * @method static Builder|Permission                               newModelQuery()
+ * @method static Builder|Permission                               newQuery()
+ * @method static Builder|Permission                               permission($permissions)
+ * @method static Builder|Permission                               query()
+ * @method static Builder|Permission                               role($roles, $guard = null)
+ * @method static Builder|Permission                               whereCreatedAt($value)
+ * @method static Builder|Permission                               whereGuardName($value)
+ * @method static Builder|Permission                               whereId($value)
+ * @method static Builder|Permission                               whereName($value)
+ * @method static Builder|Permission                               whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Permission withoutPermission($permissions)
  * @method static \Illuminate\Database\Eloquent\Builder|Permission withoutRole($roles, $guard = null)
+ *
  * @mixin \Eloquent
  */
 class Permission extends SpatiePermission

@@ -34,8 +34,8 @@ class InviteTeamMemberTest extends TestCase
         Livewire::test(TeamMemberManager::class, ['team' => $user->currentTeam])
             ->set(
                 'addTeamMemberForm', [
-                'email' => 'test@example.com',
-                'role' => 'admin',
+                    'email' => 'test@example.com',
+                    'role' => 'admin',
                 ]
             )->call('addTeamMember');
 
@@ -61,8 +61,8 @@ class InviteTeamMemberTest extends TestCase
         $component = Livewire::test(TeamMemberManager::class, ['team' => $user->currentTeam])
             ->set(
                 'addTeamMemberForm', [
-                'email' => 'test@example.com',
-                'role' => 'admin',
+                    'email' => 'test@example.com',
+                    'role' => 'admin',
                 ]
             )->call('addTeamMember');
 

@@ -43,11 +43,11 @@ class TeamResource extends Resource
         return $form
             ->schema(
                 [
-                'name' => TextInput::make('name')
-                    ->required()
-                    ->maxLength(255),
-                // 'role'=>Forms\Components\Select::make('role')
-                //    ->options(Role::all()->pluck('name', 'name')),
+                    'name' => TextInput::make('name')
+                        ->required()
+                        ->maxLength(255),
+                    // 'role'=>Forms\Components\Select::make('role')
+                    //    ->options(Role::all()->pluck('name', 'name')),
                 ]
             );
     }
@@ -57,9 +57,9 @@ class TeamResource extends Resource
         return $table
             ->columns(
                 [
-                'id' => TextColumn::make('id'),
-                'name' => TextColumn::make('name'),
-                // Tables\Columns\TextColumn::make('role'),
+                    'id' => TextColumn::make('id'),
+                    'name' => TextColumn::make('name'),
+                    // Tables\Columns\TextColumn::make('role'),
                 ]
             )
             ->filters(
@@ -68,33 +68,33 @@ class TeamResource extends Resource
             )
             ->headerActions(
                 [
-                // 'create' => Tables\Actions\CreateAction::make(),
-                // Tables\Actions\AssociateAction::make(),
-                // Tables\Actions\AttachAction::make()
+                    // 'create' => Tables\Actions\CreateAction::make(),
+                    // Tables\Actions\AssociateAction::make(),
+                    // Tables\Actions\AttachAction::make()
 
-                // ->form(fn (Tables\Actions\AttachAction $action): array => [
-                //     $action->getRecordSelect(),
-                //     // Forms\Components\TextInput::make('role')->required(),
-                //     Forms\Components\Select::make('role_id')
-                //         ->options(Role::all()->pluck('name', 'id'))
-                // ])
+                    // ->form(fn (Tables\Actions\AttachAction $action): array => [
+                    //     $action->getRecordSelect(),
+                    //     // Forms\Components\TextInput::make('role')->required(),
+                    //     Forms\Components\Select::make('role_id')
+                    //         ->options(Role::all()->pluck('name', 'id'))
+                    // ])
                 ]
             )
             ->actions(
                 [
-                ViewAction::make(),
-                EditAction::make(),
-                // Tables\Actions\EditAction::make(),
-                // Tables\Actions\DissociateAction::make(),
-                // DetachAction::make(),
-                // Tables\Actions\DeleteAction::make(),
+                    ViewAction::make(),
+                    EditAction::make(),
+                    // Tables\Actions\EditAction::make(),
+                    // Tables\Actions\DissociateAction::make(),
+                    // DetachAction::make(),
+                    // Tables\Actions\DeleteAction::make(),
                 ]
             )
             ->bulkActions(
                 [
-                // Tables\Actions\DissociateBulkAction::make(),
-                // Tables\Actions\DetachBulkAction::make(),
-                // Tables\Actions\DeleteBulkAction::make(),
+                    // Tables\Actions\DissociateBulkAction::make(),
+                    // Tables\Actions\DetachBulkAction::make(),
+                    // Tables\Actions\DeleteBulkAction::make(),
                 ]
             );
     }

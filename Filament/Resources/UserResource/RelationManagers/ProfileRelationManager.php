@@ -26,12 +26,12 @@ class ProfileRelationManager extends RelationManager
         return $form
             ->schema(
                 [
-                TextInput::make('ente'),
-                TextInput::make('matr'),
-                TextInput::make('first_name')
-                    ->required()
-                    ->maxLength(255),
-                TextInput::make('last_name'),
+                    TextInput::make('ente'),
+                    TextInput::make('matr'),
+                    TextInput::make('first_name')
+                        ->required()
+                        ->maxLength(255),
+                    TextInput::make('last_name'),
                 ]
             );
     }
@@ -41,11 +41,11 @@ class ProfileRelationManager extends RelationManager
         return $table
             ->columns(
                 [
-                TextColumn::make('id'),
-                TextColumn::make('ente'),
-                TextColumn::make('matr'),
-                TextColumn::make('first_name'),
-                TextColumn::make('last_name'),
+                    TextColumn::make('id'),
+                    TextColumn::make('ente'),
+                    TextColumn::make('matr'),
+                    TextColumn::make('first_name'),
+                    TextColumn::make('last_name'),
                 ]
             )
             ->filters(
@@ -54,19 +54,19 @@ class ProfileRelationManager extends RelationManager
             )
             ->headerActions(
                 [
-                CreateAction::make(),
+                    CreateAction::make(),
                 ]
             )
             ->actions(
                 [
-                ViewAction::make(),
-                EditAction::make(),
-                DeleteAction::make(),
+                    ViewAction::make(),
+                    EditAction::make(),
+                    DeleteAction::make(),
                 ]
             )
             ->bulkActions(
                 [
-                DeleteBulkAction::make(),
+                    DeleteBulkAction::make(),
                 ]
             );
     }

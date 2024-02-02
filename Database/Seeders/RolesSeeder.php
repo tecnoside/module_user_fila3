@@ -29,8 +29,8 @@ class RolesSeeder extends Seeder
                 static function (UserType $userType) use (&$roles): void {
                     $roles[] = Role::firstOrCreate(
                         [
-                        'name' => $userType->value,
-                        'guard_name' => $userType->getDefaultGuard(),
+                            'name' => $userType->value,
+                            'guard_name' => $userType->getDefaultGuard(),
                         ]
                     );
                 },

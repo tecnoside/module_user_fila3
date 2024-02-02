@@ -21,9 +21,9 @@ class DevicesRelationManager extends RelationManager
         return $form
             ->schema(
                 [
-                TextInput::make('device')
-                    ->required()
-                    ->maxLength(255),
+                    TextInput::make('device')
+                        ->required()
+                        ->maxLength(255),
                 ]
             );
     }

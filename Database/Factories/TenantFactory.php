@@ -5,11 +5,10 @@ declare(strict_types=1);
 namespace Modules\User\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
-
 use Modules\User\Models\Tenant;
 
-class TenantFactory extends Factory {
+class TenantFactory extends Factory
+{
     /**
      * The name of the factory's corresponding model.
      *
@@ -22,11 +21,9 @@ class TenantFactory extends Factory {
      *
      * @return array
      */
-    public function definition() {
-
-
+    public function definition()
+    {
         return [
-            
         ];
     }
 }

@@ -23,7 +23,7 @@ trait HasProfilePhoto
             $this->profile_photo_path, function ($previous) use ($photo): void {
                 $this->forceFill(
                     [
-                    'profile_photo_path' => $photo,
+                        'profile_photo_path' => $photo,
                     ]
                 )->save();
                 if (! $previous) {
@@ -56,7 +56,7 @@ trait HasProfilePhoto
 
         $this->forceFill(
             [
-            'profile_photo_path' => null,
+                'profile_photo_path' => null,
             ]
         )->save();
     }

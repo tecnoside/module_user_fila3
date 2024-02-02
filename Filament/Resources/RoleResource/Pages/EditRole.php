@@ -35,8 +35,8 @@ class EditRole extends EditRecord
                 $permissionModels->push(
                     Utils::getPermissionModel()::firstOrCreate(
                         [
-                        'name' => $permission,
-                        'guard_name' => $data['guard_name'] ?? 'web',
+                            'name' => $permission,
+                            'guard_name' => $data['guard_name'] ?? 'web',
                         ]
                     )
                 );

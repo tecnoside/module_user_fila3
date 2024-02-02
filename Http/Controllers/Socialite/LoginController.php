@@ -88,9 +88,9 @@ class LoginController extends Controller
         return to_route($route_name)
             ->withErrors(
                 [
-                'email' => [
-                    __($message),
-                ],
+                    'email' => [
+                        __($message),
+                    ],
                 ]
             );
     }

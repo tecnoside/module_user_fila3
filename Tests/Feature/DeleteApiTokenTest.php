@@ -30,9 +30,9 @@ class DeleteApiTokenTest extends TestCase
 
         $token = $user->tokens()->create(
             [
-            'name' => 'Test Token',
-            'token' => Str::random(40),
-            'abilities' => ['create', 'read'],
+                'name' => 'Test Token',
+                'token' => Str::random(40),
+                'abilities' => ['create', 'read'],
             ]
         );
 

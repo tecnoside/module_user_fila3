@@ -42,10 +42,10 @@ class ListPermissions extends ListRecords
                 )
                 ->form(
                     [
-                    Select::make('role')
-                        ->label(__('filament-spatie-roles-permissions::filament-spatie.field.role'))
-                        ->options($roleModel::query()->pluck('name', 'id'))
-                        ->required(),
+                        Select::make('role')
+                            ->label(__('filament-spatie-roles-permissions::filament-spatie.field.role'))
+                            ->options($roleModel::query()->pluck('name', 'id'))
+                            ->required(),
                     ]
                 )->deselectRecordsAfterCompletion(),
         ];

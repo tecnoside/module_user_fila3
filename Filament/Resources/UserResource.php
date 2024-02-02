@@ -77,31 +77,31 @@ class UserResource extends XotBaseResource
         $schema = [
             'left' => Section::make(
                 [
-                'name' => TextInput::make('name')
-                    ->required(),
-                'email' => TextInput::make('email')
-                    ->required()
-                    ->unique(ignoreRecord: true),
-                'current_team_id' => Select::make('current_team_id')
-                    ->label('current team')
-                    ->relationship('teams', 'name'),
-                /*
+                    'name' => TextInput::make('name')
+                        ->required(),
+                    'email' => TextInput::make('email')
+                        ->required()
+                        ->unique(ignoreRecord: true),
+                    'current_team_id' => Select::make('current_team_id')
+                        ->label('current team')
+                        ->relationship('teams', 'name'),
+                    /*
                 'password' => TextInput::make('password')
                     ->required()
                     ->password()
                     ->dehydrateStateUsing(fn ($state) => Hash::make($state))
                     ->rule(Password::default()),
                 */
-                'password' => TextInput::make('password')
-                    // ->label(trans('filament-user::user.resource.password'))
-                    ->password()
-                    ->maxLength(255)
-                    ->dehydrateStateUsing(
-                        static fn ($state) => ! empty($state)
-                        ? Hash::make($state)
-                        : User::find($form->getColumns())?->password
-                    ),
-                /*
+                    'password' => TextInput::make('password')
+                        // ->label(trans('filament-user::user.resource.password'))
+                        ->password()
+                        ->maxLength(255)
+                        ->dehydrateStateUsing(
+                            static fn ($state) => ! empty($state)
+                            ? Hash::make($state)
+                            : User::find($form->getColumns())?->password
+                        ),
+                    /*
                     ->dehydrateStateUsing(function ($state) use ($form){
                         if(!empty($state)){
                             return Hash::make($state);
@@ -114,9 +114,9 @@ class UserResource extends XotBaseResource
                     }),
                     */
 
-                //    ->visible(fn ($livewire): bool => $livewire instanceof CreateUser)
-                //    ->rule(Password::default()),
-                /*
+                    //    ->visible(fn ($livewire): bool => $livewire instanceof CreateUser)
+                    //    ->rule(Password::default()),
+                    /*
                         'password_group' => Group::make([
                     'password' => TextInput::make('password')
                         ->password()
@@ -136,8 +136,8 @@ class UserResource extends XotBaseResource
             )->columnSpan(8),
             'right' => Section::make(
                 [
-                'created_at' => Placeholder::make('created_at')
-                    ->content(fn ($record) => $record?->created_at?->diffForHumans() ?? new HtmlString('&mdash;')),
+                    'created_at' => Placeholder::make('created_at')
+                        ->content(fn ($record) => $record?->created_at?->diffForHumans() ?? new HtmlString('&mdash;')),
                 ]
             )->columnSpan(4),
         ];
@@ -152,33 +152,33 @@ class UserResource extends XotBaseResource
         return $table
             ->columns(
                 [
-                TextColumn::make('id')->sortable(),
-                TextColumn::make('name')->sortable()->searchable(), // ->toggleable(),
-                TextColumn::make('email')->sortable()->searchable(),
-                // TextColumn::make('profile.first_name')->label('first name')->sortable()->searchable()->toggleable(),
-                // TextColumn::make('profile.last_name')->label('last name')->sortable()->searchable()->toggleable(),
-                TextColumn::make('teams.name')->sortable()->searchable()->toggleable(),
-                // Tables\Columns\TextColumn::make('email'),
-                // Tables\Columns\TextColumn::make('email_verified_at')
-                //    ->dateTime(),
-                TextColumn::make('role.name')->toggleable(),
-                TextColumn::make('roles.name')->toggleable()->wrap(),
-                // Tables\Columns\TextColumn::make('created_at')->dateTime(),
-                // Tables\Columns\TextColumn::make('updated_at')
-                //    ->dateTime(),
-                // Tables\Columns\TextColumn::make('role_id'),
-                // Tables\Columns\TextColumn::make('display_name'),
-                // Tables\Columns\TextColumn::make('phone_number'),
-                // Tables\Columns\TextColumn::make('phone_verified_at')
-                //    ->dateTime(),
-                // Tables\Columns\TextColumn::make('photo'),
-                BooleanColumn::make('email_verified_at')->sortable()->searchable()->toggleable(),
-                ...static::extendTableCallback(),
+                    TextColumn::make('id')->sortable(),
+                    TextColumn::make('name')->sortable()->searchable(), // ->toggleable(),
+                    TextColumn::make('email')->sortable()->searchable(),
+                    // TextColumn::make('profile.first_name')->label('first name')->sortable()->searchable()->toggleable(),
+                    // TextColumn::make('profile.last_name')->label('last name')->sortable()->searchable()->toggleable(),
+                    TextColumn::make('teams.name')->sortable()->searchable()->toggleable(),
+                    // Tables\Columns\TextColumn::make('email'),
+                    // Tables\Columns\TextColumn::make('email_verified_at')
+                    //    ->dateTime(),
+                    TextColumn::make('role.name')->toggleable(),
+                    TextColumn::make('roles.name')->toggleable()->wrap(),
+                    // Tables\Columns\TextColumn::make('created_at')->dateTime(),
+                    // Tables\Columns\TextColumn::make('updated_at')
+                    //    ->dateTime(),
+                    // Tables\Columns\TextColumn::make('role_id'),
+                    // Tables\Columns\TextColumn::make('display_name'),
+                    // Tables\Columns\TextColumn::make('phone_number'),
+                    // Tables\Columns\TextColumn::make('phone_verified_at')
+                    //    ->dateTime(),
+                    // Tables\Columns\TextColumn::make('photo'),
+                    BooleanColumn::make('email_verified_at')->sortable()->searchable()->toggleable(),
+                    ...static::extendTableCallback(),
                 ]
             )
             ->filters(
                 [
-                /*
+                    /*
                 SelectFilter::make('role')
                     ->options([
                         Role::ROLE_USER => 'User',
@@ -187,19 +187,19 @@ class UserResource extends XotBaseResource
                     ])
                     ->attribute('role_id'),
                 */
-                Filter::make('verified')
-                    ->label(trans('verified'))
-                    ->query(fn (Builder $query): Builder => $query->whereNotNull('email_verified_at')),
-                Filter::make('unverified')
-                    ->label(trans('unverified'))
-                    ->query(fn (Builder $query): Builder => $query->whereNull('email_verified_at')),
+                    Filter::make('verified')
+                        ->label(trans('verified'))
+                        ->query(fn (Builder $query): Builder => $query->whereNotNull('email_verified_at')),
+                    Filter::make('unverified')
+                        ->label(trans('unverified'))
+                        ->query(fn (Builder $query): Builder => $query->whereNull('email_verified_at')),
                 ], layout: FiltersLayout::AboveContent
             )
             ->actions(
                 [
-                EditAction::make(),
-                ChangePasswordAction::make(),
-                /*
+                    EditAction::make(),
+                    ChangePasswordAction::make(),
+                    /*
                 Action::make('changePassword')
                     ->action(function (User $user, array $data): void {
                         $user->update([
@@ -223,18 +223,18 @@ class UserResource extends XotBaseResource
                 // ->visible(fn (User $record): bool => $record->role_id === Role::ROLE_ADMINISTRATOR)
                 ,
                 */
-                Action::make('deactivate')
-                    ->color('danger')
-                    ->icon('heroicon-o-trash')
-                    ->action(fn (User $user) => $user->delete())
-                // ->visible(fn (User $record): bool => $record->role_id === Role::ROLE_ADMINISTRATOR)
-                ,
+                    Action::make('deactivate')
+                        ->color('danger')
+                        ->icon('heroicon-o-trash')
+                        ->action(fn (User $user) => $user->delete())
+                    // ->visible(fn (User $record): bool => $record->role_id === Role::ROLE_ADMINISTRATOR)
+                    ,
                 ]
             )
 
             ->bulkActions(
                 [
-                DeleteBulkAction::make(),
+                    DeleteBulkAction::make(),
                 ]
             )
             ->defaultSort('users.created_at', 'desc');
@@ -267,8 +267,8 @@ class UserResource extends XotBaseResource
             // ---PASSPORT
             RelationGroup::make(
                 'Passport', [
-                TokensRelationManager::class,
-                ClientsRelationManager::class,
+                    TokensRelationManager::class,
+                    ClientsRelationManager::class,
                 ]
             ),
         ];

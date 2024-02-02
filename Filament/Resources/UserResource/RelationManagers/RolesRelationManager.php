@@ -34,10 +34,10 @@ class RolesRelationManager extends RelationManager
         return $form
             ->schema(
                 [
-                TextInput::make('name')
-                    ->required()
-                    ->maxLength(255),
-                /*
+                    TextInput::make('name')
+                        ->required()
+                        ->maxLength(255),
+                    /*
                 Forms\Components\Select::make('team_id')
                     ->relationship('teams', 'name'),
                 */
@@ -52,9 +52,9 @@ class RolesRelationManager extends RelationManager
         return $table
             ->columns(
                 [
-                TextColumn::make('id'),
-                TextColumn::make('name'),
-                TextColumn::make('team_id'),
+                    TextColumn::make('id'),
+                    TextColumn::make('name'),
+                    TextColumn::make('team_id'),
                 ]
             )
             ->filters(
@@ -63,36 +63,36 @@ class RolesRelationManager extends RelationManager
             )
             ->headerActions(
                 [
-                // Tables\Actions\CreateAction::make(),
-                AttachAction::make()
-                    // ->mutateFormDataUsing(function (array $data): array {
-                    //     // This is the test.
-                    //     $data['team_id'] = 2;
-                    //     return $data;
-                    // }),
-                    ->form(
-                        fn (AttachAction $action): array => [
-                        $action->getRecordSelect(),
-                        // Forms\Components\TextInput::make('team_id')->required(),
-                        Select::make('team_id')
-                            ->options($xotData->getTeamClass()::get()->pluck('name', 'id')),
-                        // ->options(function($item){
-                        //     dddx($this);
-                        // })
-                        ]
-                    ),
+                    // Tables\Actions\CreateAction::make(),
+                    AttachAction::make()
+                        // ->mutateFormDataUsing(function (array $data): array {
+                        //     // This is the test.
+                        //     $data['team_id'] = 2;
+                        //     return $data;
+                        // }),
+                        ->form(
+                            fn (AttachAction $action): array => [
+                                $action->getRecordSelect(),
+                                // Forms\Components\TextInput::make('team_id')->required(),
+                                Select::make('team_id')
+                                    ->options($xotData->getTeamClass()::get()->pluck('name', 'id')),
+                                // ->options(function($item){
+                                //     dddx($this);
+                                // })
+                            ]
+                        ),
                 ]
             )
             ->actions(
                 [
-                EditAction::make(),
-                // Tables\Actions\DeleteAction::make(),
-                DetachAction::make(),
+                    EditAction::make(),
+                    // Tables\Actions\DeleteAction::make(),
+                    DetachAction::make(),
                 ]
             )
             ->bulkActions(
                 [
-                DeleteBulkAction::make(),
+                    DeleteBulkAction::make(),
                 ]
             );
     }

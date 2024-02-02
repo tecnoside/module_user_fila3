@@ -48,10 +48,8 @@ class AssignRoleCommand extends Command
         $email = text('email ?');
         Assert::notNull($user = User::firstWhere(['email' => $email]));
         /**
-* 
-         *
- * @var array<string, string> 
-*/
+         * @var array<string, string>
+         */
         $opts = Role::all()
             ->pluck('name', 'name')
             ->toArray();

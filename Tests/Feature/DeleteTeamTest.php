@@ -24,7 +24,7 @@ class DeleteTeamTest extends TestCase
         $user->ownedTeams()->save(
             $team = Team::factory()->make(
                 [
-                'personal_team' => false,
+                    'personal_team' => false,
                 ]
             )
         );

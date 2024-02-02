@@ -25,10 +25,10 @@ class RoleRelationManager extends RelationManager
         return $form
             ->schema(
                 [
-                TextInput::make('name')
-                    ->label(__('filament-spatie-roles-permissions::filament-spatie.field.name')),
-                TextInput::make('guard_name')
-                    ->label(__('filament-spatie-roles-permissions::filament-spatie.field.guard_name')),
+                    TextInput::make('name')
+                        ->label(__('filament-spatie-roles-permissions::filament-spatie.field.name')),
+                    TextInput::make('guard_name')
+                        ->label(__('filament-spatie-roles-permissions::filament-spatie.field.guard_name')),
                 ]
             );
     }
@@ -38,12 +38,12 @@ class RoleRelationManager extends RelationManager
         return $table
             ->columns(
                 [
-                TextColumn::make('name')
-                    ->searchable()
-                    ->label(__('filament-spatie-roles-permissions::filament-spatie.field.name')),
-                TextColumn::make('guard_name')
-                    ->searchable()
-                    ->label(__('filament-spatie-roles-permissions::filament-spatie.field.guard_name')),
+                    TextColumn::make('name')
+                        ->searchable()
+                        ->label(__('filament-spatie-roles-permissions::filament-spatie.field.name')),
+                    TextColumn::make('guard_name')
+                        ->searchable()
+                        ->label(__('filament-spatie-roles-permissions::filament-spatie.field.guard_name')),
                 ]
             )
             ->filters(

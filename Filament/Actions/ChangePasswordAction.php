@@ -34,7 +34,7 @@ class ChangePasswordAction extends Action
                 function (User $user, array $data): void {
                     $user->update(
                         [
-                        'password' => Hash::make($data['new_password']),
+                            'password' => Hash::make($data['new_password']),
                         ]
                     );
                     Notification::make()->success()->title('Password changed successfully.');
@@ -42,16 +42,16 @@ class ChangePasswordAction extends Action
             )
             ->form(
                 [
-                TextInput::make('new_password')
-                    ->password()
-                    ->label('New Password')
-                    ->required()
-                    ->rule(Password::default()),
-                TextInput::make('new_password_confirmation')
-                    ->password()
-                    ->label('Confirm New Password')
-                    ->rule('required', fn ($get): bool => (bool) $get('new_password'))
-                    ->same('new_password'),
+                    TextInput::make('new_password')
+                        ->password()
+                        ->label('New Password')
+                        ->required()
+                        ->rule(Password::default()),
+                    TextInput::make('new_password_confirmation')
+                        ->password()
+                        ->label('Confirm New Password')
+                        ->rule('required', fn ($get): bool => (bool) $get('new_password'))
+                        ->same('new_password'),
                 ]
             );
 

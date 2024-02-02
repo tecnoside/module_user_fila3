@@ -37,36 +37,36 @@ class TenantResource extends Resource
         return $form
             ->schema(
                 [
-                Forms\Components\Section::make(
-                    [
-                    Forms\Components\TextInput::make('name')
-                        ->required()
-                        ->unique(table: 'tenants', ignoreRecord: true)->live(onBlur: true)
-                        ->afterStateUpdated(
-                            function (Forms\Set $set, $state) {
-                                $set('id', $slug = \Str::of($state)->slug('_')->toString());
-                                $set('domain', \Str::of($state)->slug()->toString());
-                            }
-                        )->columnSpanFull(),
-                    Forms\Components\TextInput::make('id')
-                        ->label('Unique ID')
-                        ->required()
-                        ->disabled(fn ($context) => 'create' !== $context)
-                        ->unique(table: 'tenants', ignoreRecord: true),
-                    Forms\Components\TextInput::make('domain')
-                        ->label('Sub-Domain')
-                        ->required()
-                        ->visible(fn ($context) => 'create' === $context)
-                        ->unique(table: 'domains', ignoreRecord: true)
-                        ->prefix('https://')
-                        ->suffix('.'.request()->getHost()),
-                    Forms\Components\TextInput::make('email')->email(),
-                    Forms\Components\TextInput::make('phone')->tel(),
-                    Forms\Components\TextInput::make('mobile')->tel(),
-                    Forms\Components\ColorPicker::make('primary_color'),
-                    Forms\Components\ColorPicker::make('secondary_color'),
-                    ]
-                )->columns(),
+                    Forms\Components\Section::make(
+                        [
+                            Forms\Components\TextInput::make('name')
+                                ->required()
+                                ->unique(table: 'tenants', ignoreRecord: true)->live(onBlur: true)
+                                ->afterStateUpdated(
+                                    function (Forms\Set $set, $state) {
+                                        $set('id', $slug = \Str::of($state)->slug('_')->toString());
+                                        $set('domain', \Str::of($state)->slug()->toString());
+                                    }
+                                )->columnSpanFull(),
+                            Forms\Components\TextInput::make('id')
+                                ->label('Unique ID')
+                                ->required()
+                                ->disabled(fn ($context) => 'create' !== $context)
+                                ->unique(table: 'tenants', ignoreRecord: true),
+                            Forms\Components\TextInput::make('domain')
+                                ->label('Sub-Domain')
+                                ->required()
+                                ->visible(fn ($context) => 'create' === $context)
+                                ->unique(table: 'domains', ignoreRecord: true)
+                                ->prefix('https://')
+                                ->suffix('.'.request()->getHost()),
+                            Forms\Components\TextInput::make('email')->email(),
+                            Forms\Components\TextInput::make('phone')->tel(),
+                            Forms\Components\TextInput::make('mobile')->tel(),
+                            Forms\Components\ColorPicker::make('primary_color'),
+                            Forms\Components\ColorPicker::make('secondary_color'),
+                        ]
+                    )->columns(),
                 ]
             );
     }
@@ -76,8 +76,8 @@ class TenantResource extends Resource
         return $table
             ->columns(
                 [
-                Tables\Columns\TextColumn::make('id')->label('ID')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('name'),
+                    Tables\Columns\TextColumn::make('id')->label('ID')->searchable()->sortable(),
+                    Tables\Columns\TextColumn::make('name'),
                 ]
             )
             ->filters(
@@ -86,17 +86,17 @@ class TenantResource extends Resource
             )
             ->actions(
                 [
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
+                    Tables\Actions\ViewAction::make(),
+                    Tables\Actions\EditAction::make(),
                 ]
             )
             ->bulkActions(
                 [
-                Tables\Actions\BulkActionGroup::make(
-                    [
-                    Tables\Actions\DeleteBulkAction::make(),
-                    ]
-                ),
+                    Tables\Actions\BulkActionGroup::make(
+                        [
+                            Tables\Actions\DeleteBulkAction::make(),
+                        ]
+                    ),
                 ]
             );
     }

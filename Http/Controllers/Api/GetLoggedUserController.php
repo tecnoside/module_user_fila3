@@ -21,8 +21,8 @@ class GetLoggedUserController extends XotBaseController
 
         return JsonResponseData::from(
             [
-            'message' => 'logged user',
-            'data' => $user->toArray(),
+                'message' => 'logged user',
+                'data' => $user->toArray(),
             ]
         )->response();
     }

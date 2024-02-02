@@ -52,10 +52,8 @@ final class PermissionPolicyTest extends TestCase
     public function testViewWhenUnauthorized(): void
     {
         /**
-* 
-         *
- * @todo This test is incomplete. 
-*/
+         * @todo This test is incomplete.
+         */
         $post = \Mockery::mock(UserAlias::class);
 
         self::assertFalse($this->user->can('view', $post));
@@ -64,10 +62,8 @@ final class PermissionPolicyTest extends TestCase
     public function testViewWhenAuthorized(): void
     {
         /**
-* 
-         *
- * @todo This test is incomplete. 
-*/
+         * @todo This test is incomplete.
+         */
         $post = \Mockery::mock(UserAlias::class);
 
         self::assertTrue($this->user->can('view', $post));
@@ -88,10 +84,8 @@ final class PermissionPolicyTest extends TestCase
     public function testUpdateWhenUnauthorized(): void
     {
         /**
-* 
-         *
- * @todo This test is incomplete. 
-*/
+         * @todo This test is incomplete.
+         */
         $post = \Mockery::mock(UserAlias::class);
 
         self::assertFalse($this->user->can('update', $post));
@@ -100,10 +94,8 @@ final class PermissionPolicyTest extends TestCase
     public function testUpdateWhenAuthorized(): void
     {
         /**
-* 
-         *
- * @todo This test is incomplete. 
-*/
+         * @todo This test is incomplete.
+         */
         $post = \Mockery::mock(UserAlias::class);
 
         self::assertTrue($this->user->can('update', $post));
@@ -112,10 +104,8 @@ final class PermissionPolicyTest extends TestCase
     public function testDeleteWhenUnauthorized(): void
     {
         /**
-* 
-         *
- * @todo This test is incomplete. 
-*/
+         * @todo This test is incomplete.
+         */
         $post = \Mockery::mock(UserAlias::class);
 
         self::assertFalse($this->user->can('delete', $post));
@@ -124,10 +114,8 @@ final class PermissionPolicyTest extends TestCase
     public function testDeleteWhenAuthorized(): void
     {
         /**
-* 
-         *
- * @todo This test is incomplete. 
-*/
+         * @todo This test is incomplete.
+         */
         $post = \Mockery::mock(UserAlias::class);
 
         self::assertTrue($this->user->can('delete', $post));

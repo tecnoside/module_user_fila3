@@ -27,9 +27,9 @@ class TeamsRelationManager extends RelationManager
         return $form
             ->schema(
                 [
-                TextInput::make('name')
-                    ->required()
-                    ->maxLength(255),
+                    TextInput::make('name')
+                        ->required()
+                        ->maxLength(255),
                 ]
             );
     }
@@ -40,8 +40,8 @@ class TeamsRelationManager extends RelationManager
             ->recordTitleAttribute('name')
             ->columns(
                 [
-                TextColumn::make('id'),
-                TextColumn::make('name'),
+                    TextColumn::make('id'),
+                    TextColumn::make('name'),
                 ]
             )
             ->filters(
@@ -50,29 +50,29 @@ class TeamsRelationManager extends RelationManager
             )
             ->headerActions(
                 [
-                // Tables\Actions\CreateAction::make(),
-                AttachAction::make(),
+                    // Tables\Actions\CreateAction::make(),
+                    AttachAction::make(),
                 ]
             )
             ->actions(
                 [
-                EditAction::make(),
-                // DeleteAction::make(),
-                DetachAction::make(),
+                    EditAction::make(),
+                    // DeleteAction::make(),
+                    DetachAction::make(),
                 ]
             )
             ->bulkActions(
                 [
-                BulkActionGroup::make(
-                    [
-                    DeleteBulkAction::make(),
-                    ]
-                ),
+                    BulkActionGroup::make(
+                        [
+                            DeleteBulkAction::make(),
+                        ]
+                    ),
                 ]
             )
             ->emptyStateActions(
                 [
-                CreateAction::make(),
+                    CreateAction::make(),
                 ]
             );
     }

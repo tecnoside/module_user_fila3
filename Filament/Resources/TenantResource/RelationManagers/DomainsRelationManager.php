@@ -19,12 +19,12 @@ class DomainsRelationManager extends RelationManager
         return $form
             ->schema(
                 [
-                Forms\Components\TextInput::make('domain')
-                    ->required()
-                    ->label('Subdomain')
-                    ->prefix('http(s)://')
-                    ->suffix('.'.request()->getHost())
-                    ->maxLength(255),
+                    Forms\Components\TextInput::make('domain')
+                        ->required()
+                        ->label('Subdomain')
+                        ->prefix('http(s)://')
+                        ->suffix('.'.request()->getHost())
+                        ->maxLength(255),
                 ]
             );
     }
@@ -35,8 +35,8 @@ class DomainsRelationManager extends RelationManager
             ->recordTitleAttribute('domain')
             ->columns(
                 [
-                Tables\Columns\TextColumn::make('domain')->label('Subdomain'),
-                Tables\Columns\TextColumn::make('full-domain')->label('Full Domain')->getStateUsing(fn ($record) => \Str::of($record->domain)->append('.')->append(request()->getHost())),
+                    Tables\Columns\TextColumn::make('domain')->label('Subdomain'),
+                    Tables\Columns\TextColumn::make('full-domain')->label('Full Domain')->getStateUsing(fn ($record) => \Str::of($record->domain)->append('.')->append(request()->getHost())),
                 ]
             )
             ->filters(
@@ -45,22 +45,22 @@ class DomainsRelationManager extends RelationManager
             )
             ->headerActions(
                 [
-                Tables\Actions\CreateAction::make(),
+                    Tables\Actions\CreateAction::make(),
                 ]
             )
             ->actions(
                 [
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                    Tables\Actions\EditAction::make(),
+                    Tables\Actions\DeleteAction::make(),
                 ]
             )
             ->bulkActions(
                 [
-                Tables\Actions\BulkActionGroup::make(
-                    [
-                    Tables\Actions\DeleteBulkAction::make(),
-                    ]
-                ),
+                    Tables\Actions\BulkActionGroup::make(
+                        [
+                            Tables\Actions\DeleteBulkAction::make(),
+                        ]
+                    ),
                 ]
             );
     }

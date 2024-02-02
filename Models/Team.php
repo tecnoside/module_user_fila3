@@ -13,31 +13,33 @@ use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Datas\XotData;
 
 /**
- * Modules\User\Models\Team
+ * Modules\User\Models\Team.
  *
- * @property int $id
- * @property int $user_id
- * @property string $name
- * @property int $personal_team
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\User> $members
- * @property-read int|null $members_count
- * @property-read \Modules\User\Models\User|null $owner
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\TeamInvitation> $teamInvitations
- * @property-read int|null $team_invitations_count
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\User> $users
- * @property-read int|null $users_count
+ * @property int                                                                                $id
+ * @property int                                                                                $user_id
+ * @property string                                                                             $name
+ * @property int                                                                                $personal_team
+ * @property \Illuminate\Support\Carbon|null                                                    $created_at
+ * @property \Illuminate\Support\Carbon|null                                                    $updated_at
+ * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\User>           $members
+ * @property int|null                                                                           $members_count
+ * @property User|null                                                                          $owner
+ * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\TeamInvitation> $teamInvitations
+ * @property int|null                                                                           $team_invitations_count
+ * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\User>           $users
+ * @property int|null                                                                           $users_count
+ *
  * @method static \Modules\User\Database\Factories\TeamFactory factory($count = null, $state = [])
- * @method static \Illuminate\Database\Eloquent\Builder|Team newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Team newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Team query()
- * @method static \Illuminate\Database\Eloquent\Builder|Team whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Team whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Team whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Team wherePersonalTeam($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Team whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Team whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Team   newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Team   newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Team   query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Team   whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Team   whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Team   whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Team   wherePersonalTeam($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Team   whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Team   whereUserId($value)
+ *
  * @mixin \Eloquent
  */
 class Team extends BaseModel implements TeamContract
@@ -143,7 +145,7 @@ class Team extends BaseModel implements TeamContract
         if ($userContract->current_team_id === $this->id) {
             $userContract->forceFill(
                 [
-                'current_team_id' => null,
+                    'current_team_id' => null,
                 ]
             )->save();
         }

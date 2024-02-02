@@ -13,21 +13,22 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Modules\Xot\Datas\XotData;
 
 /**
- * Modules\User\Models\SocialiteUser
+ * Modules\User\Models\SocialiteUser.
  *
- * @property int $id
- * @property string $user_id
- * @property string $provider
- * @property string $provider_id
- * @property string|null $token
- * @property string|null $name
- * @property string|null $email
- * @property string|null $avatar
+ * @property int                             $id
+ * @property string                          $user_id
+ * @property string                          $provider
+ * @property string                          $provider_id
+ * @property string|null                     $token
+ * @property string|null                     $name
+ * @property string|null                     $email
+ * @property string|null                     $avatar
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property string|null $updated_by
- * @property string|null $created_by
- * @property-read \Modules\User\Models\User|null $user
+ * @property string|null                     $updated_by
+ * @property string|null                     $created_by
+ * @property User|null                       $user
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser query()
@@ -43,6 +44,7 @@ use Modules\Xot\Datas\XotData;
  * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser whereUpdatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser whereUserId($value)
+ *
  * @mixin \Eloquent
  */
 class SocialiteUser extends BaseModel

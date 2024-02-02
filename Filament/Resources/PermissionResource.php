@@ -69,26 +69,26 @@ class PermissionResource extends XotBaseResource
         return $form
             ->schema(
                 [
-                Card::make()
-                    ->schema(
-                        [
-                        Grid::make(2)->schema(
+                    Card::make()
+                        ->schema(
                             [
-                            TextInput::make('name')
-                                ->label(static::trans('fields.name')),
-                            Select::make('guard_name')
-                                ->label(static::trans('fields.guard_name'))
-                                ->options($guard_names)
-                                ->default($default_guard_name),
-                            Select::make('roles')
-                                ->multiple()
-                                ->label(static::trans('fields.roles'))
-                                ->relationship('roles', 'name')
-                                ->preload($preload_roles),
+                                Grid::make(2)->schema(
+                                    [
+                                        TextInput::make('name')
+                                            ->label(static::trans('fields.name')),
+                                        Select::make('guard_name')
+                                            ->label(static::trans('fields.guard_name'))
+                                            ->options($guard_names)
+                                            ->default($default_guard_name),
+                                        Select::make('roles')
+                                            ->multiple()
+                                            ->label(static::trans('fields.roles'))
+                                            ->relationship('roles', 'name')
+                                            ->preload($preload_roles),
+                                    ]
+                                ),
                             ]
                         ),
-                        ]
-                    ),
                 ]
             );
     }
@@ -100,21 +100,21 @@ class PermissionResource extends XotBaseResource
         return $table
             ->columns(
                 [
-                TextColumn::make('id')
-                    ->label('ID')
-                    ->searchable(),
-                TextColumn::make('name')
-                    ->label(static::trans('fields.name'))
-                    ->searchable(),
-                TextColumn::make('guard_name')
-                    ->toggleable(isToggledHiddenByDefault: $isToggledHiddenByDefault)
-                    ->label(static::trans('fields.guard_name'))
-                    ->searchable(),
+                    TextColumn::make('id')
+                        ->label('ID')
+                        ->searchable(),
+                    TextColumn::make('name')
+                        ->label(static::trans('fields.name'))
+                        ->searchable(),
+                    TextColumn::make('guard_name')
+                        ->toggleable(isToggledHiddenByDefault: $isToggledHiddenByDefault)
+                        ->label(static::trans('fields.guard_name'))
+                        ->searchable(),
                 ]
             )
             ->filters(
                 [
-                /*
+                    /*
                 Filter::make('models')
                     ->form(function () {
                         $commands = new \Modules\User\Filament\Commands\Permission();
@@ -139,31 +139,31 @@ class PermissionResource extends XotBaseResource
                 [
                     EditAction::make(),
                     ViewAction::make(),
-                    ]
+                ]
             )
             ->bulkActions(
                 [
-                // Tables\Actions\BulkActionGroup::make([
-                DeleteBulkAction::make(),
-                // ]),
-                BulkAction::make('Attach Role')
-                    ->action(
-                        function (Collection $collection, array $data): void {
-                            foreach ($collection as $record) {
-                                Assert::isInstanceOf($record, Permission::class);
-                                $record->roles()->sync($data['role']);
-                                $record->save();
+                    // Tables\Actions\BulkActionGroup::make([
+                    DeleteBulkAction::make(),
+                    // ]),
+                    BulkAction::make('Attach Role')
+                        ->action(
+                            function (Collection $collection, array $data): void {
+                                foreach ($collection as $record) {
+                                    Assert::isInstanceOf($record, Permission::class);
+                                    $record->roles()->sync($data['role']);
+                                    $record->save();
+                                }
                             }
-                        }
-                    )
-                    ->form(
-                        [
-                        Select::make('role')
-                            ->label(static::trans('fields.role'))
-                            ->options(Role::query()->pluck('name', 'id'))
-                            ->required(),
-                        ]
-                    )->deselectRecordsAfterCompletion(),
+                        )
+                        ->form(
+                            [
+                                Select::make('role')
+                                    ->label(static::trans('fields.role'))
+                                    ->options(Role::query()->pluck('name', 'id'))
+                                    ->required(),
+                            ]
+                        )->deselectRecordsAfterCompletion(),
                 ]
             );
         // ->emptyStateActions([

@@ -65,132 +65,132 @@ class RoleResource extends XotBaseResource
         return $form
             ->schema(
                 [
-                Grid::make()
-                    ->schema(
-                        [
-                        Card::make()
-                            ->schema(
-                                [
-                                TextInput::make('name')
-                                    ->label(static::trans('fields.name'))
-                                    ->required()
-                                    ->maxLength(255),
-                                Select::make('team_id')
-                                    ->relationship('team', 'name'),
-                                TextInput::make('guard_name')
-                                    ->label(static::trans('fields.guard_name'))
-                                    ->default(Utils::getFilamentAuthGuard())
-                                    ->nullable()
-                                    ->maxLength(255),
-                                Toggle::make('select_all')
-                                    ->onIcon('heroicon-s-shield-check')
-                                    ->offIcon('heroicon-s-shield-exclamation')
-                                    ->label(static::trans('fields.select_all.name'))
-                                    ->helperText(static::trans('fields.select_all.message'))
-                                    ->reactive()
-                                    ->afterStateUpdated(
-                                        function (Set $set, $state): void {
-                                            static::refreshEntitiesStatesViaSelectAll($set, $state);
-                                        }
+                    Grid::make()
+                        ->schema(
+                            [
+                                Card::make()
+                                    ->schema(
+                                        [
+                                            TextInput::make('name')
+                                                ->label(static::trans('fields.name'))
+                                                ->required()
+                                                ->maxLength(255),
+                                            Select::make('team_id')
+                                                ->relationship('team', 'name'),
+                                            TextInput::make('guard_name')
+                                                ->label(static::trans('fields.guard_name'))
+                                                ->default(Utils::getFilamentAuthGuard())
+                                                ->nullable()
+                                                ->maxLength(255),
+                                            Toggle::make('select_all')
+                                                ->onIcon('heroicon-s-shield-check')
+                                                ->offIcon('heroicon-s-shield-exclamation')
+                                                ->label(static::trans('fields.select_all.name'))
+                                                ->helperText(static::trans('fields.select_all.message'))
+                                                ->reactive()
+                                                ->afterStateUpdated(
+                                                    function (Set $set, $state): void {
+                                                        static::refreshEntitiesStatesViaSelectAll($set, $state);
+                                                    }
+                                                )
+                                                ->dehydrated(fn ($state): bool => $state),
+                                        ]
                                     )
-                                    ->dehydrated(fn ($state): bool => $state),
-                                ]
-                            )
-                            ->columns(
-                                [
-                                'sm' => 2,
-                                'lg' => 3,
-                                ]
-                            ),
-                        ]
-                    ),
-                Tabs::make('Permissions')
-                    ->tabs(
-                        [
-                        Tab::make(static::trans('resources'))
-                            ->visible(fn (): bool => Utils::isResourceEntityEnabled())
-                            ->reactive()
-                            ->schema(
-                                [
-                                Grid::make(
-                                    [
-                                    'sm' => 2,
-                                    'lg' => 3,
-                                    ]
-                                )
-                                    ->schema(static::getResourceEntitiesSchema())
                                     ->columns(
                                         [
-                                        'sm' => 2,
-                                        'lg' => 3,
+                                            'sm' => 2,
+                                            'lg' => 3,
                                         ]
                                     ),
-                                ]
-                            ),
-                        Tab::make(static::trans('pages'))
-                            // ->visible(fn (): bool => (bool) Utils::isPageEntityEnabled() && (count(FilamentShield::getPages()) > 0 ? true : false))
-                            ->reactive()
-                            ->schema(
-                                [
-                                Grid::make(
-                                    [
-                                    'sm' => 3,
-                                    'lg' => 4,
-                                    ]
-                                )
-                                    ->schema(static::getPageEntityPermissionsSchema())
-                                    ->columns(
+                            ]
+                        ),
+                    Tabs::make('Permissions')
+                        ->tabs(
+                            [
+                                Tab::make(static::trans('resources'))
+                                    ->visible(fn (): bool => Utils::isResourceEntityEnabled())
+                                    ->reactive()
+                                    ->schema(
                                         [
-                                        'sm' => 3,
-                                        'lg' => 4,
+                                            Grid::make(
+                                                [
+                                                    'sm' => 2,
+                                                    'lg' => 3,
+                                                ]
+                                            )
+                                                ->schema(static::getResourceEntitiesSchema())
+                                                ->columns(
+                                                    [
+                                                        'sm' => 2,
+                                                        'lg' => 3,
+                                                    ]
+                                                ),
                                         ]
                                     ),
-                                ]
-                            ),
-                        Tab::make(static::trans('widgets'))
-                            // ->visible(fn (): bool => (bool) Utils::isWidgetEntityEnabled() && (count(FilamentShield::getWidgets()) > 0 ? true : false))
-                            ->reactive()
-                            ->schema(
-                                [
-                                Grid::make(
-                                    [
-                                    'sm' => 3,
-                                    'lg' => 4,
-                                    ]
-                                )
-                                    ->schema(static::getWidgetEntityPermissionSchema())
-                                    ->columns(
+                                Tab::make(static::trans('pages'))
+                                    // ->visible(fn (): bool => (bool) Utils::isPageEntityEnabled() && (count(FilamentShield::getPages()) > 0 ? true : false))
+                                    ->reactive()
+                                    ->schema(
                                         [
-                                        'sm' => 3,
-                                        'lg' => 4,
+                                            Grid::make(
+                                                [
+                                                    'sm' => 3,
+                                                    'lg' => 4,
+                                                ]
+                                            )
+                                                ->schema(static::getPageEntityPermissionsSchema())
+                                                ->columns(
+                                                    [
+                                                        'sm' => 3,
+                                                        'lg' => 4,
+                                                    ]
+                                                ),
                                         ]
                                     ),
-                                ]
-                            ),
+                                Tab::make(static::trans('widgets'))
+                                    // ->visible(fn (): bool => (bool) Utils::isWidgetEntityEnabled() && (count(FilamentShield::getWidgets()) > 0 ? true : false))
+                                    ->reactive()
+                                    ->schema(
+                                        [
+                                            Grid::make(
+                                                [
+                                                    'sm' => 3,
+                                                    'lg' => 4,
+                                                ]
+                                            )
+                                                ->schema(static::getWidgetEntityPermissionSchema())
+                                                ->columns(
+                                                    [
+                                                        'sm' => 3,
+                                                        'lg' => 4,
+                                                    ]
+                                                ),
+                                        ]
+                                    ),
 
-                        Tab::make(static::trans('custom'))
-                            ->visible(fn (): bool => Utils::isCustomPermissionEntityEnabled())
-                            ->reactive()
-                            ->schema(
-                                [
-                                Grid::make(
-                                    [
-                                    'sm' => 3,
-                                    'lg' => 4,
-                                    ]
-                                )
-                                    ->schema(static::getCustomEntitiesPermisssionSchema())
-                                    ->columns(
+                                Tab::make(static::trans('custom'))
+                                    ->visible(fn (): bool => Utils::isCustomPermissionEntityEnabled())
+                                    ->reactive()
+                                    ->schema(
                                         [
-                                        'sm' => 3,
-                                        'lg' => 4,
+                                            Grid::make(
+                                                [
+                                                    'sm' => 3,
+                                                    'lg' => 4,
+                                                ]
+                                            )
+                                                ->schema(static::getCustomEntitiesPermisssionSchema())
+                                                ->columns(
+                                                    [
+                                                        'sm' => 3,
+                                                        'lg' => 4,
+                                                    ]
+                                                ),
                                         ]
                                     ),
-                                ]
-                            ),
-                        ]
-                    )
-                    ->columnSpan('full'),
+                            ]
+                        )
+                        ->columnSpan('full'),
                 ]
             );
     }
@@ -200,23 +200,23 @@ class RoleResource extends XotBaseResource
         return $table
             ->columns(
                 [
-                TextColumn::make('id'),
-                BadgeColumn::make('name')
-                    ->label(static::trans('fields.name'))
-                    ->formatStateUsing(fn ($state): string => Str::headline($state))
-                    ->colors(['primary'])
-                    ->searchable(),
-                // Tables\Columns\TextColumn::make('team_id'),
-                TextColumn::make('team.name'),
-                BadgeColumn::make('guard_name')
-                    ->label(static::trans('fields.guard_name')),
-                BadgeColumn::make('permissions_count')
-                    ->label(static::trans('fields.permissions'))
-                    ->counts('permissions')
-                    ->colors(['success']),
-                TextColumn::make('updated_at')
-                    ->label(static::trans('fields.updated_at'))
-                    ->dateTime(),
+                    TextColumn::make('id'),
+                    BadgeColumn::make('name')
+                        ->label(static::trans('fields.name'))
+                        ->formatStateUsing(fn ($state): string => Str::headline($state))
+                        ->colors(['primary'])
+                        ->searchable(),
+                    // Tables\Columns\TextColumn::make('team_id'),
+                    TextColumn::make('team.name'),
+                    BadgeColumn::make('guard_name')
+                        ->label(static::trans('fields.guard_name')),
+                    BadgeColumn::make('permissions_count')
+                        ->label(static::trans('fields.permissions'))
+                        ->counts('permissions')
+                        ->colors(['success']),
+                    TextColumn::make('updated_at')
+                        ->label(static::trans('fields.updated_at'))
+                        ->dateTime(),
                 ]
             )
             ->filters(
@@ -225,13 +225,13 @@ class RoleResource extends XotBaseResource
             )
             ->actions(
                 [
-                EditAction::make(),
-                DeleteAction::make(),
+                    EditAction::make(),
+                    DeleteAction::make(),
                 ]
             )
             ->bulkActions(
                 [
-                DeleteBulkAction::make(),
+                    DeleteBulkAction::make(),
                 ]
             );
     }
@@ -512,30 +512,30 @@ class RoleResource extends XotBaseResource
                 $customEntities[] = Grid::make()
                     ->schema(
                         [
-                        Checkbox::make($customPermission)
-                            ->label(Str::of($customPermission)->headline())
-                            ->inline()
-                            ->afterStateHydrated(
-                                function (Set $set, Get $get, $record) use ($customPermission): void {
-                                    if (null === $record) {
-                                        return;
+                            Checkbox::make($customPermission)
+                                ->label(Str::of($customPermission)->headline())
+                                ->inline()
+                                ->afterStateHydrated(
+                                    function (Set $set, Get $get, $record) use ($customPermission): void {
+                                        if (null === $record) {
+                                            return;
+                                        }
+
+                                        $set($customPermission, $record->checkPermissionTo($customPermission));
+                                        static::refreshSelectAllStateViaEntities($set, $get);
+                                    }
+                                )
+                            ->reactive()
+                            ->afterStateUpdated(
+                                function (Set $set, Get $get, $state): void {
+                                    if (! $state) {
+                                        $set('select_all', false);
                                     }
 
-                                    $set($customPermission, $record->checkPermissionTo($customPermission));
                                     static::refreshSelectAllStateViaEntities($set, $get);
                                 }
                             )
-                        ->reactive()
-                        ->afterStateUpdated(
-                            function (Set $set, Get $get, $state): void {
-                                if (! $state) {
-                                    $set('select_all', false);
-                                }
-
-                                static::refreshSelectAllStateViaEntities($set, $get);
-                            }
-                        )
-                        ->dehydrated(fn ($state): bool => $state),
+                            ->dehydrated(fn ($state): bool => $state),
                         ]
                     )
                 ->columns(1)

@@ -12,22 +12,16 @@ class CreatePermissionTables extends XotBaseMigration
     public function up(): void
     {
         /**
-* 
-         *
- * @var array $tableNames 
-*/
+         * @var array $tableNames
+         */
         $tableNames = config('permission.table_names');
         /**
-* 
-         *
- * @var array $columnNames 
-*/
+         * @var array $columnNames
+         */
         $columnNames = config('permission.column_names');
         /**
-* 
-         *
- * @var array $teams 
-*/
+         * @var array $teams
+         */
         $teams = config('permission.teams');
 
         if (empty($tableNames)) {
@@ -39,17 +33,13 @@ class CreatePermissionTables extends XotBaseMigration
         }
 
         /**
-* 
-         *
- * @var string|null $cache_store 
-*/
+         * @var string|null $cache_store
+         */
         $cache_store = config('permission.cache.store');
 
         /**
-* 
-         *
- * @var string $cache_key 
-*/
+         * @var string $cache_key
+         */
         $cache_key = config('permission.cache.key');
 
         app('cache')

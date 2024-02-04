@@ -28,7 +28,7 @@ class Register extends Component
     {
         $this->validate([
             'name' => ['required'],
-            'email' => ['required', 'email', 'unique:users'],
+            'email' => ['required', 'email', 'unique:user.users'],
             'password' => ['required', 'min:8', 'same:passwordConfirmation'],
         ]);
 
@@ -47,6 +47,8 @@ class Register extends Component
 
     public function render()
     {
-        return view('livewire.auth.register')->extends('layouts.auth');
+        // return view('livewire.auth.register')->extends('layouts.auth');
+        return view('pub_theme::livewire.auth.register')
+            ->extends('pub_theme::layouts.auth');
     }
 }

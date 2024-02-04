@@ -63,6 +63,6 @@ Route::namespace('\\')
 
 // Route::get('/login', fn () => redirect('/admin/login'))->name('login');
 
-// include 'web_tall.php';
+include 'web_tall.php';
 
 Route::get('/upgrade', 'UpgradeController');

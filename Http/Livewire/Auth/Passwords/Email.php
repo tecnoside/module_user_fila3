@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Livewire\Auth\Passwords;
+declare(strict_types=1);
 
-use Livewire\Component;
+namespace Modules\User\Http\Livewire\Auth\Passwords;
+
 use Illuminate\Support\Facades\Password;
+use Livewire\Component;
 
 class Email extends Component
 {
@@ -21,7 +23,7 @@ class Email extends Component
 
         $response = $this->broker()->sendResetLink(['email' => $this->email]);
 
-        if ($response == Password::RESET_LINK_SENT) {
+        if (Password::RESET_LINK_SENT === $response) {
             $this->emailSentMessage = trans($response);
 
             return;

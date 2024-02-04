@@ -28,7 +28,7 @@ Route::prefix('user')->group(function() {
 Route::namespace('Socialite')
     ->name('socialite.')
     ->group(
-        function (): void {
+        static function (): void {
             Route::get(
                 '/admin/login/{provider}',
                 'LoginController@redirectToProvider',
@@ -61,6 +61,8 @@ Route::namespace('\\')
     );
 */
 
-Route::get('/login', fn () => redirect('/admin/login'))->name('login');
+// Route::get('/login', fn () => redirect('/admin/login'))->name('login');
+
+// include 'web_tall.php';
 
 Route::get('/upgrade', 'UpgradeController');

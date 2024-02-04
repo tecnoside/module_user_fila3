@@ -34,16 +34,18 @@ Route::middleware('guest')
             ->name('register');
     });
 
-Route::get('password/reset', \Modules\User\Http\Livewire\Auth\Passwords\Email::class)
-->namespace('\Modules\User\Http\Livewire\Auth')
-    ->name('password.request');
+Route::middleware([])
+    ->namespace('\Modules\User\Http\Livewire\Auth')
+    ->group(static function () {
+        Route::get('password/reset', \Modules\User\Http\Livewire\Auth\Passwords\Email::class)
+            ->name('password.request');
 
-Route::get('password/reset/{token}', \Modules\User\Http\Livewire\Auth\Passwords\Reset::class)
-->namespace('\Modules\User\Http\Livewire\Auth')
-    ->name('password.reset');
+        Route::get('password/reset/{token}', \Modules\User\Http\Livewire\Auth\Passwords\Reset::class)
+            ->name('password.reset');
+    });
 
 Route::middleware('auth')
-->namespace('\Modules\User\Http\Livewire\Auth')
+    ->namespace('\Modules\User\Http\Livewire\Auth')
     ->group(static function () {
     Route::get('email/verify', \Modules\User\Http\Livewire\Auth\Verify::class)
         ->middleware('throttle:6,1')

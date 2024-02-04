@@ -39,6 +39,6 @@ class Login extends Component
     public function render()
     {
         return view('pub_theme::livewire.auth.login')
-            ->extends('ptb_theme::layouts.auth');
+            ->extends('pub_theme::layouts.auth');
     }
 }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\User\Http\Livewire\Auth\Passwords;
 
 use Livewire\Component;
+use Modules\Xot\Services\FileService;
 
 class Confirm extends Component
 {
@@ -24,6 +25,11 @@ class Confirm extends Component
 
     public function render()
     {
-        return view('livewire.auth.passwords.confirm')->extends('layouts.auth');
+        FileService::viewCopy('user::livewire.auth.passwords.confirm', 'pub_theme::livewire.auth.passwords.confirm');
+        FileService::viewCopy('user::layouts.auth', 'pub_theme::layouts.auth');
+        FileService::viewCopy('user::layouts.base', 'pub_theme::layouts.base');
+
+        return view('pub_theme::livewire.auth.passwords.confirm')
+            ->extends('pub_theme::layouts.auth');
     }
 }

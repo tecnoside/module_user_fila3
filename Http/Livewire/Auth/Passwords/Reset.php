@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 use Livewire\Component;
+use Modules\Xot\Services\FileService;
 
 class Reset extends Component
 {
@@ -89,6 +90,11 @@ class Reset extends Component
 
     public function render()
     {
-        return view('livewire.auth.passwords.reset')->extends('layouts.auth');
+        FileService::viewCopy('user::livewire.auth.passwords.reset', 'pub_theme::livewire.auth.passwords.reset');
+        FileService::viewCopy('user::layouts.auth', 'pub_theme::layouts.auth');
+        FileService::viewCopy('user::layouts.base', 'pub_theme::layouts.base');
+
+        return view('livewire.auth.passwords.reset')
+            ->extends('layouts.auth');
     }
 }

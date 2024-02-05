@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 use Modules\User\Models\User;
+use Modules\Xot\Services\FileService;
 
 class Register extends Component
 {
@@ -47,7 +48,10 @@ class Register extends Component
 
     public function render()
     {
-        // return view('livewire.auth.register')->extends('layouts.auth');
+        FileService::viewCopy('user::livewire.auth.register', 'pub_theme::livewire.auth.register');
+        FileService::viewCopy('user::layouts.auth', 'pub_theme::layouts.auth');
+        FileService::viewCopy('user::layouts.base', 'pub_theme::layouts.base');
+
         return view('pub_theme::livewire.auth.register')
             ->extends('pub_theme::layouts.auth');
     }

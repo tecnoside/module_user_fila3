@@ -21,7 +21,7 @@ final class EmailVerificationTestTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->emailVerificationTest = new EmailVerificationTest;
+        $this->emailVerificationTest = new EmailVerificationTest();
     }
 
     protected function tearDown(): void

@@ -282,7 +282,7 @@ class RoleResource extends XotBaseResource
                     ->extraAttributes(['class' => 'text-primary-600'])
                     ->afterStateHydrated(
                         function (Set $set, Get $get, $record) use ($entity, $permission): void {
-                            if ($record === null) {
+                            if (null === $record) {
                                 return;
                             }
 
@@ -378,11 +378,11 @@ class RoleResource extends XotBaseResource
                 }
             );
 
-        if ($entitiesStates->containsStrict(false) === false) {
+        if (false === $entitiesStates->containsStrict(false)) {
             $set('select_all', true);
         }
 
-        if ($entitiesStates->containsStrict(false) === true) {
+        if (true === $entitiesStates->containsStrict(false)) {
             $set('select_all', false);
         }
     }
@@ -517,7 +517,7 @@ class RoleResource extends XotBaseResource
                                 ->inline()
                                 ->afterStateHydrated(
                                     function (Set $set, Get $get, $record) use ($customPermission): void {
-                                        if ($record === null) {
+                                        if (null === $record) {
                                             return;
                                         }
 

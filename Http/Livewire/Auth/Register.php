@@ -25,7 +25,7 @@ class Register extends Component
     /** @var string */
     public $passwordConfirmation = '';
 
-    public function register()
+    public function register(): \Illuminate\Http\RedirectResponse
     {
         $this->validate([
             'name' => ['required'],

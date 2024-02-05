@@ -10,7 +10,7 @@ use Modules\Xot\Services\FileService;
 
 class Verify extends Component
 {
-    public function resend()
+    public function resend(): void
     {
         if (Auth::user()->hasVerifiedEmail()) {
             redirect(route('home'));

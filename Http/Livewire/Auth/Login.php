@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace Modules\User\Http\Livewire\Auth;
 
-use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
 use Modules\Xot\Services\FileService;
 
 class Login extends Component
@@ -19,11 +20,19 @@ class Login extends Component
     /** @var bool */
     public $remember = false;
 
+    /**
+     * @var array
+     */
     protected $rules = [
         'email' => ['required', 'email'],
         'password' => ['required'],
     ];
 
+    /**
+     * Execute the action.
+     *
+     * @return RedirectResponse|null
+     */
     public function authenticate()
     {
         $this->validate();
@@ -31,13 +40,13 @@ class Login extends Component
         if (! Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
             $this->addError('email', trans('auth.failed'));
 
-            return;
+            return null;
         }
 
         return redirect()->intended(route('home'));
     }
 
-    public function render()
+    public function render(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
     {
         FileService::viewCopy('user::livewire.auth.login', 'pub_theme::livewire.auth.login');
         FileService::viewCopy('user::layouts.auth', 'pub_theme::layouts.auth');

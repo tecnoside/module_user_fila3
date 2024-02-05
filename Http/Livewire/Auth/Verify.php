@@ -4,19 +4,21 @@ declare(strict_types=1);
 
 namespace Modules\User\Http\Livewire\Auth;
 
-use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Webmozart\Assert\Assert;
+use Illuminate\Support\Facades\Auth;
 use Modules\Xot\Services\FileService;
 
 class Verify extends Component
 {
-    public function resend()
+    public function resend(): void
     {
-        if (Auth::user()->hasVerifiedEmail()) {
+        Assert::notNull($user = Auth::user());
+        if ($user->hasVerifiedEmail()) {
             redirect(route('home'));
         }
 
-        Auth::user()->sendEmailVerificationNotification();
+        $user->sendEmailVerificationNotification();
 
         $this->dispatch('resent');
 

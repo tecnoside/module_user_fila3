@@ -31,7 +31,7 @@ class Register extends Component
      *
      * @return RedirectResponse
      */
-    public function register()
+    public function register(): \Illuminate\Http\RedirectResponse
     {
         $this->validate([
             'name' => ['required'],

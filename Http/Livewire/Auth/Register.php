@@ -28,10 +28,8 @@ class Register extends Component
 
     /**
      * Execute the action.
-     *
-     * @return RedirectResponse
      */
-    public function register(): \Illuminate\Http\RedirectResponse
+    public function register(): RedirectResponse
     {
         $this->validate([
             'name' => ['required'],

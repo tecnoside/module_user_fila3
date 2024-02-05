@@ -21,7 +21,7 @@ final class GetProviderScopesActionTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->getProviderScopesAction = new GetProviderScopesAction();
+        $this->getProviderScopesAction = new GetProviderScopesAction;
     }
 
     protected function tearDown(): void

@@ -20,7 +20,7 @@ final class CreateRolesTableTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->createRolesTable = new \CreateRolesTable();
+        $this->createRolesTable = new \CreateRolesTable;
     }
 
     protected function tearDown(): void

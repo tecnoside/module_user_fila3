@@ -282,7 +282,7 @@ class RoleResource extends XotBaseResource
                     ->extraAttributes(['class' => 'text-primary-600'])
                     ->afterStateHydrated(
                         function (Set $set, Get $get, $record) use ($entity, $permission): void {
-                            if (null === $record) {
+                            if ($record === null) {
                                 return;
                             }
 
@@ -291,19 +291,19 @@ class RoleResource extends XotBaseResource
                             static::refreshSelectAllStateViaEntities($set, $get);
                         }
                     )
-                ->reactive()
-                ->afterStateUpdated(
-                    function (Set $set, Get $get, $state) use ($entity): void {
-                        static::refreshResourceEntityStateAfterUpdate($set, $get, $entity);
-                        if (! $state) {
-                            $set($entity['resource'], false);
-                            $set('select_all', false);
-                        }
+                    ->reactive()
+                    ->afterStateUpdated(
+                        function (Set $set, Get $get, $state) use ($entity): void {
+                            static::refreshResourceEntityStateAfterUpdate($set, $get, $entity);
+                            if (! $state) {
+                                $set($entity['resource'], false);
+                                $set('select_all', false);
+                            }
 
-                        static::refreshSelectAllStateViaEntities($set, $get);
-                    }
-                )
-                ->dehydrated(fn ($state): bool => $state);
+                            static::refreshSelectAllStateViaEntities($set, $get);
+                        }
+                    )
+                    ->dehydrated(fn ($state): bool => $state);
 
                 return $permissions;
             }, collect()
@@ -378,11 +378,11 @@ class RoleResource extends XotBaseResource
                 }
             );
 
-        if (false === $entitiesStates->containsStrict(false)) {
+        if ($entitiesStates->containsStrict(false) === false) {
             $set('select_all', true);
         }
 
-        if (true === $entitiesStates->containsStrict(false)) {
+        if ($entitiesStates->containsStrict(false) === true) {
             $set('select_all', false);
         }
     }
@@ -517,7 +517,7 @@ class RoleResource extends XotBaseResource
                                 ->inline()
                                 ->afterStateHydrated(
                                     function (Set $set, Get $get, $record) use ($customPermission): void {
-                                        if (null === $record) {
+                                        if ($record === null) {
                                             return;
                                         }
 
@@ -525,21 +525,21 @@ class RoleResource extends XotBaseResource
                                         static::refreshSelectAllStateViaEntities($set, $get);
                                     }
                                 )
-                            ->reactive()
-                            ->afterStateUpdated(
-                                function (Set $set, Get $get, $state): void {
-                                    if (! $state) {
-                                        $set('select_all', false);
-                                    }
+                                ->reactive()
+                                ->afterStateUpdated(
+                                    function (Set $set, Get $get, $state): void {
+                                        if (! $state) {
+                                            $set('select_all', false);
+                                        }
 
-                                    static::refreshSelectAllStateViaEntities($set, $get);
-                                }
-                            )
-                            ->dehydrated(fn ($state): bool => $state),
+                                        static::refreshSelectAllStateViaEntities($set, $get);
+                                    }
+                                )
+                                ->dehydrated(fn ($state): bool => $state),
                         ]
                     )
-                ->columns(1)
-                ->columnSpan(1);
+                    ->columns(1)
+                    ->columnSpan(1);
 
                 return $customEntities;
             }, []

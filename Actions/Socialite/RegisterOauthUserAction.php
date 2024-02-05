@@ -25,18 +25,18 @@ class RegisterOauthUserAction
             function () use ($provider, $oauthUser) {
                 // Create a user
                 $user = app(CreateUserAction::class)
-                ->execute(
-                    provider: $provider,
-                    oauthUser: $oauthUser,
-                );
+                    ->execute(
+                        provider: $provider,
+                        oauthUser: $oauthUser,
+                    );
 
                 // Create a new socialite user instance
                 return app(CreateSocialiteUserAction::class)
-                ->execute(
-                    provider: $provider,
-                    oauthUser: $oauthUser,
-                    user: $user,
-                );
+                    ->execute(
+                        provider: $provider,
+                        oauthUser: $oauthUser,
+                        user: $user,
+                    );
             }
         );
 

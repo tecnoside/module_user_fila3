@@ -57,11 +57,11 @@ Route::middleware('auth')
 
 Route::middleware('auth')
 // ->namespace('\Modules\User\Http\Livewire\Auth')
-->group(static function () {
-    Route::get('email/verify/{id}/{hash}', EmailVerificationController::class)
-        ->middleware('signed')
-        ->name('verification.verify');
+    ->group(static function () {
+        Route::get('email/verify/{id}/{hash}', EmailVerificationController::class)
+            ->middleware('signed')
+            ->name('verification.verify');
 
-    Route::post('logout', LogoutController::class)
-        ->name('logout');
-});
+        Route::post('logout', LogoutController::class)
+            ->name('logout');
+    });

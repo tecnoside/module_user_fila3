@@ -34,12 +34,12 @@ Route::namespace('Socialite')
                 '/admin/login/{provider}',
                 'LoginController@redirectToProvider',
             )
-            ->name('oauth.redirect');
+                ->name('oauth.redirect');
             Route::get(
                 '/sso/{provider}/callback',
                 'ProcessCallbackController',
             )
-            ->name('oauth.callback');
+                ->name('oauth.callback');
         }
     );
 

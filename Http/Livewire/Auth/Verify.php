@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\User\Http\Livewire\Auth;
 
-use Livewire\Component;
-use Webmozart\Assert\Assert;
 use Illuminate\Support\Facades\Auth;
+use Livewire\Component;
 use Modules\Xot\Services\FileService;
+use Webmozart\Assert\Assert;
 
 class Verify extends Component
 {

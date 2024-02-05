@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\User\Http\Livewire\Auth;
 
-use Livewire\Component;
-use Modules\User\Models\User;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Http\RedirectResponse;
+use Livewire\Component;
+use Modules\User\Models\User;
 use Modules\Xot\Services\FileService;
-use Illuminate\Auth\Events\Registered;
 
 class Register extends Component
 {

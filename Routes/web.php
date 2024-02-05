@@ -6,6 +6,7 @@ declare(strict_types=1);
 
 use Filament\Facades\Filament;
 use Illuminate\Support\Facades\Route;
+use Modules\Xot\Datas\XotData;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,8 +62,10 @@ Route::namespace('\\')
     );
 */
 
-// Route::get('/login', fn () => redirect('/admin/login'))->name('login');
-
-require 'web_tall.php';
+if (XotData::make()->register_pub_theme) {
+    require 'web_tall.php';
+} else {
+    Route::get('/login', fn () => redirect('/admin/login'))->name('login');
+}
 
 Route::get('/upgrade', 'UpgradeController');

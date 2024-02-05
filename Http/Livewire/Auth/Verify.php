@@ -23,7 +23,7 @@ class Verify extends Component
         session()->flash('resent');
     }
 
-    public function render()
+    public function render(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
     {
         FileService::viewCopy('user::livewire.auth.verify', 'pub_theme::livewire.auth.verify');
         FileService::viewCopy('user::layouts.auth', 'pub_theme::layouts.auth');

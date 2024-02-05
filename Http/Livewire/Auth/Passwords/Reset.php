@@ -14,19 +14,15 @@ use Modules\Xot\Services\FileService;
 
 class Reset extends Component
 {
-    /** @var string */
-    public $token;
+    public string $token;
 
-    /** @var string */
-    public $email;
+    public string $email;
 
-    /** @var string */
-    public $password;
+    public string $password;
 
-    /** @var string */
-    public $passwordConfirmation;
+    public string $passwordConfirmation;
 
-    public function mount($token)
+    public function mount(string $token): void
     {
         $this->email = request()->query('email', '');
         $this->token = $token;
@@ -59,7 +55,7 @@ class Reset extends Component
             }
         );
 
-        if ($response === Password::PASSWORD_RESET) {
+        if (Password::PASSWORD_RESET === $response) {
             session()->flash(trans($response));
 
             return redirect(route('home'));

@@ -46,7 +46,7 @@ class Register extends Component
         return redirect()->intended(route('home'));
     }
 
-    public function render()
+    public function render(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
     {
         FileService::viewCopy('user::livewire.auth.register', 'pub_theme::livewire.auth.register');
         FileService::viewCopy('user::layouts.auth', 'pub_theme::layouts.auth');

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Modules\User\Http\Livewire\Auth;
 
 use Illuminate\Auth\Events\Registered;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;

@@ -188,13 +188,13 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
     /**
      * The accessors to append to the model's array form.
      *
-     * @var array
+     * @var array<int, string>
      */
     protected $appends = [
         // 'profile_photo_url',
     ];
 
-    public function canAccessFilament(?Panel $panel = null): bool
+    public function canAccessFilament(Panel $panel = null): bool
     {
         // return $this->role_id === Role::ROLE_ADMINISTRATOR;
         return true;

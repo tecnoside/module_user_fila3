@@ -14,7 +14,8 @@ class EmailVerificationController extends Controller
 {
     public function __invoke(string $id, string $hash): RedirectResponse
     {
-        if (! hash_equals((string) $id, (string) Auth::user()->getKey())) {
+        // if (! hash_equals((string) $id, (string) Auth::user()->getKey())) {
+        if (! hash_equals((string) $id, (string) Auth::id())) {
             throw new AuthorizationException();
         }
 

@@ -21,7 +21,7 @@ class Login extends Component
     public $remember = false;
 
     /**
-     * @var array<string, array<string, string>>
+     * @var array<string, array<int, string>>
      */
     protected $rules = [
         'email' => ['required', 'email'],

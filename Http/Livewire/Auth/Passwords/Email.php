@@ -14,8 +14,13 @@ class Email extends Component
     public $email;
 
     /** @var string|null */
-    public $emailSentMessage = false;
+    public $emailSentMessage = null; //was false
 
+    /**
+     * Undocumented function
+     *
+     * @return void
+     */
     public function sendResetPasswordLink()
     {
         $this->validate([
@@ -43,7 +48,7 @@ class Email extends Component
         return Password::broker();
     }
 
-    public function render()
+    public function render():\Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
     {
         FileService::viewCopy('user::livewire.auth.passwords.email', 'pub_theme::livewire.auth.passwords.email');
         FileService::viewCopy('user::layouts.auth', 'pub_theme::layouts.auth');

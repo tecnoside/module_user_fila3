@@ -29,7 +29,7 @@ class Register extends Component
     /**
      * Execute the action.
      */
-    public function register(): RedirectResponse
+    public function register(): \Livewire\Features\SupportRedirects\Redirector
     {
         $this->validate([
             'name' => ['required'],

@@ -4,17 +4,18 @@ declare(strict_types=1);
 
 namespace Modules\User\Http\Livewire\Auth\Passwords;
 
-use Livewire\Component;
-use Illuminate\Support\Str;
-use Webmozart\Assert\Assert;
+use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Http\RedirectResponse;
-use Modules\Xot\Services\FileService;
 use Illuminate\Support\Facades\Password;
-use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Support\Str;
+use Livewire\Component;
+use Modules\Xot\Services\FileService;
+use Webmozart\Assert\Assert;
 
-class Reset extends Component {
+class Reset extends Component
+{
     public string $token;
 
     public string $email;
@@ -23,18 +24,20 @@ class Reset extends Component {
 
     public string $passwordConfirmation;
 
-    public function mount(string $token): void {
+    public function mount(string $token): void
+    {
         Assert::string($email = request()->query('email', ''));
         $this->email = $email;
         $this->token = $token;
     }
 
     /**
-     * Undocumented function
+     * Undocumented function.
      *
      * @return void|RedirectResponse
      */
-    public function resetPassword() {
+    public function resetPassword()
+    {
         $this->validate([
             'token' => 'required',
             'email' => 'required|email',
@@ -59,13 +62,11 @@ class Reset extends Component {
                 $this->guard()->login($user);
             }
         );
-        
-        /** @phpstan-ignore-next-line */
-        Assert::string($response_lang=trans($response));
-        
+
+        /* @phpstan-ignore-next-line */
+        Assert::string($response_lang = trans($response));
 
         if (Password::PASSWORD_RESET === $response) {
-
             session()->flash($response_lang);
 
             return redirect(route('home'));
@@ -79,7 +80,8 @@ class Reset extends Component {
      *
      * @return \Illuminate\Contracts\Auth\PasswordBroker
      */
-    public function broker() {
+    public function broker()
+    {
         return Password::broker();
     }
 
@@ -88,11 +90,13 @@ class Reset extends Component {
      *
      * @return \Illuminate\Contracts\Auth\StatefulGuard
      */
-    protected function guard() {
+    protected function guard()
+    {
         return Auth::guard();
     }
 
-    public function render():\Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory {
+    public function render(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
+    {
         FileService::viewCopy('user::livewire.auth.passwords.reset', 'pub_theme::livewire.auth.passwords.reset');
         FileService::viewCopy('user::layouts.auth', 'pub_theme::layouts.auth');
         FileService::viewCopy('user::layouts.base', 'pub_theme::layouts.base');

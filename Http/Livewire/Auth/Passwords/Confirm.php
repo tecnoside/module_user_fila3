@@ -8,11 +8,13 @@ use Illuminate\Http\RedirectResponse;
 use Livewire\Component;
 use Modules\Xot\Services\FileService;
 
-class Confirm extends Component {
+class Confirm extends Component
+{
     /** @var string */
     public $password = '';
 
-    public function confirm(): RedirectResponse {
+    public function confirm(): RedirectResponse
+    {
         $this->validate([
             'password' => 'required|current_password',
         ]);
@@ -22,7 +24,8 @@ class Confirm extends Component {
         return redirect()->intended(route('home'));
     }
 
-    public function render():\Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory {
+    public function render(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
+    {
         FileService::viewCopy('user::livewire.auth.passwords.confirm', 'pub_theme::livewire.auth.passwords.confirm');
         FileService::viewCopy('user::layouts.auth', 'pub_theme::layouts.auth');
         FileService::viewCopy('user::layouts.base', 'pub_theme::layouts.base');

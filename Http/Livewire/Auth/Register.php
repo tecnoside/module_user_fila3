@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Modules\User\Http\Livewire\Auth;
 
 use Illuminate\Auth\Events\Registered;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
@@ -29,7 +28,11 @@ class Register extends Component
     /**
      * Execute the action.
      */
+<<<<<<< HEAD
     public function register(): RedirectResponse
+=======
+    public function register(): \Livewire\Features\SupportRedirects\Redirector
+>>>>>>> 0bf7fb40b10d9dcca362acdc76aeaa6bb3c425c5
     {
         $this->validate([
             'name' => ['required'],

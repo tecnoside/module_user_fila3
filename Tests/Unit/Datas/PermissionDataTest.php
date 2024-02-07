@@ -21,7 +21,7 @@ final class PermissionDataTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->permissionData = new PermissionData;
+        $this->permissionData = new PermissionData();
     }
 
     protected function tearDown(): void

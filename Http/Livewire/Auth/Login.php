@@ -31,7 +31,7 @@ class Login extends Component
     /**
      * Execute the action.
      *
-     * @return RedirectResponse|null
+     * @return RedirectResponse|void
      */
     public function authenticate()
     {

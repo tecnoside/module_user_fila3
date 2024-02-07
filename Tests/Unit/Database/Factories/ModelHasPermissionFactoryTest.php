@@ -21,7 +21,7 @@ final class ModelHasPermissionFactoryTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->modelHasPermissionFactory = new ModelHasPermissionFactory();
+        $this->modelHasPermissionFactory = new ModelHasPermissionFactory;
     }
 
     protected function tearDown(): void

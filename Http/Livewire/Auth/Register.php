@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\User\Http\Livewire\Auth;
 
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 use Modules\User\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\RedirectResponse;
 use Modules\Xot\Services\FileService;
+use Illuminate\Auth\Events\Registered;
 
 class Register extends Component
 {
@@ -28,15 +29,8 @@ class Register extends Component
     /**
      * Execute the action.
      */
-<<<<<<< HEAD
-<<<<<<< HEAD
+    //public function register(): \Livewire\Features\SupportRedirects\Redirector
     public function register(): RedirectResponse
-=======
-    public function register(): \Livewire\Features\SupportRedirects\Redirector
->>>>>>> 0bf7fb40b10d9dcca362acdc76aeaa6bb3c425c5
-=======
-    public function register(): RedirectResponse
->>>>>>> ce0d04d (Check & fix styling)
     {
         $this->validate([
             'name' => ['required'],

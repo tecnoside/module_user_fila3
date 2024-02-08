@@ -21,7 +21,7 @@ final class ProviderNotConfiguredTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->providerNotConfigured = new ProviderNotConfigured;
+        $this->providerNotConfigured = new ProviderNotConfigured();
     }
 
     protected function tearDown(): void

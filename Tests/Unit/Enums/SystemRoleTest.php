@@ -21,7 +21,7 @@ final class SystemRoleTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->systemRole = new SystemRole();
+        $this->systemRole = new SystemRole;
     }
 
     protected function tearDown(): void

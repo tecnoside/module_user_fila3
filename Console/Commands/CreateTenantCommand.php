@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace Modules\User\Console\Commands;
 
-use Modules\Xot\Datas\XotData;
 use Illuminate\Console\Command;
+
 use function Laravel\Prompts\text;
 
+use Modules\Xot\Datas\XotData;
 
 class CreateTenantCommand extends Command
 {
@@ -30,19 +31,18 @@ class CreateTenantCommand extends Command
      */
     public function handle()
     {
-        $modelClass=XotData::make()->getTenantClass();
+        $modelClass = XotData::make()->getTenantClass();
 
         $name = text(
             label: 'What is name of tenant?',
             placeholder: 'E.g. Tabacchi belli',
-            //default: $user?->name,
-            //hint: 'This will be displayed on your profile.'
+            // default: $user?->name,
+            // hint: 'This will be displayed on your profile.'
         );
 
         $modelClass::create([
-            'name'=>$name,
+            'name' => $name,
         ]);
-
 
         $map = function ($row) {
             $result = $row->toArray();

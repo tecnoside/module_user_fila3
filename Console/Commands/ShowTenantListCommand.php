@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\User\Console\Commands;
 
-use Modules\Xot\Datas\XotData;
 use Illuminate\Console\Command;
-
+use Modules\Xot\Datas\XotData;
 
 class ShowTenantListCommand extends Command
 {
@@ -29,8 +28,7 @@ class ShowTenantListCommand extends Command
      */
     public function handle()
     {
-        $modelClass=XotData::make()->getTenantClass();
-
+        $modelClass = XotData::make()->getTenantClass();
 
         $map = function ($row) {
             $result = $row->toArray();

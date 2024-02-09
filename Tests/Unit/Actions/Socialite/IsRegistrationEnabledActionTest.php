@@ -21,7 +21,7 @@ final class IsRegistrationEnabledActionTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->isRegistrationEnabledAction = new IsRegistrationEnabledAction;
+        $this->isRegistrationEnabledAction = new IsRegistrationEnabledAction();
     }
 
     protected function tearDown(): void

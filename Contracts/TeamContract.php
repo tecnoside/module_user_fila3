@@ -95,8 +95,6 @@ interface TeamContract extends ModelContract
     */
     /**
      * Get a fresh instance of the batch represented by this ID.
-     *
-     * @return self
      */
-    public function fresh();
+    public function fresh(): self;
 }

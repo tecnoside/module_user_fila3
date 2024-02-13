@@ -19,10 +19,8 @@ class GetGuardAction
 
     /**
      * Execute the action.
-     *
-     * @return StatefulGuard|Guard
      */
-    public function execute()
+    public function execute(): StatefulGuard|Guard
     {
         Assert::string($guard = config('filament.auth.guard'));
 

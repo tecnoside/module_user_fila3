@@ -33,10 +33,8 @@ class Reset extends Component
 
     /**
      * Undocumented function.
-     *
-     * @return void|RedirectResponse
      */
-    public function resetPassword()
+    public function resetPassword(): null|RedirectResponse
     {
         $this->validate([
             'token' => 'required',
@@ -50,7 +48,7 @@ class Reset extends Component
                 'email' => $this->email,
                 'password' => $this->password,
             ],
-            function ($user, $password) {
+            function ($user, $password): void {
                 $user->password = Hash::make($password);
 
                 $user->setRememberToken(Str::random(60));
@@ -66,7 +64,7 @@ class Reset extends Component
         /* @phpstan-ignore-next-line */
         Assert::string($response_lang = trans($response));
 
-        if (Password::PASSWORD_RESET === $response) {
+        if ($response === Password::PASSWORD_RESET) {
             session()->flash($response_lang);
 
             return redirect(route('home'));
@@ -77,22 +75,10 @@ class Reset extends Component
 
     /**
      * Get the broker to be used during password reset.
-     *
-     * @return \Illuminate\Contracts\Auth\PasswordBroker
      */
-    public function broker()
+    public function broker(): \Illuminate\Contracts\Auth\PasswordBroker
     {
         return Password::broker();
-    }
-
-    /**
-     * Get the guard to be used during password reset.
-     *
-     * @return \Illuminate\Contracts\Auth\StatefulGuard
-     */
-    protected function guard()
-    {
-        return Auth::guard();
     }
 
     public function render(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
@@ -103,5 +89,13 @@ class Reset extends Component
 
         return view('livewire.auth.passwords.reset')
             ->extends('layouts.auth');
+    }
+
+    /**
+     * Get the guard to be used during password reset.
+     */
+    protected function guard(): \Illuminate\Contracts\Auth\StatefulGuard
+    {
+        return Auth::guard();
     }
 }

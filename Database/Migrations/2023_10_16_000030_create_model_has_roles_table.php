@@ -18,7 +18,7 @@ class CreateModelHasRolesTable extends XotBaseMigration
     {
         // -- CREATE --
         $this->tableCreate(
-            function (Blueprint $table): void {
+            static function (Blueprint $table): void {
                 $table->id();
                 $table->unsignedBigInteger('role_id');
                 $table->uuidMorphs('model');

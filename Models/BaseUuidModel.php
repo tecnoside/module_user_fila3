@@ -27,32 +27,21 @@ abstract class BaseUuidModel extends Model
      * Indicates whether attributes are snake cased on arrays.
      *
      * @see https://laravel-news.com/6-eloquent-secrets
-     *
-     * @var bool
      */
-    public static $snakeAttributes = true;
+    public static bool $snakeAttributes = true;
 
-    /**
-     * @var bool
-     */
-    public $incrementing = false;
+    public bool $incrementing = false;
 
-    /**
-     * @var bool
-     */
-    public $timestamps = true;
+    public bool $timestamps = true;
 
     protected $perPage = 30;
 
-    /**
-     * @var string
-     */
-    protected $connection = 'user';
+    protected string $connection = 'user';
 
     /**
      * @var array<string, string>
      */
-    protected $casts = [
+    protected array $casts = [
         'id' => 'string',
         'published_at' => 'datetime',
         'created_at' => 'datetime',
@@ -66,33 +55,26 @@ abstract class BaseUuidModel extends Model
      *
      * @var array<int, string>
      */
-    protected $appends = [];
+    protected array $appends = [];
 
-    /**
-     * @var string
-     */
-    protected $primaryKey = 'id';
+    protected string $primaryKey = 'id';
 
     /**
      * Undocumented variable.
-     *
-     * @var string
      */
-    protected $keyType = 'string';
+    protected string $keyType = 'string';
 
     /**
      * @var array<int, string>
      */
-    protected $hidden = [
+    protected array $hidden = [
         // 'password'
     ];
 
     /**
      * Create a new factory instance for the model.
-     *
-     * @return Factory
      */
-    protected static function newFactory()
+    protected static function newFactory(): Factory
     {
         return FactoryService::newFactory(static::class);
     }

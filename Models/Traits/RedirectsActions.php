@@ -12,12 +12,8 @@ trait RedirectsActions
 {
     /**
      * Get the redirect response for the given action.
-     *
-     * @param object $action
-     *
-     * @return RedirectResponse|Response|Redirector
      */
-    public function redirectPath($action)
+    public function redirectPath(object $action): RedirectResponse|Response|Redirector
     {
         if (method_exists($action, 'redirectTo')) {
             $response = $action->redirectTo();

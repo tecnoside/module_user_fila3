@@ -9,11 +9,8 @@ declare(strict_types=1);
 namespace Modules\User\Datas;
 
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
-use Modules\Egea\Models\Synchronization;
 use Spatie\LaravelData\Data;
-use Webmozart\Assert\Assert;
 
 /**
  * Undocumented class.
@@ -72,12 +69,12 @@ class DeviceData extends Data
 
     public function getSynchronizationId(string $apiName): string
     {
-        if (null !== $this->synchronizationId) {
+        if ($this->synchronizationId !== null) {
             return $this->synchronizationId;
         }
 
         $synchronizationClass = config('morph_map.synchronization');
-        if (null == $synchronizationClass) {
+        if ($synchronizationClass === null) {
             $synchronizationClass = '\Modules\Egea\Models\Synchronization';
         }
 

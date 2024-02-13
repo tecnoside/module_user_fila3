@@ -117,7 +117,7 @@ class Team extends BaseModel implements TeamContract
      */
     public function hasUserWithEmail(string $email): bool
     {
-        return $this->allUsers()->contains(fn ($user): bool => $user->email === $email);
+        return $this->allUsers()->contains(static fn ($user): bool => $user->email === $email);
     }
 
     /**

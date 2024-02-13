@@ -15,18 +15,13 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Notifications\DatabaseNotificationCollection;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
-use Modules\Egea\Models\MobileDevice;
-use Modules\Egea\Models\MobileDeviceUser;
-use Modules\EWall\Models\Profile;
 use Modules\Notify\Models\Notification;
 use Modules\User\Database\Factories\UserFactory;
 use Modules\User\Models\Traits\HasTeams;
@@ -126,12 +121,9 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
     use Notifiable;
     use Traits\HasTenants;
 
-    /**
-     * @var string
-     */
-    protected $connection = 'user';
-
     public $incrementing = false;
+
+    protected string $connection = 'user';
 
     protected $primaryKey = 'id';
 
@@ -142,7 +134,7 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
      *
      * @var array<int, string>
      */
-    protected $fillable = [
+    protected array $fillable = [
         'name',
         'first_name',
         'last_name',
@@ -158,7 +150,7 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
      *
      * @var array<int, string>
      */
-    protected $hidden = [
+    protected array $hidden = [
         'password',
         'remember_token',
         'two_factor_recovery_codes',
@@ -170,7 +162,7 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
      *
      * @var array<string, string>
      */
-    protected $casts = [
+    protected array $casts = [
         'id' => 'string',
         'email_verified_at' => 'datetime',
         // 'password' => 'hashed', //Call to undefined cast [hashed] on column [password] in model [Modules\User\Models\User].
@@ -190,7 +182,7 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
      *
      * @var array<int, string>
      */
-    protected $appends = [
+    protected array $appends = [
         // 'profile_photo_url',
     ];
 
@@ -220,7 +212,7 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
     public function canAccessPanel(Panel $panel): bool
     {
         // $panel->default('admin');
-        if ('admin' !== $panel->getId()) {
+        if ($panel->getId() !== 'admin') {
             $role = $panel->getId();
             /*
             $xot = XotData::make();
@@ -264,13 +256,20 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
     // ---------------------
     /**
      * Get the entity's notifications.
-     *
-     * @return MorphMany
      */
-    public function notifications()
+    public function notifications(): MorphMany
     {
         // return $this->morphMany(DatabaseNotification::class, 'notifiable')->latest();
         return $this->morphMany(Notification::class, 'notifiable')->latest();
+    }
+
+    public function getFullNameAttribute(?string $value): ?string
+    {
+        if ($value !== null) {
+            return $value;
+        }
+
+        return $this->first_name.' '.$this->last_name;
     }
 
     /**
@@ -279,14 +278,5 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
     protected static function newFactory(): Factory
     {
         return UserFactory::new();
-    }
-
-    public function getFullNameAttribute(?string $value): ?string
-    {
-        if (null != $value) {
-            return $value;
-        }
-
-        return $this->first_name.' '.$this->last_name;
     }
 }

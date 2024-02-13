@@ -36,10 +36,8 @@ class Change extends Component
 
     /**
      * Update the authenticated user's current team.
-     *
-     * @return Application|RedirectResponse|Redirector
      */
-    public function switchTeam(int $teamId)
+    public function switchTeam(int $teamId): Application|RedirectResponse|Redirector
     {
         $teamClass = $this->xot->getTeamClass();
         $team = $teamClass::findOrFail($teamId);
@@ -68,7 +66,7 @@ class Change extends Component
         $view_params = [
             'view' => $view,
         ];
-        if ([] === $this->teams) {
+        if ($this->teams === []) {
             $view = 'ui::livewire.empty';
         }
 

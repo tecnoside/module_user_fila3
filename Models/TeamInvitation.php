@@ -38,17 +38,14 @@ use Modules\Xot\Datas\XotData;
  */
 class TeamInvitation extends BaseModel
 {
-    /**
-     * @var string
-     */
-    protected $connection = 'user';
+    protected string $connection = 'user';
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
-    protected $fillable = [
+    protected array $fillable = [
         'email',
         'role',
     ];

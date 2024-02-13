@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use App\Listeners\GenerateSitemap;
 
-/* @var $container \Illuminate\Container\Container */
-/* @var $events \TightenCo\Jigsaw\Events\EventBus */
+/** @var \Illuminate\Container\Container $container */
+/** @var \TightenCo\Jigsaw\Events\EventBus $events */
 
 $events->afterBuild(GenerateSitemap::class);

@@ -36,7 +36,7 @@ class DomainsRelationManager extends RelationManager
             ->columns(
                 [
                     Tables\Columns\TextColumn::make('domain')->label('Subdomain'),
-                    Tables\Columns\TextColumn::make('full-domain')->label('Full Domain')->getStateUsing(fn ($record) => \Str::of($record->domain)->append('.')->append(request()->getHost())),
+                    Tables\Columns\TextColumn::make('full-domain')->label('Full Domain')->getStateUsing(static fn ($record) => \Str::of($record->domain)->append('.')->append(request()->getHost())),
                 ]
             )
             ->filters(

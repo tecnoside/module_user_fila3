@@ -8,30 +8,28 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Support\Str;
 use Livewire\Component;
 use Modules\Tenant\Services\TenantService;
-
 use function Safe\file_get_contents;
-
 use Webmozart\Assert\Assert;
 
 class PrivacyPolicy extends Component
 {
     /**
      * Show the terms of service for the application.
-     *
-     * @return View
      */
-    public function render()
+    public function render(): View
     {
         Assert::string($policyFile = TenantService::localizedMarkdownPath('policy.md'), 'wip');
 
         $view = view(
-            'filament-jet::livewire.privacy-policy', [
+            'filament-jet::livewire.privacy-policy',
+            [
                 'terms' => Str::markdown(file_get_contents($policyFile)),
             ]
         );
 
         $view->layout(
-            'filament::components.layouts.base', [
+            'filament::components.layouts.base',
+            [
                 'title' => __('filament-jet::registration.privacy_policy'),
             ]
         );

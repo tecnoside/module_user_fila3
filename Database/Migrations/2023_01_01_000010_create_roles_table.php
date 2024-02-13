@@ -18,7 +18,7 @@ class CreateRolesTable extends XotBaseMigration
     {
         // -- CREATE --
         $this->tableCreate(
-            function (Blueprint $table): void {
+            static function (Blueprint $table): void {
                 $table->id();
                 $table->foreignId('team_id')->nullable()->index();
                 $table->string('name');

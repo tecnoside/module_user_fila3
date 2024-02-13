@@ -13,10 +13,8 @@ class TermsOfService extends Component
 
     /**
      * Show the terms of service for the application.
-     *
-     * @return View
      */
-    public function render()
+    public function render(): View
     {
         // $this->accepted = true;
         $text = null;
@@ -25,7 +23,8 @@ class TermsOfService extends Component
         }
 
         return view(
-            'user::livewire.terms-of-service', [
+            'user::livewire.terms-of-service',
+            [
                 'text' => $text,
             ]
         );

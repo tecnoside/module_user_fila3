@@ -7,7 +7,6 @@ namespace Modules\User\Filament\Resources\TenantResource\Pages;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Database\Eloquent\Model;
 use Modules\User\Filament\Resources\TenantResource;
-use Modules\User\Models\Tenant;
 
 class CreateTenant extends CreateRecord
 {
@@ -18,10 +17,7 @@ class CreateTenant extends CreateRecord
      */
     protected function handleRecordCreation(array $data): Model
     {
-        $record = parent::handleRecordCreation(collect($data)->except('domain')->toArray());
-        // $record->domains()->create(['domain' => collect($data)->get('domain')]);
-
-        return $record;
+        return parent::handleRecordCreation(collect($data)->except('domain')->toArray());
     }
 
     // :30    Method Modules\User\Filament\Resources\TenantResource\Pages\CreateTenant::createTenantRecord() is unused.

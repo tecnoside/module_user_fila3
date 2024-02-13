@@ -31,10 +31,8 @@ interface ModelContract
 
     /**
      * Save the model to the database.
-     *
-     * @return bool
      */
-    public function save(array $options = []);
+    public function save(array $options = []): bool;
 
     /*
          * Save a new model and return the instance. Allow mass-assignment.
@@ -48,14 +46,12 @@ interface ModelContract
      *
      * @return array
      */
-    public function toArray();
+    public function toArray(): array;
 
     /**
      * Get the value of the model's primary key.
-     *
-     * @return string|int
      */
-    public function getKey();
+    public function getKey(): string|int;
 
     /*
      * Add a basic where clause to the query.

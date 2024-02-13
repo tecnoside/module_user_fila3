@@ -10,8 +10,7 @@ use Modules\Xot\Services\FileService;
 
 class Confirm extends Component
 {
-    /** @var string */
-    public $password = '';
+    public string $password = '';
 
     public function confirm(): RedirectResponse
     {

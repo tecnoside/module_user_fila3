@@ -51,6 +51,11 @@ class UserServiceProvider extends XotBaseServiceProvider
         $this->registerSocialite();
     }
 
+    protected function registerEventListener(): void
+    {
+        $this->app->register(EventServiceProvider::class);
+    }
+
     private function registerPassport(): void
     {
         Passport::usePersonalAccessClientModel(OauthPersonalAccessClient::class);
@@ -76,10 +81,5 @@ class UserServiceProvider extends XotBaseServiceProvider
     private function registerSocialite(): void
     {
         $this->app->register(ServiceProvider::class);
-    }
-
-    protected function registerEventListener(): void
-    {
-        $this->app->register(EventServiceProvider::class);
     }
 }

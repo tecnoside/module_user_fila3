@@ -14,7 +14,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
 use Modules\Xot\Datas\XotData;
-use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role as SpatieRole;
 
 /**
@@ -71,10 +70,7 @@ class Role extends SpatieRole
 
     final public const ROLE_USER = 3;
 
-    /**
-     * @var string
-     */
-    protected $connection = 'user';
+    protected string $connection = 'user';
 
     // protected $fillable=['id','']
 

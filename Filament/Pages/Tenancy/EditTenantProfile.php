@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Pages\Tenancy;
 
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Pages\Tenancy\EditTenantProfile as BaseEditTenantProfile;
 use Modules\Xot\Datas\XotData;

@@ -66,7 +66,7 @@ class Device extends BaseModel
      *
      * @var array<string>
      */
-    protected $fillable = [
+    protected array $fillable = [
         'id',
         'mobile_id', // mattia
         'languages', // ['en-us', 'en'] ;
@@ -85,7 +85,7 @@ class Device extends BaseModel
     /**
      * @var array<string, string>
      */
-    protected $casts = [
+    protected array $casts = [
         // 'id' => 'string',
         // 'locales' => 'array',
         'languages' => 'array',

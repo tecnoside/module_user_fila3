@@ -26,7 +26,7 @@ use Modules\User\Http\Livewire\Auth\Register;
 
 Route::middleware('guest')
     ->namespace('\Modules\User\Http\Livewire\Auth')
-    ->group(static function () {
+    ->group(static function (): void {
         Route::get('login', 'Login')
             ->name('login');
 
@@ -36,7 +36,7 @@ Route::middleware('guest')
 
 Route::middleware([])
     ->namespace('\Modules\User\Http\Livewire\Auth')
-    ->group(static function () {
+    ->group(static function (): void {
         Route::get('password/reset', Modules\User\Http\Livewire\Auth\Passwords\Email::class)
             ->name('password.request');
 
@@ -46,7 +46,7 @@ Route::middleware([])
 
 Route::middleware('auth')
     ->namespace('\Modules\User\Http\Livewire\Auth')
-    ->group(static function () {
+    ->group(static function (): void {
         Route::get('email/verify', Modules\User\Http\Livewire\Auth\Verify::class)
             ->middleware('throttle:6,1')
             ->name('verification.notice');
@@ -57,7 +57,7 @@ Route::middleware('auth')
 
 Route::middleware('auth')
 // ->namespace('\Modules\User\Http\Livewire\Auth')
-    ->group(static function () {
+    ->group(static function (): void {
         Route::get('email/verify/{id}/{hash}', EmailVerificationController::class)
             ->middleware('signed')
             ->name('verification.verify');

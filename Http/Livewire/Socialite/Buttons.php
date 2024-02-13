@@ -18,7 +18,8 @@ class Buttons extends Component
         }
 
         return view(
-            'user::livewire.socialite.buttons', [
+            'user::livewire.socialite.buttons',
+            [
                 'providers' => $providers,
             ]
         );

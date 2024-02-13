@@ -10,18 +10,14 @@ use Modules\Xot\Services\FileService;
 
 class Email extends Component
 {
-    /** @var string */
-    public $email;
+    public string $email;
 
-    /** @var string|null */
-    public $emailSentMessage; // was false
+    public ?string $emailSentMessage = null; // was false
 
     /**
      * Undocumented function.
-     *
-     * @return void
      */
-    public function sendResetPasswordLink()
+    public function sendResetPasswordLink(): void
     {
         $this->validate([
             'email' => ['required', 'email'],
@@ -29,7 +25,7 @@ class Email extends Component
 
         $response = $this->broker()->sendResetLink(['email' => $this->email]);
 
-        if (Password::RESET_LINK_SENT === $response) {
+        if ($response === Password::RESET_LINK_SENT) {
             $this->emailSentMessage = trans($response);
 
             return;
@@ -40,10 +36,8 @@ class Email extends Component
 
     /**
      * Get the broker to be used during password reset.
-     *
-     * @return \Illuminate\Contracts\Auth\PasswordBroker
      */
-    public function broker()
+    public function broker(): \Illuminate\Contracts\Auth\PasswordBroker
     {
         return Password::broker();
     }

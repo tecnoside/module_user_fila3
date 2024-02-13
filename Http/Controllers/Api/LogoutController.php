@@ -6,9 +6,7 @@ namespace Modules\User\Http\Controllers\Api;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Modules\Egea\Models\MobileDeviceUser;
 use Modules\User\Actions\Socialite\LogoutUserAction;
-use Modules\User\Models\OauthRefreshToken;
 use Modules\Xot\Datas\JsonResponseData;
 use Modules\Xot\Http\Controllers\XotBaseController;
 use Webmozart\Assert\Assert;

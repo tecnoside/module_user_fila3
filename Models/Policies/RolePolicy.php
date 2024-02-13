@@ -27,8 +27,6 @@ class RolePolicy extends UserBasePolicy
 
     /**
      * Determine whether the user can create models.
-     *
-     * @return true
      */
     public function create(User $user): bool
     {

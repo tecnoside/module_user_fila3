@@ -14,7 +14,7 @@ class CreateOauthAuthCodesTable extends XotBaseMigration
         $xot = XotData::make();
         $userClass = $xot->getUserClass();
         $this->tableCreate(
-            function (Blueprint $table) use ($userClass): void {
+            static function (Blueprint $table) use ($userClass): void {
                 $table->string('id', 100)->primary();
                 // $table->unsignedBigInteger('user_id')->index();
                 // $table->unsignedBigInteger('client_id');

@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 /**
  * @see https://github.com/savannabits/filament-tenancy-starter/blob/main/app/Filament/Resources/TenantResource.php
  */
@@ -14,7 +15,6 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Modules\User\Filament\Resources\TenantResource\Pages;
 use Modules\User\Filament\Resources\TenantResource\RelationManagers;
-use Modules\User\Models\Tenant;
 use Modules\Xot\Datas\XotData;
 
 class TenantResource extends Resource
@@ -43,7 +43,7 @@ class TenantResource extends Resource
                                 ->required()
                                 ->unique(table: 'tenants', ignoreRecord: true)->live(onBlur: true)
                                 ->afterStateUpdated(
-                                    function (Forms\Set $set, $state) {
+                                    static function (Forms\Set $set, $state): void {
                                         $set('id', $slug = \Str::of($state)->slug('_')->toString());
                                         $set('domain', \Str::of($state)->slug()->toString());
                                     }
@@ -51,12 +51,12 @@ class TenantResource extends Resource
                             Forms\Components\TextInput::make('id')
                                 ->label('Unique ID')
                                 ->required()
-                                ->disabled(fn ($context) => 'create' !== $context)
+                                ->disabled(static fn ($context) => $context !== 'create')
                                 ->unique(table: 'tenants', ignoreRecord: true),
                             Forms\Components\TextInput::make('domain')
                                 ->label('Sub-Domain')
                                 ->required()
-                                ->visible(fn ($context) => 'create' === $context)
+                                ->visible(static fn ($context) => $context === 'create')
                                 ->unique(table: 'domains', ignoreRecord: true)
                                 ->prefix('https://')
                                 ->suffix('.'.request()->getHost()),

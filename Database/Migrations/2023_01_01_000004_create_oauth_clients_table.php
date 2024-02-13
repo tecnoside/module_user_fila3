@@ -11,7 +11,7 @@ class CreateOauthClientsTable extends XotBaseMigration
     public function up(): void
     {
         $this->tableCreate(
-            function (Blueprint $table): void {
+            static function (Blueprint $table): void {
                 // $table->bigIncrements('id');
                 $table->uuid('id')->primary();
                 // $table->unsignedBigInteger('user_id')->nullable()->index();
@@ -30,7 +30,7 @@ class CreateOauthClientsTable extends XotBaseMigration
         // -- UPDATE --
         $this->tableUpdate(
             function (Blueprint $table): void {
-                if ('string' !== $this->getColumnType('id')) {
+                if ($this->getColumnType('id') !== 'string') {
                     $table->uuid('id')->change();  // is  just primary
                 }
 

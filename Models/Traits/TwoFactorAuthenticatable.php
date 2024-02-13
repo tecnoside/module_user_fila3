@@ -43,12 +43,10 @@ trait TwoFactorAuthenticatable
 
     /**
      * Get the user's two factor authentication recovery codes.
-     *
-     * @return array
      */
     public function recoveryCodes(): array
     {
-        if ($this->two_factor_recovery_codes === null) {
+        if (null === $this->two_factor_recovery_codes) {
             throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
 
@@ -60,11 +58,11 @@ trait TwoFactorAuthenticatable
      */
     public function replaceRecoveryCode(string $code): void
     {
-        if ($code === null) {
+        if (null === $code) {
             throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
 
-        if ($this->two_factor_recovery_codes === null) {
+        if (null === $this->two_factor_recovery_codes) {
             throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
 
@@ -102,11 +100,11 @@ trait TwoFactorAuthenticatable
     public function twoFactorQrCodeUrl(): string
     {
         $app_name = (string) config('app.name');
-        if ($app_name === null) {
+        if (null === $app_name) {
             throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
 
-        if ($this->two_factor_secret === null) {
+        if (null === $this->two_factor_secret) {
             throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
 

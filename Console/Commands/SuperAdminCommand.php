@@ -6,7 +6,9 @@ namespace Modules\User\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
+
 use function Laravel\Prompts\text;
+
 use Modules\User\Models\Role;
 use Modules\User\Models\User;
 use Nwidart\Modules\Facades\Module;

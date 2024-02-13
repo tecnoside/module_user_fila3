@@ -16,7 +16,6 @@ use Modules\User\Models\User;
 
 class ChangePasswordAction extends Action
 {
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -52,6 +51,7 @@ class ChangePasswordAction extends Action
         // ->visible(fn (User $record): bool => $record->role_id === Role::ROLE_ADMINISTRATOR)
         // ->modalSubmitActionLabel(trans('camping::operation.actions.save'))
     }
+
     public static function getDefaultName(): ?string
     {
         return 'changePassword';

@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace Modules\User\Console\Commands;
 
 use Illuminate\Console\Command;
+
 use function Laravel\Prompts\text;
+
 use Modules\Xot\Datas\XotData;
 
 class CreateTenantCommand extends Command

@@ -31,9 +31,6 @@ abstract class BasePivot extends Pivot
     protected string $connection = 'user';
 
     /**
-     * @var array
-     */
-    /**
      * The accessors to append to the model's array form.
      *
      * @var array<int, string>

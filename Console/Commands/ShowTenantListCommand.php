@@ -26,7 +26,7 @@ class ShowTenantListCommand extends Command
     /**
      * Execute the console command.
      */
-    public function handle():void
+    public function handle(): void
     {
         $modelClass = XotData::make()->getTenantClass();
 

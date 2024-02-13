@@ -4,23 +4,20 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Resources;
 
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
-use Filament\Tables\Table;
-use Modules\Xot\Datas\XotData;
-use Filament\Resources\Resource;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Forms\Components\TextInput;
-use Modules\Xot\Filament\Resources\XotBaseResource;
+use Filament\Tables\Table;
 use Modules\User\Filament\Resources\RoleResource\Pages;
 use Modules\User\Filament\Resources\RoleResource\RelationManagers;
+use Modules\Xot\Filament\Resources\XotBaseResource;
 
 class RoleResource extends XotBaseResource
 {
     // ////
     protected static ?string $navigationIcon = 'heroicon-o-shield-check';
-
 
     public static function form(Form $form): Form
     {

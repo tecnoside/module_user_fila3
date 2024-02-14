@@ -11,8 +11,9 @@ class ShowTenantListCommand extends Command
 {
     /**
      * The name and signature of the console command.
-     */
-    protected string $signature = 'user:tenant-list';
+    * @var string
+ */
+    protected $signature = 'user:tenant-list';
 
     /**
      * The console command description.

@@ -41,8 +41,7 @@ use Modules\Xot\Contracts\UserContract;
  *
  * @mixin \Eloquent
  */
-interface TeamContract extends ModelContract
-{
+interface TeamContract extends ModelContract {
     /**
      * Get the owner of the team.
      */
@@ -93,8 +92,13 @@ interface TeamContract extends ModelContract
 
     public function profilePhotoDisk(): string;
     */
+
     /**
-     * Get a fresh instance of the batch represented by this ID.
+     * Reload a fresh model instance from the database.
+     *
+     * @param array|string $with
+     *
+     * @return static|null
      */
-    public function fresh(): self;
+    public function fresh($with = []);
 }

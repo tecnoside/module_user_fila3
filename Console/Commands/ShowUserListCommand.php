@@ -18,8 +18,9 @@ class ShowUserListCommand extends Command
 
     /**
      * The console command description.
+     *
      * @var string
-*/
+     */
     protected $description = 'Visualizza lista users';
 
     /**

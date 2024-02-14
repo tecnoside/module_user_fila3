@@ -71,6 +71,7 @@ class Reset extends Component
         }
 
         $this->addError('email', $response_lang);
+
         return null;
     }
 

@@ -43,9 +43,9 @@ abstract class BaseUuidModel extends Model
     public $timestamps = true;
 
     /**
-* @var int
-*/
-protected $perPage = 30;
+     * @var int
+     */
+    protected $perPage = 30;
 
     /**
      * @var string
@@ -78,8 +78,9 @@ protected $perPage = 30;
 
     /**
      * Undocumented variable.
-    * @var string
-    */
+     *
+     * @var string
+     */
     protected $keyType = 'string';
 
     /**

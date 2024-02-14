@@ -14,11 +14,6 @@ class RecoveryCodeReplaced
     /**
      * Create a new event instance.
      *
-<<<<<<< HEAD
-=======
-     * @param  Authenticatable  $user
-     * @param  string  $code
->>>>>>> 2a8c136 (Dusting)
      * @return void
      */
     public function __construct(public Authenticatable $user, public string $code)

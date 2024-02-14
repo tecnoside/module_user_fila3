@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\User\Traits;
+namespace Modules\User\Models\Traits;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
@@ -12,14 +12,8 @@ trait RedirectsActions
 {
     /**
      * Get the redirect response for the given action.
-     *
-<<<<<<< HEAD
-=======
-     * @param  object  $action
->>>>>>> 2a8c136 (Dusting)
-     * @return RedirectResponse|Response|Redirector
      */
-    public function redirectPath(object $action): Response
+    public function redirectPath(object $action): RedirectResponse|Response|Redirector
     {
         if (method_exists($action, 'redirectTo')) {
             $response = $action->redirectTo();

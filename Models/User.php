@@ -123,7 +123,10 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
 
     public $incrementing = false;
 
-    protected string $connection = 'user';
+    /**
+* @var string
+*/
+protected $connection = 'user';
 
     protected $primaryKey = 'id';
 

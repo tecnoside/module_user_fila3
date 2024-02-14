@@ -39,7 +39,10 @@ use Laravel\Passport\Token as PassportToken;
  */
 class OauthAccessToken extends PassportToken
 {
-    protected string $connection = 'user';
+    /**
+* @var string
+*/
+protected $connection = 'user';
 
     // protected $fillable = ['id', 'user_id', 'client_id', 'name', 'scopes', 'revoked', 'expires_at'];
 }

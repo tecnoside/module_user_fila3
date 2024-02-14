@@ -18,8 +18,9 @@ class EventServiceProvider extends ServiceProvider
      * The event to listener mappings for the application.
      *
      * @var array<string, array<int, string>>
-     */
-    protected array $listen = [
+     * @var array
+*/
+    protected $listen = [
         SocialiteWasCalled::class => [
             Auth0ExtendSocialite::class.'@handle',
         ],

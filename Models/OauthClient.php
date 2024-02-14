@@ -52,7 +52,10 @@ class OauthClient extends PassportClient
 {
     use HasUuids;
 
-    protected string $connection = 'user';
+    /**
+* @var string
+*/
+protected $connection = 'user';
 
     // class OauthClient extends BaseModel {
     /*

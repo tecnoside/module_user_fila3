@@ -45,9 +45,9 @@ class Membership extends BasePivot
      * Indicates if the IDs are auto-incrementing.
      */
     /**
-* @var bool
-*/
-public $incrementing = true;
+     * @var bool
+     */
+    public $incrementing = true;
 
     /**
      * @var string

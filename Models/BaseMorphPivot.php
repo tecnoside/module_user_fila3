@@ -21,13 +21,13 @@ abstract class BaseMorphPivot extends MorphPivot
     // use HasUuids;
 
     /**
-* @var bool
-*/
-public $incrementing = true;
+     * @var bool
+     */
+    public $incrementing = true;
 
     /**
-* @var bool
-*/
+     * @var bool
+     */
     public $timestamps = true;
 
     /**
@@ -56,9 +56,9 @@ public $incrementing = true;
     protected $appends = [];
 
     /**
-* @var string
-*/
-protected $primaryKey = 'id';
+     * @var string
+     */
+    protected $primaryKey = 'id';
 
     /**
      * @var array<int, string>

@@ -52,8 +52,10 @@ interface ModelContract
 
     /**
      * Get the value of the model's primary key.
+     *
+     * @return mixed
      */
-    public function getKey(): string|int;
+    public function getKey();
 
     /*
      * Add a basic where clause to the query.

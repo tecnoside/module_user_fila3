@@ -25,10 +25,12 @@ class Login extends Component
         'password' => ['required'],
     ];
 
-    /**
+   /**
      * Execute the action.
+     *
+     * @return RedirectResponse|void
      */
-    public function authenticate(): RedirectResponse|null
+    public function authenticate()
     {
         $this->validate();
 

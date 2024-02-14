@@ -21,7 +21,7 @@ final class InviteTeamMemberTestTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->inviteTeamMemberTest = new InviteTeamMemberTest();
+        $this->inviteTeamMemberTest = new InviteTeamMemberTest;
     }
 
     protected function tearDown(): void

@@ -44,7 +44,7 @@ use Spatie\Permission\Traits\HasRoles;
  * @property int|null                                               $owned_teams_count
  * @property Collection<int, \Modules\User\Models\Permission>       $permissions
  * @property int|null                                               $permissions_count
- * @property \Modules\Camping\Models\Profile|null                   $profile
+ * @property \Modules\Xot\Contracts\ProfileContract|null            $profile
  * @property Collection<int, \Modules\User\Models\Role>             $roles
  * @property int|null                                               $roles_count
  * @property Collection<int, \Modules\User\Models\Team>             $teams

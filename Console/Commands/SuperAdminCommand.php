@@ -27,7 +27,7 @@ class SuperAdminCommand extends Command
     /**
      * The console command description.
      *
-     * @var string
+     * @var string|null
      */
     protected $description = 'Assign super-admin to user';
 

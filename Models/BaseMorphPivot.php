@@ -36,12 +36,12 @@ abstract class BaseMorphPivot extends MorphPivot
      * @see https://laravel-news.com/6-eloquent-secrets
      *
      * @var bool
-     *           public static $snakeAttributes = true;
      */
+    public static $snakeAttributes = true;
+
     /**
-     * Undocumented variable.
-     */
-    /**
+     * The number of models to return for pagination.
+     *
      * @var int
      */
     protected $perPage = 30;

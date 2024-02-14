@@ -55,9 +55,12 @@ class Membership extends BasePivot
     protected $connection = 'user';
 
     /**
-     * The table associated with the pivot model.
+     * @var string
      */
+
     /**
+     * The table associated with the model.
+     *
      * @var string
      */
     protected $table = 'team_user';

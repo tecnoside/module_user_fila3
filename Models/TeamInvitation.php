@@ -39,9 +39,15 @@ use Modules\Xot\Datas\XotData;
 class TeamInvitation extends BaseModel
 {
     /**
+<<<<<<< HEAD
      * @var string
      */
     protected $connection = 'user';
+=======
+* @var string
+*/
+protected $connection = 'user';
+>>>>>>> e5fa841 (rebase 16/17)
 
     /**
      * The attributes that are mass assignable.

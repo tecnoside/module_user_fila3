@@ -34,9 +34,15 @@ use Laravel\Passport\PersonalAccessClient as PassportPersonalAccessClient;
 class OauthPersonalAccessClient extends PassportPersonalAccessClient
 {
     /**
+<<<<<<< HEAD
      * @var string
      */
     protected $connection = 'user';
+=======
+* @var string
+*/
+protected $connection = 'user';
+>>>>>>> e5fa841 (rebase 16/17)
 
     // protected $fillable = ['id', 'client_id'];
 }

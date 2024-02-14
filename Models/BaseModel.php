@@ -43,9 +43,15 @@ abstract class BaseModel extends Model
     protected $perPage = 30;
 
     /**
+<<<<<<< HEAD
      * @var string
      */
     protected $connection = 'user';
+=======
+* @var string
+*/
+protected $connection = 'user';
+>>>>>>> e5fa841 (rebase 16/17)
 
     /**
      * @var array<string, string>

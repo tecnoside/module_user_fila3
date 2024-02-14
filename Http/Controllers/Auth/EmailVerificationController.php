@@ -16,10 +16,14 @@ class EmailVerificationController extends Controller
     {
         $user = Auth::user();
 <<<<<<< HEAD
+<<<<<<< HEAD
         if (null === $user) {
 =======
         if (null == $user) {
 >>>>>>> 9dfee01 (Check & fix styling)
+=======
+        if (null == $user) {
+>>>>>>> 7c9d02f (Check & fix styling)
             throw new AuthorizationException();
         }
         // if (! hash_equals((string) $id, (string) Auth::user()->getKey())) {

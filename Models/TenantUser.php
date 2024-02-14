@@ -57,7 +57,7 @@ class TenantUser extends BasePivot
      *
      * @var array<int, string>
      */
-    protected array $fillable = [
+    protected $fillable = [
         'tenant_id',
         'user_id',
     ];
@@ -67,7 +67,7 @@ class TenantUser extends BasePivot
      *
      * @var array<string, string>
      */
-    protected array $casts = [
+    protected $casts = [
         'id' => 'string',
         // 'email_verified_at' => 'datetime',
         // 'password' => 'hashed', //Call to undefined cast [hashed] on column [password] in model [Modules\User\Models\User].

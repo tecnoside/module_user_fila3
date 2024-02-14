@@ -42,7 +42,7 @@ abstract class BaseModel extends Model
     /**
      * @var array<string, string>
      */
-    protected array $casts = [
+    protected $casts = [
         'published_at' => 'datetime',
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
@@ -55,14 +55,14 @@ abstract class BaseModel extends Model
      *
      * @var array<int, string>
      */
-    protected array $appends = [];
+    protected $appends = [];
 
     protected string $primaryKey = 'id';
 
     /**
      * @var array<int, string>
      */
-    protected array $hidden = [
+    protected $hidden = [
         // 'password'
     ];
 

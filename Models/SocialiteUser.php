@@ -54,7 +54,7 @@ class SocialiteUser extends BaseModel
     /**
      * @var array<int, string>
      */
-    protected array $fillable = [
+    protected $fillable = [
         // 'id',
         'user_id',
         'provider',

@@ -42,14 +42,14 @@ class ModelHasRole extends BaseMorphPivot
     /**
      * @var array<int, string>
      */
-    protected array $fillable = ['id', 'role_id', 'model_type', 'model_id', 'team_id'];
+    protected $fillable = ['id', 'role_id', 'model_type', 'model_id', 'team_id'];
 
     /**
      * Undocumented variable.
      *
      * @var array<string, string>
      */
-    protected array $casts = [
+    protected $casts = [
         //    'id' => 'string',
     ];
 }

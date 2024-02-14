@@ -44,7 +44,7 @@ abstract class BaseUuidModel extends Model
     /**
      * @var array<string, string>
      */
-    protected array $casts = [
+    protected $casts = [
         'id' => 'string',
         'published_at' => 'datetime',
         'created_at' => 'datetime',
@@ -58,7 +58,7 @@ abstract class BaseUuidModel extends Model
      *
      * @var array<int, string>
      */
-    protected array $appends = [];
+    protected $appends = [];
 
     protected string $primaryKey = 'id';
 
@@ -70,7 +70,7 @@ abstract class BaseUuidModel extends Model
     /**
      * @var array<int, string>
      */
-    protected array $hidden = [
+    protected $hidden = [
         // 'password'
     ];
 

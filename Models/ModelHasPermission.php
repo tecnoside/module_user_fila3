@@ -44,5 +44,5 @@ class ModelHasPermission extends BaseMorphPivot
      *
      * @psalm-var list{'permission_id', 'model_type', 'model_id'}
      */
-    protected array $fillable = ['permission_id', 'model_type', 'model_id'];
+    protected $fillable = ['permission_id', 'model_type', 'model_id'];
 }

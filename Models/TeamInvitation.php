@@ -48,7 +48,7 @@ class TeamInvitation extends BaseModel
      *
      * @var array<int, string>
      */
-    protected array $fillable = [
+    protected $fillable = [
         'email',
         'role',
     ];

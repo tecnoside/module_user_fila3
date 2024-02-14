@@ -40,5 +40,5 @@ class RoleHasPermission extends BasePivot
      *
      * @psalm-var list{'permission_id', 'role_id'}
      */
-    protected array $fillable = ['permission_id', 'role_id'];
+    protected $fillable = ['permission_id', 'role_id'];
 }

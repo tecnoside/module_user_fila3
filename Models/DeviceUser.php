@@ -50,7 +50,7 @@ class DeviceUser extends BasePivot
      *
      * @var array<string>
      */
-    protected array $fillable = [
+    protected $fillable = [
         'id',
         'device_id',
         'user_id',
@@ -63,7 +63,7 @@ class DeviceUser extends BasePivot
     /**
      * @var array<string, string>
      */
-    protected array $casts = [
+    protected $casts = [
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
         'deleted_at' => 'datetime',

@@ -137,7 +137,7 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
      *
      * @var array<int, string>
      */
-    protected array $fillable = [
+    protected $fillable = [
         'name',
         'first_name',
         'last_name',
@@ -153,7 +153,7 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
      *
      * @var array<int, string>
      */
-    protected array $hidden = [
+    protected $hidden = [
         'password',
         'remember_token',
         'two_factor_recovery_codes',
@@ -165,7 +165,7 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
      *
      * @var array<string, string>
      */
-    protected array $casts = [
+    protected $casts = [
         'id' => 'string',
         'email_verified_at' => 'datetime',
         // 'password' => 'hashed', //Call to undefined cast [hashed] on column [password] in model [Modules\User\Models\User].
@@ -185,11 +185,11 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
      *
      * @var array<int, string>
      */
-    protected array $appends = [
+    protected $appends = [
         // 'profile_photo_url',
     ];
 
-    public function canAccessFilament(?Panel $panel = null): bool
+    public function canAccessFilament(Panel $panel = null): bool
     {
         // return $this->role_id === Role::ROLE_ADMINISTRATOR;
         return true;

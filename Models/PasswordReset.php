@@ -42,7 +42,7 @@ class PasswordReset extends BaseModel
      *
      * @psalm-var list{'email', 'token', 'created_at', 'updated_at', 'created_by', 'updated_by'}
      */
-    protected array $fillable = ['email', 'token', 'created_at', 'updated_at', 'created_by', 'updated_by'];
+    protected $fillable = ['email', 'token', 'created_at', 'updated_at', 'created_by', 'updated_by'];
 
     protected string $table = 'password_resets';
 }// end class PasswordReset

@@ -18,7 +18,7 @@ class CreateModelHasPermissionsTable extends XotBaseMigration
     {
         // -- CREATE --
         $this->tableCreate(
-            function (Blueprint $table): void {
+            static function (Blueprint $table): void {
                 $table->id();
                 $table->unsignedBigInteger('permission_id');
                 $table->uuidMorphs('model');

@@ -11,29 +11,24 @@ use Modules\Xot\Services\FileService;
 
 class Login extends Component
 {
-    /** @var string */
-    public $email = '';
+    public string $email = '';
 
-    /** @var string */
-    public $password = '';
+    public string $password = '';
 
-    /** @var bool */
-    public $remember = false;
+    public bool $remember = false;
 
     /**
      * @var array<string, array<int, string>>
      */
-    protected $rules = [
+    protected array $rules = [
         'email' => ['required', 'email'],
         'password' => ['required'],
     ];
 
     /**
      * Execute the action.
-     *
-     * @return RedirectResponse|void
      */
-    public function authenticate()
+    public function authenticate(): RedirectResponse|null
     {
         $this->validate();
 

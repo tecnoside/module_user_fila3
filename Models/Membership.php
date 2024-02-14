@@ -43,20 +43,13 @@ class Membership extends BasePivot
 {
     /**
      * Indicates if the IDs are auto-incrementing.
-     *
-     * @var bool
      */
-    public $incrementing = true;
+    public bool $incrementing = true;
 
-    /**
-     * @var string
-     */
-    protected $connection = 'user';
+    protected string $connection = 'user';
 
     /**
      * The table associated with the pivot model.
-     *
-     * @var string
      */
-    protected $table = 'team_user';
+    protected string $table = 'team_user';
 }

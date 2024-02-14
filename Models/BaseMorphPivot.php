@@ -20,15 +20,9 @@ abstract class BaseMorphPivot extends MorphPivot
 
     // use HasUuids;
 
-    /**
-     * @var bool
-     */
-    public $incrementing = true;
+    public bool $incrementing = true;
 
-    /**
-     * @var bool
-     */
-    public $timestamps = true;
+    public bool $timestamps = true;
 
     /**
      * Indicates whether attributes are snake cased on arrays.
@@ -40,32 +34,24 @@ abstract class BaseMorphPivot extends MorphPivot
      */
     /**
      * Undocumented variable.
-     *
-     * @var int
      */
-    protected $perPage = 30;
+    protected int $perPage = 30;
 
-    /**
-     * @var string
-     */
-    protected $connection = 'user';
+    protected string $connection = 'user';
 
     /**
      * The accessors to append to the model's array form.
      *
      * @var array<int, string>
      */
-    protected $appends = [];
+    protected array $appends = [];
 
-    /**
-     * @var string
-     */
-    protected $primaryKey = 'id';
+    protected string $primaryKey = 'id';
 
     /**
      * @var array<int, string>
      */
-    protected $fillable = [
+    protected array $fillable = [
         'id',
         'post_id', 'post_type',
         'related_type',
@@ -76,16 +62,14 @@ abstract class BaseMorphPivot extends MorphPivot
     /**
      * @var array<string, string>
      */
-    protected $casts = ['created_at' => 'datetime', 'updated_at' => 'datetime',
+    protected array $casts = ['created_at' => 'datetime', 'updated_at' => 'datetime',
         'deleted_at' => 'datetime',
     ];
 
     /**
      * Create a new factory instance for the model.
-     *
-     * @return Factory
      */
-    protected static function newFactory()
+    protected static function newFactory(): Factory
     {
         return FactoryService::newFactory(static::class);
     }

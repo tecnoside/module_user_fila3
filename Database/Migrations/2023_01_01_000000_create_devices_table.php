@@ -14,7 +14,7 @@ class CreateDevicesTable extends XotBaseMigration
     {
         // -- CREATE --
         $this->tableCreate(
-            function (Blueprint $table): void {
+            static function (Blueprint $table): void {
                 $table->id('id');
                 $table->string('mobile_id')->nullable()->index();
                 // 'id',

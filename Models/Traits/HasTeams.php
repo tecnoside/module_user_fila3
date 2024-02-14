@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
-use Laravel\Passport\HasApiTokens;
 use Modules\User\Contracts\TeamContract;
 use Modules\User\Models\Membership;
 use Modules\User\Models\Role;
@@ -171,10 +170,8 @@ trait HasTeams
 
     /**
      * Get the role that the user has on the team.
-     *
-     * @return Role|null
      */
-    public function teamRole(TeamContract $teamContract)
+    public function teamRole(TeamContract $teamContract): ?Role
     {
         // if ($this->ownsTeam($team)) {
         //    return new OwnerRole();
@@ -202,12 +199,10 @@ trait HasTeams
         $membership = $user
             ->getRelationValue('membership'); // ? FilamentJet::findRole($role) : null;
 
-        /**
+        /*
          * @var Role|null $role
          */
-        $role = $membership->role;
-
-        return $role;
+        return $membership->role;
     }
 
     /**

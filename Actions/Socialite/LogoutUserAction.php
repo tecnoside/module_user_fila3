@@ -9,7 +9,6 @@ declare(strict_types=1);
 namespace Modules\User\Actions\Socialite;
 
 // use DutchCodingCompany\FilamentSocialite\FilamentSocialite;
-use Modules\Egea\Models\MobileDeviceUser;
 use Modules\User\Models\DeviceUser;
 use Modules\User\Models\OauthRefreshToken;
 use Modules\Xot\Contracts\UserContract;

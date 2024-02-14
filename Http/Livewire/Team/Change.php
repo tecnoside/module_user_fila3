@@ -36,10 +36,8 @@ class Change extends Component
 
     /**
      * Update the authenticated user's current team.
-     *
-     * @return Application|RedirectResponse|Redirector
      */
-    public function switchTeam(int $teamId)
+    public function switchTeam(int $teamId): Application|RedirectResponse|Redirector
     {
         $teamClass = $this->xot->getTeamClass();
         $team = $teamClass::findOrFail($teamId);

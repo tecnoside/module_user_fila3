@@ -11,17 +11,13 @@ class ShowUserListCommand extends Command
 {
     /**
      * The name and signature of the console command.
-     *
-     * @var string
      */
-    protected $signature = 'user:user-list';
+    protected string $signature = 'user:user-list';
 
     /**
      * The console command description.
-     *
-     * @var string
      */
-    protected $description = 'Visualizza lista users';
+    protected string $description = 'Visualizza lista users';
 
     /**
      * Execute the console command.
@@ -30,12 +26,8 @@ class ShowUserListCommand extends Command
     {
         $modelClass = XotData::make()->getUserClass();
 
-        $map = function ($row) {
-            $result = $row->toArray();
-
-            // $result['price'] = Money::toString($result['price']);
-
-            return $result;
+        $map = static function ($row) {
+            return $row->toArray();
         };
 
         $rows = $modelClass::get()->map($map);

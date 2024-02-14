@@ -18,7 +18,7 @@ trait IsProfileTrait
     // ---- mutators
     public function getFullNameAttribute(?string $value): ?string
     {
-        if (null != $value) {
+        if (null !== $value) {
             return $value;
         }
 

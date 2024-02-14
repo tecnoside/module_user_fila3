@@ -46,10 +46,8 @@ interface HasTeamsContract
 
     /**
      * Get the current team of the user's context.
-     *
-     * @return BelongsTo
      */
-    public function currentTeam();
+    public function currentTeam(): BelongsTo;
 
     /**
      * Switch the user's context to the given team.
@@ -58,10 +56,8 @@ interface HasTeamsContract
 
     /**
      * Get all of the teams the user owns or belongs to.
-     *
-     * @return \Illuminate\Support\Collection
      */
-    public function allTeams();
+    public function allTeams(): \Illuminate\Support\Collection;
 
     /**
      * Get all of the teams the user owns.
@@ -90,10 +86,8 @@ interface HasTeamsContract
 
     /**
      * Get the role that the user has on the team.
-     *
-     * @return Role|null
      */
-    public function teamRole(TeamContract $teamContract);
+    public function teamRole(TeamContract $teamContract): ?Role;
 
     /**
      * Determine if the user has the given role on the given team.

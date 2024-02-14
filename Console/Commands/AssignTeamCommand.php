@@ -18,17 +18,13 @@ class AssignTeamCommand extends Command
 {
     /**
      * The name and signature of the console command.
-     *
-     * @var string
      */
-    protected $name = 'user:assign-team';
+    protected string $name = 'user:assign-team';
 
     /**
      * The console command description.
-     *
-     * @var string
      */
-    protected $description = 'Assign a team to user';
+    protected string $description = 'Assign a team to user';
 
     /**
      * Create a new command instance.

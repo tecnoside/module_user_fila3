@@ -14,12 +14,9 @@ class RecoveryCodeReplaced
     /**
      * Create a new event instance.
      *
-     * @param Authenticatable $user
-     * @param string          $code
-     *
      * @return void
      */
-    public function __construct(public $user, public $code)
+    public function __construct(public Authenticatable $user, public string $code)
     {
     }
 }

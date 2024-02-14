@@ -11,17 +11,13 @@ class ShowTenantListCommand extends Command
 {
     /**
      * The name and signature of the console command.
-     *
-     * @var string
      */
-    protected $signature = 'user:tenant-list';
+    protected string $signature = 'user:tenant-list';
 
     /**
      * The console command description.
-     *
-     * @var string
      */
-    protected $description = 'Visualizza lista tenant';
+    protected string $description = 'Visualizza lista tenant';
 
     /**
      * Execute the console command.
@@ -30,12 +26,8 @@ class ShowTenantListCommand extends Command
     {
         $modelClass = XotData::make()->getTenantClass();
 
-        $map = function ($row) {
-            $result = $row->toArray();
-
-            // $result['price'] = Money::toString($result['price']);
-
-            return $result;
+        $map = static function ($row) {
+            return $row->toArray();
         };
 
         $rows = $modelClass::get()->map($map);

@@ -14,17 +14,13 @@ class CreateTenantCommand extends Command
 {
     /**
      * The name and signature of the console command.
-     *
-     * @var string
      */
-    protected $signature = 'user:tenant-create';
+    protected string $signature = 'user:tenant-create';
 
     /**
      * The console command description.
-     *
-     * @var string
      */
-    protected $description = 'Create a tenant';
+    protected string $description = 'Create a tenant';
 
     /**
      * Execute the console command.
@@ -44,12 +40,8 @@ class CreateTenantCommand extends Command
             'name' => $name,
         ]);
 
-        $map = function ($row) {
-            $result = $row->toArray();
-
-            // $result['price'] = Money::toString($result['price']);
-
-            return $result;
+        $map = static function ($row) {
+            return $row->toArray();
         };
 
         $rows = $modelClass::get()->map($map);

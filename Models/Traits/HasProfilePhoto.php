@@ -20,7 +20,8 @@ trait HasProfilePhoto
     public function updateProfilePhoto(?string $photo): void
     {
         tap(
-            $this->profile_photo_path, function ($previous) use ($photo): void {
+            $this->profile_photo_path,
+            function ($previous) use ($photo): void {
                 $this->forceFill(
                     [
                         'profile_photo_path' => $photo,

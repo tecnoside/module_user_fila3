@@ -9,14 +9,11 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Resources;
 
-use Closure;
-use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
-use Filament\Notifications\Notification;
 use Filament\Resources\RelationManagers\RelationGroup;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\DeleteBulkAction;
@@ -25,12 +22,10 @@ use Filament\Tables\Columns\BooleanColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Enums\FiltersLayout;
 use Filament\Tables\Filters\Filter;
-use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\HtmlString;
-use Illuminate\Validation\Rules\Password;
 use Modules\User\Filament\Actions\ChangePasswordAction;
 use Modules\User\Filament\Resources\UserResource\Pages\CreateUser;
 use Modules\User\Filament\Resources\UserResource\Pages\EditUser;
@@ -42,7 +37,6 @@ use Modules\User\Filament\Resources\UserResource\RelationManagers\RolesRelationM
 use Modules\User\Filament\Resources\UserResource\RelationManagers\TeamsRelationManager;
 use Modules\User\Filament\Resources\UserResource\RelationManagers\TokensRelationManager;
 use Modules\User\Filament\Resources\UserResource\Widgets\UserOverview;
-use Modules\User\Models\Role;
 use Modules\User\Models\User;
 use Modules\Xot\Filament\Resources\XotBaseResource;
 
@@ -137,7 +131,7 @@ class UserResource extends XotBaseResource
             'right' => Section::make(
                 [
                     'created_at' => Placeholder::make('created_at')
-                        ->content(fn ($record) => $record?->created_at?->diffForHumans() ?? new HtmlString('&mdash;')),
+                        ->content(static fn ($record) => $record?->created_at?->diffForHumans() ?? new HtmlString('&mdash;')),
                 ]
             )->columnSpan(4),
         ];
@@ -189,11 +183,12 @@ class UserResource extends XotBaseResource
                 */
                     Filter::make('verified')
                         ->label(trans('verified'))
-                        ->query(fn (Builder $query): Builder => $query->whereNotNull('email_verified_at')),
+                        ->query(static fn (Builder $query): Builder => $query->whereNotNull('email_verified_at')),
                     Filter::make('unverified')
                         ->label(trans('unverified'))
-                        ->query(fn (Builder $query): Builder => $query->whereNull('email_verified_at')),
-                ], layout: FiltersLayout::AboveContent
+                        ->query(static fn (Builder $query): Builder => $query->whereNull('email_verified_at')),
+                ],
+                layout: FiltersLayout::AboveContent
             )
             ->actions(
                 [
@@ -226,7 +221,7 @@ class UserResource extends XotBaseResource
                     Action::make('deactivate')
                         ->color('danger')
                         ->icon('heroicon-o-trash')
-                        ->action(fn (User $user) => $user->delete())
+                        ->action(static fn (User $user) => $user->delete())
                     // ->visible(fn (User $record): bool => $record->role_id === Role::ROLE_ADMINISTRATOR)
                     ,
                 ]
@@ -266,7 +261,8 @@ class UserResource extends XotBaseResource
             RolesRelationManager::class,
             // ---PASSPORT
             RelationGroup::make(
-                'Passport', [
+                'Passport',
+                [
                     TokensRelationManager::class,
                     ClientsRelationManager::class,
                 ]

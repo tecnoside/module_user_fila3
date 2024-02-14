@@ -21,10 +21,8 @@ class LoginUserAction
 
     /**
      * Execute the action.
-     *
-     * @return RedirectResponse
      */
-    public function execute(SocialiteUser $socialiteUser)
+    public function execute(SocialiteUser $socialiteUser): RedirectResponse
     {
         Assert::notNull($user = $socialiteUser->user);
         Filament::auth()->login($user);

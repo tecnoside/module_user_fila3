@@ -17,7 +17,7 @@ class CreateUsersTable extends XotBaseMigration
     {
         // -- CREATE --
         $this->tableCreate(
-            function (Blueprint $table): void {
+            static function (Blueprint $table): void {
                 $table->uuid('id')->primary();
                 $table->string('name');
                 // questo e' il nickname non nome

@@ -71,7 +71,7 @@ class RolesRelationManager extends RelationManager
                         //     return $data;
                         // }),
                         ->form(
-                            fn (AttachAction $action): array => [
+                            static fn (AttachAction $action): array => [
                                 $action->getRecordSelect(),
                                 // Forms\Components\TextInput::make('team_id')->required(),
                                 Select::make('team_id')

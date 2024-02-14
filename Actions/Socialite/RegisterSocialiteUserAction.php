@@ -23,10 +23,8 @@ class RegisterSocialiteUserAction
 
     /**
      * Execute the action.
-     *
-     * @return RedirectResponse
      */
-    public function execute(string $provider, SocialiteUserContract $oauthUser, UserContract $user)
+    public function execute(string $provider, SocialiteUserContract $oauthUser, UserContract $user): RedirectResponse
     {
         // Create a new SocialiteUser instance
         $socialiteUser = app(CreateSocialiteUserAction::class)

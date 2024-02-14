@@ -14,7 +14,7 @@ class CreateTeamUserTable extends XotBaseMigration
     {
         // -- CREATE --
         $this->tableCreate(
-            function (Blueprint $table): void {
+            static function (Blueprint $table): void {
                 // $table->uuid('id')->primary();
                 $table->id();
                 $table->foreignId('team_id');

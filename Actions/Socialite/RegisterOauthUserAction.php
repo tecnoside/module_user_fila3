@@ -10,9 +10,7 @@ namespace Modules\User\Actions\Socialite;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Laravel\Socialite\Contracts\User as SocialiteUserContract;
-use Laravel\Socialite\Facades\Socialite;
 use Modules\User\Events\Registered;
-use Modules\User\Models\User;
 use Spatie\QueueableAction\QueueableAction;
 
 class RegisterOauthUserAction
@@ -22,7 +20,7 @@ class RegisterOauthUserAction
     public function execute(string $provider, SocialiteUserContract $oauthUser): RedirectResponse
     {
         $socialiteUser = DB::transaction(
-            function () use ($provider, $oauthUser) {
+            static function () use ($provider, $oauthUser) {
                 // Create a user
                 $user = app(CreateUserAction::class)
                     ->execute(

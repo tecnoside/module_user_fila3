@@ -16,7 +16,7 @@ class CreateDeviceUserTable extends XotBaseMigration
     {
         // -- CREATE --
         $this->tableCreate(
-            function (Blueprint $table): void {
+            static function (Blueprint $table): void {
                 $table->id('id');
                 $table->foreignIdFor(Device::class, 'device_id')->index();
                 $table->foreignIdFor(User::class, 'user_id')->index();

@@ -18,7 +18,8 @@ class RegisterController extends XotBaseController
     public function __invoke(Request $request): JsonResponse
     {
         $validator = Validator::make(
-            $request->all(), [
+            $request->all(),
+            [
                 'name' => 'required',
                 'email' => 'required|email',
                 'password' => 'required',

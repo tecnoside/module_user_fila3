@@ -18,7 +18,11 @@ trait IsProfileTrait
     // ---- mutators
     public function getFullNameAttribute(?string $value): ?string
     {
+<<<<<<< HEAD
         if (null !== $value) {
+=======
+        if ($value != null) {
+>>>>>>> 2a8c136 (Dusting)
             return $value;
         }
 

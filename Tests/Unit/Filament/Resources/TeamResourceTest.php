@@ -21,7 +21,7 @@ final class TeamResourceTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->teamResource = new TeamResource();
+        $this->teamResource = new TeamResource;
     }
 
     protected function tearDown(): void

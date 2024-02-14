@@ -51,12 +51,20 @@ class TenantResource extends Resource
                             Forms\Components\TextInput::make('id')
                                 ->label('Unique ID')
                                 ->required()
+<<<<<<< HEAD
                                 ->disabled(static fn ($context) => 'create' !== $context)
+=======
+                                ->disabled(fn ($context) => $context !== 'create')
+>>>>>>> 2a8c136 (Dusting)
                                 ->unique(table: 'tenants', ignoreRecord: true),
                             Forms\Components\TextInput::make('domain')
                                 ->label('Sub-Domain')
                                 ->required()
+<<<<<<< HEAD
                                 ->visible(static fn ($context) => 'create' === $context)
+=======
+                                ->visible(fn ($context) => $context === 'create')
+>>>>>>> 2a8c136 (Dusting)
                                 ->unique(table: 'domains', ignoreRecord: true)
                                 ->prefix('https://')
                                 ->suffix('.'.request()->getHost()),

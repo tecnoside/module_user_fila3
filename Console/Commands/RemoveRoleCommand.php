@@ -5,13 +5,20 @@ declare(strict_types=1);
 namespace Modules\User\Console\Commands;
 
 use Illuminate\Console\Command;
+<<<<<<< HEAD
 
 use function Laravel\Prompts\multiselect;
 use function Laravel\Prompts\text;
 
+=======
+use Modules\User\Models\Role;
+>>>>>>> 2a8c136 (Dusting)
 use Modules\User\Models\User;
 use Symfony\Component\Console\Input\InputOption;
 use Webmozart\Assert\Assert;
+
+use function Laravel\Prompts\multiselect;
+use function Laravel\Prompts\text;
 
 class RemoveRoleCommand extends Command
 {

@@ -20,7 +20,7 @@ final class CreateOauthAccessTokensTableTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->createOauthAccessTokensTable = new \CreateOauthAccessTokensTable;
+        $this->createOauthAccessTokensTable = new \CreateOauthAccessTokensTable();
     }
 
     protected function tearDown(): void

@@ -31,8 +31,11 @@ interface ModelContract
 
     /**
      * Save the model to the database.
+     *
+     * @param  array  $options
+     * @return bool
      */
-    public function save(array $options = []): bool;
+    public function save(array $options = []);
 
     /*
          * Save a new model and return the instance. Allow mass-assignment.

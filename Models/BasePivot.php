@@ -28,7 +28,10 @@ abstract class BasePivot extends Pivot
 
     // use Searchable;
 
-    protected string $connection = 'user';
+    /**
+* @var string
+*/
+protected $connection = 'user';
 
     /**
      * The accessors to append to the model's array form.

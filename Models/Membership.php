@@ -46,7 +46,10 @@ class Membership extends BasePivot
      */
     public bool $incrementing = true;
 
-    protected string $connection = 'user';
+    /**
+* @var string
+*/
+protected $connection = 'user';
 
     /**
      * The table associated with the pivot model.

@@ -37,7 +37,10 @@ abstract class BaseMorphPivot extends MorphPivot
      */
     protected int $perPage = 30;
 
-    protected string $connection = 'user';
+    /**
+* @var string
+*/
+protected $connection = 'user';
 
     /**
      * The accessors to append to the model's array form.

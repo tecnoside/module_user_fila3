@@ -94,7 +94,10 @@ interface TeamContract extends ModelContract
     public function profilePhotoDisk(): string;
     */
     /**
-     * Get a fresh instance of the batch represented by this ID.
+     * Reload a fresh model instance from the database.
+     *
+     * @param  array|string  $with
+     * @return static|null
      */
-    public function fresh(): self;
+    public function fresh($with = []);
 }

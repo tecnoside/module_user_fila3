@@ -27,7 +27,7 @@ class AssignModuleCommand extends Command
 
     /**
      * The console command description.
-     * 
+     *
      * @var string
      */
     protected $description = 'Assign a module to user';

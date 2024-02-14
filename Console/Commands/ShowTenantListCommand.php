@@ -18,7 +18,7 @@ class ShowTenantListCommand extends Command
 
     /**
      * The console command description.
-     * 
+     *
      * @var string
      */
     protected $description = 'Visualizza lista tenant';

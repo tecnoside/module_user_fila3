@@ -20,9 +20,15 @@ abstract class BaseMorphPivot extends MorphPivot
 
     // use HasUuids;
 
-    public bool $incrementing = true;
+    /**
+* @var bool
+*/
+public $incrementing = true;
 
-    public bool $timestamps = true;
+    /**
+* @var bool
+*/
+    public $timestamps = true;
 
     /**
      * Indicates whether attributes are snake cased on arrays.
@@ -49,7 +55,10 @@ abstract class BaseMorphPivot extends MorphPivot
      */
     protected $appends = [];
 
-    protected string $primaryKey = 'id';
+    /**
+* @var string
+*/
+protected $primaryKey = 'id';
 
     /**
      * @var array<int, string>

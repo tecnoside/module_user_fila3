@@ -11,8 +11,9 @@ class ShowUserListCommand extends Command
 {
     /**
      * The name and signature of the console command.
-     */
-    protected string $signature = 'user:user-list';
+    * @var string
+ */
+    protected $signature = 'user:user-list';
 
     /**
      * The console command description.

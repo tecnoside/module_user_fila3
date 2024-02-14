@@ -21,7 +21,7 @@ final class LoginUserActionTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->loginUserAction = new LoginUserAction;
+        $this->loginUserAction = new LoginUserAction();
     }
 
     protected function tearDown(): void

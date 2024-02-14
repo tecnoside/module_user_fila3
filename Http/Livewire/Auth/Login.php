@@ -25,7 +25,7 @@ class Login extends Component
         'password' => ['required'],
     ];
 
-   /**
+    /**
      * Execute the action.
      *
      * @return RedirectResponse|void

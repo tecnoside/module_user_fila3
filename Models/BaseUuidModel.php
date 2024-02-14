@@ -92,8 +92,10 @@ abstract class BaseUuidModel extends Model
 
     /**
      * Create a new factory instance for the model.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory<static>
      */
-    protected static function newFactory(): Factory
+    protected static function newFactory()
     {
         return FactoryService::newFactory(static::class);
     }

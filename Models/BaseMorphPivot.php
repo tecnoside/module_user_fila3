@@ -43,6 +43,12 @@ abstract class BaseMorphPivot extends MorphPivot
      *
      * @var int
      */
+<<<<<<< HEAD
+=======
+    /**
+     * @var int
+     */
+>>>>>>> 9265a1b6892b4aca6d1b66e51335bf40ddf5f6fb
     protected $perPage = 30;
 
     /**

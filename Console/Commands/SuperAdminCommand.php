@@ -18,7 +18,11 @@ use Webmozart\Assert\Assert;
 class SuperAdminCommand extends Command
 {
     /**
+<<<<<<< HEAD
      * The console command name.
+=======
+     * The name and signature of the console command.
+>>>>>>> 9265a1b6892b4aca6d1b66e51335bf40ddf5f6fb
      *
      * @var string
      */
@@ -27,7 +31,11 @@ class SuperAdminCommand extends Command
     /**
      * The console command description.
      *
+<<<<<<< HEAD
      * @var string|null
+=======
+     * @var string
+>>>>>>> 9265a1b6892b4aca6d1b66e51335bf40ddf5f6fb
      */
     protected $description = 'Assign super-admin to user';
 

@@ -48,15 +48,27 @@ class Membership extends BasePivot
      * @var bool
      */
     public $incrementing = true;
+<<<<<<< HEAD
+=======
 
     /**
      * @var string
      */
     protected $connection = 'user';
+>>>>>>> 9265a1b6892b4aca6d1b66e51335bf40ddf5f6fb
+
+    /**
+     * @var string
+     */
+<<<<<<< HEAD
+    protected $connection = 'user';
 
     /**
      * The table associated with the model.
      *
+=======
+    /**
+>>>>>>> 9265a1b6892b4aca6d1b66e51335bf40ddf5f6fb
      * @var string
      */
     protected $table = 'team_user';

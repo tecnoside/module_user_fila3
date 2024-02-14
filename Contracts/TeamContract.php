@@ -93,6 +93,7 @@ interface TeamContract extends ModelContract
 
     public function profilePhotoDisk(): string;
     */
+
     /**
      * Reload a fresh model instance from the database.
      *

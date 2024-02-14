@@ -43,6 +43,7 @@ interface ModelContract
 
         public function forceCreate(array $attributes);
         */
+
     /**
      * Convert the model instance to an array.
      *
@@ -52,6 +53,8 @@ interface ModelContract
 
     /**
      * Get the value of the model's primary key.
+     *
+     * @return string|int
      */
     public function getKey();
 

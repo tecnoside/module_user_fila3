@@ -37,7 +37,7 @@ class Login extends Component
         if (! Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
             $this->addError('email', trans('auth.failed'));
 
-            return;
+            return null;
         }
 
         return redirect()->intended(route('home'));

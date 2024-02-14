@@ -13,7 +13,8 @@ namespace Modules\User\Contracts;
  *
  * @mixin \Eloquent
  */
-interface ModelContract {
+interface ModelContract
+{
     /**
      * Duplicate the instance and unset all the loaded relations.
      *

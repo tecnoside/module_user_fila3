@@ -20,7 +20,7 @@ final class CreateSocialiteUserTableTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->createSocialiteUserTable = new \CreateSocialiteUserTable();
+        $this->createSocialiteUserTable = new \CreateSocialiteUserTable;
     }
 
     protected function tearDown(): void

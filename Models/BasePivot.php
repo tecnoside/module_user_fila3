@@ -19,7 +19,6 @@ abstract class BasePivot extends Pivot
      * Indicates whether attributes are snake cased on arrays.
      *
      * @see https://laravel-news.com/6-eloquent-secrets
-<<<<<<< HEAD
      *
      * @var bool
      */
@@ -29,16 +28,6 @@ abstract class BasePivot extends Pivot
      * @var bool
      */
     public $incrementing = true;
-=======
-     * @var bool
-*/
-    public static $snakeAttributes = true;
-
-    /**
-* @var bool
-*/
-public $incrementing = true;
->>>>>>> 02d0929 (up)
 
     protected $perPage = 30;
 
@@ -70,13 +59,7 @@ public $incrementing = true;
      * Undocumented variable.
      */
     /**
-<<<<<<< HEAD
      * @var string
      */
     protected $primaryKey = 'id';
-=======
-* @var string
-*/
-protected $primaryKey = 'id';
->>>>>>> 02d0929 (up)
 }

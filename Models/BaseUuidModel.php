@@ -27,7 +27,6 @@ abstract class BaseUuidModel extends Model
      * Indicates whether attributes are snake cased on arrays.
      *
      * @see https://laravel-news.com/6-eloquent-secrets
-<<<<<<< HEAD
      *
      * @var bool
      */
@@ -41,20 +40,6 @@ abstract class BaseUuidModel extends Model
     /**
      * @var bool
      */
-=======
-     * @var bool
-*/
-    public static $snakeAttributes = true;
-
-    /**
-* @var bool
-*/
-public $incrementing = false;
-
-    /**
-* @var bool
-*/
->>>>>>> 02d0929 (up)
     public $timestamps = true;
 
     protected $perPage = 30;
@@ -84,15 +69,9 @@ public $incrementing = false;
     protected $appends = [];
 
     /**
-<<<<<<< HEAD
      * @var string
      */
     protected $primaryKey = 'id';
-=======
-* @var string
-*/
-protected $primaryKey = 'id';
->>>>>>> 02d0929 (up)
 
     /**
      * The "type" of the primary key ID.

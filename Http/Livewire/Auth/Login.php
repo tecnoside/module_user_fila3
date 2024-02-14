@@ -30,11 +30,7 @@ class Login extends Component
      *
      * @return RedirectResponse|void
      */
-<<<<<<< HEAD
-    public function authenticate(): ?RedirectResponse
-=======
     public function authenticate()
->>>>>>> dev
     {
         $this->validate();
 

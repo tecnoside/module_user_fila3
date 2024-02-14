@@ -18,13 +18,15 @@ class AssignTenantCommand extends Command
 {
     /**
      * The name and signature of the console command.
-     */
-    protected string $name = 'user:assign-tenant';
+     * @var string
+*/
+    protected $name = 'user:assign-tenant';
 
     /**
      * The console command description.
-     */
-    protected string $description = 'Assign a tenant to user';
+     * @var string
+*/
+    protected $description = 'Assign a tenant to user';
 
     /**
      * Create a new command instance.

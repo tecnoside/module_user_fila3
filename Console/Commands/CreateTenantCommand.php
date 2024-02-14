@@ -21,8 +21,9 @@ class CreateTenantCommand extends Command
 
     /**
      * The console command description.
-     */
-    protected string $description = 'Create a tenant';
+     * @var string
+*/
+    protected $description = 'Create a tenant';
 
     /**
      * Execute the console command.

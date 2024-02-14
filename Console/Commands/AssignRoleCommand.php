@@ -18,13 +18,15 @@ class AssignRoleCommand extends Command
 {
     /**
      * The name and signature of the console command.
-     */
-    protected string $name = 'user:assign-role';
+     * @var string
+*/
+    protected $name = 'user:assign-role';
 
     /**
      * The console command description.
-     */
-    protected string $description = 'Assign a module to user';
+     * @var string
+*/
+    protected $description = 'Assign a module to user';
 
     /**
      * Create a new command instance.

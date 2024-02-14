@@ -19,13 +19,15 @@ class SuperAdminCommand extends Command
 {
     /**
      * The name and signature of the console command.
-     */
-    protected string $name = 'user:super-admin';
+     * @var string
+*/
+    protected $name = 'user:super-admin';
 
     /**
      * The console command description.
-     */
-    protected string $description = 'Assign super-admin to user';
+     * @var string
+*/
+    protected $description = 'Assign super-admin to user';
 
     /**
      * Create a new command instance.

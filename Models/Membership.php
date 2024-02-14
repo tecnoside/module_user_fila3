@@ -50,15 +50,9 @@ class Membership extends BasePivot
     public $incrementing = true;
 
     /**
-<<<<<<< HEAD
      * @var string
      */
     protected $connection = 'user';
-=======
-* @var string
-*/
-protected $connection = 'user';
->>>>>>> e5fa841 (rebase 16/17)
 
     /**
      * The table associated with the model.

@@ -20,7 +20,7 @@ final class CreateTenantUserTableTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->createTenantUserTable = new \CreateTenantUserTable;
+        $this->createTenantUserTable = new \CreateTenantUserTable();
     }
 
     protected function tearDown(): void

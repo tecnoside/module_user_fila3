@@ -21,7 +21,7 @@ final class GetLoginRedirectRouteActionTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->getLoginRedirectRouteAction = new GetLoginRedirectRouteAction;
+        $this->getLoginRedirectRouteAction = new GetLoginRedirectRouteAction();
     }
 
     protected function tearDown(): void

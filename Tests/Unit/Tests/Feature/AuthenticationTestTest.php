@@ -21,7 +21,7 @@ final class AuthenticationTestTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->authenticationTest = new AuthenticationTest;
+        $this->authenticationTest = new AuthenticationTest();
     }
 
     protected function tearDown(): void

@@ -45,8 +45,10 @@ interface ModelContract
         */
     /**
      * Convert the model instance to an array.
+     *
+     * @return array
      */
-    public function toArray(): array;
+    public function toArray();
 
     /**
      * Get the value of the model's primary key.

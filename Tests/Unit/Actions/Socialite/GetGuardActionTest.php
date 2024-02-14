@@ -21,7 +21,7 @@ final class GetGuardActionTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->getGuardAction = new GetGuardAction;
+        $this->getGuardAction = new GetGuardAction();
     }
 
     protected function tearDown(): void

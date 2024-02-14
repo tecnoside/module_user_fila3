@@ -25,8 +25,8 @@ final class PermissionPolicyTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->permissionPolicy = new PermissionPolicy;
-        $this->user = new User;
+        $this->permissionPolicy = new PermissionPolicy();
+        $this->user = new User();
         $this->app->instance(PermissionPolicy::class, $this->permissionPolicy);
     }
 

@@ -176,7 +176,6 @@ trait HasTeams
         // if ($this->ownsTeam($team)) {
         //    return new OwnerRole();
         // }
-
         $role = null;
 
         if (! $this->belongsToTeam($teamContract)) {

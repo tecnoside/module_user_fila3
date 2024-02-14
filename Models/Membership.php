@@ -58,7 +58,6 @@ class Membership extends BasePivot
      * @var string
      */
 
-
     /**
      * The table associated with the model.
      *

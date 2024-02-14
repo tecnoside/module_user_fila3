@@ -28,7 +28,7 @@ class Login extends Component
     /**
      * Execute the action.
      */
-    public function authenticate(): RedirectResponse|null
+    public function authenticate(): ?RedirectResponse
     {
         $this->validate();
 

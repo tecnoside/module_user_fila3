@@ -199,10 +199,9 @@ trait HasTeams
         $membership = $user
             ->getRelationValue('membership'); // ? FilamentJet::findRole($role) : null;
 
-        // /**
-        //  * @var Role|null $role
-        //  */
-        return $membership->role;
+        return Role::firstOrCreate(
+            ['name' => $membership->role], []
+        );
     }
 
     /**

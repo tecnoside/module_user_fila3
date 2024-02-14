@@ -34,7 +34,7 @@ class Reset extends Component
     /**
      * Undocumented function.
      */
-    public function resetPassword(): ?RedirectResponse
+    public function resetPassword(): RedirectResponse|null
     {
         $this->validate([
             'token' => 'required',
@@ -71,6 +71,8 @@ class Reset extends Component
         }
 
         $this->addError('email', $response_lang);
+
+        return null;
     }
 
     /**

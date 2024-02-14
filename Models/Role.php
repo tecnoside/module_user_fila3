@@ -71,9 +71,15 @@ class Role extends SpatieRole
     final public const ROLE_USER = 3;
 
     /**
+<<<<<<< HEAD
      * @var string
      */
     protected $connection = 'user';
+=======
+* @var string
+*/
+protected $connection = 'user';
+>>>>>>> e5fa841 (rebase 16/17)
 
     // protected $fillable=['id','']
 

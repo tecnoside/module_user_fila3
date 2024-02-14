@@ -13,6 +13,10 @@ trait RedirectsActions
     /**
      * Get the redirect response for the given action.
      *
+<<<<<<< HEAD
+=======
+     * @param  object  $action
+>>>>>>> 2a8c136 (Dusting)
      * @return RedirectResponse|Response|Redirector
      */
     public function redirectPath(object $action): Response

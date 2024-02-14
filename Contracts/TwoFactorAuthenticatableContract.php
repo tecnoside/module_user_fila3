@@ -25,6 +25,12 @@ interface TwoFactorAuthenticatableContract
 
     /**
      * Replace the given recovery code with a new one in the user's stored codes.
+<<<<<<< HEAD
+=======
+     *
+     * @param  string  $code
+     * @return void
+>>>>>>> 2a8c136 (Dusting)
      */
     public function replaceRecoveryCode(string $code): void;
 

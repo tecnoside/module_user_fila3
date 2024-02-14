@@ -20,6 +20,7 @@ class AssignModuleCommand extends Command
 {
     /**
      * The name and signature of the console command.
+     *
      * @var string
      */
     protected $name = 'user:assign-module';

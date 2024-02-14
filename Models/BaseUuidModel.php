@@ -70,7 +70,6 @@ abstract class BaseUuidModel extends Model
      * @var array<int, string>
      */
     protected $appends = [];
-<<<<<<< HEAD
 
     /**
      * @var string
@@ -82,19 +81,6 @@ abstract class BaseUuidModel extends Model
      *
      * @var string
      */
-=======
-
-    /**
-     * @var string
-     */
-    protected $primaryKey = 'id';
-
-    /**
-     * Undocumented variable.
-     *
-     * @var string
-     */
->>>>>>> 9265a1b6892b4aca6d1b66e51335bf40ddf5f6fb
     protected $keyType = 'string';
 
     /**

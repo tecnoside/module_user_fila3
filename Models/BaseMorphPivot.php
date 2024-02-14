@@ -39,9 +39,11 @@ abstract class BaseMorphPivot extends MorphPivot
      *           public static $snakeAttributes = true;
      */
     /**
-     * Undocumented variable.
+     * The number of models to return for pagination.
+     *
+     * @var int
      */
-    protected int $perPage = 30;
+    protected $perPage = 30;
 
     /**
      * @var string

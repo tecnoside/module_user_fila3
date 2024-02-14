@@ -44,5 +44,10 @@ class PasswordReset extends BaseModel
      */
     protected $fillable = ['email', 'token', 'created_at', 'updated_at', 'created_by', 'updated_by'];
 
-    protected string $table = 'password_resets';
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'password_resets';
 }// end class PasswordReset

@@ -74,9 +74,11 @@ abstract class BaseUuidModel extends Model
     protected $primaryKey = 'id';
 
     /**
-     * Undocumented variable.
+     * The "type" of the primary key ID.
+     *
+     * @var string
      */
-    protected string $keyType = 'string';
+    protected $keyType = 'string';
 
     /**
      * @var array<int, string>

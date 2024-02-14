@@ -17,13 +17,17 @@ class RemoveRoleCommand extends Command
 {
     /**
      * The name and signature of the console command.
+     * 
+     * @var string
      */
-    protected string $name = 'user:remove-role';
+    protected $name = 'user:remove-role';
 
     /**
      * The console command description.
+     * 
+     * @var string
      */
-    protected string $description = 'remove a role to user';
+    protected $description = 'remove a role to user';
 
     /**
      * Create a new command instance.

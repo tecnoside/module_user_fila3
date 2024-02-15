@@ -21,7 +21,7 @@ final class TeamTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->team = new Team;
+        $this->team = new Team();
     }
 
     protected function tearDown(): void

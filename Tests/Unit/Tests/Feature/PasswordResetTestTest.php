@@ -21,7 +21,7 @@ final class PasswordResetTestTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->passwordResetTest = new PasswordResetTest;
+        $this->passwordResetTest = new PasswordResetTest();
     }
 
     protected function tearDown(): void

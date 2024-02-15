@@ -21,7 +21,7 @@ final class DomainsRelationManagerTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->domainsRelationManager = new DomainsRelationManager;
+        $this->domainsRelationManager = new DomainsRelationManager();
     }
 
     protected function tearDown(): void

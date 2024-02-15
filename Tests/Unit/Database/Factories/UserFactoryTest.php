@@ -21,7 +21,7 @@ final class UserFactoryTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->userFactory = new UserFactory;
+        $this->userFactory = new UserFactory();
     }
 
     protected function tearDown(): void

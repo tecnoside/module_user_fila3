@@ -21,7 +21,7 @@ final class TeamsRelationManagerTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->teamsRelationManager = new TeamsRelationManager;
+        $this->teamsRelationManager = new TeamsRelationManager();
     }
 
     protected function tearDown(): void

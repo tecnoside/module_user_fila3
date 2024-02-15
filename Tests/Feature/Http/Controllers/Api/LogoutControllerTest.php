@@ -21,7 +21,7 @@ final class LogoutControllerTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->logoutController = new LogoutController;
+        $this->logoutController = new LogoutController();
         $this->app->instance(LogoutController::class, $this->logoutController);
     }
 

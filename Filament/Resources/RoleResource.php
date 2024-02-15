@@ -16,7 +16,6 @@ use Modules\Xot\Filament\Resources\XotBaseResource;
 
 class RoleResource extends XotBaseResource
 {
-    // ////
     protected static ?string $navigationIcon = 'heroicon-o-shield-check';
 
     public static function form(Form $form): Form

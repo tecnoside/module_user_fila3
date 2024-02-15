@@ -266,16 +266,16 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
         return $this->morphMany(Notification::class, 'notifiable')->latest();
     }
 
-public function getFullNameAttribute(?string $value): ?string
-{
-    return $value ?? $this->first_name.' '.$this->last_name;
-}
+    public function getFullNameAttribute(?string $value): ?string
+    {
+        return $value ?? $this->first_name.' '.$this->last_name;
+    }
 
     /**
      * Create a new factory instance for the model.
      *
-     * @return \Illuminate\Database\Eloquent\Factories\Factory
-    */
+     * @return Factory
+     */
     protected static function newFactory()
     {
         return UserFactory::new();

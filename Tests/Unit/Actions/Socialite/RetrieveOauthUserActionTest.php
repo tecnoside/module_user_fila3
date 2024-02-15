@@ -21,7 +21,7 @@ final class RetrieveOauthUserActionTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->retrieveOauthUserAction = new RetrieveOauthUserAction;
+        $this->retrieveOauthUserAction = new RetrieveOauthUserAction();
     }
 
     protected function tearDown(): void

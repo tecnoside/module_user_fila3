@@ -21,7 +21,7 @@ final class RegistrationTestTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->registrationTest = new RegistrationTest;
+        $this->registrationTest = new RegistrationTest();
     }
 
     protected function tearDown(): void

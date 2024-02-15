@@ -21,7 +21,7 @@ final class UserResourceTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->userResource = new UserResource();
+        $this->userResource = new UserResource;
     }
 
     protected function tearDown(): void

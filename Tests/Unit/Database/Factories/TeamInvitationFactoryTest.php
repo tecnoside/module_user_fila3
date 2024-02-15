@@ -21,7 +21,7 @@ final class TeamInvitationFactoryTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->teamInvitationFactory = new TeamInvitationFactory();
+        $this->teamInvitationFactory = new TeamInvitationFactory;
     }
 
     protected function tearDown(): void

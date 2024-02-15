@@ -21,7 +21,7 @@ final class RoleRelationManagerTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->roleRelationManager = new RoleRelationManager();
+        $this->roleRelationManager = new RoleRelationManager;
     }
 
     protected function tearDown(): void

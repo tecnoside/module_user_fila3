@@ -21,7 +21,7 @@ final class ProfileInformationTestTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->profileInformationTest = new ProfileInformationTest();
+        $this->profileInformationTest = new ProfileInformationTest;
     }
 
     protected function tearDown(): void

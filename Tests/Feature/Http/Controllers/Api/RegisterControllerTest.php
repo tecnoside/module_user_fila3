@@ -21,7 +21,7 @@ final class RegisterControllerTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->registerController = new RegisterController();
+        $this->registerController = new RegisterController;
         $this->app->instance(RegisterController::class, $this->registerController);
     }
 

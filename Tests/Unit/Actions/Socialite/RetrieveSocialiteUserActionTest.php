@@ -21,7 +21,7 @@ final class RetrieveSocialiteUserActionTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->retrieveSocialiteUserAction = new RetrieveSocialiteUserAction();
+        $this->retrieveSocialiteUserAction = new RetrieveSocialiteUserAction;
     }
 
     protected function tearDown(): void

@@ -21,7 +21,7 @@ final class ChangePasswordActionTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->changePasswordAction = new ChangePasswordAction();
+        $this->changePasswordAction = new ChangePasswordAction;
     }
 
     protected function tearDown(): void

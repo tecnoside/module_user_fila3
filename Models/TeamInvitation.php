@@ -22,6 +22,7 @@ use Modules\Xot\Datas\XotData;
  * @property Carbon|null       $updated_at
  * @property Team|null         $team
  * @property TeamContract|null $team
+ *
  * @method static TeamInvitationFactory  factory($count = null, $state = [])
  * @method static Builder|TeamInvitation newModelQuery()
  * @method static Builder|TeamInvitation newQuery()
@@ -32,6 +33,7 @@ use Modules\Xot\Datas\XotData;
  * @method static Builder|TeamInvitation whereRole($value)
  * @method static Builder|TeamInvitation whereTeamId($value)
  * @method static Builder|TeamInvitation whereUpdatedAt($value)
+ *
  * @mixin \Eloquent
  */
 class TeamInvitation extends BaseModel

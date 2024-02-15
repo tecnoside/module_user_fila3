@@ -82,7 +82,6 @@ class TenantResource extends Resource
             )
             ->filters(
                 [
-                    
                 ]
             )
             ->actions(

@@ -21,7 +21,7 @@ final class TwoFactorAuthenticationSettingsTestTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->twoFactorAuthenticationSettingsTest = new TwoFactorAuthenticationSettingsTest();
+        $this->twoFactorAuthenticationSettingsTest = new TwoFactorAuthenticationSettingsTest;
     }
 
     protected function tearDown(): void

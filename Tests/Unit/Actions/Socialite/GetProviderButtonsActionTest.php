@@ -21,7 +21,7 @@ final class GetProviderButtonsActionTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->getProviderButtonsAction = new GetProviderButtonsAction();
+        $this->getProviderButtonsAction = new GetProviderButtonsAction;
     }
 
     protected function tearDown(): void

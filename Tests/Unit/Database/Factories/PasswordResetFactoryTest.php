@@ -21,7 +21,7 @@ final class PasswordResetFactoryTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->passwordResetFactory = new PasswordResetFactory();
+        $this->passwordResetFactory = new PasswordResetFactory;
     }
 
     protected function tearDown(): void

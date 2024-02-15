@@ -13,7 +13,10 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Modules\User\Filament\Resources\TenantResource\Pages;
+use Modules\User\Filament\Resources\TenantResource\Pages\CreateTenant;
+use Modules\User\Filament\Resources\TenantResource\Pages\EditTenant;
+use Modules\User\Filament\Resources\TenantResource\Pages\ListTenants;
+use Modules\User\Filament\Resources\TenantResource\Pages\ViewTenant;
 use Modules\User\Filament\Resources\TenantResource\RelationManagers;
 use Modules\Xot\Datas\XotData;
 
@@ -51,12 +54,12 @@ class TenantResource extends Resource
                             Forms\Components\TextInput::make('id')
                                 ->label('Unique ID')
                                 ->required()
-                                ->disabled(static fn ($context) => 'create' !== $context)
+                                ->disabled(static fn ($context) => $context !== 'create')
                                 ->unique(table: 'tenants', ignoreRecord: true),
                             Forms\Components\TextInput::make('domain')
                                 ->label('Sub-Domain')
                                 ->required()
-                                ->visible(static fn ($context) => 'create' === $context)
+                                ->visible(static fn ($context) => $context === 'create')
                                 ->unique(table: 'domains', ignoreRecord: true)
                                 ->prefix('https://')
                                 ->suffix('.'.request()->getHost()),
@@ -111,10 +114,10 @@ class TenantResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListTenants::route('/'),
-            'create' => Pages\CreateTenant::route('/create'),
-            'view' => Pages\ViewTenant::route('/{record}'),
-            'edit' => Pages\EditTenant::route('/{record}/edit'),
+            'index' => ListTenants::route('/'),
+            'create' => CreateTenant::route('/create'),
+            'view' => ViewTenant::route('/{record}'),
+            'edit' => EditTenant::route('/{record}/edit'),
         ];
     }
 }

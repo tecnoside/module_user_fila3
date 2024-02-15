@@ -21,7 +21,7 @@ final class UpgradeControllerTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->upgradeController = new UpgradeController;
+        $this->upgradeController = new UpgradeController();
         $this->app->instance(UpgradeController::class, $this->upgradeController);
     }
 

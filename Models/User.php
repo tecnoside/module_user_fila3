@@ -268,17 +268,13 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
 
     public function getFullNameAttribute(?string $value): ?string
     {
-        if ($value !== null) {
-            return $value;
-        }
-
-        return $this->first_name.' '.$this->last_name;
+        return $value ?? $this->first_name.' '.$this->last_name;
     }
 
     /**
      * Create a new factory instance for the model.
      *
-     * @return \Illuminate\Database\Eloquent\Factories\Factory<static>
+     * @return Factory
      */
     protected static function newFactory()
     {

@@ -21,7 +21,7 @@ final class TenantResourceTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->tenantResource = new TenantResource;
+        $this->tenantResource = new TenantResource();
     }
 
     protected function tearDown(): void

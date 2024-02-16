@@ -21,7 +21,7 @@ final class GetLoggedUserControllerTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->getLoggedUserController = new GetLoggedUserController;
+        $this->getLoggedUserController = new GetLoggedUserController();
         $this->app->instance(GetLoggedUserController::class, $this->getLoggedUserController);
     }
 

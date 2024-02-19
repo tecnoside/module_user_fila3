@@ -21,7 +21,7 @@ final class SocialiteUserTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->socialiteUser = new SocialiteUser();
+        $this->socialiteUser = new SocialiteUser;
     }
 
     protected function tearDown(): void

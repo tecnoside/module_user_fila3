@@ -21,7 +21,7 @@ final class RolesSeederTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->rolesSeeder = new RolesSeeder();
+        $this->rolesSeeder = new RolesSeeder;
     }
 
     protected function tearDown(): void

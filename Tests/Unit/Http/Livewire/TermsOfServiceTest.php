@@ -21,7 +21,7 @@ final class TermsOfServiceTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->termsOfService = new TermsOfService();
+        $this->termsOfService = new TermsOfService;
     }
 
     protected function tearDown(): void

@@ -21,7 +21,7 @@ final class DeviceResourceTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->deviceResource = new DeviceResource;
+        $this->deviceResource = new DeviceResource();
     }
 
     protected function tearDown(): void

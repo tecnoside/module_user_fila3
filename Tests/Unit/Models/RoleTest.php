@@ -21,7 +21,7 @@ final class RoleTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->role = new Role;
+        $this->role = new Role();
     }
 
     protected function tearDown(): void

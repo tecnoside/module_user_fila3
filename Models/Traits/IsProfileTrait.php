@@ -22,6 +22,33 @@ trait IsProfileTrait
             return $value;
         }
 
-        return $this->first_name.' '.$this->last_name;
+        $res = $this->first_name.' '.$this->last_name;
+        if (strlen($res) > 2) {
+            return $res;
+        }
+
+        return $this->user->name;
+    }
+
+    public function getFirstNameAttribute(?string $value): ?string
+    {
+        if (null !== $value) {
+            return $value;
+        }
+        $value = $this->user->first_name;
+        $this->update(['first_name' => $value]);
+
+        return $value;
+    }
+
+    public function getLastNameAttribute(?string $value): ?string
+    {
+        if (null !== $value) {
+            return $value;
+        }
+        $value = $this->user->last_name;
+        $this->update(['last_name' => $value]);
+
+        return $value;
     }
 }

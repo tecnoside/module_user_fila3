@@ -20,7 +20,7 @@ final class AssignTeamCommandTest extends TestCase
     {
         parent::setUp();
 
-        $this->assignTeamCommand = new AssignTeamCommand;
+        $this->assignTeamCommand = new AssignTeamCommand();
         $this->app->instance(AssignTeamCommand::class, $this->assignTeamCommand);
     }
 

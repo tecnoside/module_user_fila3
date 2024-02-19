@@ -27,7 +27,7 @@ trait IsProfileTrait
             return $res;
         }
 
-        return $this->user->name;
+        return $this->user?->name;
     }
 
     public function getFirstNameAttribute(?string $value): ?string
@@ -35,7 +35,7 @@ trait IsProfileTrait
         if (null !== $value) {
             return $value;
         }
-        $value = $this->user->first_name;
+        $value = $this->user?->first_name;
         $this->update(['first_name' => $value]);
 
         return $value;
@@ -46,7 +46,7 @@ trait IsProfileTrait
         if (null !== $value) {
             return $value;
         }
-        $value = $this->user->last_name;
+        $value = $this->user?->last_name;
         $this->update(['last_name' => $value]);
 
         return $value;

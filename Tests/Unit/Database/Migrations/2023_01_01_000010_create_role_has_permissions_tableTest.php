@@ -20,7 +20,7 @@ final class CreateRoleHasPermissionsTableTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->createRoleHasPermissionsTable = new \CreateRoleHasPermissionsTable;
+        $this->createRoleHasPermissionsTable = new \CreateRoleHasPermissionsTable();
     }
 
     protected function tearDown(): void

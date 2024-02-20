@@ -12,6 +12,8 @@ use Filament\Panel;
 use Filament\Support\Facades\FilamentView;
 use Illuminate\Support\Facades\Blade;
 use Modules\Xot\Providers\Filament\XotBasePanelProvider;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\HtmlString;
 
 class AdminPanelProvider extends XotBasePanelProvider
 {
@@ -42,6 +44,11 @@ class AdminPanelProvider extends XotBasePanelProvider
         FilamentView::registerRenderHook(
             'panels::user-menu.before',
             static fn (): string => Blade::render("@livewire('team.change')"),
+        );
+
+        FilamentView::registerRenderHook(
+            'panels::user-menu.before',
+            static fn (): string =>  View::make('user::badges.super-admin')->render(),
         );
 
         /*

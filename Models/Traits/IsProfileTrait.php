@@ -4,16 +4,15 @@ declare(strict_types=1);
 
 namespace Modules\User\Models\Traits;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Modules\User\Models\User;
 use Modules\Xot\Datas\XotData;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 trait IsProfileTrait
 {
     // --- RELATIONS
-    
 
-     /** 
+    /**
      * Undocumented function.
      */
     public function user(): BelongsTo
@@ -28,7 +27,7 @@ trait IsProfileTrait
     // ---- mutators
     public function getFullNameAttribute(?string $value): ?string
     {
-        if ($value !== null) {
+        if (null !== $value) {
             return $value;
         }
 
@@ -42,7 +41,7 @@ trait IsProfileTrait
 
     public function getFirstNameAttribute(?string $value): ?string
     {
-        if ($value !== null) {
+        if (null !== $value) {
             return $value;
         }
         $value = $this->user?->first_name;
@@ -53,7 +52,7 @@ trait IsProfileTrait
 
     public function getLastNameAttribute(?string $value): ?string
     {
-        if ($value !== null) {
+        if (null !== $value) {
             return $value;
         }
         $value = $this->user?->last_name;
@@ -62,12 +61,11 @@ trait IsProfileTrait
         return $value;
     }
 
-
-    public function isSuperAdmin():bool {
-        if($this->user==null){
+    public function isSuperAdmin(): bool
+    {
+        if (null == $this->user) {
             return false;
         }
-
 
         return $this->user->hasRole('super-admin');
     }

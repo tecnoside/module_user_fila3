@@ -21,7 +21,7 @@ final class UtilsTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->utils = new Utils;
+        $this->utils = new Utils();
     }
 
     protected function tearDown(): void

@@ -20,7 +20,7 @@ final class CreateTeamInvitationsTableTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->createTeamInvitationsTable = new \CreateTeamInvitationsTable;
+        $this->createTeamInvitationsTable = new \CreateTeamInvitationsTable();
     }
 
     protected function tearDown(): void

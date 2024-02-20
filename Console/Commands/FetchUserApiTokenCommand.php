@@ -7,6 +7,7 @@ namespace Modules\User\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Carbon;
 use Modules\User\Models\User;
+use Webmozart\Assert\Assert;
 
 class FetchUserApiTokenCommand extends Command
 {
@@ -34,9 +35,8 @@ class FetchUserApiTokenCommand extends Command
 
         $userEmail = trim($this->argument('email'));
         if (empty($userEmail)) {
-            $userEmail = trim(
-                $this->ask('Please enter the email of the user to impersonate'),
-            );
+            Assert::string($userEmail = $this->ask('Please enter the email of the user to impersonate'));
+            $userEmail = trim($userEmail);
         }
 
         $user = User::firstWhere('email', $userEmail);

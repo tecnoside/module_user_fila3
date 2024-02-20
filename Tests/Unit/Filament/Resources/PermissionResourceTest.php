@@ -21,7 +21,7 @@ final class PermissionResourceTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->permissionResource = new PermissionResource();
+        $this->permissionResource = new PermissionResource;
     }
 
     protected function tearDown(): void

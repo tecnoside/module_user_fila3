@@ -21,7 +21,7 @@ final class ModelHasRoleFactoryTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->modelHasRoleFactory = new ModelHasRoleFactory;
+        $this->modelHasRoleFactory = new ModelHasRoleFactory();
     }
 
     protected function tearDown(): void

@@ -6,5 +6,4 @@ namespace Modules\User\Contracts;
 
 interface TenantContract extends ModelContract
 {
-    
 }

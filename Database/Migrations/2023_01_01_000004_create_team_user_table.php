@@ -36,7 +36,7 @@ class CreateTeamUserTable extends XotBaseMigration
                 // if (! $this->hasColumn('updated_by')) {
                 //    $table->string('updated_by')->nullable();
                 // }
-
+                $this->updateTimestamps($table);
                 $this->updateUser($table);
             }
         );

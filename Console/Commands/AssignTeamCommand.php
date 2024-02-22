@@ -50,7 +50,7 @@ class AssignTeamCommand extends Command
         $xot = XotData::make();
         $teamClass = $xot->getTeamClass();
 
-        $opts = $teamClass::all()->pluck('name', 'id');
+        $opts = $teamClass::pluck('name', 'id')->toArray();
 
         $rows = multiselect(
             label: 'What teams',
@@ -71,7 +71,21 @@ class AssignTeamCommand extends Command
             $user->assignRole($role);
         }
         */
-        $this->info(implode(', ', $rows).' assigned to '.$email);
+        $this->info('Teams :'.implode(', ', $rows).' assigned to '.$email);
+
+        $rows = $user->teams()->get()->toArray();
+
+        if (\count($rows) > 0) {
+            $headers = array_keys($rows[0]);
+
+            $this->newLine();
+            $this->table($headers, $rows);
+            $this->newLine();
+        } else {
+            $this->newLine();
+            $this->warn('⚡ No teams ['.$teamClass.']');
+            $this->newLine();
+        }
     }
 
     /**

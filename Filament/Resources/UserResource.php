@@ -154,17 +154,17 @@ class UserResource extends XotBaseResource
                     TextColumn::make('teams.name')->sortable()->searchable()->toggleable(),
                     // Tables\Columns\TextColumn::make('email'),
                     // Tables\Columns\TextColumn::make('email_verified_at')
-                    //    ->dateTime(),
+                    //    ->dateTime(config('app.date_format')),
                     TextColumn::make('role.name')->toggleable(),
                     TextColumn::make('roles.name')->toggleable()->wrap(),
-                    // Tables\Columns\TextColumn::make('created_at')->dateTime(),
+                    // Tables\Columns\TextColumn::make('created_at')->dateTime(config('app.date_format')),
                     // Tables\Columns\TextColumn::make('updated_at')
-                    //    ->dateTime(),
+                    //    ->dateTime(config('app.date_format')),
                     // Tables\Columns\TextColumn::make('role_id'),
                     // Tables\Columns\TextColumn::make('display_name'),
                     // Tables\Columns\TextColumn::make('phone_number'),
                     // Tables\Columns\TextColumn::make('phone_verified_at')
-                    //    ->dateTime(),
+                    //    ->dateTime(config('app.date_format')),
                     // Tables\Columns\TextColumn::make('photo'),
                     BooleanColumn::make('email_verified_at')->sortable()->searchable()->toggleable(),
                     ...static::extendTableCallback(),

@@ -32,14 +32,10 @@ abstract class BaseUuidModel extends Model
      */
     public static $snakeAttributes = true;
 
-    /**
-     * @var bool
-     */
+    /** @var bool */
     public $incrementing = false;
 
-    /**
-     * @var bool
-     */
+    /** @var bool */
     public $timestamps = true;
 
     /**
@@ -47,9 +43,7 @@ abstract class BaseUuidModel extends Model
      */
     protected $perPage = 30;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $connection = 'user';
 
     /**
@@ -71,9 +65,7 @@ abstract class BaseUuidModel extends Model
      */
     protected $appends = [];
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $primaryKey = 'id';
 
     /**
@@ -83,9 +75,7 @@ abstract class BaseUuidModel extends Model
      */
     protected $keyType = 'string';
 
-    /**
-     * @var array<int, string>
-     */
+    /** @var  array<int, string> */
     protected $hidden = [
         // 'password'
     ];

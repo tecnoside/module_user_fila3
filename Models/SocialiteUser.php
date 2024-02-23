@@ -51,9 +51,7 @@ class SocialiteUser extends BaseModel
 {
     use HasFactory;
 
-    /**
-     * @var array<int, string>
-     */
+    /** @var  array<int, string> */
     protected $fillable = [
         // 'id',
         'user_id',

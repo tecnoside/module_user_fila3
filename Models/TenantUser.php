@@ -52,11 +52,7 @@ class TenantUser extends BasePivot
 
     // protected $keyType = 'string';
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+    /** @var array<int, string> */
     protected $fillable = [
         'tenant_id',
         'user_id',

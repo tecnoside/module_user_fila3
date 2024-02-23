@@ -41,11 +41,7 @@ class TeamInvitation extends BaseModel
     /** @var string */
     protected $connection = 'user';
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+    /** @var array<int, string> */
     protected $fillable = [
         'email',
         'role',

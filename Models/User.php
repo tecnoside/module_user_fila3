@@ -130,11 +130,7 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
 
     protected $keyType = 'string';
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+    /** @var array<int, string> */
     protected $fillable = [
         'name',
         'first_name',

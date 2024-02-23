@@ -76,6 +76,7 @@ class AssignTeamCommand extends Command
         $rows = $user->teams()->get()->toArray();
 
         if (\count($rows) > 0) {
+            Assert::isArray($rows[0]);
             $headers = array_keys($rows[0]);
 
             $this->newLine();

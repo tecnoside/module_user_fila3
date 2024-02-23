@@ -62,11 +62,7 @@ class TenantUser extends BasePivot
         'user_id',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
+    /** @var array<string, string> */
     protected $casts = [
         'id' => 'string',
         // 'email_verified_at' => 'datetime',

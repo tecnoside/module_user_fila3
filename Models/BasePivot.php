@@ -27,9 +27,7 @@ abstract class BasePivot extends Pivot
     /** @var bool */
     public $incrementing = true;
 
-    /**
-     * @var int
-     */
+    /** @var int */
     protected $perPage = 30;
 
     // use Searchable;
@@ -37,11 +35,7 @@ abstract class BasePivot extends Pivot
     /** @var string */
     protected $connection = 'user';
 
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array<int, string>
-     */
+    /** @var array<int, string> */
     protected $appends = [];
 
     /**

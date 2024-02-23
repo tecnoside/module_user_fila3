@@ -38,9 +38,7 @@ abstract class BaseUuidModel extends Model
     /** @var bool */
     public $timestamps = true;
 
-    /**
-     * @var int
-     */
+    /** @var int */
     protected $perPage = 30;
 
     /** @var string */
@@ -58,11 +56,7 @@ abstract class BaseUuidModel extends Model
         'verified_at' => 'datetime',
     ];
 
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array<int, string>
-     */
+    /** @var array<int, string> */
     protected $appends = [];
 
     /** @var string */
@@ -75,7 +69,7 @@ abstract class BaseUuidModel extends Model
      */
     protected $keyType = 'string';
 
-    /** @var  array<int, string> */
+    /** @var array<int, string> */
     protected $hidden = [
         // 'password'
     ];

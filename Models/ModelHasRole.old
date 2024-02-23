@@ -46,9 +46,7 @@ class ModelHasRole extends BaseMorphPivot
 
     public $incrementing = false;
 
-    /**
-     * @var array<int, string>
-     */
+    /** @var  array<int, string> */
     protected $fillable = ['id', 'role_id', 'model_type', 'model_id', 'team_id'];
 
     /**

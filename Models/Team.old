@@ -41,8 +41,6 @@ class Team extends FilamentJetTeam
 {
     use HasFactory;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $connection = 'user';
 }

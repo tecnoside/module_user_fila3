@@ -123,20 +123,14 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
 
     public $incrementing = false;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $connection = 'user';
 
     protected $primaryKey = 'id';
 
     protected $keyType = 'string';
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+    /** @var array<int, string> */
     protected $fillable = [
         'name',
         'first_name',
@@ -160,11 +154,7 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
         'two_factor_secret',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
+    /** @var array<string, string> */
     protected $casts = [
         'id' => 'string',
         'email_verified_at' => 'datetime',
@@ -175,21 +165,13 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
         // ALTER TABLE model_has_role CHANGE COLUMN `id` `id` CHAR(37) NOT NULL DEFAULT uuid();
     ];
 
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array<int, string>
-     */
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array<int, string>
-     */
+    /** @var array<int, string> */
+    /** @var array<int, string> */
     protected $appends = [
         // 'profile_photo_url',
     ];
 
-    public function canAccessFilament(?Panel $panel = null): bool
+    public function canAccessFilament(Panel $panel = null): bool
     {
         // return $this->role_id === Role::ROLE_ADMINISTRATOR;
         return true;

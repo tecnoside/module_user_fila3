@@ -41,9 +41,7 @@ use Spatie\Permission\Models\Permission as SpatiePermission;
  */
 class Permission extends SpatiePermission
 {
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $connection = 'user';
 
     protected $fillable = ['id', 'name', 'guard_name', 'created_at', 'updated_at'];

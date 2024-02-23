@@ -24,28 +24,18 @@ abstract class BasePivot extends Pivot
      */
     public static $snakeAttributes = true;
 
-    /**
-     * @var bool
-     */
+    /** @var bool */
     public $incrementing = true;
 
-    /**
-     * @var int
-     */
+    /** @var int */
     protected $perPage = 30;
 
     // use Searchable;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $connection = 'user';
 
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array<int, string>
-     */
+    /** @var array<int, string> */
     protected $appends = [];
 
     /**
@@ -61,8 +51,6 @@ abstract class BasePivot extends Pivot
     /**
      * Undocumented variable.
      */
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $primaryKey = 'id';
 }

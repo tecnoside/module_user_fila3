@@ -6,7 +6,7 @@ namespace Modules\User\Console\Commands;
 
 use Illuminate\Console\Command;
 
-use function Laravel\Prompts\multiselect;
+use function Laravel\Prompts\select;
 use function Laravel\Prompts\text;
 
 use Modules\User\Models\User;
@@ -14,21 +14,21 @@ use Modules\Xot\Datas\XotData;
 use Symfony\Component\Console\Input\InputOption;
 use Webmozart\Assert\Assert;
 
-class AssignTeamCommand extends Command
+class SetCurrentTeamCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $name = 'user:assign-team';
+    protected $name = 'user:set-current-team';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Assign a team to user';
+    protected $description = 'Assign current team to user';
 
     /**
      * Create a new command instance.
@@ -50,10 +50,10 @@ class AssignTeamCommand extends Command
         $xot = XotData::make();
         $teamClass = $xot->getTeamClass();
 
-        $opts = $teamClass::pluck('name', 'id')->toArray();
+        $opts = $teamClass::pluck('name', 'id');
 
-        $rows = multiselect(
-            label: 'What teams',
+        $team_name = select(
+            label: 'What team?',
             options: $opts,
             required: true,
             scroll: 10,
@@ -64,29 +64,19 @@ class AssignTeamCommand extends Command
             // }
         );
 
-        $user->teams()->sync($rows);
+        $team = $teamClass::firstWhere('name', $team_name);
+
+        $user->current_team_id = $team->id;
+        $user->save();
+
+        // $user->teams()->sync($rows);
         /*
         foreach ($rows as $row) {
             $role = Role::firstOrCreate(['name' => $row]);
             $user->assignRole($role);
         }
         */
-        $this->info('Teams :'.implode(', ', $rows).' assigned to '.$email);
-
-        $rows = $user->teams()->get()->toArray();
-
-        if (\count($rows) > 0) {
-            Assert::isArray($rows[0]);
-            $headers = array_keys($rows[0]);
-
-            $this->newLine();
-            $this->table($headers, $rows);
-            $this->newLine();
-        } else {
-            $this->newLine();
-            $this->warn('⚡ No teams ['.$teamClass.']');
-            $this->newLine();
-        }
+        $this->info('OK');
     }
 
     /**

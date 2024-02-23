@@ -32,24 +32,16 @@ abstract class BaseUuidModel extends Model
      */
     public static $snakeAttributes = true;
 
-    /**
-     * @var bool
-     */
+    /** @var bool */
     public $incrementing = false;
 
-    /**
-     * @var bool
-     */
+    /** @var bool */
     public $timestamps = true;
 
-    /**
-     * @var int
-     */
+    /** @var int */
     protected $perPage = 30;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $connection = 'user';
 
     /**
@@ -64,16 +56,10 @@ abstract class BaseUuidModel extends Model
         'verified_at' => 'datetime',
     ];
 
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array<int, string>
-     */
+    /** @var array<int, string> */
     protected $appends = [];
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $primaryKey = 'id';
 
     /**
@@ -83,9 +69,7 @@ abstract class BaseUuidModel extends Model
      */
     protected $keyType = 'string';
 
-    /**
-     * @var array<int, string>
-     */
+    /** @var array<int, string> */
     protected $hidden = [
         // 'password'
     ];

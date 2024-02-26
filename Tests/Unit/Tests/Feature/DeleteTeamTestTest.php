@@ -21,7 +21,7 @@ final class DeleteTeamTestTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->deleteTeamTest = new DeleteTeamTest();
+        $this->deleteTeamTest = new DeleteTeamTest;
     }
 
     protected function tearDown(): void

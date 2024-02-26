@@ -21,7 +21,7 @@ final class RedirectToLoginActionTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->redirectToLoginAction = new RedirectToLoginAction();
+        $this->redirectToLoginAction = new RedirectToLoginAction;
     }
 
     protected function tearDown(): void

@@ -21,7 +21,7 @@ final class RegisterOauthUserActionTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->registerOauthUserAction = new RegisterOauthUserAction();
+        $this->registerOauthUserAction = new RegisterOauthUserAction;
     }
 
     protected function tearDown(): void

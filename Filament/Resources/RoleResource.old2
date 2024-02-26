@@ -216,7 +216,7 @@ class RoleResource extends XotBaseResource
                         ->colors(['success']),
                     TextColumn::make('updated_at')
                         ->label(static::trans('fields.updated_at'))
-                        ->dateTime(),
+                        ->dateTime(config('app.date_format')),
                 ]
             )
             ->filters(

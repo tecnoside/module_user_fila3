@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
 use Modules\Xot\Contracts\ProfileContract;
+use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Datas\XotData;
 
 /**
@@ -77,11 +78,17 @@ class DeviceUser extends BasePivot
         'push_notifications_enabled' => 'boolean',
     ];
 
+    /**
+     * @return BelongsTo<Device, DeviceUser>
+     */
     public function device(): BelongsTo
     {
         return $this->belongsTo(Device::class);
     }
 
+    /**
+     * @return BelongsTo<UserContract, DeviceUser>
+     */
     public function user(): BelongsTo
     {
         $userClass = XotData::make()->getUserClass();

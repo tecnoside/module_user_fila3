@@ -7,6 +7,7 @@ namespace Modules\User\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
+use Modules\Xot\Datas\XotData;
 
 /**
  * Modules\User\Models\DeviceUser.
@@ -78,5 +79,19 @@ class DeviceUser extends BasePivot
     public function device(): BelongsTo
     {
         return $this->belongsTo(Device::class);
+    }
+
+    public function user(): BelongsTo
+    {
+        $userClass = XotData::make()->getUserClass();
+
+        return $this->belongsTo($userClass);
+    }
+
+    public function profile(): BelongsTo
+    {
+        $profileClass = XotData::make()->getProfileClass();
+
+        return $this->belongsTo($profileClass, 'user_id', 'user_id');
     }
 }

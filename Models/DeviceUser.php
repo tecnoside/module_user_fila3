@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Modules\User\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
 use Modules\Xot\Contracts\ProfileContract;
-use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Datas\XotData;
 
 /**
@@ -87,7 +87,7 @@ class DeviceUser extends BasePivot
     }
 
     /**
-     * @return BelongsTo<UserContract, DeviceUser>
+     * @return BelongsTo<User, DeviceUser>
      */
     public function user(): BelongsTo
     {
@@ -97,7 +97,7 @@ class DeviceUser extends BasePivot
     }
 
     /**
-     * @return BelongsTo<ProfileContract, DeviceUser>
+     * @return BelongsTo<Model&ProfileContract, DeviceUser>
      */
     public function profile(): BelongsTo
     {

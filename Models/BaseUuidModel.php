@@ -44,9 +44,7 @@ abstract class BaseUuidModel extends Model
     /** @var string */
     protected $connection = 'user';
 
-    /**
-     * @var array<string, string>
-     */
+    /** @var array<string, string> */
     protected $casts = [
         'id' => 'string',
         'published_at' => 'datetime',

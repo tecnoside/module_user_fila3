@@ -42,9 +42,7 @@ abstract class BaseModel extends Model
     /** @var string */
     protected $connection = 'user';
 
-    /**
-     * @var array<string, string>
-     */
+    /** @var array<string, string> */
     protected $casts = [
         'published_at' => 'datetime',
         'created_at' => 'datetime',

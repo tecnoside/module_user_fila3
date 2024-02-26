@@ -60,9 +60,7 @@ class DeviceUser extends BasePivot
         'push_notifications_enabled',
     ];
 
-    /**
-     * @var array<string, string>
-     */
+    /** @var array<string, string> */
     protected $casts = [
         'created_at' => 'datetime',
         'updated_at' => 'datetime',

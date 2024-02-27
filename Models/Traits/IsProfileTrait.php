@@ -5,6 +5,11 @@ declare(strict_types=1);
 namespace Modules\User\Models\Traits;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Collection;
+use Modules\User\Models\Device;
+use Modules\User\Models\DeviceUser;
 use Modules\User\Models\User;
 use Modules\Xot\Datas\XotData;
 
@@ -27,7 +32,7 @@ trait IsProfileTrait
     // ---- mutators
     public function getFullNameAttribute(?string $value): ?string
     {
-        if ($value !== null) {
+        if (null !== $value) {
             return $value;
         }
 
@@ -68,5 +73,59 @@ trait IsProfileTrait
         }
 
         return $this->user->hasRole('super-admin');
+    }
+
+    public function mobileDevices(): BelongsToMany
+    {
+        return $this->devices();
+    }
+
+    public function devices(): BelongsToMany
+    {
+        $pivotClass = DeviceUser::class;
+        $pivot = app($pivotClass);
+        $pivotTable = $pivot->getTable();
+        $pivotFields = $pivot->getFillable();
+
+        return $this
+            ->belongsToMany(
+                related: Device::class,
+                table: $pivotTable,
+                foreignPivotKey: 'user_id',
+                relatedPivotKey: null,
+                parentKey: 'user_id',
+                relatedKey: null,
+                relation: null,
+            )
+            ->using($pivotClass)
+            ->withPivot($pivotFields)
+            ->withTimestamps();
+    }
+
+    public function mobileDeviceUsers(): HasMany
+    {
+        return $this->deviceUsers();
+    }
+
+    public function deviceUsers(): HasMany
+    {
+        return $this->hasMany(
+            related: DeviceUser::class,
+            foreignKey: 'user_id',
+            localKey: 'user_id',
+        );
+    }
+
+    /**
+     * @return Collection<(int|string), mixed>
+     */
+    public function getMobileDeviceTokens(): Collection
+    {
+        return $this
+            ->mobileDeviceUsers()
+            ->whereNotNull('push_notifications_token')
+            ->where('push_notifications_enabled', '=', true)
+            ->get()
+            ->pluck('push_notifications_token');
     }
 }

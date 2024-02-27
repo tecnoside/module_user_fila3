@@ -5,8 +5,11 @@ declare(strict_types=1);
 namespace Modules\User\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
+use Modules\Xot\Contracts\ProfileContract;
+use Modules\Xot\Datas\XotData;
 
 /**
  * Modules\User\Models\DeviceUser.
@@ -60,9 +63,7 @@ class DeviceUser extends BasePivot
         'push_notifications_enabled',
     ];
 
-    /**
-     * @var array<string, string>
-     */
+    /** @var array<string, string> */
     protected $casts = [
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
@@ -77,8 +78,31 @@ class DeviceUser extends BasePivot
         'push_notifications_enabled' => 'boolean',
     ];
 
+    /**
+     * @return BelongsTo<Device, DeviceUser>
+     */
     public function device(): BelongsTo
     {
         return $this->belongsTo(Device::class);
+    }
+
+    /**
+     * @return BelongsTo<User, DeviceUser>
+     */
+    public function user(): BelongsTo
+    {
+        $userClass = XotData::make()->getUserClass();
+
+        return $this->belongsTo($userClass);
+    }
+
+    /**
+     * @return BelongsTo<Model&ProfileContract, DeviceUser>
+     */
+    public function profile(): BelongsTo
+    {
+        $profileClass = XotData::make()->getProfileClass();
+
+        return $this->belongsTo($profileClass, 'user_id', 'user_id');
     }
 }

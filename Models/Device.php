@@ -82,9 +82,7 @@ class Device extends BaseModel
         'is_phone',
     ];
 
-    /**
-     * @var array<string, string>
-     */
+    /** @var array<string, string> */
     protected $casts = [
         // 'id' => 'string',
         // 'locales' => 'array',

@@ -20,7 +20,7 @@ final class SuperAdminCommandTest extends TestCase
     {
         parent::setUp();
 
-        $this->superAdminCommand = new SuperAdminCommand;
+        $this->superAdminCommand = new SuperAdminCommand();
         $this->app->instance(SuperAdminCommand::class, $this->superAdminCommand);
     }
 

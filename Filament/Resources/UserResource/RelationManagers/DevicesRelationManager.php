@@ -44,31 +44,5 @@ class DevicesRelationManager extends RelationManager
         $table = $table->columns($columns);
 
         return $table;
-        /*
-        return $table
-            ->recordTitleAttribute('device')
-            ->columns([
-                Tables\Columns\TextColumn::make('device'),
-
-            ])
-            ->filters([
-                //
-            ])
-            ->headerActions([
-                Tables\Actions\CreateAction::make(),
-            ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
-            ])
-            ->emptyStateActions([
-
-            ]);
-        */
     }
 }

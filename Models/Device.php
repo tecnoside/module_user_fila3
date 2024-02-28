@@ -61,11 +61,7 @@ use Modules\User\Database\Factories\DeviceFactory;
  */
 class Device extends BaseModel
 {
-    /**
-     * Undocumented variable.
-     *
-     * @var array<string>
-     */
+    /** @var array<int, string> */
     protected $fillable = [
         'id',
         'mobile_id', // mattia

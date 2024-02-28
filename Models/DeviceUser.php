@@ -48,11 +48,7 @@ use Modules\Xot\Datas\XotData;
  */
 class DeviceUser extends BasePivot
 {
-    /**
-     * Undocumented variable.
-     *
-     * @var array<string>
-     */
+    /** @var array<int, string> */
     protected $fillable = [
         'id',
         'device_id',

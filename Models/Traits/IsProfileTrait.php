@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Models\Traits;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -12,9 +13,12 @@ use Modules\User\Models\Device;
 use Modules\User\Models\DeviceUser;
 use Modules\User\Models\User;
 use Modules\Xot\Datas\XotData;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Webmozart\Assert\Assert;
 
 trait IsProfileTrait
 {
+    use InteractsWithMedia;
     // --- RELATIONS
 
     /**
@@ -37,7 +41,7 @@ trait IsProfileTrait
         }
 
         $res = $this->first_name.' '.$this->last_name;
-        if (strlen($res) > 2) {
+        if (\strlen($res) > 2) {
             return $res;
         }
 
@@ -66,9 +70,58 @@ trait IsProfileTrait
         return $value;
     }
 
+    /**
+     * Get the user's user_name.
+     */
+    protected function userName(): Attribute
+    {
+        return Attribute::make(
+            get: function (): string {
+                Assert::notNull($user = $this->user);
+                $value = $user->name;
+
+                return $value;
+            }
+        );
+    }
+
+    /**
+     * Get the user's avatar.
+     */
+    protected function avatar(): Attribute
+    {
+        return Attribute::make(
+            get: function (): string {
+                $value = $this->getFirstMediaUrl('avatar');
+
+                return $value;
+            }
+        );
+    }
+
+    /**
+     * Get the user's email.
+     */
+    protected function email(): Attribute
+    {
+        return Attribute::make(
+            get: function ($value): string {
+                if (null === $value) {
+                    Assert::notNull($this->user);
+                    $this->email = $this->user->email;
+                    $this->update();
+                    // Assert::string($value = $this->email);
+                }
+                Assert::string($value);
+
+                return $value;
+            }
+        );
+    }
+
     public function isSuperAdmin(): bool
     {
-        if (null == $this->user) {
+        if (null === $this->user) {
             return false;
         }
 

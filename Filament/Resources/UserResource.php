@@ -151,7 +151,7 @@ class UserResource extends XotBaseResource
                     TextColumn::make('email')->sortable()->searchable(),
                     // TextColumn::make('profile.first_name')->label('first name')->sortable()->searchable()->toggleable(),
                     // TextColumn::make('profile.last_name')->label('last name')->sortable()->searchable()->toggleable(),
-                    TextColumn::make('teams.name')->sortable()->searchable()->toggleable(),
+                    TextColumn::make('teams.name')->searchable()->toggleable()->wrap(),
                     // Tables\Columns\TextColumn::make('email'),
                     // Tables\Columns\TextColumn::make('email_verified_at')
                     //    ->dateTime(config('app.date_format')),

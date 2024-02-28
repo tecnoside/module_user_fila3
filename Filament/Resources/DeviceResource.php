@@ -22,7 +22,7 @@ class DeviceResource extends XotBaseResource
 {
     protected static ?string $model = Device::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-device-phone-mobile';
 
     public static function form(Form $form): Form
     {
@@ -92,5 +92,10 @@ class DeviceResource extends XotBaseResource
             'create' => CreateDevice::route('/create'),
             'edit' => EditDevice::route('/{record}/edit'),
         ];
+    }
+
+    public static function getNavigationBadge(): ?string
+    {
+        return number_format(static::getModel()::count());
     }
 }

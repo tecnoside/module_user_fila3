@@ -67,7 +67,11 @@ abstract class BaseUuidModel extends Model
      */
     protected $keyType = 'string';
 
+<<<<<<< HEAD
     /** @var array<int, string> */
+=======
+    /** @var  array<int, string> */
+>>>>>>> 351ece5 (up)
     protected $hidden = [
         // 'password'
     ];

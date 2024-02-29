@@ -39,7 +39,11 @@ use Modules\User\Database\Factories\ModelHasRoleFactory;
  */
 class ModelHasRole extends BaseMorphPivot
 {
+<<<<<<< HEAD
     /** @var array<int, string> */
+=======
+    /** @var  array<int, string> */
+>>>>>>> 351ece5 (up)
     protected $fillable = ['id', 'role_id', 'model_type', 'model_id', 'team_id'];
 
     /**

@@ -80,6 +80,10 @@ class Device extends BaseModel
 
     /** @var array<string, string> */
     protected $casts = [
+        'updated_by' => 'string',
+        'created_by' => 'string',
+        'deleted_by' => 'string',
+
         // 'id' => 'string',
         // 'locales' => 'array',
         'languages' => 'array',

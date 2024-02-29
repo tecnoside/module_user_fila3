@@ -39,7 +39,7 @@ use Modules\User\Database\Factories\ModelHasRoleFactory;
  */
 class ModelHasRole extends BaseMorphPivot
 {
-    /** @var  array<int, string> */
+    /** @var array<int, string> */
     protected $fillable = ['id', 'role_id', 'model_type', 'model_id', 'team_id'];
 
     /**
@@ -48,6 +48,10 @@ class ModelHasRole extends BaseMorphPivot
      * @var array<string, string>
      */
     protected $casts = [
+        'updated_by' => 'string',
+        'created_by' => 'string',
+        'deleted_by' => 'string',
+
         //    'id' => 'string',
     ];
 }

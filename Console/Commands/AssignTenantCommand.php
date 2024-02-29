@@ -58,7 +58,7 @@ class AssignTenantCommand extends Command
             required: true,
             scroll: 10,
             // validate: function (array $values) {
-            //  return ! \in_array(\count($values), [1, 2], true)
+            //  return ! \in_array(\count($values), [1, 2], false)
             //    ? 'A maximum of two'
             //  : null;
             // }

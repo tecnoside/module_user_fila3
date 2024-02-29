@@ -14,7 +14,6 @@ use Modules\User\Models\DeviceUser;
 use Modules\User\Models\User;
 use Modules\Xot\Datas\XotData;
 use Spatie\MediaLibrary\InteractsWithMedia;
-use Webmozart\Assert\Assert;
 
 trait IsProfileTrait
 {
@@ -76,11 +75,8 @@ trait IsProfileTrait
     protected function userName(): Attribute
     {
         return Attribute::make(
-            get: function (): string {
-                Assert::notNull($user = $this->user);
-                $value = $user->name;
-
-                return $value;
+            get: function (): ?string {
+                return $this->user?->name;
             }
         );
     }
@@ -91,28 +87,8 @@ trait IsProfileTrait
     protected function avatar(): Attribute
     {
         return Attribute::make(
-            get: function (): string {
+            get: function (): ?string {
                 $value = $this->getFirstMediaUrl('avatar');
-
-                return $value;
-            }
-        );
-    }
-
-    /**
-     * Get the user's email.
-     */
-    protected function email(): Attribute
-    {
-        return Attribute::make(
-            get: function ($value): string {
-                if (null === $value) {
-                    Assert::notNull($this->user);
-                    $this->email = $this->user->email;
-                    $this->update();
-                    // Assert::string($value = $this->email);
-                }
-                Assert::string($value);
 
                 return $value;
             }

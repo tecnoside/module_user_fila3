@@ -182,7 +182,7 @@ trait HasTeams
             return $role;
         }
 
-        Assert::notNull($user = $teamContract->users()->where('id', $this->id)->first());
+        Assert::notNull($user = $teamContract->users()->where('id', $this->id)->first(), '['.__LINE__.']['.__FILE__.']');
         Assert::isInstanceOf($user, User::class);
         /**
          * @var User $user

@@ -44,7 +44,7 @@ class RemoveRoleCommand extends Command
     public function handle(): void
     {
         $email = text('email ?');
-        Assert::notNull($user = User::firstWhere(['email' => $email]));
+        Assert::notNull($user = User::firstWhere(['email' => $email]),'['.__LINE__.']['.__FILE__.']');
         /**
          * @var array<string, string>
          */

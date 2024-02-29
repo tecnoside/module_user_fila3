@@ -46,7 +46,7 @@ class SuperAdminCommand extends Command
     public function handle(): void
     {
         $email = text('email ?');
-        Assert::notNull($user = User::firstWhere(['email' => $email]));
+        Assert::notNull($user = User::firstWhere(['email' => $email]), '['.__LINE__.']['.__FILE__.']');
 
         $role = Role::firstOrCreate(['name' => 'super-admin']);
         $user->assignRole($role);

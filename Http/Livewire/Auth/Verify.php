@@ -13,7 +13,7 @@ class Verify extends Component
 {
     public function resend(): void
     {
-        Assert::notNull($user = Auth::user());
+        Assert::notNull($user = Auth::user(), '['.__LINE__.']['.__FILE__.']');
         if ($user->hasVerifiedEmail()) {
             redirect(route('home'));
         }

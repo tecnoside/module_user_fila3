@@ -18,7 +18,9 @@ use Modules\User\Models\User;
 class UsersChartWidget extends ChartWidget
 {
     use InteractsWithPageFilters;
+
     protected static ?string $pollingInterval = null;
+
     protected static ?int $sort = 2;
 
     public string $chart_id = '';
@@ -50,12 +52,12 @@ class UsersChartWidget extends ChartWidget
         }
 
         $data = Trend::model(User::class)
-           ->between(
-               start: $startDate,
-               end: $endDate,
-           )
-           ->perDay()
-           ->count();
+            ->between(
+                start: $startDate,
+                end: $endDate,
+            )
+            ->perDay()
+            ->count();
 
         /**
          * @var callable

@@ -21,7 +21,7 @@ final class PrivacyPolicyTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->privacyPolicy = new PrivacyPolicy;
+        $this->privacyPolicy = new PrivacyPolicy();
     }
 
     protected function tearDown(): void

@@ -21,7 +21,7 @@ final class DeleteAccountTestTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->deleteAccountTest = new DeleteAccountTest;
+        $this->deleteAccountTest = new DeleteAccountTest();
     }
 
     protected function tearDown(): void

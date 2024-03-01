@@ -20,7 +20,7 @@ final class AssignModuleCommandTest extends TestCase
     {
         parent::setUp();
 
-        $this->assignModuleCommand = new AssignModuleCommand;
+        $this->assignModuleCommand = new AssignModuleCommand();
         $this->app->instance(AssignModuleCommand::class, $this->assignModuleCommand);
     }
 

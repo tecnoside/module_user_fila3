@@ -61,11 +61,7 @@ use Modules\User\Database\Factories\DeviceFactory;
  */
 class Device extends BaseModel
 {
-    /**
-     * Undocumented variable.
-     *
-     * @var array<string>
-     */
+    /** @var array<int, string> */
     protected $fillable = [
         'id',
         'mobile_id', // mattia
@@ -84,6 +80,10 @@ class Device extends BaseModel
 
     /** @var array<string, string> */
     protected $casts = [
+        'updated_by' => 'string',
+        'created_by' => 'string',
+        'deleted_by' => 'string',
+
         // 'id' => 'string',
         // 'locales' => 'array',
         'languages' => 'array',

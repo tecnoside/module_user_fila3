@@ -18,7 +18,7 @@ class LogoutController extends XotBaseController
      */
     public function __invoke(Request $request): JsonResponse
     {
-        Assert::notNull($user = $request->user());
+        Assert::notNull($user = $request->user(), '['.__LINE__.']['.__FILE__.']');
         app(LogoutUserAction::class)->execute($user);
         /*
         DB::table('oauth_refresh_tokens')
@@ -27,7 +27,7 @@ class LogoutController extends XotBaseController
         */
 
         /*
-        Assert::notNull($accessToken = $user->token());
+        Assert::notNull($accessToken = $user->token(),'['.__LINE__.']['.__FILE__.']');
         // Assert::methodExists($accessToken, 'delete');
         if (method_exists($accessToken, 'getKey')) {
             OauthRefreshToken::where('access_token_id', $accessToken->getKey())->delete();

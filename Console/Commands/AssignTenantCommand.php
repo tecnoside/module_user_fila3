@@ -46,7 +46,7 @@ class AssignTenantCommand extends Command
     public function handle(): void
     {
         $email = text('email ?');
-        Assert::notNull($user = User::firstWhere(['email' => $email]));
+        Assert::notNull($user = User::firstWhere(['email' => $email]), '['.__LINE__.']['.__FILE__.']');
         $xot = XotData::make();
         $tenantClass = $xot->getTenantClass();
 
@@ -58,7 +58,7 @@ class AssignTenantCommand extends Command
             required: true,
             scroll: 10,
             // validate: function (array $values) {
-            //  return ! \in_array(\count($values), [1, 2], true)
+            //  return ! \in_array(\count($values), [1, 2], false)
             //    ? 'A maximum of two'
             //  : null;
             // }

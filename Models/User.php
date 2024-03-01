@@ -156,6 +156,10 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
 
     /** @var array<string, string> */
     protected $casts = [
+        'updated_by' => 'string',
+        'created_by' => 'string',
+        'deleted_by' => 'string',
+
         'id' => 'string',
         'email_verified_at' => 'datetime',
         // 'password' => 'hashed', //Call to undefined cast [hashed] on column [password] in model [Modules\User\Models\User].

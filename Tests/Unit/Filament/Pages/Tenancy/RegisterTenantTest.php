@@ -21,7 +21,7 @@ final class RegisterTenantTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->registerTenant = new RegisterTenant();
+        $this->registerTenant = new RegisterTenant;
     }
 
     protected function tearDown(): void

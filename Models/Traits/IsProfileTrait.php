@@ -87,7 +87,7 @@ trait IsProfileTrait
     protected function avatar(): Attribute
     {
         return Attribute::make(
-            get: function (): ?string {
+            get: function (): string {
                 $value = $this->getFirstMediaUrl('avatar');
 
                 return $value;

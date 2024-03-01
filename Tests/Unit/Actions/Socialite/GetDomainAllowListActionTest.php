@@ -21,7 +21,7 @@ final class GetDomainAllowListActionTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->getDomainAllowListAction = new GetDomainAllowListAction();
+        $this->getDomainAllowListAction = new GetDomainAllowListAction;
     }
 
     protected function tearDown(): void

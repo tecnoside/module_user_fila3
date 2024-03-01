@@ -21,7 +21,7 @@ final class PasswordConfirmationTestTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->passwordConfirmationTest = new PasswordConfirmationTest();
+        $this->passwordConfirmationTest = new PasswordConfirmationTest;
     }
 
     protected function tearDown(): void

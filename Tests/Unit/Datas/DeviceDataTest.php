@@ -21,7 +21,7 @@ final class DeviceDataTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->deviceData = new DeviceData;
+        $this->deviceData = new DeviceData();
     }
 
     protected function tearDown(): void

@@ -21,7 +21,7 @@ final class GetCurrentDeviceActionTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->getCurrentDeviceAction = new GetCurrentDeviceAction();
+        $this->getCurrentDeviceAction = new GetCurrentDeviceAction;
     }
 
     protected function tearDown(): void

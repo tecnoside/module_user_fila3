@@ -21,7 +21,7 @@ final class TokensRelationManagerTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->tokensRelationManager = new TokensRelationManager();
+        $this->tokensRelationManager = new TokensRelationManager;
     }
 
     protected function tearDown(): void

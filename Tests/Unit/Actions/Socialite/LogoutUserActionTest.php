@@ -21,7 +21,7 @@ final class LogoutUserActionTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->logoutUserAction = new LogoutUserAction();
+        $this->logoutUserAction = new LogoutUserAction;
     }
 
     protected function tearDown(): void

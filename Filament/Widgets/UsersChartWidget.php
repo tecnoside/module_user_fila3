@@ -1,17 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
- * @see 
+ * @see
  */
 
 namespace Modules\User\Filament\Widgets;
 
-use Modules\User\Models\User;
 use Filament\Widgets\ChartWidget;
-use Illuminate\Contracts\Support\Htmlable;
 use Filament\Widgets\Concerns\InteractsWithPageFilters;
 use Flowframe\Trend\Trend;
 use Flowframe\Trend\TrendValue;
+use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Support\Carbon;
+use Modules\User\Models\User;
 
 class UsersChartWidget extends ChartWidget
 {
@@ -19,9 +21,10 @@ class UsersChartWidget extends ChartWidget
     protected static ?string $pollingInterval = null;
     protected static ?int $sort = 2;
 
-    public string $chart_id='';
+    public string $chart_id = '';
 
-    public function getHeading(): Htmlable|string|null{
+    public function getHeading(): Htmlable|string|null
+    {
         return 'chart_id:'.$this->chart_id;
     }
 
@@ -35,26 +38,26 @@ class UsersChartWidget extends ChartWidget
         $startDate = $this->filters['startDate'] ?? null;
         if (is_string($startDate)) {
             $startDate = Carbon::parse($startDate);
-        }else{
+        } else {
             $startDate = Carbon::now()->subYears(1);
         }
-        
+
         $endDate = $this->filters['endDate'] ?? null;
         if (is_string($endDate)) {
             $endDate = Carbon::parse($endDate);
-        }else{
+        } else {
             $endDate = Carbon::now();
         }
 
-         $data = Trend::model(User::class)
-            ->between(
-                start: $startDate,
-                end: $endDate,
-            )
-            ->perDay()
-            ->count();
+        $data = Trend::model(User::class)
+           ->between(
+               start: $startDate,
+               end: $endDate,
+           )
+           ->perDay()
+           ->count();
 
-         /**
+        /**
          * @var callable
          */
         $data_callable = fn (TrendValue $value) => $value->aggregate;
@@ -66,7 +69,6 @@ class UsersChartWidget extends ChartWidget
         $chart_data = $data->map($data_callable);
         $chart_labels = $data->map($labels_callable);
 
-
         return [
             'datasets' => [
                 [
@@ -74,9 +76,8 @@ class UsersChartWidget extends ChartWidget
                     'data' => $chart_data,
                     'fill' => 'start',
                 ],
-                
             ],
-            'labels' =>$chart_labels,
+            'labels' => $chart_labels,
         ];
     }
 }

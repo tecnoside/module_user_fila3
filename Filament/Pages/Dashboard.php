@@ -8,29 +8,26 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Pages;
 
-use Filament\Forms\Get;
-use Filament\Forms\Form;
-use Filament\Pages\Page;
-use Filament\Widgets\Widget;
-use Modules\User\Filament\Widgets;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\Section;
 use Filament\Forms\Components\DatePicker;
-use Filament\Widgets\WidgetConfiguration;
-use Modules\User\Filament\Widgets\UsersChart;
+use Filament\Forms\Components\Section;
+use Filament\Forms\Form;
+use Filament\Forms\Get;
 use Filament\Pages\Dashboard as BaseBashboard;
 use Filament\Pages\Dashboard\Concerns\HasFiltersForm;
+use Filament\Widgets\Widget;
+use Filament\Widgets\WidgetConfiguration;
+use Modules\User\Filament\Widgets;
 
 class Dashboard extends BaseBashboard
 {
     use HasFiltersForm;
 
     protected static ?string $navigationIcon = 'heroicon-o-home';
-    //protected static string $routePath = 'finance';
-    //protected static ?string $title = 'Finance dashboard';
-    //protected static ?int $navigationSort = 15;
+    // protected static string $routePath = 'finance';
+    // protected static ?string $title = 'Finance dashboard';
+    // protected static ?int $navigationSort = 15;
 
-    //protected static string $view = 'user::filament.pages.dashboard';
+    // protected static string $view = 'user::filament.pages.dashboard';
 
     /**
      * @return array<class-string<Widget>|WidgetConfiguration>
@@ -38,9 +35,8 @@ class Dashboard extends BaseBashboard
     public function getWidgets(): array
     {
         return [
-            Widgets\UsersChartWidget::make(['chart_id'=>'bb']),
-            Widgets\UsersChartWidget::make(['chart_id'=>'aa']),
-            
+            Widgets\UsersChartWidget::make(['chart_id' => 'bb']),
+            Widgets\UsersChartWidget::make(['chart_id' => 'aa']),
         ];
     }
 
@@ -51,10 +47,10 @@ class Dashboard extends BaseBashboard
                 Section::make()
                     ->schema([
                         DatePicker::make('startDate')
-                            //->native(false)
+                            // ->native(false)
                             ->maxDate(fn (Get $get) => $get('endDate') ?: now()),
                         DatePicker::make('endDate')
-                            //->native(false)
+                            // ->native(false)
                             ->minDate(fn (Get $get) => $get('startDate') ?: now())
                             ->maxDate(now()),
                     ])

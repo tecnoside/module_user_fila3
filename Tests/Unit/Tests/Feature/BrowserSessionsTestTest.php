@@ -21,7 +21,7 @@ final class BrowserSessionsTestTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->browserSessionsTest = new BrowserSessionsTest;
+        $this->browserSessionsTest = new BrowserSessionsTest();
     }
 
     protected function tearDown(): void

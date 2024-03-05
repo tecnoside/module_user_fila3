@@ -21,7 +21,7 @@ final class EditTenantProfileTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->editTenantProfile = new EditTenantProfile;
+        $this->editTenantProfile = new EditTenantProfile();
     }
 
     protected function tearDown(): void

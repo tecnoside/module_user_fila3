@@ -21,7 +21,7 @@ final class CreateApiTokenTestTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->createApiTokenTest = new CreateApiTokenTest;
+        $this->createApiTokenTest = new CreateApiTokenTest();
     }
 
     protected function tearDown(): void

@@ -21,7 +21,7 @@ final class UserTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->user = new User;
+        $this->user = new User();
     }
 
     protected function tearDown(): void

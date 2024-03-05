@@ -174,13 +174,12 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
         'roles',
     ];
 
-
     /** @var array<int, string> */
     protected $appends = [
         // 'profile_photo_url',
     ];
 
-    public function canAccessFilament(Panel $panel = null): bool
+    public function canAccessFilament(?Panel $panel = null): bool
     {
         // return $this->role_id === Role::ROLE_ADMINISTRATOR;
         return true;

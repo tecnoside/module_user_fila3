@@ -21,7 +21,7 @@ final class RegisterTeamTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->registerTeam = new RegisterTeam();
+        $this->registerTeam = new RegisterTeam;
     }
 
     protected function tearDown(): void

@@ -20,7 +20,7 @@ final class CreateDevicesTableTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->createDevicesTable = new \CreateDevicesTable;
+        $this->createDevicesTable = new \CreateDevicesTable();
     }
 
     protected function tearDown(): void

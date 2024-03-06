@@ -47,9 +47,6 @@ class ChangePasswordAction extends Action
                         ->same('new_password'),
                 ]
             );
-
-        // ->visible(fn (User $record): bool => $record->role_id === Role::ROLE_ADMINISTRATOR)
-        // ->modalSubmitActionLabel(trans('camping::operation.actions.save'))
     }
 
     public static function getDefaultName(): ?string

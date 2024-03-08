@@ -20,7 +20,7 @@ final class AssignRoleCommandTest extends TestCase
     {
         parent::setUp();
 
-        $this->assignRoleCommand = new AssignRoleCommand;
+        $this->assignRoleCommand = new AssignRoleCommand();
         $this->app->instance(AssignRoleCommand::class, $this->assignRoleCommand);
     }
 

@@ -20,7 +20,7 @@ final class CreatePasswordResetsTableTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->createPasswordResetsTable = new \CreatePasswordResetsTable();
+        $this->createPasswordResetsTable = new \CreatePasswordResetsTable;
     }
 
     protected function tearDown(): void

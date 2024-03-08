@@ -1,4 +1,4 @@
-<?php
+trict_types=1);
 
 namespace Modules\User\Filament\Traits;
 
@@ -165,5 +165,3 @@ trait HasTwoFactorAuthentication
     public function getEnabledProperty()
     {
         return ! empty($this->user->two_factor_secret);
-    }
-}

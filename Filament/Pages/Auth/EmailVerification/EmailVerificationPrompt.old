@@ -1,4 +1,4 @@
-<?php
+trict_types=1);
 
 namespace Modules\User\Filament\Pages\Auth\EmailVerification;
 
@@ -90,5 +90,3 @@ class EmailVerificationPrompt extends CardPage
     public function getHeading(): string
     {
         return __('filament-jet::auth/email-verification/email-verification-prompt.heading');
-    }
-}

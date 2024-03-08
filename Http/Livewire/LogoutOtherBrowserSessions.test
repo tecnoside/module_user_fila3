@@ -1,4 +1,4 @@
-<?php
+trict_types=1);
 
 namespace Modules\User\Http\Livewire;
 
@@ -61,5 +61,3 @@ class LogoutOtherBrowserSessions extends Component
         return tap(new Agent, function ($agent) use ($session) {
             $agent->setUserAgent($session->user_agent);
         });
-    }
-}

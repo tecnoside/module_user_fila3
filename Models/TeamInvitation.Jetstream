@@ -1,4 +1,4 @@
-<?php
+trict_types=1);
 
 namespace Modules\User\Models;
 
@@ -20,5 +20,3 @@ class TeamInvitation extends JetstreamTeamInvitation
     public function team(): BelongsTo
     {
         return $this->belongsTo(Jetstream::teamModel());
-    }
-}

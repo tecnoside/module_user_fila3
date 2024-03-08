@@ -1,4 +1,4 @@
-<?php
+trict_types=1);
 
 namespace Modules\User\Filament\Resources\UserResource\Pages;
 
@@ -18,12 +18,10 @@ class CreateUser extends CreateRecord
     {
         return 'This form will create an administrator user';
     }
- 
+
     protected function mutateFormDataBeforeCreate(array $data): array
     {
         $data['password'] = Hash::make($data['password']);
         $data['role_id'] = Role::ROLE_ADMINISTRATOR;
- 
+
         return $data;
-    }
-}

@@ -1,4 +1,4 @@
-<?php
+trict_types=1);
 
 namespace Modules\User\Filament\Resources\UserResource\Pages;
 
@@ -15,5 +15,3 @@ class EditUser extends EditRecord
         return [
             Actions\DeleteAction::make(),
         ];
-    }
-}

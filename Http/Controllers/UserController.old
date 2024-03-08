@@ -1,4 +1,4 @@
-<?php
+trict_types=1);
 
 namespace Modules\User\Http\Controllers;
 
@@ -75,5 +75,3 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
-    }
-}

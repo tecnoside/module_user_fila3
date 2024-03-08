@@ -1,4 +1,4 @@
-<?php
+trict_types=1);
 
 namespace Modules\User\Providers;
 
@@ -60,17 +60,15 @@ class FilamentServiceProvider extends ContextServiceProvider
                             ->icon(config('filament-jet.user_menu.create_team.icon', 'heroicon-o-users'))
                             ->sort(config('filament-jet.user_menu.create_team.sort'))
                             ->url(\Modules\User\Filament\Pages\CreateTeam::getUrl());
-            
+
             Filament::registerUserMenuItems($userMenuItems);
             */
             /*
             Livewire::component('switchable-team', SwitchableTeam::class);
-                
+
             Filament::registerRenderHook(
                 'user-menu.start',
                 fn (): string => Blade::render('@livewire(\'switchable-team\')'),
             );
             */
         });
-    }
-}

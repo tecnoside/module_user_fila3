@@ -21,7 +21,7 @@ final class IsProviderConfiguredActionTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->isProviderConfiguredAction = new IsProviderConfiguredAction();
+        $this->isProviderConfiguredAction = new IsProviderConfiguredAction;
     }
 
     protected function tearDown(): void

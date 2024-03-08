@@ -21,7 +21,7 @@ final class ProfileRelationManagerTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->profileRelationManager = new ProfileRelationManager();
+        $this->profileRelationManager = new ProfileRelationManager;
     }
 
     protected function tearDown(): void

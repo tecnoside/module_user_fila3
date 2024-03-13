@@ -21,7 +21,7 @@ final class DeleteApiTokenTestTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->deleteApiTokenTest = new DeleteApiTokenTest;
+        $this->deleteApiTokenTest = new DeleteApiTokenTest();
     }
 
     protected function tearDown(): void

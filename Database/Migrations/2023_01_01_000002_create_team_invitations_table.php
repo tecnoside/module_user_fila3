@@ -16,11 +16,12 @@ class CreateTeamInvitationsTable extends XotBaseMigration
 
         $this->tableCreate(
             static function (Blueprint $table): void {
-                $table->uuid('id')->primary();
-                $table->uuid('team_id')->nullable()->index();
+                $table->id();
+                $table->uuid('uuid');
+                $table->string('team_id', 36)->nullable()->index();
                 $table->string('email');
                 $table->string('role')->nullable();
-                $table->timestamps();
+                // $table->timestamps();
                 // $table->unique(['team_id', 'email']);
             }
         );
@@ -28,14 +29,11 @@ class CreateTeamInvitationsTable extends XotBaseMigration
         // -- UPDATE --
         $this->tableUpdate(
             function (Blueprint $table): void {
-                // if (! $this->hasColumn('email')) {
-                //    $table->string('email')->nullable();
+                // if ($this->hasIndexName('team_invitations_team_id_foreign')) {
+                //    $table->dropForeign('team_invitations_team_id_foreign');
                 // }
-                if ($this->hasIndexName('team_invitations_team_id_foreign')) {
-                    $table->dropForeign('team_invitations_team_id_foreign');
-                }
 
-                // $this->updateUser($table);
+                $this->updateTimestamps($table, true);
             }
         );
     }

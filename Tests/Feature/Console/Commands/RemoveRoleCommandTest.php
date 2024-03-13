@@ -20,7 +20,7 @@ final class RemoveRoleCommandTest extends TestCase
     {
         parent::setUp();
 
-        $this->removeRoleCommand = new RemoveRoleCommand();
+        $this->removeRoleCommand = new RemoveRoleCommand;
         $this->app->instance(RemoveRoleCommand::class, $this->removeRoleCommand);
     }
 

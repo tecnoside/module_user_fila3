@@ -1,4 +1,4 @@
-trict_types=1);
+<?php
 
 namespace Modules\User\Filament\Traits;
 
@@ -29,3 +29,5 @@ trait CanDeleteAccount
         }
 
         return redirect(config('filament.path'));
+    }
+}

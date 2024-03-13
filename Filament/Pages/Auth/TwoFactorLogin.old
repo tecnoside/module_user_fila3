@@ -1,4 +1,4 @@
-trict_types=1);
+<?php
 
 namespace Modules\User\Filament\Pages\Auth;
 
@@ -222,3 +222,5 @@ class TwoFactorLogin extends CardPage
     public function getHeading(): string
     {
         return __('filament-jet::auth/two-factor-login.heading');
+    }
+}

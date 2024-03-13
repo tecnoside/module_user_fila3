@@ -1,4 +1,4 @@
-trict_types=1);
+<?php
 
 namespace Modules\User\Filament\Pages;
 
@@ -24,3 +24,5 @@ abstract class CardPage extends Page
 
     abstract protected function getCardWidth(): string;
 
+    abstract protected function hasBrand(): bool;
+}

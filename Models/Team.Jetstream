@@ -1,4 +1,4 @@
-trict_types=1);
+<?php
 
 namespace Modules\User\Models;
 
@@ -36,3 +36,5 @@ class Team extends JetstreamTeam
         'created' => TeamCreated::class,
         'updated' => TeamUpdated::class,
         'deleted' => TeamDeleted::class,
+    ];
+}

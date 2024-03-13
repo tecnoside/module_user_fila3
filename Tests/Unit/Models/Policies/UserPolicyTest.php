@@ -25,8 +25,8 @@ final class UserPolicyTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->userPolicy = new UserPolicy();
-        $this->user = new User();
+        $this->userPolicy = new UserPolicy;
+        $this->user = new User;
         $this->app->instance(UserPolicy::class, $this->userPolicy);
     }
 

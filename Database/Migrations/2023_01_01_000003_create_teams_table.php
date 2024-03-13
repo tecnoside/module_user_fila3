@@ -25,19 +25,18 @@ class CreateTeamsTable extends XotBaseMigration
                 // $table->foreignIdFor(User::class);
                 $table->string('name');
                 $table->boolean('personal_team');
-                $table->timestamps();
+                // $table->timestamps();
             }
         );
         // -- UPDATE --
         $this->tableUpdate(
             function (Blueprint $table): void {
-                // if (! $this->hasColumn('email')) {
-                //    $table->string('email')->nullable();
+                // MySqlConnection::getDoctrineSchemaManager does not exist.
+                // MySqlConnection::getSchemaGrammar() ?
+                // if ($this->hasIndexName('team_invitations_team_id_foreign')) {
+                //    $table->dropForeign('team_invitations_team_id_foreign');
                 // }
-                if ($this->hasIndexName('team_invitations_team_id_foreign')) {
-                    $table->dropForeign('team_invitations_team_id_foreign');
-                }
-
+                $this->updateTimestamps($table, true);
                 // $this->updateUser($table);
             }
         );

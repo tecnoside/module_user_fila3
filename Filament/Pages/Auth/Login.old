@@ -1,4 +1,4 @@
-trict_types=1);
+<?php
 
 namespace Modules\User\Filament\Pages\Auth;
 
@@ -130,3 +130,5 @@ class Login extends CardPage
             Checkbox::make('remember')
                 ->label(__('filament-jet::auth/login.fields.remember.label')),
         ];
+    }
+}

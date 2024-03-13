@@ -1,4 +1,4 @@
-trict_types=1);
+<?php
 
 namespace Modules\User\Filament\Traits;
 
@@ -111,3 +111,5 @@ trait HasHiddenAction
         }
 
         return $actions;
+    }
+}

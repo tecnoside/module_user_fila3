@@ -1,4 +1,4 @@
-trict_types=1);
+<?php
 
 namespace Modules\User\Http\Livewire\Traits\Properties;
 
@@ -12,3 +12,5 @@ trait HasSanctumPermissionsProperty
             ->mapWithKeys(function ($permission) {
                 return [$permission => $permission];
             });
+    }
+}

@@ -20,7 +20,7 @@ final class CreateOauthPersonalAccessClientsTableTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->createOauthPersonalAccessClientsTable = new \CreateOauthPersonalAccessClientsTable();
+        $this->createOauthPersonalAccessClientsTable = new \CreateOauthPersonalAccessClientsTable;
     }
 
     protected function tearDown(): void

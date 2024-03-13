@@ -1,4 +1,4 @@
-trict_types=1);
+<?php
 
 namespace Modules\User\Filament\Traits;
 
@@ -50,3 +50,5 @@ trait CanLogoutOtherBrowserSessions
             ->where('user_id', Auth::user()->getAuthIdentifier())
             ->where('id', '!=', request()->session()->getId())
             ->delete();
+    }
+}

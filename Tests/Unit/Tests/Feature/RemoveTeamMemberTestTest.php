@@ -21,7 +21,7 @@ final class RemoveTeamMemberTestTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->removeTeamMemberTest = new RemoveTeamMemberTest();
+        $this->removeTeamMemberTest = new RemoveTeamMemberTest;
     }
 
     protected function tearDown(): void

@@ -36,12 +36,6 @@ use Illuminate\Support\Carbon;
  * @method static Builder|TeamUser whereUserId($value)
  * @method static Builder|TeamUser whereUuid($value)
  *
- * @property Carbon|null $deleted_at
- * @property string|null $deleted_by
- *
- * @method static Builder|TeamUser whereDeletedAt($value)
- * @method static Builder|TeamUser whereDeletedBy($value)
- *
  * @mixin \Eloquent
  */
 class TeamUser extends BasePivot

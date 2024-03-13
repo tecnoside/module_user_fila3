@@ -37,12 +37,6 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Membership whereUserId($value)
  * @method static Builder|Membership whereUuid($value)
  *
- * @property Carbon|null $deleted_at
- * @property string|null $deleted_by
- *
- * @method static Builder|Membership whereDeletedAt($value)
- * @method static Builder|Membership whereDeletedBy($value)
- *
  * @mixin \Eloquent
  */
 class Membership extends BasePivot

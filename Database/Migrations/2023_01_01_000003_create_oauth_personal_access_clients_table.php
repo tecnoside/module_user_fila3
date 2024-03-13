@@ -16,7 +16,7 @@ class CreateOauthPersonalAccessClientsTable extends XotBaseMigration
                 // $table->unsignedBigInteger('client_id');
                 // $table->uuid('client_id');
                 $table->foreignIdFor(OauthClient::class, 'client_id');
-                //$table->timestamps();
+                // $table->timestamps();
             }
         );
 
@@ -24,7 +24,7 @@ class CreateOauthPersonalAccessClientsTable extends XotBaseMigration
         $this->tableUpdate(
             function (Blueprint $table): void {
                 $this->updateUser($table);
-                $this->updateTimestamps($table,false);
+                $this->updateTimestamps($table, false);
             }
         );
     }

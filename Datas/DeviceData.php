@@ -58,7 +58,6 @@ class DeviceData extends Data
                 }
             )->all();
 
-        // Assert::isArray($xot = config('camping'), 'check config [camping] ');
         return self::from($headers);
     }
 

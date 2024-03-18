@@ -21,7 +21,7 @@ final class IsUserAllowedActionTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->isUserAllowedAction = new IsUserAllowedAction;
+        $this->isUserAllowedAction = new IsUserAllowedAction();
     }
 
     protected function tearDown(): void

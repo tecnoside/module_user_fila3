@@ -21,7 +21,7 @@ final class CreateUserActionTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->createUserAction = new CreateUserAction;
+        $this->createUserAction = new CreateUserAction();
     }
 
     protected function tearDown(): void

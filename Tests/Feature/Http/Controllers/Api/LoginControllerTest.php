@@ -21,7 +21,7 @@ final class LoginControllerTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->loginController = new LoginController;
+        $this->loginController = new LoginController();
         $this->app->instance(LoginController::class, $this->loginController);
     }
 

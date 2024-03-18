@@ -21,7 +21,7 @@ final class FilamentShieldDataTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->filamentShieldData = new FilamentShieldData;
+        $this->filamentShieldData = new FilamentShieldData();
     }
 
     protected function tearDown(): void

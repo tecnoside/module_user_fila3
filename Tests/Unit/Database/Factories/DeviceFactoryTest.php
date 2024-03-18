@@ -21,7 +21,7 @@ final class DeviceFactoryTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->deviceFactory = new DeviceFactory;
+        $this->deviceFactory = new DeviceFactory();
     }
 
     protected function tearDown(): void

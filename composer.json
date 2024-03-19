@@ -58,9 +58,9 @@
         "phpstan/phpstan-deprecation-rules": "*",
         "phpstan/phpstan-phpunit": "*",
         "psalm/plugin-laravel": "*",
-        "symplify/phpstan-rules": "*",
         "rector/rector": "*",
         "spatie/laravel-ray": "*",
+        "symplify/phpstan-rules": "*",
         "thecodingmachine/phpstan-safe-rule": "*",
         "tightenco/duster": "*",
         "vimeo/psalm": "*"

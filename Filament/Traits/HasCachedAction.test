@@ -1,4 +1,4 @@
-trict_types=1);
+<?php
 
 namespace Modules\User\Filament\Traits;
 
@@ -19,3 +19,5 @@ trait HasCachedAction
         }
 
         return null;
+    }
+}

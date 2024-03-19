@@ -23,7 +23,7 @@ class CreateOauthClientsTable extends XotBaseMigration
                 $table->boolean('personal_access_client');
                 $table->boolean('password_client');
                 $table->boolean('revoked');
-                $table->timestamps();
+                // $table->timestamps();
             }
         );
 
@@ -33,7 +33,7 @@ class CreateOauthClientsTable extends XotBaseMigration
                 if ($this->getColumnType('id') !== 'string') {
                     $table->uuid('id')->change();  // is  just primary
                 }
-
+                $this->updateTimestamps($table, false);
                 $this->updateUser($table);
             }
         );

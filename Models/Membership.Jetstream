@@ -1,4 +1,4 @@
-trict_types=1);
+<?php
 
 namespace Modules\User\Models;
 
@@ -11,3 +11,5 @@ class Membership extends JetstreamMembership
      *
      * @var bool
      */
+    public $incrementing = true;
+}

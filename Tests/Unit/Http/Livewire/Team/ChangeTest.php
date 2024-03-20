@@ -21,7 +21,7 @@ final class ChangeTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->change = new Change;
+        $this->change = new Change();
     }
 
     protected function tearDown(): void

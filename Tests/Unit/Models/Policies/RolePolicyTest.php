@@ -25,8 +25,8 @@ final class RolePolicyTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->rolePolicy = new RolePolicy;
-        $this->user = new User;
+        $this->rolePolicy = new RolePolicy();
+        $this->user = new User();
         $this->app->instance(RolePolicy::class, $this->rolePolicy);
     }
 

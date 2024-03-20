@@ -27,7 +27,7 @@ final class UserBasePolicyTest extends TestCase
         $this->userBasePolicy = $this->getMockBuilder(UserBasePolicy::class)
             ->setConstructorArgs([])
             ->getMockForAbstractClass();
-        $this->user = new User;
+        $this->user = new User();
         $this->app->instance(UserBasePolicy::class, $this->userBasePolicy);
     }
 

@@ -21,7 +21,7 @@ final class EditRoleTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->editRole = new EditRole;
+        $this->editRole = new EditRole();
     }
 
     protected function tearDown(): void

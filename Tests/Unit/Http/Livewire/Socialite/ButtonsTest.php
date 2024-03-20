@@ -21,7 +21,7 @@ final class ButtonsTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->buttons = new Buttons();
+        $this->buttons = new Buttons;
     }
 
     protected function tearDown(): void

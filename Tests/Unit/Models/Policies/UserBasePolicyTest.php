@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Modules\User\Tests\Unit\Models\Policies;
 
-use Tests\TestCase;
-use Modules\User\Models\User;
 use Modules\User\Models\Policies\UserBasePolicy;
+use Modules\User\Models\User;
+use Tests\TestCase;
 
 /**
  * Class UserBasePolicyTest.

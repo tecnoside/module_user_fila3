@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\User\Tests\Unit\Models\Policies;
 
-use Tests\TestCase;
+use Modules\User\Models\Policies\TeamPolicy;
 use Modules\User\Models\Team;
 use Modules\User\Models\User;
-use Modules\User\Models\Policies\TeamPolicy;
+use Tests\TestCase;
 
 /**
  * Class TeamPolicyTest.

@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\User\Tests\Unit\Models\Policies;
 
-use Tests\TestCase;
+use Modules\User\Models\Policies\PermissionPolicy;
 use Modules\User\Models\User;
 use Modules\User\Models\User as UserAlias;
-use Modules\User\Models\Policies\PermissionPolicy;
+use Tests\TestCase;
 
 /**
  * Class PermissionPolicyTest.

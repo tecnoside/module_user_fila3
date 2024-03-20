@@ -27,7 +27,8 @@ final class RolePolicyTest extends TestCase
         /* @todo Correctly instantiate tested object to use it. */
         $this->rolePolicy = new RolePolicy();
         $this->user = new User();
-        $this->app->instance(RolePolicy::class, $this->rolePolicy);
+        // $this->app->instance(RolePolicy::class, $this->rolePolicy);
+        app(RolePolicy::class, [$this->rolePolicy]);
     }
 
     protected function tearDown(): void

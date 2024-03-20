@@ -25,8 +25,8 @@ final class TeamPolicyTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->teamPolicy = new TeamPolicy();
-        $this->user = new User();
+        $this->teamPolicy = new TeamPolicy;
+        $this->user = new User;
         $this->app->instance(TeamPolicy::class, $this->teamPolicy);
     }
 

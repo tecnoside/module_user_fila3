@@ -21,7 +21,7 @@ final class LogoutListenerTest extends TestCase
     {
         parent::setUp();
 
-        $this->logoutListener = new LogoutListener();
+        $this->logoutListener = new LogoutListener;
     }
 
     protected function tearDown(): void

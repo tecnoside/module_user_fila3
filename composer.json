@@ -34,12 +34,15 @@
         }
     },
     "require": {
+        "flowframe/laravel-trend": "*",
         "jenssegers/agent": "*",
         "laravel/passport": "*",
+        "laraxot/module_notify_fila3": "*",
         "laraxot/module_tenant_fila3": "*",
         "laraxot/module_xot_fila3": "dev-master",
+        "socialiteproviders/auth0": "^4.1",
         "spatie/laravel-personal-data-export": "*",
-        "thecodingmachine/safe": "*"
+        "thecodingmachine/safe": "^2.5"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "*",
@@ -47,11 +50,11 @@
         "enlightn/enlightn": "*",
         "fakerphp/faker": "*",
         "friendsofphp/php-cs-fixer": "*",
-        "larastan/larastan": "^2.7",
+        "larastan/larastan": "*",
         "laravel/pint": "*",
         "nunomaduro/collision": "*",
         "nunomaduro/phpinsights": "*",
-        "orchestra/testbench": "*",
+        "orchestra/testbench": "^8.22",
         "pestphp/pest": "*",
         "pestphp/pest-plugin-arch": "*",
         "pestphp/pest-plugin-laravel": "*",
@@ -77,6 +80,10 @@
         {
             "type": "path",
             "url": "../UI"
+        },
+        {
+            "type": "path",
+            "url": "../Notify"
         }
     ],
     "scripts": {
@@ -95,7 +102,8 @@
         "sort-packages": true,
         "allow-plugins": {
             "pestphp/pest-plugin": true,
-            "dealerdirect/phpcodesniffer-composer-installer": true
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "wikimedia/composer-merge-plugin": true
         }
     },
     "minimum-stability": "dev",

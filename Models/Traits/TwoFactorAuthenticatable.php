@@ -50,7 +50,7 @@ trait TwoFactorAuthenticatable
             throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
 
-        return (array) json_decode((string) decrypt($this->two_factor_recovery_codes), true, 512, JSON_THROW_ON_ERROR);
+        return (array) \Safe\json_decode((string) decrypt($this->two_factor_recovery_codes), true, 512, JSON_THROW_ON_ERROR);
     }
 
     /**

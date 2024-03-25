@@ -5,9 +5,10 @@ declare(strict_types=1);
 namespace Modules\User\Console\Commands;
 
 use Illuminate\Console\Command;
-use Modules\Xot\Datas\XotData;
 
 use function Laravel\Prompts\text;
+
+use Modules\Xot\Datas\XotData;
 
 class CreateTeamCommand extends Command
 {

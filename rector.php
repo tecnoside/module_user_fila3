@@ -54,6 +54,8 @@ return static function (RectorConfig $rectorConfig): void {
             '*/build',
             '*/docs',
             '*/vendor',
+            './vendor/',
+            __DIR__.'/vendor',
         ]
     );
 

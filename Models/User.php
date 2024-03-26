@@ -99,6 +99,14 @@ use Spatie\Permission\Traits\HasRoles;
  * @method static Builder|User withoutPermission($permissions)
  * @method static Builder|User withoutRole($roles, $guard = null)
  *
+ * @property string|null $updated_by
+ * @property string|null $created_by
+ * @property string|null $deleted_by
+ *
+ * @method static Builder|User whereCreatedBy($value)
+ * @method static Builder|User whereDeletedBy($value)
+ * @method static Builder|User whereUpdatedBy($value)
+ *
  * @mixin \Eloquent
  */
 class User extends Authenticatable implements HasName, HasTenants, UserContract
@@ -205,7 +213,7 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
     public function canAccessPanel(Panel $panel): bool
     {
         // $panel->default('admin');
-        if ($panel->getId() !== 'admin') {
+        if ('admin' !== $panel->getId()) {
             $role = $panel->getId();
             /*
             $xot = XotData::make();

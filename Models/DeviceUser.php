@@ -44,6 +44,9 @@ use Modules\Xot\Datas\XotData;
  * @method static Builder|DeviceUser whereUpdatedBy($value)
  * @method static Builder|DeviceUser whereUserId($value)
  *
+ * @property \Modules\Camping\Models\Profile|null $profile
+ * @property User|null                            $user
+ *
  * @mixin \Eloquent
  */
 class DeviceUser extends BasePivot

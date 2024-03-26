@@ -21,7 +21,7 @@ final class DevicesRelationManagerTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->devicesRelationManager = new DevicesRelationManager();
+        $this->devicesRelationManager = new DevicesRelationManager;
     }
 
     protected function tearDown(): void

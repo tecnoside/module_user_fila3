@@ -20,7 +20,7 @@ final class CreateOauthRefreshTokensTableTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->createOauthRefreshTokensTable = new \CreateOauthRefreshTokensTable;
+        $this->createOauthRefreshTokensTable = new \CreateOauthRefreshTokensTable();
     }
 
     protected function tearDown(): void

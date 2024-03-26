@@ -1,5 +1,11 @@
 <?php
+<<<<<<< HEAD
 
+=======
+/**
+ * --.
+ */
+>>>>>>> 2bf2072 (Check & fix styling)
 declare(strict_types=1);
 
 namespace Modules\User\Filament\Resources\TenantResource\Pages;

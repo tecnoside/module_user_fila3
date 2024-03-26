@@ -21,7 +21,7 @@ final class UpdatePasswordTestTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->updatePasswordTest = new UpdatePasswordTest;
+        $this->updatePasswordTest = new UpdatePasswordTest();
     }
 
     protected function tearDown(): void

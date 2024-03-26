@@ -1,11 +1,5 @@
 <?php
-/**
-<<<<<<< HEAD
- * --.
-=======
- * --
->>>>>>> 50f3933 (.)
- */
+
 declare(strict_types=1);
 
 namespace Modules\User\Filament\Resources\TenantResource\Pages;

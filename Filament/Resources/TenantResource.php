@@ -13,7 +13,14 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+<<<<<<< HEAD
 use Modules\User\Filament\Resources\TenantResource\Pages;
+=======
+use Modules\User\Filament\Resources\TenantResource\Pages\CreateTenant;
+use Modules\User\Filament\Resources\TenantResource\Pages\EditTenant;
+use Modules\User\Filament\Resources\TenantResource\Pages\ListTenants;
+use Modules\User\Filament\Resources\TenantResource\Pages\ViewTenant;
+>>>>>>> 7e9176e (Check & fix styling)
 use Modules\User\Filament\Resources\TenantResource\RelationManagers;
 use Modules\Xot\Datas\XotData;
 
@@ -111,10 +118,10 @@ class TenantResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListTenants::route('/'),
-            'create' => Pages\CreateTenant::route('/create'),
-            'view' => Pages\ViewTenant::route('/{record}'),
-            'edit' => Pages\EditTenant::route('/{record}/edit'),
+            'index' => ListTenants::route('/'),
+            'create' => CreateTenant::route('/create'),
+            'view' => ViewTenant::route('/{record}'),
+            'edit' => EditTenant::route('/{record}/edit'),
         ];
     }
 }

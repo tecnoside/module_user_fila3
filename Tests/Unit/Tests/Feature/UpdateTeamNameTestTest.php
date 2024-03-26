@@ -21,7 +21,7 @@ final class UpdateTeamNameTestTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->updateTeamNameTest = new UpdateTeamNameTest;
+        $this->updateTeamNameTest = new UpdateTeamNameTest();
     }
 
     protected function tearDown(): void

@@ -28,12 +28,8 @@ final class UserBasePolicyTest extends TestCase
             ->setConstructorArgs([])
             ->getMockForAbstractClass();
         $this->user = new User();
-<<<<<<< HEAD:Tests/Unit/Models/Policies/UserBasePolicyTest.old
         // $this->app->instance(UserBasePolicy::class, $this->userBasePolicy);
         app(UserBasePolicy::class, [$this->userBasePolicy]);
-=======
-        $this->app->instance(UserBasePolicy::class, $this->userBasePolicy);
->>>>>>> b1966c7 (Check & fix styling):Tests/Unit/Models/Policies/UserBasePolicyTest.php
     }
 
     protected function tearDown(): void

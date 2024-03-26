@@ -25,9 +25,16 @@ final class RolePolicyTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
+<<<<<<< HEAD:Tests/Unit/Models/Policies/RolePolicyTest.old
         $this->rolePolicy = new RolePolicy;
         $this->user = new User;
         $this->app->instance(RolePolicy::class, $this->rolePolicy);
+=======
+        $this->rolePolicy = new RolePolicy();
+        $this->user = new User();
+        // $this->app->instance(RolePolicy::class, $this->rolePolicy);
+        app(RolePolicy::class, [$this->rolePolicy]);
+>>>>>>> 7e147b4 (try phpstan):Tests/Unit/Models/Policies/RolePolicyTest.php
     }
 
     protected function tearDown(): void

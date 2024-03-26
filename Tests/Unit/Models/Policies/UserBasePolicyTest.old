@@ -27,8 +27,14 @@ final class UserBasePolicyTest extends TestCase
         $this->userBasePolicy = $this->getMockBuilder(UserBasePolicy::class)
             ->setConstructorArgs([])
             ->getMockForAbstractClass();
+<<<<<<< HEAD:Tests/Unit/Models/Policies/UserBasePolicyTest.old
         $this->user = new User;
         $this->app->instance(UserBasePolicy::class, $this->userBasePolicy);
+=======
+        $this->user = new User();
+        // $this->app->instance(UserBasePolicy::class, $this->userBasePolicy);
+        app(UserBasePolicy::class, [$this->userBasePolicy]);
+>>>>>>> 7e147b4 (try phpstan):Tests/Unit/Models/Policies/UserBasePolicyTest.php
     }
 
     protected function tearDown(): void

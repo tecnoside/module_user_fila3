@@ -250,15 +250,7 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
 
     public function getFullNameAttribute(?string $value): ?string
     {
-<<<<<<< HEAD
         return $value ?? $this->first_name.' '.$this->last_name;
-=======
-        if (null !== $value) {
-            return $value;
-        }
-
-        return $this->first_name.' '.$this->last_name;
->>>>>>> d9886a3 (Check & fix styling)
     }
 
     /**

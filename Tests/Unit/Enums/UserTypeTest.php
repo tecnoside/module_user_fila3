@@ -21,7 +21,7 @@ final class UserTypeTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->userType = new UserType();
+        $this->userType = new UserType;
     }
 
     protected function tearDown(): void

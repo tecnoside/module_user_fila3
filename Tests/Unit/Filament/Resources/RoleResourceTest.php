@@ -21,7 +21,7 @@ final class RoleResourceTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->roleResource = new RoleResource();
+        $this->roleResource = new RoleResource;
     }
 
     protected function tearDown(): void

@@ -21,7 +21,7 @@ final class ProcessCallbackControllerTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->processCallbackController = new ProcessCallbackController();
+        $this->processCallbackController = new ProcessCallbackController;
         $this->app->instance(ProcessCallbackController::class, $this->processCallbackController);
     }
 

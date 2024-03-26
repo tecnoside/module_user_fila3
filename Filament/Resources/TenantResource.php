@@ -9,25 +9,13 @@ declare(strict_types=1);
 namespace Modules\User\Filament\Resources;
 
 use Filament\Forms;
-use Filament\Tables;
 use Filament\Forms\Form;
-use Filament\Tables\Table;
-<<<<<<< HEAD
-use Modules\User\Filament\Resources\TenantResource\Pages\CreateTenant;
-use Modules\User\Filament\Resources\TenantResource\Pages\EditTenant;
-use Modules\User\Filament\Resources\TenantResource\Pages\ListTenants;
-use Modules\User\Filament\Resources\TenantResource\Pages\ViewTenant;
-use Modules\User\Filament\Resources\TenantResource\RelationManagers;
-=======
->>>>>>> 596de09 (.)
-use Modules\Xot\Datas\XotData;
 use Filament\Resources\Resource;
+use Filament\Tables;
+use Filament\Tables\Table;
 use Modules\User\Filament\Resources\TenantResource\Pages;
-use Modules\User\Filament\Resources\TenantResource\Pages\EditTenant;
-use Modules\User\Filament\Resources\TenantResource\Pages\ViewTenant;
 use Modules\User\Filament\Resources\TenantResource\RelationManagers;
-use Modules\User\Filament\Resources\TenantResource\Pages\ListTenants;
-use Modules\User\Filament\Resources\TenantResource\Pages\CreateTenant;
+use Modules\Xot\Datas\XotData;
 
 class TenantResource extends Resource
 {
@@ -123,10 +111,10 @@ class TenantResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => ListTenants::route('/'),
-            'create' => CreateTenant::route('/create'),
-            'view' => ViewTenant::route('/{record}'),
-            'edit' => EditTenant::route('/{record}/edit'),
+            'index' => Pages\ListTenants::route('/'),
+            'create' => Pages\CreateTenant::route('/create'),
+            'view' => Pages\ViewTenant::route('/{record}'),
+            'edit' => Pages\EditTenant::route('/{record}/edit'),
         ];
     }
 }

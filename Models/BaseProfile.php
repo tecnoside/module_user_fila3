@@ -56,9 +56,9 @@ abstract class BaseProfile extends BaseModel implements ProfileContract
 {
     use HasChildren;
     use HasRoles;
+    use InteractsWithMedia;
     use IsProfileTrait;
     use Notifiable;
-    use InteractsWithMedia;
     use SchemalessAttributesTrait;
 
     /**

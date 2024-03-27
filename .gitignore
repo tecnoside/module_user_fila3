@@ -1,0 +1,13 @@
+/vendor
+*.lock
+/build
+*.cache
+*.phar
+.git-blame-ignore-revs
+.git-rewrite
+.php-cs-fixer.cache
+*.phar
+*.cache
+package-lock.json
+.git-rewrite/
+node_modules

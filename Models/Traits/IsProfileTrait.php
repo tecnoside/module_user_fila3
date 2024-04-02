@@ -158,7 +158,7 @@ trait IsProfileTrait
             ->pluck('push_notifications_token');
     }
 
-    /** 
+    /**
      * Get all of the teams the user belongs to.
      */
     public function teams(): BelongsToMany
@@ -171,7 +171,7 @@ trait IsProfileTrait
         $pivotTableFull = $pivotDbName.'.'.$pivotTable;
 
         // $this->setConnection('mysql');
-        return $this->belongsToMany($xot->getTeamClass(), $pivotTableFull, 'user_id', 'team_id','user_id')
+        return $this->belongsToMany($xot->getTeamClass(), $pivotTableFull, 'user_id', 'team_id', 'user_id')
             ->using($pivotClass)
             ->withPivot('role')
             ->withTimestamps()

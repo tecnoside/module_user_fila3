@@ -28,7 +28,6 @@ class Register extends Component
     // public function register(): \Livewire\Features\SupportRedirects\Redirector
     public function register(): RedirectResponse|\Livewire\Features\SupportRedirects\Redirector
     {
-        // public function register(): RedirectResponse
         $this->validate([
             'name' => ['required'],
             'email' => ['required', 'email', 'unique:user.users'],

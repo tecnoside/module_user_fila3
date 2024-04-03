@@ -25,8 +25,8 @@ class Register extends Component
     /**
      * Execute the action.
      */
-    public function register(): \Livewire\Features\SupportRedirects\Redirector
-    // public function register(): RedirectResponse
+    // public function register(): \Livewire\Features\SupportRedirects\Redirector
+    public function register(): RedirectResponse|\Livewire\Features\SupportRedirects\Redirector
     {
         $this->validate([
             'name' => ['required'],
@@ -45,6 +45,7 @@ class Register extends Component
         Auth::login($user, true);
 
         return redirect()->intended(route('home'));
+        // return redirect(route('home'));
     }
 
     public function render(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory

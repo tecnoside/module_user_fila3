@@ -23,45 +23,46 @@ use Modules\User\Http\Livewire\Auth\Register;
 */
 
 // Route::view('/', 'welcome')->name('home');
+Route::prefix('{lang}')->group(function () {
+    Route::middleware('guest')
+        ->namespace('\Modules\User\Http\Livewire\Auth')
+        ->group(static function (): void {
+            Route::get('login', 'Login')
+                ->name('login');
 
-Route::middleware('guest')
-    ->namespace('\Modules\User\Http\Livewire\Auth')
-    ->group(static function (): void {
-        Route::get('login', 'Login')
-            ->name('login');
+            Route::get('register', Register::class)
+                ->name('register');
+        });
 
-        Route::get('register', Register::class)
-            ->name('register');
-    });
+    Route::middleware([])
+        ->namespace('\Modules\User\Http\Livewire\Auth')
+        ->group(static function (): void {
+            Route::get('password/reset', Modules\User\Http\Livewire\Auth\Passwords\Email::class)
+                ->name('password.request');
 
-Route::middleware([])
-    ->namespace('\Modules\User\Http\Livewire\Auth')
-    ->group(static function (): void {
-        Route::get('password/reset', Modules\User\Http\Livewire\Auth\Passwords\Email::class)
-            ->name('password.request');
+            Route::get('password/reset/{token}', Modules\User\Http\Livewire\Auth\Passwords\Reset::class)
+                ->name('password.reset');
+        });
 
-        Route::get('password/reset/{token}', Modules\User\Http\Livewire\Auth\Passwords\Reset::class)
-            ->name('password.reset');
-    });
+    Route::middleware('auth')
+        ->namespace('\Modules\User\Http\Livewire\Auth')
+        ->group(static function (): void {
+            Route::get('email/verify', Modules\User\Http\Livewire\Auth\Verify::class)
+                ->middleware('throttle:6,1')
+                ->name('verification.notice');
 
-Route::middleware('auth')
-    ->namespace('\Modules\User\Http\Livewire\Auth')
-    ->group(static function (): void {
-        Route::get('email/verify', Modules\User\Http\Livewire\Auth\Verify::class)
-            ->middleware('throttle:6,1')
-            ->name('verification.notice');
+            Route::get('password/confirm', Modules\User\Http\Livewire\Auth\Passwords\Confirm::class)
+                ->name('password.confirm');
+        });
 
-        Route::get('password/confirm', Modules\User\Http\Livewire\Auth\Passwords\Confirm::class)
-            ->name('password.confirm');
-    });
+    Route::middleware('auth')
+    // ->namespace('\Modules\User\Http\Livewire\Auth')
+        ->group(static function (): void {
+            Route::get('email/verify/{id}/{hash}', EmailVerificationController::class)
+                ->middleware('signed')
+                ->name('verification.verify');
 
-Route::middleware('auth')
-// ->namespace('\Modules\User\Http\Livewire\Auth')
-    ->group(static function (): void {
-        Route::get('email/verify/{id}/{hash}', EmailVerificationController::class)
-            ->middleware('signed')
-            ->name('verification.verify');
-
-        Route::post('logout', LogoutController::class)
-            ->name('logout');
-    });
+            Route::post('logout', LogoutController::class)
+                ->name('logout');
+        });
+});

@@ -33,6 +33,7 @@ Route::namespace('Socialite')
             Route::get(
                 '/admin/login/{provider}',
                 'LoginController@redirectToProvider',
+                //'RedirectToProviderController',
             )
                 ->name('oauth.redirect');
             Route::get(

@@ -65,25 +65,23 @@ Route::prefix('{lang}')->group(function () {
             Route::post('logout', LogoutController::class)
                 ->name('logout');
         });
-
-
 });
 
 Route::namespace('Socialite')
     ->name('socialite.')
     ->group(
-    static function (): void {
-        Route::get(
-            '/login/{provider}',
-            'RedirectToProviderController',
-            //'LoginController@redirectToProvider',
-        );
-        //->name('oauth.redirect')
-        ;
-        Route::get(
-            '/sso/{provider}/callback',
-            'ProcessCallbackController',
-        );
-        //->name('oauth.callback');
-    }
-);
+        static function (): void {
+            Route::get(
+                '/login/{provider}',
+                'RedirectToProviderController',
+                // 'LoginController@redirectToProvider',
+            );
+            // ->name('oauth.redirect')
+
+            Route::get(
+                '/sso/{provider}/callback',
+                'ProcessCallbackController',
+            );
+            // ->name('oauth.callback');
+        }
+    );

@@ -62,7 +62,7 @@ class DeviceUser extends BasePivot
         'push_notifications_enabled',
     ];
 
-    /** @var array<string, string> */
+    /** @return array<string, string> */
     protected function casts(): array
     {
         return [

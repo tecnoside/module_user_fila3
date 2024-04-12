@@ -78,7 +78,7 @@ class Device extends BaseModel
         'is_phone',
     ];
 
-    /** @var array<string, string> */
+    /** @return array<string, string> */
     protected function casts(): array
     {
         return [

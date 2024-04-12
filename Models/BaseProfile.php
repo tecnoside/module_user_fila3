@@ -84,7 +84,7 @@ abstract class BaseProfile extends BaseModel implements ProfileContract
         'full_name',
     ];
 
-    /** @var array<string, string> */
+    /** @return array<string, string> */
     protected function casts(): array
     {
         return [

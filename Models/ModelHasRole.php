@@ -47,11 +47,16 @@ class ModelHasRole extends BaseMorphPivot
      *
      * @var array<string, string>
      */
-    protected $casts = [
+    protected function casts(): array
+    {
+        return [
+
         'updated_by' => 'string',
         'created_by' => 'string',
         'deleted_by' => 'string',
 
         //    'id' => 'string',
-    ];
+
+        ];
+    }
 }

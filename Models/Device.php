@@ -79,7 +79,10 @@ class Device extends BaseModel
     ];
 
     /** @var array<string, string> */
-    protected $casts = [
+    protected function casts(): array
+    {
+        return [
+
         'updated_by' => 'string',
         'created_by' => 'string',
         'deleted_by' => 'string',
@@ -87,7 +90,9 @@ class Device extends BaseModel
         // 'id' => 'string',
         // 'locales' => 'array',
         'languages' => 'array',
-    ];
+
+        ];
+    }
 
     public function users(): BelongsToMany
     {

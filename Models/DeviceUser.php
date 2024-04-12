@@ -63,7 +63,10 @@ class DeviceUser extends BasePivot
     ];
 
     /** @var array<string, string> */
-    protected $casts = [
+    protected function casts(): array
+    {
+        return [
+
         'updated_by' => 'string',
         'created_by' => 'string',
         'deleted_by' => 'string',
@@ -79,7 +82,9 @@ class DeviceUser extends BasePivot
         // 'locales' => 'array',
         'push_notifications_token' => 'string',
         'push_notifications_enabled' => 'boolean',
-    ];
+
+        ];
+    }
 
     /**
      * @return BelongsTo<Device, DeviceUser>

@@ -13,13 +13,18 @@ class Team extends JetstreamTeam
     use HasFactory;
 
     /** @var array<string, string> */
-    protected $casts = [
+    protected function casts(): array
+    {
+        return [
+
     'updated_by' => 'string',
     'created_by' => 'string',
     'deleted_by' => 'string',
 
         'personal_team' => 'boolean',
-    ];
+
+        ];
+    }
 
     /** @var array<int, string> */
     protected $fillable = [

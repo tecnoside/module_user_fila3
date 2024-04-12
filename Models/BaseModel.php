@@ -41,14 +41,17 @@ abstract class BaseModel extends Model
     /** @var string */
     protected $connection = 'user';
 
-    /** @var array<string, string> */
-    protected $casts = [
-        'published_at' => 'datetime',
-        'created_at' => 'datetime',
-        'updated_at' => 'datetime',
-        'deleted_at' => 'datetime',
-        'verified_at' => 'datetime',
-    ];
+    /** @return array<string, string> */
+    protected function casts(): array
+    {
+        return [
+            'published_at' => 'datetime',
+            'created_at' => 'datetime',
+            'updated_at' => 'datetime',
+            'deleted_at' => 'datetime',
+            'verified_at' => 'datetime',
+        ];
+    }
 
     /** @var array<int, string> */
     protected $appends = [];

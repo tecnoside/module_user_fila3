@@ -78,16 +78,19 @@ class Device extends BaseModel
         'is_phone',
     ];
 
-    /** @var array<string, string> */
-    protected $casts = [
-        'updated_by' => 'string',
-        'created_by' => 'string',
-        'deleted_by' => 'string',
+    /** @return array<string, string> */
+    protected function casts(): array
+    {
+        return [
+            'updated_by' => 'string',
+            'created_by' => 'string',
+            'deleted_by' => 'string',
 
-        // 'id' => 'string',
-        // 'locales' => 'array',
-        'languages' => 'array',
-    ];
+            // 'id' => 'string',
+            // 'locales' => 'array',
+            'languages' => 'array',
+        ];
+    }
 
     public function users(): BelongsToMany
     {

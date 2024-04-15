@@ -62,24 +62,27 @@ class DeviceUser extends BasePivot
         'push_notifications_enabled',
     ];
 
-    /** @var array<string, string> */
-    protected $casts = [
-        'updated_by' => 'string',
-        'created_by' => 'string',
-        'deleted_by' => 'string',
+    /** @return array<string, string> */
+    protected function casts(): array
+    {
+        return [
+            'updated_by' => 'string',
+            'created_by' => 'string',
+            'deleted_by' => 'string',
 
-        'created_at' => 'datetime',
-        'updated_at' => 'datetime',
-        'deleted_at' => 'datetime',
-        'login_at' => 'datetime',
-        'logout_at' => 'datetime',
-        'user_id' => 'string',
-        'device_id' => 'string',
-        // 'id' => 'string',
-        // 'locales' => 'array',
-        'push_notifications_token' => 'string',
-        'push_notifications_enabled' => 'boolean',
-    ];
+            'created_at' => 'datetime',
+            'updated_at' => 'datetime',
+            'deleted_at' => 'datetime',
+            'login_at' => 'datetime',
+            'logout_at' => 'datetime',
+            'user_id' => 'string',
+            'device_id' => 'string',
+            // 'id' => 'string',
+            // 'locales' => 'array',
+            'push_notifications_token' => 'string',
+            'push_notifications_enabled' => 'boolean',
+        ];
+    }
 
     /**
      * @return BelongsTo<Device, DeviceUser>

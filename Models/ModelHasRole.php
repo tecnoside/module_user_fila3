@@ -45,7 +45,7 @@ class ModelHasRole extends BaseMorphPivot
     /**
      * Undocumented variable.
      *
-     * @var array<string, string>
+     * @return array<string, string>
      */
     protected function casts(): array
     {

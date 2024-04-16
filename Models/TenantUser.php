@@ -13,7 +13,6 @@ use Illuminate\Support\Carbon;
  * @method static Builder|TeamUser newModelQuery()
  * @method static Builder|TeamUser newQuery()
  * @method static Builder|TeamUser query()
- *
  * @property int         $id
  * @property string|null $tenant_id
  * @property string|null $user_id
@@ -21,7 +20,6 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $updated_at
  * @property string|null $created_by
  * @property string|null $updated_by
- *
  * @method static Builder|TeamUser whereCreatedAt($value)
  * @method static Builder|TeamUser whereCreatedBy($value)
  * @method static Builder|TeamUser whereCustomerId($value)
@@ -32,14 +30,11 @@ use Illuminate\Support\Carbon;
  * @method static Builder|TeamUser whereUpdatedBy($value)
  * @method static Builder|TeamUser whereUserId($value)
  * @method static Builder|TeamUser whereUuid($value)
- *
  * @property string|null $deleted_at
  * @property string|null $deleted_by
- *
  * @method static Builder|TenantUser whereDeletedAt($value)
  * @method static Builder|TenantUser whereDeletedBy($value)
  * @method static Builder|TenantUser whereTenantId($value)
- *
  * @mixin \Eloquent
  */
 class TenantUser extends BasePivot

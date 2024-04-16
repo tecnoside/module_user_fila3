@@ -49,7 +49,6 @@ trait IsProfileTrait
 
     public function getFirstNameAttribute(?string $value): ?string
     {
-        
         if (null !== $value) {
             return $value;
         }

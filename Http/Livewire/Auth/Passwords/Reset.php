@@ -24,6 +24,7 @@ class Reset extends Component
 
     public string $passwordConfirmation;
 
+    // ricordarsi di configurare il file auth.php
     public function mount(string $token): void
     {
         Assert::string($email = request()->query('email', ''));
@@ -34,7 +35,7 @@ class Reset extends Component
     /**
      * Undocumented function.
      */
-    public function resetPassword(): ?RedirectResponse
+    public function resetPassword(): \Livewire\Features\SupportRedirects\Redirector|RedirectResponse|null
     {
         $this->validate([
             'token' => 'required',

@@ -67,10 +67,14 @@ use Modules\Xot\Datas\XotData;
  * @method static \Illuminate\Database\Eloquent\Builder|Team whereDeletedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Team whereUpdatedBy($value)
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 7520125 (up)
 =======
  *
 >>>>>>> d176b8d (Check & fix styling)
+=======
+ *
+>>>>>>> cs0.2.00
  * @mixin \Eloquent
  */
 class Team extends BaseModel implements TeamContract

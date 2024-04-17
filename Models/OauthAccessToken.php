@@ -26,7 +26,11 @@ use Laravel\Passport\Token as PassportToken;
 =======
  * @property OauthClient|null                $client
  * @property User|null                       $user
+<<<<<<< HEAD
 >>>>>>> 7520125 (up)
+=======
+ *
+>>>>>>> d176b8d (Check & fix styling)
  * @method static \Illuminate\Database\Eloquent\Builder|OauthAccessToken newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|OauthAccessToken newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|OauthAccessToken query()
@@ -39,6 +43,7 @@ use Laravel\Passport\Token as PassportToken;
  * @method static \Illuminate\Database\Eloquent\Builder|OauthAccessToken whereScopes($value)
  * @method static \Illuminate\Database\Eloquent\Builder|OauthAccessToken whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|OauthAccessToken whereUserId($value)
+ *
  * @mixin \Eloquent
  */
 class OauthAccessToken extends PassportToken

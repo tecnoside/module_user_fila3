@@ -23,9 +23,13 @@ use Modules\Xot\Datas\XotData;
  * @property Team|null $team
  * @property TeamContract|null $team
 <<<<<<< HEAD
+<<<<<<< HEAD
  *
  * @method static TeamInvitationFactory factory($count = null, $state = [])
 =======
+=======
+ *
+>>>>>>> d176b8d (Check & fix styling)
  * @method static TeamInvitationFactory  factory($count = null, $state = [])
 >>>>>>> 7520125 (up)
  * @method static Builder|TeamInvitation newModelQuery()
@@ -37,14 +41,17 @@ use Modules\Xot\Datas\XotData;
  * @method static Builder|TeamInvitation whereRole($value)
  * @method static Builder|TeamInvitation whereTeamId($value)
  * @method static Builder|TeamInvitation whereUpdatedAt($value)
+ *
  * @property string|null $updated_by
  * @property string|null $created_by
  * @property Carbon|null $deleted_at
  * @property string|null $deleted_by
+ *
  * @method static Builder|TeamInvitation whereCreatedBy($value)
  * @method static Builder|TeamInvitation whereDeletedAt($value)
  * @method static Builder|TeamInvitation whereDeletedBy($value)
  * @method static Builder|TeamInvitation whereUpdatedBy($value)
+ *
  * @mixin \Eloquent
  */
 class TeamInvitation extends BaseModel

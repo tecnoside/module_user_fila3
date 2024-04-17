@@ -14,10 +14,14 @@ use Illuminate\Support\Carbon;
  * @method static Builder|TeamUser newQuery()
  * @method static Builder|TeamUser query()
 <<<<<<< HEAD
+<<<<<<< HEAD
  *
  * @property int $id
  * @property string $uuid
 =======
+=======
+ *
+>>>>>>> d176b8d (Check & fix styling)
  * @property int         $id
  * @property string      $uuid
 >>>>>>> 7520125 (up)
@@ -29,6 +33,7 @@ use Illuminate\Support\Carbon;
  * @property string|null $created_by
  * @property string|null $updated_by
  * @property string|null $customer_id
+ *
  * @method static Builder|TeamUser whereCreatedAt($value)
  * @method static Builder|TeamUser whereCreatedBy($value)
  * @method static Builder|TeamUser whereCustomerId($value)
@@ -39,10 +44,13 @@ use Illuminate\Support\Carbon;
  * @method static Builder|TeamUser whereUpdatedBy($value)
  * @method static Builder|TeamUser whereUserId($value)
  * @method static Builder|TeamUser whereUuid($value)
+ *
  * @property Carbon|null $deleted_at
  * @property string|null $deleted_by
+ *
  * @method static Builder|TeamUser whereDeletedAt($value)
  * @method static Builder|TeamUser whereDeletedBy($value)
+ *
  * @mixin \Eloquent
  */
 class TeamUser extends BasePivot

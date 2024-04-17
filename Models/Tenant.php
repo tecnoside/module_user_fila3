@@ -19,7 +19,11 @@ use Modules\User\Contracts\TenantContract;
  * @method static \Illuminate\Database\Eloquent\Builder|Tenant   newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Tenant   newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Tenant   query()
+<<<<<<< HEAD
 >>>>>>> 7520125 (up)
+=======
+ *
+>>>>>>> d176b8d (Check & fix styling)
  * @mixin \Eloquent
  */
 class Tenant extends BaseModel implements TenantContract

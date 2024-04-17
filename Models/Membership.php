@@ -15,18 +15,9 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Membership newModelQuery()
  * @method static Builder|Membership newQuery()
  * @method static Builder|Membership query()
- *                                                   <<<<<<< HEAD
- *                                                   <<<<<<< HEAD
  *
- * @property int    $id
+ * @property int $id
  * @property string $uuid
- *                        =======
- *                        =======
- *
- * >>>>>>> 74bdb69 (Check & fix styling)
- * @property int         $id
- * @property string      $uuid
- *                                    >>>>>>> 88cab95 (up)
  * @property string|null $team_id
  * @property string|null $user_id
  * @property Carbon|null $created_at

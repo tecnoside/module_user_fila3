@@ -14,24 +14,16 @@ use Modules\Xot\Datas\XotData;
 /**
  * Modules\User\Models\TeamInvitation.
  *
- * @property int               $id
- * @property string|null       $team_id
- * @property string            $email
- * @property string|null       $role
- * @property Carbon|null       $created_at
- * @property Carbon|null       $updated_at
- * @property Team|null         $team
+ * @property int $id
+ * @property string|null $team_id
+ * @property string $email
+ * @property string|null $role
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property Team|null $team
  * @property TeamContract|null $team
- *                                         <<<<<<< HEAD
- *                                         <<<<<<< HEAD
  *
  * @method static TeamInvitationFactory factory($count = null, $state = [])
- *                                                                          =======
- *                                                                          =======
- *
- * >>>>>>> d176b8d (Check & fix styling)
- * @method static TeamInvitationFactory  factory($count = null, $state = [])
- *                                                                           >>>>>>> 7520125 (up)
  * @method static Builder|TeamInvitation newModelQuery()
  * @method static Builder|TeamInvitation newQuery()
  * @method static Builder|TeamInvitation query()
@@ -41,16 +33,6 @@ use Modules\Xot\Datas\XotData;
  * @method static Builder|TeamInvitation whereRole($value)
  * @method static Builder|TeamInvitation whereTeamId($value)
  * @method static Builder|TeamInvitation whereUpdatedAt($value)
- *
- * @property string|null $updated_by
- * @property string|null $created_by
- * @property Carbon|null $deleted_at
- * @property string|null $deleted_by
- *
- * @method static Builder|TeamInvitation whereCreatedBy($value)
- * @method static Builder|TeamInvitation whereDeletedAt($value)
- * @method static Builder|TeamInvitation whereDeletedBy($value)
- * @method static Builder|TeamInvitation whereUpdatedBy($value)
  *
  * @mixin \Eloquent
  */

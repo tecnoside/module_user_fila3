@@ -49,15 +49,7 @@ trait IsProfileTrait
 
     public function getFirstNameAttribute(?string $value): ?string
     {
-<<<<<<< HEAD
-<<<<<<< HEAD
         if ($value !== null) {
-=======
-        
-=======
->>>>>>> 3eae5ec (Check & fix styling)
-        if (null !== $value) {
->>>>>>> fc12211 (up)
             return $value;
         }
         $value = $this->user?->first_name;

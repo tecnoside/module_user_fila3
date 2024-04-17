@@ -32,76 +32,48 @@ use Spatie\Permission\Traits\HasRoles;
 /**
  * Modules\User\Models\User.
  *
- * @property Collection<int, \Modules\User\Models\OauthClient>      $clients
- * @property int|null                                               $clients_count
- * @property Team|null                                              $currentTeam
- * @property Collection<int, \Modules\User\Models\Device>           $devices
- * @property int|null                                               $devices_count
- * @property string|null                                            $full_name
- * @property DatabaseNotificationCollection<int, Notification>      $notifications
- * @property int|null                                               $notifications_count
- * @property Collection<int, \Modules\User\Models\Team>             $ownedTeams
- * @property int|null                                               $owned_teams_count
- * @property Collection<int, \Modules\User\Models\Permission>       $permissions
- * @property int|null                                               $permissions_count
- * @property \Modules\Xot\Contracts\ProfileContract|null            $profile
- * @property Collection<int, \Modules\User\Models\Role>             $roles
- * @property int|null                                               $roles_count
- * @property Collection<int, \Modules\User\Models\Team>             $teams
- * @property int|null                                               $teams_count
+ * @property Collection<int, \Modules\User\Models\OauthClient> $clients
+ * @property int|null $clients_count
+ * @property Team|null $currentTeam
+ * @property Collection<int, \Modules\User\Models\Device> $devices
+ * @property int|null $devices_count
+ * @property string|null $full_name
+ * @property DatabaseNotificationCollection<int, Notification> $notifications
+ * @property int|null $notifications_count
+ * @property Collection<int, \Modules\User\Models\Team> $ownedTeams
+ * @property int|null $owned_teams_count
+ * @property Collection<int, \Modules\User\Models\Permission> $permissions
+ * @property int|null $permissions_count
+ * @property \Modules\Xot\Contracts\ProfileContract|null $profile
+ * @property Collection<int, \Modules\User\Models\Role> $roles
+ * @property int|null $roles_count
+ * @property Collection<int, \Modules\User\Models\Team> $teams
+ * @property int|null $teams_count
  * @property Collection<int, \Modules\User\Models\OauthAccessToken> $tokens
- *                                                                                       <<<<<<< HEAD
- * @property int|null                                               $tokens_count
- *
- * @method static \Modules\User\Database\Factories\UserFactory factory($count = null, $state = [])
- * @method static Builder|User                                 newModelQuery()
- * @method static Builder|User                                 newQuery()
- * @method static Builder|User                                 permission($permissions)
- * @method static Builder|User                                 query()
- * @method static Builder|User                                 role($roles, $guard = null)
- *
- * @property string   $id
- * @property string   $name
- * @property string   $first_name
- * @property string   $last_name
- * @property string   $email
- *                                  =======
  * @property int|null $tokens_count
  *
  * @method static \Modules\User\Database\Factories\UserFactory factory($count = null, $state = [])
- * @method static Builder|User                                 newModelQuery()
- * @method static Builder|User                                 newQuery()
- * @method static Builder|User                                 permission($permissions)
- * @method static Builder|User                                 query()
- * @method static Builder|User                                 role($roles, $guard = null)
+ * @method static Builder|User newModelQuery()
+ * @method static Builder|User newQuery()
+ * @method static Builder|User permission($permissions)
+ * @method static Builder|User query()
+ * @method static Builder|User role($roles, $guard = null)
  *
- * @property string                          $id
- * @property string                          $name
- * @property string                          $first_name
- * @property string                          $last_name
- * @property string                          $email
- *                                                               >>>>>>> 7520125 (up)
+ * @property string $id
+ * @property string $name
+ * @property string $first_name
+ * @property string $last_name
+ * @property string $email
  * @property \Illuminate\Support\Carbon|null $email_verified_at
- * @property string                          $password
- * @property string|null                     $remember_token
- * @property int|null                        $current_team_id
- * @property string|null                     $profile_photo_path
+ * @property string $password
+ * @property string|null $remember_token
+ * @property int|null $current_team_id
+ * @property string|null $profile_photo_path
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- *                                                               <<<<<<< HEAD
- * @property string|null                     $deleted_at
- * @property string|null                     $lang
- * @property bool                            $is_active
- *
- * =======
  * @property string|null $deleted_at
  * @property string|null $lang
- * @property bool        $is_active
- *                                   <<<<<<< HEAD
- *                                   >>>>>>> 7520125 (up)
- *                                   =======
- *
- * >>>>>>> d176b8d (Check & fix styling)
+ * @property bool $is_active
  *
  * @method static Builder|User whereCreatedAt($value)
  * @method static Builder|User whereCurrentTeamId($value)
@@ -122,16 +94,7 @@ use Spatie\Permission\Traits\HasRoles;
  * @mixin Eloquent
  *
  * @property Collection<int, \Modules\User\Models\Tenant> $tenants
- *                                                                       <<<<<<< HEAD
- * @property int|null                                     $tenants_count
- *
- * =======
  * @property int|null $tenants_count
- *                                   <<<<<<< HEAD
- *                                   >>>>>>> 7520125 (up)
- *                                   =======
- *
- * >>>>>>> d176b8d (Check & fix styling)
  *
  * @method static Builder|User withoutPermission($permissions)
  * @method static Builder|User withoutRole($roles, $guard = null)
@@ -250,7 +213,7 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
     public function canAccessPanel(Panel $panel): bool
     {
         // $panel->default('admin');
-        if ('admin' !== $panel->getId()) {
+        if ($panel->getId() !== 'admin') {
             $role = $panel->getId();
             /*
             $xot = XotData::make();

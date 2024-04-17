@@ -11,24 +11,16 @@ use Modules\User\Database\Factories\PasswordResetFactory;
 /**
  * Modules\User\Models\PasswordReset.
  *
- * @property int         $id
- * @property string      $email
- * @property string      $token
+ * @property int $id
+ * @property string $email
+ * @property string $token
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $user_id
  * @property string|null $updated_by
  * @property string|null $created_by
- *                                   <<<<<<< HEAD
- *                                   <<<<<<< HEAD
  *
  * @method static PasswordResetFactory factory($count = null, $state = [])
- *                                                                         =======
- *                                                                         =======
- *
- * >>>>>>> d176b8d (Check & fix styling)
- * @method static PasswordResetFactory  factory($count = null, $state = [])
- *                                                                          >>>>>>> 7520125 (up)
  * @method static Builder|PasswordReset newModelQuery()
  * @method static Builder|PasswordReset newQuery()
  * @method static Builder|PasswordReset query()

@@ -21,9 +21,13 @@ use Modules\User\Database\Factories\ModelHasRoleFactory;
  * @property string|null $updated_by
  * @property string|null $created_by
 <<<<<<< HEAD
+<<<<<<< HEAD
  *
  * @method static ModelHasRoleFactory factory($count = null, $state = [])
 =======
+=======
+ *
+>>>>>>> 74bdb69 (Check & fix styling)
  * @method static ModelHasRoleFactory  factory($count = null, $state = [])
 >>>>>>> 88cab95 (up)
  * @method static Builder|ModelHasRole newModelQuery()
@@ -38,6 +42,7 @@ use Modules\User\Database\Factories\ModelHasRoleFactory;
  * @method static Builder|ModelHasRole whereTeamId($value)
  * @method static Builder|ModelHasRole whereUpdatedAt($value)
  * @method static Builder|ModelHasRole whereUpdatedBy($value)
+ *
  * @mixin \Eloquent
  */
 class ModelHasRole extends BaseMorphPivot

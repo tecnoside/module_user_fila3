@@ -61,10 +61,7 @@ class OauthClient extends PassportClient
     /** @var string */
     protected $connection = 'user';
 
-    // class OauthClient extends BaseModel {
-    /*
-     * ---.
-     */
+    
     /*
     protected $fillable = [
         'id', 'user_id', 'name', 'secret', 'provider', 'redirect',

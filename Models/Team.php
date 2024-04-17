@@ -54,6 +54,7 @@ use Modules\Xot\Datas\XotData;
  */
 class Team extends BaseModel implements TeamContract
 {
+    /** @var array */
     protected $fillable = [
         'user_id',
         'name',

@@ -50,5 +50,6 @@ class Permission extends SpatiePermission
     /** @var string */
     protected $connection = 'user';
 
+    /** @var array */
     protected $fillable = ['id', 'name', 'guard_name', 'created_at', 'updated_at'];
 }

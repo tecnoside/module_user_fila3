@@ -14,16 +14,7 @@ use Modules\User\Database\Factories\DeviceFactory;
  * Modules\User\Models\Device.
  *
  * @property Collection<int, \Modules\User\Models\User> $users
-<<<<<<< HEAD
- * @property int|null $users_count
- *
- * @method static DeviceFactory factory($count = null, $state = [])
- * @method static Builder|Device newModelQuery()
- * @method static Builder|Device newQuery()
- * @method static Builder|Device query()
- *
- * @property int $id
-=======
+ *                                                                   <<<<<<< HEAD
  * @property int|null                                   $users_count
  *
  * @method static DeviceFactory  factory($count = null, $state = [])
@@ -31,20 +22,29 @@ use Modules\User\Database\Factories\DeviceFactory;
  * @method static Builder|Device newQuery()
  * @method static Builder|Device query()
  *
+ * @property int      $id
+ *                                 =======
+ * @property int|null $users_count
+ *
+ * @method static DeviceFactory  factory($count = null, $state = [])
+ * @method static Builder|Device newModelQuery()
+ * @method static Builder|Device newQuery()
+ * @method static Builder|Device query()
+ *
  * @property int         $id
->>>>>>> 88cab95 (up)
+ *                                   >>>>>>> 88cab95 (up)
  * @property string|null $mobile_id
- * @property array|null $languages
+ * @property array|null  $languages
  * @property string|null $device
  * @property string|null $platform
  * @property string|null $browser
  * @property string|null $version
- * @property int|null $is_robot
+ * @property int|null    $is_robot
  * @property string|null $robot
- * @property int|null $is_desktop
- * @property int|null $is_mobile
- * @property int|null $is_tablet
- * @property int|null $is_phone
+ * @property int|null    $is_desktop
+ * @property int|null    $is_mobile
+ * @property int|null    $is_tablet
+ * @property int|null    $is_phone
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $updated_by

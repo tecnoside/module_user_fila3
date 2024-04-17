@@ -19,29 +19,30 @@ use Spatie\Permission\Models\Role as SpatieRole;
 /**
  * Modules\User\Models\Role.
  *
- * @property string $uuid
- * @property string|null $team_id
- * @property string $name
- * @property string $guard_name
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
+ * @property string                                           $uuid
+ * @property string|null                                      $team_id
+ * @property string                                           $name
+ * @property string                                           $guard_name
+ * @property Carbon|null                                      $created_at
+ * @property Carbon|null                                      $updated_at
  * @property Collection<int, \Modules\User\Models\Permission> $permissions
-<<<<<<< HEAD
- * @property int|null $permissions_count
- * @property Team|null $team
- * @property Collection<int, \Modules\User\Models\User> $users
- * @property int|null $users_count
- *
-=======
+ *                                                                               <<<<<<< HEAD
  * @property int|null                                         $permissions_count
  * @property Team|null                                        $team
  * @property Collection<int, \Modules\User\Models\User>       $users
  * @property int|null                                         $users_count
-<<<<<<< HEAD
->>>>>>> 7520125 (up)
-=======
  *
->>>>>>> d176b8d (Check & fix styling)
+ * =======
+ * @property int|null                                   $permissions_count
+ * @property Team|null                                  $team
+ * @property Collection<int, \Modules\User\Models\User> $users
+ * @property int|null                                   $users_count
+ *                                                                         <<<<<<< HEAD
+ *                                                                         >>>>>>> 7520125 (up)
+ *                                                                         =======
+ *
+ * >>>>>>> d176b8d (Check & fix styling)
+ *
  * @method static Builder|Role newModelQuery()
  * @method static Builder|Role newQuery()
  * @method static Builder|Role permission($permissions)

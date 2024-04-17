@@ -14,24 +14,24 @@ use Modules\Xot\Datas\XotData;
 /**
  * Modules\User\Models\TeamInvitation.
  *
- * @property int $id
- * @property string|null $team_id
- * @property string $email
- * @property string|null $role
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
- * @property Team|null $team
+ * @property int               $id
+ * @property string|null       $team_id
+ * @property string            $email
+ * @property string|null       $role
+ * @property Carbon|null       $created_at
+ * @property Carbon|null       $updated_at
+ * @property Team|null         $team
  * @property TeamContract|null $team
-<<<<<<< HEAD
-<<<<<<< HEAD
+ *                                         <<<<<<< HEAD
+ *                                         <<<<<<< HEAD
  *
  * @method static TeamInvitationFactory factory($count = null, $state = [])
-=======
-=======
+ *                                                                          =======
+ *                                                                          =======
  *
->>>>>>> d176b8d (Check & fix styling)
+ * >>>>>>> d176b8d (Check & fix styling)
  * @method static TeamInvitationFactory  factory($count = null, $state = [])
->>>>>>> 7520125 (up)
+ *                                                                           >>>>>>> 7520125 (up)
  * @method static Builder|TeamInvitation newModelQuery()
  * @method static Builder|TeamInvitation newQuery()
  * @method static Builder|TeamInvitation query()

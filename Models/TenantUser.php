@@ -13,16 +13,16 @@ use Illuminate\Support\Carbon;
  * @method static Builder|TeamUser newModelQuery()
  * @method static Builder|TeamUser newQuery()
  * @method static Builder|TeamUser query()
-<<<<<<< HEAD
-<<<<<<< HEAD
+ *                                                 <<<<<<< HEAD
+ *                                                 <<<<<<< HEAD
  *
  * @property int $id
-=======
-=======
+ *                   =======
+ *                   =======
  *
->>>>>>> d176b8d (Check & fix styling)
+ * >>>>>>> d176b8d (Check & fix styling)
  * @property int         $id
->>>>>>> 7520125 (up)
+ *                                   >>>>>>> 7520125 (up)
  * @property string|null $tenant_id
  * @property string|null $user_id
  * @property Carbon|null $created_at

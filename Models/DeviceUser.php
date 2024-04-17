@@ -19,24 +19,24 @@ use Modules\Xot\Datas\XotData;
  * @method static Builder|DeviceUser newModelQuery()
  * @method static Builder|DeviceUser newQuery()
  * @method static Builder|DeviceUser query()
-<<<<<<< HEAD
-<<<<<<< HEAD
+ *                                                   <<<<<<< HEAD
+ *                                                   <<<<<<< HEAD
  *
- * @property int $id
+ * @property int    $id
  * @property string $device_id
  * @property string $user_id
-=======
-=======
+ *                             =======
+ *                             =======
  *
->>>>>>> 74bdb69 (Check & fix styling)
+ * >>>>>>> 74bdb69 (Check & fix styling)
  * @property int         $id
  * @property string      $device_id
  * @property string      $user_id
->>>>>>> 88cab95 (up)
+ *                                                   >>>>>>> 88cab95 (up)
  * @property Carbon|null $login_at
  * @property Carbon|null $logout_at
  * @property string|null $push_notifications_token
- * @property bool|null $push_notifications_enabled
+ * @property bool|null   $push_notifications_enabled
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $updated_by
@@ -55,16 +55,17 @@ use Modules\Xot\Datas\XotData;
  * @method static Builder|DeviceUser whereUserId($value)
  *
  * @property \Modules\Camping\Models\Profile|null $profile
-<<<<<<< HEAD
- * @property User|null $user
- *
-=======
+ *                                                         <<<<<<< HEAD
  * @property User|null                            $user
-<<<<<<< HEAD
->>>>>>> 88cab95 (up)
-=======
  *
->>>>>>> 74bdb69 (Check & fix styling)
+ * =======
+ * @property User|null $user
+ *                           <<<<<<< HEAD
+ *                           >>>>>>> 88cab95 (up)
+ *                           =======
+ *
+ * >>>>>>> 74bdb69 (Check & fix styling)
+ *
  * @mixin \Eloquent
  */
 class DeviceUser extends BasePivot

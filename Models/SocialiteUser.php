@@ -15,30 +15,31 @@ use Modules\Xot\Datas\XotData;
 /**
  * Modules\User\Models\SocialiteUser.
  *
- * @property int $id
- * @property string $user_id
- * @property string $provider
- * @property string $provider_id
- * @property string|null $token
- * @property string|null $name
- * @property string|null $email
- * @property string|null $avatar
+ * @property int                             $id
+ * @property string                          $user_id
+ * @property string                          $provider
+ * @property string                          $provider_id
+ * @property string|null                     $token
+ * @property string|null                     $name
+ * @property string|null                     $email
+ * @property string|null                     $avatar
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
-<<<<<<< HEAD
- * @property string|null $updated_by
- * @property string|null $created_by
- * @property User|null $user
- *
-=======
+ *                                                        <<<<<<< HEAD
  * @property string|null                     $updated_by
  * @property string|null                     $created_by
  * @property User|null                       $user
-<<<<<<< HEAD
->>>>>>> 7520125 (up)
-=======
  *
->>>>>>> d176b8d (Check & fix styling)
+ * =======
+ * @property string|null $updated_by
+ * @property string|null $created_by
+ * @property User|null   $user
+ *                                   <<<<<<< HEAD
+ *                                   >>>>>>> 7520125 (up)
+ *                                   =======
+ *
+ * >>>>>>> d176b8d (Check & fix styling)
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser query()

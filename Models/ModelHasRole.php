@@ -11,25 +11,25 @@ use Modules\User\Database\Factories\ModelHasRoleFactory;
 /**
  * Modules\User\Models\ModelHasRole.
  *
- * @property int $id
- * @property string $role_id
- * @property string $model_type
- * @property string $model_id
- * @property int|null $team_id
+ * @property int         $id
+ * @property string      $role_id
+ * @property string      $model_type
+ * @property string      $model_id
+ * @property int|null    $team_id
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $updated_by
  * @property string|null $created_by
-<<<<<<< HEAD
-<<<<<<< HEAD
+ *                                   <<<<<<< HEAD
+ *                                   <<<<<<< HEAD
  *
  * @method static ModelHasRoleFactory factory($count = null, $state = [])
-=======
-=======
+ *                                                                        =======
+ *                                                                        =======
  *
->>>>>>> 74bdb69 (Check & fix styling)
+ * >>>>>>> 74bdb69 (Check & fix styling)
  * @method static ModelHasRoleFactory  factory($count = null, $state = [])
->>>>>>> 88cab95 (up)
+ *                                                                         >>>>>>> 88cab95 (up)
  * @method static Builder|ModelHasRole newModelQuery()
  * @method static Builder|ModelHasRole newQuery()
  * @method static Builder|ModelHasRole query()

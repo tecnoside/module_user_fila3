@@ -15,36 +15,37 @@ use Modules\Xot\Datas\XotData;
 /**
  * Modules\User\Models\Team.
  *
- * @property int $id
- * @property int $user_id
- * @property string $name
- * @property int $personal_team
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\User> $members
- * @property int|null $members_count
- * @property User|null $owner
+ * @property int                                                                                $id
+ * @property int                                                                                $user_id
+ * @property string                                                                             $name
+ * @property int                                                                                $personal_team
+ * @property \Illuminate\Support\Carbon|null                                                    $created_at
+ * @property \Illuminate\Support\Carbon|null                                                    $updated_at
+ * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\User>           $members
+ * @property int|null                                                                           $members_count
+ * @property User|null                                                                          $owner
  * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\TeamInvitation> $teamInvitations
-<<<<<<< HEAD
- * @property int|null $team_invitations_count
- * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\User> $users
- * @property int|null $users_count
- *
- * @method static \Modules\User\Database\Factories\TeamFactory factory($count = null, $state = [])
- * @method static \Illuminate\Database\Eloquent\Builder|Team newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Team newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Team query()
- * @method static \Illuminate\Database\Eloquent\Builder|Team whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Team whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Team whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Team wherePersonalTeam($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Team whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Team whereUserId($value)
- *
-=======
+ *                                                                                                                      <<<<<<< HEAD
  * @property int|null                                                                           $team_invitations_count
  * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\User>           $users
  * @property int|null                                                                           $users_count
+ *
+ * @method static \Modules\User\Database\Factories\TeamFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder|Team   newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Team   newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Team   query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Team   whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Team   whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Team   whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Team   wherePersonalTeam($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Team   whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Team   whereUserId($value)
+ *
+ * =======
+ *
+ * @property int|null                                                                 $team_invitations_count
+ * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\User> $users
+ * @property int|null                                                                 $users_count
  *
  * @method static \Modules\User\Database\Factories\TeamFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Team   newModelQuery()
@@ -66,15 +67,16 @@ use Modules\Xot\Datas\XotData;
  * @method static \Illuminate\Database\Eloquent\Builder|Team whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Team whereDeletedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Team whereUpdatedBy($value)
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 7520125 (up)
-=======
+ *                                                                                  <<<<<<< HEAD
+ *                                                                                  <<<<<<< HEAD
+ *                                                                                  >>>>>>> 7520125 (up)
+ *                                                                                  =======
  *
->>>>>>> d176b8d (Check & fix styling)
-=======
+ * >>>>>>> d176b8d (Check & fix styling)
+ * =======
  *
->>>>>>> cs0.2.00
+ * >>>>>>> cs0.2.00
+ *
  * @mixin \Eloquent
  */
 class Team extends BaseModel implements TeamContract

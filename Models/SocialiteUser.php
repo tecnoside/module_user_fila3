@@ -25,10 +25,16 @@ use Modules\Xot\Datas\XotData;
  * @property string|null $avatar
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+<<<<<<< HEAD
  * @property string|null $updated_by
  * @property string|null $created_by
  * @property User|null $user
  *
+=======
+ * @property string|null                     $updated_by
+ * @property string|null                     $created_by
+ * @property User|null                       $user
+>>>>>>> 7520125 (up)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser query()
@@ -44,7 +50,6 @@ use Modules\Xot\Datas\XotData;
  * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser whereUpdatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser whereUserId($value)
- *
  * @mixin \Eloquent
  */
 class SocialiteUser extends BaseModel

@@ -43,7 +43,7 @@ final class UserNameFieldsResolver
     }
 
     /**
-     * @param string $searchMethod use self constants (NAME_SEARCH, SURNAME_SEARCH)
+     * @param  string  $searchMethod  use self constants (NAME_SEARCH, SURNAME_SEARCH)
      */
     private function resolveNameFields(User $idpUser, string $searchMethod): string
     {

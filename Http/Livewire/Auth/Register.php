@@ -45,7 +45,6 @@ class Register extends Component
         Auth::login($user, true);
 
         return redirect()->intended(route('home'));
-        // return redirect(route('home'));
     }
 
     public function render(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory

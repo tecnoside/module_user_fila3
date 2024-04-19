@@ -65,8 +65,6 @@ Route::prefix('{lang}')->group(function () {
             Route::post('logout', LogoutController::class)
                 ->name('logout');
         });
-
-
 });
 
 Route::namespace('Socialite')

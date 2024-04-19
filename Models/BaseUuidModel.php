@@ -48,14 +48,12 @@ abstract class BaseUuidModel extends Model
     protected function casts(): array
     {
         return [
-
-        'id' => 'string',
-        'published_at' => 'datetime',
-        'created_at' => 'datetime',
-        'updated_at' => 'datetime',
-        'deleted_at' => 'datetime',
-        'verified_at' => 'datetime',
-
+            'id' => 'string',
+            'published_at' => 'datetime',
+            'created_at' => 'datetime',
+            'updated_at' => 'datetime',
+            'deleted_at' => 'datetime',
+            'verified_at' => 'datetime',
         ];
     }
 

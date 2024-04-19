@@ -82,15 +82,13 @@ class Device extends BaseModel
     protected function casts(): array
     {
         return [
+            'updated_by' => 'string',
+            'created_by' => 'string',
+            'deleted_by' => 'string',
 
-        'updated_by' => 'string',
-        'created_by' => 'string',
-        'deleted_by' => 'string',
-
-        // 'id' => 'string',
-        // 'locales' => 'array',
-        'languages' => 'array',
-
+            // 'id' => 'string',
+            // 'locales' => 'array',
+            'languages' => 'array',
         ];
     }
 

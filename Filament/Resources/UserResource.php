@@ -20,6 +20,7 @@ use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Columns\BooleanColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Enums\ActionsPosition;
 use Filament\Tables\Enums\FiltersLayout;
 use Filament\Tables\Filters\Filter;
 use Filament\Tables\Table;
@@ -151,12 +152,12 @@ class UserResource extends XotBaseResource
                     TextColumn::make('email')->sortable()->searchable(),
                     // TextColumn::make('profile.first_name')->label('first name')->sortable()->searchable()->toggleable(),
                     // TextColumn::make('profile.last_name')->label('last name')->sortable()->searchable()->toggleable(),
-                    TextColumn::make('teams.name')->searchable()->toggleable()->wrap(),
+                    TextColumn::make('teams.name')->searchable()->toggleable()->wrap()->badge(),
                     // Tables\Columns\TextColumn::make('email'),
                     // Tables\Columns\TextColumn::make('email_verified_at')
                     //    ->dateTime(config('app.date_format')),
                     TextColumn::make('role.name')->toggleable(),
-                    TextColumn::make('roles.name')->toggleable()->wrap(),
+                    TextColumn::make('roles.name')->toggleable()->wrap()->badge(),
                     // Tables\Columns\TextColumn::make('created_at')->dateTime(config('app.date_format')),
                     // Tables\Columns\TextColumn::make('updated_at')
                     //    ->dateTime(config('app.date_format')),
@@ -224,7 +225,7 @@ class UserResource extends XotBaseResource
                         ->action(static fn (User $user) => $user->delete())
                     // ->visible(fn (User $record): bool => $record->role_id === Role::ROLE_ADMINISTRATOR)
                     ,
-                ]
+                ], position: ActionsPosition::BeforeColumns
             )
 
             ->bulkActions(

@@ -66,23 +66,21 @@ class DeviceUser extends BasePivot
     protected function casts(): array
     {
         return [
+            'updated_by' => 'string',
+            'created_by' => 'string',
+            'deleted_by' => 'string',
 
-        'updated_by' => 'string',
-        'created_by' => 'string',
-        'deleted_by' => 'string',
-
-        'created_at' => 'datetime',
-        'updated_at' => 'datetime',
-        'deleted_at' => 'datetime',
-        'login_at' => 'datetime',
-        'logout_at' => 'datetime',
-        'user_id' => 'string',
-        'device_id' => 'string',
-        // 'id' => 'string',
-        // 'locales' => 'array',
-        'push_notifications_token' => 'string',
-        'push_notifications_enabled' => 'boolean',
-
+            'created_at' => 'datetime',
+            'updated_at' => 'datetime',
+            'deleted_at' => 'datetime',
+            'login_at' => 'datetime',
+            'logout_at' => 'datetime',
+            'user_id' => 'string',
+            'device_id' => 'string',
+            // 'id' => 'string',
+            // 'locales' => 'array',
+            'push_notifications_token' => 'string',
+            'push_notifications_enabled' => 'boolean',
         ];
     }
 

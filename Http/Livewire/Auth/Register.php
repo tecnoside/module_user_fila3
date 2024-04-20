@@ -23,7 +23,7 @@ class Register extends Component
     public string $passwordConfirmation = '';
 
     /**
-     * Execute the action.
+     * Execute the action..
      */
     // public function register(): \Livewire\Features\SupportRedirects\Redirector
     public function register(): RedirectResponse|\Livewire\Features\SupportRedirects\Redirector

@@ -64,6 +64,10 @@ class CreateUsersTable extends XotBaseMigration
                     $table->softDeletes();
                 }
 
+                if (! $this->hasColumn('facebook_id')) {
+                    $table->string('facebook_id')->nullable()->unique();
+                }
+
                 // $this->updateUser($table);
                 $this->updateTimestamps($table);
             }

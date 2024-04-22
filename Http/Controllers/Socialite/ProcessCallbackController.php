@@ -66,11 +66,13 @@ class ProcessCallbackController extends Controller
         }
 
         // See if registration is allowed
+        /*
         if (! app(IsRegistrationEnabledAction::class)->execute()) {
             RegistrationNotEnabled::dispatch($provider, $oauthUser);
 
             return app(RedirectToLoginAction::class)->execute('auth.registration-not-enabled');
         }
+        */
 
         // See if a user already exists, but not for this socialite provider
         // $user = app()->call($this->socialite->getUserResolver(), ['provider' => $provider, 'oauthUser' => $oauthUser, 'socialite' => $this->socialite]);

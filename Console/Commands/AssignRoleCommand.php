@@ -45,7 +45,7 @@ class AssignRoleCommand extends Command
     public function handle(): void
     {
         $email = text('email ?');
-        Assert::notNull($user = User::firstWhere(['email' => $email]));
+        Assert::notNull($user = User::firstWhere(['email' => $email]),'['.__FILE__.']['.__LINE__.']');
         /**
          * @var array<string, string>
          */

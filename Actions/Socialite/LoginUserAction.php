@@ -24,7 +24,7 @@ class LoginUserAction
      */
     public function execute(SocialiteUser $socialiteUser): RedirectResponse
     {
-        Assert::notNull($user = $socialiteUser->user);
+        Assert::notNull($user = $socialiteUser->user,'['.__FILE__.']['.__LINE__.']');
         Filament::auth()->login($user);
         // session()->regenerate();
 

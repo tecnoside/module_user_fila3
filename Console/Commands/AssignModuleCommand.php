@@ -47,7 +47,7 @@ class AssignModuleCommand extends Command
     public function handle(): void
     {
         $email = text('email ?');
-        Assert::notNull($user = User::firstWhere(['email' => $email]));
+        Assert::notNull($user = User::firstWhere(['email' => $email]),'['.__FILE__.']['.__LINE__.']');
         /*
         $modules = collect(Module::all())->map(function ($module) {
             return $module->getName();

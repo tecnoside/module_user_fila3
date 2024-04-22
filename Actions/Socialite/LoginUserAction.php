@@ -28,6 +28,7 @@ class LoginUserAction
         Filament::auth()->login($user);
         // session()->regenerate();
 
-        return redirect()->intended(Filament::getUrl());
+        //return redirect()->intended(Filament::getUrl());
+        return redirect()->intended('/');
     }
 }

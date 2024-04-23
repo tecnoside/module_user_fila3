@@ -55,8 +55,9 @@ final class EmailDomainAnalyzer
 
     private function firstPartyDomain(): string
     {
+        
         Assert::string($res = config(sprintf('services.%s.email_domains.first_party.tld', $this->ssoProvider)));
-
+        dddx($res);
         return $res;
     }
 

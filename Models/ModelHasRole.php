@@ -20,7 +20,6 @@ use Modules\User\Database\Factories\ModelHasRoleFactory;
  * @property Carbon|null $updated_at
  * @property string|null $updated_by
  * @property string|null $created_by
- *
  * @method static ModelHasRoleFactory  factory($count = null, $state = [])
  * @method static Builder|ModelHasRole newModelQuery()
  * @method static Builder|ModelHasRole newQuery()

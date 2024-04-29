@@ -28,6 +28,7 @@ use Modules\Xot\Datas\XotData;
  * @property string|null                     $updated_by
  * @property string|null                     $created_by
  * @property User|null                       $user
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser query()

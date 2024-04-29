@@ -28,6 +28,7 @@ use Modules\Xot\Datas\XotData;
  * @property string|null                     $updated_by
  * @property string|null                     $created_by
  * @property User|null                       $user
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser query()
@@ -44,6 +45,7 @@ use Modules\Xot\Datas\XotData;
  * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser whereUpdatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser whereUserId($value)
 <<<<<<< HEAD
+<<<<<<< HEAD
  *                                                                                            <<<<<<< HEAD
  *
  * @property string $uuid (DC2Type:guid)
@@ -58,9 +60,17 @@ use Modules\Xot\Datas\XotData;
  *                                                                                      >>>>>>> 48d01ff (up)
  *
 =======
+=======
+ *
+>>>>>>> bd65bb0 (Check & fix styling)
  * @property string $uuid (DC2Type:guid)
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser whereUuid($value)
+<<<<<<< HEAD
 >>>>>>> 48d01ff (up)
+=======
+ *
+>>>>>>> bd65bb0 (Check & fix styling)
  * @mixin \Eloquent
  */
 class SocialiteUser extends BaseModel

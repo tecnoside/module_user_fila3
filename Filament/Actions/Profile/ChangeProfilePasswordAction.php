@@ -7,15 +7,15 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Actions\Profile;
 
-use Illuminate\Support\Arr;
-use Modules\User\Models\User;
-use Modules\Xot\Datas\XotData;
-use Filament\Tables\Actions\Action;
-use Illuminate\Support\Facades\Hash;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
+use Filament\Tables\Actions\Action;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
+use Modules\User\Models\User;
 use Modules\Xot\Contracts\ProfileContract;
+use Modules\Xot\Datas\XotData;
 
 class ChangeProfilePasswordAction extends Action
 {
@@ -24,32 +24,30 @@ class ChangeProfilePasswordAction extends Action
         parent::setUp();
 
         $this->translateLabel()
-            //->label('user::user.actions.change_password')
+            // ->label('user::user.actions.change_password')
             ->label('')
             ->tooltip(__('user::user.actions.change_password'))
             ->icon('heroicon-o-key')
             ->action(
                 static function (ProfileContract $record, array $data): void {
-                    $user=$record->user;
-                    $profile_data=Arr::except($record->toArray(),['id']);
-                    if($user==null){
-                        $user_class=XotData::make()->getUserClass();
-                        $user=$user_class::firstWhere(['email'=>$record->email]);
+                    $user = $record->user;
+                    $profile_data = Arr::except($record->toArray(), ['id']);
+                    if (null == $user) {
+                        $user_class = XotData::make()->getUserClass();
+                        $user = $user_class::firstWhere(['email' => $record->email]);
                     }
-                    
-                    if($user==null){
-                        $user=$record->user()->create($profile_data);
+
+                    if (null == $user) {
+                        $user = $record->user()->create($profile_data);
                     }
                     $user->profile()->save($record);
-                    
-                    
+
                     $user->update(
                         [
                             'password' => Hash::make($data['new_password']),
                         ]
                     );
                     Notification::make()->success()->title('Password changed successfully.');
-                    
                 }
             )
             ->form(

@@ -28,7 +28,6 @@ use Modules\Xot\Datas\XotData;
  * @property int|null                                                                           $team_invitations_count
  * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\User>           $users
  * @property int|null                                                                           $users_count
- *
  * @method static \Modules\User\Database\Factories\TeamFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Team   newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Team   newQuery()
@@ -39,7 +38,6 @@ use Modules\Xot\Datas\XotData;
  * @method static \Illuminate\Database\Eloquent\Builder|Team   wherePersonalTeam($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Team   whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Team   whereUserId($value)
- *
  * @mixin \Eloquent
  */
 class Team extends BaseModel implements TeamContract

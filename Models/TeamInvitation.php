@@ -33,7 +33,6 @@ use Modules\Xot\Datas\XotData;
  * @method static Builder|TeamInvitation whereRole($value)
  * @method static Builder|TeamInvitation whereTeamId($value)
  * @method static Builder|TeamInvitation whereUpdatedAt($value)
- *
  * @mixin \Eloquent
  */
 class TeamInvitation extends BaseModel

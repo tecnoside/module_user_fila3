@@ -24,17 +24,14 @@ use Modules\User\Database\Factories\ModelHasPermissionFactory;
  * @method static Builder|ModelHasPermission whereModelId($value)
  * @method static Builder|ModelHasPermission whereModelType($value)
  * @method static Builder|ModelHasPermission wherePermissionId($value)
- *
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $updated_by
  * @property string|null $created_by
- *
  * @method static Builder|ModelHasPermission whereCreatedAt($value)
  * @method static Builder|ModelHasPermission whereCreatedBy($value)
  * @method static Builder|ModelHasPermission whereUpdatedAt($value)
  * @method static Builder|ModelHasPermission whereUpdatedBy($value)
- *
  * @mixin \Eloquent
  */
 class ModelHasPermission extends BaseMorphPivot

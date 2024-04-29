@@ -32,7 +32,6 @@ use Modules\User\Database\Factories\PasswordResetFactory;
  * @method static Builder|PasswordReset whereUpdatedAt($value)
  * @method static Builder|PasswordReset whereUpdatedBy($value)
  * @method static Builder|PasswordReset whereUserId($value)
- *
  * @mixin \Eloquent
  */
 class PasswordReset extends BaseModel

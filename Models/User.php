@@ -140,6 +140,7 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
 
     /** @var array<int, string> */
     protected $fillable = [
+        'id',
         'name',
         'first_name',
         'last_name',

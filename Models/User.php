@@ -71,10 +71,16 @@ use Spatie\Permission\Traits\HasRoles;
  * @property string|null $profile_photo_path
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+<<<<<<< HEAD
  * @property string|null $deleted_at
  * @property string|null $lang
  * @property bool $is_active
  *
+=======
+ * @property string|null                     $deleted_at
+ * @property string|null                     $lang
+ * @property bool                            $is_active
+>>>>>>> 48d01ff (up)
  * @method static Builder|User whereCreatedAt($value)
  * @method static Builder|User whereCurrentTeamId($value)
  * @method static Builder|User whereDeletedAt($value)
@@ -90,23 +96,24 @@ use Spatie\Permission\Traits\HasRoles;
  * @method static Builder|User whereProfilePhotoPath($value)
  * @method static Builder|User whereRememberToken($value)
  * @method static Builder|User whereUpdatedAt($value)
- *
  * @mixin Eloquent
- *
  * @property Collection<int, \Modules\User\Models\Tenant> $tenants
+<<<<<<< HEAD
  * @property int|null $tenants_count
  *
+=======
+ * @property int|null                                     $tenants_count
+>>>>>>> 48d01ff (up)
  * @method static Builder|User withoutPermission($permissions)
  * @method static Builder|User withoutRole($roles, $guard = null)
- *
  * @property string|null $updated_by
  * @property string|null $created_by
  * @property string|null $deleted_by
- *
  * @method static Builder|User whereCreatedBy($value)
  * @method static Builder|User whereDeletedBy($value)
  * @method static Builder|User whereUpdatedBy($value)
- *
+ * @property string $surname
+ * @method static Builder|User whereSurname($value)
  * @mixin \Eloquent
  */
 class User extends Authenticatable implements HasName, HasTenants, UserContract

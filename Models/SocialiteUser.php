@@ -44,7 +44,8 @@ use Modules\Xot\Datas\XotData;
  * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser whereUpdatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser whereUserId($value)
- *
+ * @property string $uuid (DC2Type:guid)
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser whereUuid($value)
  * @mixin \Eloquent
  */
 class SocialiteUser extends BaseModel

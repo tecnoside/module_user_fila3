@@ -34,7 +34,7 @@ use Laravel\Passport\Token as PassportToken;
  * @method static \Illuminate\Database\Eloquent\Builder|OauthAccessToken whereScopes($value)
  * @method static \Illuminate\Database\Eloquent\Builder|OauthAccessToken whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|OauthAccessToken whereUserId($value)
- *
+ * @property-read \Modules\User\Models\OauthRefreshToken|null $refreshToken
  * @mixin \Eloquent
  */
 class OauthAccessToken extends PassportToken

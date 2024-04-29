@@ -34,7 +34,8 @@ use Modules\User\Database\Factories\ModelHasRoleFactory;
  * @method static Builder|ModelHasRole whereTeamId($value)
  * @method static Builder|ModelHasRole whereUpdatedAt($value)
  * @method static Builder|ModelHasRole whereUpdatedBy($value)
- *
+ * @property string $uuid (DC2Type:guid)
+ * @method static Builder|ModelHasRole whereUuid($value)
  * @mixin \Eloquent
  */
 class ModelHasRole extends BaseMorphPivot

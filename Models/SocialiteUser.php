@@ -44,33 +44,11 @@ use Modules\Xot\Datas\XotData;
  * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser whereUpdatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser whereUserId($value)
-<<<<<<< HEAD
-<<<<<<< HEAD
- *                                                                                            <<<<<<< HEAD
  *
  * @property string $uuid (DC2Type:guid)
  *
  * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser whereUuid($value)
  *
- * =======
- *
- * @property string $uuid (DC2Type:guid)
- *
- * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser whereUuid($value)
- *                                                                                      >>>>>>> 48d01ff (up)
- *
-=======
-=======
- *
->>>>>>> bd65bb0 (Check & fix styling)
- * @property string $uuid (DC2Type:guid)
- *
- * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser whereUuid($value)
-<<<<<<< HEAD
->>>>>>> 48d01ff (up)
-=======
- *
->>>>>>> bd65bb0 (Check & fix styling)
  * @mixin \Eloquent
  */
 class SocialiteUser extends BaseModel

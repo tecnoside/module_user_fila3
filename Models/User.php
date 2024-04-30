@@ -288,14 +288,14 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
 
     public function getNameAttribute(?string $value): ?string
     {
-        if (null != $value || null == $this->getKey()) {
+        if ($value != null || $this->getKey() == null) {
             return $value;
         }
         $name = Str::of($this->email)->before('@')->toString();
         $i = 1;
         $value = $name.'-'.$i;
-        while (null !== self::firstWhere(['name' => $value])) {
-            ++$i;
+        while (self::firstWhere(['name' => $value]) !== null) {
+            $i++;
             $value = $name.'-'.$i;
         }
         $this->update(['name' => $value]);

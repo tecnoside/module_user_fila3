@@ -53,7 +53,7 @@ use Spatie\SchemalessAttributes\SchemalessAttributesTrait;
  *
  * @mixin \Eloquent
  */
-abstract class BaseProfile extends BaseModel implements ProfileContract, HasMedia
+abstract class BaseProfile extends BaseModel implements HasMedia, ProfileContract
 {
     use HasChildren;
     use HasRoles;

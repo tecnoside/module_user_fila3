@@ -31,7 +31,7 @@ final class EmailDomainAnalyzer
 
     public function hasFirstPartyDomain(): bool
     {
-        return Str::of((string)$this->firstPartyDomain())
+        return Str::of((string) $this->firstPartyDomain())
             ->after('@')
             ->exactly(
                 Str::of((string) $this->ssoUser->getEmail())->after('@'),

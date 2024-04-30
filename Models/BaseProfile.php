@@ -10,6 +10,7 @@ use Illuminate\Notifications\Notifiable;
 use Modules\User\Models\Traits\IsProfileTrait;
 use Modules\Xot\Contracts\ProfileContract;
 use Parental\HasChildren;
+use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Permission\Traits\HasRoles;
 use Spatie\SchemalessAttributes\Casts\SchemalessAttributes;
@@ -52,7 +53,7 @@ use Spatie\SchemalessAttributes\SchemalessAttributesTrait;
  *
  * @mixin \Eloquent
  */
-abstract class BaseProfile extends BaseModel implements ProfileContract
+abstract class BaseProfile extends BaseModel implements ProfileContract, HasMedia
 {
     use HasChildren;
     use HasRoles;

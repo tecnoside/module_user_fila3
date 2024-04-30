@@ -21,6 +21,7 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\DatabaseNotificationCollection;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Str;
 use Laravel\Passport\HasApiTokens;
 use Modules\Notify\Models\Notification;
 use Modules\User\Database\Factories\UserFactory;
@@ -283,5 +284,22 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
     protected static function newFactory()
     {
         return UserFactory::new();
+    }
+
+    public function getNameAttribute(?string $value): ?string
+    {
+        if (null != $value || null == $this->getKey()) {
+            return $value;
+        }
+        $name = Str::of($this->email)->before('@')->toString();
+        $i = 1;
+        $value = $name.'-'.$i;
+        while (null !== self::firstWhere(['name' => $value])) {
+            ++$i;
+            $value = $name.'-'.$i;
+        }
+        $this->update(['name' => $value]);
+
+        return $value;
     }
 }

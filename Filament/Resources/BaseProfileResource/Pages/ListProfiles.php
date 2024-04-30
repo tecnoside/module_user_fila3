@@ -4,18 +4,40 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Resources\BaseProfileResource\Pages;
 
-use Filament\Actions;
-use Filament\Resources\Pages\ListRecords;
 use Filament\Tables;
-use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
-use Filament\Tables\Columns\TextColumn;
+use Filament\Actions;
 use Filament\Tables\Table;
-use Modules\User\Filament\Actions\Profile\ChangeProfilePasswordAction;
+use Illuminate\Support\Arr;
+use Webmozart\Assert\Assert;
+use Modules\Xot\Datas\XotData;
+use Filament\Tables\Actions\BulkAction;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\TextColumn;
+use Illuminate\Database\Eloquent\Model;
+use Filament\Resources\Pages\ListRecords;
+use Illuminate\Database\Eloquent\Builder;
+use Filament\Tables\Filters\TernaryFilter;
+use Illuminate\Database\Eloquent\Collection;
+use Modules\Xot\Filament\Traits\NavigationLabelTrait;
 use Modules\User\Filament\Resources\BaseProfileResource;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
+use Modules\User\Filament\Actions\Profile\ChangeProfilePasswordAction;
 
 class ListProfiles extends ListRecords
 {
+    use NavigationLabelTrait;
+
     protected static string $resource = BaseProfileResource::class;
+
+    public function getModelLabel(): string
+    {
+        return static::trans('navigation.name');
+    }
+
+    public function getPluralModelLabel(): string
+    {
+        return static::trans('navigation.plural');
+    }
 
     protected function getHeaderActions(): array
     {
@@ -37,23 +59,57 @@ class ListProfiles extends ListRecords
     protected function getTableColumns(): array
     {
         return [
-            TextColumn::make('user.name')->label('User Name'),
-            TextColumn::make('email'),
-            TextColumn::make('first_name'),
-            TextColumn::make('last_name'),
-            TextColumn::make('email'),
-            TextColumn::make('credits'),
-            SpatieMediaLibraryImageColumn::make('photo_profile')
-                ->collection('photo_profile'),
+            'type' => TextColumn::make('type')
+                ->label(static::trans('fields.type'))
+                ->sortable(),
+
+            'user_name' => TextColumn::make('user.name')
+                ->label(static::trans('fields.user_name'))
+                ->sortable()
+                ->searchable()
+                ->default(
+                    function ($record) {
+                        $user = $record->user;
+                        $user_class = XotData::make()->getUserClass();
+                        if (null == $user) {
+                            $user = $user_class::firstWhere(['email' => $record->email]);
+                        }
+                        if (null == $user) {
+                            $data = $record->toArray();
+                            $user_data = Arr::except($data, ['id']);
+                            $user = $user_class::create($user_data);
+                        }
+                        $record->update(['user_id' => $user->id]);
+
+                        return $user->name;
+                    }
+                ),
+            'first_name' => TextColumn::make('first_name')
+                ->label(static::trans('fields.first_name'))
+                ->sortable()
+                ->searchable(),
+            'last_name' => TextColumn::make('last_name')
+                ->label(static::trans('fields.last_name'))
+                ->sortable()
+                ->searchable(),
+            'email' => TextColumn::make('email')
+                ->label(static::trans('fields.email'))
+                ->sortable()
+                ->searchable(),
+            'is_active' => IconColumn::make('is_active')
+                ->label(static::trans('fields.is_active'))
+                ->boolean(),
+            'photo' => SpatieMediaLibraryImageColumn::make('photo')
+                ->collection('profile'),
         ];
     }
 
     protected function getTableBulkActions(): array
     {
         return [
-            Tables\Actions\BulkActionGroup::make([
-                Tables\Actions\DeleteBulkAction::make(),
-                /*
+            // Tables\Actions\BulkActionGroup::make([
+            //    Tables\Actions\DeleteBulkAction::make(),
+            /*
                 Tables\Actions\BulkAction::make('refresh-profiles')
                     ->requiresConfirmation()
                     ->action(function (Collection $records) {
@@ -67,7 +123,56 @@ class ListProfiles extends ListRecords
                         }
                     }),
                 */
-            ]),
+            // ]),
+            Tables\Actions\DeleteBulkAction::make(),
+            BulkAction::make('bulk_activate')
+
+                        ->label(static::trans('actions.bulk_activate.cta'))
+                        ->action(
+                            function (Collection $collection) {
+                                $collection
+                                    ->chunk(20)
+                                    ->each
+                                    ->each(
+                                        function ($user): void {
+                                            Assert::isInstanceOf($user, Model::class);
+                                            $user->update(['is_active' => true]);
+                                        }
+                                    );
+                            }
+                        ),
+
+            BulkAction::make('bulk_inactivate')
+
+                ->label(static::trans('actions.bulk_inactivate.cta'))
+                ->action(
+                    function (Collection $collection) {
+                        $collection
+                            ->chunk(20)
+                            ->each
+                            ->each(
+                                function ($user): void {
+                                    Assert::isInstanceOf($user, Model::class);
+                                    $user->update(['is_active' => true]);
+                                }
+                            );
+                    }
+                ),
+        ];
+    }
+
+    protected function getTableFilters(): array
+    {
+        return [
+            TernaryFilter::make('is_active')
+            ->placeholder(static::trans('filters.is_active.all'))
+            ->trueLabel(static::trans('filters.is_active.active'))
+            ->falseLabel(static::trans('filters.is_active.inactive'))
+            ->queries(
+                true: static fn (Builder $query) => $query->where('is_active', '=', true),
+                false: static fn (Builder $query) => $query->where('is_active', '=', false),
+            )
+            ->label(static::trans('fields.is_active')),
         ];
     }
 
@@ -94,7 +199,7 @@ class ListProfiles extends ListRecords
             // ->emptyStateDescription($this->getTableEmptyStateDescription())
             // ->emptyStateHeading($this->getTableEmptyStateHeading())
             // ->emptyStateIcon($this->getTableEmptyStateIcon())
-            // ->filters($this->getTableFilters())
+            ->filters($this->getTableFilters())
             // ->filtersFormMaxHeight($this->getTableFiltersFormMaxHeight())
             // ->filtersFormWidth($this->getTableFiltersFormWidth())
             // ->groupedBulkActions($this->getTableBulkActions())

@@ -41,7 +41,7 @@ class FetchUserApiTokenCommand extends Command
 
         $user = User::firstWhere('email', $userEmail);
 
-        if (null === $user) {
+        if ($user === null) {
             $this->error('User not found!');
 
             return self::USER_NOT_FOUND;

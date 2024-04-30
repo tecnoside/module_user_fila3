@@ -28,22 +28,22 @@ class ViewProfile extends ViewRecord
     public function infolist(Infolist $infolist): Infolist
     {
         return $infolist
-        ->schema([
-            Components\Section::make()
-                ->schema([
-                    Components\Split::make([
-                        Components\Grid::make(2)
-                            ->schema([
-                                Components\Group::make([
-                                    TextEntry::make('email'),
-                                    TextEntry::make('first_name'),
-                                    TextEntry::make('last_name'),
-                                    TextEntry::make('created_at')
-                                        ->badge()
-                                        ->date()
-                                        ->color('success'),
-                                ]),
-                                /*
+            ->schema([
+                Components\Section::make()
+                    ->schema([
+                        Components\Split::make([
+                            Components\Grid::make(2)
+                                ->schema([
+                                    Components\Group::make([
+                                        TextEntry::make('email'),
+                                        TextEntry::make('first_name'),
+                                        TextEntry::make('last_name'),
+                                        TextEntry::make('created_at')
+                                            ->badge()
+                                            ->date()
+                                            ->color('success'),
+                                    ]),
+                                    /*
                                 Components\Group::make([
                                     Components\TextEntry::make('author.name'),
                                     Components\TextEntry::make('category.name'),
@@ -52,20 +52,20 @@ class ViewProfile extends ViewRecord
                                         ->getStateUsing(fn () => ['one', 'two', 'three', 'four']),
                                 ]),
                                 */
-                            ]),
-                        Components\ImageEntry::make('image')
-                            ->hiddenLabel()
-                            ->grow(false),
-                    ])->from('lg'),
-                ]),
-            Components\Section::make('Content')
-                ->schema([
-                    TextEntry::make('content')
-                        ->prose()
-                        ->markdown()
-                        ->hiddenLabel(),
-                ])
-                ->collapsible(),
-        ]);
+                                ]),
+                            Components\ImageEntry::make('image')
+                                ->hiddenLabel()
+                                ->grow(false),
+                        ])->from('lg'),
+                    ]),
+                Components\Section::make('Content')
+                    ->schema([
+                        TextEntry::make('content')
+                            ->prose()
+                            ->markdown()
+                            ->hiddenLabel(),
+                    ])
+                    ->collapsible(),
+            ]);
     }
 }

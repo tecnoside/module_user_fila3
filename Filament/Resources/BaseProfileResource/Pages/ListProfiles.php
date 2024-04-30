@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Resources\BaseProfileResource\Pages;
 
-use Filament\Tables;
 use Filament\Actions;
-use Filament\Tables\Table;
-use Filament\Tables\Columns\TextColumn;
 use Filament\Resources\Pages\ListRecords;
-use Modules\User\Filament\Resources\BaseProfileResource;
+use Filament\Tables;
 use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Table;
 use Modules\User\Filament\Actions\Profile\ChangeProfilePasswordAction;
+use Modules\User\Filament\Resources\BaseProfileResource;
 
 class ListProfiles extends ListRecords
 {

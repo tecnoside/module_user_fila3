@@ -8,10 +8,6 @@ use Filament\Forms;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Form;
 use Filament\Resources\Concerns\Translatable;
-use Filament\Tables;
-use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Collection;
 use Modules\User\Filament\Resources\BaseProfileResource\Pages;
 use Modules\User\Models\BaseProfile;
@@ -31,7 +27,7 @@ abstract class BaseProfileResource extends XotBaseResource
         return $form
             ->schema([
                 // Forms\Components\TextInput::make('user_id'),
-                //Forms\Components\TextInput::make('user_id')->readonly(),
+                // Forms\Components\TextInput::make('user_id')->readonly(),
                 Forms\Components\TextInput::make('user.name')
                     ->label('User name'),
                 Forms\Components\TextInput::make('email'),
@@ -52,8 +48,6 @@ abstract class BaseProfileResource extends XotBaseResource
                     ->collection('photo_profile'),
             ]);
     }
-
-   
 
     public static function getRelations(): array
     {

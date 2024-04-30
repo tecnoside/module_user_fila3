@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Resources\BaseProfileResource\Pages;
 
-use Filament\Actions;
-use Filament\Resources\Pages\ListRecords;
 use Filament\Tables;
-use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
-use Filament\Tables\Columns\TextColumn;
+use Filament\Actions;
 use Filament\Tables\Table;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Resources\Pages\ListRecords;
 use Modules\User\Filament\Resources\BaseProfileResource;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
+use Modules\User\Filament\Actions\Profile\ChangeProfilePasswordAction;
 
 class ListProfiles extends ListRecords
 {
@@ -26,8 +27,10 @@ class ListProfiles extends ListRecords
     protected function getTableActions(): array
     {
         return [
-            Tables\Actions\EditAction::make(),
-            Tables\Actions\DeleteAction::make(),
+            ChangeProfilePasswordAction::make(),
+            Tables\Actions\EditAction::make()->label('')->tooltip(__('ui:txt.edit')),
+            Tables\Actions\ViewAction::make()->label('')->tooltip(__('ui:txt.view')),
+            Tables\Actions\DeleteAction::make()->label('')->tooltip(__('ui:txt.delete')),
         ];
     }
 

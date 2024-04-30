@@ -5,11 +5,10 @@ declare(strict_types=1);
 namespace Modules\User\Filament\Resources\BaseProfileResource\Pages;
 
 use Filament\Actions;
-use Filament\Infolists\Infolist;
-use Filament\Resources\Pages\EditRecord;
-use Filament\Resources\Pages\ViewRecord;
 use Filament\Infolists\Components;
 use Filament\Infolists\Components\TextEntry;
+use Filament\Infolists\Infolist;
+use Filament\Resources\Pages\ViewRecord;
 use Modules\User\Filament\Resources\BaseProfileResource;
 
 class ViewProfile extends ViewRecord
@@ -36,10 +35,10 @@ class ViewProfile extends ViewRecord
                         Components\Grid::make(2)
                             ->schema([
                                 Components\Group::make([
-                                    Components\TextEntry::make('email'),
-                                    Components\TextEntry::make('first_name'),
-                                    Components\TextEntry::make('last_name'),
-                                    Components\TextEntry::make('created_at')
+                                    TextEntry::make('email'),
+                                    TextEntry::make('first_name'),
+                                    TextEntry::make('last_name'),
+                                    TextEntry::make('created_at')
                                         ->badge()
                                         ->date()
                                         ->color('success'),
@@ -61,12 +60,12 @@ class ViewProfile extends ViewRecord
                 ]),
             Components\Section::make('Content')
                 ->schema([
-                    Components\TextEntry::make('content')
+                    TextEntry::make('content')
                         ->prose()
                         ->markdown()
                         ->hiddenLabel(),
                 ])
                 ->collapsible(),
-        ]);;
+        ]);
     }
 }

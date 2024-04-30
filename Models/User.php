@@ -7,28 +7,28 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
-use Filament\Panel;
-use Illuminate\Support\Str;
-use Modules\Xot\Datas\XotData;
-use Laravel\Passport\HasApiTokens;
 use Filament\Models\Contracts\HasName;
-use Spatie\Permission\Traits\HasRoles;
-use Modules\Notify\Models\Notification;
-use Modules\Xot\Contracts\UserContract;
-use Illuminate\Notifications\Notifiable;
-use Modules\User\Models\Traits\HasTeams;
 use Filament\Models\Contracts\HasTenants;
+use Filament\Panel;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
-use Modules\User\Database\Factories\UserFactory;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\DatabaseNotificationCollection;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Str;
+use Laravel\Passport\HasApiTokens;
+use Modules\Notify\Models\Notification;
+use Modules\User\Database\Factories\UserFactory;
+use Modules\User\Models\Traits\HasTeams;
+use Modules\Xot\Contracts\UserContract;
+use Modules\Xot\Datas\XotData;
+use Spatie\Permission\Traits\HasRoles;
 
 /**
  * Modules\User\Models\User.
@@ -286,18 +286,20 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
         return UserFactory::new();
     }
 
-    public function getNameAttribute(?string $value):?string{
-        if($value!=null || $this->getKey()==null){
+    public function getNameAttribute(?string $value): ?string
+    {
+        if (null != $value || null == $this->getKey()) {
             return $value;
         }
-        $name=Str::of($this->email)->before('@')->toString();
-        $i=1;
-        $value=$name.'-'.$i;
-        while(self::firstWhere(['name'=>$value])!==null){
-            $i++;
-            $value=$name.'-'.$i;
+        $name = Str::of($this->email)->before('@')->toString();
+        $i = 1;
+        $value = $name.'-'.$i;
+        while (null !== self::firstWhere(['name' => $value])) {
+            ++$i;
+            $value = $name.'-'.$i;
         }
-        $this->update(['name'=>$value]);
+        $this->update(['name' => $value]);
+
         return $value;
     }
 }

@@ -4,24 +4,24 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Resources\BaseProfileResource\Pages;
 
-use Filament\Tables;
 use Filament\Actions;
-use Filament\Tables\Table;
-use Illuminate\Support\Arr;
-use Webmozart\Assert\Assert;
-use Modules\Xot\Datas\XotData;
+use Filament\Resources\Pages\ListRecords;
+use Filament\Tables;
 use Filament\Tables\Actions\BulkAction;
 use Filament\Tables\Columns\IconColumn;
-use Filament\Tables\Columns\TextColumn;
-use Illuminate\Database\Eloquent\Model;
-use Filament\Resources\Pages\ListRecords;
-use Illuminate\Database\Eloquent\Builder;
-use Filament\Tables\Filters\TernaryFilter;
-use Illuminate\Database\Eloquent\Collection;
-use Modules\Xot\Filament\Traits\NavigationLabelTrait;
-use Modules\User\Filament\Resources\BaseProfileResource;
 use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\TernaryFilter;
+use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Arr;
 use Modules\User\Filament\Actions\Profile\ChangeProfilePasswordAction;
+use Modules\User\Filament\Resources\BaseProfileResource;
+use Modules\Xot\Datas\XotData;
+use Modules\Xot\Filament\Traits\NavigationLabelTrait;
+use Webmozart\Assert\Assert;
 
 class ListProfiles extends ListRecords
 {

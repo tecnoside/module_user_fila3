@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace Modules\User\Filament\Resources\BaseProfileResource\Pages;
 
 use Filament\Actions;
-use Filament\Tables\Table;
-use Filament\Tables;
-use Filament\Tables\Columns\TextColumn;
 use Filament\Resources\Pages\ListRecords;
-use Modules\User\Filament\Resources\BaseProfileResource;
+use Filament\Tables;
 use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Table;
+use Modules\User\Filament\Resources\BaseProfileResource;
 
 class ListProfiles extends ListRecords
 {
@@ -23,14 +23,16 @@ class ListProfiles extends ListRecords
         ];
     }
 
-    protected function getTableActions():array{
+    protected function getTableActions(): array
+    {
         return [
             Tables\Actions\EditAction::make(),
             Tables\Actions\DeleteAction::make(),
         ];
     }
 
-    protected function getTableColumns():array{
+    protected function getTableColumns(): array
+    {
         return [
             TextColumn::make('user.email'),
             TextColumn::make('first_name'),
@@ -42,7 +44,8 @@ class ListProfiles extends ListRecords
         ];
     }
 
-    protected function getTableBulkActions():array {
+    protected function getTableBulkActions(): array
+    {
         return [
             Tables\Actions\BulkActionGroup::make([
                 Tables\Actions\DeleteBulkAction::make(),
@@ -67,50 +70,49 @@ class ListProfiles extends ListRecords
     public function table(Table $table): Table
     {
         return $table
-            //->query($this->getTableQuery())
+            // ->query($this->getTableQuery())
             ->actions($this->getTableActions())
-            //->actionsColumnLabel($this->getTableActionsColumnLabel())
-            //->checkIfRecordIsSelectableUsing($this->isTableRecordSelectable())
+            // ->actionsColumnLabel($this->getTableActionsColumnLabel())
+            // ->checkIfRecordIsSelectableUsing($this->isTableRecordSelectable())
             ->columns($this->getTableColumns())
-            //->columnToggleFormColumns($this->getTableColumnToggleFormColumns())
-            //->columnToggleFormMaxHeight($this->getTableColumnToggleFormMaxHeight())
-            //->columnToggleFormWidth($this->getTableColumnToggleFormWidth())
-            //->content($this->getTableContent())
-            //->contentFooter($this->getTableContentFooter())
-            //->contentGrid($this->getTableContentGrid())
-            //->defaultSort($this->getDefaultTableSortColumn(), $this->getDefaultTableSortDirection())
-            //->deferLoading($this->isTableLoadingDeferred())
-            //->description($this->getTableDescription())
-            //->deselectAllRecordsWhenFiltered($this->shouldDeselectAllRecordsWhenTableFiltered())
-            //->emptyState($this->getTableEmptyState())
-            //->emptyStateActions($this->getTableEmptyStateActions())
-            //->emptyStateDescription($this->getTableEmptyStateDescription())
-            //->emptyStateHeading($this->getTableEmptyStateHeading())
-            //->emptyStateIcon($this->getTableEmptyStateIcon())
-            //->filters($this->getTableFilters())
-            //->filtersFormMaxHeight($this->getTableFiltersFormMaxHeight())
-            //->filtersFormWidth($this->getTableFiltersFormWidth())
-            //->groupedBulkActions($this->getTableBulkActions())
-            ->bulkActions($this->getTableBulkActions())
-            //->header($this->getTableHeader())
-            //->headerActions($this->getTableHeaderActions())
-            //->modelLabel($this->getTableModelLabel())
-            //->paginated($this->isTablePaginationEnabled())
-            //->paginatedWhileReordering($this->isTablePaginationEnabledWhileReordering())
-            //->paginationPageOptions($this->getTableRecordsPerPageSelectOptions())
-            //->persistFiltersInSession($this->shouldPersistTableFiltersInSession())
-            //->persistSearchInSession($this->shouldPersistTableSearchInSession())
-            //->persistColumnSearchesInSession($this->shouldPersistTableColumnSearchInSession())
-            //->persistSortInSession($this->shouldPersistTableSortInSession())
-            //->pluralModelLabel($this->getTablePluralModelLabel())
-            //->poll($this->getTablePollingInterval())
-            //->recordAction($this->getTableRecordActionUsing())
-            //->recordClasses($this->getTableRecordClassesUsing())
-            //->recordTitle(fn (Model $record): ?string => $this->getTableRecordTitle($record))
-            //->recordUrl($this->getTableRecordUrlUsing())
-            //->reorderable($this->getTableReorderColumn())
-            //->selectCurrentPageOnly($this->shouldSelectCurrentPageOnly())
-            //->striped($this->isTableStriped())
-            ;
+            // ->columnToggleFormColumns($this->getTableColumnToggleFormColumns())
+            // ->columnToggleFormMaxHeight($this->getTableColumnToggleFormMaxHeight())
+            // ->columnToggleFormWidth($this->getTableColumnToggleFormWidth())
+            // ->content($this->getTableContent())
+            // ->contentFooter($this->getTableContentFooter())
+            // ->contentGrid($this->getTableContentGrid())
+            // ->defaultSort($this->getDefaultTableSortColumn(), $this->getDefaultTableSortDirection())
+            // ->deferLoading($this->isTableLoadingDeferred())
+            // ->description($this->getTableDescription())
+            // ->deselectAllRecordsWhenFiltered($this->shouldDeselectAllRecordsWhenTableFiltered())
+            // ->emptyState($this->getTableEmptyState())
+            // ->emptyStateActions($this->getTableEmptyStateActions())
+            // ->emptyStateDescription($this->getTableEmptyStateDescription())
+            // ->emptyStateHeading($this->getTableEmptyStateHeading())
+            // ->emptyStateIcon($this->getTableEmptyStateIcon())
+            // ->filters($this->getTableFilters())
+            // ->filtersFormMaxHeight($this->getTableFiltersFormMaxHeight())
+            // ->filtersFormWidth($this->getTableFiltersFormWidth())
+            // ->groupedBulkActions($this->getTableBulkActions())
+            ->bulkActions($this->getTableBulkActions());
+        // ->header($this->getTableHeader())
+        // ->headerActions($this->getTableHeaderActions())
+        // ->modelLabel($this->getTableModelLabel())
+        // ->paginated($this->isTablePaginationEnabled())
+        // ->paginatedWhileReordering($this->isTablePaginationEnabledWhileReordering())
+        // ->paginationPageOptions($this->getTableRecordsPerPageSelectOptions())
+        // ->persistFiltersInSession($this->shouldPersistTableFiltersInSession())
+        // ->persistSearchInSession($this->shouldPersistTableSearchInSession())
+        // ->persistColumnSearchesInSession($this->shouldPersistTableColumnSearchInSession())
+        // ->persistSortInSession($this->shouldPersistTableSortInSession())
+        // ->pluralModelLabel($this->getTablePluralModelLabel())
+        // ->poll($this->getTablePollingInterval())
+        // ->recordAction($this->getTableRecordActionUsing())
+        // ->recordClasses($this->getTableRecordClassesUsing())
+        // ->recordTitle(fn (Model $record): ?string => $this->getTableRecordTitle($record))
+        // ->recordUrl($this->getTableRecordUrlUsing())
+        // ->reorderable($this->getTableReorderColumn())
+        // ->selectCurrentPageOnly($this->shouldSelectCurrentPageOnly())
+        // ->striped($this->isTableStriped())
     }
 }

@@ -5,15 +5,16 @@ declare(strict_types=1);
 namespace Modules\User\Models;
 
 // use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Notifications\Notifiable;
-use Modules\User\Models\Traits\IsProfileTrait;
-use Modules\Xot\Contracts\ProfileContract;
 use Parental\HasChildren;
-use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\HasMedia;
 use Spatie\Permission\Traits\HasRoles;
-use Spatie\SchemalessAttributes\Casts\SchemalessAttributes;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Builder;
+use Modules\Xot\Contracts\ProfileContract;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Modules\User\Models\Traits\IsProfileTrait;
 use Spatie\SchemalessAttributes\SchemalessAttributesTrait;
+use Spatie\SchemalessAttributes\Casts\SchemalessAttributes;
 
 /**
  * @property \Spatie\SchemalessAttributes\SchemalessAttributes                                                             $extra
@@ -52,7 +53,7 @@ use Spatie\SchemalessAttributes\SchemalessAttributesTrait;
  *
  * @mixin \Eloquent
  */
-abstract class BaseProfile extends BaseModel implements ProfileContract
+abstract class BaseProfile extends BaseModel implements ProfileContract, HasMedia
 {
     use HasChildren;
     use HasRoles;

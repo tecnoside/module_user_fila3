@@ -50,9 +50,9 @@ class ListProfiles extends ListRecords
     {
         return [
             ChangeProfilePasswordAction::make(),
-            Tables\Actions\EditAction::make()->label('')->tooltip(__('ui:txt.edit')),
-            Tables\Actions\ViewAction::make()->label('')->tooltip(__('ui:txt.view')),
-            Tables\Actions\DeleteAction::make()->label('')->tooltip(__('ui:txt.delete')),
+            Tables\Actions\EditAction::make()->label('')->tooltip(__('ui::txt.edit')),
+            Tables\Actions\ViewAction::make()->label('')->tooltip(__('ui::txt.view')),
+            Tables\Actions\DeleteAction::make()->label('')->tooltip(__('ui::txt.delete')),
         ];
     }
 

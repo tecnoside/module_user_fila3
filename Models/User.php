@@ -153,7 +153,7 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
         'lang',
         'current_team_id',
         'is_active',
-        'facebook_id',
+        //'facebook_id',// su userproviders
     ];
 
     /**

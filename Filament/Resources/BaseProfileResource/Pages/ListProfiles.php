@@ -37,7 +37,8 @@ class ListProfiles extends ListRecords
     protected function getTableColumns(): array
     {
         return [
-            TextColumn::make('user.email'),
+            TextColumn::make('user.name')->label('User Name'),
+            TextColumn::make('email'),
             TextColumn::make('first_name'),
             TextColumn::make('last_name'),
             TextColumn::make('email'),

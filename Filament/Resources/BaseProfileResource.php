@@ -31,6 +31,9 @@ abstract class BaseProfileResource extends XotBaseResource
         return $form
             ->schema([
                 // Forms\Components\TextInput::make('user_id'),
+                //Forms\Components\TextInput::make('user_id')->readonly(),
+                Forms\Components\TextInput::make('user.name')
+                    ->label('User name'),
                 Forms\Components\TextInput::make('email'),
                 Forms\Components\TextInput::make('first_name'),
                 Forms\Components\TextInput::make('last_name'),
@@ -50,44 +53,7 @@ abstract class BaseProfileResource extends XotBaseResource
             ]);
     }
 
-    public static function table(Table $table): Table
-    {
-        return $table
-            ->columns([
-                TextColumn::make('user.email'),
-                TextColumn::make('first_name'),
-                TextColumn::make('last_name'),
-                TextColumn::make('email'),
-                TextColumn::make('credits'),
-                SpatieMediaLibraryImageColumn::make('photo_profile')
-                    ->collection('photo_profile'),
-            ])
-            ->filters([
-            ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                    Tables\Actions\BulkAction::make('refresh-profiles')
-                        ->requiresConfirmation()
-                        ->action(function (Collection $records) {
-                            $users = User::all();
-
-                            foreach ($users as $user) {
-                                Profile::firstOrCreate(
-                                    ['user_id' => $user->id, 'email' => $user->email],
-                                    ['credits' => 1000]
-                                );
-                            }
-                        }),
-                ]),
-            ])
-            ->emptyStateActions([
-            ]);
-    }
+   
 
     public static function getRelations(): array
     {

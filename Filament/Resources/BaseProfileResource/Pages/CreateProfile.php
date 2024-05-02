@@ -16,8 +16,8 @@ class CreateProfile extends CreateRecord
     public function mutateFormDataBeforeCreate(array $data): array
     {
         $user_data = Arr::except($data, ['user']);
-        $extra= $data['user'] ?? [];
-        if(!is_array($extra)){
+        $extra = $data['user'] ?? [];
+        if (! is_array($extra)) {
             $extra = [];
         }
         $user_data = array_merge($user_data, $extra);

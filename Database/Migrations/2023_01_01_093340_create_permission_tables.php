@@ -44,7 +44,7 @@ class CreatePermissionTables extends XotBaseMigration
 
         try {
             app('cache')
-                ->store('default' !== $cache_store ? $cache_store : null)
+                ->store($cache_store !== 'default' ? $cache_store : null)
                 ->forget($cache_key);
         } catch (Exception $e) {
             echo $e->getMessage();

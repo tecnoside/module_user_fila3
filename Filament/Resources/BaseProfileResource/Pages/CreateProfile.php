@@ -16,7 +16,11 @@ class CreateProfile extends CreateRecord
     public function mutateFormDataBeforeCreate(array $data): array
     {
         $user_data = Arr::except($data, ['user']);
-        $user_data = array_merge($user_data, $data['user'] ?? []);
+        $extra= $data['user'] ?? [];
+        if(!is_array($extra)){
+            $extra = [];
+        }
+        $user_data = array_merge($user_data, $extra);
         $user_class = XotData::make()->getUserClass();
         $user = $user_class::create($user_data);
         $data['user_id'] = $user->id;

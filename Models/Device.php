@@ -14,14 +14,12 @@ use Modules\User\Database\Factories\DeviceFactory;
  * Modules\User\Models\Device.
  *
  * @property Collection<int, \Modules\User\Models\User> $users
- * @property int|null                                   $users_count
- *
- * @method static DeviceFactory  factory($count = null, $state = [])
+ * @property int|null $users_count
+ * @method static DeviceFactory factory($count = null, $state = [])
  * @method static Builder|Device newModelQuery()
  * @method static Builder|Device newQuery()
  * @method static Builder|Device query()
- *
- * @property int         $id
+ * @property int $id
  * @property string|null $mobile_id
  * @property array|null  $languages
  * @property string|null $device
@@ -38,7 +36,6 @@ use Modules\User\Database\Factories\DeviceFactory;
  * @property Carbon|null $updated_at
  * @property string|null $updated_by
  * @property string|null $created_by
- *
  * @method static Builder|Device whereBrowser($value)
  * @method static Builder|Device whereCreatedAt($value)
  * @method static Builder|Device whereCreatedBy($value)
@@ -56,7 +53,6 @@ use Modules\User\Database\Factories\DeviceFactory;
  * @method static Builder|Device whereUpdatedAt($value)
  * @method static Builder|Device whereUpdatedBy($value)
  * @method static Builder|Device whereVersion($value)
- *
  * @mixin \Eloquent
  */
 class Device extends BaseModel

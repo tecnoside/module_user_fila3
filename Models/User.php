@@ -51,20 +51,18 @@ use Spatie\Permission\Traits\HasRoles;
  * @property Collection<int, \Modules\User\Models\Team>             $teams
  * @property int|null                                               $teams_count
  * @property Collection<int, \Modules\User\Models\OauthAccessToken> $tokens
- * @property int|null                                               $tokens_count
- *
+ * @property int|null $tokens_count
  * @method static \Modules\User\Database\Factories\UserFactory factory($count = null, $state = [])
- * @method static Builder|User                                 newModelQuery()
- * @method static Builder|User                                 newQuery()
- * @method static Builder|User                                 permission($permissions)
- * @method static Builder|User                                 query()
- * @method static Builder|User                                 role($roles, $guard = null)
- *
- * @property string                          $id
- * @property string                          $name
- * @property string                          $first_name
- * @property string                          $last_name
- * @property string                          $email
+ * @method static Builder|User newModelQuery()
+ * @method static Builder|User newQuery()
+ * @method static Builder|User permission($permissions)
+ * @method static Builder|User query()
+ * @method static Builder|User role($roles, $guard = null)
+ * @property string $id
+ * @property string $name
+ * @property string $first_name
+ * @property string $last_name
+ * @property string $email
  * @property \Illuminate\Support\Carbon|null $email_verified_at
  * @property string                          $password
  * @property string|null                     $remember_token
@@ -72,10 +70,9 @@ use Spatie\Permission\Traits\HasRoles;
  * @property string|null                     $profile_photo_path
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property string|null                     $deleted_at
- * @property string|null                     $lang
- * @property bool                            $is_active
- *
+ * @property string|null $deleted_at
+ * @property string|null $lang
+ * @property bool $is_active
  * @method static Builder|User whereCreatedAt($value)
  * @method static Builder|User whereCurrentTeamId($value)
  * @method static Builder|User whereDeletedAt($value)
@@ -91,27 +88,21 @@ use Spatie\Permission\Traits\HasRoles;
  * @method static Builder|User whereProfilePhotoPath($value)
  * @method static Builder|User whereRememberToken($value)
  * @method static Builder|User whereUpdatedAt($value)
- *
  * @mixin Eloquent
- *
  * @property Collection<int, \Modules\User\Models\Tenant> $tenants
- * @property int|null                                     $tenants_count
- *
+ * @property int|null $tenants_count
  * @method static Builder|User withoutPermission($permissions)
  * @method static Builder|User withoutRole($roles, $guard = null)
- *
  * @property string|null $updated_by
  * @property string|null $created_by
  * @property string|null $deleted_by
- *
  * @method static Builder|User whereCreatedBy($value)
  * @method static Builder|User whereDeletedBy($value)
  * @method static Builder|User whereUpdatedBy($value)
- *
  * @property string $surname
- *
  * @method static Builder|User whereSurname($value)
- *
+ * @property string|null $facebook_id
+ * @method static Builder|User whereFacebookId($value)
  * @mixin \Eloquent
  */
 class User extends Authenticatable implements HasName, HasTenants, UserContract

@@ -19,12 +19,12 @@ use Spatie\Permission\Models\Role as SpatieRole;
 /**
  * Modules\User\Models\Role.
  *
- * @property string                                           $uuid
- * @property string|null                                      $team_id
- * @property string                                           $name
- * @property string                                           $guard_name
- * @property Carbon|null                                      $created_at
- * @property Carbon|null                                      $updated_at
+ * @property string $uuid
+ * @property string|null $team_id
+ * @property string $name
+ * @property string $guard_name
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
  * @property Collection<int, \Modules\User\Models\Permission> $permissions
  * @property int|null $permissions_count
  * @property Team|null $team

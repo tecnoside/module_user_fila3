@@ -12,15 +12,15 @@ use Spatie\Permission\Models\Permission as SpatiePermission;
 /**
  * Modules\User\Models\Permission.
  *
- * @property int                                        $id
- * @property string                                     $name
- * @property string                                     $guard_name
- * @property Carbon|null                                $created_at
- * @property Carbon|null                                $updated_at
- * @property Collection<int, Permission>                $permissions
- * @property int|null                                   $permissions_count
- * @property Collection<int, Role>                      $roles
- * @property int|null                                   $roles_count
+ * @property int $id
+ * @property string $name
+ * @property string $guard_name
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property Collection<int, Permission> $permissions
+ * @property int|null $permissions_count
+ * @property Collection<int, Role> $roles
+ * @property int|null $roles_count
  * @property Collection<int, \Modules\User\Models\User> $users
  * @property int|null $users_count
  * @method static Builder|Permission newModelQuery()

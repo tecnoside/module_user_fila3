@@ -24,7 +24,7 @@ use Modules\Xot\Datas\XotData;
  * @property Carbon|null $login_at
  * @property Carbon|null $logout_at
  * @property string|null $push_notifications_token
- * @property bool|null   $push_notifications_enabled
+ * @property bool|null $push_notifications_enabled
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $updated_by

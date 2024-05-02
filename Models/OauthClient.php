@@ -10,22 +10,22 @@ use Laravel\Passport\Client as PassportClient;
 /**
  * Modules\User\Models\OauthClient.
  *
- * @property string                                                                               $id
- * @property string|null                                                                          $user_id
- * @property string                                                                               $name
- * @property string|null                                                                          $secret
- * @property string|null                                                                          $provider
- * @property string                                                                               $redirect
- * @property bool                                                                                 $personal_access_client
- * @property bool                                                                                 $password_client
- * @property bool                                                                                 $revoked
- * @property \Illuminate\Support\Carbon|null                                                      $created_at
- * @property \Illuminate\Support\Carbon|null                                                      $updated_at
- * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\OauthAuthCode>    $authCodes
- * @property int|null                                                                             $auth_codes_count
- * @property array|null                                                                           $grant_types
- * @property string|null                                                                          $plain_secret
- * @property array|null                                                                           $scopes
+ * @property string $id
+ * @property string|null $user_id
+ * @property string $name
+ * @property string|null $secret
+ * @property string|null $provider
+ * @property string $redirect
+ * @property bool $personal_access_client
+ * @property bool $password_client
+ * @property bool $revoked
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\OauthAuthCode> $authCodes
+ * @property int|null $auth_codes_count
+ * @property array|null $grant_types
+ * @property string|null $plain_secret
+ * @property array|null $scopes
  * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\OauthAccessToken> $tokens
  * @property int|null $tokens_count
  * @property User|null $user

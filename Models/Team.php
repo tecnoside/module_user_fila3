@@ -15,15 +15,15 @@ use Modules\Xot\Datas\XotData;
 /**
  * Modules\User\Models\Team.
  *
- * @property int                                                                                $id
- * @property int                                                                                $user_id
- * @property string                                                                             $name
- * @property int                                                                                $personal_team
- * @property \Illuminate\Support\Carbon|null                                                    $created_at
- * @property \Illuminate\Support\Carbon|null                                                    $updated_at
- * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\User>           $members
- * @property int|null                                                                           $members_count
- * @property User|null                                                                          $owner
+ * @property int $id
+ * @property int $user_id
+ * @property string $name
+ * @property int $personal_team
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\User> $members
+ * @property int|null $members_count
+ * @property User|null $owner
  * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\TeamInvitation> $teamInvitations
  * @property int|null $team_invitations_count
  * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\User> $users

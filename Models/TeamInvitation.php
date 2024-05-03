@@ -34,7 +34,7 @@ use Modules\Xot\Datas\XotData;
  * @method static Builder|TeamInvitation whereTeamId($value)
  * @method static Builder|TeamInvitation whereUpdatedAt($value)
  *
- * @property string      $uuid
+ * @property string $uuid
  * @property string|null $updated_by
  * @property string|null $created_by
  * @property Carbon|null $deleted_at

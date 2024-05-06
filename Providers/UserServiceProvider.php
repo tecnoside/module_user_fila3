@@ -9,11 +9,6 @@ declare(strict_types=1);
 namespace Modules\User\Providers;
 
 use Laravel\Passport\Passport;
-use Modules\User\Console\Commands\AssignModuleCommand;
-use Modules\User\Console\Commands\AssignRoleCommand;
-use Modules\User\Console\Commands\AssignTeamCommand;
-use Modules\User\Console\Commands\RemoveRoleCommand;
-use Modules\User\Console\Commands\SuperAdminCommand;
 use Modules\User\Models\OauthAccessToken;
 use Modules\User\Models\OauthAuthCode;
 use Modules\User\Models\OauthClient;
@@ -73,6 +68,4 @@ class UserServiceProvider extends XotBaseServiceProvider
             ]
         );
     }
-
-    
 }

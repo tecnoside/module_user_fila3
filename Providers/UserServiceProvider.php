@@ -9,18 +9,13 @@ declare(strict_types=1);
 namespace Modules\User\Providers;
 
 use Laravel\Passport\Passport;
-use Modules\User\Console\Commands\AssignModuleCommand;
-use Modules\User\Console\Commands\AssignRoleCommand;
-use Modules\User\Console\Commands\AssignTeamCommand;
-use Modules\User\Console\Commands\RemoveRoleCommand;
-use Modules\User\Console\Commands\SuperAdminCommand;
 use Modules\User\Models\OauthAccessToken;
 use Modules\User\Models\OauthAuthCode;
 use Modules\User\Models\OauthClient;
 use Modules\User\Models\OauthPersonalAccessClient;
 use Modules\User\Models\OauthRefreshToken;
 use Modules\Xot\Providers\XotBaseServiceProvider;
-use SocialiteProviders\Manager\ServiceProvider;
+use SocialiteProviders\Manager\ServiceProvider as SocialiteServiceProvider;
 
 class UserServiceProvider extends XotBaseServiceProvider
 {
@@ -34,15 +29,6 @@ class UserServiceProvider extends XotBaseServiceProvider
     {
         $this->registerAuthenticationProviders();
         $this->registerEventListener();
-        $this->commands(
-            [
-                AssignModuleCommand::class,
-                AssignRoleCommand::class,
-                RemoveRoleCommand::class,
-                AssignTeamCommand::class,
-                SuperAdminCommand::class,
-            ]
-        );
     }
 
     protected function registerAuthenticationProviders(): void
@@ -54,6 +40,11 @@ class UserServiceProvider extends XotBaseServiceProvider
     protected function registerEventListener(): void
     {
         $this->app->register(EventServiceProvider::class);
+    }
+
+    private function registerSocialite(): void
+    {
+        $this->app->register(SocialiteServiceProvider::class);
     }
 
     private function registerPassport(): void
@@ -76,10 +67,5 @@ class UserServiceProvider extends XotBaseServiceProvider
                 'core-technicians' => 'the technicians can ',
             ]
         );
-    }
-
-    private function registerSocialite(): void
-    {
-        $this->app->register(ServiceProvider::class);
     }
 }

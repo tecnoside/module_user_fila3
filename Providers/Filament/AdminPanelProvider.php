@@ -47,7 +47,8 @@ class AdminPanelProvider extends XotBasePanelProvider
 
         FilamentView::registerRenderHook(
             'panels::user-menu.before',
-            static fn (): string => View::make('user::badges.super-admin')->render(),
+            // static fn (): string => View::make('user::badges.super-admin')->render(),
+            static fn (): string => Blade::render("@livewire('profile.super-admin')"),
         );
 
         /*

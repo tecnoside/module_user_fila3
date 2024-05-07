@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Modules\User\Http\Livewire\Profile;
 
-use Livewire\Component;
-use Illuminate\View\View;
-use Modules\Xot\Datas\XotData;
 use Illuminate\Http\RedirectResponse;
-use Modules\Xot\Contracts\ProfileContract;
+use Illuminate\View\View;
+use Livewire\Component;
 use Livewire\Features\SupportRedirects\Redirector;
+use Modules\Xot\Contracts\ProfileContract;
+use Modules\Xot\Datas\XotData;
 
 class SuperAdmin extends Component
 {
@@ -19,21 +19,20 @@ class SuperAdmin extends Component
     public function mount(): void
     {
         $this->profile = XotData::make()->getProfileModel();
-        $this->url=url()->current();
-        //dddx();
+        $this->url = url()->current();
+        // dddx();
         /*
         if($this->profile->user->email == 'marco.sottana@gmail.com'){
             $this->profile->user->assignRole('negate-super-admin');
         }
         */
-
     }
 
-    public function toggleSuperAdmin():RedirectResponse|Redirector
+    public function toggleSuperAdmin(): RedirectResponse|Redirector
     {
-        
         $this->profile->toggleSuperAdmin();
-        //dddx(Url::fullUrl());
+
+        // dddx(Url::fullUrl());
         return redirect($this->url, 303);
     }
 

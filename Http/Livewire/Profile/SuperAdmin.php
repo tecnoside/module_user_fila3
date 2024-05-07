@@ -14,6 +14,7 @@ use Modules\Xot\Datas\XotData;
 class SuperAdmin extends Component
 {
     public string $url = '#';
+
     public ProfileContract $profile;
 
     public function mount(): void

@@ -11,9 +11,11 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Collection;
 use Modules\User\Models\Device;
 use Modules\User\Models\DeviceUser;
+use Modules\User\Models\Role;
 use Modules\User\Models\User;
 use Modules\Xot\Datas\XotData;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\Permission\Exceptions\RoleDoesNotExist;
 
 trait IsProfileTrait
 {
@@ -102,6 +104,37 @@ trait IsProfileTrait
         }
 
         return $this->user->hasRole('super-admin');
+    }
+
+    public function isNegateSuperAdmin(): bool
+    {
+        if (null === $this->user) {
+            return false;
+        }
+
+        return $this->user->hasRole('negate-super-admin');
+    }
+
+    public function toggleSuperAdmin(): void
+    {
+        $user = $this->user;
+        if ($this->isSuperAdmin()) {
+            $user->removeRole('super-admin');
+            try {
+                $user->assignRole('negate-super-admin');
+            } catch (RoleDoesNotExist $e) {
+                Role::create(['name' => 'negate-super-admin']);
+                dddx('a');
+            }
+
+            return;
+        }
+        if ($this->isNegateSuperAdmin()) {
+            $user->removeRole('negate-super-admin');
+            $user->assignRole('super-admin');
+
+            return;
+        }
     }
 
     public function mobileDevices(): BelongsToMany

@@ -23,6 +23,13 @@ class CreateOauthPersonalAccessClientsTable extends XotBaseMigration
         // -- UPDATE --
         $this->tableUpdate(
             function (Blueprint $table): void {
+
+
+                if (!$this->hasColumn('uuid')) {
+                    $table->uuid('uuid')->nullable();
+                }
+
+
                 $this->updateUser($table);
                 $this->updateTimestamps($table, false);
             }

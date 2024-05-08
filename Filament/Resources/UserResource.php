@@ -87,6 +87,7 @@ class UserResource extends XotBaseResource
                     ->dehydrateStateUsing(fn ($state) => Hash::make($state))
                     ->rule(Password::default()),
                 */
+                    /*------------
                     'password' => TextInput::make('password')
                         // ->label(trans('filament-user::user.resource.password'))
                         ->password()
@@ -96,6 +97,7 @@ class UserResource extends XotBaseResource
                             ? Hash::make($state)
                             : User::find($form->getColumns())?->password
                         ),
+                        */
                     /*
                     ->dehydrateStateUsing(function ($state) use ($form){
                         if(!empty($state)){

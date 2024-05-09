@@ -32,6 +32,7 @@ class SuperAdmin extends Component
     public function toggleSuperAdmin(): RedirectResponse|Redirector
     {
         $this->profile->toggleSuperAdmin();
+
         return redirect($this->url, 303);
     }
 

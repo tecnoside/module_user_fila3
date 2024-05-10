@@ -33,7 +33,6 @@ class SuperAdmin extends Component
     {
         $this->profile->toggleSuperAdmin();
 
-        // dddx(Url::fullUrl());
         return redirect($this->url, 303);
     }
 

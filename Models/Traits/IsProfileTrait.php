@@ -118,6 +118,9 @@ trait IsProfileTrait
     public function toggleSuperAdmin(): void
     {
         $user = $this->user;
+        if (null === $user) {
+            throw new \Exception('['.__LINE__.']['.__FILE__.']');
+        }
         if ($this->isSuperAdmin()) {
             $user->removeRole('super-admin');
             try {

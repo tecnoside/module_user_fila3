@@ -122,12 +122,13 @@ trait IsProfileTrait
             throw new \Exception('['.__LINE__.']['.__FILE__.']');
         }
         if ($this->isSuperAdmin()) {
-            $user->removeRole('super-admin');
+
             try {
                 $user->assignRole('negate-super-admin');
+                $user->removeRole('super-admin');
             } catch (RoleDoesNotExist $e) {
                 Role::create(['name' => 'negate-super-admin']);
-                dddx('a');
+
             }
 
             return;

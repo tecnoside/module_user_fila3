@@ -88,7 +88,7 @@ class ModelHasRole extends BaseMorphPivot
     {
         // https://laracasts.com/discuss/channels/eloquent/generating-custom-id-uuid-for-many-to-many-relationship-pivot-table
         // https://www.appsloveworld.com/php/394/laravel-eloquent-uuid-in-a-pivot-table
-        dddx('a');
+        
         if (! $exists && ! \array_key_exists('id', $attributes)) {
             $attributes['id'] = Str::uuid(); // Uuid::generate()->string;
         }

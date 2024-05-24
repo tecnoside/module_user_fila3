@@ -4,8 +4,12 @@ declare(strict_types=1);
 
 namespace Modules\User\Contracts;
 
+use Illuminate\Database\Eloquent\Model;
+
 /**
  * Modules\User\Contracts\TwoFactorAuthenticatableContract.
+ *
+ * @phpstan-require-extends Model
  *
  * @mixin \Eloquent
  */

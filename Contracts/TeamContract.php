@@ -6,6 +6,7 @@ namespace Modules\User\Contracts;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -16,18 +17,18 @@ use Modules\Xot\Contracts\UserContract;
 /**
  * Modules\User\Contracts\TeamContract.
  *
- * @property int $id
- * @property int $user_id
- * @property string $name
- * @property int $personal_team
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
- * @property string $role
- * @property UserContract|null $owner
+ * @property int                                             $id
+ * @property int                                             $user_id
+ * @property string                                          $name
+ * @property int                                             $personal_team
+ * @property Carbon|null                                     $created_at
+ * @property Carbon|null                                     $updated_at
+ * @property string                                          $role
+ * @property UserContract|null                               $owner
  * @property EloquentCollection<int, TeamInvitationContract> $teamInvitations
- * @property int|null $team_invitations_count
- * @property EloquentCollection<int, UserContract> $users
- * @property int|null $users_count
+ * @property int|null                                        $team_invitations_count
+ * @property EloquentCollection<int, UserContract>           $users
+ * @property int|null                                        $users_count
  *
  * @method static Builder|Team newModelQuery()
  * @method static Builder|Team newQuery()
@@ -38,6 +39,8 @@ use Modules\Xot\Contracts\UserContract;
  * @method static Builder|Team wherePersonalTeam($value)
  * @method static Builder|Team whereUpdatedAt($value)
  * @method static Builder|Team whereUserId($value)
+ *
+ * @phpstan-require-extends Model
  *
  * @mixin \Eloquent
  */
@@ -97,7 +100,8 @@ interface TeamContract extends ModelContract
     /**
      * Reload a fresh model instance from the database.
      *
-     * @param  array|string  $with
+     * @param array|string $with
+     *
      * @return static|null
      */
     public function fresh($with = []);

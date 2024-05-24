@@ -64,6 +64,8 @@ use Spatie\Permission\Models\Role;
  * @method static Builder|User whereTwoFactorSecret($value)
  * @method static Builder|User whereUpdatedAt($value)
  *
+ * @phpstan-require-extends Model
+ *
  * @mixin \Eloquent
  */
 interface UserContract extends CanResetPassword, HasTeamsContract, ModelContract, MustVerifyEmail, PassportHasApiTokensContract

@@ -17,6 +17,9 @@ use Modules\User\Models\User;
 use Modules\Xot\Contracts\ProfileContract;
 use Modules\Xot\Datas\XotData;
 
+/**
+ * ---.
+ */
 class ChangeProfilePasswordAction extends Action
 {
     protected function setUp(): void
@@ -32,12 +35,12 @@ class ChangeProfilePasswordAction extends Action
                 static function (ProfileContract $record, array $data): void {
                     $user = $record->user;
                     $profile_data = Arr::except($record->toArray(), ['id']);
-                    if ($user == null) {
+                    if (null == $user) {
                         $user_class = XotData::make()->getUserClass();
                         $user = $user_class::firstWhere(['email' => $record->email]);
                     }
 
-                    if ($user == null) {
+                    if (null == $user) {
                         $user = $record->user()->create($profile_data);
                     }
                     $user->profile()->save($record);

@@ -9,6 +9,7 @@ declare(strict_types=1);
 namespace Modules\User\Contracts;
 
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -18,14 +19,16 @@ use Modules\User\Models\Role;
 /**
  * Modules\User\Contracts\HasTeamsContract.
  *
- * @property int $id
- * @property string $name
- * @property string $two_factor_secret
- * @property TeamContract|null $currentTeam
- * @property Collection $tokens
- * @property Carbon|null $two_factor_confirmed_at
- * @property int $current_team_id
+ * @property int                           $id
+ * @property string                        $name
+ * @property string                        $two_factor_secret
+ * @property TeamContract|null             $currentTeam
+ * @property Collection                    $tokens
+ * @property Carbon|null                   $two_factor_confirmed_at
+ * @property int                           $current_team_id
  * @property Collection<int, TeamContract> $ownedTeams
+ *
+ * @phpstan-require-extends Model
  *
  * @mixin \Eloquent
  */

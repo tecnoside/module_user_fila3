@@ -59,7 +59,7 @@ class SetCurrentTeamCommand extends Command
             scroll: 10,
         );
 
-        $user->current_team_id = $team_id;
+        $user->current_team_id = intval($team_id);
         $user->save();
 
         $this->info('OK');

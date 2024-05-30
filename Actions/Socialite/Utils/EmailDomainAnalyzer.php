@@ -42,7 +42,7 @@ final class EmailDomainAnalyzer
     {
         $clientEmailDomain = $this->clientDomain();
 
-        if (null === $clientEmailDomain || '' === $clientEmailDomain) {
+        if ($clientEmailDomain === null || $clientEmailDomain === '') {
             return false;
         }
 

@@ -60,10 +60,20 @@ abstract class BaseMorphPivot extends MorphPivot
         'note',
     ];
 
-    /** @var array<string, string> */
-    protected $casts = ['created_at' => 'datetime', 'updated_at' => 'datetime',
-        'deleted_at' => 'datetime',
-    ];
+    /** @return array<string, string> */
+    protected function casts(): array
+    {
+        return [
+            'id' => 'string', // must be string else primary key of related model will be typed as int
+            'created_at' => 'datetime',
+            'updated_at' => 'datetime',
+            'deleted_at' => 'datetime',
+
+            'updated_by' => 'string',
+            'created_by' => 'string',
+            'deleted_by' => 'string',
+        ];
+    }
 
     /**
      * Create a new factory instance for the model.

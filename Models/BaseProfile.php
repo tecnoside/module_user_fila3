@@ -53,7 +53,7 @@ use Spatie\SchemalessAttributes\SchemalessAttributesTrait;
  *
  * @mixin \Eloquent
  */
-abstract class BaseProfile extends BaseModel implements HasMedia, ProfileContract
+abstract class BaseProfile extends BaseModel implements ProfileContract
 {
     use HasChildren;
     use HasRoles;
@@ -81,9 +81,16 @@ abstract class BaseProfile extends BaseModel implements HasMedia, ProfileContrac
         'is_active',
     ];
 
+    /** @var array<int, string> */
     protected $appends = [
         'full_name',
     ];
+
+    /** @var array<int, string> */
+    protected $with = [
+        'user',
+     ];
+
 
     /** @return array<string, string> */
     protected function casts(): array

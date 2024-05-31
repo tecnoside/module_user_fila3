@@ -82,8 +82,12 @@ class TeamResource extends Resource
             )
             ->actions(
                 [
-                    ViewAction::make(),
-                    EditAction::make(),
+                    ViewAction::make()
+                        ->label('')
+                        ->tooltip(__('filament-actions::view.single.label')),
+                    EditAction::make()
+                        ->label('')
+                        ->tooltip(__('filament-actions::edit.single.label')),
                     // Tables\Actions\EditAction::make(),
                     // Tables\Actions\DissociateAction::make(),
                     // DetachAction::make(),

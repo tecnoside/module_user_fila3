@@ -6,13 +6,13 @@ namespace Modules\User\Filament\Resources\UserResource\RelationManagers;
 
 use Filament\Forms\Form;
 use Filament\Tables\Table;
-use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Actions;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Enums\FiltersLayout;
 use Filament\Tables\Actions\AttachAction;
 use Filament\Tables\Actions\CreateAction;
-use Filament\Tables\Actions\DetachAction;
 use Filament\Tables\Enums\ActionsPosition;
 use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Actions\DeleteBulkAction;
@@ -32,7 +32,12 @@ class TeamsRelationManager extends RelationManager
     }
 
     public function getColumns(Table $table):array{
-        return $table->getColumns();
+        $actions=[
+            IconColumn::make('is_current_team')
+                ->default(fn($record,$livewire)=>$livewire->getOwnerRecord()->current_team_id == $record->id)
+                ->boolean(),
+        ];
+        return array_merge($table->getColumns(),$actions);
         
     }
 
@@ -41,12 +46,28 @@ class TeamsRelationManager extends RelationManager
     }
 
     public function getHeaderActions(Table $table):array{
-        return $table->getHeaderActions();
+        $actions=[
+            AttachAction::make(),
+        ];
+        return array_merge($actions,$table->getHeaderActions());
     }
 
     public function getActions(Table $table):array{
         $actions=[
-            DetachAction::make(),
+            Actions\DetachAction::make()
+                ->label('')
+                ->tooltip(__('filament-actions::detach.single.label')),
+            Actions\Action::make('make_current')
+                ->label('')
+                ->tooltip('set current')
+                ->icon('heroicon-o-user-plus')
+                ->action(function($record,$livewire){
+                    $user=$livewire->getOwnerRecord();
+                    $team_id=$record->getKey();
+                    $user->update([
+                        'current_team_id'=>$team_id,
+                    ]);
+                }),
         ];
         return array_merge($actions,$table->getActions());
     }

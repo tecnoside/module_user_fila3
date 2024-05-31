@@ -4,76 +4,79 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Resources\UserResource\RelationManagers;
 
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
-use Filament\Resources\RelationManagers\RelationManager;
-use Filament\Tables\Actions\AttachAction;
-use Filament\Tables\Actions\BulkActionGroup;
-use Filament\Tables\Actions\CreateAction;
-use Filament\Tables\Actions\DeleteBulkAction;
-use Filament\Tables\Actions\DetachAction;
+use Filament\Tables\Table;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Table;
+use Filament\Forms\Components\TextInput;
+use Filament\Tables\Enums\FiltersLayout;
+use Filament\Tables\Actions\AttachAction;
+use Filament\Tables\Actions\CreateAction;
+use Filament\Tables\Actions\DetachAction;
+use Filament\Tables\Enums\ActionsPosition;
+use Filament\Tables\Actions\BulkActionGroup;
+use Filament\Tables\Actions\DeleteBulkAction;
+use Modules\User\Filament\Resources\TeamResource;
+use Filament\Resources\RelationManagers\RelationManager;
 
 class TeamsRelationManager extends RelationManager
 {
     protected static string $relationship = 'teams';
 
     protected static ?string $recordTitleAttribute = 'name';
-
+    
+    
     public function form(Form $form): Form
     {
-        return $form
-            ->schema(
-                [
-                    TextInput::make('name')
-                        ->required()
-                        ->maxLength(255),
-                ]
-            );
+        return TeamResource::form($form);
+    }
+
+    public function getColumns(Table $table):array{
+        return $table->getColumns();
+        
+    }
+
+    public function getFilters(Table $table):array{
+        return $table->getFilters();
+    }
+
+    public function getHeaderActions(Table $table):array{
+        return $table->getHeaderActions();
+    }
+
+    public function getActions(Table $table):array{
+        $actions=[
+            DetachAction::make(),
+        ];
+        return array_merge($actions,$table->getActions());
     }
 
     public function table(Table $table): Table
     {
+        $table=TeamResource::table($table);
+        /*
+        dddx([
+            //'getActions'=>$table->getActions(),
+            //'getHeaderActions'=>$table->getHeaderActions(),
+            'methods'=>get_class_methods($table),
+        ]);
+        //*/
         return $table
-            ->recordTitleAttribute('name')
-            ->columns(
-                [
-                    TextColumn::make('id'),
-                    TextColumn::make('name'),
-                ]
-            )
-            ->filters(
-                [
-                ]
-            )
-            ->headerActions(
-                [
-                    // Tables\Actions\CreateAction::make(),
-                    AttachAction::make(),
-                ]
-            )
-            ->actions(
-                [
-                    EditAction::make(),
-                    // DeleteAction::make(),
-                    DetachAction::make(),
-                ]
-            )
-            ->bulkActions(
-                [
-                    BulkActionGroup::make(
-                        [
-                            DeleteBulkAction::make(),
-                        ]
-                    ),
-                ]
-            )
+            ->columns($this->getColumns($table))
+            ->filters($this->getFilters($table))
+            ->headerActions($this->getHeaderActions($table))
+            ->actions($this->getActions($table))
+            //->bulkActions($this->getTableBulkActions())
+            ->filtersLayout(FiltersLayout::AboveContent)
+            ->actionsPosition(ActionsPosition::BeforeColumns)
             ->emptyStateActions(
                 [
                     CreateAction::make(),
                 ]
             );
+            //->defaultSort('users.created_at', 'desc');
+            ;
+
+       
     }
 }

@@ -73,6 +73,7 @@ class DeviceUser extends BasePivot
             'created_at' => 'datetime',
             'updated_at' => 'datetime',
             'deleted_at' => 'datetime',
+
             'login_at' => 'datetime',
             'logout_at' => 'datetime',
             'user_id' => 'string',

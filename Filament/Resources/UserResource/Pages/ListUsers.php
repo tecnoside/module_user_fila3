@@ -4,29 +4,28 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Resources\UserResource\Pages;
 
+use Filament\Actions\CreateAction;
+use Filament\Forms\Components\TextInput;
+use Filament\Resources\Pages\ListRecords;
+use Filament\Tables\Actions\Action;
+use Filament\Tables\Actions\DeleteBulkAction;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Columns\BooleanColumn;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Enums\ActionsPosition;
+use Filament\Tables\Enums\FiltersLayout;
+use Filament\Tables\Filters\Filter;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
+use Illuminate\Database\Query\Builder;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Validation\Rules\Password;
+use Modules\User\Filament\Actions\ChangePasswordAction;
+use Modules\User\Filament\Resources\UserResource;
+use Modules\User\Filament\Resources\UserResource\Widgets\UserOverview;
 use Modules\User\Models\Role;
 use Modules\User\Models\User;
-use Filament\Actions\CreateAction;
-use Filament\Tables\Actions\Action;
-use Filament\Tables\Filters\Filter;
-
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Database\Query\Builder;
-use Filament\Tables\Actions\EditAction;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Forms\Components\TextInput;
-use Filament\Tables\Enums\FiltersLayout;
-use Filament\Resources\Pages\ListRecords;
-use Filament\Tables\Filters\SelectFilter;
-use Illuminate\Validation\Rules\Password;
-use Filament\Tables\Columns\BooleanColumn;
-use Filament\Tables\Enums\ActionsPosition;
-use Illuminate\Support\Facades\Notification;
-use Filament\Tables\Actions\DeleteBulkAction;
-use Modules\User\Filament\Resources\UserResource;
-use Modules\User\Filament\Actions\ChangePasswordAction;
-use Modules\User\Filament\Resources\UserResource\Widgets\UserOverview;
 
 class ListUsers extends ListRecords
 {
@@ -47,9 +46,10 @@ class ListUsers extends ListRecords
         ];
     }
 
-    public function getTableColumns():array {
+    public function getTableColumns(): array
+    {
         return [
-            //TextColumn::make('id')->sortable(),
+            // TextColumn::make('id')->sortable(),
             TextColumn::make('name')->sortable()->searchable(), // ->toggleable(),
             TextColumn::make('email')->sortable()->searchable(),
             // TextColumn::make('profile.first_name')->label('first name')->sortable()->searchable()->toggleable(),
@@ -70,11 +70,12 @@ class ListUsers extends ListRecords
             //    ->dateTime(config('app.date_format')),
             // Tables\Columns\TextColumn::make('photo'),
             BooleanColumn::make('email_verified_at')->sortable()->searchable()->toggleable(),
-            //...static::extendTableCallback(),
+            // ...static::extendTableCallback(),
         ];
     }
 
-    public function getTableFilters():array{
+    public function getTableFilters(): array
+    {
         return [
             /*
         SelectFilter::make('role')
@@ -94,7 +95,8 @@ class ListUsers extends ListRecords
         ];
     }
 
-    public function getTableActions():array{
+    public function getTableActions(): array
+    {
         return [
             EditAction::make()
                 ->label('')
@@ -137,12 +139,13 @@ class ListUsers extends ListRecords
         ];
     }
 
-    public function getTableBulkActions():array 
+    public function getTableBulkActions(): array
     {
         return [
-                    DeleteBulkAction::make(),
+            DeleteBulkAction::make(),
         ];
     }
+
     public function table(Table $table): Table
     {
         return $table

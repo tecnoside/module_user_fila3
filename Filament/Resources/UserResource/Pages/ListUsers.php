@@ -6,11 +6,13 @@ namespace Modules\User\Filament\Resources\UserResource\Pages;
 
 use Filament\Tables\Table;
 use Modules\User\Models\Role;
+use Modules\User\Models\User;
 use Filament\Actions\CreateAction;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Filters\Filter;
-use Illuminate\Support\Facades\Hash;
 
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Query\Builder;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;

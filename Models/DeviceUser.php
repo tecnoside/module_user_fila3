@@ -45,7 +45,7 @@ use Modules\Xot\Datas\XotData;
  * @method static Builder|DeviceUser whereUserId($value)
  *
  * @property \Modules\EWall\Models\Profile|null $profile
- * @property User|null                            $user
+ * @property User|null                          $user
  *
  * @mixin \Eloquent
  */

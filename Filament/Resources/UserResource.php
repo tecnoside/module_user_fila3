@@ -15,19 +15,8 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationGroup;
-use Filament\Tables\Actions\Action;
-use Filament\Tables\Actions\DeleteBulkAction;
-use Filament\Tables\Actions\EditAction;
-use Filament\Tables\Columns\BooleanColumn;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Enums\ActionsPosition;
-use Filament\Tables\Enums\FiltersLayout;
-use Filament\Tables\Filters\Filter;
-use Filament\Tables\Table;
-use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\HtmlString;
-use Modules\User\Filament\Actions\ChangePasswordAction;
 use Modules\User\Filament\Resources\UserResource\Pages\CreateUser;
 use Modules\User\Filament\Resources\UserResource\Pages\EditUser;
 use Modules\User\Filament\Resources\UserResource\Pages\ListUsers;
@@ -77,9 +66,11 @@ class UserResource extends XotBaseResource
                     'email' => TextInput::make('email')
                         ->required()
                         ->unique(ignoreRecord: true),
+                    /*
                     'current_team_id' => Select::make('current_team_id')
                         ->label('current team')
                         ->relationship('teams', 'name'),
+                    */
                     /*
                 'password' => TextInput::make('password')
                     ->required()
@@ -142,100 +133,6 @@ class UserResource extends XotBaseResource
         $form->schema($schema)->columns(12);
 
         return $form;
-    }
-
-    public static function table(Table $table): Table
-    {
-        return $table
-            ->columns(
-                [
-                    TextColumn::make('id')->sortable(),
-                    TextColumn::make('name')->sortable()->searchable(), // ->toggleable(),
-                    TextColumn::make('email')->sortable()->searchable(),
-                    // TextColumn::make('profile.first_name')->label('first name')->sortable()->searchable()->toggleable(),
-                    // TextColumn::make('profile.last_name')->label('last name')->sortable()->searchable()->toggleable(),
-                    TextColumn::make('teams.name')->searchable()->toggleable()->wrap()->badge(),
-                    // Tables\Columns\TextColumn::make('email'),
-                    // Tables\Columns\TextColumn::make('email_verified_at')
-                    //    ->dateTime(config('app.date_format')),
-                    TextColumn::make('role.name')->toggleable(),
-                    TextColumn::make('roles.name')->toggleable()->wrap()->badge(),
-                    // Tables\Columns\TextColumn::make('created_at')->dateTime(config('app.date_format')),
-                    // Tables\Columns\TextColumn::make('updated_at')
-                    //    ->dateTime(config('app.date_format')),
-                    // Tables\Columns\TextColumn::make('role_id'),
-                    // Tables\Columns\TextColumn::make('display_name'),
-                    // Tables\Columns\TextColumn::make('phone_number'),
-                    // Tables\Columns\TextColumn::make('phone_verified_at')
-                    //    ->dateTime(config('app.date_format')),
-                    // Tables\Columns\TextColumn::make('photo'),
-                    BooleanColumn::make('email_verified_at')->sortable()->searchable()->toggleable(),
-                    ...static::extendTableCallback(),
-                ]
-            )
-            ->filters(
-                [
-                    /*
-                SelectFilter::make('role')
-                    ->options([
-                        Role::ROLE_USER => 'User',
-                        Role::ROLE_OWNER => 'Owner',
-                        Role::ROLE_ADMINISTRATOR => 'Administrator',
-                    ])
-                    ->attribute('role_id'),
-                */
-                    Filter::make('verified')
-                        ->label(trans('verified'))
-                        ->query(static fn (Builder $query): Builder => $query->whereNotNull('email_verified_at')),
-                    Filter::make('unverified')
-                        ->label(trans('unverified'))
-                        ->query(static fn (Builder $query): Builder => $query->whereNull('email_verified_at')),
-                ],
-                layout: FiltersLayout::AboveContent
-            )
-            ->actions(
-                [
-                    EditAction::make(),
-                    ChangePasswordAction::make(),
-                    /*
-                Action::make('changePassword')
-                    ->action(function (User $user, array $data): void {
-                        $user->update([
-                            'password' => Hash::make($data['new_password']),
-                        ]);
-                        Notification::make()->success()->title('Password changed successfully.');
-                    })
-                    ->form([
-                        TextInput::make('new_password')
-                            ->password()
-                            ->label('New Password')
-                            ->required()
-                            ->rule(Password::default()),
-                        TextInput::make('new_password_confirmation')
-                            ->password()
-                            ->label('Confirm New Password')
-                            ->rule('required', fn ($get): bool => (bool) $get('new_password'))
-                            ->same('new_password'),
-                    ])
-                    ->icon('heroicon-o-key')
-                // ->visible(fn (User $record): bool => $record->role_id === Role::ROLE_ADMINISTRATOR)
-                ,
-                */
-                    Action::make('deactivate')
-                        ->color('danger')
-                        ->icon('heroicon-o-trash')
-                        ->action(static fn (User $user) => $user->delete())
-                    // ->visible(fn (User $record): bool => $record->role_id === Role::ROLE_ADMINISTRATOR)
-                    ,
-                ], position: ActionsPosition::BeforeColumns
-            )
-
-            ->bulkActions(
-                [
-                    DeleteBulkAction::make(),
-                ]
-            )
-            ->defaultSort('users.created_at', 'desc');
     }
 
     // public static function enablePasswordUpdates(bool|Closure $condition = true): void

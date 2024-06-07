@@ -11,12 +11,12 @@ use Modules\User\Database\Factories\ModelHasPermissionFactory;
 /**
  * Modules\User\Models\ModelHasPermission.
  *
- * @property int    $id
- * @property int    $permission_id
+ * @property int $id
+ * @property int $permission_id
  * @property string $model_type
  * @property string $model_id
  *
- * @method static ModelHasPermissionFactory  factory($count = null, $state = [])
+ * @method static ModelHasPermissionFactory factory($count = null, $state = [])
  * @method static Builder|ModelHasPermission newModelQuery()
  * @method static Builder|ModelHasPermission newQuery()
  * @method static Builder|ModelHasPermission query()

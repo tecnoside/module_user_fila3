@@ -51,30 +51,16 @@ class SetCurrentTeamCommand extends Command
 
         $opts = $teamClass::pluck('name', 'id');
 
-        $team_name = select(
+        $team_id = select(
             label: 'What team?',
             options: $opts,
             required: true,
             scroll: 10,
-            // validate: function (array $values) {
-            //  return ! \in_array(\count($values), [1, 2], false)
-            //    ? 'A maximum of two'
-            //  : null;
-            // }
         );
 
-        $team = $teamClass::firstWhere('name', $team_name);
-
-        $user->current_team_id = $team->id;
+        $user->current_team_id = intval($team_id);
         $user->save();
 
-        // $user->teams()->sync($rows);
-        /*
-        foreach ($rows as $row) {
-            $role = Role::firstOrCreate(['name' => $row]);
-            $user->assignRole($role);
-        }
-        */
         $this->info('OK');
     }
 

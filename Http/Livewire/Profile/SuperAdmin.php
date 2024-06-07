@@ -21,12 +21,6 @@ class SuperAdmin extends Component
     {
         $this->profile = XotData::make()->getProfileModel();
         $this->url = url()->current();
-        // dddx();
-        /*
-        if($this->profile->user->email == 'marco.sottana@gmail.com'){
-            $this->profile->user->assignRole('negate-super-admin');
-        }
-        */
     }
 
     public function toggleSuperAdmin(): RedirectResponse|Redirector

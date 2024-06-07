@@ -50,6 +50,10 @@ class ModelHasRole extends BaseMorphPivot
     protected function casts(): array
     {
         return [
+            'created_at' => 'datetime',
+            'updated_at' => 'datetime',
+            'deleted_at' => 'datetime',
+
             'updated_by' => 'string',
             'created_by' => 'string',
             'deleted_by' => 'string',

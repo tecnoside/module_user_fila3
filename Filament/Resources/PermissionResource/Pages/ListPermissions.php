@@ -34,7 +34,7 @@ class ListPermissions extends ListRecords
                 ->action(
                     static function (Collection $collection, array $data): void {
                         foreach ($collection as $record) {
-                            Assert::isInstanceOf($record, User::class);
+                            Assert::isInstanceOf($record, User::class, '['.__LINE__.']['.__FILE__.']');
                             $record->roles()->sync($data['role']);
                             $record->save();
                         }

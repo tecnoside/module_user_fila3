@@ -33,19 +33,19 @@
             "Modules\\User\\": ""
         }
     },
-    "require_comment": {
-        "laraxot/module_notify_fila3": "*"
-    },
     "require": {
         "flowframe/laravel-trend": "*",
         "jenssegers/agent": "*",
         "laravel/passport": "*",
-        "laraxot/module_tenant_fila3": "*",
-        "laraxot/module_xot_fila3": "*",
         "livewire/volt": "*",
         "socialiteproviders/auth0": "*",
         "spatie/laravel-personal-data-export": "*",
         "thecodingmachine/safe": "^2.5"
+    },
+    "require_comment": {
+        "laraxot/module_tenant_fila3": "*",
+        "laraxot/module_xot_fila3": "*",
+        "laraxot/module_notify_fila3": "*"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "*",
@@ -63,7 +63,6 @@
         "pestphp/pest-plugin-laravel": "*",
         "phpstan/phpstan-deprecation-rules": "*",
         "phpstan/phpstan-phpunit": "*",
-        
         "rector/rector": "*",
         "spatie/laravel-ray": "*",
         "symplify/phpstan-rules": "*",

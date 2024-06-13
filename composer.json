@@ -33,14 +33,16 @@
             "Modules\\User\\": ""
         }
     },
+    "require_comment": {
+        "laraxot/module_notify_fila3": "*"
+    },
     "require": {
         "flowframe/laravel-trend": "*",
         "jenssegers/agent": "*",
         "laravel/passport": "*",
-        "laraxot/module_notify_fila3": "*",
         "laraxot/module_tenant_fila3": "*",
-        "laraxot/module_xot_fila3": "dev-master",
-        "socialiteproviders/auth0": "^4.1",
+        "laraxot/module_xot_fila3": "*",
+        "socialiteproviders/auth0": "*",
         "spatie/laravel-personal-data-export": "*",
         "thecodingmachine/safe": "^2.5"
     },

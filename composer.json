@@ -42,6 +42,7 @@
         "laravel/passport": "*",
         "laraxot/module_tenant_fila3": "*",
         "laraxot/module_xot_fila3": "*",
+        "livewire/volt": "*",
         "socialiteproviders/auth0": "*",
         "spatie/laravel-personal-data-export": "*",
         "thecodingmachine/safe": "^2.5"

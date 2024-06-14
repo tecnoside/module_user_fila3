@@ -47,7 +47,7 @@
         "laraxot/module_xot_fila3": "*",
         "laraxot/module_notify_fila3": "*"
     },
-    "require-dev": {
+    "require-dev_comment": {
         "barryvdh/laravel-ide-helper": "*",
         "driftingly/rector-laravel": "*",
         "enlightn/enlightn": "*",

@@ -18,6 +18,8 @@ parameters:
     ignoreErrors:
     #    - '#Unsafe usage of new static#'
         - '#PHPDoc tag @mixin contains unknown class #'
+        - identifier: missingType.iterableValue
+        - identifier: missingType.generics
 
     excludePaths:
         - ./vendor/*
@@ -40,8 +42,8 @@ parameters:
 
     tmpDir: ./build/phpstan
     checkUnusedViews: false
-    checkMissingIterableValueType: false
-    checkGenericClassInNonGenericObjectType: false
+    # checkMissingIterableValueType: false
+    # checkGenericClassInNonGenericObjectType: false
     treatPhpDocTypesAsCertain: false
     reportUnmatchedIgnoredErrors: false
     checkOctaneCompatibility: false

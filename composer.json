@@ -37,14 +37,17 @@
         "flowframe/laravel-trend": "*",
         "jenssegers/agent": "*",
         "laravel/passport": "*",
-        "laraxot/module_notify_fila3": "*",
-        "laraxot/module_tenant_fila3": "*",
-        "laraxot/module_xot_fila3": "dev-master",
-        "socialiteproviders/auth0": "^4.1",
+        "livewire/volt": "*",
+        "socialiteproviders/auth0": "*",
         "spatie/laravel-personal-data-export": "*",
         "thecodingmachine/safe": "^2.5"
     },
-    "require-dev": {
+    "require_comment": {
+        "laraxot/module_tenant_fila3": "*",
+        "laraxot/module_xot_fila3": "*",
+        "laraxot/module_notify_fila3": "*"
+    },
+    "require-dev_comment": {
         "barryvdh/laravel-ide-helper": "*",
         "driftingly/rector-laravel": "*",
         "enlightn/enlightn": "*",
@@ -60,7 +63,6 @@
         "pestphp/pest-plugin-laravel": "*",
         "phpstan/phpstan-deprecation-rules": "*",
         "phpstan/phpstan-phpunit": "*",
-        
         "rector/rector": "*",
         "spatie/laravel-ray": "*",
         "symplify/phpstan-rules": "*",

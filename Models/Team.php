@@ -11,6 +11,7 @@ use Illuminate\Support\Collection;
 use Modules\User\Contracts\TeamContract;
 use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Datas\XotData;
+use Modules\Xot\Models\Traits\HasExtraTrait;
 
 /**
  * Modules\User\Models\Team.
@@ -54,11 +55,18 @@ use Modules\Xot\Datas\XotData;
  */
 class Team extends BaseModel implements TeamContract
 {
+    use HasExtraTrait;
+
     /** @var array<int, string> */
     protected $fillable = [
         'user_id',
         'name',
         'personal_team',
+    ];
+
+    /** @var array<int, string> */
+    protected $with = [
+        'extra',
     ];
 
     /**

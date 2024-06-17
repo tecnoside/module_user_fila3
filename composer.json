@@ -33,6 +33,9 @@
             "Modules\\User\\": ""
         }
     },
+    "require_comment": {
+        "laraxot/module_notify_fila3": "*"
+    },
     "require": {
         "flowframe/laravel-trend": "*",
         "jenssegers/agent": "*",

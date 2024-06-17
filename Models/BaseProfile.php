@@ -40,6 +40,7 @@ use Spatie\SchemalessAttributes\SchemalessAttributesTrait;
  * @property User|null                                                                                                     $user
  * @property string|null                                                                                                   $user_name
  *
+ * @method static \Modules\Xot\Database\Factories\ProfileFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Profile  newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Profile  newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Profile  permission($permissions, $without = false)
@@ -49,6 +50,17 @@ use Spatie\SchemalessAttributes\SchemalessAttributesTrait;
  * @method static \Illuminate\Database\Eloquent\Builder|Profile  withoutPermission($permissions)
  * @method static \Illuminate\Database\Eloquent\Builder|Profile  withoutRole($roles, $guard = null)
  *
+ * @mixin \Eloquent
+ */
+abstract class BaseProfile extends BaseModel implements ProfileContract
+{
+    use HasChildren;
+    use HasRoles;
+    use InteractsWithMedia;
+    use IsProfileTrait;
+    use Notifiable;
+    use SchemalessAttributesTrait;
+
     /**
      * Undocumented variable.
      * Property Modules\Xot\Models\Profile::$guard_name is never read, only written.

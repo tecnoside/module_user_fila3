@@ -14,7 +14,7 @@ use Modules\User\Filament\Resources\UserResource\Pages;
 use Modules\User\Filament\Resources\UserResource\RelationManagers;
 use Modules\User\Models\Role;
 use Modules\User\Models\User;
-use Savannabits\FilamentModules\Concerns\ContextualResource;
+
 
 class UserResource extends Resource {
     ////

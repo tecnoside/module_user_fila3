@@ -9,6 +9,4 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @phpstan-require-extends Model
  */
-interface TenantContract extends ModelContract
-{
-}
+interface TenantContract extends ModelContract {}

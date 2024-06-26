@@ -33,46 +33,49 @@ use Spatie\Permission\Traits\HasRoles;
 /**
  * Modules\User\Models\User.
  *
- * @property Collection<int, \Modules\User\Models\OauthClient> $clients
- * @property int|null $clients_count
- * @property Team|null $currentTeam
- * @property Collection<int, \Modules\User\Models\Device> $devices
- * @property int|null $devices_count
- * @property string|null $full_name
- * @property DatabaseNotificationCollection<int, Notification> $notifications
- * @property int|null $notifications_count
- * @property Collection<int, \Modules\User\Models\Team> $ownedTeams
- * @property int|null $owned_teams_count
- * @property Collection<int, \Modules\User\Models\Permission> $permissions
- * @property int|null $permissions_count
- * @property \Modules\Xot\Contracts\ProfileContract|null $profile
- * @property Collection<int, \Modules\User\Models\Role> $roles
- * @property int|null $roles_count
- * @property Collection<int, \Modules\User\Models\Team> $teams
- * @property int|null $teams_count
+ * @property Collection<int, \Modules\User\Models\OauthClient>      $clients
+ * @property int|null                                               $clients_count
+ * @property Team|null                                              $currentTeam
+ * @property Collection<int, \Modules\User\Models\Device>           $devices
+ * @property int|null                                               $devices_count
+ * @property string|null                                            $full_name
+ * @property DatabaseNotificationCollection<int, Notification>      $notifications
+ * @property int|null                                               $notifications_count
+ * @property Collection<int, \Modules\User\Models\Team>             $ownedTeams
+ * @property int|null                                               $owned_teams_count
+ * @property Collection<int, \Modules\User\Models\Permission>       $permissions
+ * @property int|null                                               $permissions_count
+ * @property \Modules\Xot\Contracts\ProfileContract|null            $profile
+ * @property Collection<int, \Modules\User\Models\Role>             $roles
+ * @property int|null                                               $roles_count
+ * @property Collection<int, \Modules\User\Models\Team>             $teams
+ * @property int|null                                               $teams_count
  * @property Collection<int, \Modules\User\Models\OauthAccessToken> $tokens
- * @property int|null $tokens_count
+ * @property int|null                                               $tokens_count
+ *
  * @method static \Modules\User\Database\Factories\UserFactory factory($count = null, $state = [])
- * @method static Builder|User newModelQuery()
- * @method static Builder|User newQuery()
- * @method static Builder|User permission($permissions)
- * @method static Builder|User query()
- * @method static Builder|User role($roles, $guard = null)
- * @property string $id
- * @property string $name
- * @property string $first_name
- * @property string $last_name
- * @property string $email
+ * @method static Builder|User                                 newModelQuery()
+ * @method static Builder|User                                 newQuery()
+ * @method static Builder|User                                 permission($permissions)
+ * @method static Builder|User                                 query()
+ * @method static Builder|User                                 role($roles, $guard = null)
+ *
+ * @property string                          $id
+ * @property string                          $name
+ * @property string                          $first_name
+ * @property string                          $last_name
+ * @property string                          $email
  * @property \Illuminate\Support\Carbon|null $email_verified_at
- * @property string $password
- * @property string|null $remember_token
- * @property int|null $current_team_id
- * @property string|null $profile_photo_path
+ * @property string                          $password
+ * @property string|null                     $remember_token
+ * @property int|null                        $current_team_id
+ * @property string|null                     $profile_photo_path
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property string|null $deleted_at
- * @property string|null $lang
- * @property bool $is_active
+ * @property string|null                     $deleted_at
+ * @property string|null                     $lang
+ * @property bool                            $is_active
+ *
  * @method static Builder|User whereCreatedAt($value)
  * @method static Builder|User whereCurrentTeamId($value)
  * @method static Builder|User whereDeletedAt($value)
@@ -88,21 +91,31 @@ use Spatie\Permission\Traits\HasRoles;
  * @method static Builder|User whereProfilePhotoPath($value)
  * @method static Builder|User whereRememberToken($value)
  * @method static Builder|User whereUpdatedAt($value)
+ *
  * @mixin Eloquent
+ *
  * @property Collection<int, \Modules\User\Models\Tenant> $tenants
- * @property int|null $tenants_count
+ * @property int|null                                     $tenants_count
+ *
  * @method static Builder|User withoutPermission($permissions)
  * @method static Builder|User withoutRole($roles, $guard = null)
+ *
  * @property string|null $updated_by
  * @property string|null $created_by
  * @property string|null $deleted_by
+ *
  * @method static Builder|User whereCreatedBy($value)
  * @method static Builder|User whereDeletedBy($value)
  * @method static Builder|User whereUpdatedBy($value)
+ *
  * @property string $surname
+ *
  * @method static Builder|User whereSurname($value)
+ *
  * @property string|null $facebook_id
+ *
  * @method static Builder|User whereFacebookId($value)
+ *
  * @mixin \Eloquent
  */
 class User extends Authenticatable implements HasName, HasTenants, UserContract
@@ -217,7 +230,7 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
     public function canAccessPanel(Panel $panel): bool
     {
         // $panel->default('admin');
-        if ($panel->getId() !== 'admin') {
+        if ('admin' !== $panel->getId()) {
             $role = $panel->getId();
             /*
             $xot = XotData::make();
@@ -285,14 +298,14 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
 
     public function getNameAttribute(?string $value): ?string
     {
-        if ($value !== null || $this->getKey() === null) {
+        if (null !== $value || null === $this->getKey()) {
             return $value;
         }
         $name = Str::of($this->email)->before('@')->toString();
         $i = 1;
         $value = $name.'-'.$i;
-        while (self::firstWhere(['name' => $value]) !== null) {
-            $i++;
+        while (null !== self::firstWhere(['name' => $value])) {
+            ++$i;
             $value = $name.'-'.$i;
         }
         $this->update(['name' => $value]);

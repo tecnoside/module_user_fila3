@@ -16,5 +16,7 @@ class RecoveryCodeReplaced
      *
      * @return void
      */
-    public function __construct(public Authenticatable $user, public string $code) {}
+    public function __construct(public Authenticatable $user, public string $code)
+    {
+    }
 }

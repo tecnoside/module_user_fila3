@@ -14,7 +14,8 @@ final class EmailDomainAnalyzer
 
     public function __construct(
         private readonly string $ssoProvider,
-    ) {}
+    ) {
+    }
 
     public function setUser(User $ssoUser): self
     {
@@ -41,7 +42,7 @@ final class EmailDomainAnalyzer
     {
         $clientEmailDomain = $this->clientDomain();
 
-        if ($clientEmailDomain === null || $clientEmailDomain === '') {
+        if (null === $clientEmailDomain || '' === $clientEmailDomain) {
             return false;
         }
 

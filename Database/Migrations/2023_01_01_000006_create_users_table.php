@@ -21,8 +21,8 @@ class CreateUsersTable extends XotBaseMigration
                 $table->uuid('id')->primary();
                 $table->string('name');
                 // questo e' il nickname non nome
-                $table->string('first_name');
-                $table->string('last_name');
+                $table->string('first_name')->nullable();
+                $table->string('last_name')->nullable();
                 $table->string('email')->unique();
                 $table->timestamp('email_verified_at')->nullable();
                 $table->string('password');
@@ -37,11 +37,23 @@ class CreateUsersTable extends XotBaseMigration
         $this->tableUpdate(
             function (Blueprint $table): void {
                 if (! $this->hasColumn('first_name')) {
-                    $table->string('first_name')->after('name');
+                    $table->string('first_name')
+                        ->after('name')
+                        ->nullable();
+                } else {
+                    $table->string('first_name')
+                        ->nullable()
+                        ->change();
                 }
 
                 if (! $this->hasColumn('last_name')) {
-                    $table->string('last_name')->after('name');
+                    $table->string('last_name')
+                        ->after('name')
+                        ->nullable();
+                } else {
+                    $table->string('last_name')
+                        ->nullable()
+                        ->change();
                 }
 
                 if (! $this->hasColumn('current_team_id')) {
@@ -60,16 +72,8 @@ class CreateUsersTable extends XotBaseMigration
                     $table->boolean('is_active')->default(true);
                 }
 
-                if (! $this->hasColumn('deleted_at')) {
-                    $table->softDeletes();
-                }
-
-                if (! $this->hasColumn('facebook_id')) {
-                    $table->string('facebook_id')->nullable()->unique();
-                }
-
                 // $this->updateUser($table);
-                $this->updateTimestamps($table);
+                $this->updateTimestamps($table, true);
             }
         );
     }

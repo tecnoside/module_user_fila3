@@ -55,7 +55,8 @@ use Modules\Xot\Models\Traits\HasExtraTrait;
  */
 class Team extends BaseModel implements TeamContract
 {
-    use HasExtraTrait;
+    // Se ho bisogno di extra in customer aggiungo extra in customer
+    // use HasExtraTrait;
 
     /** @var array<int, string> */
     protected $fillable = [
@@ -66,7 +67,7 @@ class Team extends BaseModel implements TeamContract
 
     /** @var array<int, string> */
     protected $with = [
-        'extra',
+        // 'extra',
     ];
 
     /**

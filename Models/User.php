@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
@@ -222,6 +223,7 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
 
     public function profile(): HasOne
     {
+        /** @var class-string<Model> */
         $profileClass = XotData::make()->getProfileClass();
 
         return $this->hasOne($profileClass);

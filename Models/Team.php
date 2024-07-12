@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -76,8 +77,10 @@ class Team extends BaseModel implements TeamContract
     public function owner(): BelongsTo
     {
         $xotData = XotData::make();
+        /** @var class-string<Model> */
+        $user_class = $xotData->getUserClass();
 
-        return $this->belongsTo($xotData->getUserClass(), 'user_id');
+        return $this->belongsTo($user_class, 'user_id');
     }
 
     /**
@@ -98,6 +101,7 @@ class Team extends BaseModel implements TeamContract
     public function users(): BelongsToMany
     {
         $xotData = XotData::make();
+        /** @var class-string<Model> */
         $userClass = $xotData->getUserClass();
         $membershipClass = $xotData->getMembershipClass();
         $pivot = app($membershipClass);

@@ -78,14 +78,18 @@ class LoginController extends Controller
     public function createUser(SocialiteUserContract $oauthUser): UserContract
     {
         $xot = XotData::make();
+
         $userClass = $xot->getUserClass();
 
-        return $userClass::create(
+        $user = $userClass::create(
             [
                 'name' => $oauthUser->getName(),
                 'email' => $oauthUser->getEmail(),
             ]
         );
+        Assert::isInstanceOf($user, UserContract::class);
+
+        return $user;
     }
 
     public function processCallback(string $provider): Redirector|RedirectResponse

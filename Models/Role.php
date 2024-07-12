@@ -11,6 +11,7 @@ namespace Modules\User\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
 use Modules\Xot\Datas\XotData;
@@ -81,6 +82,7 @@ class Role extends SpatieRole
     public function team(): BelongsTo
     {
         $xotData = XotData::make();
+        /** @var class-string<Model> */
         $teamClass = $xotData->getTeamClass();
 
         return $this->belongsTo($teamClass);

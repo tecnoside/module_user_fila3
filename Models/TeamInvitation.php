@@ -67,7 +67,9 @@ class TeamInvitation extends BaseModel
     public function team(): BelongsTo
     {
         $xotData = XotData::make();
+        /** @var class-string<\Illuminate\Database\Eloquent\Model> */
+        $team_class = $xotData->getTeamClass();
 
-        return $this->belongsTo($xotData->getTeamClass());
+        return $this->belongsTo($team_class);
     }
 }

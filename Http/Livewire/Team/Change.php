@@ -11,6 +11,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
 use Illuminate\View\View;
 use Livewire\Component;
+use Modules\User\Contracts\TeamContract;
 use Modules\User\Events\TeamSwitched;
 use Modules\User\Models\User;
 use Modules\Xot\Datas\XotData;
@@ -41,11 +42,11 @@ class Change extends Component
     {
         $teamClass = $this->xot->getTeamClass();
         $team = $teamClass::findOrFail($teamId);
-
+        Assert::isInstanceOf($team, TeamContract::class);
         if (! $this->user->switchTeam($team)) {
             abort(403);
         }
-
+        // @phpstan-ignore-next-line
         TeamSwitched::dispatch($team->fresh(), $this->user);
 
         Notification::make()

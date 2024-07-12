@@ -69,8 +69,8 @@ class SocialiteUser extends BaseModel
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(
-            XotData::resolveUserClass()
-        );
+        $user_class = XotData::make()->getUserClass();
+
+        return $this->belongsTo($user_class);
     }
 }

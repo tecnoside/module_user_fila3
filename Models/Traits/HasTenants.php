@@ -46,9 +46,11 @@ trait HasTenants
         $pivotDbName = $pivot->getConnection()->getDatabaseName();
         $pivotTableFull = $pivotDbName.'.'.$pivotTable;
         $pivotFields = $pivot->getFillable();
+        /** @var class-string<Model> */
+        $tenant_class = $xot->getTenantClass();
 
         // $this->setConnection('mysql');
-        return $this->belongsToMany($xot->getTenantClass(), $pivotTableFull, null, 'tenant_id')
+        return $this->belongsToMany($tenant_class, $pivotTableFull, null, 'tenant_id')
             ->using($pivotClass)
             ->withPivot($pivotFields)
             ->withTimestamps();

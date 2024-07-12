@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Models\Traits;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -53,8 +54,10 @@ trait HasTeams
             $this->current_team_id = null;
             $this->update();
         }
+        /** @var class-string<Model> */
+        $team_class = $xot->getTeamClass();
 
-        return $this->belongsTo($xot->getTeamClass(), 'current_team_id');
+        return $this->belongsTo($team_class, 'current_team_id');
     }
 
     /**
@@ -93,14 +96,14 @@ trait HasTeams
 
     /**
      * Get all of the teams the user owns.
-     *
-     * @return HasMany<Team>
      */
     public function ownedTeams(): HasMany
     {
         $xot = XotData::make();
+        /** @var class-string<Model> */
+        $team_class = $xot->getTeamClass();
 
-        return $this->hasMany($xot->getTeamClass());
+        return $this->hasMany($team_class);
     }
 
     /**
@@ -114,9 +117,11 @@ trait HasTeams
         $pivotTable = $pivot->getTable();
         $pivotDbName = $pivot->getConnection()->getDatabaseName();
         $pivotTableFull = $pivotDbName.'.'.$pivotTable;
+        /** @var class-string<Model> */
+        $team_class = $xot->getTeamClass();
 
         // $this->setConnection('mysql');
-        return $this->belongsToMany($xot->getTeamClass(), $pivotTableFull, null, 'team_id')
+        return $this->belongsToMany($team_class, $pivotTableFull, null, 'team_id')
             ->using($pivotClass)
             ->withPivot('role')
             ->withTimestamps()

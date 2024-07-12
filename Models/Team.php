@@ -30,7 +30,6 @@ use Modules\Xot\Models\Traits\HasExtraTrait;
  * @property int|null                                                                           $team_invitations_count
  * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\User>           $users
  * @property int|null                                                                           $users_count
- *
  * @method static \Modules\User\Database\Factories\TeamFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Team   newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Team   newQuery()
@@ -41,17 +40,15 @@ use Modules\Xot\Models\Traits\HasExtraTrait;
  * @method static \Illuminate\Database\Eloquent\Builder|Team   wherePersonalTeam($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Team   whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Team   whereUserId($value)
- *
  * @property string|null                     $updated_by
  * @property string|null                     $created_by
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property string|null                     $deleted_by
- *
  * @method static \Illuminate\Database\Eloquent\Builder|Team whereCreatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Team whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Team whereDeletedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Team whereUpdatedBy($value)
- *
+ * @property-read \Modules\User\Models\Membership $membership
  * @mixin \Eloquent
  */
 class Team extends BaseModel implements TeamContract

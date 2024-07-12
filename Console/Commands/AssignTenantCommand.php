@@ -50,7 +50,10 @@ class AssignTenantCommand extends Command
         $xot = XotData::make();
         $tenantClass = $xot->getTenantClass();
 
-        $opts = $tenantClass::all()->pluck('name', 'id');
+        /** @var array<int|string, string>|\Illuminate\Support\Collection<int|string, string> */
+        $opts = $tenantClass::all()
+            ->pluck('name', 'id')
+            ->toArray();
 
         $rows = multiselect(
             label: 'What tenant',

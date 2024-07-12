@@ -49,8 +49,9 @@ class SetCurrentTeamCommand extends Command
         Assert::notNull($user = User::firstWhere(['email' => $email]), '['.__LINE__.']['.__FILE__.']');
         $xot = XotData::make();
         $teamClass = $xot->getTeamClass();
-
-        $opts = $teamClass::pluck('name', 'id');
+        /** @var array<int|string, string>|\Illuminate\Support\Collection<int|string, string> */
+        $opts = $teamClass::pluck('name', 'id')
+            ->toArray();
 
         $team_id = select(
             label: 'What team?',

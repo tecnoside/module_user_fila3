@@ -43,6 +43,7 @@ class ChangeProfilePasswordAction extends Action
                     if (null == $user) {
                         $user = $record->user()->create($profile_data);
                     }
+                    // @phpstan-ignore-next-line
                     $user->profile()->save($record);
 
                     $user->update(

@@ -51,6 +51,9 @@ class CreateUserAction
             ]
         )->execute(userModel: $newlyCreatedUser, oauthUser: $oauthUser);
 
-        return $newlyCreatedUser->refresh();
+        /** @var UserContract */
+        $res = $newlyCreatedUser->refresh();
+
+        return $res;
     }
 }

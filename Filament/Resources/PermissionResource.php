@@ -69,7 +69,7 @@ class PermissionResource extends XotBaseResource
         return $form
             ->schema(
                 [
-                    Card::make()
+                    Section::make()
                         ->schema(
                             [
                                 Grid::make(2)->schema(

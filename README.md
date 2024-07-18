@@ -3,7 +3,7 @@ Gestione degli utenti, ruoli, permessi.
 
 ## Screenshots
 
-![create_user](Resources\img\readme\create_user.jpg)
+![create_user](../Resources\img\readme\create_user.jpg)
 ![set_password](Resources\img\readme\set_password.jpg)
 ![roles list](Resources\img\readme\roles_list.jpg)
 

@@ -1,4 +1,4 @@
-# Filament users
+# Module users
 Gestione degli utenti, ruoli, permessi.
 
 ## Screenshots

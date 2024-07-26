@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
-use Modules\User\Contracts\TenantContract;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Modules\User\Contracts\TenantContract;
 
 /**
  * Modules\User\Models\Tenant.

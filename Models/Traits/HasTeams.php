@@ -116,7 +116,11 @@ trait HasTeams
         $pivot = app($pivotClass);
         $pivotTable = $pivot->getTable();
         $pivotDbName = $pivot->getConnection()->getDatabaseName();
-        $pivotTableFull = $pivotDbName.'.'.$pivotTable;
+        $myDbName = $this->getConnection()->getDatabaseName();
+        $pivotTableFull = $pivotTable;
+        if ($pivotDbName !== $myDbName) {
+            $pivotTableFull = $pivotDbName.'.'.$pivotTable;
+        }
         /** @var class-string<Model> */
         $team_class = $xot->getTeamClass();
 

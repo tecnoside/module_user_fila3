@@ -28,4 +28,9 @@ class Tenant extends BaseModel implements TenantContract
         'primary_color',
         'secondary_color',
     ];
+
+    public function members(): belongsToMany
+    {
+        return $this->belongsToMany(User::class);
+    }
 }

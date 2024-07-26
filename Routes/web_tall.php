@@ -65,7 +65,7 @@ Route::prefix('{lang}')->group(function () {
             Route::post('logout', LogoutController::class)
                 ->name('logout');
         });
-})->whereIn('lang',['it','en']);
+})->whereIn('lang', ['it', 'en']);
 
 Route::namespace('Socialite')
     ->name('socialite.')

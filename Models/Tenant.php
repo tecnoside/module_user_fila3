@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\User\Models;
 
 use Modules\User\Contracts\TenantContract;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
  * Modules\User\Models\Tenant.
@@ -29,7 +30,7 @@ class Tenant extends BaseModel implements TenantContract
         'secondary_color',
     ];
 
-    public function members(): belongsToMany
+    public function members(): BelongsToMany
     {
         return $this->belongsToMany(User::class);
     }

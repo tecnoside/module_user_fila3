@@ -50,7 +50,9 @@ class AssignTeamCommand extends Command
         $xot = XotData::make();
         $teamClass = $xot->getTeamClass();
 
-        $opts = $teamClass::pluck('name', 'id')->toArray();
+        /** @var array<int|string, string>|\Illuminate\Support\Collection<int|string, string> */
+        $opts = $teamClass::pluck('name', 'id')
+            ->toArray();
 
         $rows = multiselect(
             label: 'What teams',

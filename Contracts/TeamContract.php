@@ -105,4 +105,6 @@ interface TeamContract extends ModelContract
      * @return static|null
      */
     public function fresh($with = []);
+
+    public function members(): BelongsToMany;
 }

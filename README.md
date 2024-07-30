@@ -3,9 +3,9 @@ Gestione degli utenti, ruoli, permessi tramite l'utilizzo di filament.
 
 ## Gestione degli utenti
 
-![create_user](../Resources\img\readme\create_user.jpg)
-![set_password](Resources\img\readme\set_password.jpg)
-![roles list](Resources\img\readme\roles_list.jpg)
+![create_user](create_user.jpg)
+![set_password](set_password.jpg)
+![roles list](roles_list.jpg)
 
 ## Gestione dei ruoli
 ![roles list](roles_list.jpg)

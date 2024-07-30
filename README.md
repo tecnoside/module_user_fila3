@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Module users
 Gestione degli utenti, ruoli, permessi tramite l'utilizzo di filament.
 
@@ -12,18 +11,6 @@ Gestione degli utenti, ruoli, permessi tramite l'utilizzo di filament.
 
 
 ## Aggiungere Modulo nella base del progetto
-=======
-# Filament users
-Gestione degli utenti, ruoli, permessi.
-
-## Screenshots
-
-![create_user](Resources\img\readme\create_user.jpg)
-![set_password](Resources\img\readme\set_password.jpg)
-![roles list](Resources\img\readme\roles_list.jpg)
-
-## Aggiungere Modulo nella base
->>>>>>> 180f415 (readme.md)
 Dentro la cartella laravel/Modules
 
 ```bash
@@ -37,7 +24,6 @@ php artisan module:list
 in caso abilitarlo
 ```bash
 php artisan module:enable User
-<<<<<<< HEAD
 ```
 
 ## Eseguire le migrazioni
@@ -64,6 +50,3 @@ Esso potrà accedere a tutti i moduli nell'amminstrazione.
 php artisan user:assign-module
 ```
 L'account potrà accedere al modulo assegnato.
-=======
-```
->>>>>>> 180f415 (readme.md)

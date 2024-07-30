@@ -51,9 +51,7 @@ use Modules\Xot\Models\Traits\HasExtraTrait;
  * @method static \Illuminate\Database\Eloquent\Builder|Team whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Team whereDeletedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Team whereUpdatedBy($value)
- *
  * @property Membership $membership
- *
  * @mixin \Eloquent
  */
 class Team extends BaseModel implements TeamContract

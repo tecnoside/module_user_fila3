@@ -56,9 +56,7 @@ use Modules\User\Database\Factories\DeviceFactory;
  * @method static Builder|Device whereUpdatedAt($value)
  * @method static Builder|Device whereUpdatedBy($value)
  * @method static Builder|Device whereVersion($value)
- *
  * @property DeviceUser $pivot
- *
  * @mixin \Eloquent
  */
 class Device extends BaseModel

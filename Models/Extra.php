@@ -6,6 +6,7 @@ namespace Modules\User\Models;
 
 use Modules\Xot\Models\Extra as XotBaseExtra;
 
+<<<<<<< HEAD
 /**
  * @property \Spatie\SchemalessAttributes\SchemalessAttributes $extra_attributes
  *
@@ -16,6 +17,8 @@ use Modules\Xot\Models\Extra as XotBaseExtra;
  *
  * @mixin \Eloquent
  */
+=======
+>>>>>>> 19fbabe (up)
 class Extra extends XotBaseExtra
 {
     /** @var string */

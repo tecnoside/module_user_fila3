@@ -1,9 +1,5 @@
 # Module users
-<<<<<<< HEAD
 Gestione degli utenti, ruoli, permessi tramite l'utilizzo di filament.
-=======
-Gestione degli utenti, ruoli, permessi.
->>>>>>> c95a96c (.)
 
 ## Gestione degli utenti
 

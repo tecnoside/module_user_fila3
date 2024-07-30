@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Module users
 Gestione degli utenti, ruoli, permessi tramite l'utilizzo di filament.
 
@@ -50,8 +49,3 @@ Esso potrà accedere a tutti i moduli nell'amminstrazione.
 php artisan user:assign-module
 ```
 L'account potrà accedere al modulo assegnato.
-=======
-# Filament users
-
-User Table Resource with a lot of packages integrations
->>>>>>> 377a23a (.)

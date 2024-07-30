@@ -3,14 +3,9 @@ Gestione degli utenti, ruoli, permessi tramite l'utilizzo di filament.
 
 ## Gestione degli utenti
 
-<<<<<<< HEAD
-![create_user](create_user.jpg)
-![set_password](set_password.jpg)
-=======
 ![create_user](../Resources\img\readme\create_user.jpg)
 ![set_password](Resources\img\readme\set_password.jpg)
 ![roles list](Resources\img\readme\roles_list.jpg)
->>>>>>> c1275f2 (Update README.md)
 
 ## Gestione dei ruoli
 ![roles list](roles_list.jpg)
@@ -30,7 +25,6 @@ in caso abilitarlo
 ```bash
 php artisan module:enable User
 ```
-<<<<<<< HEAD
 
 ## Eseguire le migrazioni
 ```bash
@@ -56,5 +50,3 @@ Esso potrà accedere a tutti i moduli nell'amminstrazione.
 php artisan user:assign-module
 ```
 L'account potrà accedere al modulo assegnato.
-=======
->>>>>>> c1275f2 (Update README.md)

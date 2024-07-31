@@ -106,7 +106,10 @@ use Spatie\Permission\Traits\HasRoles;
  * @method static Builder|User whereFacebookId($value)
  * @property TenantUser $pivot
  * @property Membership $membership
+<<<<<<< HEAD
  *
+=======
+>>>>>>> 791a1c9 (📝 (Extra.php): Remove unnecessary conflict markers and clean up code formatting in Extra model)
  * @mixin \Eloquent
  */
 class User extends Authenticatable implements HasName, HasTenants, UserContract

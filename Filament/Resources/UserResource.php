@@ -58,6 +58,10 @@ class UserResource extends XotBaseResource
 
     public static function form(Form $form): Form
     {
+        // dddx([
+        //     $form->model->teams,
+        //     $form->model->currentTeam
+        // ]);
         $schema = [
             'left' => Section::make(
                 [

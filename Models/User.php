@@ -116,7 +116,10 @@ use Spatie\Permission\Traits\HasRoles;
  * @property string|null $facebook_id
  *
  * @method static Builder|User whereFacebookId($value)
+<<<<<<< HEAD
  *
+=======
+>>>>>>> 824c0fb (📝 (Extra.php): Remove unnecessary conflict markers and clean up code formatting in Extra model)
  * @property TenantUser $pivot
  * @property Membership $membership
  *

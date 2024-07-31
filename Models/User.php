@@ -104,10 +104,22 @@ use Spatie\Permission\Traits\HasRoles;
  * @method static Builder|User whereSurname($value)
  * @property string|null $facebook_id
  * @method static Builder|User whereFacebookId($value)
+<<<<<<< HEAD
  *
  * @property TenantUser $pivot
  * @property Membership $membership
  *
+=======
+<<<<<<< HEAD
+ * @property TenantUser $pivot
+ * @property Membership $membership
+=======
+ *
+ * @property TenantUser $pivot
+ * @property Membership $membership
+ *
+>>>>>>> a397d68 (📝 (Device.php): Remove unnecessary conflict markers and clean up code formatting)
+>>>>>>> c6f08b3 (📝 (Extra.php): Remove unnecessary conflict markers and clean up code formatting in Extra model)
  * @mixin \Eloquent
  */
 class User extends Authenticatable implements HasName, HasTenants, UserContract

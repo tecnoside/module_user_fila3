@@ -13,7 +13,14 @@ use Modules\Xot\Models\Extra as XotBaseExtra;
  * @method static \Illuminate\Database\Eloquent\Builder|Extra newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Extra query()
  * @method static Builder|Extra                               withExtraAttributes()
+<<<<<<< HEAD
  *
+=======
+<<<<<<< HEAD
+=======
+ *
+>>>>>>> a397d68 (📝 (Device.php): Remove unnecessary conflict markers and clean up code formatting)
+>>>>>>> c6f08b3 (📝 (Extra.php): Remove unnecessary conflict markers and clean up code formatting in Extra model)
  * @mixin \Eloquent
  */
 class Extra extends XotBaseExtra

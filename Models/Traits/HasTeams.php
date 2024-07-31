@@ -122,7 +122,10 @@ trait HasTeams
         if ($pivotDbName !== $myDbName) {
             $pivotTableFull = $pivotDbName.'.'.$pivotTable;
         }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 713c40e (♻️ (HasTeams.php): remove unnecessary code block and simplify the logic for defining pivotTableFull variable)
         /** @var class-string<Model> */
         $team_class = $xot->getTeamClass();
         $team_classDbName = app($team_class)->getConnection()->getDatabaseName();

@@ -104,15 +104,10 @@ use Spatie\Permission\Traits\HasRoles;
  * @method static Builder|User whereSurname($value)
  * @property string|null $facebook_id
  * @method static Builder|User whereFacebookId($value)
-<<<<<<< HEAD
  *
  * @property TenantUser $pivot
  * @property Membership $membership
  *
-=======
- * @property-read \Modules\User\Models\TenantUser $pivot
- * @property-read \Modules\User\Models\Membership $membership
->>>>>>> bdcfc00 (up)
  * @mixin \Eloquent
  */
 class User extends Authenticatable implements HasName, HasTenants, UserContract

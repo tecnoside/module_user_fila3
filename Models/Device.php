@@ -53,13 +53,9 @@ use Modules\User\Database\Factories\DeviceFactory;
  * @method static Builder|Device whereUpdatedAt($value)
  * @method static Builder|Device whereUpdatedBy($value)
  * @method static Builder|Device whereVersion($value)
-<<<<<<< HEAD
  *
  * @property DeviceUser $pivot
  *
-=======
- * @property-read \Modules\User\Models\DeviceUser $pivot
->>>>>>> bdcfc00 (up)
  * @mixin \Eloquent
  */
 class Device extends BaseModel

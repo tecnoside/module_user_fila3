@@ -116,9 +116,21 @@ trait HasTeams
         $pivot = app($pivotClass);
         $pivotTable = $pivot->getTable();
         $pivotDbName = $pivot->getConnection()->getDatabaseName();
+<<<<<<< HEAD
         // $myDbName = $this->getConnection()->getDatabaseName();
         $pivotTableFull = $pivotTable;
 
+=======
+<<<<<<< HEAD
+        $myDbName = $this->getConnection()->getDatabaseName();
+        $pivotTableFull = $pivotTable;
+        if ($pivotDbName !== $myDbName) {
+            $pivotTableFull = $pivotDbName.'.'.$pivotTable;
+        }
+=======
+        $pivotTableFull = $pivotDbName.'.'.$pivotTable;
+>>>>>>> de383d4 (.)
+>>>>>>> e6c13db (♻️ (HasTeams.php): refactor code to simplify logic for determining pivotTableFull variable and remove unnecessary conditional statement)
         /** @var class-string<Model> */
         $team_class = $xot->getTeamClass();
         $team_classDbName = app($team_class)->getConnection()->getDatabaseName();

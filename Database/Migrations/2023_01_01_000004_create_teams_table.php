@@ -38,6 +38,10 @@ class CreateTeamsTable extends XotBaseMigration
                 // }
                 $this->updateTimestamps($table, true);
                 // $this->updateUser($table);
+
+                if ($this->hasColumn('id')) {
+                    $table->increments('id')->change();
+                }
             }
         );
     }

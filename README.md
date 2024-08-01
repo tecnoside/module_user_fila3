@@ -3,14 +3,12 @@ Gestione degli utenti, ruoli, permessi tramite l'utilizzo di filament.
 
 ## Gestione degli utenti
 
-![create_user](create_user.jpg)
-![set_password](set_password.jpg)
+![create_user](docs/img/create_user.jpg)
+![set_password](docs/img/set_password.jpg)
 
 ## Gestione dei ruoli
-![roles list](roles_list.jpg)
+![roles list](docs/img/roles_list.jpg)
 
-## Gestione dei ruoli
-![roles list](roles_list.jpg)
 
 ## Aggiungere Modulo nella base del progetto
 Dentro la cartella laravel/Modules
@@ -52,3 +50,5 @@ Esso potrà accedere a tutti i moduli nell'amminstrazione.
 php artisan user:assign-module
 ```
 L'account potrà accedere al modulo assegnato.
+
+## [Gestione dei Team](docs/teams.md)

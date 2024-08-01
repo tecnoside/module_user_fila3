@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
-use Modules\Xot\Datas\XotData;
-use Illuminate\Support\Collection;
-use Illuminate\Database\Eloquent\Model;
-use Modules\Xot\Contracts\UserContract;
-use Modules\User\Contracts\TeamContract;
-use Modules\Xot\Models\Traits\HasExtraTrait;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Collection;
+use Modules\User\Contracts\TeamContract;
+use Modules\Xot\Contracts\UserContract;
+use Modules\Xot\Datas\XotData;
+use Modules\Xot\Models\Traits\HasExtraTrait;
 
 /**
  * Modules\User\Models\Team.

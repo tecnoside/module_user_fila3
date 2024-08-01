@@ -4,15 +4,16 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
+use Modules\Xot\Datas\XotData;
+use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Modules\Xot\Contracts\UserContract;
+use Modules\User\Contracts\TeamContract;
+use Modules\Xot\Models\Traits\HasExtraTrait;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Support\Collection;
-use Modules\User\Contracts\TeamContract;
-use Modules\Xot\Contracts\UserContract;
-use Modules\Xot\Datas\XotData;
-use Modules\Xot\Models\Traits\HasExtraTrait;
 
 /**
  * Modules\User\Models\Team.
@@ -59,12 +60,28 @@ class Team extends BaseModel implements TeamContract
     // Se ho bisogno di extra in customer aggiungo extra in customer
     // use HasExtraTrait;
 
+    use HasUuids;
+
+    public $incrementing = false;
+
+    protected $keyType = 'string';
+
+    protected $primaryKey = 'id';
+
     /** @var array<int, string> */
     protected $fillable = [
         'user_id',
         'name',
         'personal_team',
     ];
+
+    /** @return array<string, string> */
+    protected function casts(): array
+    {
+        return [
+            'id' => 'string',
+        ];
+    }
 
     /** @var array<int, string> */
     protected $with = [

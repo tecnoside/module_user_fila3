@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
-use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -62,28 +61,12 @@ class Team extends BaseModel implements TeamContract
     // Se ho bisogno di extra in customer aggiungo extra in customer
     // use HasExtraTrait;
 
-    use HasUuids;
-
-    public $incrementing = false;
-
-    protected $keyType = 'string';
-
-    protected $primaryKey = 'id';
-
     /** @var array<int, string> */
     protected $fillable = [
         'user_id',
         'name',
         'personal_team',
     ];
-
-    /** @return array<string, string> */
-    protected function casts(): array
-    {
-        return [
-            'id' => 'string',
-        ];
-    }
 
     /** @var array<int, string> */
     protected $with = [

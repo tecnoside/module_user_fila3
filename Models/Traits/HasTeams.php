@@ -116,12 +116,14 @@ trait HasTeams
         $pivot = app($pivotClass);
         $pivotTable = $pivot->getTable();
         $pivotDbName = $pivot->getConnection()->getDatabaseName();
+<<<<<<< HEAD
+        // $myDbName = $this->getConnection()->getDatabaseName();
+=======
         $myDbName = $this->getConnection()->getDatabaseName();
 
+>>>>>>> 26fa8b7774be949d069b5f35f17df14fd2797de8
         $pivotTableFull = $pivotTable;
-        if ($pivotDbName !== $myDbName) {
-            $pivotTableFull = $pivotDbName.'.'.$pivotTable;
-        }
+
         /** @var class-string<Model> */
         $team_class = $xot->getTeamClass();
         $team_classDbName = app($team_class)->getConnection()->getDatabaseName();
@@ -129,6 +131,45 @@ trait HasTeams
         if ($pivotDbName !== $team_classDbName) {
             $pivotTableFull = $pivotDbName.'.'.$pivotTable;
         }
+<<<<<<< HEAD
+
+        // if ($pivotDbName !== $myDbName) {
+        //     $pivotTableFull = $pivotDbName.'.'.$pivotTable;
+        // }
+
+        // /** @var class-string<Model> */
+        // $team_class = $xot->getTeamClass();
+
+        // dddx([
+        //     '$pivotDbName !== $team_classDbName' => $pivotDbName !== $team_classDbName,
+        //     '$pivot' => $pivot,
+        //     '$pivotDbName' => $pivotDbName,
+        //     '$team_classDbName' => $team_classDbName,
+        //     '$pivotTableFull' => $pivotTableFull,
+        //     '$team_class' => $team_class,
+        //     '$pivotClass' => $pivotClass
+        // ]);
+
+        // dddx([
+        //     '$pivotDbName !== $myDbName' => $pivotDbName !== $myDbName,
+        //     '$pivot' => $pivot,
+        //     '$pivotDbName' => $pivotDbName,
+        //     '$myDbName' => $myDbName,
+        //     '$pivotTableFull' => $pivotTableFull,
+        //     '$team_class' => $team_class,
+        //     '$pivotClass' => $pivotClass
+        // ]);
+
+        // dddx(
+        //     $this->belongsToMany($team_class, $pivotTableFull, null, 'team_id')
+        //     ->using($pivotClass)
+        //     ->withPivot('role')
+        //     ->withTimestamps()
+        //     ->as('membership')
+        //     ->toSql()
+        // );
+=======
+>>>>>>> 26fa8b7774be949d069b5f35f17df14fd2797de8
 
         // $this->setConnection('mysql');
         return $this->belongsToMany($team_class, $pivotTableFull, null, 'team_id')

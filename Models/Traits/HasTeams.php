@@ -116,7 +116,12 @@ trait HasTeams
         $pivot = app($pivotClass);
         $pivotTable = $pivot->getTable();
         $pivotDbName = $pivot->getConnection()->getDatabaseName();
+<<<<<<< HEAD
         // $myDbName = $this->getConnection()->getDatabaseName();
+=======
+        $myDbName = $this->getConnection()->getDatabaseName();
+
+>>>>>>> 26fa8b7774be949d069b5f35f17df14fd2797de8
         $pivotTableFull = $pivotTable;
 
         /** @var class-string<Model> */
@@ -126,6 +131,7 @@ trait HasTeams
         if ($pivotDbName !== $team_classDbName) {
             $pivotTableFull = $pivotDbName.'.'.$pivotTable;
         }
+<<<<<<< HEAD
 
         // if ($pivotDbName !== $myDbName) {
         //     $pivotTableFull = $pivotDbName.'.'.$pivotTable;
@@ -162,6 +168,8 @@ trait HasTeams
         //     ->as('membership')
         //     ->toSql()
         // );
+=======
+>>>>>>> 26fa8b7774be949d069b5f35f17df14fd2797de8
 
         // $this->setConnection('mysql');
         return $this->belongsToMany($team_class, $pivotTableFull, null, 'team_id')

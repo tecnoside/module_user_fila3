@@ -24,7 +24,11 @@ trait InteractsWithTenant
 
         static::creating(
             static function ($model): void {
+<<<<<<< HEAD
+                $model->tenant_id = Filament::getTenant()->id;
+=======
                 $model->tenant_id = Filament::getTenant()?->getKey();
+>>>>>>> 26fa8b7774be949d069b5f35f17df14fd2797de8
             }
         );
     }
@@ -42,7 +46,11 @@ trait InteractsWithTenant
     protected function setTenantIdAttribute(?int $value): void
     {
         if (null == $value) {
+<<<<<<< HEAD
+            $value = Filament::getTenant()->id;
+=======
             $value = Filament::getTenant()?->getKey();
+>>>>>>> 26fa8b7774be949d069b5f35f17df14fd2797de8
         }
         $this->attributes['tenant_id'] = $value;
     }

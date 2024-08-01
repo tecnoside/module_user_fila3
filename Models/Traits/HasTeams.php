@@ -117,12 +117,18 @@ trait HasTeams
         $pivotTable = $pivot->getTable();
         $pivotDbName = $pivot->getConnection()->getDatabaseName();
         $myDbName = $this->getConnection()->getDatabaseName();
+
         $pivotTableFull = $pivotTable;
         if ($pivotDbName !== $myDbName) {
             $pivotTableFull = $pivotDbName.'.'.$pivotTable;
         }
         /** @var class-string<Model> */
         $team_class = $xot->getTeamClass();
+        $team_classDbName = app($team_class)->getConnection()->getDatabaseName();
+
+        if ($pivotDbName !== $team_classDbName) {
+            $pivotTableFull = $pivotDbName.'.'.$pivotTable;
+        }
 
         // $this->setConnection('mysql');
         return $this->belongsToMany($team_class, $pivotTableFull, null, 'team_id')

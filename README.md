@@ -9,6 +9,9 @@ Gestione degli utenti, ruoli, permessi tramite l'utilizzo di filament.
 ## Gestione dei ruoli
 ![roles list](roles_list.jpg)
 
+## Gestione dei ruoli
+![roles list](roles_list.jpg)
+
 ## Aggiungere Modulo nella base del progetto
 Dentro la cartella laravel/Modules
 

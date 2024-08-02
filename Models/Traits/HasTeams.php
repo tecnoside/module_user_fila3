@@ -144,12 +144,6 @@ trait HasTeams
         //     '$pivotClass' => $pivotClass
         // ]);
 
-
-
-
-
-
-
         // dddx([
         //     '$pivotDbName !== $myDbName' => $pivotDbName !== $myDbName,
         //     '$pivot' => $pivot,
@@ -160,7 +154,6 @@ trait HasTeams
         //     '$pivotClass' => $pivotClass
         // ]);
 
-
         // dddx(
         //     $this->belongsToMany($team_class, $pivotTableFull, null, 'team_id')
         //     ->using($pivotClass)
@@ -169,8 +162,6 @@ trait HasTeams
         //     ->as('membership')
         //     ->toSql()
         // );
-
-
 
         // $this->setConnection('mysql');
         return $this->belongsToMany($team_class, $pivotTableFull, null, 'team_id')
@@ -257,7 +248,8 @@ trait HasTeams
             ->getRelationValue('membership'); // ? FilamentJet::findRole($role) : null;
 
         return Role::firstOrCreate(
-            ['name' => $membership->role], []
+            ['name' => $membership->role],
+            []
         );
     }
 

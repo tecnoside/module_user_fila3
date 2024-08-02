@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
 use Modules\Xot\Contracts\ProfileContract;
+use Modules\Xot\Contracts\ProfileContract;
+use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Datas\XotData;
 
@@ -95,7 +97,7 @@ class DeviceUser extends BasePivot
     }
 
     /**
-     * old_return BelongsTo<UserContract, DeviceUser>.
+     * old_return BelongsTo<Model&UserContract, DeviceUser>.
      */
     public function user(): BelongsTo
     {
@@ -106,7 +108,7 @@ class DeviceUser extends BasePivot
     }
 
     /**
-     * old_return BelongsTo<ProfileContract, DeviceUser>.
+     * old_return BelongsTo<Model&ProfileContract, DeviceUser>.
      */
     public function profile(): BelongsTo
     {

@@ -41,14 +41,15 @@ class Change extends Component
     public function switchTeam(int $teamId): Application|RedirectResponse|Redirector
     {
         $teamClass = $this->xot->getTeamClass();
-        $team = $teamClass::findOrFail($teamId);
-        Assert::isInstanceOf($team, TeamContract::class);
+        /** @var TeamContract */
+        $team = $teamClass::firstWhere(['id' => $teamId]);
+
         if (! $this->user->switchTeam($team)) {
             abort(403);
         }
-        // @phpstan-ignore-next-line
-        TeamSwitched::dispatch($team->fresh(), $this->user);
-
+        if (null !== $team) {
+            TeamSwitched::dispatch($team->fresh(), $this->user);
+        }
         Notification::make()
             ->title(__('Team switched'))
             ->success()

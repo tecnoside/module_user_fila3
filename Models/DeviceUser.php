@@ -95,7 +95,7 @@ class DeviceUser extends BasePivot
     }
 
     /**
-     * old_return BelongsTo<UserContract, DeviceUser>.
+     * old_return BelongsTo<Model&UserContract, DeviceUser>.
      */
     public function user(): BelongsTo
     {
@@ -106,7 +106,7 @@ class DeviceUser extends BasePivot
     }
 
     /**
-     * old_return BelongsTo<ProfileContract, DeviceUser>.
+     * old_return BelongsTo<Model&ProfileContract, DeviceUser>.
      */
     public function profile(): BelongsTo
     {

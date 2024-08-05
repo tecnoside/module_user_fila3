@@ -15,6 +15,9 @@ use Modules\User\Contracts\TenantContract;
  * @method static \Illuminate\Database\Eloquent\Builder|Tenant   newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Tenant   query()
  *
+ * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\User> $members
+ * @property int|null                                                                 $members_count
+ *
  * @mixin \Eloquent
  */
 class Tenant extends BaseModel implements TenantContract

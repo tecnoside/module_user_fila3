@@ -21,6 +21,8 @@ use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Validation\Rules\Password;
+use Modules\UI\Enums\TableLayoutEnum;
+use Modules\UI\Filament\Actions\Table\TableLayoutToggleTableAction;
 use Modules\User\Filament\Actions\ChangePasswordAction;
 use Modules\User\Filament\Resources\UserResource;
 use Modules\User\Filament\Resources\UserResource\Widgets\UserOverview;
@@ -31,6 +33,15 @@ class ListUsers extends ListRecords
 {
     // //
     protected static string $resource = UserResource::class;
+
+    public TableLayoutEnum $layoutView = TableLayoutEnum::GRID;
+
+    protected function getTableHeaderActions(): array
+    {
+        return [
+            TableLayoutToggleTableAction::make(),
+        ];
+    }
 
     protected function getHeaderActions(): array
     {

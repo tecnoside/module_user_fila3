@@ -7,7 +7,7 @@ Gestione degli utenti, ruoli, permessi tramite l'utilizzo di filament.
 ![set_password](docs/img/set_password.jpg)
 
 ## Gestione dei ruoli
-![roles list](docs/img/roles_list.jpg)
+![roles list](docs/img/roles_list.JPG)
 
 
 ## Aggiungere Modulo nella base del progetto

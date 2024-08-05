@@ -116,13 +116,52 @@ trait HasTeams
         $pivot = app($pivotClass);
         $pivotTable = $pivot->getTable();
         $pivotDbName = $pivot->getConnection()->getDatabaseName();
-        $myDbName = $this->getConnection()->getDatabaseName();
+        // $myDbName = $this->getConnection()->getDatabaseName();
         $pivotTableFull = $pivotTable;
-        if ($pivotDbName !== $myDbName) {
-            $pivotTableFull = $pivotDbName.'.'.$pivotTable;
-        }
+
         /** @var class-string<Model> */
         $team_class = $xot->getTeamClass();
+        $team_classDbName = app($team_class)->getConnection()->getDatabaseName();
+
+        if ($pivotDbName !== $team_classDbName) {
+            $pivotTableFull = $pivotDbName.'.'.$pivotTable;
+        }
+
+        // if ($pivotDbName !== $myDbName) {
+        //     $pivotTableFull = $pivotDbName.'.'.$pivotTable;
+        // }
+
+        // /** @var class-string<Model> */
+        // $team_class = $xot->getTeamClass();
+
+        // dddx([
+        //     '$pivotDbName !== $team_classDbName' => $pivotDbName !== $team_classDbName,
+        //     '$pivot' => $pivot,
+        //     '$pivotDbName' => $pivotDbName,
+        //     '$team_classDbName' => $team_classDbName,
+        //     '$pivotTableFull' => $pivotTableFull,
+        //     '$team_class' => $team_class,
+        //     '$pivotClass' => $pivotClass
+        // ]);
+
+        // dddx([
+        //     '$pivotDbName !== $myDbName' => $pivotDbName !== $myDbName,
+        //     '$pivot' => $pivot,
+        //     '$pivotDbName' => $pivotDbName,
+        //     '$myDbName' => $myDbName,
+        //     '$pivotTableFull' => $pivotTableFull,
+        //     '$team_class' => $team_class,
+        //     '$pivotClass' => $pivotClass
+        // ]);
+
+        // dddx(
+        //     $this->belongsToMany($team_class, $pivotTableFull, null, 'team_id')
+        //     ->using($pivotClass)
+        //     ->withPivot('role')
+        //     ->withTimestamps()
+        //     ->as('membership')
+        //     ->toSql()
+        // );
 
         // $this->setConnection('mysql');
         return $this->belongsToMany($team_class, $pivotTableFull, null, 'team_id')
@@ -209,7 +248,8 @@ trait HasTeams
             ->getRelationValue('membership'); // ? FilamentJet::findRole($role) : null;
 
         return Role::firstOrCreate(
-            ['name' => $membership->role], []
+            ['name' => $membership->role],
+            []
         );
     }
 

@@ -12,7 +12,6 @@ use Modules\User\Filament\Resources\RoleResource;
 
 class ListRoles extends ListRecords
 {
-    // //
     protected static string $resource = RoleResource::class;
 
     public TableLayoutEnum $layoutView = TableLayoutEnum::GRID;

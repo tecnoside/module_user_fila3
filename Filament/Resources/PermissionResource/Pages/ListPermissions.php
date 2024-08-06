@@ -17,7 +17,6 @@ use Webmozart\Assert\Assert;
 
 class ListPermissions extends ListRecords
 {
-    // //
     protected static string $resource = PermissionResource::class;
 
     public TableLayoutEnum $layoutView = TableLayoutEnum::GRID;

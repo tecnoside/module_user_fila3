@@ -48,12 +48,8 @@ class Change extends Component
             abort(403);
         }
         if (null !== $team) {
-<<<<<<< HEAD
             // TeamSwitched::dispatch($team->fresh(), $this->user);
             TeamSwitched::dispatch($team, $this->user);
-=======
-            TeamSwitched::dispatch($team->fresh(), $this->user);
->>>>>>> 6ce8113 (.)
         }
         Notification::make()
             ->title(__('Team switched'))

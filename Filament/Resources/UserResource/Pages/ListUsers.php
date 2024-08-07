@@ -11,6 +11,7 @@ use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Columns\BooleanColumn;
+use Filament\Tables\Columns\Layout\Stack;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Enums\ActionsPosition;
 use Filament\Tables\Enums\FiltersLayout;
@@ -57,7 +58,7 @@ class ListUsers extends ListRecords
         ];
     }
 
-    public function getTableColumns(): array
+    public function getListTableColumns(): array
     {
         return [
             // TextColumn::make('id')->sortable(),
@@ -82,6 +83,20 @@ class ListUsers extends ListRecords
             // Tables\Columns\TextColumn::make('photo'),
             BooleanColumn::make('email_verified_at')->sortable()->searchable()->toggleable(),
             // ...static::extendTableCallback(),
+        ];
+    }
+
+    public function getGridTableColumns(): array
+    {
+        return [
+            Stack::make([
+                TextColumn::make('name')->sortable()->searchable(), // ->toggleable(),
+                TextColumn::make('email')->sortable()->searchable(),
+                TextColumn::make('teams.name')->searchable()->toggleable()->wrap()->badge(),
+                TextColumn::make('role.name')->toggleable(),
+                TextColumn::make('roles.name')->toggleable()->wrap()->badge(),
+                BooleanColumn::make('email_verified_at')->sortable()->searchable()->toggleable(),
+            ]),
         ];
     }
 
@@ -160,12 +175,20 @@ class ListUsers extends ListRecords
     public function table(Table $table): Table
     {
         return $table
-            ->columns($this->getTableColumns())
+            // ->columns($this->getTableColumns())
+            ->columns($this->layoutView->getTableColumns())
+            ->contentGrid($this->layoutView->getTableContentGrid())
+            ->headerActions($this->getTableHeaderActions())
+
             ->filters($this->getTableFilters())
+            ->filtersLayout(FiltersLayout::AboveContent)
+            ->persistFiltersInSession()
             ->actions($this->getTableActions())
             ->bulkActions($this->getTableBulkActions())
-            ->filtersLayout(FiltersLayout::AboveContent)
             ->actionsPosition(ActionsPosition::BeforeColumns)
-            ->defaultSort('users.created_at', 'desc');
+            ->defaultSort(
+                column: 'created_at',
+                direction: 'DESC',
+            );
     }
 }

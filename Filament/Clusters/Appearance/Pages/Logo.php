@@ -12,9 +12,13 @@ use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
 use Filament\Pages\Page;
+use Filament\Support\Exceptions\Halt;
 use Illuminate\Database\Eloquent\Model;
 use Modules\User\Filament\Clusters\Appearance;
 
+/**
+ * @property Forms\ComponentContainer $form
+ */
 class Logo extends Page implements HasForms
 {
     use InteractsWithForms;

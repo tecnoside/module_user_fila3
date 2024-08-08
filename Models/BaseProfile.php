@@ -119,10 +119,10 @@ abstract class BaseProfile extends BaseModel implements ProfileContract
 
     public function getAvatarUrl(): string
     {
-        //return filament()->getUserAvatarUrl($this);
+        // return filament()->getUserAvatarUrl($this);
         $avatar = $this->getFirstMediaUrl();
 
-        if(is_string($avatar) && strlen($avatar) > 5) {
+        if (is_string($avatar) && strlen($avatar) > 5) {
             return $avatar
             ;
         }
@@ -133,18 +133,17 @@ abstract class BaseProfile extends BaseModel implements ProfileContract
         // 'myemailaddress@example.com'
         $hash = hash('sha256', $email);
         $avatar = 'https://gravatar.com/avatar/'.$hash.'?s=64';
+
         return $avatar;
 
-
-        //https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80
+        // https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80
 
         // in caso eseguire php artisan module:publish
         // dddx($this);
         // dddx(asset('blog/img/no_user.webp'));
         //    return asset('modules/blog/img/no_user.webp');
-        //}
+        // }
 
-        //return $this->getFirstMediaUrl();
-
+        // return $this->getFirstMediaUrl();
     }
 }

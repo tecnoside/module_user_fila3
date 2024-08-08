@@ -6,8 +6,6 @@ namespace Modules\User\Filament\Resources\RoleResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
-<<<<<<< HEAD
-=======
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
@@ -17,7 +15,6 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Enums\ActionsPosition;
 use Filament\Tables\Enums\FiltersLayout;
 use Filament\Tables\Table;
->>>>>>> 9886c2767771989971b2054f73eb9f57c9221997
 use Modules\UI\Enums\TableLayoutEnum;
 use Modules\UI\Filament\Actions\Table\TableLayoutToggleTableAction;
 use Modules\User\Filament\Resources\RoleResource;
@@ -33,8 +30,6 @@ class ListRoles extends ListRecords
     {
         return [
             TableLayoutToggleTableAction::make(),
-<<<<<<< HEAD
-=======
             // 'create' => Tables\Actions\CreateAction::make(),
             // Tables\Actions\AssociateAction::make(),
             // Tables\Actions\AttachAction::make()
@@ -45,7 +40,6 @@ class ListRoles extends ListRecords
             //     Forms\Components\Select::make('role_id')
             //         ->options(Role::all()->pluck('name', 'id'))
             // ])
->>>>>>> 9886c2767771989971b2054f73eb9f57c9221997
         ];
     }
 

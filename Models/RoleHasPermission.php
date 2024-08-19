@@ -31,6 +31,9 @@ use Illuminate\Support\Carbon;
  * @method static Builder|RoleHasPermission whereUpdatedAt($value)
  * @method static Builder|RoleHasPermission whereUpdatedBy($value)
  *
+ * @property-read \Modules\Fixcity\Models\Profile|null $creator
+ * @property-read \Modules\Fixcity\Models\Profile|null $updater
+ *
  * @mixin \Eloquent
  */
 class RoleHasPermission extends BasePivot

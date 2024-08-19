@@ -84,10 +84,10 @@ class ListProfiles extends ListRecords
                         function ($record) {
                             $user = $record->user;
                             $user_class = XotData::make()->getUserClass();
-                            if ($user == null) {
+                            if (null == $user) {
                                 $user = $user_class::firstWhere(['email' => $record->email]);
                             }
-                            if ($user == null) {
+                            if (null == $user) {
                                 $data = $record->toArray();
                                 $user_data = Arr::except($data, ['id']);
                                 $user = $user_class::create($user_data);
@@ -133,10 +133,10 @@ class ListProfiles extends ListRecords
                     function ($record) {
                         $user = $record->user;
                         $user_class = XotData::make()->getUserClass();
-                        if ($user == null) {
+                        if (null == $user) {
                             $user = $user_class::firstWhere(['email' => $record->email]);
                         }
-                        if ($user == null) {
+                        if (null == $user) {
                             $data = $record->toArray();
                             $user_data = Arr::except($data, ['id']);
                             $user = $user_class::create($user_data);

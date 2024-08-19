@@ -16,8 +16,8 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Membership newQuery()
  * @method static Builder|Membership query()
  *
- * @property int $id
- * @property string $uuid
+ * @property int         $id
+ * @property string      $uuid
  * @property string|null $team_id
  * @property string|null $user_id
  * @property Carbon|null $created_at
@@ -43,8 +43,8 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Membership whereDeletedAt($value)
  * @method static Builder|Membership whereDeletedBy($value)
  *
- * @property-read \Modules\Fixcity\Models\Profile|null $creator
- * @property-read \Modules\Fixcity\Models\Profile|null $updater
+ * @property \Modules\Fixcity\Models\Profile|null $creator
+ * @property \Modules\Fixcity\Models\Profile|null $updater
  *
  * @mixin \Eloquent
  */

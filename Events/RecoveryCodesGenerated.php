@@ -16,7 +16,5 @@ class RecoveryCodesGenerated
      *
      * @return void
      */
-    public function __construct(public UserContract $userContract)
-    {
-    }
+    public function __construct(public UserContract $userContract) {}
 }

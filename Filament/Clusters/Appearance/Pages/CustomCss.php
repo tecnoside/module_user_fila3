@@ -23,6 +23,7 @@ use Modules\User\Filament\Clusters\Appearance;
 class CustomCss extends Page implements HasForms
 {
     use InteractsWithForms;
+
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
     protected static string $view = 'user::filament.clusters.appearance.pages.custom-css';
@@ -30,6 +31,7 @@ class CustomCss extends Page implements HasForms
     protected static ?string $cluster = Appearance::class;
 
     protected static ?int $navigationSort = 6;
+
     public ?array $data = [];
 
     public function mount(): void

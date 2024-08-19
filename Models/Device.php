@@ -57,7 +57,9 @@ use Modules\User\Database\Factories\DeviceFactory;
  * @method static Builder|Device whereUpdatedBy($value)
  * @method static Builder|Device whereVersion($value)
  *
- * @property DeviceUser $pivot
+ * @property DeviceUser                           $pivot
+ * @property \Modules\Fixcity\Models\Profile|null $creator
+ * @property \Modules\Fixcity\Models\Profile|null $updater
  *
  * @mixin \Eloquent
  */

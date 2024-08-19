@@ -52,7 +52,9 @@ use Modules\Xot\Models\Traits\HasExtraTrait;
  * @method static \Illuminate\Database\Eloquent\Builder|Team whereDeletedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Team whereUpdatedBy($value)
  *
- * @property Membership $membership
+ * @property Membership                           $membership
+ * @property \Modules\Fixcity\Models\Profile|null $creator
+ * @property \Modules\Fixcity\Models\Profile|null $updater
  *
  * @mixin \Eloquent
  */

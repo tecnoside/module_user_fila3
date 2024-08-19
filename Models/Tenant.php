@@ -17,6 +17,8 @@ use Modules\User\Contracts\TenantContract;
  *
  * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\User> $members
  * @property int|null                                                                 $members_count
+ * @property \Modules\Fixcity\Models\Profile|null                                     $creator
+ * @property \Modules\Fixcity\Models\Profile|null                                     $updater
  *
  * @mixin \Eloquent
  */

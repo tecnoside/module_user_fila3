@@ -23,6 +23,7 @@ use Modules\User\Filament\Clusters\Appearance;
 class Favicon extends Page implements HasForms
 {
     use InteractsWithForms;
+
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
     protected static string $view = 'user::filament.clusters.appearance.pages.favicon';
@@ -30,6 +31,7 @@ class Favicon extends Page implements HasForms
     protected static ?string $cluster = Appearance::class;
 
     protected static ?int $navigationSort = 5;
+
     public ?array $data = [];
 
     public function mount(): void

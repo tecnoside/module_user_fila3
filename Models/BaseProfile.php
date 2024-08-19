@@ -123,8 +123,7 @@ abstract class BaseProfile extends BaseModel implements ProfileContract
         $avatar = $this->getFirstMediaUrl();
 
         if (is_string($avatar) && strlen($avatar) > 5) {
-            return $avatar
-            ;
+            return $avatar;
         }
 
         $email = trim($this->email);

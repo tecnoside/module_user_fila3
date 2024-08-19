@@ -42,6 +42,9 @@ use Illuminate\Support\Carbon;
  * @method static Builder|TeamUser whereDeletedAt($value)
  * @method static Builder|TeamUser whereDeletedBy($value)
  *
+ * @property \Modules\Fixcity\Models\Profile|null $creator
+ * @property \Modules\Fixcity\Models\Profile|null $updater
+ *
  * @mixin \Eloquent
  */
 class TeamUser extends BasePivot

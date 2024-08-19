@@ -46,6 +46,9 @@ use Modules\Xot\Datas\XotData;
  * @method static Builder|TeamInvitation whereUpdatedBy($value)
  * @method static Builder|TeamInvitation whereUuid($value)
  *
+ * @property \Modules\Fixcity\Models\Profile|null $creator
+ * @property \Modules\Fixcity\Models\Profile|null $updater
+ *
  * @mixin \Eloquent
  */
 class TeamInvitation extends BaseModel

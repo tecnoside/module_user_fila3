@@ -50,6 +50,9 @@ use Modules\Xot\Datas\XotData;
  *
  * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser whereUuid($value)
  *
+ * @property \Modules\Fixcity\Models\Profile|null $creator
+ * @property \Modules\Fixcity\Models\Profile|null $updater
+ *
  * @mixin \Eloquent
  */
 class SocialiteUser extends BaseModel

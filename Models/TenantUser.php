@@ -14,7 +14,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder|TeamUser newQuery()
  * @method static Builder|TeamUser query()
  *
- * @property int $id
+ * @property int         $id
  * @property string|null $tenant_id
  * @property string|null $user_id
  * @property Carbon|null $created_at
@@ -40,8 +40,8 @@ use Illuminate\Support\Carbon;
  * @method static Builder|TenantUser whereDeletedBy($value)
  * @method static Builder|TenantUser whereTenantId($value)
  *
- * @property-read \Modules\Fixcity\Models\Profile|null $creator
- * @property-read \Modules\Fixcity\Models\Profile|null $updater
+ * @property \Modules\Fixcity\Models\Profile|null $creator
+ * @property \Modules\Fixcity\Models\Profile|null $updater
  *
  * @mixin \Eloquent
  */

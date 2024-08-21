@@ -57,7 +57,7 @@ use Modules\User\Database\Factories\DeviceFactory;
  * @method static Builder|Device whereUpdatedBy($value)
  * @method static Builder|Device whereVersion($value)
  *
- * @property DeviceUser                           $pivot
+ * @property DeviceUser                                  $pivot
  * @property \Modules\Xot\Contracts\ProfileContract|null $creator
  * @property \Modules\Xot\Contracts\ProfileContract|null $updater
  *

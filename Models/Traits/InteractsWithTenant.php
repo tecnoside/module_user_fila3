@@ -20,7 +20,7 @@ trait InteractsWithTenant
      */
     protected static function bootInteractsWithTenant(): void
     {
-        static::addGlobalScope(new TenantScope());
+        static::addGlobalScope(new TenantScope);
 
         static::creating(
             static function ($model): void {
@@ -41,7 +41,7 @@ trait InteractsWithTenant
      */
     protected function setTenantIdAttribute(?int $value): void
     {
-        if (null == $value) {
+        if ($value == null) {
             $value = Filament::getTenant()->id;
         }
         $this->attributes['tenant_id'] = $value;

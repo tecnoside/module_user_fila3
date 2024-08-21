@@ -11,7 +11,8 @@
  * If the validation passes, a new user is created and a success response is returned with the user's name and an access token.
  * If the validation fails, an error response is returned with the validation errors.
  *
- * @param  \Illuminate\Http\Request  $request  The incoming request
+ * @param \Illuminate\Http\Request $request The incoming request
+ *
  * @return \Illuminate\Http\JsonResponse The JSON response
  */
 declare(strict_types=1);

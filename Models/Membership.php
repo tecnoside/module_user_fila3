@@ -43,8 +43,8 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Membership whereDeletedAt($value)
  * @method static Builder|Membership whereDeletedBy($value)
  *
- * @property \Modules\Fixcity\Models\Profile|null $creator
- * @property \Modules\Fixcity\Models\Profile|null $updater
+ * @property \Modules\Xot\Contracts\ProfileContract|null $creator
+ * @property \Modules\Xot\Contracts\ProfileContract|null $updater
  *
  * @mixin \Eloquent
  */

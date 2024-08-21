@@ -47,8 +47,8 @@ use Modules\Xot\Datas\XotData;
  *
  * @property ProfileContract|null                 $profile
  * @property User|null                            $user
- * @property \Modules\Fixcity\Models\Profile|null $creator
- * @property \Modules\Fixcity\Models\Profile|null $updater
+ * @property \Modules\Xot\Contracts\ProfileContract|null $creator
+ * @property \Modules\Xot\Contracts\ProfileContract|null $updater
  *
  * @mixin \Eloquent
  */

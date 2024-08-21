@@ -45,10 +45,10 @@ use Modules\Xot\Datas\XotData;
  * @method static Builder|DeviceUser whereUpdatedBy($value)
  * @method static Builder|DeviceUser whereUserId($value)
  *
- * @property ProfileContract|null                 $profile
- * @property User|null                            $user
- * @property \Modules\Xot\Contracts\ProfileContract|null $creator
- * @property \Modules\Xot\Contracts\ProfileContract|null $updater
+ * @property ProfileContract|null $profile
+ * @property User|null            $user
+ * @property ProfileContract|null $creator
+ * @property ProfileContract|null $updater
  *
  * @mixin \Eloquent
  */

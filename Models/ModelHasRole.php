@@ -39,8 +39,8 @@ use Modules\User\Database\Factories\ModelHasRoleFactory;
  *
  * @method static Builder|ModelHasRole whereUuid($value)
  *
- * @property \Modules\Fixcity\Models\Profile|null $creator
- * @property \Modules\Fixcity\Models\Profile|null $updater
+ * @property \Modules\Xot\Contracts\ProfileContract|null $creator
+ * @property \Modules\Xot\Contracts\ProfileContract|null $updater
  *
  * @mixin \Eloquent
  */

@@ -40,6 +40,9 @@ use Illuminate\Support\Carbon;
  * @method static Builder|TenantUser whereDeletedBy($value)
  * @method static Builder|TenantUser whereTenantId($value)
  *
+ * @property \Modules\Xot\Contracts\ProfileContract|null $creator
+ * @property \Modules\Xot\Contracts\ProfileContract|null $updater
+ *
  * @mixin \Eloquent
  */
 class TenantUser extends BasePivot

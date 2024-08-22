@@ -6,8 +6,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Modules\User\Models\OauthAccessToken;
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
-class CreateOauthRefreshTokensTable extends XotBaseMigration
-{
+return new class () extends XotBaseMigration {
     /**
      * Run the migrations.
      */
@@ -34,4 +33,4 @@ class CreateOauthRefreshTokensTable extends XotBaseMigration
             }
         );
     }
-}
+};

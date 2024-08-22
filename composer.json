@@ -21,7 +21,8 @@
         "laravel": {
             "providers": [
                 "Livewire\\LivewireServiceProvider",
-                "Modules\\User\\Providers\\UserServiceProvider"
+                "Modules\\User\\Providers\\UserServiceProvider",
+                "Modules\\User\\Providers\\Filament\\AdminPanelProvider"
             ],
             "aliases": {
 

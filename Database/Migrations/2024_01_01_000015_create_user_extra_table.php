@@ -9,8 +9,7 @@ use Modules\Xot\Database\Migrations\XotBaseMigration;
 /**
  * Class CreateExtraTable.
  */
-class CreateUserExtraTable extends XotBaseMigration
-{
+return new class () extends XotBaseMigration {
     protected ?string $model_class = Extra::class;
 
     /**
@@ -49,4 +48,4 @@ class CreateUserExtraTable extends XotBaseMigration
     // end up
 
     // end down
-}
+};

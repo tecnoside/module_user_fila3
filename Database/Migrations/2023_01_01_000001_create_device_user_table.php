@@ -7,8 +7,7 @@ use Modules\User\Models\Device;
 use Modules\User\Models\User;
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
-class CreateDeviceUserTable extends XotBaseMigration
-{
+return new class () extends XotBaseMigration {
     /**
      * Run the migrations.
      */
@@ -39,4 +38,4 @@ class CreateDeviceUserTable extends XotBaseMigration
             }
         );
     }
-}
+};

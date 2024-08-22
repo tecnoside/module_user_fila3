@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
-class CreatePermissionTables extends XotBaseMigration
-{
+return new class () extends XotBaseMigration {
     /**
      * Run the migrations.
      */
@@ -67,4 +66,4 @@ class CreatePermissionTables extends XotBaseMigration
         Schema::drop($tableNames['permissions']);
     }
     */
-}
+};

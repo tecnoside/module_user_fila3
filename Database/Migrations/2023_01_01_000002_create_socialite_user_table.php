@@ -6,8 +6,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 use Modules\Xot\Datas\XotData;
 
-class CreateSocialiteUserTable extends XotBaseMigration
-{
+return new class () extends XotBaseMigration {
     /**
      * Run the migrations.
      */
@@ -50,4 +49,4 @@ class CreateSocialiteUserTable extends XotBaseMigration
             }
         );
     }
-}
+};

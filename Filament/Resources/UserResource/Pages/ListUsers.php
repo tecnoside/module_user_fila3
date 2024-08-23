@@ -4,32 +4,31 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Resources\UserResource\Pages;
 
-use Filament\Tables\Table;
-use Modules\User\Models\Role;
 use Filament\Actions\CreateAction;
-use Filament\Tables\Actions\Action;
-use Filament\Tables\Filters\Filter;
-use Illuminate\Support\Facades\Hash;
-use Modules\UI\Enums\TableLayoutEnum;
-use Illuminate\Database\Query\Builder;
-use Filament\Tables\Actions\EditAction;
-use Filament\Tables\Columns\TextColumn;
-use Modules\Xot\Contracts\UserContract;
 use Filament\Forms\Components\TextInput;
-use Filament\Tables\Enums\FiltersLayout;
 use Filament\Resources\Pages\ListRecords;
-use Filament\Tables\Columns\Layout\Stack;
-use Filament\Tables\Filters\SelectFilter;
-use Illuminate\Validation\Rules\Password;
-use Filament\Tables\Columns\BooleanColumn;
-use Filament\Tables\Enums\ActionsPosition;
-use Illuminate\Support\Facades\Notification;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\DeleteBulkAction;
-use Modules\User\Filament\Resources\UserResource;
-use Modules\User\Filament\Actions\ChangePasswordAction;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Columns\BooleanColumn;
+use Filament\Tables\Columns\Layout\Stack;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Enums\ActionsPosition;
+use Filament\Tables\Enums\FiltersLayout;
+use Filament\Tables\Filters\Filter;
+use Filament\Tables\Filters\SelectFilter;
+use Filament\Tables\Table;
+use Illuminate\Database\Query\Builder;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Validation\Rules\Password;
+use Modules\UI\Enums\TableLayoutEnum;
 use Modules\UI\Filament\Actions\Table\TableLayoutToggleTableAction;
+use Modules\User\Filament\Actions\ChangePasswordAction;
+use Modules\User\Filament\Resources\UserResource;
 use Modules\User\Filament\Resources\UserResource\Widgets\UserOverview;
-
+use Modules\User\Models\Role;
+use Modules\Xot\Contracts\UserContract;
 
 class ListUsers extends ListRecords
 {

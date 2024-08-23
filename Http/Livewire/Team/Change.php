@@ -4,19 +4,18 @@ declare(strict_types=1);
 
 namespace Modules\User\Http\Livewire\Team;
 
-use Livewire\Component;
-use Illuminate\View\View;
-use Webmozart\Assert\Assert;
 use Filament\Facades\Filament;
-use Modules\Xot\Datas\XotData;
-use Illuminate\Routing\Redirector;
+use Filament\Notifications\Notification;
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Redirector;
+use Illuminate\View\View;
+use Livewire\Component;
+use Modules\User\Contracts\TeamContract;
 use Modules\User\Events\TeamSwitched;
 use Modules\Xot\Contracts\UserContract;
-
-use Filament\Notifications\Notification;
-use Modules\User\Contracts\TeamContract;
-use Illuminate\Contracts\Foundation\Application;
+use Modules\Xot\Datas\XotData;
+use Webmozart\Assert\Assert;
 
 class Change extends Component
 {

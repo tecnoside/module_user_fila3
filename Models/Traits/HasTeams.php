@@ -4,20 +4,19 @@ declare(strict_types=1);
 
 namespace Modules\User\Models\Traits;
 
-use Illuminate\Support\Str;
-use Webmozart\Assert\Assert;
-use Modules\User\Models\Role;
-use Modules\User\Models\Team;
-use Modules\Xot\Datas\XotData;
-use Illuminate\Support\Collection;
-use Modules\User\Models\Membership;
 use Illuminate\Database\Eloquent\Model;
-use Modules\Xot\Contracts\UserContract;
-use Modules\User\Contracts\TeamContract;
-
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
+use Modules\User\Contracts\TeamContract;
+use Modules\User\Models\Membership;
+use Modules\User\Models\Role;
+use Modules\User\Models\Team;
+use Modules\Xot\Contracts\UserContract;
+use Modules\Xot\Datas\XotData;
+use Webmozart\Assert\Assert;
 
 // use Modules\User\Models\OwnerRole;
 
@@ -232,7 +231,7 @@ trait HasTeams
         }
 
         Assert::notNull($user = $teamContract->users()->where('id', $this->id)->first(), '['.__LINE__.']['.__FILE__.']');
-        Assert::isInstanceOf($user, \Modules\Xot\Datas\XotData::make()->getUserClass(), '['.__LINE__.']['.__FILE__.']');
+        Assert::isInstanceOf($user, XotData::make()->getUserClass(), '['.__LINE__.']['.__FILE__.']');
         /**
          * @var UserContract $user
          */

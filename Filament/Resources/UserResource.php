@@ -27,7 +27,6 @@ use Modules\User\Filament\Resources\UserResource\RelationManagers\RolesRelationM
 use Modules\User\Filament\Resources\UserResource\RelationManagers\TeamsRelationManager;
 use Modules\User\Filament\Resources\UserResource\RelationManagers\TokensRelationManager;
 use Modules\User\Filament\Resources\UserResource\Widgets\UserOverview;
-
 use Modules\Xot\Filament\Resources\XotBaseResource;
 
 class UserResource extends XotBaseResource
@@ -100,7 +99,7 @@ class UserResource extends XotBaseResource
                         }
 
                         $user_class=\Modules\Xot\Datas\XotData::make()->getUserClass();
-                        //var \Modules\Xot\Contracts\UserContract 
+                        //var \Modules\Xot\Contracts\UserContract
                         $user = $user_class::find($form->getColumns());
                         if($user){
                             return $user->password;

@@ -27,12 +27,12 @@ use Modules\User\Filament\Resources\UserResource\RelationManagers\RolesRelationM
 use Modules\User\Filament\Resources\UserResource\RelationManagers\TeamsRelationManager;
 use Modules\User\Filament\Resources\UserResource\RelationManagers\TokensRelationManager;
 use Modules\User\Filament\Resources\UserResource\Widgets\UserOverview;
-use Modules\User\Models\User;
+
 use Modules\Xot\Filament\Resources\XotBaseResource;
 
 class UserResource extends XotBaseResource
 {
-    // protected static ?string $model = User::class;
+    // protected static ?string $model = \Modules\Xot\Datas\XotData::make()->getUserClass();
 
     protected static ?string $navigationIcon = 'heroicon-o-users';
 
@@ -99,7 +99,9 @@ class UserResource extends XotBaseResource
                             return Hash::make($state);
                         }
 
-                        $user = User::find($form->getColumns());
+                        $user_class=\Modules\Xot\Datas\XotData::make()->getUserClass();
+                        //var \Modules\Xot\Contracts\UserContract 
+                        $user = $user_class::find($form->getColumns());
                         if($user){
                             return $user->password;
                         }

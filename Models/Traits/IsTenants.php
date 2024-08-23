@@ -6,7 +6,7 @@ namespace Modules\User\Models\Traits;
 
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Modules\User\Contracts\TeamContract;
-use Modules\User\Models\User;
+
 use Modules\Xot\Datas\XotData;
 
 // use Modules\User\Models\OwnerRole;
@@ -29,7 +29,7 @@ trait IsTenants
         $pivotFields = $pivot->getFillable();
 
         // $this->setConnection('mysql');
-        return $this->belongsToMany(User::class, $pivotTableFull, 'tenant_id', 'user_id')
+        return $this->belongsToMany(\Modules\Xot\Datas\XotData::make()->getUserClass(), $pivotTableFull, 'tenant_id', 'user_id')
             ->using($pivotClass)
             ->withPivot($pivotFields)
             ->withTimestamps();

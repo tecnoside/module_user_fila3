@@ -18,7 +18,7 @@ return new class extends XotBaseMigration {
                 $table->id();
                 $table->foreignId('team_id');
                 $table->uuid('user_id')->nullable()->index();
-                // $table->foreignIdFor(User::class);
+                // $table->foreignIdFor(\Modules\Xot\Datas\XotData::make()->getUserClass());
                 $table->string('role')->nullable();
                 $table->timestamps();
                 $table->unique(['team_id', 'user_id']);

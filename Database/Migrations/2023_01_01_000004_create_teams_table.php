@@ -21,7 +21,7 @@ return new class extends XotBaseMigration {
                 // $table->drop('team_invitations');
                 $table->uuid('id')->primary();
                 $table->foreignId('user_id')->index();
-                // $table->foreignIdFor(User::class);
+                // $table->foreignIdFor(\Modules\Xot\Datas\XotData::make()->getUserClass());
                 $table->string('name');
                 $table->boolean('personal_team');
                 // $table->timestamps();

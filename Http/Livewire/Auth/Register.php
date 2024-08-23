@@ -4,13 +4,15 @@ declare(strict_types=1);
 
 namespace Modules\User\Http\Livewire\Auth;
 
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Http\RedirectResponse;
+use Livewire\Component;
+use Modules\Xot\Datas\XotData;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Livewire\Component;
-use Modules\User\Models\User;
+use Illuminate\Http\RedirectResponse;
+
 use Modules\Xot\Services\FileService;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Contracts\Auth\Authenticatable;
 
 class Register extends Component
 {
@@ -33,8 +35,11 @@ class Register extends Component
             'email' => ['required', 'email', 'unique:user.users'],
             'password' => ['required', 'min:8', 'same:passwordConfirmation'],
         ]);
+        $user_class=XotData::make()->getUserClass();
 
-        $user = User::create([
+        /** @var  Authenticatable */
+        /** @var \Modules\Xot\Contracts\UserContract */
+$user = $user_class::create([
             'email' => $this->email,
             'name' => $this->name,
             'password' => Hash::make($this->password),

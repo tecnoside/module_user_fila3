@@ -37,7 +37,7 @@ use Spatie\SchemalessAttributes\SchemalessAttributesTrait;
  * @property int|null                                                                                                      $permissions_count
  * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\Role>                                      $roles
  * @property int|null                                                                                                      $roles_count
- * @property User|null                                                                                                     $user
+ * @property \Modules\Xot\Contracts\UserContract|null                                                                                                     $user
  * @property string|null                                                                                                   $user_name
  *
  * @method static \Modules\Xot\Database\Factories\ProfileFactory factory($count = null, $state = [])

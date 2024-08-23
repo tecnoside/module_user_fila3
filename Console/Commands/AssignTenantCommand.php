@@ -9,10 +9,8 @@ use Illuminate\Console\Command;
 use function Laravel\Prompts\multiselect;
 use function Laravel\Prompts\text;
 
-
 use Modules\Xot\Datas\XotData;
 use Symfony\Component\Console\Input\InputOption;
-use Webmozart\Assert\Assert;
 
 class AssignTenantCommand extends Command
 {
@@ -46,7 +44,7 @@ class AssignTenantCommand extends Command
     public function handle(): void
     {
         $email = text('email ?');
-        $user_class=XotData::make()->getUserClass();
+        $user_class = XotData::make()->getUserClass();
         /** @var \Modules\Xot\Contracts\UserContract */
         $user = $user_class::firstWhere(['email' => $email]);
         $xot = XotData::make();

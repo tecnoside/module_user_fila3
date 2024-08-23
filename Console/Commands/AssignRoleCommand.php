@@ -4,15 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\User\Console\Commands;
 
-use Webmozart\Assert\Assert;
-
-use Modules\User\Models\Role;
 use Illuminate\Console\Command;
 
+use function Laravel\Prompts\multiselect;
 use function Laravel\Prompts\text;
 
+use Modules\User\Models\Role;
 use Modules\Xot\Contracts\UserContract;
-use function Laravel\Prompts\multiselect;
 use Symfony\Component\Console\Input\InputOption;
 
 class AssignRoleCommand extends Command
@@ -47,7 +45,7 @@ class AssignRoleCommand extends Command
     public function handle(): void
     {
         $email = text('email ?');
-        $user_class=\Modules\Xot\Datas\XotData::make()->getUserClass();
+        $user_class = \Modules\Xot\Datas\XotData::make()->getUserClass();
         /** @var UserContract */
         $user = $user_class::firstWhere(['email' => $email]);
         /**

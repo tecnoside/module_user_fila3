@@ -14,7 +14,6 @@ use Flowframe\Trend\TrendValue;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Support\Carbon;
 
-
 class UsersChartWidget extends ChartWidget
 {
     use InteractsWithPageFilters;

@@ -12,7 +12,6 @@ use Illuminate\Database\Eloquent\Collection;
 use Modules\UI\Enums\TableLayoutEnum;
 use Modules\UI\Filament\Actions\Table\TableLayoutToggleTableAction;
 use Modules\User\Filament\Resources\PermissionResource;
-
 use Webmozart\Assert\Assert;
 
 class ListPermissions extends ListRecords

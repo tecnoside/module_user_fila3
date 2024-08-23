@@ -4,17 +4,15 @@ declare(strict_types=1);
 
 namespace Modules\User\Console\Commands;
 
+use Illuminate\Console\Command;
 use Illuminate\Support\Str;
-use Webmozart\Assert\Assert;
+
+use function Laravel\Prompts\text;
 
 use Modules\User\Models\Role;
-
-use Modules\Xot\Datas\XotData;
-
-use Illuminate\Console\Command;
-use function Laravel\Prompts\text;
-use Nwidart\Modules\Facades\Module;
 use Modules\Xot\Contracts\UserContract;
+use Modules\Xot\Datas\XotData;
+use Nwidart\Modules\Facades\Module;
 use Symfony\Component\Console\Input\InputOption;
 
 class SuperAdminCommand extends Command
@@ -49,7 +47,7 @@ class SuperAdminCommand extends Command
     public function handle(): void
     {
         $email = text('email ?');
-        $user_class=XotData::make()->getUserClass();
+        $user_class = XotData::make()->getUserClass();
         /** @var UserContract */
         $user = $user_class::firstWhere(['email' => $email]);
 

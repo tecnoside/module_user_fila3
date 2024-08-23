@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 use Illuminate\Database\Schema\Blueprint;
 use Modules\User\Models\Device;
-
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
 return new class extends XotBaseMigration {
@@ -18,7 +17,7 @@ return new class extends XotBaseMigration {
             static function (Blueprint $table): void {
                 $table->id('id');
                 $table->foreignIdFor(Device::class, 'device_id')->index();
-                $table->foreignIdFor(\Modules\Xot\Datas\XotData::make()->getUserClass(), 'user_id')->index();
+                $table->foreignIdFor(Modules\Xot\Datas\XotData::make()->getUserClass(), 'user_id')->index();
                 $table->dateTime('login_at')->nullable();
                 $table->dateTime('logout_at')->nullable();
             }

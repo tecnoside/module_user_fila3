@@ -7,13 +7,12 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Actions;
 
-use Filament\Tables\Actions\Action;
-use Illuminate\Support\Facades\Hash;
-use Modules\Xot\Contracts\UserContract;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
+use Filament\Tables\Actions\Action;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
-
+use Modules\Xot\Contracts\UserContract;
 
 class ChangePasswordAction extends Action
 {

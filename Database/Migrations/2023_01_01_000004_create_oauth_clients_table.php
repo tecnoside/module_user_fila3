@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use Illuminate\Database\Schema\Blueprint;
-
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
 return new class extends XotBaseMigration {
@@ -14,7 +13,7 @@ return new class extends XotBaseMigration {
                 // $table->bigIncrements('id');
                 $table->uuid('id')->primary();
                 // $table->unsignedBigInteger('user_id')->nullable()->index();
-                $table->foreignIdFor(\Modules\Xot\Datas\XotData::make()->getUserClass(), 'user_id')->nullable()->index();
+                $table->foreignIdFor(Modules\Xot\Datas\XotData::make()->getUserClass(), 'user_id')->nullable()->index();
                 $table->string('name');
                 $table->string('secret', 100)->nullable();
                 $table->string('provider')->nullable();

@@ -13,7 +13,7 @@ use Flowframe\Trend\Trend;
 use Flowframe\Trend\TrendValue;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Support\Carbon;
-use Modules\User\Models\User;
+
 
 class UsersChartWidget extends ChartWidget
 {
@@ -51,7 +51,7 @@ class UsersChartWidget extends ChartWidget
             $endDate = Carbon::now();
         }
 
-        $data = Trend::model(User::class)
+        $data = Trend::model(\Modules\Xot\Datas\XotData::make()->getUserClass())
             ->between(
                 start: $startDate,
                 end: $endDate,

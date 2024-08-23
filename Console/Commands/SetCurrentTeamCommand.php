@@ -4,15 +4,16 @@ declare(strict_types=1);
 
 namespace Modules\User\Console\Commands;
 
+use Webmozart\Assert\Assert;
+
+use Modules\Xot\Datas\XotData;
 use Illuminate\Console\Command;
 
-use function Laravel\Prompts\select;
-use function Laravel\Prompts\text;
 
-use Modules\User\Models\User;
-use Modules\Xot\Datas\XotData;
+use function Laravel\Prompts\text;
+use function Laravel\Prompts\select;
+use Modules\Xot\Contracts\UserContract;
 use Symfony\Component\Console\Input\InputOption;
-use Webmozart\Assert\Assert;
 
 class SetCurrentTeamCommand extends Command
 {
@@ -46,7 +47,9 @@ class SetCurrentTeamCommand extends Command
     public function handle(): void
     {
         $email = text('email ?');
-        Assert::notNull($user = User::firstWhere(['email' => $email]), '['.__LINE__.']['.__FILE__.']');
+        $user_class=XotData::make()->getUserClass();
+        /** @var UserContract */
+        $user = $user_class::firstWhere(['email' => $email]);
         $xot = XotData::make();
         $teamClass = $xot->getTeamClass();
         /** @var array<int|string, string>|\Illuminate\Support\Collection<int|string, string> */

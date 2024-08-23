@@ -5,14 +5,15 @@ declare(strict_types=1);
 namespace Modules\User\Models\Policies;
 
 use Modules\User\Models\Team;
-use Modules\User\Models\User;
+use Modules\Xot\Contracts\UserContract;
+
 
 class TeamPolicy extends UserBasePolicy
 {
     /**
      * Determine whether the user can view any models.
      */
-    public function viewAny(\Modules\Xot\Contracts\UserContract $user): bool
+    public function viewAny(UserContract $user): bool
     {
         return false;
     }
@@ -20,7 +21,7 @@ class TeamPolicy extends UserBasePolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Team $team): bool
+    public function view(UserContract $user, Team $team): bool
     {
         return $user->belongsToTeam($team);
     }
@@ -28,7 +29,7 @@ class TeamPolicy extends UserBasePolicy
     /**
      * Determine whether the user can create models.
      */
-    public function create(User $user): bool
+    public function create(UserContract $user): bool
     {
         return true;
     }
@@ -36,7 +37,7 @@ class TeamPolicy extends UserBasePolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Team $team): bool
+    public function update(UserContract $user, Team $team): bool
     {
         return $user->ownsTeam($team);
     }
@@ -44,7 +45,7 @@ class TeamPolicy extends UserBasePolicy
     /**
      * Determine whether the user can add team members.
      */
-    public function addTeamMember(User $user, Team $team): bool
+    public function addTeamMember(UserContract $user, Team $team): bool
     {
         return $user->ownsTeam($team);
     }
@@ -52,7 +53,7 @@ class TeamPolicy extends UserBasePolicy
     /**
      * Determine whether the user can update team member permissions.
      */
-    public function updateTeamMember(User $user, Team $team): bool
+    public function updateTeamMember(UserContract $user, Team $team): bool
     {
         return $user->ownsTeam($team);
     }
@@ -60,7 +61,7 @@ class TeamPolicy extends UserBasePolicy
     /**
      * Determine whether the user can remove team members.
      */
-    public function removeTeamMember(User $user, Team $team): bool
+    public function removeTeamMember(UserContract $user, Team $team): bool
     {
         return $user->ownsTeam($team);
     }
@@ -68,7 +69,7 @@ class TeamPolicy extends UserBasePolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Team $team): bool
+    public function delete(UserContract $user, Team $team): bool
     {
         return $user->ownsTeam($team);
     }

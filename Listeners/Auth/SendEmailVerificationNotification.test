@@ -23,7 +23,7 @@ class SendEmailVerificationNotification extends BaseListener
         }
 
         if (! method_exists($event->user, 'notify')) {
-            $userClass = $event->user::class;
+            $userClass = $event->\Modules\Xot\Datas\XotData::make()->getUserClass();
 
             throw new \Exception("Model [{$userClass}] does not have a [notify()] method.");
         }

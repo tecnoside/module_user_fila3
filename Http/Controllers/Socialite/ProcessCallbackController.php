@@ -8,23 +8,24 @@ declare(strict_types=1);
 
 namespace Modules\User\Http\Controllers\Socialite;
 
-use Illuminate\Http\RedirectResponse;
+use Modules\Xot\Datas\XotData;
 use Illuminate\Routing\Controller;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Request;
-use Modules\User\Actions\Socialite\IsProviderConfiguredAction;
-use Modules\User\Actions\Socialite\IsRegistrationEnabledAction;
-use Modules\User\Actions\Socialite\IsUserAllowedAction;
+use Modules\User\Events\UserNotAllowed;
+use Modules\User\Events\RegistrationNotEnabled;
+use Modules\User\Exceptions\ProviderNotConfigured;
 use Modules\User\Actions\Socialite\LoginUserAction;
+use Modules\User\Actions\Socialite\IsUserAllowedAction;
 use Modules\User\Actions\Socialite\RedirectToLoginAction;
 use Modules\User\Actions\Socialite\RegisterOauthUserAction;
-use Modules\User\Actions\Socialite\RegisterSocialiteUserAction;
 use Modules\User\Actions\Socialite\RetrieveOauthUserAction;
+use Modules\User\Actions\Socialite\IsProviderConfiguredAction;
+use Modules\User\Actions\Socialite\IsRegistrationEnabledAction;
+use Modules\User\Actions\Socialite\RegisterSocialiteUserAction;
 use Modules\User\Actions\Socialite\RetrieveSocialiteUserAction;
 use Modules\User\Actions\Socialite\SetDefaultRolesBySocialiteUserAction;
-use Modules\User\Events\RegistrationNotEnabled;
-use Modules\User\Events\UserNotAllowed;
-use Modules\User\Exceptions\ProviderNotConfigured;
-use Modules\User\Models\User;
+
 
 class ProcessCallbackController extends Controller
 {
@@ -73,10 +74,11 @@ class ProcessCallbackController extends Controller
             return app(RedirectToLoginAction::class)->execute('auth.registration-not-enabled');
         }
         */
-
+        $user_class=XotData::make()->getUserClass();
         // See if a user already exists, but not for this socialite provider
         // $user = app()->call($this->socialite->getUserResolver(), ['provider' => $provider, 'oauthUser' => $oauthUser, 'socialite' => $this->socialite]);
-        $user = User::query()->firstWhere(['email' => $oauthUser->getEmail()]);
+        /** @var \Modules\Xot\Contracts\UserContract */
+        $user = $user_class::query()->firstWhere(['email' => $oauthUser->getEmail()]);
 
         // Handle registration
         return $user

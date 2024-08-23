@@ -4,18 +4,19 @@ declare(strict_types=1);
 
 namespace Modules\User\Http\Livewire\Team;
 
-use Filament\Facades\Filament;
-use Filament\Notifications\Notification;
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Routing\Redirector;
-use Illuminate\View\View;
 use Livewire\Component;
-use Modules\User\Contracts\TeamContract;
-use Modules\User\Events\TeamSwitched;
-use Modules\User\Models\User;
-use Modules\Xot\Datas\XotData;
+use Illuminate\View\View;
 use Webmozart\Assert\Assert;
+use Filament\Facades\Filament;
+use Modules\Xot\Datas\XotData;
+use Illuminate\Routing\Redirector;
+use Illuminate\Http\RedirectResponse;
+use Modules\User\Events\TeamSwitched;
+use Modules\Xot\Contracts\UserContract;
+
+use Filament\Notifications\Notification;
+use Modules\User\Contracts\TeamContract;
+use Illuminate\Contracts\Foundation\Application;
 
 class Change extends Component
 {
@@ -25,7 +26,7 @@ class Change extends Component
 
     public XotData $xot;
 
-    public User $user;
+    public UserContract $user;
 
     public function mount(): void
     {

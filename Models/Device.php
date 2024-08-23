@@ -15,12 +15,10 @@ use Modules\User\Database\Factories\DeviceFactory;
  *
  * @property Collection<int, \Modules\User\Models\User> $users
  * @property int|null                                   $users_count
- *
  * @method static DeviceFactory  factory($count = null, $state = [])
  * @method static Builder|Device newModelQuery()
  * @method static Builder|Device newQuery()
  * @method static Builder|Device query()
- *
  * @property int         $id
  * @property string|null $mobile_id
  * @property array|null  $languages
@@ -38,7 +36,6 @@ use Modules\User\Database\Factories\DeviceFactory;
  * @property Carbon|null $updated_at
  * @property string|null $updated_by
  * @property string|null $created_by
- *
  * @method static Builder|Device whereBrowser($value)
  * @method static Builder|Device whereCreatedAt($value)
  * @method static Builder|Device whereCreatedBy($value)
@@ -56,11 +53,9 @@ use Modules\User\Database\Factories\DeviceFactory;
  * @method static Builder|Device whereUpdatedAt($value)
  * @method static Builder|Device whereUpdatedBy($value)
  * @method static Builder|Device whereVersion($value)
- *
  * @property DeviceUser                                  $pivot
  * @property \Modules\Xot\Contracts\ProfileContract|null $creator
  * @property \Modules\Xot\Contracts\ProfileContract|null $updater
- *
  * @mixin \Eloquent
  */
 class Device extends BaseModel
@@ -107,7 +102,7 @@ class Device extends BaseModel
         $pivot_fields = $pivot->getFillable();
 
         return $this
-            ->belongsToMany(User::class)
+            ->belongsToMany(\Modules\Xot\Datas\XotData::make()->getUserClass())
             ->using($pivot_class)
             ->withPivot($pivot_fields)
             ->withTimestamps();

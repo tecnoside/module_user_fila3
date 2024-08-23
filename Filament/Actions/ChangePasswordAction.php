@@ -7,12 +7,13 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Actions;
 
-use Filament\Forms\Components\TextInput;
-use Filament\Notifications\Notification;
 use Filament\Tables\Actions\Action;
 use Illuminate\Support\Facades\Hash;
+use Modules\Xot\Contracts\UserContract;
+use Filament\Forms\Components\TextInput;
+use Filament\Notifications\Notification;
 use Illuminate\Validation\Rules\Password;
-use Modules\User\Models\User;
+
 
 class ChangePasswordAction extends Action
 {
@@ -24,7 +25,7 @@ class ChangePasswordAction extends Action
             ->label('user::user.actions.change_password')
             ->icon('heroicon-o-key')
             ->action(
-                static function (User $user, array $data): void {
+                static function (UserContract $user, array $data): void {
                     $user->update(
                         [
                             'password' => Hash::make($data['new_password']),
@@ -57,7 +58,7 @@ class ChangePasswordAction extends Action
 
 /*
 Action::make('changePassword')
-                    ->action(function (User $user, array $data): void {
+                    ->action(function (UserContract $user, array $data): void {
                         $user->update([
                             'password' => Hash::make($data['new_password']),
                         ]);

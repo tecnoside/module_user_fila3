@@ -4,15 +4,16 @@ declare(strict_types=1);
 
 namespace Modules\User\Console\Commands;
 
-use Illuminate\Console\Command;
-
-use function Laravel\Prompts\multiselect;
-use function Laravel\Prompts\text;
+use Webmozart\Assert\Assert;
 
 use Modules\User\Models\Role;
-use Modules\User\Models\User;
+use Illuminate\Console\Command;
+
+use function Laravel\Prompts\text;
+
+use Modules\Xot\Contracts\UserContract;
+use function Laravel\Prompts\multiselect;
 use Symfony\Component\Console\Input\InputOption;
-use Webmozart\Assert\Assert;
 
 class AssignRoleCommand extends Command
 {
@@ -46,7 +47,9 @@ class AssignRoleCommand extends Command
     public function handle(): void
     {
         $email = text('email ?');
-        Assert::notNull($user = User::firstWhere(['email' => $email]), '['.__FILE__.']['.__LINE__.']');
+        $user_class=\Modules\Xot\Datas\XotData::make()->getUserClass();
+        /** @var UserContract */
+        $user = $user_class::firstWhere(['email' => $email]);
         /**
          * @var array<string, string>
          */

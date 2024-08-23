@@ -17,3 +17,5 @@ node_modules
 vendor
 .git-blame-ignore-revs
 build/
+vendor/
+build/

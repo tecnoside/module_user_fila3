@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Modules\User\Models\Policies;
 
-use Modules\User\Models\User;
 use Modules\User\Models\User as Post;
+use Modules\Xot\Contracts\UserContract;
 
 class PermissionPolicy extends UserBasePolicy
 {
     /**
      * Determine whether the user can view any models.
      */
-    public function viewAny(\Modules\Xot\Contracts\UserContract $user): bool
+    public function viewAny(UserContract $user): bool
     {
         return false;
     }
@@ -20,7 +20,7 @@ class PermissionPolicy extends UserBasePolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Post $post): bool
+    public function view(UserContract $user, Post $post): bool
     {
         return true;
     }
@@ -28,7 +28,7 @@ class PermissionPolicy extends UserBasePolicy
     /**
      * Determine whether the user can create models.
      */
-    public function create(User $user): bool
+    public function create(UserContract $user): bool
     {
         return true;
     }
@@ -36,7 +36,7 @@ class PermissionPolicy extends UserBasePolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Post $post): bool
+    public function update(UserContract $user, Post $post): bool
     {
         return true;
     }
@@ -44,7 +44,7 @@ class PermissionPolicy extends UserBasePolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Post $post): bool
+    public function delete(UserContract $user, Post $post): bool
     {
         // return $user->ownsTeam($team);
         return true;

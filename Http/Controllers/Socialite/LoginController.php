@@ -32,7 +32,6 @@ use Modules\User\Events\SocialiteUserConnected;
 use Modules\User\Events\UserNotAllowed;
 use Modules\User\Exceptions\ProviderNotConfigured;
 use Modules\User\Models\SocialiteUser;
-use Modules\User\Models\User;
 use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Datas\XotData;
 use Webmozart\Assert\Assert;
@@ -127,7 +126,9 @@ class LoginController extends Controller
 
         // See if a user already exists, but not for this socialite provider
         // $user = app()->call($this->socialite->getUserResolver(), ['provider' => $provider, 'oauthUser' => $oauthUser, 'socialite' => $this->socialite]);
-        $user = User::firstWhere(['email' => $oauthUser->getEmail()]);
+        $user_class = XotData::make()->getUserClass();
+        /** @var UserContract */
+        $user = $user_class::firstWhere(['email' => $oauthUser->getEmail()]);
 
         // Handle registration
         return $user

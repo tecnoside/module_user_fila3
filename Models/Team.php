@@ -25,7 +25,7 @@ use Modules\Xot\Models\Traits\HasExtraTrait;
  * @property \Illuminate\Support\Carbon|null                                                    $updated_at
  * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\User>           $members
  * @property int|null                                                                           $members_count
- * @property User|null                                                                          $owner
+ * @property UserContract|null                                                                  $owner
  * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\TeamInvitation> $teamInvitations
  * @property int|null                                                                           $team_invitations_count
  * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\User>           $users

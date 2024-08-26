@@ -22,7 +22,6 @@ namespace Modules\User\Http\Controllers\Api;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Modules\User\Models\User;
 use Modules\Xot\Http\Controllers\XotBaseController;
 
 class RegisterController extends XotBaseController
@@ -48,7 +47,9 @@ class RegisterController extends XotBaseController
 
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
-        $user = User::create($input);
+        $user_class = \Modules\Xot\Datas\XotData::make()->getUserClass();
+        /** @var \Modules\Xot\Contracts\UserContract */
+        $user = $user_class::create($input);
         $success['token'] = $user->createToken('MyApp')->accessToken;
         $success['name'] = $user->name;
 

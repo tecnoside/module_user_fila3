@@ -14,7 +14,7 @@ use Modules\User\Contracts\TeamContract;
 use Modules\User\Models\Membership;
 use Modules\User\Models\Role;
 use Modules\User\Models\Team;
-use Modules\User\Models\User;
+use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Datas\XotData;
 use Webmozart\Assert\Assert;
 
@@ -231,9 +231,9 @@ trait HasTeams
         }
 
         Assert::notNull($user = $teamContract->users()->where('id', $this->id)->first(), '['.__LINE__.']['.__FILE__.']');
-        Assert::isInstanceOf($user, User::class, '['.__LINE__.']['.__FILE__.']');
+        Assert::isInstanceOf($user, XotData::make()->getUserClass(), '['.__LINE__.']['.__FILE__.']');
         /**
-         * @var User $user
+         * @var UserContract $user
          */
         // Access to an undefined property Modules\User\Models\User::$membership.
         // return $teamContract->users()

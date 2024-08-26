@@ -107,7 +107,7 @@ class Device extends BaseModel
         $pivot_fields = $pivot->getFillable();
 
         return $this
-            ->belongsToMany(User::class)
+            ->belongsToMany(\Modules\Xot\Datas\XotData::make()->getUserClass())
             ->using($pivot_class)
             ->withPivot($pivot_fields)
             ->withTimestamps();

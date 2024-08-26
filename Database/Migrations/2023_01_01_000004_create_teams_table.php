@@ -9,8 +9,7 @@ declare(strict_types=1);
 use Illuminate\Database\Schema\Blueprint;
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
-class CreateTeamsTable extends XotBaseMigration
-{
+return new class extends XotBaseMigration {
     /**
      * Run the migrations.
      */
@@ -22,7 +21,7 @@ class CreateTeamsTable extends XotBaseMigration
                 // $table->drop('team_invitations');
                 $table->uuid('id')->primary();
                 $table->foreignId('user_id')->index();
-                // $table->foreignIdFor(User::class);
+                // $table->foreignIdFor(\Modules\Xot\Datas\XotData::make()->getUserClass());
                 $table->string('name');
                 $table->boolean('personal_team');
                 // $table->timestamps();
@@ -45,4 +44,4 @@ class CreateTeamsTable extends XotBaseMigration
             }
         );
     }
-}
+};

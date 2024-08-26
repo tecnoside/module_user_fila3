@@ -13,7 +13,6 @@ use Filament\Tables\Actions\Action;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
-use Modules\User\Models\User;
 use Modules\Xot\Contracts\ProfileContract;
 use Modules\Xot\Datas\XotData;
 
@@ -37,6 +36,7 @@ class ChangeProfilePasswordAction extends Action
                     $profile_data = Arr::except($record->toArray(), ['id']);
                     if (null == $user) {
                         $user_class = XotData::make()->getUserClass();
+                        /** @var \Modules\Xot\Contracts\UserContract */
                         $user = $user_class::firstWhere(['email' => $record->email]);
                     }
 
@@ -78,7 +78,7 @@ class ChangeProfilePasswordAction extends Action
 
 /*
 Action::make('changePassword')
-                    ->action(function (User $user, array $data): void {
+                    ->action(function (UserContract $user, array $data): void {
                         $user->update([
                             'password' => Hash::make($data['new_password']),
                         ]);

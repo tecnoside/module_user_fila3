@@ -11,10 +11,8 @@ use function Laravel\Prompts\multiselect;
 use function Laravel\Prompts\text;
 
 use Modules\User\Models\Role;
-use Modules\User\Models\User;
 use Nwidart\Modules\Facades\Module;
 use Symfony\Component\Console\Input\InputOption;
-use Webmozart\Assert\Assert;
 
 class AssignModuleCommand extends Command
 {
@@ -48,7 +46,9 @@ class AssignModuleCommand extends Command
     public function handle(): void
     {
         $email = text('email ?');
-        Assert::notNull($user = User::firstWhere(['email' => $email]), '['.__FILE__.']['.__LINE__.']');
+        $user_class = \Modules\Xot\Datas\XotData::make()->getUserClass();
+        /** @var \Modules\Xot\Contracts\UserContract */
+        $user = $user_class::firstWhere(['email' => $email]);
         /*
         $modules = collect(Module::all())->map(function ($module) {
             return $module->getName();

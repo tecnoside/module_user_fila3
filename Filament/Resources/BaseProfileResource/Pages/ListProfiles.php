@@ -85,11 +85,13 @@ class ListProfiles extends ListRecords
                             $user = $record->user;
                             $user_class = XotData::make()->getUserClass();
                             if (null == $user) {
+                                /** @var \Modules\Xot\Contracts\UserContract */
                                 $user = $user_class::firstWhere(['email' => $record->email]);
                             }
                             if (null == $user) {
                                 $data = $record->toArray();
                                 $user_data = Arr::except($data, ['id']);
+                                /** @var \Modules\Xot\Contracts\UserContract */
                                 $user = $user_class::create($user_data);
                             }
                             $record->update(['user_id' => $user->id]);
@@ -134,11 +136,13 @@ class ListProfiles extends ListRecords
                         $user = $record->user;
                         $user_class = XotData::make()->getUserClass();
                         if (null == $user) {
+                            /** @var \Modules\Xot\Contracts\UserContract */
                             $user = $user_class::firstWhere(['email' => $record->email]);
                         }
                         if (null == $user) {
                             $data = $record->toArray();
                             $user_data = Arr::except($data, ['id']);
+                            /** @var \Modules\Xot\Contracts\UserContract */
                             $user = $user_class::create($user_data);
                         }
                         $record->update(['user_id' => $user->id]);

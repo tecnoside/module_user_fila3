@@ -9,7 +9,6 @@ use Illuminate\Console\Command;
 use function Laravel\Prompts\multiselect;
 use function Laravel\Prompts\text;
 
-use Modules\User\Models\User;
 use Modules\Xot\Datas\XotData;
 use Symfony\Component\Console\Input\InputOption;
 use Webmozart\Assert\Assert;
@@ -45,9 +44,12 @@ class AssignTeamCommand extends Command
      */
     public function handle(): void
     {
-        $email = text('email ?');
-        Assert::notNull($user = User::firstWhere(['email' => $email]), '['.__FILE__.']['.__LINE__.']');
         $xot = XotData::make();
+        $email = text('email ?');
+        $user_class = $xot->getUserClass();
+        /** @var \Modules\Xot\Contracts\UserContract */
+        $user = $user_class::firstWhere(['email' => $email]);
+
         $teamClass = $xot->getTeamClass();
 
         /** @var array<int|string, string>|\Illuminate\Support\Collection<int|string, string> */

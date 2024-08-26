@@ -13,13 +13,13 @@ use Illuminate\Validation\Rules\Password;
 use Modules\User\Filament\Resources\UserResource\Pages;
 use Modules\User\Filament\Resources\UserResource\RelationManagers;
 use Modules\User\Models\Role;
-use Modules\User\Models\User;
+
 
 
 class UserResource extends Resource {
     ////
 
-    protected static ?string $model = User::class;
+    protected static ?string $model = \Modules\Xot\Datas\XotData::make()->getUserClass();
 
     protected static ?string $navigationIcon = 'heroicon-o-users';
 

@@ -4,11 +4,9 @@ declare(strict_types=1);
 
 use Illuminate\Database\Schema\Blueprint;
 use Modules\User\Models\Device;
-use Modules\User\Models\User;
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
-class CreateDeviceUserTable extends XotBaseMigration
-{
+return new class extends XotBaseMigration {
     /**
      * Run the migrations.
      */
@@ -19,7 +17,7 @@ class CreateDeviceUserTable extends XotBaseMigration
             static function (Blueprint $table): void {
                 $table->id('id');
                 $table->foreignIdFor(Device::class, 'device_id')->index();
-                $table->foreignIdFor(User::class, 'user_id')->index();
+                $table->foreignIdFor(Modules\Xot\Datas\XotData::make()->getUserClass(), 'user_id')->index();
                 $table->dateTime('login_at')->nullable();
                 $table->dateTime('logout_at')->nullable();
             }
@@ -39,4 +37,4 @@ class CreateDeviceUserTable extends XotBaseMigration
             }
         );
     }
-}
+};

@@ -6,7 +6,7 @@ namespace Modules\User\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Carbon;
-use Modules\User\Models\User;
+use Modules\Xot\Datas\XotData;
 use Webmozart\Assert\Assert;
 
 class FetchUserApiTokenCommand extends Command
@@ -39,7 +39,9 @@ class FetchUserApiTokenCommand extends Command
             $userEmail = trim($userEmail);
         }
 
-        $user = User::firstWhere('email', $userEmail);
+        $user_class = XotData::make()->getUserClass();
+        /** @var \Modules\Xot\Contracts\UserContract */
+        $user = $user_class::firstWhere('email', $userEmail);
 
         if (null === $user) {
             $this->error('User not found!');

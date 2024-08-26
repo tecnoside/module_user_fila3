@@ -13,7 +13,7 @@ use Illuminate\View\View;
 use Livewire\Component;
 use Modules\User\Contracts\TeamContract;
 use Modules\User\Events\TeamSwitched;
-use Modules\User\Models\User;
+use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Datas\XotData;
 use Webmozart\Assert\Assert;
 
@@ -25,7 +25,7 @@ class Change extends Component
 
     public XotData $xot;
 
-    public User $user;
+    public UserContract $user;
 
     public function mount(): void
     {

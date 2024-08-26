@@ -37,6 +37,6 @@ class Tenant extends BaseModel implements TenantContract
 
     public function members(): BelongsToMany
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(\Modules\Xot\Datas\XotData::make()->getUserClass());
     }
 }

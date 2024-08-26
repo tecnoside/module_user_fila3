@@ -279,8 +279,10 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
     // ---------------------
     /**
      * Get the entity's notifications.
+     *
+     * @return MorphMany<Notification>
      */
-    public function notifications(): MorphMany
+    public function notifications()
     {
         // return $this->morphMany(DatabaseNotification::class, 'notifiable')->latest();
         return $this->morphMany(Notification::class, 'notifiable')->latest();

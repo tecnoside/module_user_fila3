@@ -5,8 +5,7 @@ declare(strict_types=1);
 use Illuminate\Database\Schema\Blueprint;
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
-class CreateTenantUserTable extends XotBaseMigration
-{
+return new class extends XotBaseMigration {
     /**
      * Run the migrations.
      */
@@ -19,7 +18,7 @@ class CreateTenantUserTable extends XotBaseMigration
                 $table->id();
                 $table->foreignId('tenant_id');
                 $table->uuid('user_id')->nullable()->index();
-                // $table->foreignIdFor(User::class);
+                // $table->foreignIdFor(\Modules\Xot\Datas\XotData::make()->getUserClass());
                 // $table->string('role')->nullable();
                 // $table->timestamps();
                 // $table->unique(['team_id', 'user_id']);
@@ -42,4 +41,4 @@ class CreateTenantUserTable extends XotBaseMigration
             }
         );
     }
-}
+};

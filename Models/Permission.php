@@ -21,7 +21,7 @@ use Spatie\Permission\Models\Permission as SpatiePermission;
  * @property int|null                                   $permissions_count
  * @property Collection<int, Role>                      $roles
  * @property int|null                                   $roles_count
- * @property Collection<int, \Modules\User\Models\User> $users
+ * @property Collection<int, \Modules\Xot\Contracts\UserContract> $users
  * @property int|null                                   $users_count
  *
  * @method static Builder|Permission                               newModelQuery()

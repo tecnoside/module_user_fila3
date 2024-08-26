@@ -14,7 +14,7 @@ use Modules\User\Database\Factories\DeviceFactory;
  * Modules\User\Models\Device.
  *
  * @property Collection<int, \Modules\Xot\Contracts\UserContract> $users
- * @property int|null                                   $users_count
+ * @property int|null                                             $users_count
  *
  * @method static DeviceFactory  factory($count = null, $state = [])
  * @method static Builder|Device newModelQuery()

@@ -29,7 +29,7 @@ use Spatie\Permission\Models\Role as SpatieRole;
  * @property Collection<int, \Modules\User\Models\Permission> $permissions
  * @property int|null                                         $permissions_count
  * @property Team|null                                        $team
- * @property Collection<int, \Modules\User\Models\User>       $users
+ * @property Collection<int, \Modules\Xot\Contracts\UserContract>       $users
  * @property int|null                                         $users_count
  *
  * @method static Builder|Role newModelQuery()

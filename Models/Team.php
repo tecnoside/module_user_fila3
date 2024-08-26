@@ -23,12 +23,12 @@ use Modules\Xot\Models\Traits\HasExtraTrait;
  * @property int                                                                                $personal_team
  * @property \Illuminate\Support\Carbon|null                                                    $created_at
  * @property \Illuminate\Support\Carbon|null                                                    $updated_at
- * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\User>           $members
+ * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\Xot\Contracts\UserContract>           $members
  * @property int|null                                                                           $members_count
  * @property UserContract|null                                                                  $owner
  * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\TeamInvitation> $teamInvitations
  * @property int|null                                                                           $team_invitations_count
- * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\User>           $users
+ * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\Xot\Contracts\UserContract>           $users
  * @property int|null                                                                           $users_count
  *
  * @method static \Modules\User\Database\Factories\TeamFactory factory($count = null, $state = [])

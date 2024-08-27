@@ -116,7 +116,6 @@ use Spatie\Permission\Traits\HasRoles;
  * @property string|null $facebook_id
  *
  * @method static Builder|User whereFacebookId($value)
- *
  * @property TenantUser $pivot
  * @property Membership $membership
  *

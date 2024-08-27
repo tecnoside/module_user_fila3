@@ -63,14 +63,14 @@ class Team extends BaseModel implements TeamContract
     // Se ho bisogno di extra in customer aggiungo extra in customer
     // use HasExtraTrait;
 
-    /** @var array<int, string> */
+    /** @var list<string> */
     protected $fillable = [
         'user_id',
         'name',
         'personal_team',
     ];
 
-    /** @var array<int, string> */
+     /** @var list<string> */
     protected $with = [
         // 'extra',
     ];

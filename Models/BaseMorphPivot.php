@@ -45,13 +45,13 @@ abstract class BaseMorphPivot extends MorphPivot
     /** @var string */
     protected $connection = 'user';
 
-    /** @var array<int, string> */
+     /** @var list<string> */
     protected $appends = [];
 
     /** @var string */
     protected $primaryKey = 'id';
 
-    /** @var array<int, string> */
+    /** @var list<string> */
     protected $fillable = [
         'id',
         'post_id', 'post_type',

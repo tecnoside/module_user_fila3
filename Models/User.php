@@ -151,7 +151,7 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
 
     protected $keyType = 'string';
 
-    /** @var array<int, string> */
+    /** @var list<string> */
     protected $fillable = [
         'id',
         'name',
@@ -165,11 +165,7 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
         // 'facebook_id',// su userproviders
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
+     /** @var list<string> */
     protected $hidden = [
         'password',
         'remember_token',
@@ -198,12 +194,12 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
         ];
     }
 
-    /** @var array<int, string> */
+     /** @var list<string> */
     protected $with = [
         'roles',
     ];
 
-    /** @var array<int, string> */
+     /** @var list<string> */
     protected $appends = [
         // 'profile_photo_url',
     ];

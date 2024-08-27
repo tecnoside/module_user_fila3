@@ -142,6 +142,8 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
     use Notifiable;
     use Traits\HasTenants;
 
+    use Traits\HasAuthenticationLogTrait;
+
     public $incrementing = false;
 
     /** @var string */

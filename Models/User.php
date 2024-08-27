@@ -165,7 +165,7 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
         // 'facebook_id',// su userproviders
     ];
 
-     /** @var list<string> */
+    /** @var list<string> */
     protected $hidden = [
         'password',
         'remember_token',
@@ -194,12 +194,12 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
         ];
     }
 
-     /** @var list<string> */
+    /** @var list<string> */
     protected $with = [
         'roles',
     ];
 
-     /** @var list<string> */
+    /** @var list<string> */
     protected $appends = [
         // 'profile_photo_url',
     ];

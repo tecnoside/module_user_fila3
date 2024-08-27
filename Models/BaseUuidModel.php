@@ -63,7 +63,7 @@ abstract class BaseUuidModel extends Model
         ];
     }
 
-     /** @var list<string> */
+    /** @var list<string> */
     protected $appends = [];
 
     /** @var string */

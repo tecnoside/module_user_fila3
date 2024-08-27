@@ -70,7 +70,7 @@ class Team extends BaseModel implements TeamContract
         'personal_team',
     ];
 
-     /** @var list<string> */
+    /** @var list<string> */
     protected $with = [
         // 'extra',
     ];

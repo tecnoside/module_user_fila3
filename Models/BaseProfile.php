@@ -80,12 +80,12 @@ abstract class BaseProfile extends BaseModel implements ProfileContract
         'is_active',
     ];
 
-     /** @var list<string> */
+    /** @var list<string> */
     protected $appends = [
         'full_name',
     ];
 
-     /** @var list<string> */
+    /** @var list<string> */
     protected $with = [
         'user',
     ];

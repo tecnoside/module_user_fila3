@@ -67,4 +67,20 @@ trait HasAuthenticationLogTrait
     {
         return $this->authentications()->skip(1)->first()?->ip_address;
     }
+
+    public function consecutiveDaysLogin(): int
+    {
+        return once(function () {
+            $date = Carbon::now();
+            $days = 0;
+            $c = $this->authentications()->whereDate('login_at', $date)->count();
+            while ($c > 0) {
+                $date = $date->subDay();
+                $c = $this->authentications()->whereDate('login_at', $date)->count();
+                ++$days;
+            }
+
+            return $days;
+        });
+    }
 }

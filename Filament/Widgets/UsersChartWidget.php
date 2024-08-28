@@ -55,11 +55,11 @@ class UsersChartWidget extends ChartWidget implements HasForms
     protected function getData(): array
     {
         $this->mountAction('test', ['id' => 5]);
-        $this->testAction(6);
+        $this->testAction();
 
         $startDate = $this->filters['startDate'] ?? null;
         $endDate = $this->filters['endDate'] ?? null;
-        if (null == $startDate || null == $endDate) {
+        if (! is_string($startDate) || ! is_string($endDate)) {
             return [];
         }
         $format = 'Y-m-d H:i:s';
@@ -72,9 +72,9 @@ class UsersChartWidget extends ChartWidget implements HasForms
         // $endDate = Carbon::parse($endDate);
         $endDate = Carbon::createFromFormat($format, $endDate);
 
-        $days = $startDate->diffInDays($endDate);
+        $days = $startDate?->diffInDays($endDate) ?? 0;
         if ($days > 365) {
-            $startDate = $endDate->copy()->subDays(365);
+            $startDate = $endDate?->copy()->subDays(365) ?? now();
             // Cannot mutate reactive prop [filters] in component:
             // $this->filters['startDate'] = $endDate->format($format);
         }

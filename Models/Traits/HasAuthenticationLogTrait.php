@@ -14,6 +14,9 @@ use Modules\User\Models\AuthenticationLog;
 
 trait HasAuthenticationLogTrait
 {
+    /**
+     * @return MorphMany<AuthenticationLog>
+     */
     public function authentications(): MorphMany
     {
         return $this->morphMany(AuthenticationLog::class, 'authenticatable')->latest('login_at');

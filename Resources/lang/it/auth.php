@@ -19,4 +19,6 @@ return [
     'Remember' => 'Ricordami',
     'Forgot your password?' => 'Password dimenticata?',
     'Sign in' => 'Accedi',
+    'login-in' => 'Accedi',
+    'sign-up' => 'Registrati',
 ];

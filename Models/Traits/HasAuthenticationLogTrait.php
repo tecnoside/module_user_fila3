@@ -22,11 +22,17 @@ trait HasAuthenticationLogTrait
         return $this->morphMany(AuthenticationLog::class, 'authenticatable')->latest('login_at');
     }
 
+    /**
+     * @return MorphOne<AuthenticationLog>
+     */
     public function latestAuthentication(): MorphOne
     {
         return $this->morphOne(AuthenticationLog::class, 'authenticatable')->latestOfMany('login_at');
     }
 
+    /**
+     * @return list<string>
+     */
     public function notifyAuthenticationLogVia(): array
     {
         return ['mail'];

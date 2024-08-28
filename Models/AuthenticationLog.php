@@ -23,7 +23,7 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
  */
 class AuthenticationLog extends BaseModel
 {
-    public $timestamps = false;
+    // public $timestamps = false;
 
     // protected $table = 'authentication_log';
 

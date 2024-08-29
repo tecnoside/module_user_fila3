@@ -23,7 +23,6 @@ use Spatie\Permission\Models\Permission as SpatiePermission;
  * @property int|null                                             $roles_count
  * @property Collection<int, \Modules\Xot\Contracts\UserContract> $users
  * @property int|null                                             $users_count
- *
  * @method static Builder|Permission                               newModelQuery()
  * @method static Builder|Permission                               newQuery()
  * @method static Builder|Permission                               permission($permissions)
@@ -36,13 +35,10 @@ use Spatie\Permission\Models\Permission as SpatiePermission;
  * @method static Builder|Permission                               whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Permission withoutPermission($permissions)
  * @method static \Illuminate\Database\Eloquent\Builder|Permission withoutRole($roles, $guard = null)
- *
  * @property string|null $updated_by
  * @property string|null $created_by
- *
  * @method static Builder|Permission whereCreatedBy($value)
  * @method static Builder|Permission whereUpdatedBy($value)
- *
  * @mixin \Eloquent
  */
 class Permission extends SpatiePermission

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Logs out the current user and redirects to the home page.
+ *
+ * @return \Illuminate\Http\RedirectResponse
+ */
 declare(strict_types=1);
 
 namespace Modules\User\Http\Controllers\Auth;

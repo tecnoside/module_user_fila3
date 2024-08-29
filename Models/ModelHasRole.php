@@ -39,11 +39,14 @@ use Modules\User\Database\Factories\ModelHasRoleFactory;
  *
  * @method static Builder|ModelHasRole whereUuid($value)
  *
+ * @property \Modules\Xot\Contracts\ProfileContract|null $creator
+ * @property \Modules\Xot\Contracts\ProfileContract|null $updater
+ *
  * @mixin \Eloquent
  */
 class ModelHasRole extends BaseMorphPivot
 {
-    /** @var array<int, string> */
+    /** @var list<string> */
     protected $fillable = ['id', 'role_id', 'model_type', 'model_id', 'team_id'];
 
     /** @return array<string, string> */

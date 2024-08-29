@@ -33,6 +33,9 @@ use Modules\User\Database\Factories\PasswordResetFactory;
  * @method static Builder|PasswordReset whereUpdatedBy($value)
  * @method static Builder|PasswordReset whereUserId($value)
  *
+ * @property \Modules\Xot\Contracts\ProfileContract|null $creator
+ * @property \Modules\Xot\Contracts\ProfileContract|null $updater
+ *
  * @mixin \Eloquent
  */
 class PasswordReset extends BaseModel

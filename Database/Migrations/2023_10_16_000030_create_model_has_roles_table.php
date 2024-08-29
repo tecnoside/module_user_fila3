@@ -6,11 +6,10 @@ use Illuminate\Database\Schema\Blueprint;
 // ---- models ---
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
-/**
+/*
  * Class CreateModelHasRolesTable.
  */
-class CreateModelHasRolesTable extends XotBaseMigration
-{
+return new class extends XotBaseMigration {
     /**
      * Run the migrations.
      */
@@ -37,4 +36,4 @@ class CreateModelHasRolesTable extends XotBaseMigration
             }
         );
     }
-}
+};

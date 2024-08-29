@@ -6,7 +6,6 @@ namespace Modules\User\Filament\Resources;
 
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
@@ -17,10 +16,10 @@ use Modules\User\Filament\Resources\TeamResource\Pages\ListTeams;
 use Modules\User\Filament\Resources\TeamResource\Pages\ViewTeam;
 use Modules\User\Filament\Resources\TeamResource\RelationManagers\UsersRelationManager;
 use Modules\Xot\Datas\XotData;
+use Modules\Xot\Filament\Resources\XotBaseResource;
 
-class TeamResource extends Resource
+class TeamResource extends XotBaseResource
 {
-    // ////
     protected static ?string $navigationIcon = 'heroicon-o-users';
 
     protected static ?string $navigationLabel = 'Teams';
@@ -31,8 +30,6 @@ class TeamResource extends Resource
 
     public static function getModel(): string
     {
-        // return FilamentJet::teamModel();
-        // return Team::class;
         $xot = XotData::make();
 
         return $xot->getTeamClass();

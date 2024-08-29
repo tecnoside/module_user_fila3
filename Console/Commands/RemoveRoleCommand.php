@@ -9,9 +9,7 @@ use Illuminate\Console\Command;
 use function Laravel\Prompts\multiselect;
 use function Laravel\Prompts\text;
 
-use Modules\User\Models\User;
 use Symfony\Component\Console\Input\InputOption;
-use Webmozart\Assert\Assert;
 
 class RemoveRoleCommand extends Command
 {
@@ -45,7 +43,9 @@ class RemoveRoleCommand extends Command
     public function handle(): void
     {
         $email = text('email ?');
-        Assert::notNull($user = User::firstWhere(['email' => $email]), '['.__LINE__.']['.__FILE__.']');
+        $user_class = \Modules\Xot\Datas\XotData::make()->getUserClass();
+        /** @var \Modules\Xot\Contracts\UserContract */
+        $user = $user_class::firstWhere(['email' => $email]);
         /**
          * @var array<string, string>
          */

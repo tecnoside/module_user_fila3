@@ -46,6 +46,9 @@ use Modules\Xot\Datas\XotData;
  * @method static Builder|TeamInvitation whereUpdatedBy($value)
  * @method static Builder|TeamInvitation whereUuid($value)
  *
+ * @property \Modules\Xot\Contracts\ProfileContract|null $creator
+ * @property \Modules\Xot\Contracts\ProfileContract|null $updater
+ *
  * @mixin \Eloquent
  */
 class TeamInvitation extends BaseModel
@@ -53,7 +56,7 @@ class TeamInvitation extends BaseModel
     /** @var string */
     protected $connection = 'user';
 
-    /** @var array<int, string> */
+    /** @var list<string> */
     protected $fillable = [
         'email',
         'role',
@@ -67,7 +70,9 @@ class TeamInvitation extends BaseModel
     public function team(): BelongsTo
     {
         $xotData = XotData::make();
+        /** @var class-string<\Illuminate\Database\Eloquent\Model> */
+        $team_class = $xotData->getTeamClass();
 
-        return $this->belongsTo($xotData->getTeamClass());
+        return $this->belongsTo($team_class);
     }
 }

@@ -12,7 +12,6 @@ use Illuminate\Support\Collection;
 use Modules\User\Models\Device;
 use Modules\User\Models\DeviceUser;
 use Modules\User\Models\Role;
-use Modules\User\Models\User;
 use Modules\Xot\Datas\XotData;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Permission\Exceptions\RoleDoesNotExist;

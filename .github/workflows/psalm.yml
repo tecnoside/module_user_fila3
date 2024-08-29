@@ -7,7 +7,7 @@ jobs:
         name: PHP Insights checks
         steps:
             - uses: actions/checkout@v2
-            - uses: shivammathur/setup-php@v2
+            - uses: shivammathur/setup-php@latest
               with:
                   php-version: 8.1
             - run: composer install --prefer-dist --no-progress
@@ -15,6 +15,6 @@ jobs:
             - run: ./vendor/bin/psalm --init
             - run: ./vendor/bin/psalm-plugin enable psalm/plugin-laravel
             - run: ./vendor/bin/psalm --alter --issues=all  --dry-run
-            - uses: stefanzweifel/git-auto-commit-action@v4
+            - uses: stefanzweifel/git-auto-commit-action@latest
               with:
                 commit_message: psalm

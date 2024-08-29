@@ -9,6 +9,7 @@ use Filament\Resources\Pages\ListRecords;
 use Filament\Tables;
 use Filament\Tables\Actions\BulkAction;
 use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\Layout\Stack;
 use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TernaryFilter;
@@ -17,6 +18,8 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
+use Modules\UI\Enums\TableLayoutEnum;
+use Modules\UI\Filament\Actions\Table\TableLayoutToggleTableAction;
 use Modules\User\Filament\Actions\Profile\ChangeProfilePasswordAction;
 use Modules\User\Filament\Resources\BaseProfileResource;
 use Modules\Xot\Datas\XotData;
@@ -28,6 +31,15 @@ class ListProfiles extends ListRecords
     use NavigationLabelTrait;
 
     protected static string $resource = BaseProfileResource::class;
+
+    public TableLayoutEnum $layoutView = TableLayoutEnum::GRID;
+
+    protected function getTableHeaderActions(): array
+    {
+        return [
+            TableLayoutToggleTableAction::make(),
+        ];
+    }
 
     public function getModelLabel(): string
     {
@@ -56,7 +68,59 @@ class ListProfiles extends ListRecords
         ];
     }
 
-    protected function getTableColumns(): array
+    public function getGridTableColumns(): array
+    {
+        return [
+            Stack::make([
+                'type' => TextColumn::make('type')
+                    ->label(static::trans('fields.type'))
+                    ->sortable(),
+
+                'user_name' => TextColumn::make('user.name')
+                    ->label(static::trans('fields.user_name'))
+                    ->sortable()
+                    ->searchable()
+                    ->default(
+                        function ($record) {
+                            $user = $record->user;
+                            $user_class = XotData::make()->getUserClass();
+                            if (null == $user) {
+                                /** @var \Modules\Xot\Contracts\UserContract */
+                                $user = $user_class::firstWhere(['email' => $record->email]);
+                            }
+                            if (null == $user) {
+                                $data = $record->toArray();
+                                $user_data = Arr::except($data, ['id']);
+                                /** @var \Modules\Xot\Contracts\UserContract */
+                                $user = $user_class::create($user_data);
+                            }
+                            $record->update(['user_id' => $user->id]);
+
+                            return $user->name;
+                        }
+                    ),
+                'first_name' => TextColumn::make('first_name')
+                    ->label(static::trans('fields.first_name'))
+                    ->sortable()
+                    ->searchable(),
+                'last_name' => TextColumn::make('last_name')
+                    ->label(static::trans('fields.last_name'))
+                    ->sortable()
+                    ->searchable(),
+                'email' => TextColumn::make('email')
+                    ->label(static::trans('fields.email'))
+                    ->sortable()
+                    ->searchable(),
+                'is_active' => IconColumn::make('is_active')
+                    ->label(static::trans('fields.is_active'))
+                    ->boolean(),
+                'photo' => SpatieMediaLibraryImageColumn::make('photo')
+                    ->collection('profile'),
+            ]),
+        ];
+    }
+
+    public function getListTableColumns(): array
     {
         return [
             'type' => TextColumn::make('type')
@@ -72,11 +136,13 @@ class ListProfiles extends ListRecords
                         $user = $record->user;
                         $user_class = XotData::make()->getUserClass();
                         if (null == $user) {
+                            /** @var \Modules\Xot\Contracts\UserContract */
                             $user = $user_class::firstWhere(['email' => $record->email]);
                         }
                         if (null == $user) {
                             $data = $record->toArray();
                             $user_data = Arr::except($data, ['id']);
+                            /** @var \Modules\Xot\Contracts\UserContract */
                             $user = $user_class::create($user_data);
                         }
                         $record->update(['user_id' => $user->id]);
@@ -182,7 +248,12 @@ class ListProfiles extends ListRecords
             ->actions($this->getTableActions())
             // ->actionsColumnLabel($this->getTableActionsColumnLabel())
             // ->checkIfRecordIsSelectableUsing($this->isTableRecordSelectable())
-            ->columns($this->getTableColumns())
+
+            // ->columns($this->getTableColumns())
+            ->columns($this->layoutView->getTableColumns())
+            ->contentGrid($this->layoutView->getTableContentGrid())
+            ->headerActions($this->getTableHeaderActions())
+
             // ->columnToggleFormColumns($this->getTableColumnToggleFormColumns())
             // ->columnToggleFormMaxHeight($this->getTableColumnToggleFormMaxHeight())
             // ->columnToggleFormWidth($this->getTableColumnToggleFormWidth())

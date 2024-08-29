@@ -7,8 +7,7 @@ use Modules\User\Models\OauthClient;
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 use Modules\Xot\Datas\XotData;
 
-class CreateOauthAccessTokensTable extends XotBaseMigration
-{
+return new class extends XotBaseMigration {
     public function up(): void
     {
         $xot = XotData::make();
@@ -33,4 +32,4 @@ class CreateOauthAccessTokensTable extends XotBaseMigration
             }
         );
     }
-}
+};

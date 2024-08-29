@@ -35,6 +35,9 @@ use Modules\User\Database\Factories\ModelHasPermissionFactory;
  * @method static Builder|ModelHasPermission whereUpdatedAt($value)
  * @method static Builder|ModelHasPermission whereUpdatedBy($value)
  *
+ * @property \Modules\Xot\Contracts\ProfileContract|null $creator
+ * @property \Modules\Xot\Contracts\ProfileContract|null $updater
+ *
  * @mixin \Eloquent
  */
 class ModelHasPermission extends BaseMorphPivot

@@ -37,7 +37,7 @@ use Spatie\SchemalessAttributes\SchemalessAttributesTrait;
  * @property int|null                                                                                                      $permissions_count
  * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\Role>                                      $roles
  * @property int|null                                                                                                      $roles_count
- * @property User|null                                                                                                     $user
+ * @property \Modules\Xot\Contracts\UserContract|null                                                                      $user
  * @property string|null                                                                                                   $user_name
  *
  * @method static \Modules\Xot\Database\Factories\ProfileFactory factory($count = null, $state = [])
@@ -67,7 +67,7 @@ abstract class BaseProfile extends BaseModel implements ProfileContract
      */
     // private string $guard_name = 'web';
 
-    /** @var array<int, string> */
+    /** @var list<string> */
     protected $fillable = [
         'id',
         'user_id',
@@ -80,12 +80,12 @@ abstract class BaseProfile extends BaseModel implements ProfileContract
         'is_active',
     ];
 
-    /** @var array<int, string> */
+    /** @var list<string> */
     protected $appends = [
         'full_name',
     ];
 
-    /** @var array<int, string> */
+    /** @var list<string> */
     protected $with = [
         'user',
     ];
@@ -115,5 +115,34 @@ abstract class BaseProfile extends BaseModel implements ProfileContract
     public function scopeWithExtraAttributes(): Builder
     {
         return $this->extra->modelScope();
+    }
+
+    public function getAvatarUrl(): string
+    {
+        // return filament()->getUserAvatarUrl($this);
+        $avatar = $this->getFirstMediaUrl();
+
+        if (is_string($avatar) && strlen($avatar) > 5) {
+            return $avatar;
+        }
+
+        $email = trim((string) $this->email);
+        // 'MyEmailAddress@example.com'
+        $email = strtolower($email);
+        // 'myemailaddress@example.com'
+        $hash = hash('sha256', $email);
+        $avatar = 'https://gravatar.com/avatar/'.$hash.'?s=64';
+
+        return $avatar;
+
+        // https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80
+
+        // in caso eseguire php artisan module:publish
+        // dddx($this);
+        // dddx(asset('blog/img/no_user.webp'));
+        //    return asset('modules/blog/img/no_user.webp');
+        // }
+
+        // return $this->getFirstMediaUrl();
     }
 }

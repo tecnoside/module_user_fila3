@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * @see DutchCodingCompany\FilamentSocialite
+ * @see DutchCodingCompany\FilamentSocialite.
  */
 
 namespace Modules\User\Http\Controllers\Socialite;

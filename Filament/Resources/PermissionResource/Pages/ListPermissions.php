@@ -9,14 +9,23 @@ use Filament\Forms\Components\Select;
 use Filament\Resources\Pages\ListRecords;
 use Filament\Tables\Actions\BulkAction;
 use Illuminate\Database\Eloquent\Collection;
+use Modules\UI\Enums\TableLayoutEnum;
+use Modules\UI\Filament\Actions\Table\TableLayoutToggleTableAction;
 use Modules\User\Filament\Resources\PermissionResource;
-use Modules\User\Models\User;
 use Webmozart\Assert\Assert;
 
 class ListPermissions extends ListRecords
 {
-    // //
     protected static string $resource = PermissionResource::class;
+
+    public TableLayoutEnum $layoutView = TableLayoutEnum::GRID;
+
+    protected function getTableHeaderActions(): array
+    {
+        return [
+            TableLayoutToggleTableAction::make(),
+        ];
+    }
 
     protected function getHeaderActions(): array
     {
@@ -34,7 +43,7 @@ class ListPermissions extends ListRecords
                 ->action(
                     static function (Collection $collection, array $data): void {
                         foreach ($collection as $record) {
-                            Assert::isInstanceOf($record, User::class, '['.__LINE__.']['.__FILE__.']');
+                            Assert::isInstanceOf($record, \Modules\Xot\Datas\XotData::make()->getUserClass(), '['.__LINE__.']['.__FILE__.']');
                             $record->roles()->sync($data['role']);
                             $record->save();
                         }

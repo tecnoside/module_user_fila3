@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Models\Traits;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -13,7 +14,7 @@ use Modules\User\Contracts\TeamContract;
 use Modules\User\Models\Membership;
 use Modules\User\Models\Role;
 use Modules\User\Models\Team;
-use Modules\User\Models\User;
+use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Datas\XotData;
 use Webmozart\Assert\Assert;
 
@@ -53,8 +54,10 @@ trait HasTeams
             $this->current_team_id = null;
             $this->update();
         }
+        /** @var class-string<Model> */
+        $team_class = $xot->getTeamClass();
 
-        return $this->belongsTo($xot->getTeamClass(), 'current_team_id');
+        return $this->belongsTo($team_class, 'current_team_id');
     }
 
     /**
@@ -93,14 +96,14 @@ trait HasTeams
 
     /**
      * Get all of the teams the user owns.
-     *
-     * @return HasMany<Team>
      */
     public function ownedTeams(): HasMany
     {
         $xot = XotData::make();
+        /** @var class-string<Model> */
+        $team_class = $xot->getTeamClass();
 
-        return $this->hasMany($xot->getTeamClass());
+        return $this->hasMany($team_class);
     }
 
     /**
@@ -113,10 +116,55 @@ trait HasTeams
         $pivot = app($pivotClass);
         $pivotTable = $pivot->getTable();
         $pivotDbName = $pivot->getConnection()->getDatabaseName();
-        $pivotTableFull = $pivotDbName.'.'.$pivotTable;
+        // $myDbName = $this->getConnection()->getDatabaseName();
+        $pivotTableFull = $pivotTable;
+
+        /** @var class-string<Model> */
+        $team_class = $xot->getTeamClass();
+        $team_classDbName = app($team_class)->getConnection()->getDatabaseName();
+
+        if ($pivotDbName !== $team_classDbName) {
+            $pivotTableFull = $pivotDbName.'.'.$pivotTable;
+        }
+
+        // if ($pivotDbName !== $myDbName) {
+        //     $pivotTableFull = $pivotDbName.'.'.$pivotTable;
+        // }
+
+        // /** @var class-string<Model> */
+        // $team_class = $xot->getTeamClass();
+
+        // dddx([
+        //     '$pivotDbName !== $team_classDbName' => $pivotDbName !== $team_classDbName,
+        //     '$pivot' => $pivot,
+        //     '$pivotDbName' => $pivotDbName,
+        //     '$team_classDbName' => $team_classDbName,
+        //     '$pivotTableFull' => $pivotTableFull,
+        //     '$team_class' => $team_class,
+        //     '$pivotClass' => $pivotClass
+        // ]);
+
+        // dddx([
+        //     '$pivotDbName !== $myDbName' => $pivotDbName !== $myDbName,
+        //     '$pivot' => $pivot,
+        //     '$pivotDbName' => $pivotDbName,
+        //     '$myDbName' => $myDbName,
+        //     '$pivotTableFull' => $pivotTableFull,
+        //     '$team_class' => $team_class,
+        //     '$pivotClass' => $pivotClass
+        // ]);
+
+        // dddx(
+        //     $this->belongsToMany($team_class, $pivotTableFull, null, 'team_id')
+        //     ->using($pivotClass)
+        //     ->withPivot('role')
+        //     ->withTimestamps()
+        //     ->as('membership')
+        //     ->toSql()
+        // );
 
         // $this->setConnection('mysql');
-        return $this->belongsToMany($xot->getTeamClass(), $pivotTableFull, null, 'team_id')
+        return $this->belongsToMany($team_class, $pivotTableFull, null, 'team_id')
             ->using($pivotClass)
             ->withPivot('role')
             ->withTimestamps()
@@ -183,9 +231,9 @@ trait HasTeams
         }
 
         Assert::notNull($user = $teamContract->users()->where('id', $this->id)->first(), '['.__LINE__.']['.__FILE__.']');
-        Assert::isInstanceOf($user, User::class, '['.__LINE__.']['.__FILE__.']');
+        Assert::isInstanceOf($user, XotData::make()->getUserClass(), '['.__LINE__.']['.__FILE__.']');
         /**
-         * @var User $user
+         * @var UserContract $user
          */
         // Access to an undefined property Modules\User\Models\User::$membership.
         // return $teamContract->users()
@@ -200,7 +248,8 @@ trait HasTeams
             ->getRelationValue('membership'); // ? FilamentJet::findRole($role) : null;
 
         return Role::firstOrCreate(
-            ['name' => $membership->role], []
+            ['name' => $membership->role],
+            []
         );
     }
 

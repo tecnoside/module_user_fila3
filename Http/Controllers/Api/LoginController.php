@@ -1,4 +1,7 @@
 <?php
+/**
+ * This is the start of the PHP code block.
+ */
 
 declare(strict_types=1);
 

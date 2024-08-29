@@ -9,10 +9,8 @@ use Illuminate\Console\Command;
 use function Laravel\Prompts\multiselect;
 use function Laravel\Prompts\text;
 
-use Modules\User\Models\User;
 use Modules\Xot\Datas\XotData;
 use Symfony\Component\Console\Input\InputOption;
-use Webmozart\Assert\Assert;
 
 class AssignTenantCommand extends Command
 {
@@ -46,11 +44,16 @@ class AssignTenantCommand extends Command
     public function handle(): void
     {
         $email = text('email ?');
-        Assert::notNull($user = User::firstWhere(['email' => $email]), '['.__LINE__.']['.__FILE__.']');
+        $user_class = XotData::make()->getUserClass();
+        /** @var \Modules\Xot\Contracts\UserContract */
+        $user = $user_class::firstWhere(['email' => $email]);
         $xot = XotData::make();
         $tenantClass = $xot->getTenantClass();
 
-        $opts = $tenantClass::all()->pluck('name', 'id');
+        /** @var array<int|string, string>|\Illuminate\Support\Collection<int|string, string> */
+        $opts = $tenantClass::all()
+            ->pluck('name', 'id')
+            ->toArray();
 
         $rows = multiselect(
             label: 'What tenant',

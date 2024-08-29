@@ -32,7 +32,7 @@ class CreateUserAction
         );
 
         // Store the new entity into `users` table
-        $userClass = XotData::resolveUserClass();
+        $userClass = XotData::make()->getUserClass();
         $newlyCreatedUser = $userClass::create(
             [
                 'name' => $userAttributes->name,
@@ -51,6 +51,9 @@ class CreateUserAction
             ]
         )->execute(userModel: $newlyCreatedUser, oauthUser: $oauthUser);
 
-        return $newlyCreatedUser->refresh();
+        /** @var UserContract */
+        $res = $newlyCreatedUser->refresh();
+
+        return $res;
     }
 }

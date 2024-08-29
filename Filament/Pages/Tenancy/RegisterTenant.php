@@ -46,12 +46,11 @@ class RegisterTenant extends BaseRegisterTenant
      */
     protected function handleRegistration(array $data): Model
     {
-        // $xot=XotData::make()
-        // $team = Team::create($data);
         $tenantClass = XotData::make()->getTenantClass();
+
         $tenant = $tenantClass::create($data);
 
-        $tenant->users()->attach(auth()->user());
+        // $tenant->users()->attach(auth()->user());
 
         return $tenant;
     }

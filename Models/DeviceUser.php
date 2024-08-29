@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
 use Modules\Xot\Contracts\ProfileContract;
+use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Datas\XotData;
 
 /**
@@ -45,13 +46,15 @@ use Modules\Xot\Datas\XotData;
  * @method static Builder|DeviceUser whereUserId($value)
  *
  * @property ProfileContract|null $profile
- * @property User|null            $user
+ * @property UserContract|null    $user
+ * @property ProfileContract|null $creator
+ * @property ProfileContract|null $updater
  *
  * @mixin \Eloquent
  */
 class DeviceUser extends BasePivot
 {
-    /** @var array<int, string> */
+    /** @var list<string> */
     protected $fillable = [
         'id',
         'device_id',
@@ -86,7 +89,7 @@ class DeviceUser extends BasePivot
     }
 
     /**
-     * @return BelongsTo<Device, DeviceUser>
+     * old_return BelongsTo<Device, DeviceUser>.
      */
     public function device(): BelongsTo
     {
@@ -94,20 +97,22 @@ class DeviceUser extends BasePivot
     }
 
     /**
-     * @return BelongsTo<User, DeviceUser>
+     * old_return BelongsTo<Model&UserContract, DeviceUser>.
      */
     public function user(): BelongsTo
     {
+        /** @var class-string<Model> */
         $userClass = XotData::make()->getUserClass();
 
         return $this->belongsTo($userClass);
     }
 
     /**
-     * @return BelongsTo<Model&ProfileContract, DeviceUser>
+     * old_return BelongsTo<Model&ProfileContract, DeviceUser>.
      */
     public function profile(): BelongsTo
     {
+        /* @var class-string<Model> */
         $profileClass = XotData::make()->getProfileClass();
 
         return $this->belongsTo($profileClass, 'user_id', 'user_id');

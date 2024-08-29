@@ -10,7 +10,6 @@ namespace Modules\User\Filament\Resources;
 
 use Filament\Forms;
 use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Modules\User\Filament\Resources\TenantResource\Pages\CreateTenant;
@@ -19,8 +18,9 @@ use Modules\User\Filament\Resources\TenantResource\Pages\ListTenants;
 use Modules\User\Filament\Resources\TenantResource\Pages\ViewTenant;
 use Modules\User\Filament\Resources\TenantResource\RelationManagers;
 use Modules\Xot\Datas\XotData;
+use Modules\Xot\Filament\Resources\XotBaseResource;
 
-class TenantResource extends Resource
+class TenantResource extends XotBaseResource
 {
     // protected static ?string $model = Tenant::class;
 

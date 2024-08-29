@@ -9,25 +9,26 @@ declare(strict_types=1);
 namespace Modules\User\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Modules\Xot\Datas\XotData;
 
 /**
  * Modules\User\Models\SocialiteUser.
  *
- * @property int                             $id
- * @property string                          $user_id
- * @property string                          $provider
- * @property string                          $provider_id
- * @property string|null                     $token
- * @property string|null                     $name
- * @property string|null                     $email
- * @property string|null                     $avatar
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property string|null                     $updated_by
- * @property string|null                     $created_by
- * @property User|null                       $user
+ * @property int                                      $id
+ * @property string                                   $user_id
+ * @property string                                   $provider
+ * @property string                                   $provider_id
+ * @property string|null                              $token
+ * @property string|null                              $name
+ * @property string|null                              $email
+ * @property string|null                              $avatar
+ * @property \Illuminate\Support\Carbon|null          $created_at
+ * @property \Illuminate\Support\Carbon|null          $updated_at
+ * @property string|null                              $updated_by
+ * @property string|null                              $created_by
+ * @property \Modules\Xot\Contracts\UserContract|null $user
  *
  * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser newQuery()
@@ -49,13 +50,16 @@ use Modules\Xot\Datas\XotData;
  *
  * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser whereUuid($value)
  *
+ * @property \Modules\Xot\Contracts\ProfileContract|null $creator
+ * @property \Modules\Xot\Contracts\ProfileContract|null $updater
+ *
  * @mixin \Eloquent
  */
 class SocialiteUser extends BaseModel
 {
     use HasFactory;
 
-    /** @var array<int, string> */
+    /** @var list<string> */
     protected $fillable = [
         // 'id',
         'user_id',
@@ -69,8 +73,9 @@ class SocialiteUser extends BaseModel
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(
-            XotData::resolveUserClass()
-        );
+        /** @var class-string<Model> */
+        $user_class = XotData::make()->getUserClass();
+
+        return $this->belongsTo($user_class);
     }
 }

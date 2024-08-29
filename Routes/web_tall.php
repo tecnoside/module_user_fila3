@@ -62,10 +62,10 @@ Route::prefix('{lang}')->group(function () {
                 ->middleware('signed')
                 ->name('verification.verify');
 
-            Route::post('logout', LogoutController::class)
+            Route::match(['get', 'post'], 'logout', LogoutController::class)
                 ->name('logout');
         });
-});
+})->whereIn('lang', ['it', 'en']);
 
 Route::namespace('Socialite')
     ->name('socialite.')

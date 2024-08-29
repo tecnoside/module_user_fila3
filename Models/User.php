@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
@@ -116,6 +117,12 @@ use Spatie\Permission\Traits\HasRoles;
  *
  * @method static Builder|User whereFacebookId($value)
  *
+ * @property TenantUser                                              $pivot
+ * @property Membership                                              $membership
+ * @property Collection<int, \Modules\User\Models\AuthenticationLog> $authentications
+ * @property int|null                                                $authentications_count
+ * @property AuthenticationLog|null                                  $latestAuthentication
+ *
  * @mixin \Eloquent
  */
 class User extends Authenticatable implements HasName, HasTenants, UserContract
@@ -138,6 +145,8 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
     use Notifiable;
     use Traits\HasTenants;
 
+    use Traits\HasAuthenticationLogTrait;
+
     public $incrementing = false;
 
     /** @var string */
@@ -147,7 +156,7 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
 
     protected $keyType = 'string';
 
-    /** @var array<int, string> */
+    /** @var list<string> */
     protected $fillable = [
         'id',
         'name',
@@ -161,11 +170,7 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
         // 'facebook_id',// su userproviders
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
+    /** @var list<string> */
     protected $hidden = [
         'password',
         'remember_token',
@@ -194,12 +199,12 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
         ];
     }
 
-    /** @var array<int, string> */
+    /** @var list<string> */
     protected $with = [
         'roles',
     ];
 
-    /** @var array<int, string> */
+    /** @var list<string> */
     protected $appends = [
         // 'profile_photo_url',
     ];
@@ -222,6 +227,7 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
 
     public function profile(): HasOne
     {
+        /** @var class-string<Model> */
         $profileClass = XotData::make()->getProfileClass();
 
         return $this->hasOne($profileClass);
@@ -274,8 +280,10 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
     // ---------------------
     /**
      * Get the entity's notifications.
+     *
+     * @return MorphMany<Notification>
      */
-    public function notifications(): MorphMany
+    public function notifications()
     {
         // return $this->morphMany(DatabaseNotification::class, 'notifiable')->latest();
         return $this->morphMany(Notification::class, 'notifiable')->latest();

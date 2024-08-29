@@ -32,7 +32,7 @@ class SetDefaultRolesBySocialiteUserAction
         );
 
         $this->defaultUserGuard = Guard::getDefaultName(
-            XotData::resolveUserClass()
+            XotData::make()->getUserClass()
         );
     }
 

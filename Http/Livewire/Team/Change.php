@@ -11,8 +11,9 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
 use Illuminate\View\View;
 use Livewire\Component;
+use Modules\User\Contracts\TeamContract;
 use Modules\User\Events\TeamSwitched;
-use Modules\User\Models\User;
+use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Datas\XotData;
 use Webmozart\Assert\Assert;
 
@@ -24,7 +25,7 @@ class Change extends Component
 
     public XotData $xot;
 
-    public User $user;
+    public UserContract $user;
 
     public function mount(): void
     {
@@ -40,14 +41,16 @@ class Change extends Component
     public function switchTeam(int $teamId): Application|RedirectResponse|Redirector
     {
         $teamClass = $this->xot->getTeamClass();
-        $team = $teamClass::findOrFail($teamId);
+        /** @var TeamContract */
+        $team = $teamClass::firstWhere(['id' => $teamId]);
 
         if (! $this->user->switchTeam($team)) {
             abort(403);
         }
-
-        TeamSwitched::dispatch($team->fresh(), $this->user);
-
+        if (null !== $team) {
+            // TeamSwitched::dispatch($team->fresh(), $this->user);
+            TeamSwitched::dispatch($team, $this->user);
+        }
         Notification::make()
             ->title(__('Team switched'))
             ->success()

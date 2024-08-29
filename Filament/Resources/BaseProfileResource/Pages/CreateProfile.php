@@ -22,8 +22,9 @@ class CreateProfile extends CreateRecord
         }
         $user_data = array_merge($user_data, $extra);
         $user_class = XotData::make()->getUserClass();
+        /** @var \Modules\Xot\Contracts\UserContract */
         $user = $user_class::create($user_data);
-        $data['user_id'] = $user->id;
+        $data['user_id'] = $user->getKey();
 
         return $data;
     }

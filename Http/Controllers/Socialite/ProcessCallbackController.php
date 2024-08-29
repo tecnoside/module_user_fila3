@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * @see DutchCodingCompany\FilamentSocialite
+ * @see DutchCodingCompany\FilamentSocialite.
  */
 
 namespace Modules\User\Http\Controllers\Socialite;
@@ -24,7 +24,7 @@ use Modules\User\Actions\Socialite\SetDefaultRolesBySocialiteUserAction;
 use Modules\User\Events\RegistrationNotEnabled;
 use Modules\User\Events\UserNotAllowed;
 use Modules\User\Exceptions\ProviderNotConfigured;
-use Modules\User\Models\User;
+use Modules\Xot\Datas\XotData;
 
 class ProcessCallbackController extends Controller
 {
@@ -73,10 +73,11 @@ class ProcessCallbackController extends Controller
             return app(RedirectToLoginAction::class)->execute('auth.registration-not-enabled');
         }
         */
-
+        $user_class = XotData::make()->getUserClass();
         // See if a user already exists, but not for this socialite provider
         // $user = app()->call($this->socialite->getUserResolver(), ['provider' => $provider, 'oauthUser' => $oauthUser, 'socialite' => $this->socialite]);
-        $user = User::query()->firstWhere(['email' => $oauthUser->getEmail()]);
+        /** @var \Modules\Xot\Contracts\UserContract */
+        $user = $user_class::query()->firstWhere(['email' => $oauthUser->getEmail()]);
 
         // Handle registration
         return $user

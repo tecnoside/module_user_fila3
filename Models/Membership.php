@@ -43,6 +43,9 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Membership whereDeletedAt($value)
  * @method static Builder|Membership whereDeletedBy($value)
  *
+ * @property \Modules\Xot\Contracts\ProfileContract|null $creator
+ * @property \Modules\Xot\Contracts\ProfileContract|null $updater
+ *
  * @mixin \Eloquent
  */
 class Membership extends BasePivot

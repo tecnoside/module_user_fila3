@@ -117,8 +117,11 @@ use Spatie\Permission\Traits\HasRoles;
  *
  * @method static Builder|User whereFacebookId($value)
  *
- * @property TenantUser $pivot
- * @property Membership $membership
+ * @property TenantUser                                              $pivot
+ * @property Membership                                              $membership
+ * @property Collection<int, \Modules\User\Models\AuthenticationLog> $authentications
+ * @property int|null                                                $authentications_count
+ * @property AuthenticationLog|null                                  $latestAuthentication
  *
  * @mixin \Eloquent
  */
@@ -142,6 +145,8 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
     use Notifiable;
     use Traits\HasTenants;
 
+    use Traits\HasAuthenticationLogTrait;
+
     public $incrementing = false;
 
     /** @var string */
@@ -151,7 +156,7 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
 
     protected $keyType = 'string';
 
-    /** @var array<int, string> */
+    /** @var list<string> */
     protected $fillable = [
         'id',
         'name',
@@ -165,11 +170,7 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
         // 'facebook_id',// su userproviders
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
+    /** @var list<string> */
     protected $hidden = [
         'password',
         'remember_token',
@@ -198,12 +199,12 @@ class User extends Authenticatable implements HasName, HasTenants, UserContract
         ];
     }
 
-    /** @var array<int, string> */
+    /** @var list<string> */
     protected $with = [
         'roles',
     ];
 
-    /** @var array<int, string> */
+    /** @var list<string> */
     protected $appends = [
         // 'profile_photo_url',
     ];

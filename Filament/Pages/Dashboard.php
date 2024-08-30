@@ -36,7 +36,7 @@ class Dashboard extends BaseBashboard
     {
         return [
             Widgets\UsersChartWidget::make(['chart_id' => 'bb']),
-            Widgets\UsersChartWidget::make(['chart_id' => 'aa']),
+            // Widgets\UsersChartWidget::make(['chart_id' => 'aa']),
         ];
     }
 
@@ -47,12 +47,14 @@ class Dashboard extends BaseBashboard
                 Section::make()
                     ->schema([
                         DatePicker::make('startDate')
-                            // ->native(false)
-                            ->maxDate(fn (Get $get) => $get('endDate') ?: now()),
+                        ->native(false)
+                        // ->maxDate(fn (Get $get) => $get('endDate') ?: now()),
+                        ,
                         DatePicker::make('endDate')
-                            // ->native(false)
-                            ->minDate(fn (Get $get) => $get('startDate') ?: now())
-                            ->maxDate(now()),
+                        ->native(false)
+                        // ->minDate(fn (Get $get) => $get('startDate') ?: now())
+                        // ->maxDate(now()),
+                        ,
                     ])
                     ->columns(3),
             ]);

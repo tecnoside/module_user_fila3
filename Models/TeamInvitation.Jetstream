@@ -8,7 +8,7 @@ use Laravel\Jetstream\TeamInvitation as JetstreamTeamInvitation;
 
 class TeamInvitation extends JetstreamTeamInvitation
 {
-    /** @var array<int, string> */
+    /** @var list<string> */
     protected $fillable = [
         'email',
         'role',

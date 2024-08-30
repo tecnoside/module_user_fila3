@@ -30,7 +30,7 @@ class Team extends JetstreamTeam
         ];
       }
 
-    /** @var array<int, string> */
+    /** @var list<string> */
     protected $fillable = [
         'name',
         'personal_team',

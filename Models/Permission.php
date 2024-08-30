@@ -12,17 +12,17 @@ use Spatie\Permission\Models\Permission as SpatiePermission;
 /**
  * Modules\User\Models\Permission.
  *
- * @property int                                        $id
- * @property string                                     $name
- * @property string                                     $guard_name
- * @property Carbon|null                                $created_at
- * @property Carbon|null                                $updated_at
- * @property Collection<int, Permission>                $permissions
- * @property int|null                                   $permissions_count
- * @property Collection<int, Role>                      $roles
- * @property int|null                                   $roles_count
- * @property Collection<int, \Modules\User\Models\User> $users
- * @property int|null                                   $users_count
+ * @property int                                                  $id
+ * @property string                                               $name
+ * @property string                                               $guard_name
+ * @property Carbon|null                                          $created_at
+ * @property Carbon|null                                          $updated_at
+ * @property Collection<int, Permission>                          $permissions
+ * @property int|null                                             $permissions_count
+ * @property Collection<int, Role>                                $roles
+ * @property int|null                                             $roles_count
+ * @property Collection<int, \Modules\Xot\Contracts\UserContract> $users
+ * @property int|null                                             $users_count
  *
  * @method static Builder|Permission                               newModelQuery()
  * @method static Builder|Permission                               newQuery()
@@ -50,6 +50,6 @@ class Permission extends SpatiePermission
     /** @var string */
     protected $connection = 'user';
 
-    /** @var array<int, string> */
+    /** @var list<string> */
     protected $fillable = ['id', 'name', 'guard_name', 'created_at', 'updated_at'];
 }

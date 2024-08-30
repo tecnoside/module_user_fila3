@@ -13,8 +13,8 @@ use Modules\User\Database\Factories\DeviceFactory;
 /**
  * Modules\User\Models\Device.
  *
- * @property Collection<int, \Modules\User\Models\User> $users
- * @property int|null                                   $users_count
+ * @property Collection<int, \Modules\Xot\Contracts\UserContract> $users
+ * @property int|null                                             $users_count
  *
  * @method static DeviceFactory  factory($count = null, $state = [])
  * @method static Builder|Device newModelQuery()
@@ -65,7 +65,7 @@ use Modules\User\Database\Factories\DeviceFactory;
  */
 class Device extends BaseModel
 {
-    /** @var array<int, string> */
+    /** @var list<string> */
     protected $fillable = [
         'id',
         'mobile_id', // mattia
@@ -105,9 +105,10 @@ class Device extends BaseModel
         $pivot_class = DeviceUser::class;
         $pivot = app($pivot_class);
         $pivot_fields = $pivot->getFillable();
+        $user_class = \Modules\Xot\Datas\XotData::make()->getUserClass();
 
         return $this
-            ->belongsToMany(\Modules\Xot\Datas\XotData::make()->getUserClass())
+            ->belongsToMany($user_class)
             ->using($pivot_class)
             ->withPivot($pivot_fields)
             ->withTimestamps();

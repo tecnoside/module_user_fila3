@@ -67,7 +67,7 @@ abstract class BaseProfile extends BaseModel implements ProfileContract
      */
     // private string $guard_name = 'web';
 
-    /** @var array<int, string> */
+    /** @var list<string> */
     protected $fillable = [
         'id',
         'user_id',
@@ -80,12 +80,12 @@ abstract class BaseProfile extends BaseModel implements ProfileContract
         'is_active',
     ];
 
-    /** @var array<int, string> */
+    /** @var list<string> */
     protected $appends = [
         'full_name',
     ];
 
-    /** @var array<int, string> */
+    /** @var list<string> */
     protected $with = [
         'user',
     ];
@@ -126,7 +126,7 @@ abstract class BaseProfile extends BaseModel implements ProfileContract
             return $avatar;
         }
 
-        $email = trim($this->email);
+        $email = trim((string) $this->email);
         // 'MyEmailAddress@example.com'
         $email = strtolower($email);
         // 'myemailaddress@example.com'

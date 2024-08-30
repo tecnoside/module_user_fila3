@@ -10,4 +10,7 @@ return [
     'user-not-allowed' => 'Your email is not part of a domain that is allowed.',
 
     'registration-not-enabled' => 'Registration of a new user is not allowed.',
+
+    'login-in' => 'Sign in',
+    'sign-up' => 'Sign up',
 ];

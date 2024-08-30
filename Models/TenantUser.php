@@ -55,7 +55,7 @@ class TenantUser extends BasePivot
 
     // protected $keyType = 'string';
 
-    /** @var array<int, string> */
+    /** @var list<string> */
     protected $fillable = [
         'tenant_id',
         'user_id',

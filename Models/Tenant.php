@@ -15,10 +15,10 @@ use Modules\User\Contracts\TenantContract;
  * @method static \Illuminate\Database\Eloquent\Builder|Tenant   newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Tenant   query()
  *
- * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\User> $members
- * @property int|null                                                                 $members_count
- * @property \Modules\Xot\Contracts\ProfileContract|null                              $creator
- * @property \Modules\Xot\Contracts\ProfileContract|null                              $updater
+ * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\Xot\Contracts\UserContract> $members
+ * @property int|null                                                                           $members_count
+ * @property \Modules\Xot\Contracts\ProfileContract|null                                        $creator
+ * @property \Modules\Xot\Contracts\ProfileContract|null                                        $updater
  *
  * @mixin \Eloquent
  */

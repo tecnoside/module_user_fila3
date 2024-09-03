@@ -10,6 +10,7 @@ use Laravel\Passport\Token as PassportToken;
 /**
  * Modules\User\Models\OauthAccessToken.
  *
+<<<<<<< HEAD
  * @property string                                   $id
  * @property string|null                              $user_id
  * @property string                                   $client_id
@@ -21,6 +22,19 @@ use Laravel\Passport\Token as PassportToken;
  * @property \Illuminate\Support\Carbon|null          $expires_at
  * @property OauthClient|null                         $client
  * @property \Modules\Xot\Contracts\UserContract|null $user
+=======
+ * @property string                          $id
+ * @property string|null                     $user_id
+ * @property string                          $client_id
+ * @property string|null                     $name
+ * @property array|null                      $scopes
+ * @property bool                            $revoked
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property \Illuminate\Support\Carbon|null $expires_at
+ * @property OauthClient|null                $client
+ * @property User|null                       $user
+>>>>>>> d87d37a (Check & fix styling)
  *
  * @method static \Illuminate\Database\Eloquent\Builder|OauthAccessToken newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|OauthAccessToken newQuery()

@@ -6,7 +6,6 @@ namespace Modules\User\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
-<<<<<<< HEAD
 
 use function Laravel\Prompts\multiselect;
 use function Laravel\Prompts\text;
@@ -15,18 +14,6 @@ use Modules\User\Models\Role;
 use Nwidart\Modules\Facades\Module;
 use Symfony\Component\Console\Input\InputOption;
 
-=======
-
-use function Laravel\Prompts\multiselect;
-use function Laravel\Prompts\text;
-
-use Modules\User\Models\Role;
-use Modules\User\Models\User;
-use Nwidart\Modules\Facades\Module;
-use Symfony\Component\Console\Input\InputOption;
-use Webmozart\Assert\Assert;
-
->>>>>>> d87d37a (Check & fix styling)
 class AssignModuleCommand extends Command
 {
     /**

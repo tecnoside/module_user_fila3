@@ -136,7 +136,10 @@ class ListProfiles extends ListRecords
                         $user = $record->user;
                         $user_class = XotData::make()->getUserClass();
                         if (null == $user) {
+<<<<<<< HEAD
                             /** @var \Modules\Xot\Contracts\UserContract */
+=======
+>>>>>>> d87d37a (Check & fix styling)
                             $user = $user_class::firstWhere(['email' => $record->email]);
                         }
                         if (null == $user) {

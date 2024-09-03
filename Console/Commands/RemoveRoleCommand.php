@@ -9,7 +9,13 @@ use Illuminate\Console\Command;
 use function Laravel\Prompts\multiselect;
 use function Laravel\Prompts\text;
 
+<<<<<<< HEAD
 use Symfony\Component\Console\Input\InputOption;
+=======
+use Modules\User\Models\User;
+use Symfony\Component\Console\Input\InputOption;
+use Webmozart\Assert\Assert;
+>>>>>>> d87d37a (Check & fix styling)
 
 class RemoveRoleCommand extends Command
 {

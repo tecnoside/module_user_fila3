@@ -9,7 +9,6 @@ use Illuminate\Console\Command;
 use function Laravel\Prompts\select;
 use function Laravel\Prompts\text;
 
-use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Datas\XotData;
 use Symfony\Component\Console\Input\InputOption;
 

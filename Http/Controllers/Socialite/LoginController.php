@@ -196,7 +196,7 @@ class LoginController extends Controller
     {
         $guard = app(GetGuardAction::class)->execute();
         Assert::boolean($remember_me = config('filament-socialite.remember_login', false));
-        Assert::isInstanceOf($user = $socialiteUser->user, Authenticatable::class, '['.__LINE__.']['.__FILE__.']');
+        Assert::isInstanceOf($user = $socialiteUser->user, Authenticatable::class, '['.__LINE__.']['.class_basename($this).']');
         // Log the user in
         $guard->login($user, $remember_me);
 

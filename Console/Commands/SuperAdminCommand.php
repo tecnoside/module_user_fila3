@@ -4,14 +4,15 @@ declare(strict_types=1);
 
 namespace Modules\User\Console\Commands;
 
-use Illuminate\Console\Command;
 use Illuminate\Support\Str;
-
-use function Laravel\Prompts\text;
-
 use Modules\User\Models\Role;
+
 use Modules\Xot\Datas\XotData;
+
+use Illuminate\Console\Command;
+use function Laravel\Prompts\text;
 use Nwidart\Modules\Facades\Module;
+use Modules\Xot\Contracts\UserContract;
 use Symfony\Component\Console\Input\InputOption;
 
 class SuperAdminCommand extends Command

@@ -78,6 +78,7 @@ abstract class BaseProfile extends BaseModel implements ProfileContract
         'email',
         'bio',
         'is_active',
+        'extra',
     ];
 
     /** @var list<string> */
@@ -115,6 +116,12 @@ abstract class BaseProfile extends BaseModel implements ProfileContract
     public function scopeWithExtraAttributes(): Builder
     {
         return $this->extra->modelScope();
+    }
+
+    // Definisci il campo schemaless
+    public function getExtraAttribute(): \Spatie\SchemalessAttributes\SchemalessAttributes
+    {
+        return $this->schemalessAttributes('extra');
     }
 
     public function getAvatarUrl(): string

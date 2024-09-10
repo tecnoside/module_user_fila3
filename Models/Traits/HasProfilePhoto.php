@@ -78,7 +78,7 @@ trait HasProfilePhoto
     public function photoExists(): bool
     {
         if (null === $this->profile_photo_path) {
-            throw new \Exception('['.__LINE__.']['.__FILE__.']');
+            throw new \Exception('['.__LINE__.']['.class_basename($this).']');
         }
 
         return Storage::disk($this->profilePhotoDisk())->exists($this->profile_photo_path);

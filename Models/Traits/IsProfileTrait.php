@@ -118,7 +118,7 @@ trait IsProfileTrait
     {
         $user = $this->user;
         if (null === $user) {
-            throw new \Exception('['.__LINE__.']['.__FILE__.']');
+            throw new \Exception('['.__LINE__.']['.class_basename($this).']');
         }
         if ($this->isSuperAdmin()) {
             try {

@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\User\Filament\Resources\SocialProviderResource\Pages;
 
-use Modules\User\Filament\Resources\SocialProviderResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
+use Modules\User\Filament\Resources\SocialProviderResource;
 
 class EditSocialProvider extends EditRecord
 {

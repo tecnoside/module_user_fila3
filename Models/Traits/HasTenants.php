@@ -41,6 +41,7 @@ trait HasTenants
     {
         $xot = XotData::make();
         $pivotClass = $xot->getTenantPivotClass();
+
         $pivot = app($pivotClass);
         $pivotTable = $pivot->getTable();
         $pivotDbName = $pivot->getConnection()->getDatabaseName();
@@ -53,7 +54,9 @@ trait HasTenants
         return $this->belongsToMany($tenant_class, $pivotTableFull, null, 'tenant_id')
             ->using($pivotClass)
             ->withPivot($pivotFields)
-            ->withTimestamps();
+            ->withTimestamps()
+            // ->ddRawSql()
+        ;
         // ->as('membership')
     }
 }

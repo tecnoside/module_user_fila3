@@ -10,6 +10,7 @@ use Illuminate\Support\Str;
 use function Laravel\Prompts\text;
 
 use Modules\User\Models\Role;
+use Modules\Xot\Datas\XotData;
 use Nwidart\Modules\Facades\Module;
 use Symfony\Component\Console\Input\InputOption;
 

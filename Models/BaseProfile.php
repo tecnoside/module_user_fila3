@@ -119,10 +119,10 @@ abstract class BaseProfile extends BaseModel implements ProfileContract
     }
 
     // Definisci il campo schemaless
-    public function getExtraAttribute(): \Spatie\SchemalessAttributes\SchemalessAttributes
-    {
-        return $this->schemalessAttributes('extra');
-    }
+    //public function getExtraAttribute(): \Spatie\SchemalessAttributes\SchemalessAttributes
+    //{
+    //    return $this->schemalessAttributes('extra');
+    //}
 
     public function getAvatarUrl(): string
     {

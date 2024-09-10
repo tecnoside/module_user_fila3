@@ -43,7 +43,7 @@ class ListPermissions extends ListRecords
                 ->action(
                     static function (Collection $collection, array $data): void {
                         foreach ($collection as $record) {
-                            Assert::isInstanceOf($record, \Modules\Xot\Datas\XotData::make()->getUserClass(), '['.__LINE__.']['.__FILE__.']');
+                            Assert::isInstanceOf($record, \Modules\Xot\Datas\XotData::make()->getUserClass(), '['.__LINE__.']['.__CLASS__.']');
                             $record->roles()->sync($data['role']);
                             $record->save();
                         }

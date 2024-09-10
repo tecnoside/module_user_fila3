@@ -230,8 +230,8 @@ trait HasTeams
             return $role;
         }
 
-        Assert::notNull($user = $teamContract->users()->where('id', $this->id)->first(), '['.__LINE__.']['.__FILE__.']');
-        Assert::isInstanceOf($user, XotData::make()->getUserClass(), '['.__LINE__.']['.__FILE__.']');
+        Assert::notNull($user = $teamContract->users()->where('id', $this->id)->first(), '['.__LINE__.']['.class_basename($this).']');
+        Assert::isInstanceOf($user, XotData::make()->getUserClass(), '['.__LINE__.']['.class_basename($this).']');
         /**
          * @var UserContract $user
          */

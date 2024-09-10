@@ -26,6 +26,7 @@ trait HasTenants
     public function canAccessTenant(Model $tenant): bool
     {
         // return $this->teams->contains($tenant);
+        // return $this->tenants()->whereKey($tenant)->exists();
         return true;
     }
 

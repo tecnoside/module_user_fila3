@@ -20,7 +20,7 @@ class AddingTeam
         /**
          * The team owner.
          */
-        public UserContract $owner
+        public UserContract $owner,
     ) {
     }
 }

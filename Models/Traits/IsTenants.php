@@ -8,8 +8,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Modules\User\Contracts\TeamContract;
 use Modules\Xot\Datas\XotData;
 
-// use Modules\User\Models\OwnerRole;
-
 /**
  * Undocumented trait.
  *

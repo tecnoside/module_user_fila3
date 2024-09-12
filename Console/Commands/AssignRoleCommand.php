@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\User\Console\Commands;
 
 use Illuminate\Console\Command;
+<<<<<<< HEAD
 
 use function Laravel\Prompts\multiselect;
 use function Laravel\Prompts\text;
@@ -14,6 +15,17 @@ use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Datas\XotData;
 use Symfony\Component\Console\Input\InputOption;
 
+=======
+
+use function Laravel\Prompts\multiselect;
+use function Laravel\Prompts\text;
+
+use Modules\User\Models\Role;
+use Modules\User\Models\User;
+use Symfony\Component\Console\Input\InputOption;
+use Webmozart\Assert\Assert;
+
+>>>>>>> d87d37a (Check & fix styling)
 class AssignRoleCommand extends Command
 {
     /**

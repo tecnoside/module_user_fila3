@@ -4,7 +4,12 @@ declare(strict_types=1);
 
 namespace Modules\User\Console\Commands;
 
+<<<<<<< HEAD
 use Modules\Xot\Datas\XotData;
+=======
+use Illuminate\Console\Command;
+<<<<<<< HEAD
+>>>>>>> 06bbd4a (🔧 (AssignModuleCommand.php, AssignRoleCommand.php, AssignTeamCommand.php, AssignTenantCommand.php, RemoveRoleCommand.php, SetCurrentTeamCommand.php, SuperAdminCommand.php): Check & fix styling)
 
 use Illuminate\Console\Command;
 use function Laravel\Prompts\text;
@@ -13,6 +18,17 @@ use function Laravel\Prompts\select;
 use Modules\Xot\Contracts\UserContract;
 use Symfony\Component\Console\Input\InputOption;
 
+=======
+
+use function Laravel\Prompts\select;
+use function Laravel\Prompts\text;
+
+use Modules\User\Models\User;
+use Modules\Xot\Datas\XotData;
+use Symfony\Component\Console\Input\InputOption;
+use Webmozart\Assert\Assert;
+
+>>>>>>> d87d37a (Check & fix styling)
 class SetCurrentTeamCommand extends Command
 {
     /**

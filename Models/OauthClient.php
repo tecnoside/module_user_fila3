@@ -28,7 +28,11 @@ use Laravel\Passport\Client as PassportClient;
  * @property array|null                                                                           $scopes
  * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\OauthAccessToken> $tokens
  * @property int|null                                                                             $tokens_count
+<<<<<<< HEAD
  * @property \Modules\Xot\Contracts\UserContract|null                                             $user
+=======
+ * @property User|null                                                                            $user
+>>>>>>> d87d37a (Check & fix styling)
  *
  * @method static \Laravel\Passport\Database\Factories\ClientFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|OauthClient  newModelQuery()

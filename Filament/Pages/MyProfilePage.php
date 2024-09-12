@@ -11,6 +11,7 @@ namespace Modules\User\Filament\Pages;
 use Filament\Actions\Action;
 use Filament\Facades\Filament;
 use Filament\Forms;
+use Filament\Forms\ComponentContainer;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
@@ -22,6 +23,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
 
+/**
+ * @property ComponentContainer $form
+ * @property ComponentContainer $editProfileForm
+ * @property ComponentContainer $editPasswordForm
+ */
 class MyProfilePage extends Page implements HasForms
 {
     use InteractsWithForms;
@@ -178,17 +184,17 @@ class MyProfilePage extends Page implements HasForms
         ];
     }
 
-    public function update()
-    {
-        auth()->user()->update(
-            $this->form->getState()
-        );
+    // public function update(): void
+    // {
+    //     auth()->user()->update(
+    //         $this->form->getState()
+    //     );
 
-        Notification::make()
-        ->title('Profile updated!')
-        ->success()
-        ->send();
-    }
+    //     Notification::make()
+    //     ->title('Profile updated!')
+    //     ->success()
+    //     ->send();
+    // }
 
     protected function getUpdateProfileFormActions(): array
     {

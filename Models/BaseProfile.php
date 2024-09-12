@@ -40,15 +40,14 @@ use Spatie\SchemalessAttributes\SchemalessAttributesTrait;
  * @property \Modules\Xot\Contracts\UserContract|null                                                                      $user
  * @property string|null                                                                                                   $user_name
  *
- * @method static \Modules\Xot\Database\Factories\ProfileFactory factory($count = null, $state = [])
- * @method static \Illuminate\Database\Eloquent\Builder|Profile  newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Profile  newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Profile  permission($permissions, $without = false)
- * @method static \Illuminate\Database\Eloquent\Builder|Profile  query()
- * @method static \Illuminate\Database\Eloquent\Builder|Profile  role($roles, $guard = null, $without = false)
- * @method static Builder|BaseProfile                            withExtraAttributes()
- * @method static \Illuminate\Database\Eloquent\Builder|Profile  withoutPermission($permissions)
- * @method static \Illuminate\Database\Eloquent\Builder|Profile  withoutRole($roles, $guard = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|ProfileContract newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ProfileContract newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ProfileContract permission($permissions, $without = false)
+ * @method static \Illuminate\Database\Eloquent\Builder|ProfileContract query()
+ * @method static \Illuminate\Database\Eloquent\Builder|ProfileContract role($roles, $guard = null, $without = false)
+ * @method static Builder|BaseProfile                                   withExtraAttributes()
+ * @method static \Illuminate\Database\Eloquent\Builder|ProfileContract withoutPermission($permissions)
+ * @method static \Illuminate\Database\Eloquent\Builder|ProfileContract withoutRole($roles, $guard = null)
  *
  * @mixin \Eloquent
  */
@@ -119,10 +118,10 @@ abstract class BaseProfile extends BaseModel implements ProfileContract
     }
 
     // Definisci il campo schemaless
-    //public function getExtraAttribute(): \Spatie\SchemalessAttributes\SchemalessAttributes
-    //{
+    // public function getExtraAttribute(): \Spatie\SchemalessAttributes\SchemalessAttributes
+    // {
     //    return $this->schemalessAttributes('extra');
-    //}
+    // }
 
     public function getAvatarUrl(): string
     {

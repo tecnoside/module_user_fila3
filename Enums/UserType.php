@@ -39,7 +39,7 @@ enum UserType: string implements HasColor, HasIcon, HasLabel
         };
     }
 
-    public function getLabel(): ?string
+    public function getLabel(): string
     {
         return match ($this) {
             self::MasterAdmin => 'master_admin',
@@ -50,7 +50,7 @@ enum UserType: string implements HasColor, HasIcon, HasLabel
         };
     }
 
-    public function getColor(): string|array|null
+    public function getColor(): string
     {
         return match ($this) {
             self::MasterAdmin => 'success',

@@ -30,15 +30,15 @@ use Modules\Xot\Contracts\UserContract;
  * @property EloquentCollection<int, UserContract>           $users
  * @property int|null                                        $users_count
  *
- * @method static Builder|Team newModelQuery()
- * @method static Builder|Team newQuery()
- * @method static Builder|Team query()
- * @method static Builder|Team whereCreatedAt($value)
- * @method static Builder|Team whereId($value)
- * @method static Builder|Team whereName($value)
- * @method static Builder|Team wherePersonalTeam($value)
- * @method static Builder|Team whereUpdatedAt($value)
- * @method static Builder|Team whereUserId($value)
+ * @method static Builder|TeamContract newModelQuery()
+ * @method static Builder|TeamContract newQuery()
+ * @method static Builder|TeamContract query()
+ * @method static Builder|TeamContract whereCreatedAt($value)
+ * @method static Builder|TeamContract whereId($value)
+ * @method static Builder|TeamContract whereName($value)
+ * @method static Builder|TeamContract wherePersonalTeam($value)
+ * @method static Builder|TeamContract whereUpdatedAt($value)
+ * @method static Builder|TeamContract whereUserId($value)
  *
  * @phpstan-require-extends Model
  *

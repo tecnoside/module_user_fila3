@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
     'login' => [
         'username_or_email' => 'Felhasználónév vagy e-mail cím',

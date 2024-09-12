@@ -46,13 +46,9 @@ use Modules\Xot\Datas\XotData;
  * @method static Builder|DeviceUser whereUserId($value)
  *
  * @property ProfileContract|null $profile
-<<<<<<< HEAD
  * @property UserContract|null    $user
  * @property ProfileContract|null $creator
  * @property ProfileContract|null $updater
-=======
- * @property User|null            $user
->>>>>>> d87d37a (Check & fix styling)
  *
  * @mixin \Eloquent
  */

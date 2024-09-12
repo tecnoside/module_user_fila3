@@ -13,13 +13,8 @@ use Modules\User\Database\Factories\DeviceFactory;
 /**
  * Modules\User\Models\Device.
  *
-<<<<<<< HEAD
  * @property Collection<int, \Modules\Xot\Contracts\UserContract> $users
  * @property int|null                                             $users_count
-=======
- * @property Collection<int, \Modules\User\Models\User> $users
- * @property int|null                                   $users_count
->>>>>>> d87d37a (Check & fix styling)
  *
  * @method static DeviceFactory  factory($count = null, $state = [])
  * @method static Builder|Device newModelQuery()

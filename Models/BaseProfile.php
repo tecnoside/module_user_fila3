@@ -37,7 +37,11 @@ use Spatie\SchemalessAttributes\SchemalessAttributesTrait;
  * @property int|null                                                                                                      $permissions_count
  * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\Role>                                      $roles
  * @property int|null                                                                                                      $roles_count
+<<<<<<< HEAD
  * @property \Modules\Xot\Contracts\UserContract|null                                                                      $user
+=======
+ * @property User|null                                                                                                     $user
+>>>>>>> d87d37a (Check & fix styling)
  * @property string|null                                                                                                   $user_name
  *
  * @method static \Illuminate\Database\Eloquent\Builder|ProfileContract newModelQuery()

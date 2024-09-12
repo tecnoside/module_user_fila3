@@ -252,6 +252,11 @@ abstract class BaseUser extends Authenticatable implements HasName, HasTenants, 
         return true; // str_ends_with($this->email, '@yourdomain.com') && $this->hasVerifiedEmail();
     }
 
+    public function canAccessSocialite(): bool
+    {
+        return true;
+    }
+
     /*
     public function mobileDevices(): BelongsToMany
     {
@@ -319,10 +324,5 @@ abstract class BaseUser extends Authenticatable implements HasName, HasTenants, 
         $this->update(['name' => $value]);
 
         return $value;
-    }
-
-    public function canAccessSocialite(): bool
-    {
-        return true;
     }
 }

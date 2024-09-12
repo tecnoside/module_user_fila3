@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
     'password_confirm' => [
         'heading' => 'Confirmation de mot de passe',
@@ -118,7 +120,7 @@ return [
     ],
     'or' => 'Ou',
     'cancel' => 'Annuler',
-    ////
+    // //
     'login' => [
         'username_or_email' => 'Identifiant ou E-mail',
         'forgot_password_link' => 'Mot de passe oublié ?',

@@ -320,4 +320,9 @@ abstract class BaseUser extends Authenticatable implements HasName, HasTenants, 
 
         return $value;
     }
+
+    public function canAccessSocialite(): bool
+    {
+        return true;
+    }
 }

@@ -47,11 +47,11 @@ class Dashboard extends BaseBashboard
                 Section::make()
                     ->schema([
                         DatePicker::make('startDate')
-                        ->native(false)
+                            ->native(false)
                         // ->maxDate(fn (Get $get) => $get('endDate') ?: now()),
                         ,
                         DatePicker::make('endDate')
-                        ->native(false)
+                            ->native(false)
                         // ->minDate(fn (Get $get) => $get('startDate') ?: now())
                         // ->maxDate(now()),
                         ,

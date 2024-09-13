@@ -5,7 +5,8 @@ declare(strict_types=1);
 use Illuminate\Database\Schema\Blueprint;
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
-return new class extends XotBaseMigration {
+return new class extends XotBaseMigration
+{
     public function up(): void
     {
         $this->tableCreate(
@@ -28,7 +29,7 @@ return new class extends XotBaseMigration {
         // -- UPDATE --
         $this->tableUpdate(
             function (Blueprint $table): void {
-                if ('string' !== $this->getColumnType('id')) {
+                if ($this->getColumnType('id') !== 'string') {
                     $table->uuid('id')->change();  // is  just primary
                 }
                 $this->updateTimestamps($table, false);

@@ -46,7 +46,7 @@ trait TwoFactorAuthenticatable
      */
     public function recoveryCodes(): array
     {
-        if (null === $this->two_factor_recovery_codes) {
+        if ($this->two_factor_recovery_codes === null) {
             throw new \Exception('['.__LINE__.']['.class_basename($this).']');
         }
 
@@ -58,11 +58,11 @@ trait TwoFactorAuthenticatable
      */
     public function replaceRecoveryCode(string $code): void
     {
-        if (null === $code) {
+        if ($code === null) {
             throw new \Exception('['.__LINE__.']['.class_basename($this).']');
         }
 
-        if (null === $this->two_factor_recovery_codes) {
+        if ($this->two_factor_recovery_codes === null) {
             throw new \Exception('['.__LINE__.']['.class_basename($this).']');
         }
 
@@ -87,7 +87,7 @@ trait TwoFactorAuthenticatable
         $svg = (new Writer(
             new ImageRenderer(
                 new RendererStyle(192, 0, null, null, Fill::uniformColor(new Rgb(255, 255, 255), new Rgb(45, 55, 72))),
-                new SvgImageBackEnd()
+                new SvgImageBackEnd
             )
         ))->writeString($this->twoFactorQrCodeUrl());
 
@@ -100,11 +100,11 @@ trait TwoFactorAuthenticatable
     public function twoFactorQrCodeUrl(): string
     {
         $app_name = (string) config('app.name');
-        if (null === $app_name) {
+        if ($app_name === null) {
             throw new \Exception('['.__LINE__.']['.class_basename($this).']');
         }
 
-        if (null === $this->two_factor_secret) {
+        if ($this->two_factor_secret === null) {
             throw new \Exception('['.__LINE__.']['.class_basename($this).']');
         }
 

@@ -42,7 +42,7 @@ class RegisterTenant extends BaseRegisterTenant
     }
 
     /**
-     * @param array<string, mixed> $data
+     * @param  array<string, mixed>  $data
      */
     protected function handleRegistration(array $data): Model
     {

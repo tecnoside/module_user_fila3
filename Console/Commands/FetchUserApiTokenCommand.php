@@ -43,7 +43,7 @@ class FetchUserApiTokenCommand extends Command
         /** @var \Modules\Xot\Contracts\UserContract */
         $user = $user_class::firstWhere('email', $userEmail);
 
-        if (null === $user) {
+        if ($user === null) {
             $this->error('User not found!');
 
             return self::USER_NOT_FOUND;

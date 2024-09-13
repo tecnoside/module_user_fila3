@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
-return new class extends XotBaseMigration {
+return new class extends XotBaseMigration
+{
     /**
      * Run the migrations.
      */
@@ -43,7 +44,7 @@ return new class extends XotBaseMigration {
 
         try {
             app('cache')
-                ->store('default' !== $cache_store ? $cache_store : null)
+                ->store($cache_store !== 'default' ? $cache_store : null)
                 ->forget($cache_key);
         } catch (Exception $e) {
             echo $e->getMessage();

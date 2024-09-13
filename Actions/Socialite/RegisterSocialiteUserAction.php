@@ -9,9 +9,9 @@ declare(strict_types=1);
 namespace Modules\User\Actions\Socialite;
 
 // use DutchCodingCompany\FilamentSocialite\FilamentSocialite;
-use Illuminate\Http\RedirectResponse;
 use Laravel\Socialite\Contracts\User as SocialiteUserContract;
 use Modules\User\Events\SocialiteUserConnected;
+use Modules\User\Models\SocialiteUser;
 use Modules\Xot\Contracts\UserContract;
 use Spatie\QueueableAction\QueueableAction;
 
@@ -24,7 +24,7 @@ class RegisterSocialiteUserAction
     /**
      * Execute the action.
      */
-    public function execute(string $provider, SocialiteUserContract $oauthUser, UserContract $user): RedirectResponse
+    public function execute(string $provider, SocialiteUserContract $oauthUser, UserContract $user): SocialiteUser
     {
         // Create a new SocialiteUser instance
         $socialiteUser = app(CreateSocialiteUserAction::class)
@@ -47,6 +47,7 @@ class RegisterSocialiteUserAction
         SocialiteUserConnected::dispatch($socialiteUser);
 
         // Login the user
-        return app(LoginUserAction::class)->execute($socialiteUser);
+        // return app(LoginUserAction::class)->execute($socialiteUser);
+        return $socialiteUser;
     }
 }

@@ -31,7 +31,6 @@ use Illuminate\Validation\Rules\Password;
 class MyProfilePage extends Page implements HasForms
 {
     use InteractsWithForms;
-
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
     protected static string $view = 'user::filament.pages.my-profile';
@@ -39,7 +38,6 @@ class MyProfilePage extends Page implements HasForms
     protected static bool $shouldRegisterNavigation = false;
 
     public ?array $profileData = [];
-
     public ?array $passwordData = [];
 
     public function mount(): void

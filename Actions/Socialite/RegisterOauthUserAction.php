@@ -7,17 +7,17 @@ declare(strict_types=1);
 
 namespace Modules\User\Actions\Socialite;
 
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Laravel\Socialite\Contracts\User as SocialiteUserContract;
 use Modules\User\Events\Registered;
+use Modules\User\Models\SocialiteUser;
 use Spatie\QueueableAction\QueueableAction;
 
 class RegisterOauthUserAction
 {
     use QueueableAction;
 
-    public function execute(string $provider, SocialiteUserContract $oauthUser): RedirectResponse
+    public function execute(string $provider, SocialiteUserContract $oauthUser): SocialiteUser
     {
         $socialiteUser = DB::transaction(
             static function () use ($provider, $oauthUser) {
@@ -42,6 +42,7 @@ class RegisterOauthUserAction
         Registered::dispatch($socialiteUser);
 
         // Login the user
-        return app(LoginUserAction::class)->execute($socialiteUser);
+        // return app(LoginUserAction::class)->execute($socialiteUser);
+        return $socialiteUser;
     }
 }

@@ -42,7 +42,7 @@ class EditRole extends EditRecord
                 );
             }
         );
-        Assert::isInstanceOf($this->record, Role::class, '['.__LINE__.']['.__FILE__.']');
+        Assert::isInstanceOf($this->record, Role::class, '['.__LINE__.']['.class_basename($this).']');
         $this->record->syncPermissions($permissionModels);
     }
 

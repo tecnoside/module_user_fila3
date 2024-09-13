@@ -23,15 +23,16 @@ class CreateSocialiteUserAction
      */
     public function execute(string $provider, SocialiteUserContract $oauthUser, UserContract $user): SocialiteUser
     {
-        return SocialiteUser::create(
-            [
-                'user_id' => $user->getKey(),
-                'provider' => $provider,
-                'provider_id' => $oauthUser->getEmail(),
-                'name' => $oauthUser->getName(),
-                'email' => $oauthUser->getId(),
-                'avatar' => $oauthUser->getAvatar(),
-            ]
-        );
+        $attributes = [
+            'user_id' => $user->getKey(),
+            'provider' => $provider,
+            'provider_id' => $oauthUser->getId(),
+            'name' => $oauthUser->getName(),
+            // 'nickname' => $oauthUser->getNickname(),
+            'email' => $oauthUser->getEmail(),
+            'avatar' => $oauthUser->getAvatar(),
+        ];
+
+        return SocialiteUser::create(attributes: $attributes);
     }
 }

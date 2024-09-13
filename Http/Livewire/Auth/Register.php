@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 use Modules\Xot\Datas\XotData;
-use Modules\Xot\Services\FileService;
 
 class Register extends Component
 {
@@ -53,9 +52,9 @@ class Register extends Component
 
     public function render(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
     {
-        FileService::viewCopy('user::livewire.auth.register', 'pub_theme::livewire.auth.register');
-        FileService::viewCopy('user::layouts.auth', 'pub_theme::layouts.auth');
-        FileService::viewCopy('user::layouts.base', 'pub_theme::layouts.base');
+        app(\Modules\Xot\Actions\File\ViewCopyAction::class)->execute('user::livewire.auth.register', 'pub_theme::livewire.auth.register');
+        app(\Modules\Xot\Actions\File\ViewCopyAction::class)->execute('user::layouts.auth', 'pub_theme::layouts.auth');
+        app(\Modules\Xot\Actions\File\ViewCopyAction::class)->execute('user::layouts.base', 'pub_theme::layouts.base');
 
         return view('pub_theme::livewire.auth.register')
             ->extends('pub_theme::layouts.auth');

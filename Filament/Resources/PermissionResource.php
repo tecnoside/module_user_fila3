@@ -150,7 +150,7 @@ class PermissionResource extends XotBaseResource
                         ->action(
                             static function (Collection $collection, array $data): void {
                                 foreach ($collection as $record) {
-                                    Assert::isInstanceOf($record, Permission::class, '['.__LINE__.']['.__FILE__.']');
+                                    Assert::isInstanceOf($record, Permission::class, '['.__LINE__.']['.__CLASS__.']');
                                     $record->roles()->sync($data['role']);
                                     $record->save();
                                 }

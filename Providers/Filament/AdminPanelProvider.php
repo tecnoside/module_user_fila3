@@ -8,10 +8,12 @@ declare(strict_types=1);
 
 namespace Modules\User\Providers\Filament;
 
+use Filament\Navigation\MenuItem;
 use Filament\Panel;
 use Filament\Support\Facades\FilamentView;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\View;
+use Modules\User\Filament\Pages\MyProfilePage;
 use Modules\Xot\Providers\Filament\XotBasePanelProvider;
 
 class AdminPanelProvider extends XotBasePanelProvider
@@ -20,6 +22,8 @@ class AdminPanelProvider extends XotBasePanelProvider
 
     public function panel(Panel $panel): Panel
     {
+        $panel = parent::panel($panel);
+
         FilamentView::registerRenderHook(
             'panels::auth.login.form.after',
             static fn (): string => Blade::render("@livewire('socialite.buttons')"),
@@ -57,7 +61,22 @@ class AdminPanelProvider extends XotBasePanelProvider
             fn (): string => Blade::render('@livewire(\'team.change\')'),
         );
         */
+        // $tenantId = request()->route()->parameter('tenant');
+        // $profile_url = MyProfilePage::getUrl(panel: 'admin');
+        // $panel->default();
+        // $profile_url = MyProfilePage::getUrl(panel: 'admin');
+        // $panel = $panel->pages([
+        //     MyProfilePage::class,
+        // ]);
+        // $profile_url = '#';
+        // $panel->userMenuItems([
+        //     // 'account' => MenuItem::make()->url($profile_url),
+        //     MenuItem::make()
+        //         ->label('Settings')
+        //         ->url(fn (): string => '#')
+        //         ->icon('heroicon-m-cog-8-tooth'),
+        // ]);
 
-        return parent::panel($panel);
+        return $panel;
     }
 }

@@ -54,6 +54,9 @@ class ProcessCallbackController extends Controller
         // Try to find a socialite user
         $socialiteUser = app(RetrieveSocialiteUserAction::class)->execute($provider, $oauthUser);
         if ($socialiteUser) {
+            if (! $socialiteUser->user?->canAccessSocialite()) {
+                return app(RedirectToLoginAction::class)->execute('auth.user-not-allowed');
+            }
             // Associate default roles to the existing "real" user, if needed
             app(
                 SetDefaultRolesBySocialiteUserAction::class,
@@ -66,13 +69,12 @@ class ProcessCallbackController extends Controller
         }
 
         // See if registration is allowed
-        /*
         if (! app(IsRegistrationEnabledAction::class)->execute()) {
             RegistrationNotEnabled::dispatch($provider, $oauthUser);
 
             return app(RedirectToLoginAction::class)->execute('auth.registration-not-enabled');
         }
-        */
+
         $user_class = XotData::make()->getUserClass();
         // See if a user already exists, but not for this socialite provider
         // $user = app()->call($this->socialite->getUserResolver(), ['provider' => $provider, 'oauthUser' => $oauthUser, 'socialite' => $this->socialite]);
@@ -80,8 +82,16 @@ class ProcessCallbackController extends Controller
         $user = $user_class::query()->firstWhere(['email' => $oauthUser->getEmail()]);
 
         // Handle registration
-        return $user
-            ? app(RegisterSocialiteUserAction::class)->execute($provider, $oauthUser, $user)
-            : app(RegisterOauthUserAction::class)->execute($provider, $oauthUser);
+        if (null != $user) {
+            $socialiteUser = app(RegisterSocialiteUserAction::class)->execute($provider, $oauthUser, $user);
+        } else {
+            $socialiteUser = app(RegisterOauthUserAction::class)->execute($provider, $oauthUser);
+        }
+
+        if (! $socialiteUser->user?->canAccessSocialite()) {
+            return app(RedirectToLoginAction::class)->execute('auth.user-not-allowed');
+        }
+
+        return app(LoginUserAction::class)->execute($socialiteUser);
     }
 }

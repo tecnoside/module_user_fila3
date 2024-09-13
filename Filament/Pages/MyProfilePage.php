@@ -25,6 +25,7 @@ use Illuminate\Validation\Rules\Password;
 class MyProfilePage extends Page implements HasForms
 {
     use InteractsWithForms;
+
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
     protected static string $view = 'user::filament.pages.my-profile';
@@ -32,6 +33,7 @@ class MyProfilePage extends Page implements HasForms
     protected static bool $shouldRegisterNavigation = false;
 
     public ?array $profileData = [];
+
     public ?array $passwordData = [];
 
     public function mount(): void
@@ -185,9 +187,9 @@ class MyProfilePage extends Page implements HasForms
         );
 
         Notification::make()
-        ->title('Profile updated!')
-        ->success()
-        ->send();
+            ->title('Profile updated!')
+            ->success()
+            ->send();
     }
 
     protected function getUpdateProfileFormActions(): array

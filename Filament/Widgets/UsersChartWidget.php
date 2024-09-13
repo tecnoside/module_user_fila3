@@ -21,9 +21,9 @@ use Modules\User\Models\AuthenticationLog;
 
 class UsersChartWidget extends ChartWidget implements HasForms
 {
-    use InteractsWithPageFilters;
     use InteractsWithActions;
     use InteractsWithForms;
+    use InteractsWithPageFilters;
 
     protected static ?string $pollingInterval = null;
 

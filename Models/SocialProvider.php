@@ -13,6 +13,7 @@ use Modules\Tenant\Models\Traits\SushiToPhpArray;
 class SocialProvider extends BaseModel
 {
     use SushiToPhpArray;
+
     /** @var bool */
     public $incrementing = false;
 

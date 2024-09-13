@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\User\Console\Commands;
 
 use Illuminate\Console\Command;
+<<<<<<< HEAD
 
 use function Laravel\Prompts\select;
 use function Laravel\Prompts\text;
@@ -12,6 +13,14 @@ use function Laravel\Prompts\text;
 use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Datas\XotData;
 use Symfony\Component\Console\Input\InputOption;
+=======
+use Modules\Xot\Contracts\UserContract;
+use Modules\Xot\Datas\XotData;
+use Symfony\Component\Console\Input\InputOption;
+
+use function Laravel\Prompts\select;
+use function Laravel\Prompts\text;
+>>>>>>> 08ee29c (up)
 
 class SetCurrentTeamCommand extends Command
 {

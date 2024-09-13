@@ -55,9 +55,8 @@ trait HasTenants
         return $this->belongsToMany($tenant_class, $pivotTableFull, null, 'tenant_id')
             ->using($pivotClass)
             ->withPivot($pivotFields)
-            ->withTimestamps()
-            // ->ddRawSql()
-        ;
+            ->withTimestamps();
+        // ->ddRawSql()
         // ->as('membership')
     }
 }

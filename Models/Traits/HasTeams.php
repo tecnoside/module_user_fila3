@@ -32,7 +32,7 @@ trait HasTeams
      */
     public function isCurrentTeam(TeamContract $teamContract): bool
     {
-        if (! $teamContract instanceof TeamContract || null === $this->currentTeam) {
+        if (null === $this->currentTeam) {
             return false;
         }
 

@@ -8,14 +8,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Modules\User\Contracts\TeamContract;
 use Modules\Xot\Datas\XotData;
 
-// use Modules\User\Models\OwnerRole;
-
 /**
  * Undocumented trait.
  *
  * @property TeamContract $currentTeam
  */
-trait IsTenants
+trait IsTenant
 {
     public function users(): BelongsToMany
     {
@@ -26,9 +24,10 @@ trait IsTenants
         $pivotDbName = $pivot->getConnection()->getDatabaseName();
         $pivotTableFull = $pivotDbName.'.'.$pivotTable;
         $pivotFields = $pivot->getFillable();
+        $userClass = $xot->getUserClass();
 
         // $this->setConnection('mysql');
-        return $this->belongsToMany(XotData::make()->getUserClass(), $pivotTableFull, 'tenant_id', 'user_id')
+        return $this->belongsToMany($userClass, $pivotTableFull, 'tenant_id', 'user_id')
             ->using($pivotClass)
             ->withPivot($pivotFields)
             ->withTimestamps();

@@ -20,8 +20,8 @@ class IsRegistrationEnabledAction
      */
     public function execute(): bool
     {
-        Assert::boolean(config('filament-socialite.registration'));
+        Assert::boolean($res = config('filament-socialite.registration'));
 
-        return config('filament-socialite.registration');
+        return $res;
     }
 }

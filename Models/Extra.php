@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Modules\Xot\Models\Extra as XotBaseExtra;
 
 /**

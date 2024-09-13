@@ -6,12 +6,13 @@ namespace Modules\User\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
-use Modules\User\Models\Role;
-use Nwidart\Modules\Facades\Module;
-use Symfony\Component\Console\Input\InputOption;
 
 use function Laravel\Prompts\multiselect;
 use function Laravel\Prompts\text;
+
+use Modules\User\Models\Role;
+use Nwidart\Modules\Facades\Module;
+use Symfony\Component\Console\Input\InputOption;
 
 class AssignModuleCommand extends Command
 {

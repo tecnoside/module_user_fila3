@@ -6,7 +6,6 @@ namespace Modules\User\Http\Livewire\Auth\Passwords;
 
 use Illuminate\Support\Facades\Password;
 use Livewire\Component;
-use Modules\Xot\Services\FileService;
 
 class Email extends Component
 {
@@ -44,9 +43,9 @@ class Email extends Component
 
     public function render(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
     {
-        FileService::viewCopy('user::livewire.auth.passwords.email', 'pub_theme::livewire.auth.passwords.email');
-        FileService::viewCopy('user::layouts.auth', 'pub_theme::layouts.auth');
-        FileService::viewCopy('user::layouts.base', 'pub_theme::layouts.base');
+        app(\Modules\Xot\Actions\File\ViewCopyAction::class)->execute('user::livewire.auth.passwords.email', 'pub_theme::livewire.auth.passwords.email');
+        app(\Modules\Xot\Actions\File\ViewCopyAction::class)->execute('user::layouts.auth', 'pub_theme::layouts.auth');
+        app(\Modules\Xot\Actions\File\ViewCopyAction::class)->execute('user::layouts.base', 'pub_theme::layouts.base');
 
         return view('pub_theme::livewire.auth.passwords.email')
             ->extends('pub_theme::layouts.auth');

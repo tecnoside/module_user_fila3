@@ -65,6 +65,9 @@ class TenantUser extends BasePivot
     protected function casts(): array
     {
         return [
+            'id' => 'string',
+            'uuid' => 'string',
+
             'created_at' => 'datetime',
             'updated_at' => 'datetime',
             'deleted_at' => 'datetime',
@@ -73,7 +76,6 @@ class TenantUser extends BasePivot
             'created_by' => 'string',
             'deleted_by' => 'string',
 
-            'id' => 'string',
             // 'email_verified_at' => 'datetime',
             // 'password' => 'hashed', //Call to undefined cast [hashed] on column [password] in model [Modules\User\Models\User].
             // 'is_active' => 'boolean',

@@ -26,6 +26,7 @@ trait HasTenants
     public function canAccessTenant(Model $tenant): bool
     {
         // return $this->teams->contains($tenant);
+        // return $this->tenants()->whereKey($tenant)->exists();
         return true;
     }
 
@@ -41,6 +42,7 @@ trait HasTenants
     {
         $xot = XotData::make();
         $pivotClass = $xot->getTenantPivotClass();
+
         $pivot = app($pivotClass);
         $pivotTable = $pivot->getTable();
         $pivotDbName = $pivot->getConnection()->getDatabaseName();
@@ -54,6 +56,7 @@ trait HasTenants
             ->using($pivotClass)
             ->withPivot($pivotFields)
             ->withTimestamps();
+        // ->ddRawSql()
         // ->as('membership')
     }
 }

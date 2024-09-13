@@ -6,6 +6,7 @@ namespace Modules\User\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Modules\User\Contracts\TenantContract;
+use Modules\Xot\Datas\XotData;
 
 /**
  * Modules\User\Models\Tenant.
@@ -37,6 +38,8 @@ class Tenant extends BaseModel implements TenantContract
 
     public function members(): BelongsToMany
     {
-        return $this->belongsToMany(\Modules\Xot\Datas\XotData::make()->getUserClass());
+        $user_class = XotData::make()->getUserClass();
+
+        return $this->belongsToMany($user_class);
     }
 }

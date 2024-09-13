@@ -6,14 +6,13 @@ namespace Modules\User\Http\Livewire\Auth;
 
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
-use Modules\Xot\Services\FileService;
 use Webmozart\Assert\Assert;
 
 class Verify extends Component
 {
     public function resend(): void
     {
-        Assert::notNull($user = Auth::user(), '['.__LINE__.']['.__FILE__.']');
+        Assert::notNull($user = Auth::user(), '['.__LINE__.']['.class_basename($this).']');
         if ($user->hasVerifiedEmail()) {
             redirect(route('home'));
         }
@@ -27,9 +26,9 @@ class Verify extends Component
 
     public function render(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
     {
-        FileService::viewCopy('user::livewire.auth.verify', 'pub_theme::livewire.auth.verify');
-        FileService::viewCopy('user::layouts.auth', 'pub_theme::layouts.auth');
-        FileService::viewCopy('user::layouts.base', 'pub_theme::layouts.base');
+        app(\Modules\Xot\Actions\File\ViewCopyAction::class)->execute('user::livewire.auth.verify', 'pub_theme::livewire.auth.verify');
+        app(\Modules\Xot\Actions\File\ViewCopyAction::class)->execute('user::layouts.auth', 'pub_theme::layouts.auth');
+        app(\Modules\Xot\Actions\File\ViewCopyAction::class)->execute('user::layouts.base', 'pub_theme::layouts.base');
 
         return view('pub_theme::livewire.auth.verify')
             ->extends('pub_theme::layouts.auth');

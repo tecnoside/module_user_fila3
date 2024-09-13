@@ -78,7 +78,7 @@ class DeviceData extends Data
         }
 
         // fare contract
-        // Assert::isInstanceOf($synchronizationClass,Model::class,'['.__LINE__.']['.__FILE__.']');
+        // Assert::isInstanceOf($synchronizationClass,Model::class,'['.__LINE__.']['.class_basename($this).']');
         // $synchronization = Synchronization::create([
         /**
          * @phpstan-ignore-next-line

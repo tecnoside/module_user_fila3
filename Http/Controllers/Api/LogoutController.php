@@ -30,7 +30,7 @@ class LogoutController extends XotBaseController
      */
     public function __invoke(Request $request): JsonResponse
     {
-        Assert::notNull($user = $request->user(), '['.__LINE__.']['.__FILE__.']');
+        Assert::notNull($user = $request->user(), '['.__LINE__.']['.class_basename($this).']');
         app(LogoutUserAction::class)->execute($user);
 
         // TODO: Implement token cleanup logic here
@@ -39,7 +39,7 @@ class LogoutController extends XotBaseController
         //     ->delete();
 
         // TODO: Implement token cleanup logic here
-        // Assert::notNull($accessToken = $user->token(),'['.__LINE__.']['.__FILE__.']');
+        // Assert::notNull($accessToken = $user->token(),'['.__LINE__.']['.class_basename($this).']');
         // if (method_exists($accessToken, 'getKey')) {
         //     OauthRefreshToken::where('access_token_id', $accessToken->getKey())->delete();
         // }

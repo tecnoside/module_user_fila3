@@ -69,7 +69,7 @@ Route::middleware('auth:api')
     ->namespace('Api')
     ->get('/v2/logout', function (Request $request) {
     // $user = $request->user();
-    Assert::notNull($user = $request->user(),'['.__LINE__.']['.__FILE__.']');
+    Assert::notNull($user = $request->user(),'['.__LINE__.']['.class_basename($this).']');
     $accessToken = $user->token();
     DB::table('oauth_refresh_tokens')
     ->where('access_token_id', $accessToken->id)

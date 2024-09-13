@@ -30,7 +30,7 @@ class Change extends Component
     public function mount(): void
     {
         $this->xot = XotData::make();
-        Assert::notNull(Filament::auth()->user(), '['.__LINE__.']['.__FILE__.']');
+        Assert::notNull(Filament::auth()->user(), '['.__LINE__.']['.class_basename($this).']');
         $this->user = Filament::auth()->user();
         $this->teams = $this->user->allTeams()->toArray();
     }

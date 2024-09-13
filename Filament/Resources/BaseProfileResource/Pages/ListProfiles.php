@@ -200,7 +200,7 @@ class ListProfiles extends ListRecords
                             ->each
                             ->each(
                                 function ($user): void {
-                                    Assert::isInstanceOf($user, Model::class, '['.__LINE__.']['.__FILE__.']');
+                                    Assert::isInstanceOf($user, Model::class, '['.__LINE__.']['.class_basename($this).']');
                                     $user->update(['is_active' => true]);
                                 }
                             );
@@ -217,7 +217,7 @@ class ListProfiles extends ListRecords
                             ->each
                             ->each(
                                 function ($user): void {
-                                    Assert::isInstanceOf($user, Model::class, '['.__LINE__.']['.__FILE__.']');
+                                    Assert::isInstanceOf($user, Model::class, '['.__LINE__.']['.class_basename($this).']');
                                     $user->update(['is_active' => true]);
                                 }
                             );

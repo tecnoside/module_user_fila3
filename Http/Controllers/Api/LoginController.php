@@ -20,7 +20,7 @@ class LoginController extends XotBaseController
     public function __invoke(Request $request): JsonResponse
     {
         if (auth()->attempt(['email' => $request->email, 'password' => $request->password])) {
-            Assert::notNull($user = auth()->user(), '['.__LINE__.']['.__FILE__.']');
+            Assert::notNull($user = auth()->user(), '['.__LINE__.']['.class_basename($this).']');
             $success = [];
             $success['token'] = $user->createToken('MyApp')->accessToken;
             $success['name'] = $user->name;

@@ -7,7 +7,7 @@ return [
 
     'login-failed' => 'Login fallito, riprova.',
 
-    'user-not-allowed' => 'La tua email non appartiene ad un dominio valido.',
+    'user-not-allowed' => 'La tua email non è autorizzata.',
 
     'registration-not-enabled' => 'Non è possibile registrare un nuovo utente.',
     'Sign in to your account' => 'Accedi al tuo account',

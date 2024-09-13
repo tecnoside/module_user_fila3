@@ -60,7 +60,7 @@
         "laravel/pint": "*",
         "nunomaduro/collision": "*",
         "nunomaduro/phpinsights": "*",
-        "orchestra/testbench": "*",
+        "orchestra/testbench": "^9.4",
         "pestphp/pest": "*",
         "pestphp/pest-plugin-arch": "*",
         "pestphp/pest-plugin-laravel": "*",

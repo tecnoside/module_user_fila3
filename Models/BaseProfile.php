@@ -94,6 +94,9 @@ abstract class BaseProfile extends BaseModel implements ProfileContract
     protected function casts(): array
     {
         return [
+            'id' => 'string',
+            'uuid' => 'string',
+
             'created_at' => 'datetime',
             'updated_at' => 'datetime',
             'deleted_at' => 'datetime',
@@ -117,18 +120,12 @@ abstract class BaseProfile extends BaseModel implements ProfileContract
         return $this->extra->modelScope();
     }
 
-    // Definisci il campo schemaless
-    // public function getExtraAttribute(): \Spatie\SchemalessAttributes\SchemalessAttributes
-    // {
-    //    return $this->schemalessAttributes('extra');
-    // }
-
     public function getAvatarUrl(): string
     {
         // return filament()->getUserAvatarUrl($this);
         $avatar = $this->getFirstMediaUrl();
 
-        if (is_string($avatar) && strlen($avatar) > 5) {
+        if (strlen($avatar) > 5) {
             return $avatar;
         }
 

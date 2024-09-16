@@ -100,6 +100,9 @@ class Device extends BaseModel
         ];
     }
 
+    /**
+     * return BelongsToMany<UserContract>
+     */
     public function users(): BelongsToMany
     {
         $pivot_class = DeviceUser::class;

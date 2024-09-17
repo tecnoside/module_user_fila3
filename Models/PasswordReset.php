@@ -19,7 +19,6 @@ use Modules\User\Database\Factories\PasswordResetFactory;
  * @property string|null $user_id
  * @property string|null $updated_by
  * @property string|null $created_by
- *
  * @method static PasswordResetFactory  factory($count = null, $state = [])
  * @method static Builder|PasswordReset newModelQuery()
  * @method static Builder|PasswordReset newQuery()
@@ -32,10 +31,8 @@ use Modules\User\Database\Factories\PasswordResetFactory;
  * @method static Builder|PasswordReset whereUpdatedAt($value)
  * @method static Builder|PasswordReset whereUpdatedBy($value)
  * @method static Builder|PasswordReset whereUserId($value)
- *
  * @property \Modules\Xot\Contracts\ProfileContract|null $creator
  * @property \Modules\Xot\Contracts\ProfileContract|null $updater
- *
  * @mixin \Eloquent
  */
 class PasswordReset extends BaseModel

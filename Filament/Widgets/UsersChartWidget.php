@@ -80,7 +80,7 @@ class UsersChartWidget extends ChartWidget implements HasForms
             ->dateColumn('login_at')
             ->between(start: $startDate, end: $endDate)
             ->perDay()
-            //->perMonth()
+            // ->perMonth()
             ->count();
         /*
         // Update callbacks to match expected signature
@@ -96,11 +96,8 @@ class UsersChartWidget extends ChartWidget implements HasForms
         })->toArray();
         */
 
-
-        $chartData=$data->pluck('aggregate')->toArray();
-        $chartLabels=$data->pluck('date')->toArray();
-
-
+        $chartData = $data->pluck('aggregate')->toArray();
+        $chartLabels = $data->pluck('date')->toArray();
 
         return [
             'datasets' => [
@@ -112,6 +109,4 @@ class UsersChartWidget extends ChartWidget implements HasForms
             'labels' => $chartLabels,
         ];
     }
-
-
 }

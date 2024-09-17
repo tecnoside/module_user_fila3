@@ -101,7 +101,7 @@ class Device extends BaseModel
     }
 
     /**
-     * return BelongsToMany<UserContract>
+     * return BelongsToMany<UserContract>.
      */
     public function users(): BelongsToMany
     {

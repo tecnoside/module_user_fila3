@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
+use Modules\Xot\Contracts\ProfileContract;
 use Modules\Tenant\Models\Traits\SushiToPhpArray;
 
 /**
@@ -21,8 +22,8 @@ use Modules\Tenant\Models\Traits\SushiToPhpArray;
  * @property string|null                          $svg
  * @property string|null                          $client_id
  * @property string|null                          $client_secret
- * @property \Modules\Idoteca\Models\Profile|null $creator
- * @property \Modules\Idoteca\Models\Profile|null $updater
+ * @property ProfileContract|null $creator
+ * @property ProfileContract|null $updater
  *
  * @method static \Modules\User\Database\Factories\SocialProviderFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider   newModelQuery()

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
+use Modules\Xot\Contracts\ProfileContract;
+
 /**
  * @property string                                                                                             $id
  * @property string|null                                                                                        $name
@@ -38,7 +40,7 @@ namespace Modules\User\Models;
  * @property int|null                                                                                           $owned_teams_count
  * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\Permission>                     $permissions
  * @property int|null                                                                                           $permissions_count
- * @property \Modules\Idoteca\Models\Profile|null                                                               $profile
+ * @property ProfileContract|null                                                               $profile
  * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\Role>                           $roles
  * @property int|null                                                                                           $roles_count
  * @property Membership                                                                                         $membership

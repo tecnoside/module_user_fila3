@@ -24,9 +24,9 @@ class IsUserAllowedAction
     public function execute(SocialiteUserContract $user): bool
     {
         $domains = app(GetDomainAllowListAction::class)->execute();
-        Assert::isArray($domains);
+
         // When no domains are specified, all users are allowed
-        if ((is_countable($domains) ? \count($domains) : 0) < 1) {
+        if (\count($domains)  < 1) {
             return true;
         }
 

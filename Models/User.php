@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace Modules\User\Models;
 
 /**
- * 
- *
  * @property string                                                                                             $id
  * @property string|null                                                                                        $name
  * @property string|null                                                                                        $first_name
@@ -50,12 +48,13 @@ namespace Modules\User\Models;
  * @property int|null                                                                                           $tenants_count
  * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\OauthAccessToken>               $tokens
  * @property int|null                                                                                           $tokens_count
+ *
  * @method static \Modules\User\Database\Factories\UserFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|User   newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User   newQuery()
- * @method static Builder|User                                 permission($permissions, $without = false)
+ * @method static \Illuminate\Database\Eloquent\Builder|User   permission($permissions, $without = false)
  * @method static \Illuminate\Database\Eloquent\Builder|User   query()
- * @method static Builder|User                                 role($roles, $guard = null, $without = false)
+ * @method static \Illuminate\Database\Eloquent\Builder|User   role($roles, $guard = null, $without = false)
  * @method static \Illuminate\Database\Eloquent\Builder|User   whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User   whereCreatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User   whereCurrentTeamId($value)
@@ -74,8 +73,9 @@ namespace Modules\User\Models;
  * @method static \Illuminate\Database\Eloquent\Builder|User   whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User   whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User   whereUpdatedBy($value)
- * @method static Builder|User                                 withoutPermission($permissions)
- * @method static Builder|User                                 withoutRole($roles, $guard = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|User   withoutPermission($permissions)
+ * @method static \Illuminate\Database\Eloquent\Builder|User   withoutRole($roles, $guard = null)
+ *
  * @mixin \Eloquent
  */
 class User extends BaseUser

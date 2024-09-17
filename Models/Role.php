@@ -10,27 +10,30 @@ namespace Modules\User\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
+use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Datas\XotData;
 use Spatie\Permission\Models\Role as SpatieRole;
 
 /**
  * Modules\User\Models\Role.
  *
- * @property string                                               $uuid
- * @property string|null                                          $team_id
- * @property string                                               $name
- * @property string                                               $guard_name
- * @property Carbon|null                                          $created_at
- * @property Carbon|null                                          $updated_at
- * @property Collection<int, \Modules\User\Models\Permission>     $permissions
- * @property int|null                                             $permissions_count
- * @property Team|null                                            $team
- * @property Collection<int, \Modules\Xot\Contracts\UserContract> $users
- * @property int|null                                             $users_count
+ * @property string                                                                    $uuid
+ * @property string|null                                                               $team_id
+ * @property string                                                                    $name
+ * @property string                                                                    $guard_name
+ * @property Carbon|null                                                               $created_at
+ * @property Carbon|null                                                               $updated_at
+ * @property Collection<int, \Modules\User\Models\Permission>                          $permissions
+ * @property int|null                                                                  $permissions_count
+ * @property Team|null                                                                 $team
+ * @property EloquentCollection<int, \Illuminate\Database\Eloquent\Model&UserContract> $users
+ * @property int|null                                                                  $users_count
+ *
  * @method static Builder|Role newModelQuery()
  * @method static Builder|Role newQuery()
  * @method static Builder|Role permission($permissions)
@@ -41,14 +44,21 @@ use Spatie\Permission\Models\Role as SpatieRole;
  * @method static Builder|Role whereTeamId($value)
  * @method static Builder|Role whereUpdatedAt($value)
  * @method static Builder|Role whereUuid($value)
+ *
  * @property int $id
+ *
  * @method static Builder|Role whereId($value)
+ *
  * @property string|null $updated_by
  * @property string|null $created_by
+ *
  * @method static Builder|Role whereCreatedBy($value)
  * @method static Builder|Role whereUpdatedBy($value)
+ *
  * @mixin Eloquent
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|Role withoutPermission($permissions)
+ *
  * @mixin \Eloquent
  */
 class Role extends SpatieRole

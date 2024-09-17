@@ -11,6 +11,8 @@ namespace Modules\User\Models;
 use Modules\Tenant\Models\Traits\SushiToPhpArray;
 
 /**
+ * 
+ *
  * @property int|null                             $id
  * @property string|null                          $name
  * @property array|null                           $scopes
@@ -23,7 +25,6 @@ use Modules\Tenant\Models\Traits\SushiToPhpArray;
  * @property string|null                          $client_secret
  * @property \Modules\Idoteca\Models\Profile|null $creator
  * @property \Modules\Idoteca\Models\Profile|null $updater
- *
  * @method static \Modules\User\Database\Factories\SocialProviderFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider   newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider   newQuery()
@@ -38,7 +39,6 @@ use Modules\Tenant\Models\Traits\SushiToPhpArray;
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider   whereSocialite($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider   whereStateless($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider   whereSvg($value)
- *
  * @mixin \Eloquent
  */
 class SocialProvider extends BaseModel

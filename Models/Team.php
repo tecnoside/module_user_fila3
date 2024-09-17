@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
+use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -23,13 +24,14 @@ use Modules\Xot\Models\Traits\HasExtraTrait;
  * @property int                                                                                $personal_team
  * @property \Illuminate\Support\Carbon|null                                                    $created_at
  * @property \Illuminate\Support\Carbon|null                                                    $updated_at
- * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\Xot\Contracts\UserContract> $members
+ * @property EloquentCollection<int, \Illuminate\Database\Eloquent\Model&UserContract>          $members
  * @property int|null                                                                           $members_count
  * @property UserContract|null                                                                  $owner
  * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\TeamInvitation> $teamInvitations
  * @property int|null                                                                           $team_invitations_count
- * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\Xot\Contracts\UserContract> $users
+ * @property EloquentCollection<int, \Illuminate\Database\Eloquent\Model&UserContract>          $users
  * @property int|null                                                                           $users_count
+ *
  * @method static \Modules\User\Database\Factories\TeamFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Team   newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Team   newQuery()
@@ -40,19 +42,24 @@ use Modules\Xot\Models\Traits\HasExtraTrait;
  * @method static \Illuminate\Database\Eloquent\Builder|Team   wherePersonalTeam($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Team   whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Team   whereUserId($value)
+ *
  * @property string|null                     $updated_by
  * @property string|null                     $created_by
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property string|null                     $deleted_by
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|Team whereCreatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Team whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Team whereDeletedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Team whereUpdatedBy($value)
+ *
  * @property Membership                                  $membership
  * @property \Modules\Xot\Contracts\ProfileContract|null $creator
  * @property \Modules\Xot\Contracts\ProfileContract|null $updater
  * @property string                                      $uuid
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|Team whereUuid($value)
+ *
  * @mixin \Eloquent
  */
 class Team extends BaseModel implements TeamContract

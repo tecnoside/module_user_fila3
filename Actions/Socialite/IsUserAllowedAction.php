@@ -26,7 +26,7 @@ class IsUserAllowedAction
         $domains = app(GetDomainAllowListAction::class)->execute();
 
         // When no domains are specified, all users are allowed
-        if (\count($domains)  < 1) {
+        if (\count($domains) < 1) {
             return true;
         }
 

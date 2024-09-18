@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
-use Illuminate\Database\Eloquent\Builder;
+use Modules\Xot\Contracts\ProfileContract;
 
 /**
  * @property string                                                                                             $id
@@ -40,7 +40,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property int|null                                                                                           $owned_teams_count
  * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\Permission>                     $permissions
  * @property int|null                                                                                           $permissions_count
- * @property \Modules\Idoteca\Models\Profile|null                                                               $profile
+ * @property ProfileContract|null                                                                               $profile
  * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\Role>                           $roles
  * @property int|null                                                                                           $roles_count
  * @property Membership                                                                                         $membership
@@ -54,9 +54,9 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static \Modules\User\Database\Factories\UserFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|User   newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User   newQuery()
- * @method static Builder|User                                 permission($permissions, $without = false)
+ * @method static \Illuminate\Database\Eloquent\Builder|User   permission($permissions, $without = false)
  * @method static \Illuminate\Database\Eloquent\Builder|User   query()
- * @method static Builder|User                                 role($roles, $guard = null, $without = false)
+ * @method static \Illuminate\Database\Eloquent\Builder|User   role($roles, $guard = null, $without = false)
  * @method static \Illuminate\Database\Eloquent\Builder|User   whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User   whereCreatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User   whereCurrentTeamId($value)
@@ -75,8 +75,8 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static \Illuminate\Database\Eloquent\Builder|User   whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User   whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User   whereUpdatedBy($value)
- * @method static Builder|User                                 withoutPermission($permissions)
- * @method static Builder|User                                 withoutRole($roles, $guard = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|User   withoutPermission($permissions)
+ * @method static \Illuminate\Database\Eloquent\Builder|User   withoutRole($roles, $guard = null)
  *
  * @mixin \Eloquent
  */

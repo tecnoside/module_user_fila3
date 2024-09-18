@@ -9,36 +9,37 @@ declare(strict_types=1);
 namespace Modules\User\Models;
 
 use Modules\Tenant\Models\Traits\SushiToPhpArray;
+use Modules\Xot\Contracts\ProfileContract;
 
 /**
- * 
+ * @property int|null             $id
+ * @property string|null          $name
+ * @property array|null           $scopes
+ * @property array|null           $parameters
+ * @property bool|null            $stateless
+ * @property bool|null            $active
+ * @property bool|null            $socialite
+ * @property string|null          $svg
+ * @property string|null          $client_id
+ * @property string|null          $client_secret
+ * @property ProfileContract|null $creator
+ * @property ProfileContract|null $updater
  *
- * @property int|null $id
- * @property string|null $name
- * @property array|null $scopes
- * @property array|null $parameters
- * @property bool|null $stateless
- * @property bool|null $active
- * @property bool|null $socialite
- * @property string|null $svg
- * @property string|null $client_id
- * @property string|null $client_secret
- * @property-read \Modules\Idoteca\Models\Profile|null $creator
- * @property-read \Modules\Idoteca\Models\Profile|null $updater
  * @method static \Modules\User\Database\Factories\SocialProviderFactory factory($count = null, $state = [])
- * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider query()
- * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereActive($value)
- * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereClientId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereClientSecret($value)
- * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereParameters($value)
- * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereScopes($value)
- * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereSocialite($value)
- * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereStateless($value)
- * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider whereSvg($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider   newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider   newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider   query()
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider   whereActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider   whereClientId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider   whereClientSecret($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider   whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider   whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider   whereParameters($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider   whereScopes($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider   whereSocialite($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider   whereStateless($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialProvider   whereSvg($value)
+ *
  * @mixin \Eloquent
  */
 class SocialProvider extends BaseModel

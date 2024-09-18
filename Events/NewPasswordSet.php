@@ -20,7 +20,7 @@ class NewPasswordSet
      * Create a new event instance.
      */
     public function __construct(
-        public UserContract $authObject
+        public UserContract $authObject,
     ) {
     }
 

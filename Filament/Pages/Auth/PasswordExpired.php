@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Pages\Auth;
 
-use EightyNine\FilamentPasswordExpiry\Events\NewPasswordSet;
-use EightyNine\FilamentPasswordExpiry\Http\Response\PasswordResetResponse;
 use Filament\Actions\Action;
 use Filament\Actions\ActionGroup;
 use Filament\Forms\ComponentContainer;
@@ -16,9 +14,12 @@ use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Filament\Pages\Concerns\InteractsWithFormActions;
 use Filament\Pages\Page;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Validation\Rules\Password as PasswordRule;
+use Modules\User\Events\NewPasswordSet;
+use Modules\User\Http\Response\PasswordResetResponse;
 use Modules\Xot\Filament\Traits\NavigationPageLabelTrait;
 use Webmozart\Assert\Assert;
 
@@ -58,13 +59,13 @@ class PasswordExpired extends Page implements HasForms
     protected function getCurrentPasswordFormComponent(): Component
     {
         return TextInput::make('current_password')
-            // ->label(__('password-expiry::password-expiry.reset-password.form.current_password.label'))
+            // ->label(__('user::otp.form.current_password.label'))
             ->label(static::trans('fields.current_password.label'))
             ->password()
             // ->revealable(filament()->arePasswordsRevealable())
             ->revealable()
             ->required()
-            ->rule(PasswordRule::default())
+            // ->rule(PasswordRule::default())
             ->validationAttribute(static::trans('fields.current_password.validation_attribute'));
     }
 
@@ -116,18 +117,23 @@ class PasswordExpired extends Page implements HasForms
 
     public function resetPassword(): ?PasswordResetResponse
     {
-        // get new password
         $data = $this->form->getState();
-
-        // get auth object
-        $authObject = auth()->user();
+        Assert::string($current_password = Arr::get($data, 'current_password'));
+        Assert::string($password = Arr::get($data, 'password'));
+        $user = auth()->user();
+        /*
+        dddx([
+            'current_password' => $current_password,
+            'user-pwd' => $user->password,
+            'user-pwd-hash' => Hash::make($current_password),
+        ]);
+        */
 
         // check if current password is correct
-        Assert::string($current_password = $this->form->getState()['current_password']);
-        if (! Hash::check($current_password, $authObject->password)) {
+        if (! Hash::check($current_password, $user->password)) {
             Notification::make()
-                ->title(__('password-expiry::password-expiry.reset-password.notifications.wrong_password.title'))
-                ->body(__('password-expiry::password-expiry.reset-password.notifications.wrong_password.body'))
+                ->title(__('user::otp.notifications.wrong_password.title'))
+                ->body(__('user::otp.notifications.wrong_password.body'))
                 ->danger()
                 ->send();
 
@@ -135,10 +141,10 @@ class PasswordExpired extends Page implements HasForms
         }
 
         // check if new password is different from the current password
-        if (Hash::check($data['password'], $authObject->password)) {
+        if (Hash::check($password, $user->password)) {
             Notification::make()
-                ->title(__('password-expiry::password-expiry.reset-password.notifications.same_password.title'))
-                ->body(__('password-expiry::password-expiry.reset-password.notifications.same_password.body'))
+                ->title(__('user::otp.notifications.same_password.title'))
+                ->body(__('user::otp.notifications.same_password.body'))
                 ->danger()
                 ->send();
 
@@ -148,8 +154,8 @@ class PasswordExpired extends Page implements HasForms
         // check if both required columns exist in the database
         if (! Schema::hasColumn('users', 'password_expires_at')) {
             Notification::make()
-                ->title(__('password-expiry::password-expiry.reset-password.notifications.column_not_found.title'))
-                ->body(__('password-expiry::password-expiry.reset-password.notifications.column_not_found.body', [
+                ->title(__('user::otp.notifications.column_not_found.title'))
+                ->body(__('user::otp.notifications.column_not_found.body', [
                     'column_name' => 'password_expires_at',
                     'password_column_name' => 'password',
                     'table_name' => 'users',
@@ -164,20 +170,22 @@ class PasswordExpired extends Page implements HasForms
         $passwordExpiryDateTime = now()->addDays(30);
 
         // set password expiry date and time
-        $authObject->{'password_expires_at'} = $passwordExpiryDateTime;
-        $authObject->password = $data['password'];
-        $authObject->save();
+        $res = tap($user)->update([
+            'password_expired_at' => $passwordExpiryDateTime,
+            'is_otp' => false,
+            'password' => Hash::make($password),
+        ]);
 
-        // load up user email
-        $data['email'] = $authObject->email;
+        dddx($res);
 
-        event(new NewPasswordSet($authObject));
+        event(new NewPasswordSet($user));
 
+        /*
         Notification::make()
-            ->title(__('password-expiry::password-expiry.reset-password.notifications.password_reset.success'))
+            ->title(__('user::otp.notifications.password_reset.success'))
             ->success()
             ->send();
-
+        */
         return new PasswordResetResponse();
     }
 }

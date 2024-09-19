@@ -32,7 +32,7 @@ class PasswordExpiryMiddleware
             // 'password-expiry.reset-password'
             // 'password.expired'
             'pages.password-expired'
-        );
+        ) ?? '#';
 
         return $route;
         // */

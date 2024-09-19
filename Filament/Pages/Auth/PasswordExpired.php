@@ -18,9 +18,9 @@ use Filament\Pages\Concerns\InteractsWithFormActions;
 use Filament\Pages\Page;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
-use Webmozart\Assert\Assert;
 use Illuminate\Validation\Rules\Password as PasswordRule;
 use Modules\Xot\Filament\Traits\NavigationPageLabelTrait;
+use Webmozart\Assert\Assert;
 
 /**
  * @property ComponentContainer $form

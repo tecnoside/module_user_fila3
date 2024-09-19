@@ -41,11 +41,14 @@ class Otp extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage())
+
+            ->template('user::notifications.email')
             ->subject(__('user::otp.mail.subject'))
             ->greeting(__('user::otp.mail.greeting'))
             ->line(__('user::otp.mail.line1', ['code' => $this->code]))
             ->line(__('user::otp.mail.line2', ['seconds' => config('filament-otp-login.otp_code.expires')]))
             ->line(__('user::otp.mail.line3'))
+            ->action('vai', url('/'))
             ->salutation(__('user::otp.mail.salutation', ['app_name' => config('app.name')]));
     }
 

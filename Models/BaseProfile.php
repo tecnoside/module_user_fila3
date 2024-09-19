@@ -69,6 +69,7 @@ abstract class BaseProfile extends BaseModel implements ProfileContract
     /** @var list<string> */
     protected $fillable = [
         'id',
+        'uuid',
         'user_id',
         'type',
         'first_name',

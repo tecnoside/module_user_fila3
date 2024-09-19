@@ -8,16 +8,21 @@ use Filament\Facades\Filament;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 class PasswordExpiryMiddleware
 {
     public function handle(Request $request, \Closure $next): Response|RedirectResponse
     {
-        if (
-            $this->passwordHasExpired()
-            && ! $request->routeIs($this->getPasswordExpiryRoute())
-            && ! $request->routeIs('*.auth.*')
-        ) {
+        if ($request->routeIs('password.change') || $request->routeIs('password.update')) {
+            return $next($request);
+        }
+
+        if ($request->routeIs($this->getPasswordExpiryRoute()) || $request->routeIs('*.auth.*')) {
+            return $next($request);
+        }
+
+        if ($this->passwordHasExpired()) {
             return redirect(route($this->getPasswordExpiryRoute()));
         }
 
@@ -41,24 +46,28 @@ class PasswordExpiryMiddleware
 
     protected function passwordHasExpired(): bool
     {
-        return true;
-        /*
-        if (
-            blank(
-                config('password-expiry.auth_class')::auth()
-                    ->user()
-                    ?->{config('password-expiry.column_name')}
-            )
-        ) {
+        $user = Auth::user();
+        if (! $user) {
+            return false;
+        }
+
+        if ($user->is_otp) {
             return true;
         }
 
-        return now()
-            ->isAfter(
-                config('password-expiry.auth_class')::auth()
-                    ->user()
-                    ->{config('password-expiry.column_name')}
-            );
-        */
+        if (blank($user->password_expires_at)) {
+            dddx([
+                'user' => $user,
+                'password_expires_at' => $user->password_expires_at,
+            ]);
+
+            return true;
+        }
+
+        if (now()->isAfter($user->password_expired_at)) {
+            return true;
+        }
+
+        return false;
     }
 }

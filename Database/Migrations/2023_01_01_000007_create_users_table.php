@@ -8,7 +8,7 @@ use Modules\Xot\Database\Migrations\XotBaseMigration;
 /*
  * Class CreateLiveuserUsersTable.
  */
-return new class extends XotBaseMigration {
+return new class() extends XotBaseMigration {
     /**
      * Run the migrations.
      */
@@ -71,6 +71,13 @@ return new class extends XotBaseMigration {
                     $table->boolean('is_active')->default(true);
                 }
 
+                if (! $this->hasColumn('is_otp')) {
+                    $table->boolean('is_otp')->default(false);
+                }
+
+                if (! $this->hasColumn('password_expires_at')) {
+                    $table->timestamp('password_expires_at')->nullable();
+                }
                 // $this->updateUser($table);
                 $this->updateTimestamps($table, true);
             }

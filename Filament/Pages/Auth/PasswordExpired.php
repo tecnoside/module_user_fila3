@@ -18,6 +18,7 @@ use Filament\Pages\Concerns\InteractsWithFormActions;
 use Filament\Pages\Page;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
+use Webmozart\Assert\Assert;
 use Illuminate\Validation\Rules\Password as PasswordRule;
 use Modules\Xot\Filament\Traits\NavigationPageLabelTrait;
 
@@ -119,11 +120,11 @@ class PasswordExpired extends Page implements HasForms
         $data = $this->form->getState();
 
         // get auth object
-        $authObject = config('password-expiry.auth_class')::auth()->user();
+        $authObject = auth()->user();
 
         // check if current password is correct
-        $current_password = $this->form->getState()['current_password'];
-        if (! Hash::check($current_password, $authObject->{config('password-expiry.password_column_name')})) {
+        Assert::string($current_password = $this->form->getState()['current_password']);
+        if (! Hash::check($current_password, $authObject->password)) {
             Notification::make()
                 ->title(__('password-expiry::password-expiry.reset-password.notifications.wrong_password.title'))
                 ->body(__('password-expiry::password-expiry.reset-password.notifications.wrong_password.body'))
@@ -134,7 +135,7 @@ class PasswordExpired extends Page implements HasForms
         }
 
         // check if new password is different from the current password
-        if (Hash::check($data['password'], $authObject->{config('password-expiry.password_column_name')})) {
+        if (Hash::check($data['password'], $authObject->password)) {
             Notification::make()
                 ->title(__('password-expiry::password-expiry.reset-password.notifications.same_password.title'))
                 ->body(__('password-expiry::password-expiry.reset-password.notifications.same_password.body'))
@@ -145,13 +146,13 @@ class PasswordExpired extends Page implements HasForms
         }
 
         // check if both required columns exist in the database
-        if (! Schema::hasColumn(config('password-expiry.table_name'), config('password-expiry.column_name'))) {
+        if (! Schema::hasColumn('users', 'password_expires_at')) {
             Notification::make()
                 ->title(__('password-expiry::password-expiry.reset-password.notifications.column_not_found.title'))
                 ->body(__('password-expiry::password-expiry.reset-password.notifications.column_not_found.body', [
-                    'column_name' => config('password-expiry.column_name'),
-                    'password_column_name' => config('password-expiry.password_column_name'),
-                    'table_name' => config('password-expiry.table_name'),
+                    'column_name' => 'password_expires_at',
+                    'password_column_name' => 'password',
+                    'table_name' => 'users',
                 ]))
                 ->danger()
                 ->send();
@@ -160,15 +161,15 @@ class PasswordExpired extends Page implements HasForms
         }
 
         // get password expiry date and time
-        $passwordExpiryDateTime = now()->addDays(config('password-expiry.expires_in'));
+        $passwordExpiryDateTime = now()->addDays(30);
 
         // set password expiry date and time
-        $authObject->{config('password-expiry.column_name')} = $passwordExpiryDateTime;
-        $authObject->{config('password-expiry.password_column_name')} = $data['password'];
+        $authObject->{'password_expires_at'} = $passwordExpiryDateTime;
+        $authObject->password = $data['password'];
         $authObject->save();
 
         // load up user email
-        $data[config('password-expiry.email_column_name')] = $authObject->{config('password-expiry.email_column_name')};
+        $data['email'] = $authObject->email;
 
         event(new NewPasswordSet($authObject));
 

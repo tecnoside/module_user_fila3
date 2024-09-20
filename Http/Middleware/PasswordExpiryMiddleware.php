@@ -64,7 +64,7 @@ class PasswordExpiryMiddleware
             return true;
         }
 
-        if (now()->isAfter($user->password_expired_at)) {
+        if (now()->isAfter($user->password_expires_at)) {
             return true;
         }
 

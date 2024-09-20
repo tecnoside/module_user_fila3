@@ -170,22 +170,19 @@ class PasswordExpired extends Page implements HasForms
         $passwordExpiryDateTime = now()->addDays(30);
 
         // set password expiry date and time
-        $res = tap($user)->update([
-            'password_expired_at' => $passwordExpiryDateTime,
+        $user = tap($user)->update([
+            'password_expires_at' => $passwordExpiryDateTime,
             'is_otp' => false,
             'password' => Hash::make($password),
         ]);
 
-        dddx($res);
-
         event(new NewPasswordSet($user));
 
-        /*
         Notification::make()
             ->title(__('user::otp.notifications.password_reset.success'))
             ->success()
             ->send();
-        */
+
         return new PasswordResetResponse();
     }
 }

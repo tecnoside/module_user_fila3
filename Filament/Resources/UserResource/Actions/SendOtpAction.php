@@ -5,16 +5,15 @@ declare(strict_types=1);
 namespace Modules\User\Filament\Resources\UserResource\Actions;
 
 use Carbon\Carbon;
-use Illuminate\Support\Str;
-use Modules\User\Models\User;
+use Filament\Notifications\Notification as FilamentNotification;
 use Filament\Tables\Actions\Action;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-use Modules\User\Datas\PasswordData;
-use Illuminate\Support\Facades\Config;
-use Modules\User\Notifications\Auth\Otp;
 use Illuminate\Support\Facades\Notification;
-use Filament\Notifications\Notification as FilamentNotification;
+use Illuminate\Support\Str;
+use Modules\User\Datas\PasswordData;
+use Modules\User\Models\User;
+use Modules\User\Notifications\Auth\Otp;
 
 class SendOtpAction extends Action
 {

@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace Modules\User\Notifications\Auth;
 
 use Illuminate\Bus\Queueable;
-use Modules\User\Datas\PasswordData;
-use Modules\Xot\Contracts\UserContract;
-use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notification;
+use Modules\User\Datas\PasswordData;
+use Modules\Xot\Contracts\UserContract;
 
 class Otp extends Notification implements ShouldQueue
 {
@@ -44,6 +44,7 @@ class Otp extends Notification implements ShouldQueue
         $pwd = PasswordData::make();
         /** @var string */
         $app_name = config('app.name');
+
         return (new MailMessage())
 
             ->template('user::notifications.email')

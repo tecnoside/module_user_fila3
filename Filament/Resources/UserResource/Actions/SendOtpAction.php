@@ -5,14 +5,16 @@ declare(strict_types=1);
 namespace Modules\User\Filament\Resources\UserResource\Actions;
 
 use Carbon\Carbon;
-use Filament\Tables\Actions\Action;
-use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Str;
 use Modules\User\Models\User;
+use Filament\Tables\Actions\Action;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Modules\User\Datas\PasswordData;
+use Illuminate\Support\Facades\Config;
 use Modules\User\Notifications\Auth\Otp;
+use Illuminate\Support\Facades\Notification;
+use Filament\Notifications\Notification as FilamentNotification;
 
 class SendOtpAction extends Action
 {
@@ -23,15 +25,16 @@ class SendOtpAction extends Action
 
     protected function setUp(): void
     {
+        $pwd = PasswordData::make();
         parent::setUp();
 
         $this
             ->label('')
             ->tooltip(__('Send Temporary Password'))
             ->icon('heroicon-o-key')
-            ->action(function (User $record) {
+            ->action(function (User $record) use ($pwd) {
                 $temporaryPassword = Str::random(12);
-                $expirationTime = Carbon::now()->addMinutes(Config::get('auth.temporary_password_expiration', 60));
+                $expirationTime = Carbon::now()->addMinutes($pwd->otp_expiration_minutes);
                 // *
                 $record->update([
                     'password' => Hash::make($temporaryPassword),
@@ -48,7 +51,10 @@ class SendOtpAction extends Action
                 Notification::route('mail', $record->email)
                    ->notify(new Otp($record, $temporaryPassword));
 
-                $this->success(__('Temporary password sent successfully.'));
+                FilamentNotification::make()
+                    ->title(__('Temporary password sent successfully.'))
+                    ->success()
+                    ->send();
             })
             ->requiresConfirmation()
             ->modalHeading(__('Send Temporary Password'))

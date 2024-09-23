@@ -20,8 +20,10 @@ use Modules\Xot\Contracts\ProfileContract;
  * @property \Illuminate\Support\Carbon|null                                                                    $created_at
  * @property \Illuminate\Support\Carbon|null                                                                    $updated_at
  * @property \Illuminate\Support\Carbon|null                                                                    $deleted_at
+ * @property \Illuminate\Support\Carbon|null                                                                    $password_expires_at
  * @property string|null                                                                                        $lang
  * @property bool                                                                                               $is_active
+ * @property bool                                                                                               $is_otp
  * @property string|null                                                                                        $updated_by
  * @property string|null                                                                                        $created_by
  * @property string|null                                                                                        $deleted_by

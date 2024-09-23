@@ -11,6 +11,7 @@ return [
     'letters' => false, // If the password requires at least one letter.
     'numbers' => false, // If the password requires at least one number.
     'symbols' => false, // If the password requires at least one symbol.
+    // uppercase
     'uncompromised' => false, // If the password should not have been compromised in data leaks.
     'compromisedThreshold' => 1, // The number of times a password can appear in data leaks before being considered compromised.
 ];

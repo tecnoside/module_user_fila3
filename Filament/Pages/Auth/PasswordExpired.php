@@ -121,10 +121,9 @@ class PasswordExpired extends Page implements HasForms
         Assert::string($current_password = Arr::get($data, 'current_password'));
         Assert::string($password = Arr::get($data, 'password'));
         $user = auth()->user();
-        if($user == null) {
+        if (null == $user) {
             return null;
         }
-
 
         // check if current password is correct
         if (! Hash::check($current_password, $user->password)) {

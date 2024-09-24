@@ -24,7 +24,7 @@ use Illuminate\Notifications\DatabaseNotificationCollection;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
 use Laravel\Passport\HasApiTokens;
-use Modules\Notify\Models\Notification;
+use Modules\User\Models\Notification;
 use Modules\User\Database\Factories\UserFactory;
 use Modules\User\Models\Traits\HasTeams;
 use Modules\Xot\Contracts\UserContract;

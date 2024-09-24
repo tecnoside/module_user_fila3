@@ -88,6 +88,7 @@ class Device extends BaseModel
 
     /**
      * Define the many-to-many relationship between devices and users.
+     * return BelongsToMany<UserContract>.
      */
     public function users(): BelongsToMany
     {

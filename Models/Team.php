@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
+use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -23,12 +24,12 @@ use Modules\Xot\Models\Traits\HasExtraTrait;
  * @property int                                                                                $personal_team
  * @property \Illuminate\Support\Carbon|null                                                    $created_at
  * @property \Illuminate\Support\Carbon|null                                                    $updated_at
- * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\Xot\Contracts\UserContract> $members
+ * @property EloquentCollection<int, \Illuminate\Database\Eloquent\Model&UserContract>          $members
  * @property int|null                                                                           $members_count
  * @property UserContract|null                                                                  $owner
  * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\TeamInvitation> $teamInvitations
  * @property int|null                                                                           $team_invitations_count
- * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\Xot\Contracts\UserContract> $users
+ * @property EloquentCollection<int, \Illuminate\Database\Eloquent\Model&UserContract>          $users
  * @property int|null                                                                           $users_count
  *
  * @method static \Modules\User\Database\Factories\TeamFactory factory($count = null, $state = [])
@@ -55,6 +56,9 @@ use Modules\Xot\Models\Traits\HasExtraTrait;
  * @property Membership                                  $membership
  * @property \Modules\Xot\Contracts\ProfileContract|null $creator
  * @property \Modules\Xot\Contracts\ProfileContract|null $updater
+ * @property string                                      $uuid
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|Team whereUuid($value)
  *
  * @mixin \Eloquent
  */

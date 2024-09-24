@@ -1,9 +1,6 @@
 <?php
 
 declare(strict_types=1);
-/**
- * @see
- */
 
 namespace Modules\User\Filament\Widgets;
 
@@ -18,6 +15,7 @@ use Flowframe\Trend\TrendValue;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Support\Carbon;
 use Modules\User\Models\AuthenticationLog;
+use Webmozart\Assert\Assert;
 
 class UsersChartWidget extends ChartWidget implements HasForms
 {
@@ -26,23 +24,23 @@ class UsersChartWidget extends ChartWidget implements HasForms
     use InteractsWithPageFilters;
 
     protected static ?string $pollingInterval = null;
-
     protected static ?int $sort = 2;
 
     public string $chart_id = '';
 
     public function getHeading(): Htmlable|string|null
     {
-        // return 'chart_id:'.$this->chart_id;
         return 'Authentication Log';
     }
 
     protected function getType(): string
     {
-        // return 'bar';
         return 'line';
     }
 
+    /**
+     * Define the action to be tested.
+     */
     public function testAction(): Action
     {
         return Action::make('test')
@@ -52,65 +50,63 @@ class UsersChartWidget extends ChartWidget implements HasForms
             });
     }
 
+    /**
+     * Retrieve the chart data based on the given filters.
+     */
     protected function getData(): array
     {
         $this->mountAction('test', ['id' => 5]);
         $this->testAction();
 
-        $startDate = $this->filters['startDate'] ?? null;
-        $endDate = $this->filters['endDate'] ?? null;
-        if (! is_string($startDate) || ! is_string($endDate)) {
+        try {
+            Assert::nullOrString($startDate = $this->filters['startDate'] ?? null);
+            Assert::nullOrString($endDate = $this->filters['endDate'] ?? null);
+            if (null == $endDate) {
+                $endDate = Carbon::now()->format('Y-m-d H:i:s');
+            }
+            if (null == $startDate) {
+                $startDate = Carbon::now()->subMonth()->format('Y-m-d H:i:s');
+            }
+            Assert::notNull($startDate = Carbon::createFromFormat('Y-m-d H:i:s', $startDate));
+            Assert::notNull($endDate = Carbon::createFromFormat('Y-m-d H:i:s', $endDate));
+            if ($startDate->diffInDays($endDate) > 365) {
+                $startDate = $endDate->copy()->subDays(365);
+            }
+        } catch (\Exception $e) {
             return [];
-        }
-        $format = 'Y-m-d H:i:s';
-        // $format = 'Y-m-d';
-        // if (! Carbon::hasFormat($startDate, $format) || ! Carbon::hasFormat($endDate, $format)) {
-        //    return [];
-        // }
-        // $startDate = Carbon::parse($startDate);
-        $startDate = Carbon::createFromFormat($format, $startDate);
-        // $endDate = Carbon::parse($endDate);
-        $endDate = Carbon::createFromFormat($format, $endDate);
-
-        $days = $startDate?->diffInDays($endDate) ?? 0;
-        if ($days > 365) {
-            $startDate = $endDate?->copy()->subDays(365) ?? now();
-            // Cannot mutate reactive prop [filters] in component:
-            // $this->filters['startDate'] = $endDate->format($format);
         }
 
         $data = Trend::model(AuthenticationLog::class)
             ->dateColumn('login_at')
-            ->between(
-                start: $startDate,
-                end: $endDate,
-            )
+            ->between(start: $startDate, end: $endDate)
             ->perDay()
-
+            // ->perMonth()
             ->count();
+        /*
+        // Update callbacks to match expected signature
+        $chartData = $data->map(function ($value) {
+            Assert::isInstanceOf($value, TrendValue::class);
 
-        /**
-         * @var callable
-         */
-        $data_callable = fn (TrendValue $value) => $value->aggregate;
-        /**
-         * @var callable
-         */
-        $labels_callable = fn (TrendValue $value) => $value->date;
+            return $value->aggregate;
+        })->toArray();
+        $chartLabels = $data->map(function ($value) {
+            Assert::isInstanceOf($value, TrendValue::class);
 
-        $chart_data = $data->map($data_callable);
-        $chart_labels = $data->map($labels_callable);
+            return $value->date->format('Y-m-d');
+        })->toArray();
+        */
+
+        $chartData = $data->pluck('aggregate')->toArray();
+        $chartLabels = $data->pluck('date')->toArray();
 
         return [
             'datasets' => [
                 [
-                    // 'label' => 'Customers '.$this->chart_id,
-                    'label' => 'number of login executed',
-                    'data' => $chart_data,
-                    // 'fill' => 'start',
+                    'label' => 'Number of logins executed',
+                    'data' => $chartData,
                 ],
             ],
-            'labels' => $chart_labels,
+            'labels' => $chartLabels,
         ];
     }
 }

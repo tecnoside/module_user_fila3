@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\User\Filament\Pages;
+namespace Modules\User\Filament\Pages\Auth;
 
 use Filament\Pages\Auth\Register as BaseRegister;
 

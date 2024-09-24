@@ -24,7 +24,7 @@ class ListRoles extends ListRecords
 {
     protected static string $resource = RoleResource::class;
 
-    public TableLayoutEnum $layoutView = TableLayoutEnum::GRID;
+    public TableLayoutEnum $layoutView = TableLayoutEnum::LIST;
 
     protected function getTableHeaderActions(): array
     {

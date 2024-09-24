@@ -18,9 +18,9 @@ return new class extends XotBaseMigration {
         // -- CREATE --
         $this->tableCreate(
             static function (Blueprint $table): void {
-                // $table->drop('team_invitations');
-                $table->uuid('id')->primary();
-                $table->foreignId('user_id')->index();
+                $table->id();
+                $table->uuid('uuid')->nullable()->index();
+                $table->string('user_id', 36)->nullable()->index();
                 // $table->foreignIdFor(\Modules\Xot\Datas\XotData::make()->getUserClass());
                 $table->string('name');
                 $table->boolean('personal_team');
@@ -35,12 +35,11 @@ return new class extends XotBaseMigration {
                 // if ($this->hasIndexName('team_invitations_team_id_foreign')) {
                 //    $table->dropForeign('team_invitations_team_id_foreign');
                 // }
+                if (! $this->hasColumn('code')) {
+                    $table->string('code', 36)->nullable()->index();
+                }
                 $this->updateTimestamps($table, true);
                 // $this->updateUser($table);
-
-                if ($this->hasColumn('id')) {
-                    $table->increments('id')->change();
-                }
             }
         );
     }

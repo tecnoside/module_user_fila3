@@ -15,7 +15,7 @@ class ListTeams extends ListRecords
     // //
     protected static string $resource = TeamResource::class;
 
-    public TableLayoutEnum $layoutView = TableLayoutEnum::GRID;
+    public TableLayoutEnum $layoutView = TableLayoutEnum::LIST;
 
     protected function getTableHeaderActions(): array
     {

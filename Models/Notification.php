@@ -6,7 +6,6 @@ namespace Modules\User\Models;
 
 use Illuminate\Notifications\DatabaseNotification as BaseNotification;
 
-
 class Notification extends BaseNotification
 {
     /** @var string */

@@ -35,7 +35,7 @@ class ListUsers extends ListRecords
     // //
     protected static string $resource = UserResource::class;
 
-    public TableLayoutEnum $layoutView = TableLayoutEnum::GRID;
+    public TableLayoutEnum $layoutView = TableLayoutEnum::LIST;
 
     protected function getTableHeaderActions(): array
     {

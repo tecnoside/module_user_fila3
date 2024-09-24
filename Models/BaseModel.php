@@ -6,7 +6,6 @@ namespace Modules\User\Models;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-// //use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Xot\Traits\Updater;
 
@@ -15,8 +14,6 @@ use Modules\Xot\Traits\Updater;
  */
 abstract class BaseModel extends Model
 {
-    // use Searchable;
-    // //use Cachable;
     use HasFactory;
     use Updater;
 
@@ -45,6 +42,8 @@ abstract class BaseModel extends Model
     protected function casts(): array
     {
         return [
+            'id' => 'string',
+            'uuid' => 'string',
             'published_at' => 'datetime',
             'verified_at' => 'datetime',
 
@@ -63,6 +62,8 @@ abstract class BaseModel extends Model
 
     /** @var string */
     protected $primaryKey = 'id';
+    /** @var string */
+    protected $keyType = 'string';
 
     /** @var list<string> */
     protected $hidden = [

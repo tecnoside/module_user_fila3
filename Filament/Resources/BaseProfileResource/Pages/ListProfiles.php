@@ -32,7 +32,7 @@ class ListProfiles extends ListRecords
 
     protected static string $resource = BaseProfileResource::class;
 
-    public TableLayoutEnum $layoutView = TableLayoutEnum::GRID;
+    public TableLayoutEnum $layoutView = TableLayoutEnum::LIST;
 
     protected function getTableHeaderActions(): array
     {

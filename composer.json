@@ -85,10 +85,6 @@
         {
             "type": "path",
             "url": "../UI"
-        },
-        {
-            "type": "path",
-            "url": "../Notify"
         }
     ],
     "scripts": {

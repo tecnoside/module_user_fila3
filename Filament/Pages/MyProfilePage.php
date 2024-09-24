@@ -16,6 +16,7 @@ use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
 use Filament\Notifications\Notification;
+use Filament\Pages\Auth\EditProfile;
 use Filament\Pages\Page;
 use Filament\Support\Exceptions\Halt;
 use Illuminate\Contracts\Auth\Authenticatable;
@@ -30,6 +31,7 @@ use Illuminate\Validation\Rules\Password;
  */
 class MyProfilePage extends Page implements HasForms
 {
+    // class MyProfilePage extends EditProfile
     use InteractsWithForms;
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
@@ -103,7 +105,7 @@ class MyProfilePage extends Page implements HasForms
             ->statePath('passwordData');
     }
 
-    protected function getUser(): Authenticatable&Model
+    public function getUser(): Authenticatable&Model
     {
         $user = Filament::auth()->user();
 

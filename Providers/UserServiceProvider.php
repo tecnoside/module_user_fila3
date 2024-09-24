@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Providers;
 
+use Illuminate\Validation\Rules\Password;
 use Laravel\Passport\Passport;
 use Modules\User\Models\OauthAccessToken;
 use Modules\User\Models\OauthAuthCode;
@@ -29,6 +30,19 @@ class UserServiceProvider extends XotBaseServiceProvider
     {
         $this->registerAuthenticationProviders();
         $this->registerEventListener();
+        $this->registerPasswordRules();
+    }
+
+    public function registerPasswordRules(): void
+    {
+        Password::defaults(function () {
+            return Password::min(8)
+                           ->mixedCase()
+                           ->uncompromised();
+        });
+        // $request->validate([
+        //     'password' => ['required', Password::defaults()],
+        // ]);
     }
 
     protected function registerAuthenticationProviders(): void

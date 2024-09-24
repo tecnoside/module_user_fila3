@@ -24,7 +24,6 @@ use Illuminate\Notifications\DatabaseNotificationCollection;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
 use Laravel\Passport\HasApiTokens;
-use Modules\Notify\Models\Notification;
 use Modules\User\Database\Factories\UserFactory;
 use Modules\User\Models\Traits\HasTeams;
 use Modules\Xot\Contracts\UserContract;
@@ -167,7 +166,8 @@ abstract class BaseUser extends Authenticatable implements HasName, HasTenants, 
         'lang',
         'current_team_id',
         'is_active',
-        // 'facebook_id',// su userproviders
+        'is_otp', // is One Time Password
+        'password_expires_at',
     ];
 
     /** @var list<string> */
@@ -189,6 +189,10 @@ abstract class BaseUser extends Authenticatable implements HasName, HasTenants, 
             'roles.pivot.id' => 'string',
             // https://github.com/beitsafe/laravel-uuid-auditing
             // ALTER TABLE model_has_role CHANGE COLUMN `id` `id` CHAR(37) NOT NULL DEFAULT uuid();
+
+            'is_otp' => 'boolean',
+            'password_expires_at' => 'datetime',
+
             'created_at' => 'datetime',
             'updated_at' => 'datetime',
             'deleted_at' => 'datetime',

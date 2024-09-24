@@ -14,6 +14,7 @@ return [
     // uppercase
     'uncompromised' => false, // If the password should not have been compromised in data leaks.
     'compromisedThreshold' => 1, // The number of times a password can appear in data leaks before being considered compromised.
+    // requireSpecialCharacter(); // at least one special character required
 ];
 
 /*

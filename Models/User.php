@@ -36,7 +36,7 @@ use Modules\Xot\Contracts\ProfileContract;
  * @property int|null                                                                                           $devices_count
  * @property string|null                                                                                        $full_name
  * @property AuthenticationLog|null                                                                             $latestAuthentication
- * @property \Illuminate\Notifications\DatabaseNotificationCollection<int, \Modules\Notify\Models\Notification> $notifications
+ * @property \Illuminate\Notifications\DatabaseNotificationCollection<int, \Modules\User\Models\Notification> $notifications
  * @property int|null                                                                                           $notifications_count
  * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\Team>                           $ownedTeams
  * @property int|null                                                                                           $owned_teams_count

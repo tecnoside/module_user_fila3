@@ -50,7 +50,7 @@ class RegisterTenant extends BaseRegisterTenant
 
         $tenant = $tenantClass::create($data);
 
-        // $tenant->users()->attach(auth()->user());
+        $tenant->users()->attach(auth()->user());
         // $tenant->members()->attach(auth()->user());
 
         return $tenant;

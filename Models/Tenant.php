@@ -6,10 +6,7 @@ namespace Modules\User\Models;
 
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Modules\User\Contracts\TenantContract;
 use Modules\Xot\Contracts\UserContract;
-use Modules\Xot\Datas\XotData;
 
 /**
  * Modules\User\Models\Tenant.

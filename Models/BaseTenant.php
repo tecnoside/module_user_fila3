@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
-use Illuminate\Support\Str;
-use Spatie\Sluggable\HasSlug;
-use Modules\Xot\Datas\XotData;
-use Spatie\Sluggable\SlugOptions;
-use Illuminate\Database\Eloquent\Model;
-use Modules\Xot\Contracts\UserContract;
 use Filament\Models\Contracts\HasAvatar;
-use Modules\User\Contracts\TenantContract;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Str;
+use Modules\User\Contracts\TenantContract;
+use Modules\Xot\Contracts\UserContract;
+use Modules\Xot\Datas\XotData;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 /**
  * Modules\User\Models\Tenant.

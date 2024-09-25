@@ -6,9 +6,7 @@ namespace Modules\User\Http\Livewire\Auth;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
-use Modules\Xot\Datas\XotData;
 
 class Login extends Component
 {
@@ -34,10 +32,7 @@ class Login extends Component
     public function authenticate()
     {
         $this->validate();
-        /*
-        $user_class = XotData::make()->getUserClass();
-        $res = $user_class::where('email', $this->email)->update(['password' => Hash::make('prova123')]);
-        */
+
         if (! Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
             $this->addError('email', trans('auth.failed'));
 
@@ -53,7 +48,9 @@ class Login extends Component
         app(\Modules\Xot\Actions\File\ViewCopyAction::class)->execute('user::layouts.auth', 'pub_theme::layouts.auth');
         app(\Modules\Xot\Actions\File\ViewCopyAction::class)->execute('user::layouts.base', 'pub_theme::layouts.base');
 
-        return view('pub_theme::livewire.auth.login')
+        $view = 'pub_theme::livewire.auth.login';
+
+        return view($view)
             ->extends('pub_theme::layouts.auth');
     }
 }

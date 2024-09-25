@@ -28,7 +28,11 @@ class TenantResource extends XotBaseResource
 
     public static function getNavigationBadge(): ?string
     {
-        return (string) static::getModel()::count();
+        try {
+            return (string) static::getModel()::count();
+        } catch (\Exception $e) {
+            return '---';
+        }
     }
 
     public static function getModel(): string

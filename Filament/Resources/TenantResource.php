@@ -26,6 +26,11 @@ class TenantResource extends XotBaseResource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    public static function getNavigationBadge(): ?string
+    {
+        return (string) static::getModel()::count();
+    }
+
     public static function getModel(): string
     {
         // return FilamentJet::teamModel();

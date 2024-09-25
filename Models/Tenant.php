@@ -26,23 +26,6 @@ use Modules\Xot\Datas\XotData;
  *
  * @mixin \Eloquent
  */
-class Tenant extends BaseModel implements TenantContract
+class Tenant extends BaseTenant
 {
-    protected $fillable = [
-        'id',
-        'name',
-        'email_address',
-        'phone',
-        'mobile',
-        'address',
-        'primary_color',
-        'secondary_color',
-    ];
-
-    public function members(): BelongsToMany
-    {
-        $user_class = XotData::make()->getUserClass();
-
-        return $this->belongsToMany($user_class);
-    }
 }

@@ -8,6 +8,8 @@ declare(strict_types=1);
 
 namespace Modules\User\Providers;
 
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\Rules\Password;
 use Laravel\Passport\Passport;
 use Modules\User\Models\OauthAccessToken;
@@ -15,6 +17,7 @@ use Modules\User\Models\OauthAuthCode;
 use Modules\User\Models\OauthClient;
 use Modules\User\Models\OauthPersonalAccessClient;
 use Modules\User\Models\OauthRefreshToken;
+use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Providers\XotBaseServiceProvider;
 use SocialiteProviders\Manager\ServiceProvider as SocialiteServiceProvider;
 
@@ -31,6 +34,15 @@ class UserServiceProvider extends XotBaseServiceProvider
         $this->registerAuthenticationProviders();
         $this->registerEventListener();
         $this->registerPasswordRules();
+        $this->registerPulse();
+    }
+
+    public function registerPulse(): void
+    {
+        Config::set('pulse.path', 'pulse/admin');
+        Gate::define('viewPulse', function (UserContract $user): bool {
+            return $user->hasRole('super-admin');
+        });
     }
 
     public function registerPasswordRules(): void

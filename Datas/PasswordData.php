@@ -16,9 +16,9 @@ use Spatie\LaravelData\Data;
  */
 class PasswordData extends Data
 {
-    public int $otp_expiration_minutes; // Durata in minuti della validità della password temporanea
-    public int $otp_length;  // Lunghezza del codice OTP
-    public int $expires_in; // The number of days before the password expires.
+    public int $otp_expiration_minutes = 60; // Durata in minuti della validità della password temporanea
+    public int $otp_length = 6;  // Lunghezza del codice OTP
+    public int $expires_in = 30; // The number of days before the password expires.
 
     public int $min = 6; // The minimum size of the password.
     public bool $mixedCase = false; // If the password requires at least one uppercase and one lowercase letter.

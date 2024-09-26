@@ -5,11 +5,12 @@ declare(strict_types=1);
 use Illuminate\Database\Schema\Blueprint;
 // ---- models ---
 use Modules\Xot\Database\Migrations\XotBaseMigration;
+use Modules\Xot\Datas\XotData;
 
 /*
  * Class CreateModelHasPermissionsTable.
  */
-return new class extends XotBaseMigration {
+return new class() extends XotBaseMigration {
     /**
      * Run the migrations.
      */
@@ -26,6 +27,10 @@ return new class extends XotBaseMigration {
         // -- UPDATE --
         $this->tableUpdate(
             function (Blueprint $table): void {
+                $team_class = XotData::make()->getTeamClass();
+                if (! $this->hasColumn('team_id')) {
+                    $table->foreignIdFor($team_class, 'team_id')->nullable();
+                }
                 $this->updateTimestamps($table);
                 $this->updateUser($table);
             }

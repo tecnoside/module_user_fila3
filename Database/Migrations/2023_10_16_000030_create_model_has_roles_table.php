@@ -5,11 +5,12 @@ declare(strict_types=1);
 use Illuminate\Database\Schema\Blueprint;
 // ---- models ---
 use Modules\Xot\Database\Migrations\XotBaseMigration;
+use Modules\Xot\Datas\XotData;
 
 /*
  * Class CreateModelHasRolesTable.
  */
-return new class extends XotBaseMigration {
+return new class() extends XotBaseMigration {
     /**
      * Run the migrations.
      */
@@ -18,18 +19,19 @@ return new class extends XotBaseMigration {
         // -- CREATE --
         $this->tableCreate(
             static function (Blueprint $table): void {
+                $team_class = XotData::make()->getTeamClass();
                 $table->id();
                 $table->unsignedBigInteger('role_id');
                 $table->uuidMorphs('model');
-                $table->foreignId('team_id')->nullable();
+                $table->foreignIdFor($team_class, 'team_id')->nullable();
             }
         );
         // -- UPDATE --
         $this->tableUpdate(
             function (Blueprint $table): void {
-                $table->foreignId('team_id')->nullable()->change();
+                $team_class = XotData::make()->getTeamClass();
                 if (! $this->hasColumn('team_id')) {
-                    $table->foreignId('team_id')->nullable();
+                    $table->foreignIdFor($team_class, 'team_id')->nullable();
                 }
                 // $this->updateUser($table);
                 $this->updateTimestamps($table);

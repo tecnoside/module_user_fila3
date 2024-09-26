@@ -7,6 +7,7 @@ namespace Modules\User\Models;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Modules\Xot\Models\Traits\RelationX;
 use Modules\Xot\Traits\Updater;
 
 /**
@@ -16,6 +17,7 @@ abstract class BaseModel extends Model
 {
     use HasFactory;
     use Updater;
+    use RelationX;
 
     /**
      * Indicates whether attributes are snake cased on arrays.
@@ -44,6 +46,7 @@ abstract class BaseModel extends Model
         return [
             'id' => 'string',
             'uuid' => 'string',
+
             'published_at' => 'datetime',
             'verified_at' => 'datetime',
 

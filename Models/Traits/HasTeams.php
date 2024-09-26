@@ -46,7 +46,7 @@ trait HasTeams
             $this->switchTeam($this->personalTeam());
         }
 
-        if ($this->allTeams()->isEmpty()) {
+        if ($this->allTeams()->isEmpty() && null !== $this->getKey()) {
             $this->current_team_id = null;
             $this->save();
         }

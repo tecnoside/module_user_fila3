@@ -50,9 +50,6 @@ use Illuminate\Support\Carbon;
  */
 class Membership extends BasePivot
 {
-    /**
-     * Indicates if the IDs are auto-incrementing.
-     */
     /** @var bool */
     public $incrementing = true;
 
@@ -60,11 +57,5 @@ class Membership extends BasePivot
     protected $connection = 'user';
 
     /** @var string */
-
-    /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
     protected $table = 'team_user';
 }

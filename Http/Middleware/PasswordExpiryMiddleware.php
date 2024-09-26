@@ -56,11 +56,6 @@ class PasswordExpiryMiddleware
         }
 
         if (blank($user->password_expires_at)) {
-            dddx([
-                'user' => $user,
-                'password_expires_at' => $user->password_expires_at,
-            ]);
-
             return true;
         }
 

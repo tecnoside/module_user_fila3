@@ -12,6 +12,8 @@ use Illuminate\Support\Str;
 use Modules\User\Contracts\TenantContract;
 use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Datas\XotData;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
@@ -30,9 +32,10 @@ use Spatie\Sluggable\SlugOptions;
  *
  * @mixin \Eloquent
  */
-abstract class BaseTenant extends BaseModel implements TenantContract, HasAvatar
+abstract class BaseTenant extends BaseModel implements TenantContract, HasAvatar, HasMedia
 {
     use HasSlug;
+    use InteractsWithMedia;
 
     /** @var list<string> */
     protected $fillable = [

@@ -8,7 +8,6 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 // use Filament\Forms;
 use Modules\User\Filament\Resources\FeatureResource\Pages;
-use Modules\User\Filament\Resources\FeatureResource\RelationManagers;
 use Modules\User\Models\Feature;
 
 // use Illuminate\Database\Eloquent\Builder;
@@ -27,11 +26,6 @@ class FeatureResource extends Resource
             ]);
     }
 
-    /**
-     * Summary of getRelations.
-     *
-     * @return array<RelationManagers>
-     */
     public static function getRelations(): array
     {
         return [

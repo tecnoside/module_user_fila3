@@ -85,7 +85,8 @@ abstract class BaseTenant extends BaseModel implements TenantContract, HasAvatar
 
     public function getFilamentAvatarUrl(): ?string
     {
-        return $this->avatar_url;
+        // return $this->avatar_url;
+        return $this->firstMediaUrl('avatar');
     }
 
     // public function getSlugAttribute(?string $value): ?string

@@ -114,7 +114,7 @@ abstract class BaseTeam extends BaseModel implements TeamContract
         $userClass = $xotData->getUserClass();
 
         return $this->belongsToManyX($userClass);
-
+        /*
         $membershipClass = $xotData->getMembershipClass();
         $pivot = app($membershipClass);
         $pivotTable = $pivot->getTable();
@@ -130,6 +130,7 @@ abstract class BaseTeam extends BaseModel implements TeamContract
             ->withPivot('role')
             ->withTimestamps()
             ->as('membership');
+        */
     }
 
     public function members(): BelongsToMany

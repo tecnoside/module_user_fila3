@@ -8,11 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
- * @method static \Modules\User\Database\Factories\TenantFactory factory($count = null, $state = [])
- * @method static \Illuminate\Database\Eloquent\Builder|Tenant   newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Tenant   newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Tenant   query()
- *
  * @property \Illuminate\Database\Eloquent\Collection<int, Model&UserContract> $members
  * @property int|null                                                          $members_count
  * @property \Modules\Xot\Contracts\ProfileContract|null                       $creator

@@ -8,7 +8,7 @@ use Modules\Xot\Database\Migrations\XotBaseMigration;
 /*
  * Class CreateLiveuserUsersTable.
  */
-return new class extends XotBaseMigration {
+return new class() extends XotBaseMigration {
     /**
      * Run the migrations.
      */
@@ -24,7 +24,7 @@ return new class extends XotBaseMigration {
                 $table->string('last_name')->nullable();
                 $table->string('email')->unique();
                 $table->timestamp('email_verified_at')->nullable();
-                $table->string('password');
+                $table->string('password')->nullable(); // se entra con sso
                 $table->rememberToken();
                 $table->foreignId('current_team_id')->nullable();
                 $table->string('profile_photo_path', 2048)->nullable();
@@ -77,6 +77,9 @@ return new class extends XotBaseMigration {
 
                 if (! $this->hasColumn('password_expires_at')) {
                     $table->timestamp('password_expires_at')->nullable();
+                }
+                if ($this->hasColumn('password')) {
+                    $table->string('password')->nullable()->change();
                 }
                 // $this->updateUser($table);
                 $this->updateTimestamps($table, true);

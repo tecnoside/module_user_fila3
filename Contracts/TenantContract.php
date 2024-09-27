@@ -6,6 +6,7 @@ namespace Modules\User\Contracts;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Modules\Xot\Contracts\UserContract;
 
 /**
  * @property \Illuminate\Database\Eloquent\Collection<int, Model&UserContract> $members

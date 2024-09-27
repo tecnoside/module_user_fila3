@@ -27,9 +27,11 @@ class Otp extends Notification implements ShouldQueue
     /**
      * Get the notification's delivery channels.
      *
+     * @param \Illuminate\Notifications\AnonymousNotifiable $notifiable
+     *
      * @return array
      */
-    public function via(UserContract $notifiable)
+    public function via($notifiable)
     {
         return ['mail']; // Puoi aggiungere anche 'database', 'slack', ecc. se vuoi supportare altri canali.
     }
@@ -37,9 +39,11 @@ class Otp extends Notification implements ShouldQueue
     /**
      * Get the mail representation of the notification.
      *
+     * @param \Illuminate\Notifications\AnonymousNotifiable $notifiable
+     *
      * @return MailMessage
      */
-    public function toMail(UserContract $notifiable)
+    public function toMail($notifiable)
     {
         $pwd = PasswordData::make();
         /** @var string */

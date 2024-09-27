@@ -8,6 +8,8 @@ declare(strict_types=1);
 
 namespace Modules\User\Providers;
 
+use Illuminate\Auth\Notifications\VerifyEmail;
+use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\Rules\Password;
@@ -36,6 +38,17 @@ class UserServiceProvider extends XotBaseServiceProvider
         $this->registerEventListener();
         $this->registerPasswordRules();
         $this->registerPulse();
+        $this->registerMailsNotification();
+    }
+
+    public function registerMailsNotification(): void
+    {
+        VerifyEmail::toMailUsing(function (object $notifiable, string $url) {
+            return (new MailMessage())
+                ->subject('Verify Email Address')
+                ->line('Click the button below to verify your email address.')
+                ->action('Verify Email Address', $url);
+        });
     }
 
     public function registerPulse(): void

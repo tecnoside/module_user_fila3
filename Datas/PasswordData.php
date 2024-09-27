@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Datas;
 
+use Illuminate\Validation\Rules\Password;
 use Modules\Tenant\Services\TenantService;
 use Spatie\LaravelData\Data;
 
@@ -26,7 +27,7 @@ class PasswordData extends Data
     public bool $numbers = false; // If the password requires at least one number.
     public bool $symbols = false; // If the password requires at least one symbol.
     public bool $uncompromised = false; // If the password should not have been compromised in data leaks.
-    public int $compromisedThreshold = 1; // The number of times a password can appear in data leaks before being considered compromised.
+    public int $compromisedThreshold = 0; // The number of times a password can appear in data leaks before being considered compromised.
 
     private static ?self $instance = null;
 
@@ -38,5 +39,27 @@ class PasswordData extends Data
         }
 
         return self::$instance;
+    }
+
+    public function getPasswordRule(): Password
+    {
+        $pwd = Password::min($this->min);
+        if ($this->mixedCase) {
+            $pwd = $pwd->mixedCase();
+        }
+        if ($this->letters) {
+            $pwd = $pwd->letters();
+        }
+        if ($this->numbers) {
+            $pwd = $pwd->numbers();
+        }
+        if ($this->symbols) {
+            $pwd = $pwd->symbols();
+        }
+        if ($this->uncompromised) {
+            $pwd = $pwd->uncompromised($this->compromisedThreshold);
+        }
+
+        return $pwd;
     }
 }

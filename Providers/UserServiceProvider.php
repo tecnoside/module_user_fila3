@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\Rules\Password;
 use Laravel\Passport\Passport;
+use Modules\User\Datas\PasswordData;
 use Modules\User\Models\OauthAccessToken;
 use Modules\User\Models\OauthAuthCode;
 use Modules\User\Models\OauthClient;
@@ -47,10 +48,10 @@ class UserServiceProvider extends XotBaseServiceProvider
 
     public function registerPasswordRules(): void
     {
-        Password::defaults(function () {
-            return Password::min(8)
-                           ->mixedCase()
-                           ->uncompromised();
+        Password::defaults(function (): Password {
+            $pwd = PasswordData::make();
+
+            return $pwd->getPasswordRule();
         });
         // $request->validate([
         //     'password' => ['required', Password::defaults()],

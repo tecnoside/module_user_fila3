@@ -78,4 +78,11 @@ return [
             'column_not_found' => 'Either the column ":column_name" or the password column ":password_column_name" was not found in the ":table_name" table. Please publish migrations and run them, if the error still persists, publish the config file and update the table_name, column_name, and password_column_name values.',
         ],
     ],
+    'failed' => 'Le credenziali non corrispondono a quelle registrate.',
+    'general_error' => 'Non hai diritti sufficienti per questa operazione.',
+    'socialite' => [
+        'unacceptable' => ':provider non è supportato.',
+    ],
+    'throttle' => 'Troppi tentativi di login. Si prega di riprovare tra :seconds secondi.',
+    'unknown' => 'Si è verificato un errore sconosciuto',
 ];

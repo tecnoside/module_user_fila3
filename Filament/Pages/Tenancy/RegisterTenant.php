@@ -8,7 +8,9 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Pages\Tenancy\RegisterTenant as BaseRegisterTenant;
 use Illuminate\Database\Eloquent\Model;
+use Modules\User\Contracts\TenantContract;
 use Modules\Xot\Datas\XotData;
+use Webmozart\Assert\Assert;
 
 class RegisterTenant extends BaseRegisterTenant
 {
@@ -49,6 +51,7 @@ class RegisterTenant extends BaseRegisterTenant
         $tenantClass = XotData::make()->getTenantClass();
 
         $tenant = $tenantClass::create($data);
+        Assert::implementsInterface($tenant, TenantContract::class);
 
         $tenant->users()->attach(auth()->user());
         // $tenant->members()->attach(auth()->user());

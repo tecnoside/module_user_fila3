@@ -19,7 +19,7 @@ class SingleRoleSelect extends Select
 
         $this
             ->label('Role')
-            ->options($options) // Ruoli dal DB
+            ->options(fn (): array => $options) // Ruoli dal DB
             // ->searchable() // Permette la ricerca
             // ->preload() // Precarica i risultati
             ->placeholder('Select a role');

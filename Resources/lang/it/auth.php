@@ -85,4 +85,11 @@ return [
     ],
     'throttle' => 'Troppi tentativi di login. Si prega di riprovare tra :seconds secondi.',
     'unknown' => 'Si è verificato un errore sconosciuto',
+    'Reset password' => 'Reimposta la password',
+    'Send password reset link' => 'Invia link per reimpostare la password',
+    'Confirm Password' => 'Conferma Password',
+    'Confirm' => 'Conferma',
+    'Resend Verification Email' => 'Rinvia Email di Verifica',
+    'Verify Your Email Address' => 'Verifica la tua email',
+    'A fresh verification link has been sent to your email address.' => 'Un nuovo link di verifica è stato inviato al tuo indirizzo email.',
 ];

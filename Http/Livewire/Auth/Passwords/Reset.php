@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rules\Password as PasswordRule;
 use Livewire\Component;
 use Webmozart\Assert\Assert;
 
@@ -36,11 +37,14 @@ class Reset extends Component
      */
     public function resetPassword(): \Livewire\Features\SupportRedirects\Redirector|RedirectResponse|null
     {
+        $messages = __('xot::validation');
+
         $this->validate([
             'token' => 'required',
             'email' => 'required|email',
-            'password' => 'required|min:8|same:passwordConfirmation',
-        ]);
+            // 'password' => 'required|min:8|same:passwordConfirmation',
+            'password' => ['required', 'same:passwordConfirmation', PasswordRule::defaults()],
+        ], $messages);
 
         $response = $this->broker()->reset(
             [

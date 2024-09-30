@@ -26,38 +26,38 @@ class SocialProviderResource extends Resource
             ]);
     }
 
-    public static function table(Table $table): Table
-    {
-        return $table
-            ->columns([
-                Tables\Columns\TextColumn::make('name'),
-                // Tables\Columns\TextColumn::make('scopes'),
-                // Tables\Columns\TextColumn::make('parameters'),
-                Tables\Columns\IconColumn::make('stateless')->boolean(),
-                Tables\Columns\IconColumn::make('active')->boolean(),
-                Tables\Columns\IconColumn::make('socialite')->boolean(),
-                /*
-                Tables\Columns\TextColumn::make('svg'),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime(),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime(),
-                Tables\Columns\TextColumn::make('created_by'),
-                Tables\Columns\TextColumn::make('updated_by'),
-                */
-            ])
-            ->filters([
-            ])
-            ->actions([
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
-            ]);
-    }
+    // public static function table(Table $table): Table
+    // {
+    //     return $table
+    //         ->columns([
+    //             Tables\Columns\TextColumn::make('name'),
+    //             // Tables\Columns\TextColumn::make('scopes'),
+    //             // Tables\Columns\TextColumn::make('parameters'),
+    //             Tables\Columns\IconColumn::make('stateless')->boolean(),
+    //             Tables\Columns\IconColumn::make('active')->boolean(),
+    //             Tables\Columns\IconColumn::make('socialite')->boolean(),
+    //             /*
+    //             Tables\Columns\TextColumn::make('svg'),
+    //             Tables\Columns\TextColumn::make('created_at')
+    //                 ->dateTime(),
+    //             Tables\Columns\TextColumn::make('updated_at')
+    //                 ->dateTime(),
+    //             Tables\Columns\TextColumn::make('created_by'),
+    //             Tables\Columns\TextColumn::make('updated_by'),
+    //             */
+    //         ])
+    //         ->filters([
+    //         ])
+    //         ->actions([
+    //             Tables\Actions\ViewAction::make(),
+    //             Tables\Actions\EditAction::make(),
+    //         ])
+    //         ->bulkActions([
+    //             Tables\Actions\BulkActionGroup::make([
+    //                 Tables\Actions\DeleteBulkAction::make(),
+    //             ]),
+    //         ]);
+    // }
 
     public static function getRelations(): array
     {

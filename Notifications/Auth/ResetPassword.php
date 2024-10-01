@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Modules\User\Notifications\Auth;
 
-use Webmozart\Assert\Assert;
-use Illuminate\Support\Facades\Lang;
-use Illuminate\Notifications\Notification;
-use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Auth\Notifications\ResetPassword as BaseNotification;
+use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\Lang;
+use Webmozart\Assert\Assert;
 
 class ResetPassword extends BaseNotification
 {
@@ -29,6 +29,7 @@ class ResetPassword extends BaseNotification
     protected function buildMailMessage($url)
     {
         Assert::string($subject = Lang::get('user::email.password_reset_subject'));
+
         return (new MailMessage())
             ->subject($subject)
             ->line(Lang::get('user::email.password_cause_of_email'))

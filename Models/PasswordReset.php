@@ -21,17 +21,17 @@ use Modules\User\Database\Factories\PasswordResetFactory;
  * @property string|null $created_by
  *
  * @method static PasswordResetFactory  factory($count = null, $state = [])
- * @method static Builder|PasswordReset newModelQuery()
- * @method static Builder|PasswordReset newQuery()
- * @method static Builder|PasswordReset query()
- * @method static Builder|PasswordReset whereCreatedAt($value)
- * @method static Builder|PasswordReset whereCreatedBy($value)
- * @method static Builder|PasswordReset whereEmail($value)
- * @method static Builder|PasswordReset whereId($value)
- * @method static Builder|PasswordReset whereToken($value)
- * @method static Builder|PasswordReset whereUpdatedAt($value)
- * @method static Builder|PasswordReset whereUpdatedBy($value)
- * @method static Builder|PasswordReset whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PasswordReset newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|PasswordReset newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|PasswordReset query()
+ * @method static \Illuminate\Database\Eloquent\Builder|PasswordReset whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PasswordReset whereCreatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PasswordReset whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PasswordReset whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PasswordReset whereToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PasswordReset whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PasswordReset whereUpdatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PasswordReset whereUserId($value)
  *
  * @property \Modules\Xot\Contracts\ProfileContract|null $creator
  * @property \Modules\Xot\Contracts\ProfileContract|null $updater

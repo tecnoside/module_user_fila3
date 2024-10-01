@@ -17,23 +17,23 @@ use Modules\User\Database\Factories\ModelHasPermissionFactory;
  * @property string $model_id
  *
  * @method static ModelHasPermissionFactory  factory($count = null, $state = [])
- * @method static Builder|ModelHasPermission newModelQuery()
- * @method static Builder|ModelHasPermission newQuery()
- * @method static Builder|ModelHasPermission query()
- * @method static Builder|ModelHasPermission whereId($value)
- * @method static Builder|ModelHasPermission whereModelId($value)
- * @method static Builder|ModelHasPermission whereModelType($value)
- * @method static Builder|ModelHasPermission wherePermissionId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ModelHasPermission newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ModelHasPermission newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ModelHasPermission query()
+ * @method static \Illuminate\Database\Eloquent\Builder|ModelHasPermission whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ModelHasPermission whereModelId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ModelHasPermission whereModelType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ModelHasPermission wherePermissionId($value)
  *
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $updated_by
  * @property string|null $created_by
  *
- * @method static Builder|ModelHasPermission whereCreatedAt($value)
- * @method static Builder|ModelHasPermission whereCreatedBy($value)
- * @method static Builder|ModelHasPermission whereUpdatedAt($value)
- * @method static Builder|ModelHasPermission whereUpdatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ModelHasPermission whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ModelHasPermission whereCreatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ModelHasPermission whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ModelHasPermission whereUpdatedBy($value)
  *
  * @property \Modules\Xot\Contracts\ProfileContract|null $creator
  * @property \Modules\Xot\Contracts\ProfileContract|null $updater

@@ -13,9 +13,9 @@ use Laravel\Passport\AuthCode as PassportAuthCode;
  *
  * @property OauthClient|null $client
  *
- * @method static Builder|OauthAuthCode newModelQuery()
- * @method static Builder|OauthAuthCode newQuery()
- * @method static Builder|OauthAuthCode query()
+ * @method static \Illuminate\Database\Eloquent\Builder|OauthAuthCode newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|OauthAuthCode newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|OauthAuthCode query()
  *
  * @property string      $id
  * @property string|null $user_id
@@ -24,12 +24,12 @@ use Laravel\Passport\AuthCode as PassportAuthCode;
  * @property bool        $revoked
  * @property Carbon|null $expires_at
  *
- * @method static Builder|OauthAuthCode whereClientId($value)
- * @method static Builder|OauthAuthCode whereExpiresAt($value)
- * @method static Builder|OauthAuthCode whereId($value)
- * @method static Builder|OauthAuthCode whereRevoked($value)
- * @method static Builder|OauthAuthCode whereScopes($value)
- * @method static Builder|OauthAuthCode whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OauthAuthCode whereClientId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OauthAuthCode whereExpiresAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OauthAuthCode whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OauthAuthCode whereRevoked($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OauthAuthCode whereScopes($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OauthAuthCode whereUserId($value)
  *
  * @mixin \Eloquent
  */

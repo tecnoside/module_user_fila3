@@ -17,23 +17,23 @@ use Laravel\Passport\PersonalAccessClient as PassportPersonalAccessClient;
  * @property Carbon|null      $updated_at
  * @property OauthClient|null $client
  *
- * @method static Builder|OauthPersonalAccessClient newModelQuery()
- * @method static Builder|OauthPersonalAccessClient newQuery()
- * @method static Builder|OauthPersonalAccessClient query()
- * @method static Builder|OauthPersonalAccessClient whereClientId($value)
- * @method static Builder|OauthPersonalAccessClient whereCreatedAt($value)
- * @method static Builder|OauthPersonalAccessClient whereUpdatedAt($value)
- * @method static Builder|OauthPersonalAccessClient whereUuid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OauthPersonalAccessClient newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|OauthPersonalAccessClient newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|OauthPersonalAccessClient query()
+ * @method static \Illuminate\Database\Eloquent\Builder|OauthPersonalAccessClient whereClientId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OauthPersonalAccessClient whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OauthPersonalAccessClient whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OauthPersonalAccessClient whereUuid($value)
  *
  * @property int $id
  *
- * @method static Builder|OauthPersonalAccessClient whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OauthPersonalAccessClient whereId($value)
  *
  * @property string|null $updated_by
  * @property string|null $created_by
  *
- * @method static Builder|OauthPersonalAccessClient whereCreatedBy($value)
- * @method static Builder|OauthPersonalAccessClient whereUpdatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OauthPersonalAccessClient whereCreatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OauthPersonalAccessClient whereUpdatedBy($value)
  *
  * @mixin \Eloquent
  */

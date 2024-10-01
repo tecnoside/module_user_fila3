@@ -13,19 +13,19 @@ use Laravel\Passport\RefreshToken as PassportRefreshToken;
  *
  * @property OauthAccessToken|null $accessToken
  *
- * @method static Builder|OauthRefreshToken newModelQuery()
- * @method static Builder|OauthRefreshToken newQuery()
- * @method static Builder|OauthRefreshToken query()
+ * @method static \Illuminate\Database\Eloquent\Builder|OauthRefreshToken newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|OauthRefreshToken newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|OauthRefreshToken query()
  *
  * @property string      $id
  * @property string      $access_token_id
  * @property bool        $revoked
  * @property Carbon|null $expires_at
  *
- * @method static Builder|OauthRefreshToken whereAccessTokenId($value)
- * @method static Builder|OauthRefreshToken whereExpiresAt($value)
- * @method static Builder|OauthRefreshToken whereId($value)
- * @method static Builder|OauthRefreshToken whereRevoked($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OauthRefreshToken whereAccessTokenId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OauthRefreshToken whereExpiresAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OauthRefreshToken whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OauthRefreshToken whereRevoked($value)
  *
  * @mixin \Eloquent
  */

@@ -17,9 +17,9 @@ use Modules\Xot\Datas\XotData;
  *
  * @property Device|null $device
  *
- * @method static Builder|DeviceUser newModelQuery()
- * @method static Builder|DeviceUser newQuery()
- * @method static Builder|DeviceUser query()
+ * @method static \Illuminate\Database\Eloquent\Builder|DeviceUser newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|DeviceUser newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|DeviceUser query()
  *
  * @property int         $id
  * @property string      $device_id
@@ -33,17 +33,17 @@ use Modules\Xot\Datas\XotData;
  * @property string|null $updated_by
  * @property string|null $created_by
  *
- * @method static Builder|DeviceUser whereCreatedAt($value)
- * @method static Builder|DeviceUser whereCreatedBy($value)
- * @method static Builder|DeviceUser whereDeviceId($value)
- * @method static Builder|DeviceUser whereId($value)
- * @method static Builder|DeviceUser whereLoginAt($value)
- * @method static Builder|DeviceUser whereLogoutAt($value)
- * @method static Builder|DeviceUser wherePushNotificationsEnabled($value)
- * @method static Builder|DeviceUser wherePushNotificationsToken($value)
- * @method static Builder|DeviceUser whereUpdatedAt($value)
- * @method static Builder|DeviceUser whereUpdatedBy($value)
- * @method static Builder|DeviceUser whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DeviceUser whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DeviceUser whereCreatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DeviceUser whereDeviceId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DeviceUser whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DeviceUser whereLoginAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DeviceUser whereLogoutAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DeviceUser wherePushNotificationsEnabled($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DeviceUser wherePushNotificationsToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DeviceUser whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DeviceUser whereUpdatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DeviceUser whereUserId($value)
  *
  * @property ProfileContract|null $profile
  * @property UserContract|null    $user

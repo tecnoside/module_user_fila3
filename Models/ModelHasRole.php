@@ -22,22 +22,22 @@ use Modules\User\Database\Factories\ModelHasRoleFactory;
  * @property string|null $created_by
  *
  * @method static ModelHasRoleFactory  factory($count = null, $state = [])
- * @method static Builder|ModelHasRole newModelQuery()
- * @method static Builder|ModelHasRole newQuery()
- * @method static Builder|ModelHasRole query()
- * @method static Builder|ModelHasRole whereCreatedAt($value)
- * @method static Builder|ModelHasRole whereCreatedBy($value)
- * @method static Builder|ModelHasRole whereId($value)
- * @method static Builder|ModelHasRole whereModelId($value)
- * @method static Builder|ModelHasRole whereModelType($value)
- * @method static Builder|ModelHasRole whereRoleId($value)
- * @method static Builder|ModelHasRole whereTeamId($value)
- * @method static Builder|ModelHasRole whereUpdatedAt($value)
- * @method static Builder|ModelHasRole whereUpdatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ModelHasRole newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ModelHasRole newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ModelHasRole query()
+ * @method static \Illuminate\Database\Eloquent\Builder|ModelHasRole whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ModelHasRole whereCreatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ModelHasRole whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ModelHasRole whereModelId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ModelHasRole whereModelType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ModelHasRole whereRoleId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ModelHasRole whereTeamId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ModelHasRole whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ModelHasRole whereUpdatedBy($value)
  *
  * @property string $uuid (DC2Type:guid)
  *
- * @method static Builder|ModelHasRole whereUuid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ModelHasRole whereUuid($value)
  *
  * @property \Modules\Xot\Contracts\ProfileContract|null $creator
  * @property \Modules\Xot\Contracts\ProfileContract|null $updater

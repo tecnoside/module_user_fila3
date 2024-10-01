@@ -19,15 +19,15 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null  $updated_at
  * @property TeamContract $team
  *
- * @method static Builder|TeamInvitationContract newModelQuery()
- * @method static Builder|TeamInvitationContract newQuery()
- * @method static Builder|TeamInvitationContract query()
- * @method static Builder|TeamInvitationContract whereCreatedAt($value)
- * @method static Builder|TeamInvitationContract whereEmail($value)
- * @method static Builder|TeamInvitationContract whereId($value)
- * @method static Builder|TeamInvitationContract whereRole($value)
- * @method static Builder|TeamInvitationContract whereTeamId($value)
- * @method static Builder|TeamInvitationContract whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamInvitationContract newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamInvitationContract newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamInvitationContract query()
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamInvitationContract whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamInvitationContract whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamInvitationContract whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamInvitationContract whereRole($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamInvitationContract whereTeamId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamInvitationContract whereUpdatedAt($value)
  *
  * @phpstan-require-extends Model
  *

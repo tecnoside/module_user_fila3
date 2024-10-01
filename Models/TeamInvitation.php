@@ -24,15 +24,15 @@ use Modules\Xot\Datas\XotData;
  * @property TeamContract|null $team
  *
  * @method static TeamInvitationFactory  factory($count = null, $state = [])
- * @method static Builder|TeamInvitation newModelQuery()
- * @method static Builder|TeamInvitation newQuery()
- * @method static Builder|TeamInvitation query()
- * @method static Builder|TeamInvitation whereCreatedAt($value)
- * @method static Builder|TeamInvitation whereEmail($value)
- * @method static Builder|TeamInvitation whereId($value)
- * @method static Builder|TeamInvitation whereRole($value)
- * @method static Builder|TeamInvitation whereTeamId($value)
- * @method static Builder|TeamInvitation whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamInvitation newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamInvitation newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamInvitation query()
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamInvitation whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamInvitation whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamInvitation whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamInvitation whereRole($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamInvitation whereTeamId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamInvitation whereUpdatedAt($value)
  *
  * @property string      $uuid
  * @property string|null $updated_by
@@ -40,11 +40,11 @@ use Modules\Xot\Datas\XotData;
  * @property Carbon|null $deleted_at
  * @property string|null $deleted_by
  *
- * @method static Builder|TeamInvitation whereCreatedBy($value)
- * @method static Builder|TeamInvitation whereDeletedAt($value)
- * @method static Builder|TeamInvitation whereDeletedBy($value)
- * @method static Builder|TeamInvitation whereUpdatedBy($value)
- * @method static Builder|TeamInvitation whereUuid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamInvitation whereCreatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamInvitation whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamInvitation whereDeletedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamInvitation whereUpdatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamInvitation whereUuid($value)
  *
  * @property \Modules\Xot\Contracts\ProfileContract|null $creator
  * @property \Modules\Xot\Contracts\ProfileContract|null $updater

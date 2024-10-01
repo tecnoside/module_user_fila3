@@ -10,9 +10,9 @@ use Illuminate\Support\Carbon;
 /**
  * Modules\User\Models\TeamUser.
  *
- * @method static Builder|TeamUser newModelQuery()
- * @method static Builder|TeamUser newQuery()
- * @method static Builder|TeamUser query()
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamUser newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamUser newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamUser query()
  *
  * @property int         $id
  * @property string      $uuid
@@ -25,22 +25,22 @@ use Illuminate\Support\Carbon;
  * @property string|null $updated_by
  * @property string|null $customer_id
  *
- * @method static Builder|TeamUser whereCreatedAt($value)
- * @method static Builder|TeamUser whereCreatedBy($value)
- * @method static Builder|TeamUser whereCustomerId($value)
- * @method static Builder|TeamUser whereId($value)
- * @method static Builder|TeamUser whereRole($value)
- * @method static Builder|TeamUser whereTeamId($value)
- * @method static Builder|TeamUser whereUpdatedAt($value)
- * @method static Builder|TeamUser whereUpdatedBy($value)
- * @method static Builder|TeamUser whereUserId($value)
- * @method static Builder|TeamUser whereUuid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamUser whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamUser whereCreatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamUser whereCustomerId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamUser whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamUser whereRole($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamUser whereTeamId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamUser whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamUser whereUpdatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamUser whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamUser whereUuid($value)
  *
  * @property Carbon|null $deleted_at
  * @property string|null $deleted_by
  *
- * @method static Builder|TeamUser whereDeletedAt($value)
- * @method static Builder|TeamUser whereDeletedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamUser whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamUser whereDeletedBy($value)
  *
  * @property \Modules\Xot\Contracts\ProfileContract|null $creator
  * @property \Modules\Xot\Contracts\ProfileContract|null $updater

@@ -54,11 +54,11 @@ use Spatie\Permission\Traits\HasRoles;
  * @property int|null                                               $tokens_count
  *
  * @method static \Modules\User\Database\Factories\UserFactory factory($count = null, $state = [])
- * @method static Builder|User                                 newModelQuery()
- * @method static Builder|User                                 newQuery()
- * @method static Builder|User                                 permission($permissions)
- * @method static Builder|User                                 query()
- * @method static Builder|User                                 role($roles, $guard = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|User                                 newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|User                                 newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|User                                 permission($permissions)
+ * @method static \Illuminate\Database\Eloquent\Builder|User                                 query()
+ * @method static \Illuminate\Database\Eloquent\Builder|User                                 role($roles, $guard = null)
  *
  * @property string                          $id
  * @property string                          $name
@@ -76,45 +76,45 @@ use Spatie\Permission\Traits\HasRoles;
  * @property string|null                     $lang
  * @property bool                            $is_active
  *
- * @method static Builder|User whereCreatedAt($value)
- * @method static Builder|User whereCurrentTeamId($value)
- * @method static Builder|User whereDeletedAt($value)
- * @method static Builder|User whereEmail($value)
- * @method static Builder|User whereEmailVerifiedAt($value)
- * @method static Builder|User whereFirstName($value)
- * @method static Builder|User whereId($value)
- * @method static Builder|User whereIsActive($value)
- * @method static Builder|User whereLang($value)
- * @method static Builder|User whereLastName($value)
- * @method static Builder|User whereName($value)
- * @method static Builder|User wherePassword($value)
- * @method static Builder|User whereProfilePhotoPath($value)
- * @method static Builder|User whereRememberToken($value)
- * @method static Builder|User whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereCurrentTeamId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereEmailVerifiedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereFirstName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereIsActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereLang($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereLastName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User wherePassword($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereProfilePhotoPath($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  *
  * @mixin Eloquent
  *
  * @property Collection<int, \Modules\User\Models\Tenant> $tenants
  * @property int|null                                     $tenants_count
  *
- * @method static Builder|User withoutPermission($permissions)
- * @method static Builder|User withoutRole($roles, $guard = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|User withoutPermission($permissions)
+ * @method static \Illuminate\Database\Eloquent\Builder|User withoutRole($roles, $guard = null)
  *
  * @property string|null $updated_by
  * @property string|null $created_by
  * @property string|null $deleted_by
  *
- * @method static Builder|User whereCreatedBy($value)
- * @method static Builder|User whereDeletedBy($value)
- * @method static Builder|User whereUpdatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereCreatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereDeletedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedBy($value)
  *
  * @property string $surname
  *
- * @method static Builder|User whereSurname($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereSurname($value)
  *
  * @property string|null $facebook_id
  *
- * @method static Builder|User whereFacebookId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereFacebookId($value)
  * @method        bool         canAccessSocialite()
  *
  * @property TenantUser                                              $pivot

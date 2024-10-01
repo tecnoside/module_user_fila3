@@ -29,18 +29,18 @@ use Spatie\Permission\Models\Permission as SpatiePermission;
  * @property EloquentCollection<int, \Illuminate\Database\Eloquent\Model&UserContract> $users
  * @property int|null                                                                  $users_count
  *
- * @method static Builder|Permission newModelQuery()
- * @method static Builder|Permission newQuery()
- * @method static Builder|Permission query()
- * @method static Builder|Permission whereCreatedAt($value)
- * @method static Builder|Permission whereUpdatedAt($value)
- * @method static Builder|Permission whereCreatedBy($value)
- * @method static Builder|Permission whereUpdatedBy($value)
- * @method static Builder|Permission whereGuardName($value)
- * @method static Builder|Permission whereId($value)
- * @method static Builder|Permission whereName($value)
- * @method static Builder|Permission role($roles, $guard = null)
- * @method static Builder|Permission permission($permissions)
+ * @method static \Illuminate\Database\Eloquent\Builder|Permission newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Permission newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Permission query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Permission whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Permission whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Permission whereCreatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Permission whereUpdatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Permission whereGuardName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Permission whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Permission whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Permission role($roles, $guard = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|Permission permission($permissions)
  *
  * @mixin \Eloquent
  */

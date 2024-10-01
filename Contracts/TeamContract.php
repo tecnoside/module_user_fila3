@@ -27,15 +27,15 @@ use Modules\Xot\Contracts\UserContract;
  * @property int|null          $team_invitations_count
  * @property int|null          $users_count
  *
- * @method static Builder|TeamContract newModelQuery()
- * @method static Builder|TeamContract newQuery()
- * @method static Builder|TeamContract query()
- * @method static Builder|TeamContract whereCreatedAt($value)
- * @method static Builder|TeamContract whereId($value)
- * @method static Builder|TeamContract whereName($value)
- * @method static Builder|TeamContract wherePersonalTeam($value)
- * @method static Builder|TeamContract whereUpdatedAt($value)
- * @method static Builder|TeamContract whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamContract newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamContract newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamContract query()
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamContract whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamContract whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamContract whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamContract wherePersonalTeam($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamContract whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamContract whereUserId($value)
  *
  * @phpstan-require-extends Model
  *

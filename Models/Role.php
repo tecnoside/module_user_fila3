@@ -34,26 +34,26 @@ use Spatie\Permission\Models\Role as SpatieRole;
  * @property EloquentCollection<int, \Illuminate\Database\Eloquent\Model&UserContract> $users
  * @property int|null                                                                  $users_count
  *
- * @method static Builder|Role newModelQuery()
- * @method static Builder|Role newQuery()
- * @method static Builder|Role permission($permissions)
- * @method static Builder|Role query()
- * @method static Builder|Role whereCreatedAt($value)
- * @method static Builder|Role whereGuardName($value)
- * @method static Builder|Role whereName($value)
- * @method static Builder|Role whereTeamId($value)
- * @method static Builder|Role whereUpdatedAt($value)
- * @method static Builder|Role whereUuid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Role newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Role newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Role permission($permissions)
+ * @method static \Illuminate\Database\Eloquent\Builder|Role query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Role whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Role whereGuardName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Role whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Role whereTeamId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Role whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Role whereUuid($value)
  *
  * @property int $id
  *
- * @method static Builder|Role whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Role whereId($value)
  *
  * @property string|null $updated_by
  * @property string|null $created_by
  *
- * @method static Builder|Role whereCreatedBy($value)
- * @method static Builder|Role whereUpdatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Role whereCreatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Role whereUpdatedBy($value)
  *
  * @mixin Eloquent
  *

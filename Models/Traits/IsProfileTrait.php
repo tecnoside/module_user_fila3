@@ -120,14 +120,13 @@ trait IsProfileTrait
         if (null === $user) {
             throw new \Exception('['.__LINE__.']['.class_basename($this).']');
         }
+        $to_assign = 'super-admin';
+        $to_remove = 'negate-super-admin';
         if ($this->isSuperAdmin()) {
             $to_assign = 'negate-super-admin';
             $to_remove = 'super-admin';
         }
-        if ($this->isNegateSuperAdmin()) {
-            $to_assign = 'super-admin';
-            $to_remove = 'negate-super-admin';
-        }
+
 
         try {
             $user->assignRole($to_assign);

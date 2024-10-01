@@ -29,11 +29,11 @@ class ResetPassword extends BaseNotification
     protected function buildMailMessage($url)
     {
         Assert::string($subject = Lang::get('user::email.password_reset_subject'));
-
+        Assert::string($action = Lang::get('user::email.reset_password'));
         return (new MailMessage())
             ->subject($subject)
             ->line(Lang::get('user::email.password_cause_of_email'))
-            ->action(Lang::get('user::email.reset_password'), $url)
+            ->action($action, $url)
             ->line(Lang::get('user::email.password_reset_expiration', ['count' => config('auth.passwords.'.config('auth.defaults.passwords').'.expire')]))
             ->line(Lang::get('user::email.password_if_not_requested'));
     }

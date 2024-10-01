@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Carbon;
 use Modules\User\Database\Factories\ModelHasPermissionFactory;
 
@@ -16,7 +15,7 @@ use Modules\User\Database\Factories\ModelHasPermissionFactory;
  * @property string $model_type
  * @property string $model_id
  *
- * @method static ModelHasPermissionFactory  factory($count = null, $state = [])
+ * @method static ModelHasPermissionFactory                                factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|ModelHasPermission newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ModelHasPermission newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ModelHasPermission query()

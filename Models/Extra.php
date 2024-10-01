@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
-use Illuminate\Contracts\Database\Eloquent\Builder;
 use Modules\Xot\Models\Extra as XotBaseExtra;
 
 /**
@@ -13,7 +12,7 @@ use Modules\Xot\Models\Extra as XotBaseExtra;
  * @method static \Illuminate\Database\Eloquent\Builder|Extra newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Extra newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Extra query()
- * @method static \Illuminate\Database\Eloquent\Builder|Extra                               withExtraAttributes()
+ * @method static \Illuminate\Database\Eloquent\Builder|Extra withExtraAttributes()
  *
  * @property int                             $id
  * @property string                          $model_type

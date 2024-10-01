@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Modules\User\Database\Factories\DeviceFactory;
@@ -16,7 +15,7 @@ use Modules\Xot\Contracts\UserContract;
  * @property EloquentCollection<int, \Illuminate\Database\Eloquent\Model&UserContract> $users
  * @property int|null                                                                  $users_count
  *
- * @method static DeviceFactory  factory($count = null, $state = [])
+ * @method static DeviceFactory                                factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Device newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Device newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Device query()

@@ -45,7 +45,7 @@ use Spatie\SchemalessAttributes\SchemalessAttributesTrait;
  * @method static \Illuminate\Database\Eloquent\Builder|ProfileContract permission($permissions, $without = false)
  * @method static \Illuminate\Database\Eloquent\Builder|ProfileContract query()
  * @method static \Illuminate\Database\Eloquent\Builder|ProfileContract role($roles, $guard = null, $without = false)
- * @method static \Illuminate\Database\Eloquent\Builder|BaseProfile                                   withExtraAttributes()
+ * @method static \Illuminate\Database\Eloquent\Builder|BaseProfile     withExtraAttributes()
  * @method static \Illuminate\Database\Eloquent\Builder|ProfileContract withoutPermission($permissions)
  * @method static \Illuminate\Database\Eloquent\Builder|ProfileContract withoutRole($roles, $guard = null)
  *

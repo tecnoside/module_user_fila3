@@ -10,7 +10,6 @@ namespace Modules\User\Models;
 use Filament\Models\Contracts\HasName;
 use Filament\Models\Contracts\HasTenants;
 use Filament\Panel;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -54,11 +53,11 @@ use Spatie\Permission\Traits\HasRoles;
  * @property int|null                                               $tokens_count
  *
  * @method static \Modules\User\Database\Factories\UserFactory factory($count = null, $state = [])
- * @method static \Illuminate\Database\Eloquent\Builder|User                                 newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|User                                 newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|User                                 permission($permissions)
- * @method static \Illuminate\Database\Eloquent\Builder|User                                 query()
- * @method static \Illuminate\Database\Eloquent\Builder|User                                 role($roles, $guard = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|User   newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|User   newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|User   permission($permissions)
+ * @method static \Illuminate\Database\Eloquent\Builder|User   query()
+ * @method static \Illuminate\Database\Eloquent\Builder|User   role($roles, $guard = null)
  *
  * @property string                          $id
  * @property string                          $name
@@ -115,7 +114,7 @@ use Spatie\Permission\Traits\HasRoles;
  * @property string|null $facebook_id
  *
  * @method static \Illuminate\Database\Eloquent\Builder|User whereFacebookId($value)
- * @method        bool         canAccessSocialite()
+ * @method        bool                                       canAccessSocialite()
  *
  * @property TenantUser                                              $pivot
  * @property Membership                                              $membership

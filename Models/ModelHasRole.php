@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Carbon;
 use Modules\User\Database\Factories\ModelHasRoleFactory;
 
@@ -21,7 +20,7 @@ use Modules\User\Database\Factories\ModelHasRoleFactory;
  * @property string|null $updated_by
  * @property string|null $created_by
  *
- * @method static ModelHasRoleFactory  factory($count = null, $state = [])
+ * @method static ModelHasRoleFactory                                factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|ModelHasRole newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ModelHasRole newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ModelHasRole query()

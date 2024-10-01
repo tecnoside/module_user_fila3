@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\User\Models;
 
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Carbon;
 use Modules\User\Database\Factories\PasswordResetFactory;
 
@@ -20,7 +19,7 @@ use Modules\User\Database\Factories\PasswordResetFactory;
  * @property string|null $updated_by
  * @property string|null $created_by
  *
- * @method static PasswordResetFactory  factory($count = null, $state = [])
+ * @method static PasswordResetFactory                                factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|PasswordReset newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|PasswordReset newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|PasswordReset query()

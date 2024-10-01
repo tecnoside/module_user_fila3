@@ -127,7 +127,6 @@ trait IsProfileTrait
             $to_remove = 'super-admin';
         }
 
-
         try {
             $user->assignRole($to_assign);
             $user->removeRole($to_remove);

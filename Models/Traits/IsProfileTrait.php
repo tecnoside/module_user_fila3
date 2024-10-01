@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Models\Traits;
 
+use Filament\Notifications\Notification;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -12,6 +13,7 @@ use Illuminate\Support\Collection;
 use Modules\User\Models\Device;
 use Modules\User\Models\DeviceUser;
 use Modules\User\Models\Role;
+use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Datas\XotData;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Permission\Exceptions\RoleDoesNotExist;
@@ -19,15 +21,13 @@ use Spatie\Permission\Exceptions\RoleDoesNotExist;
 trait IsProfileTrait
 {
     use InteractsWithMedia;
-    // --- RELATIONS
 
     /**
      * Undocumented function.
+     * return BelongsTo<UserContract>.
      */
     public function user(): BelongsTo
     {
-        // $user = TenantService::model('user'); //no bisgna guardare dentro config(auth  etc etc
-        // $user_class = \get_class($user);
         $userClass = XotData::make()->getUserClass();
 
         return $this->belongsTo($userClass);
@@ -121,21 +121,32 @@ trait IsProfileTrait
             throw new \Exception('['.__LINE__.']['.class_basename($this).']');
         }
         if ($this->isSuperAdmin()) {
-            try {
-                $user->assignRole('negate-super-admin');
-                $user->removeRole('super-admin');
-            } catch (RoleDoesNotExist $e) {
-                Role::create(['name' => 'negate-super-admin']);
-            }
-
-            return;
+            $to_assign = 'negate-super-admin';
+            $to_remove = 'super-admin';
         }
         if ($this->isNegateSuperAdmin()) {
-            $user->removeRole('negate-super-admin');
-            $user->assignRole('super-admin');
-
-            return;
+            $to_assign = 'super-admin';
+            $to_remove = 'negate-super-admin';
         }
+
+        try {
+            $user->assignRole($to_assign);
+            $user->removeRole($to_remove);
+        } catch (RoleDoesNotExist $e) {
+            $role_assign = Role::updateOrCreate(['name' => $to_assign], ['team_id' => null]);
+            $role_remove = Role::updateOrCreate(['name' => $to_remove], ['team_id' => null]);
+            $user->roles()->attach($role_assign);
+            $user->roles()->detach($role_remove);
+        } catch (\Exception $e) {
+            Notification::make()
+                ->title('Exception !')
+                ->danger()
+                ->persistent()
+                ->body($e->getMessage())
+                ->send();
+        }
+
+        return;
     }
 
     public function mobileDevices(): BelongsToMany

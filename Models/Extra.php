@@ -35,8 +35,8 @@ use Modules\Xot\Models\Extra as XotBaseExtra;
  * @method static \Illuminate\Database\Eloquent\Builder|Extra whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Extra whereUpdatedBy($value)
  *
- * @property \Modules\Camping\Models\Profile|null $creator
- * @property \Modules\Camping\Models\Profile|null $updater
+ * @property \Modules\Xot\Contracts\ProfileContract|null $creator
+ * @property \Modules\Xot\Contracts\ProfileContract|null $updater
  *
  * @method static \Modules\User\Database\Factories\ExtraFactory factory($count = null, $state = [])
  *

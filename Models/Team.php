@@ -15,14 +15,14 @@ namespace Modules\User\Models;
  * @property string|null                                                                        $created_by
  * @property \Illuminate\Support\Carbon|null                                                    $deleted_at
  * @property string|null                                                                        $deleted_by
- * @property \Modules\Camping\Models\Profile|null                                               $creator
+ * @property \Modules\Xot\Contracts\ProfileContract|null                                        $creator
  * @property TeamUser                                                                           $pivot
  * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\User>           $members
  * @property int|null                                                                           $members_count
  * @property User|null                                                                          $owner
  * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\TeamInvitation> $teamInvitations
  * @property int|null                                                                           $team_invitations_count
- * @property \Modules\Camping\Models\Profile|null                                               $updater
+ * @property \Modules\Xot\Contracts\ProfileContract|null                                        $updater
  * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\User>           $users
  * @property int|null                                                                           $users_count
  *

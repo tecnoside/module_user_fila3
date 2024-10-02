@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Modules\User\Models;
 
 /**
- * @property \Modules\Camping\Models\Profile|null $creator
- * @property \Modules\Camping\Models\Profile|null $updater
+ * @property \Modules\Xot\Contracts\ProfileContract|null $creator
+ * @property \Modules\Xot\Contracts\ProfileContract|null $updater
  *
  * @method static \Modules\User\Database\Factories\FeatureFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Feature   newModelQuery()

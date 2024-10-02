@@ -11,7 +11,7 @@ trait HasPasswordExpiry
     public static function bootHasPasswordExpiry()
     {
         // if (! app(HasColumnAction::class)->execute(auth()->user(), 'password_expires_at')) {
-        //     dddx('a');
+        //    dddx('a');
         // }
 
         static::creating(function ($model) {

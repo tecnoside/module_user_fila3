@@ -31,19 +31,19 @@ use Webmozart\Assert\Assert;
 class PasswordExpired extends Page implements HasForms
 {
     use InteractsWithFormActions;
-
     use NavigationPageLabelTrait;
-
-    /**
-     * @var view-string
-     */
-    protected static string $view = 'user::filament.auth.pages.password-expired';
 
     public ?string $current_password = '';
 
     public ?string $password = '';
 
     public ?string $passwordConfirmation = '';
+
+    /**
+     * @var view-string
+     */
+    protected static string $view = 'user::filament.auth.pages.password-expired';
+
     protected static bool $shouldRegisterNavigation = false;
 
     public function form(Form $form): Form
@@ -54,53 +54,6 @@ class PasswordExpired extends Page implements HasForms
                 $this->getPasswordFormComponent(),
                 $this->getPasswordConfirmationFormComponent(),
             ]);
-    }
-
-    protected function getCurrentPasswordFormComponent(): Component
-    {
-        return TextInput::make('current_password')
-            // ->label(__('user::otp.form.current_password.label'))
-            ->label(static::trans('fields.current_password.label'))
-            ->password()
-            // ->revealable(filament()->arePasswordsRevealable())
-            ->revealable()
-            ->required()
-            // ->rule(PasswordRule::default())
-            ->validationAttribute(static::trans('fields.current_password.validation_attribute'));
-    }
-
-    protected function getPasswordFormComponent(): Component
-    {
-        return TextInput::make('password')
-            ->label(static::trans('fields.password.label'))
-            ->password()
-            // ->revealable(filament()->arePasswordsRevealable())
-            ->revealable()
-            ->required()
-            ->rule(PasswordRule::default())
-            ->same('passwordConfirmation')
-            ->validationAttribute(static::trans('fields.password.validation_attribute'));
-    }
-
-    protected function getPasswordConfirmationFormComponent(): Component
-    {
-        return TextInput::make('passwordConfirmation')
-            ->label(static::trans('fields.password_confirmation.label'))
-            ->password()
-            // ->revealable(filament()->arePasswordsRevealable())
-            ->revealable()
-            ->required()
-            ->dehydrated(false);
-    }
-
-    /**
-     * @return array<Action|ActionGroup>
-     */
-    protected function getFormActions(): array
-    {
-        return [
-            $this->getResetPasswordFormAction(),
-        ];
     }
 
     public function getResetPasswordFormAction(): Action
@@ -121,7 +74,7 @@ class PasswordExpired extends Page implements HasForms
         Assert::string($current_password = Arr::get($data, 'current_password'));
         Assert::string($password = Arr::get($data, 'password'));
         $user = auth()->user();
-        if (null == $user) {
+        if ($user === null) {
             return null;
         }
 
@@ -180,5 +133,52 @@ class PasswordExpired extends Page implements HasForms
             ->send();
 
         return new PasswordResetResponse();
+    }
+
+    protected function getCurrentPasswordFormComponent(): Component
+    {
+        return TextInput::make('current_password')
+            // ->label(__('user::otp.form.current_password.label'))
+            ->label(static::trans('fields.current_password.label'))
+            ->password()
+            // ->revealable(filament()->arePasswordsRevealable())
+            ->revealable()
+            ->required()
+            // ->rule(PasswordRule::default())
+            ->validationAttribute(static::trans('fields.current_password.validation_attribute'));
+    }
+
+    protected function getPasswordFormComponent(): Component
+    {
+        return TextInput::make('password')
+            ->label(static::trans('fields.password.label'))
+            ->password()
+            // ->revealable(filament()->arePasswordsRevealable())
+            ->revealable()
+            ->required()
+            ->rule(PasswordRule::default())
+            ->same('passwordConfirmation')
+            ->validationAttribute(static::trans('fields.password.validation_attribute'));
+    }
+
+    protected function getPasswordConfirmationFormComponent(): Component
+    {
+        return TextInput::make('passwordConfirmation')
+            ->label(static::trans('fields.password_confirmation.label'))
+            ->password()
+            // ->revealable(filament()->arePasswordsRevealable())
+            ->revealable()
+            ->required()
+            ->dehydrated(false);
+    }
+
+    /**
+     * @return array<Action|ActionGroup>
+     */
+    protected function getFormActions(): array
+    {
+        return [
+            $this->getResetPasswordFormAction(),
+        ];
     }
 }

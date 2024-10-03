@@ -24,6 +24,8 @@ class Alignment extends Page implements HasForms
 {
     use InteractsWithForms;
 
+    public ?array $data = [];
+
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
     protected static string $view = 'user::filament.clusters.appearance.pages.alignment';
@@ -32,19 +34,9 @@ class Alignment extends Page implements HasForms
 
     protected static ?int $navigationSort = 4;
 
-    public ?array $data = [];
-
     public function mount(): void
     {
         $this->fillForms();
-    }
-
-    protected function fillForms(): void
-    {
-        // $data = $this->getUser()->attributesToArray();
-        $data = [];
-
-        $this->form->fill($data);
     }
 
     // protected function getForms(): array
@@ -80,15 +72,6 @@ class Alignment extends Page implements HasForms
             ->statePath('data');
     }
 
-    protected function getUpdateFormActions(): array
-    {
-        return [
-            Action::make('updateAction')
-                ->label(__('filament-panels::pages/auth/edit-profile.form.actions.save.label'))
-                ->submit('editForm'),
-        ];
-    }
-
     public function updateData(): void
     {
         try {
@@ -100,6 +83,23 @@ class Alignment extends Page implements HasForms
 
             return;
         }
+    }
+
+    protected function fillForms(): void
+    {
+        // $data = $this->getUser()->attributesToArray();
+        $data = [];
+
+        $this->form->fill($data);
+    }
+
+    protected function getUpdateFormActions(): array
+    {
+        return [
+            Action::make('updateAction')
+                ->label(__('filament-panels::pages/auth/edit-profile.form.actions.save.label'))
+                ->submit('editForm'),
+        ];
     }
 
     protected function handleRecordUpdate(Model $record, array $data): Model

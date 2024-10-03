@@ -30,7 +30,7 @@ class TeamsRelationManager extends RelationManager
     {
         $actions = [
             IconColumn::make('is_current_team')
-                ->default(fn ($record, $livewire) => $livewire->getOwnerRecord()->current_team_id == $record->id)
+                ->default(fn ($record, $livewire) => $livewire->getOwnerRecord()->current_team_id === $record->id)
                 ->boolean(),
         ];
 

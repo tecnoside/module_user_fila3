@@ -40,7 +40,7 @@ class ProcessCallbackController extends Controller
 
         // Try to retrieve existing user
         $oauthUser = app(RetrieveOauthUserAction::class)->execute($provider);
-        if (null === $oauthUser) {
+        if ($oauthUser === null) {
             return app(RedirectToLoginAction::class)->execute('auth.login-failed');
         }
 
@@ -82,7 +82,7 @@ class ProcessCallbackController extends Controller
         $user = $user_class::query()->firstWhere(['email' => $oauthUser->getEmail()]);
 
         // Handle registration
-        if (null != $user) {
+        if ($user !== null) {
             $socialiteUser = app(RegisterSocialiteUserAction::class)->execute($provider, $oauthUser, $user);
         } else {
             $socialiteUser = app(RegisterOauthUserAction::class)->execute($provider, $oauthUser);

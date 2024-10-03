@@ -7,6 +7,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Http\Controllers\Socialite;
 
+use Exception;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Controller;
@@ -15,8 +16,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Laravel\Socialite\Contracts\User as SocialiteUserContract;
 use Laravel\Socialite\Facades\Socialite;
-use Laravel\Socialite\Two\InvalidStateException;
 // use DutchCodingCompany\FilamentSocialite\FilamentSocialite;
+use Laravel\Socialite\Two\InvalidStateException;
 use Modules\User\Actions\Socialite\CreateSocialiteUserAction;
 use Modules\User\Actions\Socialite\GetDomainAllowListAction;
 use Modules\User\Actions\Socialite\GetGuardAction;
@@ -36,6 +37,9 @@ use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Datas\XotData;
 use Webmozart\Assert\Assert;
 
+use function count;
+use function in_array;
+
 class LoginController extends Controller
 {
     /**
@@ -51,11 +55,11 @@ class LoginController extends Controller
         $scopes = App(GetProviderScopesAction::class)->execute($provider);
         $socialiteProvider = Socialite::with($provider);
         if (! is_object($socialiteProvider)) {
-            throw new \Exception('wip');
+            throw new Exception('wip');
         }
 
         if (! method_exists($socialiteProvider, 'scopes')) {
-            throw new \Exception('wip');
+            throw new Exception('wip');
         }
 
         return $socialiteProvider
@@ -175,7 +179,7 @@ class LoginController extends Controller
         $domains = app(GetDomainAllowListAction::class)->execute();
 
         // When no domains are specified, all users are allowed
-        if ((is_countable($domains) ? \count($domains) : 0) < 1) {
+        if ((is_countable($domains) ? count($domains) : 0) < 1) {
             return true;
         }
 
@@ -186,7 +190,7 @@ class LoginController extends Controller
             ->__toString();
 
         // See if everything after @ is in the domains array
-        return \in_array($emailDomain, $domains, false);
+        return in_array($emailDomain, $domains, false);
     }
 
     /**

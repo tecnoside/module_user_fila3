@@ -10,17 +10,17 @@ use Modules\User\Database\Factories\ModelHasRoleFactory;
 /**
  * Modules\User\Models\ModelHasRole.
  *
- * @property int         $id
- * @property string      $role_id
- * @property string      $model_type
- * @property string      $model_id
- * @property int|null    $team_id
+ * @property int $id
+ * @property string $role_id
+ * @property string $model_type
+ * @property string $model_id
+ * @property int|null $team_id
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $updated_by
  * @property string|null $created_by
  *
- * @method static ModelHasRoleFactory                                factory($count = null, $state = [])
+ * @method static ModelHasRoleFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|ModelHasRole newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ModelHasRole newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ModelHasRole query()

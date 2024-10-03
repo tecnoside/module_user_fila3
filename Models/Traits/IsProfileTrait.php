@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Models\Traits;
 
+use Exception;
 use Filament\Notifications\Notification;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -36,12 +37,12 @@ trait IsProfileTrait
     // ---- mutators
     public function getFullNameAttribute(?string $value): ?string
     {
-        if (null !== $value) {
+        if ($value !== null) {
             return $value;
         }
 
         $res = $this->first_name.' '.$this->last_name;
-        if (\strlen($res) > 2) {
+        if (mb_strlen($res) > 2) {
             return $res;
         }
 
@@ -50,7 +51,7 @@ trait IsProfileTrait
 
     public function getFirstNameAttribute(?string $value): ?string
     {
-        if (null !== $value) {
+        if ($value !== null) {
             return $value;
         }
         $value = $this->user?->first_name;
@@ -61,7 +62,7 @@ trait IsProfileTrait
 
     public function getLastNameAttribute(?string $value): ?string
     {
-        if (null !== $value) {
+        if ($value !== null) {
             return $value;
         }
         $value = $this->user?->last_name;
@@ -70,35 +71,9 @@ trait IsProfileTrait
         return $value;
     }
 
-    /**
-     * Get the user's user_name.
-     */
-    protected function userName(): Attribute
-    {
-        return Attribute::make(
-            get: function (): ?string {
-                return $this->user?->name;
-            }
-        );
-    }
-
-    /**
-     * Get the user's avatar.
-     */
-    protected function avatar(): Attribute
-    {
-        return Attribute::make(
-            get: function (): string {
-                $value = $this->getFirstMediaUrl('avatar');
-
-                return $value;
-            }
-        );
-    }
-
     public function isSuperAdmin(): bool
     {
-        if (null === $this->user) {
+        if ($this->user === null) {
             return false;
         }
 
@@ -107,7 +82,7 @@ trait IsProfileTrait
 
     public function isNegateSuperAdmin(): bool
     {
-        if (null === $this->user) {
+        if ($this->user === null) {
             return false;
         }
 
@@ -117,8 +92,8 @@ trait IsProfileTrait
     public function toggleSuperAdmin(): void
     {
         $user = $this->user;
-        if (null === $user) {
-            throw new \Exception('['.__LINE__.']['.class_basename($this).']');
+        if ($user === null) {
+            throw new Exception('['.__LINE__.']['.class_basename($this).']');
         }
         $to_assign = 'super-admin';
         $to_remove = 'negate-super-admin';
@@ -135,7 +110,7 @@ trait IsProfileTrait
             $role_remove = Role::updateOrCreate(['name' => $to_remove], ['team_id' => null]);
             $user->roles()->attach($role_assign);
             $user->roles()->detach($role_remove);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             Notification::make()
                 ->title('Exception !')
                 ->danger()
@@ -144,7 +119,6 @@ trait IsProfileTrait
                 ->send();
         }
 
-        return;
     }
 
     public function mobileDevices(): BelongsToMany
@@ -219,5 +193,31 @@ trait IsProfileTrait
             ->withPivot('role')
             ->withTimestamps()
             ->as('membership');
+    }
+
+    /**
+     * Get the user's user_name.
+     */
+    protected function userName(): Attribute
+    {
+        return Attribute::make(
+            get: function (): ?string {
+                return $this->user?->name;
+            }
+        );
+    }
+
+    /**
+     * Get the user's avatar.
+     */
+    protected function avatar(): Attribute
+    {
+        return Attribute::make(
+            get: function (): string {
+                $value = $this->getFirstMediaUrl('avatar');
+
+                return $value;
+            }
+        );
     }
 }

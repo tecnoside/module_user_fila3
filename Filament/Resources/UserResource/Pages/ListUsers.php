@@ -32,31 +32,10 @@ use Modules\Xot\Contracts\UserContract;
 
 class ListUsers extends ListRecords
 {
-    // //
-    protected static string $resource = UserResource::class;
-
     public TableLayoutEnum $layoutView = TableLayoutEnum::LIST;
 
-    protected function getTableHeaderActions(): array
-    {
-        return [
-            TableLayoutToggleTableAction::make(),
-        ];
-    }
-
-    protected function getHeaderActions(): array
-    {
-        return [
-            CreateAction::make(),
-        ];
-    }
-
-    protected function getHeaderWidgets(): array
-    {
-        return [
-            UserOverview::class,
-        ];
-    }
+    // //
+    protected static string $resource = UserResource::class;
 
     public function getListTableColumns(): array
     {
@@ -190,5 +169,26 @@ class ListUsers extends ListRecords
                 column: 'created_at',
                 direction: 'DESC',
             );
+    }
+
+    protected function getTableHeaderActions(): array
+    {
+        return [
+            TableLayoutToggleTableAction::make(),
+        ];
+    }
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            CreateAction::make(),
+        ];
+    }
+
+    protected function getHeaderWidgets(): array
+    {
+        return [
+            UserOverview::class,
+        ];
     }
 }

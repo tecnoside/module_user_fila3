@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Resources;
 
+use Exception;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Tables;
@@ -19,6 +20,7 @@ use Modules\User\Filament\Resources\TenantResource\Pages\ViewTenant;
 use Modules\User\Filament\Resources\TenantResource\RelationManagers;
 use Modules\Xot\Datas\XotData;
 use Modules\Xot\Filament\Resources\XotBaseResource;
+use Str;
 
 class TenantResource extends XotBaseResource
 {
@@ -30,7 +32,7 @@ class TenantResource extends XotBaseResource
     {
         try {
             return (string) static::getModel()::count();
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return '---';
         }
     }
@@ -56,19 +58,19 @@ class TenantResource extends XotBaseResource
                                 ->unique(table: 'tenants', ignoreRecord: true)->live(onBlur: true)
                                 ->afterStateUpdated(
                                     static function (Forms\Set $set, $state): void {
-                                        $set('id', $slug = \Str::of($state)->slug('_')->toString());
-                                        $set('domain', \Str::of($state)->slug()->toString());
+                                        $set('id', $slug = Str::of($state)->slug('_')->toString());
+                                        $set('domain', Str::of($state)->slug()->toString());
                                     }
                                 )->columnSpanFull(),
                             Forms\Components\TextInput::make('id')
                                 ->label('Unique ID')
                                 ->required()
-                                ->disabled(static fn ($context) => 'create' !== $context)
+                                ->disabled(static fn ($context) => $context !== 'create')
                                 ->unique(table: 'tenants', ignoreRecord: true),
                             Forms\Components\TextInput::make('domain')
                                 ->label('Sub-Domain')
                                 ->required()
-                                ->visible(static fn ($context) => 'create' === $context)
+                                ->visible(static fn ($context) => $context === 'create')
                                 ->unique(table: 'domains', ignoreRecord: true)
                                 ->prefix('https://')
                                 ->suffix('.'.request()->getHost()),

@@ -15,6 +15,14 @@ class DevicesRelationManager extends RelationManager
 {
     protected static string $relationship = 'devices';
 
+    public static function extendTableCallback(): array
+    {
+        return [
+            'login_at' => TextColumn::make('login_at'),
+            'logout_at' => TextColumn::make('logout_at'),
+        ];
+    }
+
     public function form(Form $form): Form
     {
         return $form
@@ -25,14 +33,6 @@ class DevicesRelationManager extends RelationManager
                         ->maxLength(255),
                 ]
             );
-    }
-
-    public static function extendTableCallback(): array
-    {
-        return [
-            'login_at' => TextColumn::make('login_at'),
-            'logout_at' => TextColumn::make('logout_at'),
-        ];
     }
 
     public function table(Table $table): Table

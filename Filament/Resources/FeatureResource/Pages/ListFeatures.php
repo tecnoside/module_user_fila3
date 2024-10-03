@@ -27,20 +27,6 @@ class ListFeatures extends ListRecords
 
     protected static string $resource = FeatureResource::class;
 
-    protected function getHeaderActions(): array
-    {
-        return [
-            CreateAction::make(),
-        ];
-    }
-
-    protected function getTableHeaderActions(): array
-    {
-        return [
-            TableLayoutToggleTableAction::make(),
-        ];
-    }
-
     public function getGridTableColumns(): array
     {
         return [
@@ -101,5 +87,19 @@ class ListFeatures extends ListRecords
                 column: 'created_at',
                 direction: 'DESC',
             );
+    }
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            CreateAction::make(),
+        ];
+    }
+
+    protected function getTableHeaderActions(): array
+    {
+        return [
+            TableLayoutToggleTableAction::make(),
+        ];
     }
 }

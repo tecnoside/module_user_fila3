@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Pages;
 
+use Exception;
 use Filament\Actions\Action;
 use Filament\Facades\Filament;
 use Filament\Forms;
@@ -33,26 +34,30 @@ class MyProfilePage extends Page implements HasForms
 {
     // class MyProfilePage extends EditProfile
     use InteractsWithForms;
+
+    public ?array $profileData = [];
+
+    public ?array $passwordData = [];
+
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
     protected static string $view = 'user::filament.pages.my-profile';
 
     protected static bool $shouldRegisterNavigation = false;
 
-    public ?array $profileData = [];
-    public ?array $passwordData = [];
+    // public static function getSlug(): string
+    // {
+    //     return filament('filament-breezy')->slug();
+    // }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('user::profile.profile');
+    }
 
     public function mount(): void
     {
         $this->fillForms();
-    }
-
-    protected function getForms(): array
-    {
-        return [
-            'editProfileForm',
-            'editPasswordForm',
-        ];
     }
 
     public function editProfileForm(Form $form): Form
@@ -110,18 +115,10 @@ class MyProfilePage extends Page implements HasForms
         $user = Filament::auth()->user();
 
         if (! $user instanceof Model) {
-            throw new \Exception('The authenticated user object must be an Eloquent model to allow the profile page to update it.');
+            throw new Exception('The authenticated user object must be an Eloquent model to allow the profile page to update it.');
         }
 
         return $user;
-    }
-
-    protected function fillForms(): void
-    {
-        $data = $this->getUser()->attributesToArray();
-
-        $this->editProfileForm->fill($data);
-        $this->editPasswordForm->fill();
     }
 
     public function getTitle(): string
@@ -137,16 +134,6 @@ class MyProfilePage extends Page implements HasForms
     public function getSubheading(): ?string
     {
         return __('user::profile.subheading') ?? null;
-    }
-
-    // public static function getSlug(): string
-    // {
-    //     return filament('filament-breezy')->slug();
-    // }
-
-    public static function getNavigationLabel(): string
-    {
-        return __('user::profile.profile');
     }
 
     // public static function shouldRegisterNavigation(): bool
@@ -175,6 +162,56 @@ class MyProfilePage extends Page implements HasForms
             ])
             ->statePath('data')
             ->model(auth()->user());
+    }
+
+    public function updateProfile(): void
+    {
+        try {
+            $data = $this->editProfileForm->getState();
+
+            $this->handleRecordUpdate($this->getUser(), $data);
+        } catch (Halt $exception) {
+            return;
+        }
+
+        $this->sendSuccessNotification();
+    }
+
+    public function updatePassword(): void
+    {
+        try {
+            $data = $this->editPasswordForm->getState();
+
+            $this->handleRecordUpdate($this->getUser(), $data);
+        } catch (Halt $exception) {
+            return;
+        }
+
+        if (request()->hasSession() && array_key_exists('password', $data)) {
+            request()->session()->put([
+                'password_hash_'.Filament::getAuthGuard() => $data['password'],
+            ]);
+        }
+
+        $this->editPasswordForm->fill();
+
+        $this->sendSuccessNotification();
+    }
+
+    protected function getForms(): array
+    {
+        return [
+            'editProfileForm',
+            'editPasswordForm',
+        ];
+    }
+
+    protected function fillForms(): void
+    {
+        $data = $this->getUser()->attributesToArray();
+
+        $this->editProfileForm->fill($data);
+        $this->editPasswordForm->fill();
     }
 
     protected function getFormActions(): array
@@ -216,40 +253,6 @@ class MyProfilePage extends Page implements HasForms
                 ->label(__('filament-panels::pages/auth/edit-profile.form.actions.save.label'))
                 ->submit('editPasswordForm'),
         ];
-    }
-
-    public function updateProfile(): void
-    {
-        try {
-            $data = $this->editProfileForm->getState();
-
-            $this->handleRecordUpdate($this->getUser(), $data);
-        } catch (Halt $exception) {
-            return;
-        }
-
-        $this->sendSuccessNotification();
-    }
-
-    public function updatePassword(): void
-    {
-        try {
-            $data = $this->editPasswordForm->getState();
-
-            $this->handleRecordUpdate($this->getUser(), $data);
-        } catch (Halt $exception) {
-            return;
-        }
-
-        if (request()->hasSession() && array_key_exists('password', $data)) {
-            request()->session()->put([
-                'password_hash_'.Filament::getAuthGuard() => $data['password'],
-            ]);
-        }
-
-        $this->editPasswordForm->fill();
-
-        $this->sendSuccessNotification();
     }
 
     // ...

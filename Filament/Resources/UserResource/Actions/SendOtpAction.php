@@ -17,11 +17,6 @@ use Modules\User\Notifications\Auth\Otp;
 
 class SendOtpAction extends Action
 {
-    public static function getDefaultName(): ?string
-    {
-        return 'send_otp';
-    }
-
     protected function setUp(): void
     {
         $pwd = PasswordData::make();
@@ -48,7 +43,7 @@ class SendOtpAction extends Action
                 // Invia email con la password temporanea
                 // Mail::to($record->email)->send(new OtpMail($record,$temporaryPassword));
                 Notification::route('mail', $record->email)
-                   ->notify(new Otp($record, $temporaryPassword));
+                    ->notify(new Otp($record, $temporaryPassword));
 
                 FilamentNotification::make()
                     ->title(__('Temporary password sent successfully.'))
@@ -59,5 +54,10 @@ class SendOtpAction extends Action
             ->modalHeading(__('Send Temporary Password'))
             ->modalSubheading(__('Are you sure you want to send a temporary password to this user? They will be required to change it upon first login.'))
             ->modalButton(__('Yes, send temporary password'));
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'send_otp';
     }
 }

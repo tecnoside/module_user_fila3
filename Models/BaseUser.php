@@ -32,48 +32,48 @@ use Spatie\Permission\Traits\HasRoles;
 /**
  * Modules\User\Models\User.
  *
- * @property Collection<int, \Modules\User\Models\OauthClient>      $clients
- * @property int|null                                               $clients_count
- * @property Team|null                                              $currentTeam
- * @property Collection<int, \Modules\User\Models\Device>           $devices
- * @property int|null                                               $devices_count
- * @property string|null                                            $full_name
- * @property DatabaseNotificationCollection<int, Notification>      $notifications
- * @property int|null                                               $notifications_count
- * @property Collection<int, \Modules\User\Models\Team>             $ownedTeams
- * @property int|null                                               $owned_teams_count
- * @property Collection<int, \Modules\User\Models\Permission>       $permissions
- * @property int|null                                               $permissions_count
- * @property \Modules\Xot\Contracts\ProfileContract|null            $profile
- * @property Collection<int, \Modules\User\Models\Role>             $roles
- * @property int|null                                               $roles_count
- * @property Collection<int, \Modules\User\Models\Team>             $teams
- * @property int|null                                               $teams_count
+ * @property Collection<int, \Modules\User\Models\OauthClient> $clients
+ * @property int|null $clients_count
+ * @property Team|null $currentTeam
+ * @property Collection<int, \Modules\User\Models\Device> $devices
+ * @property int|null $devices_count
+ * @property string|null $full_name
+ * @property DatabaseNotificationCollection<int, Notification> $notifications
+ * @property int|null $notifications_count
+ * @property Collection<int, \Modules\User\Models\Team> $ownedTeams
+ * @property int|null $owned_teams_count
+ * @property Collection<int, \Modules\User\Models\Permission> $permissions
+ * @property int|null $permissions_count
+ * @property \Modules\Xot\Contracts\ProfileContract|null $profile
+ * @property Collection<int, \Modules\User\Models\Role> $roles
+ * @property int|null $roles_count
+ * @property Collection<int, \Modules\User\Models\Team> $teams
+ * @property int|null $teams_count
  * @property Collection<int, \Modules\User\Models\OauthAccessToken> $tokens
- * @property int|null                                               $tokens_count
+ * @property int|null $tokens_count
  *
  * @method static \Modules\User\Database\Factories\UserFactory factory($count = null, $state = [])
- * @method static \Illuminate\Database\Eloquent\Builder|User   newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|User   newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|User   permission($permissions)
- * @method static \Illuminate\Database\Eloquent\Builder|User   query()
- * @method static \Illuminate\Database\Eloquent\Builder|User   role($roles, $guard = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|User permission($permissions)
+ * @method static \Illuminate\Database\Eloquent\Builder|User query()
+ * @method static \Illuminate\Database\Eloquent\Builder|User role($roles, $guard = null)
  *
- * @property string                          $id
- * @property string                          $name
- * @property string                          $first_name
- * @property string                          $last_name
- * @property string                          $email
+ * @property string $id
+ * @property string $name
+ * @property string $first_name
+ * @property string $last_name
+ * @property string $email
  * @property \Illuminate\Support\Carbon|null $email_verified_at
- * @property string                          $password
- * @property string|null                     $remember_token
- * @property int|null                        $current_team_id
- * @property string|null                     $profile_photo_path
+ * @property string $password
+ * @property string|null $remember_token
+ * @property int|null $current_team_id
+ * @property string|null $profile_photo_path
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property string|null                     $deleted_at
- * @property string|null                     $lang
- * @property bool                            $is_active
+ * @property string|null $deleted_at
+ * @property string|null $lang
+ * @property bool $is_active
  *
  * @method static \Illuminate\Database\Eloquent\Builder|User whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereCurrentTeamId($value)
@@ -94,7 +94,7 @@ use Spatie\Permission\Traits\HasRoles;
  * @mixin Eloquent
  *
  * @property Collection<int, \Modules\User\Models\Tenant> $tenants
- * @property int|null                                     $tenants_count
+ * @property int|null $tenants_count
  *
  * @method static \Illuminate\Database\Eloquent\Builder|User withoutPermission($permissions)
  * @method static \Illuminate\Database\Eloquent\Builder|User withoutRole($roles, $guard = null)
@@ -114,13 +114,13 @@ use Spatie\Permission\Traits\HasRoles;
  * @property string|null $facebook_id
  *
  * @method static \Illuminate\Database\Eloquent\Builder|User whereFacebookId($value)
- * @method        bool                                       canAccessSocialite()
+ * @method bool canAccessSocialite()
  *
- * @property TenantUser                                              $pivot
- * @property Membership                                              $membership
+ * @property TenantUser $pivot
+ * @property Membership $membership
  * @property Collection<int, \Modules\User\Models\AuthenticationLog> $authentications
- * @property int|null                                                $authentications_count
- * @property AuthenticationLog|null                                  $latestAuthentication
+ * @property int|null $authentications_count
+ * @property AuthenticationLog|null $latestAuthentication
  *
  * @mixin \Eloquent
  */
@@ -177,31 +177,6 @@ abstract class BaseUser extends Authenticatable implements HasName, HasTenants, 
         'two_factor_secret',
     ];
 
-    /** @return array<string, string> */
-    protected function casts(): array
-    {
-        return [
-            'id' => 'string',
-            'email_verified_at' => 'datetime',
-            // 'password' => 'hashed', //Call to undefined cast [hashed] on column [password] in model [Modules\User\Models\User].
-            'is_active' => 'boolean',
-            'roles.pivot.id' => 'string',
-            // https://github.com/beitsafe/laravel-uuid-auditing
-            // ALTER TABLE model_has_role CHANGE COLUMN `id` `id` CHAR(37) NOT NULL DEFAULT uuid();
-
-            'is_otp' => 'boolean',
-            'password_expires_at' => 'datetime',
-
-            'created_at' => 'datetime',
-            'updated_at' => 'datetime',
-            'deleted_at' => 'datetime',
-
-            'updated_by' => 'string',
-            'created_by' => 'string',
-            'deleted_by' => 'string',
-        ];
-    }
-
     /** @var list<string> */
     protected $with = [
         'roles',
@@ -239,7 +214,7 @@ abstract class BaseUser extends Authenticatable implements HasName, HasTenants, 
     public function canAccessPanel(Panel $panel): bool
     {
         // $panel->default('admin');
-        if ('admin' !== $panel->getId()) {
+        if ($panel->getId() !== 'admin') {
             $role = $panel->getId();
             /*
             $xot = XotData::make();
@@ -302,6 +277,23 @@ abstract class BaseUser extends Authenticatable implements HasName, HasTenants, 
         return $value ?? $this->first_name.' '.$this->last_name;
     }
 
+    public function getNameAttribute(?string $value): ?string
+    {
+        if ($value !== null || $this->getKey() === null) {
+            return $value;
+        }
+        $name = Str::of($this->email)->before('@')->toString();
+        $i = 1;
+        $value = $name.'-'.$i;
+        while (self::firstWhere(['name' => $value]) !== null) {
+            $i++;
+            $value = $name.'-'.$i;
+        }
+        $this->update(['name' => $value]);
+
+        return $value;
+    }
+
     /**
      * Create a new factory instance for the model.
      *
@@ -312,20 +304,28 @@ abstract class BaseUser extends Authenticatable implements HasName, HasTenants, 
         return UserFactory::new();
     }
 
-    public function getNameAttribute(?string $value): ?string
+    /** @return array<string, string> */
+    protected function casts(): array
     {
-        if (null !== $value || null === $this->getKey()) {
-            return $value;
-        }
-        $name = Str::of($this->email)->before('@')->toString();
-        $i = 1;
-        $value = $name.'-'.$i;
-        while (null !== self::firstWhere(['name' => $value])) {
-            ++$i;
-            $value = $name.'-'.$i;
-        }
-        $this->update(['name' => $value]);
+        return [
+            'id' => 'string',
+            'email_verified_at' => 'datetime',
+            // 'password' => 'hashed', //Call to undefined cast [hashed] on column [password] in model [Modules\User\Models\User].
+            'is_active' => 'boolean',
+            'roles.pivot.id' => 'string',
+            // https://github.com/beitsafe/laravel-uuid-auditing
+            // ALTER TABLE model_has_role CHANGE COLUMN `id` `id` CHAR(37) NOT NULL DEFAULT uuid();
 
-        return $value;
+            'is_otp' => 'boolean',
+            'password_expires_at' => 'datetime',
+
+            'created_at' => 'datetime',
+            'updated_at' => 'datetime',
+            'deleted_at' => 'datetime',
+
+            'updated_by' => 'string',
+            'created_by' => 'string',
+            'deleted_by' => 'string',
+        ];
     }
 }

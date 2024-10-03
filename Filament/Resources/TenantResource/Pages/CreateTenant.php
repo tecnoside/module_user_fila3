@@ -9,13 +9,14 @@ namespace Modules\User\Filament\Resources\TenantResource\Pages;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Database\Eloquent\Model;
 use Modules\User\Filament\Resources\TenantResource;
+use Throwable;
 
 class CreateTenant extends CreateRecord
 {
     protected static string $resource = TenantResource::class;
 
     /**
-     * @throws \Throwable
+     * @throws Throwable
      */
     protected function handleRecordCreation(array $data): Model
     {

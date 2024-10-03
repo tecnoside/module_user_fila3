@@ -16,8 +16,8 @@ use Modules\Xot\Traits\Updater;
 abstract class BaseModel extends Model
 {
     use HasFactory;
-    use Updater;
     use RelationX;
+    use Updater;
 
     /**
      * Indicates whether attributes are snake cased on arrays.
@@ -40,6 +40,31 @@ abstract class BaseModel extends Model
     /** @var string */
     protected $connection = 'user';
 
+    /** @var list<string> */
+    protected $appends = [];
+
+    /** @var string */
+    protected $primaryKey = 'id';
+
+    /** @var string */
+    protected $keyType = 'string';
+
+    /** @var list<string> */
+    protected $hidden = [
+        // 'password'
+    ];
+
+    /**
+     * @see vendor/ laravel / framework / src / Illuminate / Database / Eloquent / Factories / HasFactory.php
+     * Create a new factory instance for the model.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory<static>
+     */
+    protected static function newFactory()
+    {
+        return app(\Modules\Xot\Actions\Factory\GetFactoryAction::class)->execute(static::class);
+    }
+
     /** @return array<string, string> */
     protected function casts(): array
     {
@@ -58,29 +83,5 @@ abstract class BaseModel extends Model
             'created_by' => 'string',
             'deleted_by' => 'string',
         ];
-    }
-
-    /** @var list<string> */
-    protected $appends = [];
-
-    /** @var string */
-    protected $primaryKey = 'id';
-    /** @var string */
-    protected $keyType = 'string';
-
-    /** @var list<string> */
-    protected $hidden = [
-        // 'password'
-    ];
-
-    /**
-     * @see vendor/ laravel / framework / src / Illuminate / Database / Eloquent / Factories / HasFactory.php
-     * Create a new factory instance for the model.
-     *
-     * @return \Illuminate\Database\Eloquent\Factories\Factory<static>
-     */
-    protected static function newFactory()
-    {
-        return app(\Modules\Xot\Actions\Factory\GetFactoryAction::class)->execute(static::class);
     }
 }

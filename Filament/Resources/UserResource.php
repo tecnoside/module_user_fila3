@@ -140,23 +140,6 @@ class UserResource extends XotBaseResource
         return $form;
     }
 
-    // public static function enablePasswordUpdates(bool|Closure $condition = true): void
-    // {
-    //     static::$enablePasswordUpdates = $condition;
-    // }
-
-    /*
-    public static function getModel(): string
-    {
-        return config('filament-user-resource.model');
-    }
-    */
-
-    public function hasCombinedRelationManagerTabsWithContent(): bool
-    {
-        return true;
-    }
-
     public static function getRelations(): array
     {
         return [
@@ -182,5 +165,22 @@ class UserResource extends XotBaseResource
             'create' => CreateUser::route('/create'),
             'edit' => EditUser::route('/{record}/edit'),
         ];
+    }
+
+    // public static function enablePasswordUpdates(bool|Closure $condition = true): void
+    // {
+    //     static::$enablePasswordUpdates = $condition;
+    // }
+
+    /*
+    public static function getModel(): string
+    {
+        return config('filament-user-resource.model');
+    }
+    */
+
+    public function hasCombinedRelationManagerTabsWithContent(): bool
+    {
+        return true;
     }
 }

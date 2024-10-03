@@ -16,9 +16,9 @@ use Webmozart\Assert\Assert;
 
 class ListPermissions extends ListRecords
 {
-    protected static string $resource = PermissionResource::class;
-
     public TableLayoutEnum $layoutView = TableLayoutEnum::LIST;
+
+    protected static string $resource = PermissionResource::class;
 
     protected function getTableHeaderActions(): array
     {

@@ -15,6 +15,13 @@ use Modules\Xot\Datas\XotData;
  */
 trait InteractsWithTenant
 {
+    public function tenant(): BelongsTo
+    {
+        $class = XotData::make()->getTenantClass();
+
+        return $this->belongsTo($class);
+    }
+
     /**
      * The "booted" method of the model.
      */
@@ -29,19 +36,12 @@ trait InteractsWithTenant
         );
     }
 
-    public function tenant(): BelongsTo
-    {
-        $class = XotData::make()->getTenantClass();
-
-        return $this->belongsTo($class);
-    }
-
     /**
      * Interact with the user's first name.
      */
     protected function setTenantIdAttribute(?int $value): void
     {
-        if (null == $value) {
+        if ($value === null) {
             $value = Filament::getTenant()?->getKey();
         }
         $this->attributes['tenant_id'] = $value;

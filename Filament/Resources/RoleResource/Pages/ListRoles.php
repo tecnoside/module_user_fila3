@@ -22,33 +22,9 @@ use Modules\User\Models\Role;
 
 class ListRoles extends ListRecords
 {
-    protected static string $resource = RoleResource::class;
-
     public TableLayoutEnum $layoutView = TableLayoutEnum::LIST;
 
-    protected function getTableHeaderActions(): array
-    {
-        return [
-            TableLayoutToggleTableAction::make(),
-            // 'create' => Tables\Actions\CreateAction::make(),
-            // Tables\Actions\AssociateAction::make(),
-            // Tables\Actions\AttachAction::make()
-
-            // ->form(fn (Tables\Actions\AttachAction $action): array => [
-            //     $action->getRecordSelect(),
-            //     // Forms\Components\TextInput::make('role')->required(),
-            //     Forms\Components\Select::make('role_id')
-            //         ->options(Role::all()->pluck('name', 'id'))
-            // ])
-        ];
-    }
-
-    protected function getHeaderActions(): array
-    {
-        return [
-            CreateAction::make(),
-        ];
-    }
+    protected static string $resource = RoleResource::class;
 
     public function getGridTableColumns(): array
     {
@@ -114,5 +90,29 @@ class ListRoles extends ListRecords
                 column: 'created_at',
                 direction: 'DESC',
             );
+    }
+
+    protected function getTableHeaderActions(): array
+    {
+        return [
+            TableLayoutToggleTableAction::make(),
+            // 'create' => Tables\Actions\CreateAction::make(),
+            // Tables\Actions\AssociateAction::make(),
+            // Tables\Actions\AttachAction::make()
+
+            // ->form(fn (Tables\Actions\AttachAction $action): array => [
+            //     $action->getRecordSelect(),
+            //     // Forms\Components\TextInput::make('role')->required(),
+            //     Forms\Components\Select::make('role_id')
+            //         ->options(Role::all()->pluck('name', 'id'))
+            // ])
+        ];
+    }
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            CreateAction::make(),
+        ];
     }
 }

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Modules\User\Http\Livewire\Auth;
 
 use Illuminate\Auth\Events\Registered;
-use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -35,7 +34,6 @@ class Register extends Component
         ]);
         $user_class = XotData::make()->getUserClass();
 
-        /** @var Authenticatable */
         /** @var \Modules\Xot\Contracts\UserContract */
         $user = $user_class::create([
             'email' => $this->email,

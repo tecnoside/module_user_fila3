@@ -7,6 +7,7 @@ namespace Modules\User\Http\Livewire\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Modules\Xot\Actions\File\ViewCopyAction;
 
 class Login extends Component
 {
@@ -32,8 +33,9 @@ class Login extends Component
     public function authenticate()
     {
         $this->validate();
-
-        if (! Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
+        $credentials = ['email' => $this->email, 'password' => $this->password];
+        $remember = $this->remember;
+        if (! Auth::attempt($credentials, $remember)) {
             $this->addError('email', trans('user::auth.failed'));
 
             return;
@@ -44,9 +46,9 @@ class Login extends Component
 
     public function render(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
     {
-        app(\Modules\Xot\Actions\File\ViewCopyAction::class)->execute('user::livewire.auth.login', 'pub_theme::livewire.auth.login');
-        app(\Modules\Xot\Actions\File\ViewCopyAction::class)->execute('user::layouts.auth', 'pub_theme::layouts.auth');
-        app(\Modules\Xot\Actions\File\ViewCopyAction::class)->execute('user::layouts.base', 'pub_theme::layouts.base');
+        app(ViewCopyAction::class)->execute('user::livewire.auth.login', 'pub_theme::livewire.auth.login');
+        app(ViewCopyAction::class)->execute('user::layouts.auth', 'pub_theme::layouts.auth');
+        app(ViewCopyAction::class)->execute('user::layouts.base', 'pub_theme::layouts.base');
 
         $view = 'pub_theme::livewire.auth.login';
 

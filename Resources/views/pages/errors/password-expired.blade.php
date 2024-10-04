@@ -2,6 +2,7 @@
 use function Laravel\Folio\{withTrashed,middleware, name,render};
 use Livewire\Volt\Component;
 //withTrashed();
+middleware(['auth']);
 name('errors.password-expired');
 
 new class extends Component {};

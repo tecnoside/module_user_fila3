@@ -8,6 +8,11 @@ use Modules\Xot\Actions\Model\HasColumnAction;
 
 trait HasPasswordExpiry
 {
+    /**
+     * Summary of bootHasPasswordExpiry.
+     *
+     * @return void
+     */
     public static function bootHasPasswordExpiry()
     {
         // if (! app(HasColumnAction::class)->execute(auth()->user(), 'password_expires_at')) {

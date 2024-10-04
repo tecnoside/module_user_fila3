@@ -62,7 +62,7 @@ class ListProfiles extends ListRecords
                             $user_class = XotData::make()->getUserClass();
                             if (null === $user) {
                                 /** @var \Modules\Xot\Contracts\UserContract */
-                                $user = $user_class::firstWhere(['email' => $record->email]);
+                                $user = XotData::make()->getUserByEmail($record->email);
                             }
                             if (null === $user) {
                                 $data = $record->toArray();
@@ -113,7 +113,7 @@ class ListProfiles extends ListRecords
                         $user_class = XotData::make()->getUserClass();
                         if (null === $user) {
                             /** @var \Modules\Xot\Contracts\UserContract */
-                            $user = $user_class::firstWhere(['email' => $record->email]);
+                            $user = XotData::make()->getUserByEmail($record->email);
                         }
                         if (null === $user) {
                             $data = $record->toArray();

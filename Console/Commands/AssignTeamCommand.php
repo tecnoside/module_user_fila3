@@ -48,7 +48,7 @@ class AssignTeamCommand extends Command
         $email = text('email ?');
         $user_class = $xot->getUserClass();
         /** @var \Modules\Xot\Contracts\UserContract */
-        $user = $user_class::firstWhere(['email' => $email]);
+        $user = XotData::make()->getUserByEmail($email);
 
         $teamClass = $xot->getTeamClass();
 

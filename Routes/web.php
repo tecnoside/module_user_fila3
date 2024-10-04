@@ -32,8 +32,8 @@ Route::namespace('Socialite')
         static function (): void {
             Route::get(
                 '/admin/login/{provider}',
-                'LoginController@redirectToProvider',
-                // 'RedirectToProviderController',
+                // 'LoginController@redirectToProvider',
+                'RedirectToProviderController',
             )
                 ->name('oauth.redirect');
             Route::get(

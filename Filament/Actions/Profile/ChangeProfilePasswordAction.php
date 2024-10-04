@@ -37,7 +37,7 @@ class ChangeProfilePasswordAction extends Action
                     if (null === $user) {
                         $user_class = XotData::make()->getUserClass();
                         /** @var \Modules\Xot\Contracts\UserContract */
-                        $user = $user_class::firstWhere(['email' => $record->email]);
+                        $user = XotData::make()->getUserByEmail($record->email);
                     }
 
                     if (null === $user) {

@@ -46,7 +46,7 @@ class AssignTenantCommand extends Command
         $email = text('email ?');
         $user_class = XotData::make()->getUserClass();
         /** @var \Modules\Xot\Contracts\UserContract */
-        $user = $user_class::firstWhere(['email' => $email]);
+        $user = XotData::make()->getUserByEmail($email);
         $xot = XotData::make();
         $tenantClass = $xot->getTenantClass();
 

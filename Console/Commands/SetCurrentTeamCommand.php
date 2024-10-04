@@ -47,7 +47,7 @@ class SetCurrentTeamCommand extends Command
         $email = text('email ?');
         $user_class = XotData::make()->getUserClass();
         /** @var UserContract */
-        $user = $user_class::firstWhere(['email' => $email]);
+        $user = XotData::make()->getUserByEmail($email);
         $xot = XotData::make();
         $teamClass = $xot->getTeamClass();
         /** @var array<int|string, string>|\Illuminate\Support\Collection<int|string, string> */

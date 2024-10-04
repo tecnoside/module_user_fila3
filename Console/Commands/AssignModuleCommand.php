@@ -11,6 +11,7 @@ use function Laravel\Prompts\multiselect;
 use function Laravel\Prompts\text;
 
 use Modules\User\Models\Role;
+use Modules\Xot\Datas\XotData;
 use Nwidart\Modules\Facades\Module;
 use Symfony\Component\Console\Input\InputOption;
 
@@ -46,9 +47,7 @@ class AssignModuleCommand extends Command
     public function handle(): void
     {
         $email = text('email ?');
-        $user_class = \Modules\Xot\Datas\XotData::make()->getUserClass();
-        /** @var \Modules\Xot\Contracts\UserContract */
-        $user = $user_class::firstWhere(['email' => $email]);
+        $user = XotData::make()->getUserByEmail($email);
         /*
         $modules = collect(Module::all())->map(function ($module) {
             return $module->getName();

@@ -7,6 +7,7 @@ namespace Modules\User\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Hash;
 use Modules\Xot\Datas\XotData;
+use Webmozart\Assert\Assert;
 
 class ChangePasswordCommand extends Command
 {
@@ -14,20 +15,18 @@ class ChangePasswordCommand extends Command
 
     protected $description = 'Change user password';
 
-    public function handle()
+    public function handle(): void
     {
-        $email = $this->ask('Enter the user email:');
-        $user_class = XotData::make()->getUserClass();
-        /** @var \Modules\Xot\Contracts\UserContract */
-        $user = $user_class::firstWhere(['email' => $email]);
-
-        if (! $user) {
-            $this->error('User not found!');
+        Assert::string($email = $this->ask('Enter the user email:'));
+        try {
+            $user = XotData::make()->getUserByEmail($email);
+        } catch (\Exception $e) {
+            $this->error($e->getMessage());
 
             return;
         }
 
-        $password = $this->secret('Enter the new password:');
+        Assert::string($password = $this->secret('Enter the new password:'));
         $confirmPassword = $this->secret('Confirm the new password:');
 
         if ($password !== $confirmPassword) {

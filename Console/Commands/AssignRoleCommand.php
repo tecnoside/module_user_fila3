@@ -48,7 +48,7 @@ class AssignRoleCommand extends Command
         $email = text('email ?');
         $user_class = XotData::make()->getUserClass();
         /** @var UserContract */
-        $user = $user_class::firstWhere(['email' => $email]);
+        $user = XotData::make()->getUserByEmail($email);
         /**
          * @var array<string, string>
          */

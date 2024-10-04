@@ -49,7 +49,7 @@ class SuperAdminCommand extends Command
         $email = text('email ?');
         $user_class = XotData::make()->getUserClass();
         /** @var UserContract */
-        $user = $user_class::firstWhere(['email' => $email]);
+        $user = XotData::make()->getUserByEmail($email);
 
         $role = Role::firstOrCreate(['name' => 'super-admin']);
         $user->assignRole($role);

@@ -36,7 +36,7 @@ return [
         ],
         'password' => [
             'heading' => 'Password',
-            'subheading' => 'Must be at least 8 characters long.',
+            'subheading' => 'Must be at least  characters long.',
             'submit' => [
                 'label' => 'Update',
             ],

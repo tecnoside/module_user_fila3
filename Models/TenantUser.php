@@ -13,7 +13,7 @@ use Illuminate\Support\Carbon;
  * @method static \Illuminate\Database\Eloquent\Builder|TeamUser newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|TeamUser query()
  *
- * @property int         $id
+ * @property int $id
  * @property string|null $tenant_id
  * @property string|null $user_id
  * @property Carbon|null $created_at

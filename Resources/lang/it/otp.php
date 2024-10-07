@@ -40,7 +40,7 @@ return [
         'subject' => 'Codice OTP',
         'greeting' => 'Ciao!',
         'line1' => 'Il tuo codice OTP è: :code',
-        'line2' => 'Questo codice sarà valido per :seconds secondi.',
+        'line2' => 'Questo codice sarà valido per :minutes minuti.',
         'line3' => 'Se non hai richiesto un codice, ignora questa email.',
         'salutation' => 'Cordiali saluti, :app_name',
     ],

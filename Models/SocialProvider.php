@@ -73,11 +73,6 @@ class SocialProvider extends BaseModel
         // 'client_secret',// => env('FACEBOOK_CLIENT_SECRET'),
     ];
 
-    public function getRows(): array
-    {
-        return $this->getSushiRows();
-    }
-
     protected array $schema = [
         'id' => 'integer',
         'name' => 'string',
@@ -93,6 +88,11 @@ class SocialProvider extends BaseModel
         'created_by' => 'string',
         'updated_by' => 'string',
     ];
+
+    public function getRows(): array
+    {
+        return $this->getSushiRows();
+    }
 
     /** @return array<string, string> */
     protected function casts(): array

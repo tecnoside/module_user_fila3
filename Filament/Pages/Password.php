@@ -24,8 +24,10 @@ use Modules\Xot\Filament\Traits\TransTrait;
  */
 class Password extends Page implements HasForms
 {
-    use TransTrait;
     use InteractsWithForms;
+    use TransTrait;
+
+    public ?array $formData = [];
 
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
@@ -33,18 +35,9 @@ class Password extends Page implements HasForms
 
     protected static ?int $navigationSort = 1;
 
-    public ?array $formData = [];
-
     public function mount(): void
     {
         $this->fillForms();
-    }
-
-    protected function fillForms(): void
-    {
-        $data = PasswordData::make()->toArray();
-
-        $this->form->fill($data);
     }
 
     public function form(Form $form): Form
@@ -59,37 +52,28 @@ class Password extends Page implements HasForms
                     ->helperText(static::trans('fields.otp_length.help'))
                     ->numeric(),
                 TextInput::make('expires_in')
-                ->helperText(static::trans('fields.expires_in.help'))
+                    ->helperText(static::trans('fields.expires_in.help'))
                     ->numeric(), // The number of days before the password expires.
 
                 TextInput::make('min')
-                ->helperText(static::trans('fields.min.help'))
+                    ->helperText(static::trans('fields.min.help'))
                     ->numeric(), // = 6; // The minimum size of the password.
                 Toggle::make('mixedCase')
-                ->helperText(static::trans('fields.mixedCase.help')), // = false; // If the password requires at least one uppercase and one lowercase letter.
+                    ->helperText(static::trans('fields.mixedCase.help')), // = false; // If the password requires at least one uppercase and one lowercase letter.
                 Toggle::make('letters')
-                ->helperText(static::trans('fields.letters.help')), // = false; // If the password requires at least one letter.
+                    ->helperText(static::trans('fields.letters.help')), // = false; // If the password requires at least one letter.
                 Toggle::make('numbers')
-                ->helperText(static::trans('fields.numbers.help')), // = false; // If the password requires at least one number.
+                    ->helperText(static::trans('fields.numbers.help')), // = false; // If the password requires at least one number.
                 Toggle::make('symbols')
-                ->helperText(static::trans('fields.symbols.help')), // = false; // If the password requires at least one symbol.
+                    ->helperText(static::trans('fields.symbols.help')), // = false; // If the password requires at least one symbol.
                 Toggle::make('uncompromised')
-                ->helperText(static::trans('fields.uncompromised.help')), // = false; // If the password should not have been compromised in data leaks.
+                    ->helperText(static::trans('fields.uncompromised.help')), // = false; // If the password should not have been compromised in data leaks.
                 TextInput::make('compromisedThreshold')
-                ->helperText(static::trans('fields.compromisedThreshold.help'))
+                    ->helperText(static::trans('fields.compromisedThreshold.help'))
                     ->numeric(), // = 1; // The number of times a password can appear in data leaks before being considered compromised.
             ])->columns(3)
             // ->model($this->getUser())
             ->statePath('formData');
-    }
-
-    protected function getUpdateFormActions(): array
-    {
-        return [
-            Action::make('updateDataAction')
-                ->label(__('filament-panels::pages/auth/edit-profile.form.actions.save.label'))
-                ->submit('editDataForm'),
-        ];
     }
 
     public function updateData(): void
@@ -107,6 +91,22 @@ class Password extends Page implements HasForms
             ->title('Saved successfully')
             ->success()
             ->send();
+    }
+
+    protected function fillForms(): void
+    {
+        $data = PasswordData::make()->toArray();
+
+        $this->form->fill($data);
+    }
+
+    protected function getUpdateFormActions(): array
+    {
+        return [
+            Action::make('updateDataAction')
+                ->label(__('filament-panels::pages/auth/edit-profile.form.actions.save.label'))
+                ->submit('editDataForm'),
+        ];
     }
 
     protected function handleRecordUpdate(Model $record, array $data): Model

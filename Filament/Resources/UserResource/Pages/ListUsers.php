@@ -32,31 +32,10 @@ use Modules\Xot\Contracts\UserContract;
 
 class ListUsers extends ListRecords
 {
-    // //
-    protected static string $resource = UserResource::class;
-
     public TableLayoutEnum $layoutView = TableLayoutEnum::LIST;
 
-    protected function getTableHeaderActions(): array
-    {
-        return [
-            TableLayoutToggleTableAction::make(),
-        ];
-    }
-
-    protected function getHeaderActions(): array
-    {
-        return [
-            CreateAction::make(),
-        ];
-    }
-
-    protected function getHeaderWidgets(): array
-    {
-        return [
-            UserOverview::class,
-        ];
-    }
+    // //
+    protected static string $resource = UserResource::class;
 
     public function getListTableColumns(): array
     {
@@ -83,20 +62,15 @@ class ListUsers extends ListRecords
             // Tables\Columns\TextColumn::make('photo'),
             BooleanColumn::make('email_verified_at')->sortable()->searchable()->toggleable(),
             // ...static::extendTableCallback(),
+            TextColumn::make('password_expires_at')->sortable()
+                ->toggleable(isToggledHiddenByDefault: true),
         ];
     }
 
     public function getGridTableColumns(): array
     {
         return [
-            Stack::make([
-                TextColumn::make('name')->sortable()->searchable(), // ->toggleable(),
-                TextColumn::make('email')->sortable()->searchable(),
-                TextColumn::make('teams.name')->searchable()->toggleable()->wrap()->badge(),
-                TextColumn::make('role.name')->toggleable(),
-                TextColumn::make('roles.name')->toggleable()->wrap()->badge(),
-                BooleanColumn::make('email_verified_at')->sortable()->searchable()->toggleable(),
-            ]),
+            Stack::make($this->getListTableColumns()),
         ];
     }
 
@@ -190,5 +164,26 @@ class ListUsers extends ListRecords
                 column: 'created_at',
                 direction: 'DESC',
             );
+    }
+
+    protected function getTableHeaderActions(): array
+    {
+        return [
+            TableLayoutToggleTableAction::make(),
+        ];
+    }
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            CreateAction::make(),
+        ];
+    }
+
+    protected function getHeaderWidgets(): array
+    {
+        return [
+            UserOverview::class,
+        ];
     }
 }

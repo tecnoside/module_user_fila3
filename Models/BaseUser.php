@@ -177,31 +177,6 @@ abstract class BaseUser extends Authenticatable implements HasName, HasTenants, 
         'two_factor_secret',
     ];
 
-    /** @return array<string, string> */
-    protected function casts(): array
-    {
-        return [
-            'id' => 'string',
-            'email_verified_at' => 'datetime',
-            // 'password' => 'hashed', //Call to undefined cast [hashed] on column [password] in model [Modules\User\Models\User].
-            'is_active' => 'boolean',
-            'roles.pivot.id' => 'string',
-            // https://github.com/beitsafe/laravel-uuid-auditing
-            // ALTER TABLE model_has_role CHANGE COLUMN `id` `id` CHAR(37) NOT NULL DEFAULT uuid();
-
-            'is_otp' => 'boolean',
-            'password_expires_at' => 'datetime',
-
-            'created_at' => 'datetime',
-            'updated_at' => 'datetime',
-            'deleted_at' => 'datetime',
-
-            'updated_by' => 'string',
-            'created_by' => 'string',
-            'deleted_by' => 'string',
-        ];
-    }
-
     /** @var list<string> */
     protected $with = [
         'roles',
@@ -302,16 +277,6 @@ abstract class BaseUser extends Authenticatable implements HasName, HasTenants, 
         return $value ?? $this->first_name.' '.$this->last_name;
     }
 
-    /**
-     * Create a new factory instance for the model.
-     *
-     * @return Factory
-     */
-    protected static function newFactory()
-    {
-        return UserFactory::new();
-    }
-
     public function getNameAttribute(?string $value): ?string
     {
         if (null !== $value || null === $this->getKey()) {
@@ -327,5 +292,40 @@ abstract class BaseUser extends Authenticatable implements HasName, HasTenants, 
         $this->update(['name' => $value]);
 
         return $value;
+    }
+
+    /**
+     * Create a new factory instance for the model.
+     *
+     * @return Factory
+     */
+    protected static function newFactory()
+    {
+        return UserFactory::new();
+    }
+
+    /** @return array<string, string> */
+    protected function casts(): array
+    {
+        return [
+            'id' => 'string',
+            'email_verified_at' => 'datetime',
+            // 'password' => 'hashed', //Call to undefined cast [hashed] on column [password] in model [Modules\User\Models\User].
+            'is_active' => 'boolean',
+            'roles.pivot.id' => 'string',
+            // https://github.com/beitsafe/laravel-uuid-auditing
+            // ALTER TABLE model_has_role CHANGE COLUMN `id` `id` CHAR(37) NOT NULL DEFAULT uuid();
+
+            'is_otp' => 'boolean',
+            'password_expires_at' => 'datetime',
+
+            'created_at' => 'datetime',
+            'updated_at' => 'datetime',
+            'deleted_at' => 'datetime',
+
+            'updated_by' => 'string',
+            'created_by' => 'string',
+            'deleted_by' => 'string',
+        ];
     }
 }

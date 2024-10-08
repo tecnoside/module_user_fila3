@@ -14,9 +14,9 @@ use Modules\User\Filament\Resources\TenantResource;
 
 class ListTenants extends ListRecords
 {
-    protected static string $resource = TenantResource::class;
-
     public TableLayoutEnum $layoutView = TableLayoutEnum::LIST;
+
+    protected static string $resource = TenantResource::class;
 
     protected function getTableHeaderActions(): array
     {

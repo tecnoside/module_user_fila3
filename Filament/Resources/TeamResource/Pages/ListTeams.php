@@ -12,10 +12,10 @@ use Modules\User\Filament\Resources\TeamResource;
 
 class ListTeams extends ListRecords
 {
+    public TableLayoutEnum $layoutView = TableLayoutEnum::LIST;
+
     // //
     protected static string $resource = TeamResource::class;
-
-    public TableLayoutEnum $layoutView = TableLayoutEnum::LIST;
 
     protected function getTableHeaderActions(): array
     {

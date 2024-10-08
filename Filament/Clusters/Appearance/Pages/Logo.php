@@ -23,6 +23,8 @@ class Logo extends Page implements HasForms
 {
     use InteractsWithForms;
 
+    public ?array $logoData = [];
+
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
     protected static string $view = 'user::filament.clusters.appearance.pages.logo';
@@ -31,19 +33,9 @@ class Logo extends Page implements HasForms
 
     protected static ?int $navigationSort = 1;
 
-    public ?array $logoData = [];
-
     public function mount(): void
     {
         $this->fillForms();
-    }
-
-    protected function fillForms(): void
-    {
-        // $data = $this->getUser()->attributesToArray();
-        $data = [];
-
-        $this->form->fill($data);
     }
 
     // protected function getForms(): array
@@ -69,15 +61,6 @@ class Logo extends Page implements HasForms
             ->statePath('logoData');
     }
 
-    protected function getUpdateLogoFormActions(): array
-    {
-        return [
-            Action::make('updateLogoAction')
-                ->label(__('filament-panels::pages/auth/edit-profile.form.actions.save.label'))
-                ->submit('editLogoForm'),
-        ];
-    }
-
     public function updateLogo(): void
     {
         try {
@@ -89,6 +72,23 @@ class Logo extends Page implements HasForms
 
             return;
         }
+    }
+
+    protected function fillForms(): void
+    {
+        // $data = $this->getUser()->attributesToArray();
+        $data = [];
+
+        $this->form->fill($data);
+    }
+
+    protected function getUpdateLogoFormActions(): array
+    {
+        return [
+            Action::make('updateLogoAction')
+                ->label(__('filament-panels::pages/auth/edit-profile.form.actions.save.label'))
+                ->submit('editLogoForm'),
+        ];
     }
 
     protected function handleRecordUpdate(Model $record, array $data): Model

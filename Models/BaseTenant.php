@@ -32,7 +32,7 @@ use Spatie\Sluggable\SlugOptions;
  *
  * @mixin \Eloquent
  */
-abstract class BaseTenant extends BaseModel implements TenantContract, HasAvatar, HasMedia
+abstract class BaseTenant extends BaseModel implements HasAvatar, HasMedia, TenantContract
 {
     use HasSlug;
     use InteractsWithMedia;

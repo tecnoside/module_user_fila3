@@ -80,6 +80,23 @@ class Device extends BaseModel
     ];
 
     /**
+     * Define the many-to-many relationship between devices and users.
+     * return BelongsToMany<UserContract>.
+     */
+    public function users(): BelongsToMany
+    {
+        $pivotClass = DeviceUser::class;
+        $pivot = app($pivotClass);
+        $pivotFields = $pivot->getFillable();
+        $userClass = \Modules\Xot\Datas\XotData::make()->getUserClass();
+
+        return $this->belongsToMany($userClass)
+            ->using($pivotClass)
+            ->withPivot($pivotFields)
+            ->withTimestamps();
+    }
+
+    /**
      * Define the attribute casting for the model.
      *
      * @return array<string, string>
@@ -102,22 +119,5 @@ class Device extends BaseModel
             'is_tablet' => 'boolean',
             'is_phone' => 'boolean',
         ];
-    }
-
-    /**
-     * Define the many-to-many relationship between devices and users.
-     * return BelongsToMany<UserContract>.
-     */
-    public function users(): BelongsToMany
-    {
-        $pivotClass = DeviceUser::class;
-        $pivot = app($pivotClass);
-        $pivotFields = $pivot->getFillable();
-        $userClass = \Modules\Xot\Datas\XotData::make()->getUserClass();
-
-        return $this->belongsToMany($userClass)
-            ->using($pivotClass)
-            ->withPivot($pivotFields)
-            ->withTimestamps();
     }
 }

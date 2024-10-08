@@ -32,7 +32,12 @@ trait HasTeams
      */
     public function isCurrentTeam(TeamContract $teamContract): bool
     {
-        return $this->currentTeam && $teamContract->getKey() === $this->currentTeam->getKey();
+        if (! $teamContract instanceof TeamContract || null === $this->currentTeam) {
+            return false;
+        }
+
+        return $teamContract->getKey() ===
+            $this->currentTeam->getKey();
     }
 
     /**
@@ -41,12 +46,11 @@ trait HasTeams
     public function currentTeam(): BelongsTo
     {
         $xot = XotData::make();
-
         if (null === $this->current_team_id && $this->id) {
             $this->switchTeam($this->personalTeam());
         }
 
-        if ($this->allTeams()->isEmpty() && null !== $this->getKey()) {
+        if (0 === $this->allTeams()->count()) {
             $this->current_team_id = null;
             $this->save();
         }
@@ -119,7 +123,10 @@ trait HasTeams
      */
     public function personalTeam(): ?TeamContract
     {
-        $personalTeam = $this->ownedTeams->where('personal_team', true)->first();
+        $res = $this->ownedTeams->where('personal_team', true)->first();
+        if (null === $res) {
+            return null;
+        }
 
         Assert::nullOrIsInstanceOf($personalTeam, TeamContract::class, 'Personal team must implement TeamContract.');
 
@@ -180,7 +187,17 @@ trait HasTeams
      */
     public function hasTeamRole(TeamContract $teamContract, string $role): bool
     {
-        return $this->ownsTeam($teamContract) || $this->teamRole($teamContract)?->name === $role;
+        if ($this->ownsTeam($teamContract)) {
+            return true;
+        }
+
+        /*
+        return $this->belongsToTeam($teamContract) && optional(FilamentJet::findRole($teamContract->users->where(
+            'id',
+            $this->id
+        )->first()?->membership?->role))->key === $role;
+        */
+        return $this->belongsToTeam($teamContract) && null !== $this->teamRole($teamContract);
     }
 
     /**

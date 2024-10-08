@@ -23,19 +23,15 @@ class UsersChartWidget extends ChartWidget implements HasForms
     use InteractsWithForms;
     use InteractsWithPageFilters;
 
-    protected static ?string $pollingInterval = null;
-    protected static ?int $sort = 2;
-
     public string $chart_id = '';
+
+    protected static ?string $pollingInterval = null;
+
+    protected static ?int $sort = 2;
 
     public function getHeading(): Htmlable|string|null
     {
         return 'Authentication Log';
-    }
-
-    protected function getType(): string
-    {
-        return 'line';
     }
 
     /**
@@ -50,6 +46,11 @@ class UsersChartWidget extends ChartWidget implements HasForms
             });
     }
 
+    protected function getType(): string
+    {
+        return 'line';
+    }
+
     /**
      * Retrieve the chart data based on the given filters.
      */
@@ -61,10 +62,10 @@ class UsersChartWidget extends ChartWidget implements HasForms
         try {
             Assert::nullOrString($startDate = $this->filters['startDate'] ?? null);
             Assert::nullOrString($endDate = $this->filters['endDate'] ?? null);
-            if (null == $endDate) {
+            if (null === $endDate) {
                 $endDate = Carbon::now()->format('Y-m-d H:i:s');
             }
-            if (null == $startDate) {
+            if (null === $startDate) {
                 $startDate = Carbon::now()->subMonth()->format('Y-m-d H:i:s');
             }
             Assert::notNull($startDate = Carbon::createFromFormat('Y-m-d H:i:s', $startDate));

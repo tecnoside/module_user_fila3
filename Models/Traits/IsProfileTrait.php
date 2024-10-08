@@ -41,7 +41,7 @@ trait IsProfileTrait
         }
 
         $res = $this->first_name.' '.$this->last_name;
-        if (\strlen($res) > 2) {
+        if (mb_strlen($res) > 2) {
             return $res;
         }
 
@@ -68,32 +68,6 @@ trait IsProfileTrait
         $this->update(['last_name' => $value]);
 
         return $value;
-    }
-
-    /**
-     * Get the user's user_name.
-     */
-    protected function userName(): Attribute
-    {
-        return Attribute::make(
-            get: function (): ?string {
-                return $this->user?->name;
-            }
-        );
-    }
-
-    /**
-     * Get the user's avatar.
-     */
-    protected function avatar(): Attribute
-    {
-        return Attribute::make(
-            get: function (): string {
-                $value = $this->getFirstMediaUrl('avatar');
-
-                return $value;
-            }
-        );
     }
 
     public function isSuperAdmin(): bool
@@ -143,8 +117,6 @@ trait IsProfileTrait
                 ->body($e->getMessage())
                 ->send();
         }
-
-        return;
     }
 
     public function mobileDevices(): BelongsToMany
@@ -219,5 +191,31 @@ trait IsProfileTrait
             ->withPivot('role')
             ->withTimestamps()
             ->as('membership');
+    }
+
+    /**
+     * Get the user's user_name.
+     */
+    protected function userName(): Attribute
+    {
+        return Attribute::make(
+            get: function (): ?string {
+                return $this->user?->name;
+            }
+        );
+    }
+
+    /**
+     * Get the user's avatar.
+     */
+    protected function avatar(): Attribute
+    {
+        return Attribute::make(
+            get: function (): string {
+                $value = $this->getFirstMediaUrl('avatar');
+
+                return $value;
+            }
+        );
     }
 }

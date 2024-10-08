@@ -38,6 +38,12 @@ abstract class BasePivot extends Pivot
     /** @var list<string> */
     protected $appends = [];
 
+    /**
+     * Undocumented variable.
+     */
+    /** @var string */
+    protected $primaryKey = 'id';
+
     /** @return array<string, string> */
     protected function casts(): array
     {
@@ -52,10 +58,4 @@ abstract class BasePivot extends Pivot
             'deleted_by' => 'string',
         ];
     }
-
-    /**
-     * Undocumented variable.
-     */
-    /** @var string */
-    protected $primaryKey = 'id';
 }

@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Providers;
 
+use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Support\Facades\Config;
@@ -43,11 +44,31 @@ class UserServiceProvider extends XotBaseServiceProvider
 
     public function registerMailsNotification(): void
     {
-        VerifyEmail::toMailUsing(function (object $notifiable, string $url) {
+        $app_name = config('app.name');
+        if (! is_string($app_name)) {
+            $app_name = '';
+        }
+        // $url = url(route('password.reset', ['token' => $token, 'email' => $notifiable->getEmailForPasswordReset()]));
+        ResetPassword::toMailUsing(function ($notifiable, string $token): MailMessage {
             return (new MailMessage())
-                ->subject('Verify Email Address')
-                ->line('Click the button below to verify your email address.')
-                ->action('Verify Email Address', $url);
+                ->template('user::notifications.email')
+                ->subject(__('user::reset_password.password_reset_subject'))
+                ->line(__('user::reset_password.password_cause_of_email'))
+                ->action(__('user::reset_password.reset_password'), url(route('password.reset', $token, false)))
+                ->line(__('user::reset_password.password_if_not_requested'))
+                ->line(__('user::reset_password.thank_you_for_using_app'))
+                ->salutation(__('user::reset_password.regards'));
+        });
+        $salutation = __('user::verify_email.salutation', ['app_name' => $app_name]);
+        VerifyEmail::toMailUsing(function (object $notifiable, string $url) use ($salutation): MailMessage {
+            return (new MailMessage())
+                ->template('user::notifications.email')
+                ->subject(__('user::verify_email.subject'))
+                ->greeting(__('user::verify_email.greeting'))
+                ->line(__('user::verify_email.line1'))
+                ->action(__('user::verify_email.action'), $url)
+                ->line(__('user::verify_email.line2'))
+                ->salutation($salutation);
         });
     }
 

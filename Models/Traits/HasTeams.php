@@ -21,9 +21,9 @@ use Webmozart\Assert\Assert;
  * Trait HasTeams.
  *
  * @property TeamContract $currentTeam
- * @property int|null     $current_team_id
- * @property Collection   $teams
- * @property Collection   $ownedTeams
+ * @property int|null $current_team_id
+ * @property Collection $teams
+ * @property Collection $ownedTeams
  */
 trait HasTeams
 {
@@ -42,11 +42,11 @@ trait HasTeams
     {
         $xot = XotData::make();
 
-        if (null === $this->current_team_id && $this->id) {
+        if ($this->current_team_id === null && $this->id) {
             $this->switchTeam($this->personalTeam());
         }
 
-        if ($this->allTeams()->isEmpty() && null !== $this->getKey()) {
+        if ($this->allTeams()->isEmpty() && $this->getKey() !== null) {
             $this->current_team_id = null;
             $this->save();
         }

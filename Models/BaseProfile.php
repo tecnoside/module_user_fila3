@@ -16,36 +16,36 @@ use Spatie\SchemalessAttributes\Casts\SchemalessAttributes;
 use Spatie\SchemalessAttributes\SchemalessAttributesTrait;
 
 /**
- * @property \Spatie\SchemalessAttributes\SchemalessAttributes $extra
- * @property string $avatar
- * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\DeviceUser> $deviceUsers
- * @property int|null $device_users_count
- * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\Device> $devices
- * @property int|null $devices_count
- * @property string|null $first_name
- * @property string|null $full_name
- * @property string|null $last_name
- * @property \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection<int, \Modules\Media\Models\Media> $media
- * @property int|null $media_count
- * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\DeviceUser> $mobileDeviceUsers
- * @property int|null $mobile_device_users_count
- * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\Device> $mobileDevices
- * @property int|null $mobile_devices_count
+ * @property \Spatie\SchemalessAttributes\SchemalessAttributes                                                             $extra
+ * @property string                                                                                                        $avatar
+ * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\DeviceUser>                                $deviceUsers
+ * @property int|null                                                                                                      $device_users_count
+ * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\Device>                                    $devices
+ * @property int|null                                                                                                      $devices_count
+ * @property string|null                                                                                                   $first_name
+ * @property string|null                                                                                                   $full_name
+ * @property string|null                                                                                                   $last_name
+ * @property \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection<int, \Modules\Media\Models\Media>    $media
+ * @property int|null                                                                                                      $media_count
+ * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\DeviceUser>                                $mobileDeviceUsers
+ * @property int|null                                                                                                      $mobile_device_users_count
+ * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\Device>                                    $mobileDevices
+ * @property int|null                                                                                                      $mobile_devices_count
  * @property \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
- * @property int|null $notifications_count
- * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\Permission> $permissions
- * @property int|null $permissions_count
- * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\Role> $roles
- * @property int|null $roles_count
- * @property \Modules\Xot\Contracts\UserContract|null $user
- * @property string|null $user_name
+ * @property int|null                                                                                                      $notifications_count
+ * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\Permission>                                $permissions
+ * @property int|null                                                                                                      $permissions_count
+ * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\Role>                                      $roles
+ * @property int|null                                                                                                      $roles_count
+ * @property \Modules\Xot\Contracts\UserContract|null                                                                      $user
+ * @property string|null                                                                                                   $user_name
  *
  * @method static \Illuminate\Database\Eloquent\Builder|ProfileContract newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ProfileContract newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ProfileContract permission($permissions, $without = false)
  * @method static \Illuminate\Database\Eloquent\Builder|ProfileContract query()
  * @method static \Illuminate\Database\Eloquent\Builder|ProfileContract role($roles, $guard = null, $without = false)
- * @method static \Illuminate\Database\Eloquent\Builder|BaseProfile withExtraAttributes()
+ * @method static \Illuminate\Database\Eloquent\Builder|BaseProfile     withExtraAttributes()
  * @method static \Illuminate\Database\Eloquent\Builder|ProfileContract withoutPermission($permissions)
  * @method static \Illuminate\Database\Eloquent\Builder|ProfileContract withoutRole($roles, $guard = null)
  *

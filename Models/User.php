@@ -98,8 +98,7 @@ class User extends BaseUser
 
     public function canAccessSocialite(): bool
     {
-        // Add the necessary logic
-        // For example:
-        return true; // or implement your own condition
+        // return $this->role_id === Role::ROLE_ADMINISTRATOR;
+        return true;
     }
 }

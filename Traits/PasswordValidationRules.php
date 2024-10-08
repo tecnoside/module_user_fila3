@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Modules\User\Models\Traits;
+namespace Modules\User\Traits;
 
 use Illuminate\Contracts\Validation\Rule;
-use Modules\User\Models\Rules\Password;
+use Modules\User\Rules\Password;
 
 trait PasswordValidationRules
 {

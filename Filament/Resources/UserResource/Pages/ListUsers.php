@@ -62,20 +62,15 @@ class ListUsers extends ListRecords
             // Tables\Columns\TextColumn::make('photo'),
             BooleanColumn::make('email_verified_at')->sortable()->searchable()->toggleable(),
             // ...static::extendTableCallback(),
+            TextColumn::make('password_expires_at')->sortable()
+                ->toggleable(isToggledHiddenByDefault: true),
         ];
     }
 
     public function getGridTableColumns(): array
     {
         return [
-            Stack::make([
-                TextColumn::make('name')->sortable()->searchable(), // ->toggleable(),
-                TextColumn::make('email')->sortable()->searchable(),
-                TextColumn::make('teams.name')->searchable()->toggleable()->wrap()->badge(),
-                TextColumn::make('role.name')->toggleable(),
-                TextColumn::make('roles.name')->toggleable()->wrap()->badge(),
-                BooleanColumn::make('email_verified_at')->sortable()->searchable()->toggleable(),
-            ]),
+            Stack::make($this->getListTableColumns()),
         ];
     }
 

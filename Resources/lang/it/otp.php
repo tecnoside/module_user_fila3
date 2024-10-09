@@ -3,80 +3,88 @@
 declare(strict_types=1);
 
 return [
-    'otp_code' => 'OTP Code',
-    'title' => 'Password Expired, Reset Password',
-    'heading' => 'Create A New Password',
-    'sub_heading' => 'Your Password Has Expired, Please Create A New Password',
+    'otp_code' => 'Codice OTP',
+    'title' => 'Password Scaduta, Reimposta Password',
+    'heading' => 'Crea una Nuova Password',
+    'sub_heading' => 'La tua password è scaduta, per favore crea una nuova password',
     'form' => [
         'current_password' => [
-            'label' => 'Current Password',
-            'validation_attribute' => 'current_password',
+            'label' => 'Password Attuale',
+            'validation_attribute' => 'password_attuale',
         ],
         'password' => [
-            'label' => 'Password',
+            'label' => 'Nuova Password',
             'validation_attribute' => 'password',
         ],
         'password_confirmation' => [
-            'label' => 'Confirm Password',
+            'label' => 'Conferma Password',
         ],
     ],
     'fields' => [
         'current_password' => [
-            'label' => 'Current Password',
-            'validation_attribute' => 'current_password',
+            'label' => 'Password Attuale',
+            'validation_attribute' => 'password_attuale',
         ],
         'password' => [
-            'label' => 'Password',
+            'label' => 'Nuova Password',
             'validation_attribute' => 'password',
         ],
         'password_confirmation' => [
-            'label' => 'Confirm Password',
+            'label' => 'Conferma Password',
         ],
     ],
-    'reset_password' => 'Reset Password',
-    'password_reset' => 'Password Reset',
+    'reset_password' => 'Reimposta Password',
+    'password_reset' => 'Password Reimpostata',
 
     'mail' => [
-        'subject' => 'OTP Code',
-        'greeting' => 'Hello!',
-        'line1' => 'Your OTP code is: :code',
-        'line2' => 'This code will be valid for :seconds seconds.',
-        'line3' => 'If you did not request a code, please ignore this email.',
-        'salutation' => 'Best Regards, :app_name',
+        'subject' => 'Codice OTP',
+        'greeting' => 'Ciao!',
+        'line1' => 'Il tuo codice OTP è: :code',
+        'line2' => 'Questo codice sarà valido per :minutes minuti.',
+        'line3' => 'Se non hai richiesto un codice, ignora questa email.',
+        'salutation' => 'Cordiali saluti, :app_name',
     ],
 
     'view' => [
-        'time_left' => 'seconds left',
-        'resend_code' => 'Resend Code',
-        'verify' => 'Verify',
-        'go_back' => 'Go Back',
+        'time_left' => 'secondi rimasti',
+        'resend_code' => 'Invia nuovamente il codice',
+        'verify' => 'Verifica',
+        'go_back' => 'Torna Indietro',
     ],
 
     'notifications' => [
-        'title' => 'OTP Code Sent',
-        'body' => 'The verification code has been sent to your e-mail address. It will be valid in :seconds seconds.',
+        'title' => 'Codice OTP Inviato',
+        'body' => 'Il codice di verifica è stato inviato al tuo indirizzo email. Sarà valido per :seconds secondi.',
         'wrong_password' => [
-            'title' => 'Wrong Password',
-            'body' => 'The current password you entered is incorrect.',
+            'title' => 'Password Errata',
+            'body' => 'La password attuale inserita non è corretta.',
         ],
         'column_not_found' => [
-            'title' => 'Column Not Found',
-            'body' => 'Either the column ":column_name" or the password column ":password_column_name" was not found in the :table_name table.',
+            'title' => 'Colonna Non Trovata',
+            'body' => 'La colonna ":column_name" o la colonna della password ":password_column_name" non è stata trovata nella tabella :table_name.',
         ],
         'password_reset' => [
-            'success' => 'Password Reset Successful',
+            'success' => 'Password Reimpostata con Successo',
         ],
         'same_password' => [
-            'title' => 'Same Password',
-            'body' => 'The new password must be different from the current password.',
+            'title' => 'Password Uguale',
+            'body' => 'La nuova password deve essere diversa dalla password attuale.',
         ],
     ],
     'exceptions' => [
-        'column_not_found' => 'Either the column ":column_name" or the password column ":password_column_name" was not found in the ":table_name" table. Please publish migrations and run them, if the error still persists, publish the config file and update the table_name, column_name, and password_column_name values.',
+        'column_not_found' => 'La colonna ":column_name" o la colonna della password ":password_column_name" non è stata trovata nella tabella ":table_name". Pubblica le migrazioni e eseguile, se l\'errore persiste, pubblica il file di configurazione e aggiorna i valori di table_name, column_name, e password_column_name.',
     ],
 
     'validation' => [
-        'invalid_code' => 'The code you entered is invalid.',
-        'expired_code' => 'The code you entered has expired.',
+        'invalid_code' => 'Il codice inserito non è valido.',
+        'expired_code' => 'Il codice inserito è scaduto.',
+    ],
+    'actions' => [
+        'send_otp' => 'Invia Codice OTP',
+        'yes_send_otp' => 'Si, Invia Codice OTP',
+        'confirm_otp' => 'Sei sicuro di voler inviare una password temporanea a questo utente? Sarà richiesto di cambiarla al primo accesso.',
+        // Are you sure you want to send a temporary password to this user? They will be required to change it upon first login.
+        // Temporary password sent successfully.
+        'send_otp_success' => 'Password temporanea inviata con successo.',
     ],
 ];

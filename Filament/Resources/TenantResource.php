@@ -63,12 +63,12 @@ class TenantResource extends XotBaseResource
                             Forms\Components\TextInput::make('id')
                                 ->label('Unique ID')
                                 ->required()
-                                ->disabled(static fn ($context) => $context !== 'create')
+                                ->disabled(static fn ($context) => 'create' !== $context)
                                 ->unique(table: 'tenants', ignoreRecord: true),
                             Forms\Components\TextInput::make('domain')
                                 ->label('Sub-Domain')
                                 ->required()
-                                ->visible(static fn ($context) => $context === 'create')
+                                ->visible(static fn ($context) => 'create' === $context)
                                 ->unique(table: 'domains', ignoreRecord: true)
                                 ->prefix('https://')
                                 ->suffix('.'.request()->getHost()),

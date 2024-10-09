@@ -36,7 +36,7 @@ trait IsProfileTrait
     // ---- mutators
     public function getFullNameAttribute(?string $value): ?string
     {
-        if ($value !== null) {
+        if (null !== $value) {
             return $value;
         }
 
@@ -50,7 +50,7 @@ trait IsProfileTrait
 
     public function getFirstNameAttribute(?string $value): ?string
     {
-        if ($value !== null) {
+        if (null !== $value) {
             return $value;
         }
         $value = $this->user?->first_name;
@@ -61,7 +61,7 @@ trait IsProfileTrait
 
     public function getLastNameAttribute(?string $value): ?string
     {
-        if ($value !== null) {
+        if (null !== $value) {
             return $value;
         }
         $value = $this->user?->last_name;
@@ -72,7 +72,7 @@ trait IsProfileTrait
 
     public function isSuperAdmin(): bool
     {
-        if ($this->user === null) {
+        if (null === $this->user) {
             return false;
         }
 
@@ -81,7 +81,7 @@ trait IsProfileTrait
 
     public function isNegateSuperAdmin(): bool
     {
-        if ($this->user === null) {
+        if (null === $this->user) {
             return false;
         }
 

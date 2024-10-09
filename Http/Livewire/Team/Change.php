@@ -69,7 +69,7 @@ class Change extends Component
         $view_params = [
             'view' => $view,
         ];
-        if ($this->teams === []) {
+        if ([] === $this->teams) {
             $view = 'ui::livewire.empty';
         }
 

@@ -28,7 +28,7 @@ return new class extends XotBaseMigration {
         // -- UPDATE --
         $this->tableUpdate(
             function (Blueprint $table): void {
-                if ($this->getColumnType('id') !== 'string') {
+                if ('string' !== $this->getColumnType('id')) {
                     $table->uuid('id')->change();  // is  just primary
                 }
                 $this->updateTimestamps($table, false);

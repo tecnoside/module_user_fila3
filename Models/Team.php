@@ -6,6 +6,7 @@ namespace Modules\User\Models;
 
 /**
  * Class Modules\User\Models\Team.
+ *
  * @property string                                                                             $id
  * @property string                                                                             $user_id                (DC2Type:guid)
  * @property string                                                                             $name

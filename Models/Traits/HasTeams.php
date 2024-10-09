@@ -21,9 +21,9 @@ use Webmozart\Assert\Assert;
  * Trait HasTeams.
  *
  * @property TeamContract $currentTeam
- * @property int|null $current_team_id
- * @property Collection $teams
- * @property Collection $ownedTeams
+ * @property int|null     $current_team_id
+ * @property Collection   $teams
+ * @property Collection   $ownedTeams
  */
 trait HasTeams
 {
@@ -32,7 +32,7 @@ trait HasTeams
      */
     public function isCurrentTeam(TeamContract $teamContract): bool
     {
-        if (! $teamContract instanceof TeamContract || $this->currentTeam === null) {
+        if (! $teamContract instanceof TeamContract || null === $this->currentTeam) {
             return false;
         }
 
@@ -46,19 +46,11 @@ trait HasTeams
     public function currentTeam(): BelongsTo
     {
         $xot = XotData::make();
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
-        if ($this->current_team_id === null && $this->id) {
+        if (null === $this->current_team_id && $this->id) {
             $this->switchTeam($this->personalTeam());
         }
 
-<<<<<<< HEAD
-        if ($this->allTeams()->count() === 0) {
-=======
-        if ($this->allTeams()->isEmpty() && $this->getKey() !== null) {
->>>>>>> origin/master
+        if ($this->allTeams()->isEmpty() && null !== $this->getKey()) {
             $this->current_team_id = null;
             $this->save();
         }
@@ -132,7 +124,7 @@ trait HasTeams
     public function personalTeam(): ?TeamContract
     {
         $res = $this->ownedTeams->where('personal_team', true)->first();
-        if ($res === null) {
+        if (null === $res) {
             return null;
         }
 
@@ -205,7 +197,7 @@ trait HasTeams
             $this->id
         )->first()?->membership?->role))->key === $role;
         */
-        return $this->belongsToTeam($teamContract) && $this->teamRole($teamContract) !== null;
+        return $this->belongsToTeam($teamContract) && null !== $this->teamRole($teamContract);
     }
 
     /**

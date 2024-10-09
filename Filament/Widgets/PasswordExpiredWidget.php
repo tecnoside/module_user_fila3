@@ -29,9 +29,9 @@ use Webmozart\Assert\Assert;
  */
 class PasswordExpiredWidget extends Widget implements HasForms
 {
+    use InteractsWithForms;
     // use InteractsWithFormActions;
     use TransTrait;
-    use InteractsWithForms;
 
     public ?string $current_password = '';
 
@@ -83,7 +83,7 @@ class PasswordExpiredWidget extends Widget implements HasForms
         Assert::string($current_password = Arr::get($data, 'current_password'));
         Assert::string($password = Arr::get($data, 'password'));
         $user = auth()->user();
-        if (null === $user) {
+        if ($user === null) {
             return null;
         }
 

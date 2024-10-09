@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Actions\Socialite\Utils;
 
+use Exception;
 use Illuminate\Support\Str;
 use Laravel\Socialite\Contracts\User;
 use Webmozart\Assert\Assert;
@@ -70,7 +71,7 @@ final class EmailDomainAnalyzer
             return $domain;
         }
 
-        throw new \Exception('wip');
+        throw new Exception('wip');
         /*
         return empty($domain)
             ? null

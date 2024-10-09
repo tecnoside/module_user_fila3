@@ -82,7 +82,7 @@ class ProcessCallbackController extends Controller
         $user = $user_class::query()->firstWhere(['email' => $oauthUser->getEmail()]);
 
         // Handle registration
-        if (null !== $user) {
+        if ($user !== null) {
             $socialiteUser = app(RegisterSocialiteUserAction::class)->execute($provider, $oauthUser, $user);
         } else {
             $socialiteUser = app(RegisterOauthUserAction::class)->execute($provider, $oauthUser);

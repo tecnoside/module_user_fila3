@@ -5,11 +5,18 @@ declare(strict_types=1);
 namespace Modules\User\Console\Commands;
 
 use Illuminate\Console\Command;
+<<<<<<< HEAD
 use Modules\User\Models\User;
+=======
+>>>>>>> origin/master
 use Modules\Xot\Datas\XotData;
 use Symfony\Component\Console\Input\InputOption;
 use Webmozart\Assert\Assert;
 
+<<<<<<< HEAD
+=======
+use function count;
+>>>>>>> origin/master
 use function Laravel\Prompts\multiselect;
 use function Laravel\Prompts\text;
 
@@ -79,7 +86,7 @@ class AssignTeamCommand extends Command
 
         $rows = $user->teams()->get()->toArray();
 
-        if (\count($rows) > 0) {
+        if (count($rows) > 0) {
             Assert::isArray($rows[0]);
             $headers = array_keys($rows[0]);
 

@@ -5,7 +5,11 @@ declare(strict_types=1);
 namespace Modules\User\Console\Commands;
 
 use Illuminate\Console\Command;
+<<<<<<< HEAD
 use Modules\User\Models\User;
+=======
+use Modules\Xot\Datas\XotData;
+>>>>>>> origin/master
 use Symfony\Component\Console\Input\InputOption;
 
 use function Laravel\Prompts\multiselect;

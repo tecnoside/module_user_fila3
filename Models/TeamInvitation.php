@@ -22,7 +22,7 @@ use Modules\Xot\Datas\XotData;
  * @property Team|null $team
  * @property TeamContract|null $team
  *
- * @method static TeamInvitationFactory                                factory($count = null, $state = [])
+ * @method static TeamInvitationFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|TeamInvitation newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|TeamInvitation newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|TeamInvitation query()

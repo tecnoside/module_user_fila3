@@ -15,6 +15,8 @@ use Modules\User\Models\Role;
 use Modules\User\Support\Utils;
 use Webmozart\Assert\Assert;
 
+use function in_array;
+
 class EditRole extends EditRecord
 {
     // //
@@ -56,7 +58,7 @@ class EditRole extends EditRecord
 
     protected function mutateFormDataBeforeSave(array $data): array
     {
-        $this->permissions = collect($data)->filter(static fn ($permission, $key): bool => ! \in_array($key, ['name', 'guard_name', 'select_all'], false) && Str::contains($key, '_'))->keys();
+        $this->permissions = collect($data)->filter(static fn ($permission, $key): bool => ! in_array($key, ['name', 'guard_name', 'select_all'], false) && Str::contains($key, '_'))->keys();
 
         return Arr::only($data, ['name', 'guard_name']);
     }

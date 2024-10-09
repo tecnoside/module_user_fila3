@@ -32,20 +32,20 @@ use Spatie\SchemalessAttributes\SchemalessAttributesTrait;
  * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\Device> $mobileDevices
  * @property int|null $mobile_devices_count
  * @property \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
- * @property int|null                                                                                                      $notifications_count
- * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\Permission>                                $permissions
- * @property int|null                                                                                                      $permissions_count
- * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\Role>                                      $roles
- * @property int|null                                                                                                      $roles_count
- * @property \Modules\Xot\Contracts\UserContract|null                                                                      $user
- * @property string|null                                                                                                   $user_name
+ * @property int|null $notifications_count
+ * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\Permission> $permissions
+ * @property int|null $permissions_count
+ * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\Role> $roles
+ * @property int|null $roles_count
+ * @property \Modules\Xot\Contracts\UserContract|null $user
+ * @property string|null $user_name
  *
  * @method static \Illuminate\Database\Eloquent\Builder|ProfileContract newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ProfileContract newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ProfileContract permission($permissions, $without = false)
  * @method static \Illuminate\Database\Eloquent\Builder|ProfileContract query()
  * @method static \Illuminate\Database\Eloquent\Builder|ProfileContract role($roles, $guard = null, $without = false)
- * @method static \Illuminate\Database\Eloquent\Builder|BaseProfile     withExtraAttributes()
+ * @method static \Illuminate\Database\Eloquent\Builder|BaseProfile withExtraAttributes()
  * @method static \Illuminate\Database\Eloquent\Builder|ProfileContract withoutPermission($permissions)
  * @method static \Illuminate\Database\Eloquent\Builder|ProfileContract withoutRole($roles, $guard = null)
  *

@@ -41,7 +41,7 @@ trait InteractsWithTenant
      */
     protected function setTenantIdAttribute(?int $value): void
     {
-        if (null === $value) {
+        if ($value === null) {
             $value = Filament::getTenant()?->getKey();
         }
         $this->attributes['tenant_id'] = $value;

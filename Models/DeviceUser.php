@@ -45,7 +45,7 @@ use Modules\Xot\Datas\XotData;
  * @method static \Illuminate\Database\Eloquent\Builder|DeviceUser whereUserId($value)
  *
  * @property ProfileContract|null $profile
- * @property UserContract|null    $user
+ * @property UserContract|null $user
  * @property ProfileContract|null $creator
  * @property ProfileContract|null $updater
  *

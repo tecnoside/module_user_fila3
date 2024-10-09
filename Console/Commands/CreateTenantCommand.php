@@ -7,6 +7,10 @@ namespace Modules\User\Console\Commands;
 use Illuminate\Console\Command;
 use Modules\Xot\Datas\XotData;
 
+<<<<<<< HEAD
+=======
+use function count;
+>>>>>>> origin/master
 use function Laravel\Prompts\text;
 
 class CreateTenantCommand extends Command
@@ -49,7 +53,7 @@ class CreateTenantCommand extends Command
 
         $rows = $modelClass::get()->map($map);
 
-        if (\count($rows) > 0) {
+        if (count($rows) > 0) {
             $headers = array_keys($rows[0]);
 
             $this->newLine();

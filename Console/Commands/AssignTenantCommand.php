@@ -5,7 +5,10 @@ declare(strict_types=1);
 namespace Modules\User\Console\Commands;
 
 use Illuminate\Console\Command;
+<<<<<<< HEAD
 use Modules\User\Models\User;
+=======
+>>>>>>> origin/master
 use Modules\Xot\Datas\XotData;
 use Symfony\Component\Console\Input\InputOption;
 

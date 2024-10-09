@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Models\Traits;
 
+use Exception;
 use Filament\Notifications\Notification;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -91,8 +92,8 @@ trait IsProfileTrait
     public function toggleSuperAdmin(): void
     {
         $user = $this->user;
-        if (null === $user) {
-            throw new \Exception('['.__LINE__.']['.class_basename($this).']');
+        if ($user === null) {
+            throw new Exception('['.__LINE__.']['.class_basename($this).']');
         }
         $to_assign = 'super-admin';
         $to_remove = 'negate-super-admin';
@@ -109,7 +110,7 @@ trait IsProfileTrait
             $role_remove = Role::updateOrCreate(['name' => $to_remove], ['team_id' => null]);
             $user->roles()->attach($role_assign);
             $user->roles()->detach($role_remove);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             Notification::make()
                 ->title('Exception !')
                 ->danger()

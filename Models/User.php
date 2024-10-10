@@ -7,8 +7,11 @@ namespace Modules\User\Models;
 use Modules\Xot\Contracts\ProfileContract;
 
 /**
+<<<<<<< HEAD
  * Class Modules\User\Models\User.
  *
+=======
+>>>>>>> origin/master
  * @property string                                                                                           $id
  * @property string|null                                                                                      $name
  * @property string|null                                                                                      $first_name

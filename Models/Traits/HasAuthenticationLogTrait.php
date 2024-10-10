@@ -77,7 +77,7 @@ trait HasAuthenticationLogTrait
             while ($c > 0) {
                 $date = $date->subDay();
                 $c = $this->authentications()->whereDate('login_at', $date)->count();
-                $days++;
+                ++$days;
             }
 
             return $days;

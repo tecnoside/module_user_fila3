@@ -14,4 +14,6 @@ namespace Modules\User\Models;
  *
  * @mixin \Eloquent
  */
-class PermissionRole extends BasePivot {}
+class PermissionRole extends BasePivot
+{
+}

@@ -8,6 +8,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password as PasswordRule;
 use Livewire\Component;
 use Modules\Xot\Datas\XotData;
 
@@ -27,11 +28,12 @@ class Register extends Component
     // public function register(): \Livewire\Features\SupportRedirects\Redirector
     public function register(): RedirectResponse|\Livewire\Features\SupportRedirects\Redirector
     {
+        $messages = __('user::validation');
         $this->validate([
             'name' => ['required'],
             'email' => ['required', 'email', 'unique:user.users'],
-            'password' => ['required', 'min:8', 'same:passwordConfirmation'],
-        ]);
+            'password' => ['required', 'same:passwordConfirmation', PasswordRule::defaults()],
+        ], $messages);
         $user_class = XotData::make()->getUserClass();
 
         /** @var \Modules\Xot\Contracts\UserContract */

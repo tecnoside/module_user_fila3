@@ -37,12 +37,12 @@ class Reset extends Component
      */
     public function resetPassword(): \Livewire\Features\SupportRedirects\Redirector|RedirectResponse|null
     {
-        $messages = __('xot::validation');
+        // $messages = __('xot::validation');
+        $messages = __('user::validation');
 
         $this->validate([
             'token' => 'required',
             'email' => 'required|email',
-            // 'password' => 'required|min:8|same:passwordConfirmation',
             'password' => ['required', 'same:passwordConfirmation', PasswordRule::defaults()],
         ], $messages);
 

@@ -46,19 +46,11 @@ trait HasTeams
     public function currentTeam(): BelongsTo
     {
         $xot = XotData::make();
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
         if (null === $this->current_team_id && $this->id) {
             $this->switchTeam($this->personalTeam());
         }
 
-<<<<<<< HEAD
-        if (0 === $this->allTeams()->count()) {
-=======
         if ($this->allTeams()->isEmpty() && null !== $this->getKey()) {
->>>>>>> origin/master
             $this->current_team_id = null;
             $this->save();
         }

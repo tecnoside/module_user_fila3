@@ -168,6 +168,7 @@ class PasswordExpiredWidget extends Widget implements HasForms
             ->required()
             ->rule(PasswordRule::default())
             ->same('passwordConfirmation')
+            ->validationMessages(__('user::validation'))
             ->validationAttribute(static::trans('fields.password.validation_attribute'));
     }
 

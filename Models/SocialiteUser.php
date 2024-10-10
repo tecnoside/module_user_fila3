@@ -16,18 +16,18 @@ use Modules\Xot\Datas\XotData;
 /**
  * Modules\User\Models\SocialiteUser.
  *
- * @property int                                      $id
- * @property string                                   $user_id
- * @property string                                   $provider
- * @property string                                   $provider_id
- * @property string|null                              $token
- * @property string|null                              $name
- * @property string|null                              $email
- * @property string|null                              $avatar
- * @property \Illuminate\Support\Carbon|null          $created_at
- * @property \Illuminate\Support\Carbon|null          $updated_at
- * @property string|null                              $updated_by
- * @property string|null                              $created_by
+ * @property int $id
+ * @property string $user_id
+ * @property string $provider
+ * @property string $provider_id
+ * @property string|null $token
+ * @property string|null $name
+ * @property string|null $email
+ * @property string|null $avatar
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string|null $updated_by
+ * @property string|null $created_by
  * @property \Modules\Xot\Contracts\UserContract|null $user
  *
  * @method static \Illuminate\Database\Eloquent\Builder|SocialiteUser newModelQuery()

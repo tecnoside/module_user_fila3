@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Modules\User\Console\Commands;
 
 use Illuminate\Console\Command;
-
-use function Laravel\Prompts\text;
-
 use Modules\Xot\Datas\XotData;
+
+use function count;
+use function Laravel\Prompts\text;
 
 class CreateTeamCommand extends Command
 {
@@ -50,7 +50,7 @@ class CreateTeamCommand extends Command
 
         $rows = $modelClass::get()->map($map);
 
-        if (\count($rows) > 0) {
+        if (count($rows) > 0) {
             $headers = array_keys($rows[0]);
 
             $this->newLine();

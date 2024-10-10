@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Http\Middleware;
 
+use Closure;
 use Filament\Facades\Filament;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -12,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 
 class PasswordExpiryMiddleware
 {
-    public function handle(Request $request, \Closure $next): Response|RedirectResponse
+    public function handle(Request $request, Closure $next): Response|RedirectResponse
     {
         if ($request->routeIs('password.change') || $request->routeIs('password.update')) {
             return $next($request);

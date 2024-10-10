@@ -14,6 +14,9 @@ use Laravel\Socialite\Contracts\User as SocialiteUserContract;
 use Spatie\QueueableAction\QueueableAction;
 use Webmozart\Assert\Assert;
 
+use function count;
+use function in_array;
+
 class IsUserAllowedAction
 {
     use QueueableAction;
@@ -26,7 +29,7 @@ class IsUserAllowedAction
         $domains = app(GetDomainAllowListAction::class)->execute();
 
         // When no domains are specified, all users are allowed
-        if (\count($domains) < 1) {
+        if (count($domains) < 1) {
             return true;
         }
 
@@ -38,6 +41,6 @@ class IsUserAllowedAction
             ->__toString();
 
         // See if everything after @ is in the domains array
-        return \in_array($emailDomain, $domains, false);
+        return in_array($emailDomain, $domains, false);
     }
 }

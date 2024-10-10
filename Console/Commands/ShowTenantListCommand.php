@@ -7,8 +7,6 @@ namespace Modules\User\Console\Commands;
 use Illuminate\Console\Command;
 use Modules\Xot\Datas\XotData;
 
-use function count;
-
 class ShowTenantListCommand extends Command
 {
     /**
@@ -38,7 +36,7 @@ class ShowTenantListCommand extends Command
 
         $rows = $modelClass::get()->map($map);
 
-        if (count($rows) > 0) {
+        if (\count($rows) > 0) {
             $headers = array_keys($rows[0]);
 
             $this->newLine();

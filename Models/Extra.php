@@ -14,15 +14,15 @@ use Modules\Xot\Models\Extra as XotBaseExtra;
  * @method static \Illuminate\Database\Eloquent\Builder|Extra query()
  * @method static \Illuminate\Database\Eloquent\Builder|Extra withExtraAttributes()
  *
- * @property int $id
- * @property string $model_type
- * @property string $model_id
+ * @property int                             $id
+ * @property string                          $model_type
+ * @property string                          $model_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property string|null $updated_by
- * @property string|null $created_by
+ * @property string|null                     $updated_by
+ * @property string|null                     $created_by
  * @property \Illuminate\Support\Carbon|null $deleted_at
- * @property string|null $deleted_by
+ * @property string|null                     $deleted_by
  *
  * @method static \Illuminate\Database\Eloquent\Builder|Extra whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Extra whereCreatedBy($value)

@@ -84,7 +84,7 @@ class PasswordExpiredWidget extends Widget implements HasForms
         Assert::string($current_password = Arr::get($data, 'current_password'));
         Assert::string($password = Arr::get($data, 'password'));
         $user = auth()->user();
-        if ($user === null) {
+        if (null === $user) {
             return null;
         }
 

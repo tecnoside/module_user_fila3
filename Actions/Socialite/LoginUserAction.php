@@ -9,12 +9,12 @@ declare(strict_types=1);
 namespace Modules\User\Actions\Socialite;
 
 // use DutchCodingCompany\FilamentSocialite\FilamentSocialite;
-use Webmozart\Assert\Assert;
 use Filament\Facades\Filament;
 use Illuminate\Http\RedirectResponse;
+use Modules\User\Events\SocialiteUserConnected;
 use Modules\User\Models\SocialiteUser;
 use Spatie\QueueableAction\QueueableAction;
-use Modules\User\Events\SocialiteUserConnected;
+use Webmozart\Assert\Assert;
 
 class LoginUserAction
 {

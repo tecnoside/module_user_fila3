@@ -160,7 +160,8 @@ class PasswordExpiredWidget extends Widget implements HasForms
 
     protected function getPasswordFormComponent(): Component
     {
-        $validation_messages=__('user::validation');
+        $validation_messages = __('user::validation');
+
         return TextInput::make('password')
             ->label(static::trans('fields.password.label'))
             ->password()
@@ -171,7 +172,7 @@ class PasswordExpiredWidget extends Widget implements HasForms
             ->same('passwordConfirmation')
             ->validationMessages($validation_messages)
             ->validationAttribute(static::trans('fields.password.validation_attribute'))
-            ;
+        ;
     }
 
     protected function getPasswordConfirmationFormComponent(): Component

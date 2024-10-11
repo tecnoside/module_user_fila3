@@ -146,6 +146,6 @@ return [
     */
 
     'attributes' => [
-        'data.password' =>'zu',
+        'data.password' => 'zu',
     ],
 ];

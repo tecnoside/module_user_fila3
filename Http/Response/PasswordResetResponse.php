@@ -14,8 +14,8 @@ class PasswordResetResponse implements Responsable
 {
     public function toResponse($request): RedirectResponse|Redirector
     {
-        Assert::string($path = config('password-expiry.after_password_reset_redirect') ?: Filament::getLoginUrl());
-
+        //Assert::string($path = config('password-expiry.after_password_reset_redirect') ?: Filament::getLoginUrl());
+        $path=url('/');
         return redirect()->to($path);
     }
 }

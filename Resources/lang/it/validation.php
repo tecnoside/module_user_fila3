@@ -103,6 +103,13 @@ return [
         'symbols' => 'Il campo :attribute deve contenere almeno un simbolo.',
         'uncompromised' => 'Il :attribute fornito è apparso in una violazione di dati. Scegli un :attribute diverso, per favore.',
     ],
+
+    'password.letters' => 'Il campo :attribute deve contenere almeno una lettera.',
+    'password.mixed' => 'Il campo :attribute deve contenere almeno una lettera maiuscola e una minuscola.',
+    'password.numbers' => 'Il campo :attribute deve contenere almeno un numero.',
+    'password.symbols' => 'Il campo :attribute deve contenere almeno un simbolo.',
+    'password.uncompromised' => 'Il :attribute fornito è apparso in una violazione di dati. Scegli un :attribute diverso, per favore.',
+
     'present' => 'Il campo :attribute deve essere presente.',
     'regex' => 'Il formato del campo :attribute non è valido.',
     'required' => 'Il campo :attribute è obbligatorio.',
@@ -138,5 +145,7 @@ return [
     |
     */
 
-    // 'attributes' => [],
+    'attributes' => [
+        'data.password' =>'zu',
+    ],
 ];

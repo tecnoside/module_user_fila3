@@ -70,6 +70,10 @@ return [
             'title' => 'Password Uguale',
             'body' => 'La nuova password deve essere diversa dalla password attuale.',
         ],
+        'otp_expired' => [
+            'title' => 'Otp Scaduto',
+            'body' => 'Chiedi al Webmaster di mandarti un nuovo Otp',
+        ],
     ],
     'exceptions' => [
         'column_not_found' => 'La colonna ":column_name" o la colonna della password ":password_column_name" non è stata trovata nella tabella ":table_name". Pubblica le migrazioni e eseguile, se l\'errore persiste, pubblica il file di configurazione e aggiorna i valori di table_name, column_name, e password_column_name.',

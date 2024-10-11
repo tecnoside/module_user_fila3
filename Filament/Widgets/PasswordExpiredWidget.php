@@ -4,25 +4,26 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Widgets;
 
+use Filament\Forms\Form;
+use Illuminate\Support\Arr;
 use Filament\Actions\Action;
+use Filament\Widgets\Widget;
+use Webmozart\Assert\Assert;
 use Filament\Actions\ActionGroup;
+use Illuminate\Support\Facades\Hash;
+use Modules\User\Datas\PasswordData;
 use Filament\Forms\ComponentContainer;
+use Filament\Forms\Contracts\HasForms;
+use Illuminate\Support\Facades\Schema;
+use Modules\User\Events\NewPasswordSet;
 use Filament\Forms\Components\Component;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Concerns\InteractsWithForms;
-use Filament\Forms\Contracts\HasForms;
-use Filament\Forms\Form;
 use Filament\Notifications\Notification;
-use Filament\Pages\Concerns\InteractsWithFormActions;
-use Filament\Widgets\Widget;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Validation\Rules\Password as PasswordRule;
-use Modules\User\Events\NewPasswordSet;
-use Modules\User\Http\Response\PasswordResetResponse;
 use Modules\Xot\Filament\Traits\TransTrait;
-use Webmozart\Assert\Assert;
+use Filament\Forms\Concerns\InteractsWithForms;
+use Filament\Pages\Concerns\InteractsWithFormActions;
+use Modules\User\Http\Response\PasswordResetResponse;
+use Illuminate\Validation\Rules\Password as PasswordRule;
 
 /**
  * @property ComponentContainer $form
@@ -125,8 +126,24 @@ class PasswordExpiredWidget extends Widget implements HasForms
             return null;
         }
 
+        $pwd_data=PasswordData::make();
+        // get OTP expiration minutes from PasswordData
+        $otpExpirationMinutes = $pwd_data->otp_expiration_minutes;
+
+         // Check if OTP is expired using updated_at
+        if ($user->updated_at && now()->greaterThan($user->updated_at->addMinutes($otpExpirationMinutes))) {
+            Notification::make()
+                ->title(__('user::otp.notifications.otp_expired.title'))
+                ->body(__('user::otp.notifications.otp_expired.body'))
+                ->danger()
+                ->send();
+
+            return null;
+        }
+
+
         // get password expiry date and time
-        $passwordExpiryDateTime = now()->addDays(30);
+        $passwordExpiryDateTime = now()->addDays($pwd_data->expires_in);
 
         // set password expiry date and time
         $user = tap($user)->update([

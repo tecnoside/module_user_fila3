@@ -4,24 +4,25 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Pages\Auth;
 
-use Filament\Actions\Action;
-use Filament\Actions\ActionGroup;
-use Filament\Forms\ComponentContainer;
-use Filament\Forms\Components\Component;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
-use Filament\Notifications\Notification;
-use Filament\Pages\Concerns\InteractsWithFormActions;
 use Filament\Pages\Page;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Validation\Rules\Password as PasswordRule;
-use Modules\User\Events\NewPasswordSet;
-use Modules\User\Http\Response\PasswordResetResponse;
-use Modules\Xot\Filament\Traits\NavigationPageLabelTrait;
+use Filament\Actions\Action;
 use Webmozart\Assert\Assert;
+use Filament\Actions\ActionGroup;
+use Illuminate\Support\Facades\Hash;
+use Modules\User\Datas\PasswordData;
+use Filament\Forms\ComponentContainer;
+use Filament\Forms\Contracts\HasForms;
+use Illuminate\Support\Facades\Schema;
+use Modules\User\Events\NewPasswordSet;
+use Filament\Forms\Components\Component;
+use Filament\Forms\Components\TextInput;
+use Filament\Notifications\Notification;
+use Filament\Pages\Concerns\InteractsWithFormActions;
+use Modules\User\Http\Response\PasswordResetResponse;
+use Illuminate\Validation\Rules\Password as PasswordRule;
+use Modules\Xot\Filament\Traits\NavigationPageLabelTrait;
 
 /**
  * @property ComponentContainer $form
@@ -70,6 +71,7 @@ class PasswordExpired extends Page implements HasForms
 
     public function resetPassword(): ?PasswordResetResponse
     {
+        $pwd=PasswordData::make();
         $data = $this->form->getState();
         Assert::string($current_password = Arr::get($data, 'current_password'));
         Assert::string($password = Arr::get($data, 'password'));
@@ -116,7 +118,7 @@ class PasswordExpired extends Page implements HasForms
         }
 
         // get password expiry date and time
-        $passwordExpiryDateTime = now()->addDays(30);
+        $passwordExpiryDateTime = now()->addDays($pwd->expires_in);
 
         // set password expiry date and time
         $user = tap($user)->update([

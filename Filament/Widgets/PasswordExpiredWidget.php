@@ -9,6 +9,7 @@ use Filament\Actions\ActionGroup;
 use Filament\Forms\ComponentContainer;
 use Filament\Forms\Components\Component;
 use Filament\Forms\Components\TextInput;
+use Modules\User\Rules\CheckOtpExpiredRule;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
@@ -171,6 +172,7 @@ class PasswordExpiredWidget extends Widget implements HasForms
             ->revealable()
             ->required()
             // ->rule(PasswordRule::default())
+            ->rule(new CheckOtpExpiredRule())
             ->validationAttribute(static::trans('fields.current_password.validation_attribute'));
     }
 

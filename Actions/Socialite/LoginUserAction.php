@@ -9,11 +9,12 @@ declare(strict_types=1);
 namespace Modules\User\Actions\Socialite;
 
 // use DutchCodingCompany\FilamentSocialite\FilamentSocialite;
+use Webmozart\Assert\Assert;
 use Filament\Facades\Filament;
 use Illuminate\Http\RedirectResponse;
 use Modules\User\Models\SocialiteUser;
 use Spatie\QueueableAction\QueueableAction;
-use Webmozart\Assert\Assert;
+use Modules\User\Events\SocialiteUserConnected;
 
 class LoginUserAction
 {
@@ -26,6 +27,7 @@ class LoginUserAction
     {
         Assert::notNull($user = $socialiteUser->user, '['.__FILE__.']['.__LINE__.']');
         Filament::auth()->login($user);
+        SocialiteUserConnected::dispatch($socialiteUser);
         // session()->regenerate();
 
         // return redirect()->intended(Filament::getUrl());

@@ -72,7 +72,7 @@ return [
         ],
         'otp_expired' => [
             'title' => 'Otp Scaduto',
-            'body' => 'Chiedi al Webmaster di mandarti un nuovo Otp',
+            'body' => 'Il codice OTP utilizzato non è più valido. Contatta l\'assistenza per ottenere un nuovo codice OTP',
         ],
     ],
     'exceptions' => [

@@ -15,22 +15,37 @@ class CheckOtpExpiredRule implements ValidationRule
      */
     public function validate(string $attribute, mixed $value, \Closure $fail): void
     {
+
         $user = Auth::user();
+<<<<<<< HEAD
         if (null === $user) {
             // return false;
+=======
+        if (null == $user) {
+>>>>>>> 39b4e1c4 (.)
             $fail('utente non loggato');
 
             return;
+        }
+        if(null == $user->updated_at){
+            return ;
         }
 
         // Get OTP expiration minutes from PasswordData
         $pwd_data = PasswordData::make();
         $otpExpirationMinutes = $pwd_data->otp_expiration_minutes;
+        $otp_expires_at=$user->updated_at->addMinutes($otpExpirationMinutes);
 
         // Check if OTP is expired using updated_at
+<<<<<<< HEAD
         if (! ($user->updated_at && now()->greaterThan($user->updated_at->addMinutes($otpExpirationMinutes)))) {
+=======
+        if($user->updated_at && now()->greaterThan($otp_expires_at)){
+
+>>>>>>> 39b4e1c4 (.)
             $fail($this->message());
         }
+
     }
 
     /**

@@ -22,7 +22,7 @@ class GetCurrentDeviceAction
      */
     public function execute(?string $mobile_id = null): Device
     {
-        $agent = new Agent;
+        $agent = new Agent();
 
         $data = [
             'device' => $agent->device(),

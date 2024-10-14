@@ -5,23 +5,6 @@ declare(strict_types=1);
 namespace Modules\User\Models;
 
 /**
- * Class Modules\User\Models\Team.
- *
- * @property string                                                                             $id
- * @property string                                                                             $user_id                (DC2Type:guid)
- * @property string                                                                             $name
- * @property int                                                                                $personal_team
- * @property \Illuminate\Support\Carbon|null                                                    $created_at
- * @property \Illuminate\Support\Carbon|null                                                    $updated_at
- * @property string|null                                                                        $updated_by
- * @property string|null                                                                        $created_by
- * @property \Illuminate\Support\Carbon|null                                                    $deleted_at
- * @property string|null                                                                        $deleted_by
- * @property \Modules\Xot\Contracts\ProfileContract|null                                        $creator
- * @property TeamUser                                                                           $pivot
- * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\User>           $members
- * @property int|null                                                                           $members_count
- * @property User|null                                                                          $owner
  * @property string                                                                             $id
  * @property string                                                                             $user_id                (DC2Type:guid)
  * @property string                                                                             $name

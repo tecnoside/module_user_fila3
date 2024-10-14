@@ -7,37 +7,6 @@ namespace Modules\User\Models;
 use Modules\Xot\Contracts\ProfileContract;
 
 /**
- * Class Modules\User\Models\User.
- *
- * @property string                                                                                           $id
- * @property string|null                                                                                      $name
- * @property string|null                                                                                      $first_name
- * @property string|null                                                                                      $last_name
- * @property string                                                                                           $email
- * @property \Illuminate\Support\Carbon|null                                                                  $email_verified_at
- * @property string                                                                                           $password
- * @property string|null                                                                                      $remember_token
- * @property int|null                                                                                         $current_team_id
- * @property string|null                                                                                      $profile_photo_path
- * @property \Illuminate\Support\Carbon|null                                                                  $created_at
- * @property \Illuminate\Support\Carbon|null                                                                  $updated_at
- * @property \Illuminate\Support\Carbon|null                                                                  $deleted_at
- * @property \Illuminate\Support\Carbon|null                                                                  $password_expires_at
- * @property string|null                                                                                      $lang
- * @property bool                                                                                             $is_active
- * @property bool                                                                                             $is_otp
- * @property string|null                                                                                      $updated_by
- * @property string|null                                                                                      $created_by
- * @property string|null                                                                                      $deleted_by
- * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\AuthenticationLog>            $authentications
- * @property int|null                                                                                         $authentications_count
- * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\OauthClient>                  $clients
- * @property int|null                                                                                         $clients_count
- * @property TenantUser                                                                                       $pivot
- * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\User\Models\Device>                       $devices
- * @property int|null                                                                                         $devices_count
- * @property string|null                                                                                      $full_name
- * @property AuthenticationLog|null                                                                           $latestAuthentication
  * @property string                                                                                           $id
  * @property string|null                                                                                      $name
  * @property string|null                                                                                      $first_name

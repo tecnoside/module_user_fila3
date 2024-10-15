@@ -32,7 +32,11 @@ trait HasTeams
      */
     public function isCurrentTeam(TeamContract $teamContract): bool
     {
+<<<<<<< HEAD
         if (null === $this->currentTeam) {
+=======
+        if (! $teamContract instanceof TeamContract || null === $this->currentTeam) {
+>>>>>>> 0dc79bab2a130fa78fc24d39d3e36a89a76e94c8
             return false;
         }
 
@@ -122,8 +126,13 @@ trait HasTeams
      */
     public function personalTeam(): ?TeamContract
     {
+<<<<<<< HEAD
         $personalTeam = $this->ownedTeams->where('personal_team', true)->first();
         if (null === $personalTeam) {
+=======
+        $res = $this->ownedTeams->where('personal_team', true)->first();
+        if (null === $res) {
+>>>>>>> 0dc79bab2a130fa78fc24d39d3e36a89a76e94c8
             return null;
         }
 

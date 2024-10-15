@@ -5,8 +5,11 @@ declare(strict_types=1);
 namespace Modules\User\Models;
 
 /**
+<<<<<<< HEAD
  * Class Modules\User\Models\Team.
  *
+=======
+>>>>>>> 0dc79bab2a130fa78fc24d39d3e36a89a76e94c8
  * @property string                                                                             $id
  * @property string                                                                             $user_id                (DC2Type:guid)
  * @property string                                                                             $name

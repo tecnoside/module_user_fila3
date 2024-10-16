@@ -70,7 +70,7 @@ class UsersChartWidget extends ChartWidget implements HasForms
             }
             Assert::notNull($startDate = Carbon::createFromFormat('Y-m-d H:i:s', $startDate));
             Assert::notNull($endDate = Carbon::createFromFormat('Y-m-d H:i:s', $endDate));
-            if ($startDate->diffInDays($endDate,true) > 365) {
+            if ($startDate->diffInDays($endDate, true) > 365) {
                 $startDate = $endDate->copy()->subDays(365);
             }
         } catch (\Exception $e) {

@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Request;
 use Laravel\Socialite\Facades\Socialite;
 use Modules\User\Actions\Socialite\GetProviderScopesAction;
 use Modules\User\Actions\Socialite\IsProviderConfiguredAction;
+use Modules\User\Actions\Socialite\ValidateProviderAction;
 use Modules\User\Exceptions\ProviderNotConfigured;
 
 class RedirectToProviderController extends Controller
@@ -23,9 +24,10 @@ class RedirectToProviderController extends Controller
      */
     public function __invoke(Request $request, string $provider): RedirectResponse
     {
-        if (! app(IsProviderConfiguredAction::class)->execute($provider)) {
-            throw ProviderNotConfigured::make($provider);
-        }
+        // if (! app(IsProviderConfiguredAction::class)->execute($provider)) {
+        //    throw ProviderNotConfigured::make($provider);
+        // }
+        app(ValidateProviderAction::class)->execute($provider);
 
         $scopes = App(GetProviderScopesAction::class)->execute($provider);
         $socialiteProvider = Socialite::with($provider);

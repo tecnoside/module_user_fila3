@@ -8,7 +8,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Datas;
 
-use Carbon\Carbon;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 use Spatie\LaravelData\Data;
 

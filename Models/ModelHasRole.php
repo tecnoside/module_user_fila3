@@ -45,13 +45,38 @@ use Modules\User\Database\Factories\ModelHasRoleFactory;
  */
 class ModelHasRole extends BaseMorphPivot
 {
+    /** @var string */
+    protected $table = 'model_has_role';
+
     /** @var list<string> */
-    protected $fillable = ['id', 'role_id', 'model_type', 'model_id', 'team_id'];
+    protected $fillable = [
+        'id',
+        // 'uuid',
+        'role_id',
+        'model_type',
+        'model_id',
+        'team_id',
+    ];
+
+    /**
+     * Create a new instance and dynamically assign table name from config.
+     *
+     * @return void
+     */
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+        $table = config('permission.table_names.model_has_roles', 'model_has_role');
+        $this->setTable($table);
+    }
 
     /** @return array<string, string> */
     protected function casts(): array
     {
         return [
+            'id' => 'string',
+            // 'uuid' => 'string',
+
             'created_at' => 'datetime',
             'updated_at' => 'datetime',
             'deleted_at' => 'datetime',
@@ -59,8 +84,6 @@ class ModelHasRole extends BaseMorphPivot
             'updated_by' => 'string',
             'created_by' => 'string',
             'deleted_by' => 'string',
-
-            //    'id' => 'string',
         ];
     }
 }

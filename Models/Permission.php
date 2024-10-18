@@ -13,7 +13,7 @@ use Spatie\Permission\Models\Permission as SpatiePermission;
 
 /**
  * Class Permission.
- *
+ * 
  * Extends Spatie's Permission model to interact with the permission system.
  *
  * @property int                                                                       $id
@@ -27,7 +27,6 @@ use Spatie\Permission\Models\Permission as SpatiePermission;
  * @property int|null                                                                  $roles_count
  * @property EloquentCollection<int, \Illuminate\Database\Eloquent\Model&UserContract> $users
  * @property int|null                                                                  $users_count
- *
  * @method static \Illuminate\Database\Eloquent\Builder|Permission newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Permission newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Permission query()
@@ -40,13 +39,10 @@ use Spatie\Permission\Models\Permission as SpatiePermission;
  * @method static \Illuminate\Database\Eloquent\Builder|Permission whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Permission role($roles, $guard = null)
  * @method static \Illuminate\Database\Eloquent\Builder|Permission permission($permissions)
- *
  * @property EloquentCollection<int, Permission> $permissions
  * @property int|null                            $permissions_count
- *
  * @method static \Illuminate\Database\Eloquent\Builder|Permission withoutPermission($permissions)
  * @method static \Illuminate\Database\Eloquent\Builder|Permission withoutRole($roles, $guard = null)
- *
  * @mixin \Eloquent
  */
 class Permission extends SpatiePermission

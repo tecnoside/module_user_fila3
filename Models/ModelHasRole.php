@@ -19,7 +19,6 @@ use Modules\User\Database\Factories\ModelHasRoleFactory;
  * @property Carbon|null $updated_at
  * @property string|null $updated_by
  * @property string|null $created_by
- *
  * @method static ModelHasRoleFactory                                factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|ModelHasRole newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ModelHasRole newQuery()
@@ -33,14 +32,10 @@ use Modules\User\Database\Factories\ModelHasRoleFactory;
  * @method static \Illuminate\Database\Eloquent\Builder|ModelHasRole whereTeamId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ModelHasRole whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ModelHasRole whereUpdatedBy($value)
- *
  * @property string $uuid (DC2Type:guid)
- *
  * @method static \Illuminate\Database\Eloquent\Builder|ModelHasRole whereUuid($value)
- *
  * @property \Modules\Xot\Contracts\ProfileContract|null $creator
  * @property \Modules\Xot\Contracts\ProfileContract|null $updater
- *
  * @mixin \Eloquent
  */
 class ModelHasRole extends BaseMorphPivot
@@ -67,7 +62,9 @@ class ModelHasRole extends BaseMorphPivot
     {
         parent::__construct($attributes);
         $table = config('permission.table_names.model_has_roles', 'model_has_role');
-        $this->setTable($table);
+        if (\is_string($table)) {
+            $this->setTable($table);
+        }
     }
 
     /** @return array<string, string> */

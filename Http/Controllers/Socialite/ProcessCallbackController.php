@@ -21,6 +21,7 @@ use Modules\User\Actions\Socialite\RegisterSocialiteUserAction;
 use Modules\User\Actions\Socialite\RetrieveOauthUserAction;
 use Modules\User\Actions\Socialite\RetrieveSocialiteUserAction;
 use Modules\User\Actions\Socialite\SetDefaultRolesBySocialiteUserAction;
+use Modules\User\Actions\Socialite\ValidateProviderAction;
 use Modules\User\Events\RegistrationNotEnabled;
 use Modules\User\Events\UserNotAllowed;
 use Modules\User\Exceptions\ProviderNotConfigured;
@@ -34,9 +35,10 @@ class ProcessCallbackController extends Controller
     public function __invoke(Request $request, string $provider): RedirectResponse
     {
         // See if provider exists
-        if (! app(IsProviderConfiguredAction::class)->execute($provider)) {
-            throw ProviderNotConfigured::make($provider);
-        }
+        // if (! app(IsProviderConfiguredAction::class)->execute($provider)) {
+        //    throw ProviderNotConfigured::make($provider);
+        // }
+        app(ValidateProviderAction::class)->execute($provider);
 
         // Try to retrieve existing user
         $oauthUser = app(RetrieveOauthUserAction::class)->execute($provider);

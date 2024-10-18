@@ -86,7 +86,7 @@ class PasswordExpiredWidget extends Widget implements HasForms
         Assert::string($current_password = Arr::get($data, 'current_password'));
         Assert::string($password = Arr::get($data, 'password'));
         $user = auth()->user();
-        if (null === $user) {
+        if ($user === null) {
             return null;
         }
 
@@ -189,8 +189,7 @@ class PasswordExpiredWidget extends Widget implements HasForms
             ->rule(PasswordRule::default())
             ->same('passwordConfirmation')
             ->validationMessages($validation_messages)
-            ->validationAttribute(static::trans('fields.password.validation_attribute'))
-        ;
+            ->validationAttribute(static::trans('fields.password.validation_attribute'));
     }
 
     protected function getPasswordConfirmationFormComponent(): Component

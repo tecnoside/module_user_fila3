@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Actions\Socialite\Utils;
 
+use Exception;
 use Illuminate\Support\Str;
 use Laravel\Socialite\Contracts\User;
 use Webmozart\Assert\Assert;
@@ -14,8 +15,7 @@ final class EmailDomainAnalyzer
 
     public function __construct(
         private readonly string $ssoProvider,
-    ) {
-    }
+    ) {}
 
     public function setUser(User $ssoUser): self
     {
@@ -42,7 +42,7 @@ final class EmailDomainAnalyzer
     {
         $clientEmailDomain = $this->clientDomain();
 
-        if (null === $clientEmailDomain || '' === $clientEmailDomain) {
+        if ($clientEmailDomain === null || $clientEmailDomain === '') {
             return false;
         }
 
@@ -71,7 +71,7 @@ final class EmailDomainAnalyzer
             return $domain;
         }
 
-        throw new \Exception('wip');
+        throw new Exception('wip');
         /*
         return empty($domain)
             ? null

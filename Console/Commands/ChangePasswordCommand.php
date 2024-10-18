@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\User\Console\Commands;
 
+use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Hash;
 use Modules\Xot\Datas\XotData;
@@ -20,7 +21,7 @@ class ChangePasswordCommand extends Command
         Assert::string($email = $this->ask('Enter the user email:'));
         try {
             $user = XotData::make()->getUserByEmail($email);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->error($e->getMessage());
 
             return;

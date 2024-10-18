@@ -14,6 +14,7 @@ use Modules\Xot\Contracts\UserContract;
  *
  * @property EloquentCollection<int, \Illuminate\Database\Eloquent\Model&UserContract> $users
  * @property int|null                                                                  $users_count
+ *
  * @method static DeviceFactory                                factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Device newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Device newQuery()
@@ -35,6 +36,7 @@ use Modules\Xot\Contracts\UserContract;
  * @method static \Illuminate\Database\Eloquent\Builder|Device whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Device whereUpdatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Device whereVersion($value)
+ *
  * @property DeviceUser                                  $pivot
  * @property \Modules\Xot\Contracts\ProfileContract|null $creator
  * @property \Modules\Xot\Contracts\ProfileContract|null $updater
@@ -55,6 +57,7 @@ use Modules\Xot\Contracts\UserContract;
  * @property \Illuminate\Support\Carbon|null             $updated_at
  * @property string|null                                 $updated_by
  * @property string|null                                 $created_by
+ *
  * @mixin \Eloquent
  */
 class Device extends BaseModel

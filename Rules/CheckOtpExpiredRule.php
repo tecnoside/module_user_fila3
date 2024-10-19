@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\User\Rules;
 
-use Closure;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Support\Facades\Auth;
 use Modules\User\Datas\PasswordData;
@@ -14,15 +13,15 @@ class CheckOtpExpiredRule implements ValidationRule
     /**
      * Determina se la regola di validazione si applica.
      */
-    public function validate(string $attribute, mixed $value, Closure $fail): void
+    public function validate(string $attribute, mixed $value, \Closure $fail): void
     {
         $user = Auth::user();
-        if ($user === null) {
+        if (null === $user) {
             $fail('utente non loggato');
 
             return;
         }
-        if ($user->updated_at === null) {
+        if (null === $user->updated_at) {
             return;
         }
 

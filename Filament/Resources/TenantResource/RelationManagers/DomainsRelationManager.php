@@ -11,7 +11,6 @@ use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Str;
 
 class DomainsRelationManager extends RelationManager
 {
@@ -39,7 +38,7 @@ class DomainsRelationManager extends RelationManager
             ->columns(
                 [
                     Tables\Columns\TextColumn::make('domain')->label('Subdomain'),
-                    Tables\Columns\TextColumn::make('full-domain')->label('Full Domain')->getStateUsing(static fn ($record) => Str::of($record->domain)->append('.')->append(request()->getHost())),
+                    Tables\Columns\TextColumn::make('full-domain')->label('Full Domain')->getStateUsing(static fn ($record) => \Str::of($record->domain)->append('.')->append(request()->getHost())),
                 ]
             )
             ->filters(

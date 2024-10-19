@@ -10,16 +10,16 @@ use Modules\User\Database\Factories\PasswordResetFactory;
 /**
  * Modules\User\Models\PasswordReset.
  *
- * @property int $id
- * @property string $email
- * @property string $token
+ * @property int         $id
+ * @property string      $email
+ * @property string      $token
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $user_id
  * @property string|null $updated_by
  * @property string|null $created_by
  *
- * @method static PasswordResetFactory factory($count = null, $state = [])
+ * @method static PasswordResetFactory                                factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|PasswordReset newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|PasswordReset newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|PasswordReset query()

@@ -13,16 +13,16 @@ use Modules\Xot\Datas\XotData;
 /**
  * Modules\User\Models\TeamInvitation.
  *
- * @property int $id
- * @property string|null $team_id
- * @property string $email
- * @property string|null $role
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
- * @property Team|null $team
+ * @property int               $id
+ * @property string|null       $team_id
+ * @property string            $email
+ * @property string|null       $role
+ * @property Carbon|null       $created_at
+ * @property Carbon|null       $updated_at
+ * @property Team|null         $team
  * @property TeamContract|null $team
  *
- * @method static TeamInvitationFactory factory($count = null, $state = [])
+ * @method static TeamInvitationFactory                                factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|TeamInvitation newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|TeamInvitation newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|TeamInvitation query()
@@ -33,7 +33,7 @@ use Modules\Xot\Datas\XotData;
  * @method static \Illuminate\Database\Eloquent\Builder|TeamInvitation whereTeamId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|TeamInvitation whereUpdatedAt($value)
  *
- * @property string $uuid
+ * @property string      $uuid
  * @property string|null $updated_by
  * @property string|null $created_by
  * @property Carbon|null $deleted_at

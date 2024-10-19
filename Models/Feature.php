@@ -9,20 +9,20 @@ namespace Modules\User\Models;
  * @property \Modules\Xot\Contracts\ProfileContract|null $updater
  *
  * @method static \Modules\User\Database\Factories\FeatureFactory factory($count = null, $state = [])
- * @method static \Illuminate\Database\Eloquent\Builder|Feature newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Feature newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Feature query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Feature   newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Feature   newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Feature   query()
  *
- * @property string $id
- * @property string $name
- * @property string $scope
- * @property string $value
+ * @property string                          $id
+ * @property string                          $name
+ * @property string                          $scope
+ * @property string                          $value
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property string|null $updated_by
- * @property string|null $created_by
+ * @property string|null                     $updated_by
+ * @property string|null                     $created_by
  * @property \Illuminate\Support\Carbon|null $deleted_at
- * @property string|null $deleted_by
+ * @property string|null                     $deleted_by
  *
  * @method static \Illuminate\Database\Eloquent\Builder|Feature whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Feature whereCreatedBy($value)

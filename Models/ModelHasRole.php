@@ -7,22 +7,20 @@ namespace Modules\User\Models;
 use Illuminate\Support\Carbon;
 use Modules\User\Database\Factories\ModelHasRoleFactory;
 
-use function is_string;
-
 /**
  * Modules\User\Models\ModelHasRole.
  *
- * @property int $id
- * @property string $role_id
- * @property string $model_type
- * @property string $model_id
- * @property int|null $team_id
+ * @property int         $id
+ * @property string      $role_id
+ * @property string      $model_type
+ * @property string      $model_id
+ * @property int|null    $team_id
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $updated_by
  * @property string|null $created_by
  *
- * @method static ModelHasRoleFactory factory($count = null, $state = [])
+ * @method static ModelHasRoleFactory                                factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|ModelHasRole newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ModelHasRole newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ModelHasRole query()
@@ -69,7 +67,7 @@ class ModelHasRole extends BaseMorphPivot
     {
         parent::__construct($attributes);
         $table = config('permission.table_names.model_has_roles', 'model_has_role');
-        if (is_string($table)) {
+        if (\is_string($table)) {
             $this->setTable($table);
         }
     }

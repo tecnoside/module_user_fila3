@@ -37,8 +37,6 @@ class TenantResource extends XotBaseResource
 
     public static function getModel(): string
     {
-        // return FilamentJet::teamModel();
-        // return Team::class;
         $xot = XotData::make();
 
         return $xot->getTenantClass();

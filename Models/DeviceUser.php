@@ -20,7 +20,7 @@ use Modules\Xot\Datas\XotData;
  * @method static \Illuminate\Database\Eloquent\Builder|DeviceUser newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|DeviceUser query()
  *
- * @property int         $id
+ * @property string      $id
  * @property string      $device_id
  * @property string      $user_id
  * @property Carbon|null $login_at
@@ -98,6 +98,15 @@ class DeviceUser extends BasePivot
     protected function casts(): array
     {
         return [
+            'id' => 'string',
+            'uuid' => 'string',
+            'user_id' => 'string',
+            'device_id' => 'string',
+            // 'id' => 'string',
+            // 'locales' => 'array',
+            'push_notifications_token' => 'string',
+            'push_notifications_enabled' => 'boolean',
+
             'updated_by' => 'string',
             'created_by' => 'string',
             'deleted_by' => 'string',
@@ -108,12 +117,6 @@ class DeviceUser extends BasePivot
 
             'login_at' => 'datetime',
             'logout_at' => 'datetime',
-            'user_id' => 'string',
-            'device_id' => 'string',
-            // 'id' => 'string',
-            // 'locales' => 'array',
-            'push_notifications_token' => 'string',
-            'push_notifications_enabled' => 'boolean',
         ];
     }
 }

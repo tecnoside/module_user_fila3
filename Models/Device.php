@@ -65,6 +65,7 @@ class Device extends BaseModel
     /** @var list<string> */
     protected $fillable = [
         'id',
+        'uuid',
         'mobile_id',
         'languages',
         'device',
@@ -106,6 +107,7 @@ class Device extends BaseModel
         return [
             'id' => 'string',
             'uuid' => 'string',
+
             'created_at' => 'datetime',
             'updated_at' => 'datetime',
             'deleted_at' => 'datetime',

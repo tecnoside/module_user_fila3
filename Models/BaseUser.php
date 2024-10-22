@@ -24,6 +24,7 @@ use Modules\User\Database\Factories\UserFactory;
 use Modules\User\Models\Traits\HasTeams;
 use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Datas\XotData;
+use Modules\Xot\Models\Traits\RelationX;
 use Spatie\Permission\Traits\HasRoles;
 
 /**
@@ -141,6 +142,7 @@ abstract class BaseUser extends Authenticatable implements HasName, HasTenants, 
     use Notifiable;
     use Traits\HasAuthenticationLogTrait;
     use Traits\HasTenants;
+    use RelationX;
 
     public $incrementing = false;
 
@@ -244,15 +246,18 @@ abstract class BaseUser extends Authenticatable implements HasName, HasTenants, 
     */
     public function devices(): BelongsToMany
     {
+        /*
         $pivot_class = DeviceUser::class;
         $pivot = app($pivot_class);
         $pivot_fields = $pivot->getFillable();
-
+        */
         return $this
-            ->belongsToMany(Device::class)
-            ->using($pivot_class)
-            ->withPivot($pivot_fields)
-            ->withTimestamps();
+            ->belongsToManyX(Device::class);
+        /*
+        ->using($pivot_class)
+        ->withPivot($pivot_fields)
+        ->withTimestamps();
+        */
     }
 
     // ----------------------

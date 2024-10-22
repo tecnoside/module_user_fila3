@@ -7,13 +7,9 @@ declare(strict_types=1);
 namespace Modules\User\Filament\Resources\TenantResource\Pages;
 
 use Filament\Actions;
-use Filament\Actions\CreateAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ListRecords;
-use Filament\Tables;
-use Filament\Tables\Actions\DeleteBulkAction;
-use Filament\Tables\Actions\EditAction;
-use Filament\Tables\Actions\ViewAction;
+use Filament\Tables\Actions as TableActions;
 use Filament\Tables\Columns\Layout\Stack;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Enums\ActionsPosition;
@@ -41,7 +37,7 @@ class ListTenants extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            CreateAction::make(),
+            Actions\CreateAction::make(),
         ];
     }
 
@@ -104,7 +100,7 @@ class ListTenants extends ListRecords
         ];
     }
 
-    protected function getListTableColumns(): array
+    public function getListTableColumns(): array
     {
         return [
             TextColumn::make('id')->label(__('ID'))->searchable()->sortable(),
@@ -122,17 +118,15 @@ class ListTenants extends ListRecords
     protected function getTableActions(): array
     {
         return [
-            ViewAction::make(),
-            EditAction::make(),
+            TableActions\ViewAction::make(),
+            TableActions\EditAction::make(),
         ];
     }
 
     protected function getTableBulkActions(): array
     {
         return [
-            Tables\Actions\BulkActionGroup::make([
-                DeleteBulkAction::make(),
-            ]),
+            TableActions\DeleteBulkAction::make(),
         ];
     }
 }

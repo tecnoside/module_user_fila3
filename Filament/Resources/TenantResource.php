@@ -22,7 +22,7 @@ class TenantResource extends XotBaseResource
 {
     // protected static ?string $model = Tenant::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-user-group';
 
     public static function getNavigationBadge(): ?string
     {
@@ -82,7 +82,8 @@ class TenantResource extends XotBaseResource
     public static function getRelations(): array
     {
         return [
-            RelationManagers\DomainsRelationManager::class,
+            // RelationManagers\DomainsRelationManager::class,
+            RelationManagers\UsersRelationManager::class,
         ];
     }
 

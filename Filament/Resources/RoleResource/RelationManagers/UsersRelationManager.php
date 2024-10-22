@@ -91,20 +91,20 @@ class UsersRelationManager extends RelationManager
         ];
     }
 
-    /**
-     * Define the header actions in a separate function.
-     */
-    protected function getTableHeaderActions(): array
-    {
-        return [
-            AttachAction::make()
-                ->label('')
-                ->tooltip(__('role.attach_user'))
-                ->icon('heroicon-o-link')
-            // ->icon('heroicon-o-paper-clip')
-            ,
-        ];
-    }
+    // /**
+    //  * Define the header actions in a separate function.
+    //  */
+    // protected function getTableHeaderActions(): array
+    // {
+    //     return [
+    //         AttachAction::make()
+    //             ->label('')
+    //             ->tooltip(__('role.attach_user'))
+    //             ->icon('heroicon-o-link')
+    //         // ->icon('heroicon-o-paper-clip')
+    //         ,
+    //     ];
+    // }
 
     /**
      * Define the row-level actions in a separate function.
@@ -160,17 +160,17 @@ class UsersRelationManager extends RelationManager
         ];
     }
 
-    protected function getTableActions(): array
-    {
-        return [
-            EditAction::make()
-                ->label('') // Empty label
-                ->tooltip(__('Edit')), // Move label to tooltip
-            DeleteAction::make()
-                ->label('') // Empty label
-                ->tooltip(__('Delete')), // Move label to tooltip
-        ];
-    }
+    // protected function getTableActions(): array
+    // {
+    //     return [
+    //         EditAction::make()
+    //             ->label('') // Empty label
+    //             ->tooltip(__('Edit')), // Move label to tooltip
+    //         DeleteAction::make()
+    //             ->label('') // Empty label
+    //             ->tooltip(__('Delete')), // Move label to tooltip
+    //     ];
+    // }
 
     protected function getBulkActions(): array
     {

@@ -9,7 +9,10 @@ use Illuminate\Console\Command;
 use function Laravel\Prompts\multiselect;
 use function Laravel\Prompts\text;
 
+<<<<<<< HEAD
 use Modules\Xot\Datas\XotData;
+=======
+>>>>>>> 7d72f62c (Check & fix styling)
 use Symfony\Component\Console\Input\InputOption;
 
 class RemoveRoleCommand extends Command

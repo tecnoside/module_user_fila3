@@ -9,10 +9,7 @@ use Illuminate\Console\Command;
 use function Laravel\Prompts\select;
 use function Laravel\Prompts\text;
 
-<<<<<<< HEAD
 use Modules\Xot\Contracts\UserContract;
-=======
->>>>>>> 7d72f62c (Check & fix styling)
 use Modules\Xot\Datas\XotData;
 use Symfony\Component\Console\Input\InputOption;
 

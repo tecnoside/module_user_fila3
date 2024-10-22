@@ -32,11 +32,7 @@ trait HasTeams
      */
     public function isCurrentTeam(TeamContract $teamContract): bool
     {
-<<<<<<< HEAD
         if (null === $this->currentTeam) {
-=======
-        if (! $teamContract instanceof TeamContract || null === $this->currentTeam) {
->>>>>>> 7d72f62c (Check & fix styling)
             return false;
         }
 
@@ -53,11 +49,7 @@ trait HasTeams
             $this->switchTeam($this->personalTeam());
         }
 
-<<<<<<< HEAD
         if ($this->allTeams()->isEmpty() && null !== $this->getKey()) {
-=======
-        if (0 === $this->allTeams()->count()) {
->>>>>>> 7d72f62c (Check & fix styling)
             $this->current_team_id = null;
             $this->save();
         }
@@ -130,13 +122,8 @@ trait HasTeams
      */
     public function personalTeam(): ?TeamContract
     {
-<<<<<<< HEAD
         $personalTeam = $this->ownedTeams->where('personal_team', true)->first();
         if (null === $personalTeam) {
-=======
-        $res = $this->ownedTeams->where('personal_team', true)->first();
-        if (null === $res) {
->>>>>>> 7d72f62c (Check & fix styling)
             return null;
         }
 

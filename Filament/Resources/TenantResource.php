@@ -10,8 +10,6 @@ namespace Modules\User\Filament\Resources;
 
 use Filament\Forms;
 use Filament\Forms\Form;
-use Filament\Tables;
-use Filament\Tables\Table;
 use Modules\User\Filament\Resources\TenantResource\Pages\CreateTenant;
 use Modules\User\Filament\Resources\TenantResource\Pages\EditTenant;
 use Modules\User\Filament\Resources\TenantResource\Pages\ListTenants;
@@ -24,7 +22,7 @@ class TenantResource extends XotBaseResource
 {
     // protected static ?string $model = Tenant::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-user-group';
 
     public static function getNavigationBadge(): ?string
     {
@@ -37,8 +35,6 @@ class TenantResource extends XotBaseResource
 
     public static function getModel(): string
     {
-        // return FilamentJet::teamModel();
-        // return Team::class;
         $xot = XotData::make();
 
         return $xot->getTenantClass();
@@ -83,40 +79,11 @@ class TenantResource extends XotBaseResource
             );
     }
 
-    public static function table(Table $table): Table
-    {
-        return $table
-            ->columns(
-                [
-                    Tables\Columns\TextColumn::make('id')->label('ID')->searchable()->sortable(),
-                    Tables\Columns\TextColumn::make('name'),
-                ]
-            )
-            ->filters(
-                [
-                ]
-            )
-            ->actions(
-                [
-                    Tables\Actions\ViewAction::make(),
-                    Tables\Actions\EditAction::make(),
-                ]
-            )
-            ->bulkActions(
-                [
-                    Tables\Actions\BulkActionGroup::make(
-                        [
-                            Tables\Actions\DeleteBulkAction::make(),
-                        ]
-                    ),
-                ]
-            );
-    }
-
     public static function getRelations(): array
     {
         return [
-            RelationManagers\DomainsRelationManager::class,
+            // RelationManagers\DomainsRelationManager::class,
+            RelationManagers\UsersRelationManager::class,
         ];
     }
 

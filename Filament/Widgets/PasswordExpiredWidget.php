@@ -19,8 +19,10 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Validation\Rules\Password as PasswordRule;
+use Modules\User\Datas\PasswordData;
 use Modules\User\Events\NewPasswordSet;
 use Modules\User\Http\Response\PasswordResetResponse;
+use Modules\User\Rules\CheckOtpExpiredRule;
 use Modules\Xot\Filament\Traits\TransTrait;
 use Webmozart\Assert\Assert;
 
@@ -29,9 +31,10 @@ use Webmozart\Assert\Assert;
  */
 class PasswordExpiredWidget extends Widget implements HasForms
 {
+    use InteractsWithForms;
+
     // use InteractsWithFormActions;
     use TransTrait;
-    use InteractsWithForms;
 
     public ?string $current_password = '';
 
@@ -124,8 +127,23 @@ class PasswordExpiredWidget extends Widget implements HasForms
             return null;
         }
 
+        $pwd_data = PasswordData::make();
+        // get OTP expiration minutes from PasswordData
+        $otpExpirationMinutes = $pwd_data->otp_expiration_minutes;
+
+        // Check if OTP is expired using updated_at
+        if ($user->updated_at && now()->greaterThan($user->updated_at->addMinutes($otpExpirationMinutes))) {
+            Notification::make()
+                ->title(__('user::otp.notifications.otp_expired.title'))
+                ->body(__('user::otp.notifications.otp_expired.body'))
+                ->danger()
+                ->send();
+
+            return null;
+        }
+
         // get password expiry date and time
-        $passwordExpiryDateTime = now()->addDays(30);
+        $passwordExpiryDateTime = now()->addDays($pwd_data->expires_in);
 
         // set password expiry date and time
         $user = tap($user)->update([
@@ -154,11 +172,14 @@ class PasswordExpiredWidget extends Widget implements HasForms
             ->revealable()
             ->required()
             // ->rule(PasswordRule::default())
+            ->rule(new CheckOtpExpiredRule())
             ->validationAttribute(static::trans('fields.current_password.validation_attribute'));
     }
 
     protected function getPasswordFormComponent(): Component
     {
+        $validation_messages = __('user::validation');
+
         return TextInput::make('password')
             ->label(static::trans('fields.password.label'))
             ->password()
@@ -167,6 +188,7 @@ class PasswordExpiredWidget extends Widget implements HasForms
             ->required()
             ->rule(PasswordRule::default())
             ->same('passwordConfirmation')
+            ->validationMessages($validation_messages)
             ->validationAttribute(static::trans('fields.password.validation_attribute'));
     }
 

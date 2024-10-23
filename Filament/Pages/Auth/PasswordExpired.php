@@ -18,6 +18,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Validation\Rules\Password as PasswordRule;
+use Modules\User\Datas\PasswordData;
 use Modules\User\Events\NewPasswordSet;
 use Modules\User\Http\Response\PasswordResetResponse;
 use Modules\Xot\Filament\Traits\NavigationPageLabelTrait;
@@ -70,6 +71,7 @@ class PasswordExpired extends Page implements HasForms
 
     public function resetPassword(): ?PasswordResetResponse
     {
+        $pwd = PasswordData::make();
         $data = $this->form->getState();
         Assert::string($current_password = Arr::get($data, 'current_password'));
         Assert::string($password = Arr::get($data, 'password'));
@@ -116,7 +118,7 @@ class PasswordExpired extends Page implements HasForms
         }
 
         // get password expiry date and time
-        $passwordExpiryDateTime = now()->addDays(30);
+        $passwordExpiryDateTime = now()->addDays($pwd->expires_in);
 
         // set password expiry date and time
         $user = tap($user)->update([

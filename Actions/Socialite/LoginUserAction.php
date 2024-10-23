@@ -11,6 +11,7 @@ namespace Modules\User\Actions\Socialite;
 // use DutchCodingCompany\FilamentSocialite\FilamentSocialite;
 use Filament\Facades\Filament;
 use Illuminate\Http\RedirectResponse;
+use Modules\User\Events\SocialiteUserConnected;
 use Modules\User\Models\SocialiteUser;
 use Spatie\QueueableAction\QueueableAction;
 use Webmozart\Assert\Assert;
@@ -26,6 +27,7 @@ class LoginUserAction
     {
         Assert::notNull($user = $socialiteUser->user, '['.__FILE__.']['.__LINE__.']');
         Filament::auth()->login($user);
+        SocialiteUserConnected::dispatch($socialiteUser);
         // session()->regenerate();
 
         // return redirect()->intended(Filament::getUrl());

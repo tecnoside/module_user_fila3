@@ -37,12 +37,12 @@ class Reset extends Component
      */
     public function resetPassword(): \Livewire\Features\SupportRedirects\Redirector|RedirectResponse|null
     {
-        $messages = __('xot::validation');
+        // $messages = __('xot::validation');
+        $messages = __('user::validation');
 
         $this->validate([
             'token' => 'required',
             'email' => 'required|email',
-            // 'password' => 'required|min:8|same:passwordConfirmation',
             'password' => ['required', 'same:passwordConfirmation', PasswordRule::defaults()],
         ], $messages);
 
@@ -93,8 +93,8 @@ class Reset extends Component
         app(\Modules\Xot\Actions\File\ViewCopyAction::class)->execute('user::layouts.auth', 'pub_theme::layouts.auth');
         app(\Modules\Xot\Actions\File\ViewCopyAction::class)->execute('user::layouts.base', 'pub_theme::layouts.base');
 
-        return view('livewire.auth.passwords.reset')
-            ->extends('layouts.auth');
+        return view('pub_theme::livewire.auth.passwords.reset')
+            ->extends('pub_theme::layouts.auth');
     }
 
     /**

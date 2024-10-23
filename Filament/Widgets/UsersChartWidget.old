@@ -72,7 +72,7 @@ class UsersChartWidget extends ChartWidget implements HasForms
         // $endDate = Carbon::parse($endDate);
         $endDate = Carbon::createFromFormat($format, $endDate);
 
-        $days = $startDate?->diffInDays($endDate) ?? 0;
+        $days = $startDate?->diffInDays($endDate,true) ?? 0;
         if ($days > 365) {
             $startDate = $endDate?->copy()->subDays(365) ?? now();
             // Cannot mutate reactive prop [filters] in component:

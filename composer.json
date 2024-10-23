@@ -9,7 +9,8 @@
         "Laravel",
         "User module",
         "Users",
-        "Users management"
+        "Users management",
+        "Xot"
     ],
     "homepage": "https://github.com/laraxot/module_user_fila3",
     "license": "MIT",
@@ -40,10 +41,8 @@
         "flowframe/laravel-trend": "*",
         "jenssegers/agent": "*",
         "laravel/passport": "*",
-        "livewire/volt": "*",
         "socialiteproviders/auth0": "*",
-        "spatie/laravel-personal-data-export": "*",
-        "thecodingmachine/safe": "^2.5"
+        "spatie/laravel-personal-data-export": "*"
     },
     "require_comment": {
         "laraxot/module_tenant_fila3": "*",

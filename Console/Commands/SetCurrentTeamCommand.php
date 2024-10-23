@@ -9,6 +9,7 @@ use Illuminate\Console\Command;
 use function Laravel\Prompts\select;
 use function Laravel\Prompts\text;
 
+use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Datas\XotData;
 use Symfony\Component\Console\Input\InputOption;
 
@@ -44,6 +45,8 @@ class SetCurrentTeamCommand extends Command
     public function handle(): void
     {
         $email = text('email ?');
+        $user_class = XotData::make()->getUserClass();
+        /** @var UserContract */
         $user = XotData::make()->getUserByEmail($email);
         $xot = XotData::make();
         $teamClass = $xot->getTeamClass();

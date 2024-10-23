@@ -1,7 +1,4 @@
 <?php
-/**
- * ---.
- */
 
 declare(strict_types=1);
 
@@ -264,7 +261,7 @@ abstract class BaseUser extends Authenticatable implements HasName, HasTenants, 
     /**
      * Get the entity's notifications.
      *
-     * @return MorphMany<Notification>
+     * @return MorphMany<Notification, $this>
      */
     public function notifications()
     {

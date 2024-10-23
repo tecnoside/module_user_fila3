@@ -36,6 +36,9 @@ use Modules\User\Database\Factories\ModelHasPermissionFactory;
  *
  * @property \Modules\Xot\Contracts\ProfileContract|null $creator
  * @property \Modules\Xot\Contracts\ProfileContract|null $updater
+ * @property string|null                                 $team_id
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|ModelHasPermission whereTeamId($value)
  *
  * @mixin \Eloquent
  */

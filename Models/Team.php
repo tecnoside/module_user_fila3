@@ -43,6 +43,10 @@ namespace Modules\User\Models;
  * @method static \Illuminate\Database\Eloquent\Builder|Team   whereUpdatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Team   whereUserId($value)
  *
+ * @property string|null $code
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|Team whereCode($value)
+ *
  * @mixin \Eloquent
  */
 class Team extends BaseTeam

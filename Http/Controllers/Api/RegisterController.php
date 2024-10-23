@@ -22,6 +22,7 @@ namespace Modules\User\Http\Controllers\Api;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rules\Password as PasswordRule;
 use Modules\Xot\Http\Controllers\XotBaseController;
 
 class RegisterController extends XotBaseController
@@ -31,14 +32,18 @@ class RegisterController extends XotBaseController
      */
     public function __invoke(Request $request): JsonResponse
     {
+        $messages = __('user::validation');
+
         $validator = Validator::make(
             $request->all(),
             [
                 'name' => 'required',
                 'email' => 'required|email',
-                'password' => 'required',
+                // 'password' => 'required',
+                'password' => ['required',  PasswordRule::defaults()],
                 'c_password' => 'required|same:password',
-            ]
+            ],
+            $messages
         );
 
         if ($validator->fails()) {

@@ -55,9 +55,12 @@ class PasswordExpiryMiddleware
         if ($user->is_otp) {
             return true;
         }
+        if (blank($user->password)) {
+            return false;
+        }
 
         if (blank($user->password_expires_at)) {
-            return true;
+            return false;
         }
 
         if (now()->isAfter($user->password_expires_at)) {

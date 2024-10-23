@@ -49,11 +49,7 @@ trait HasTeams
             $this->switchTeam($this->personalTeam());
         }
 
-<<<<<<< HEAD
-        if (0 === $this->allTeams()->count()) {
-=======
         if ($this->allTeams()->isEmpty() && null !== $this->getKey()) {
->>>>>>> 00c91c043c8429ff9e230d11e92616fcd945e29b
             $this->current_team_id = null;
             $this->save();
         }
@@ -126,13 +122,8 @@ trait HasTeams
      */
     public function personalTeam(): ?TeamContract
     {
-<<<<<<< HEAD
-        $res = $this->ownedTeams->where('personal_team', true)->first();
-        if (null === $res) {
-=======
         $personalTeam = $this->ownedTeams->where('personal_team', true)->first();
         if (null === $personalTeam) {
->>>>>>> 00c91c043c8429ff9e230d11e92616fcd945e29b
             return null;
         }
 
